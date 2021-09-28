@@ -23,7 +23,7 @@ jobs:
           make html
       - name: Deploy documentation to GitHub pages
         run: |
-          cd _build
+          cd docs/_build/html
           touch .nojekyll
           git config --global init.defaultBranch main
           git config --global user.name "GitHub Actions job triggered by $GITHUB_ACTOR"
