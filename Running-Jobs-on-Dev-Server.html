@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running jobs on dev server &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Running jobs on dev server</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Running-Jobs-on-Dev-Server.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="running-jobs-on-dev-server">
+<h1>Running jobs on dev server<a class="headerlink" href="#running-jobs-on-dev-server" title="Permalink to this headline"></a></h1>
+<section id="why-would-you-want-to-run-a-job-on-your-dev-server">
+<h2>Why would you want to run a Job on your dev server?<a class="headerlink" href="#why-would-you-want-to-run-a-job-on-your-dev-server" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>If you are writing a Job yourself and want to test how would it work.</p></li>
+<li><p>If you are working on an issue related to a Job.</p></li>
+<li><p>If you are looking through the code of a Job and want to see what it does.</p></li>
+</ul>
+<section id="some-examples-of-the-one-off-jobs">
+<h3>Some examples of the one off jobs<a class="headerlink" href="#some-examples-of-the-one-off-jobs" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><strong>Migration one off jobs</strong> - These jobs are used for migrating from one schema version to other. If you are creating a new schema version for any model, make sure to run the migration job and check if the migration works as expected. One of the examples is <code class="docutils literal notranslate"><span class="pre">ExplorationMigrationJobManager</span></code> which is used for migration of explorations to the latest version.</p></li>
+<li><p><strong>Feedback Continuous Computation one off jobs</strong> - These jobs are used for continuously computing feedback analytics and updating them. You can run these jobs when you are making changes to the feedback system and check if the analytics are computed and updated correctly.</p></li>
+<li><p><strong>Validation One off jobs</strong> - These jobs can be used to validate the exploration data. One such example is the <code class="docutils literal notranslate"><span class="pre">ExplorationContentValidationJobForCKEditor</span></code> which validates if the html is in correct format for ckeditor. You can run this job to find invalid html content in an exploration which does not fit the ckeditor schema. Any validation job can be used to find the cases which violate the required schema.</p></li>
+<li><p><strong>Audit One off jobs</strong> - These jobs can be used to audit various properties related to a model. One such example is <code class="docutils literal notranslate"><span class="pre">HintsAuditOneOffJob</span></code> which is used to find number of hints used in each state of an exploration. These jobs can be run if you need to audit any property associated with any model.</p></li>
+</ul>
+</section>
+</section>
+<section id="how-to-run-a-job-on-your-dev-server">
+<h2>How to run a Job on your dev server?<a class="headerlink" href="#how-to-run-a-job-on-your-dev-server" title="Permalink to this headline"></a></h2>
+<p>1.) Start the dev server and log in as admin.</p>
+<p><img alt="Login as admin" src="https://i.imgur.com/f7U0lTl.png" />
+<img alt="Enter your name" src="https://i.imgur.com/fLkBF7m.png" /></p>
+<p>2.) Hover over the user avatar and select the Admin Page.</p>
+<p><img alt="Hover over the avatar" src="https://i.imgur.com/XV43Piz.png" /></p>
+<p>3.) Select the Jobs tab and start it from the list. Note that your job will run on the explorations that are present on the server, the job is being run on. Say, if you are running on local host to check how your job is performing you need to have some explorations created on the local server. You could also take a look at the activites tab, there we have some already available explorations. You could just click on <code class="docutils literal notranslate"><span class="pre">reload</span></code> and that corresponding exploration will be made available on your server then (you could browse through your library and you’ll see the particular exploration).</p>
+<p><img alt="Select the job" src="https://i.imgur.com/oj6mS6a.png" /></p>
+</section>
+<section id="how-to-find-what-a-job-does">
+<h2>How to find what a Job does?<a class="headerlink" href="#how-to-find-what-a-job-does" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>go to <code class="docutils literal notranslate"><span class="pre">core/domain/</span></code></p></li>
+<li><p>Find the file related to the Job and see its documentation to know what it does.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instructions for making PR passes &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Instructions for reviewers" href="Instructions-for-Reviewers.html" />
+    <link rel="prev" title="Playbooks" href="playbooks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="playbooks.html">Playbooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instructions for making PR passes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#purpose">Purpose:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#full-pass">Full Pass</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#for-every-pr-perform-the-following">For every PR, perform the following:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actions-to-take">Actions to take:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cancelling-ci-builds">Cancelling CI Builds</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#circleci">CircleCI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rota">Rota</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Instructions-for-Reviewers.html">Instructions for reviewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Instructions-to-QA-coordinators.html">Instructions to qa coordinators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leading-Oppia-Teams.html">Leading Oppia teams</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="playbooks.html">Playbooks</a> &raquo;</li>
+      <li>Instructions for making PR passes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Instructions-for-making-PR-passes.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="instructions-for-making-pr-passes">
+<h1>Instructions for making PR passes<a class="headerlink" href="#instructions-for-making-pr-passes" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>The purpose of making manual passes over PRs is two-fold:</p>
+<ul class="simple">
+<li><p>To give a human touch to the PR process.</p></li>
+<li><p>To decrease the number of open PRs.</p></li>
+</ul>
+<p>As of this writing, Oppiabot has been in operation for about 2 years with the goal of automating most of the processes that used to be done by the former maintainer’s group on a weekly basis. However, replacing a human with a bot resulted in decreased “warmth” in the review process and more PRs were being closed rather than being completed. After the dev workflow lead resumed the process of manually reviewing PRs, PRs were being completed faster, and fewer were closed. Therefore, the community should strive to have a human in the review process as much as possible.</p>
+<section id="purpose">
+<h3>Purpose:<a class="headerlink" href="#purpose" title="Permalink to this headline"></a></h3>
+<p>The purpose of the rotation is to gauge the health of the community and the PR process, it is <strong>not</strong> to take over the responsibility of checking PR health. At the end of completing all of the steps below, you should be able to:</p>
+<ul class="simple">
+<li><p>Gauge the overall wellbeing of the community.</p></li>
+<li><p>Know the current responsibilities of individuals.</p></li>
+<li><p>Determine what dev workflow support the community requires.</p></li>
+</ul>
+</section>
+</section>
+<section id="full-pass">
+<h2>Full Pass<a class="headerlink" href="#full-pass" title="Permalink to this headline"></a></h2>
+<p><strong>Goal:</strong> Move all PRs forward so that they aren’t stale and ensure that the assignee field is accurate. Most importantly, to ensure that contributors aren’t stuck (since some may not ask for help when they need it).
+On Github:</p>
+<section id="for-every-pr-perform-the-following">
+<h3>For every PR, perform the following:<a class="headerlink" href="#for-every-pr-perform-the-following" title="Permalink to this headline"></a></h3>
+<p><strong>Collect the following pieces of information from the PR:</strong></p>
+<ol class="simple">
+<li><p>Whether there’s a “First-time contributor” label on the PR.
+<img alt="image" src="https://user-images.githubusercontent.com/16653571/110330462-c8811900-8043-11eb-973e-d7dc609a8571.png" /></p></li>
+<li><p>Check all the assignees of the PR.</p>
+<ol class="simple">
+<li><p>Go through the thread and check the last date of their assignment.</p></li>
+</ol>
+</li>
+<li><p>Check if the PR has the LGTM label.</p></li>
+</ol>
+</section>
+<section id="actions-to-take">
+<h3>Actions to take:<a class="headerlink" href="#actions-to-take" title="Permalink to this headline"></a></h3>
+<ol class="simple">
+<li><p>If it’s a first-time contributor’s PR</p>
+<ul class="simple">
+<li><p>If the author hasn’t followed any OppiaBot’s comments, then explain that comment and ask/help them to follow it. [e.g, New contributor doesn’t have rights to add a label to the PRs, help them by adding a label to the PR]</p></li>
+<li><p>If they have pushed changes but not replied/assigned/pinged any reviewers:</p>
+<ol class="simple">
+<li><p>Ask the contributor to follow the instructions provided on the wiki page. (and if possible write the important instructions explicitly.)</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>If a contributor (including the author) is assigned for at least 2 days, then:</p>
+<ul class="simple">
+<li><p>&#64;-mention the contributor that they should take action or reach out if they have questions. [Asks contributors to follow the process (like follow Oppia bot comments) with a wiki link instead of just writing the step.]
+<strong>Note:</strong> If the reviewer has left a comment and has forgotten to assign the author and unassign themselves, ping them and ask them to do so.
+<strong>Note:</strong> If the contributor did not respond to the last ping, do not &#64;-mention the contributor again, let Oppiabot automatically close the PR.</p></li>
+</ul>
+</li>
+<li><p>If the PR has LGTM label but tests failed, then:</p>
+<ul class="simple">
+<li><p>Check that the tests are not flaky, if so, restart them.</p></li>
+<li><p>If the tests are not the result of flakiness, &#64;-mention the author that tests failed.</p></li>
+</ul>
+</li>
+<li><p>If the PR has an LGTM label and all tests pass, then:</p>
+<ul class="simple">
+<li><p>Check that there are no outstanding comments</p>
+<ul>
+<li><p>If there are none, then merge the PR.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>At the very end, ensure that no one contributor has too many open PRs (ie. over 3), if so, please encourage them to complete those PRs before opening new ones. Also, if there is a reviewer with a lot of PRs assigned to them, then it’s worth starting a conversion whether the reviewer needs to focus their code ownership. Finally, if there are any community-wide issues, please let the community and core maintainers know.</p>
+</section>
+</section>
+<section id="cancelling-ci-builds">
+<h2>Cancelling CI Builds<a class="headerlink" href="#cancelling-ci-builds" title="Permalink to this headline"></a></h2>
+<section id="id1">
+<h3>Overview<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>Builds sometimes are canceled for the following reasons:</p>
+<ul class="simple">
+<li><p>CI queue is very high.</p></li>
+<li><p>Contributor clearly needs to perform more work on the PR due to one of the following:</p>
+<ul>
+<li><p>Merge conflict</p></li>
+<li><p>Outstanding comments from reviewers.</p></li>
+</ul>
+</li>
+</ul>
+<p>Note: Please ensure that you logged into TravisCI or CircleCI, otherwise, you can’t cancel.</p>
+</section>
+<section id="circleci">
+<h3>CircleCI<a class="headerlink" href="#circleci" title="Permalink to this headline"></a></h3>
+<p>Keep in mind that it is not possible to cancel all CircleCI builds due to permission issues.</p>
+<ol>
+<li><p>Click on any “Details” link that corresponds to CircleCI in the status checks section at the bottom.
+<img alt="CI Details" src="_images/testStatuses2.png" /></p></li>
+<li><p>Click on “circleci_tests” at the top section.
+<img alt="CI Top Bar" src="_images/circleCITopbar.png" /></p></li>
+<li><p>Click on the Cancel button in the top left.
+<img alt="CI Action" src="_images/circleCIWorkflowAction.png" />
+If you don’t see the “Cancel” button, you can’t cancel this build like the following:</p>
+<p><img alt="CI Action Disabled" src="_images/circleCIWorkflowActionDisabled.png" /></p>
+</li>
+</ol>
+</section>
+</section>
+<section id="rota">
+<h2>Rota<a class="headerlink" href="#rota" title="Permalink to this headline"></a></h2>
+<p>Dev-workflow team members are expected to take a <a class="reference external" href="#full-pass">full pass</a> on a weekly basis and create a report which the team lead can share with Core-maintainers in the Core-maintainer’s meeting.</p>
+<p><strong>Current Dev-workflow team members taking pass:</strong> &#64;sajalasati &amp; &#64;DubeySandep</p>
+<p><strong>Weekly report doc:</strong> https://docs.google.com/document/d/1lisXJYYXbmLGLGWoJx0E0XxAMndVG0J98KMp8N-hOho</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="playbooks.html" class="btn btn-neutral float-left" title="Playbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Instructions-for-Reviewers.html" class="btn btn-neutral float-right" title="Instructions for reviewers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

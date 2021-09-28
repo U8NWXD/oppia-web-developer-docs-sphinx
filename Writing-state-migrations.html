@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing state migrations &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Writing audit jobs" href="Writing-audit-jobs.html" />
+    <link rel="prev" title="Apache Beam jobs" href="Apache-Beam-Jobs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="backend-reference.html">Backend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Apache-Beam-Jobs.html">Apache Beam jobs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing state migrations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#steps-to-follow-while-writing-state-migrations">Steps to follow while writing state migrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#important-note">Important note:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-state-migration-locally">Testing state migration locally:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-audit-jobs.html">Writing audit jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-new-one-off-jobs-using-map-reduce.html">Writing new one off jobs using map reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating-statistics.html">Calculating statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-and-modifying-storage-models.html">Creating and modifying storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-Validators-for-storage-models.html">Writing validators for storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Coding-for-speed-in-GAE.html">Coding for speed in GAE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-static-assets.html">Adding static assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html">Wipeout implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html#wipeout-design">Wipeout design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notes-on-NDB-Datastore-Transactions.html">Notes on NDB datastore transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="backend-reference.html">Backend</a> &raquo;</li>
+      <li>Writing state migrations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Writing-state-migrations.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="writing-state-migrations">
+<h1>Writing state migrations<a class="headerlink" href="#writing-state-migrations" title="Permalink to this headline"></a></h1>
+<p>If your PR changes the properties of an exploration or state (or other structure), it should also include a migration so that existing entities in the datastore can be migrated smoothly to the new structural format. The following instructions describe how to write such a migration for states of explorations or questions.</p>
+<section id="steps-to-follow-while-writing-state-migrations">
+<h2>Steps to follow while writing state migrations<a class="headerlink" href="#steps-to-follow-while-writing-state-migrations" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Make the necessary changes to the State class (or its descendant classes) to reflect the post-migration state structure.</p></li>
+<li><p>Make the necessary changes to the NEW_STATE_TEMPLATE in the constants.js file to reflect the post-migration state dict structure.</p></li>
+<li><p>Increment the CURRENT_STATE_SCHEMA_VERSION in the feconf.py file.</p></li>
+<li><p>Increment the CURRENT_EXP_SCHEMA_VERSION in the exp_domain.py file and similar changes in the question_domain.py file.</p></li>
+<li><p>Start with writing _convert_states_v(old_state_version)_dict_to_v(old_state_version + 1)_dict method in exp_domain.py files under Exploration class and in question_domain.py under Question class. In exp_domain.py, update the <code class="docutils literal notranslate"><span class="pre">Exploration._migrate_to_latest_yaml_version</span></code> method to use your conversion function (not required for question_domain.py, this is done automatically).</p></li>
+<li><p>Write a conversion function _convert_states_v(old_state_version)_dict_to_v(old_state_version + 1)_dict in draft_upgrade_services.py that makes appropriate upgrades to data that resides in ExplorationChange lists.</p></li>
+<li><p>Changing existing test files (Note: this list is not exhaustive. These files include tests that utilize a full state dictionary, but there are tests not listed here and tests that use a subset of state- like AnswerGroup, Interaction, etc.- that may have to be updated) :</p>
+<ul class="simple">
+<li><p>Change core/tests/data/oppia-ThetitleforZIPdownloadhandlertest!-v2-gold.zip file with the updated schema.</p></li>
+<li><p>Change the dict and yaml form of state in the following files wherever required:</p>
+<ul>
+<li><p>core/controllers/editor_test.py</p></li>
+<li><p>core/domain/exp_domain_test.py</p></li>
+<li><p>core/domain/exp_services_test.py</p></li>
+<li><p>core/domain/question_jobs_one_off_test.py</p></li>
+<li><p>core/domain/state_domain_test.py</p></li>
+<li><p>core/domain/exp_jobs_one_off_test.py</p></li>
+<li><p>core/domain/interaction_jobs_one_off_test.py</p></li>
+<li><p>core/domain/question_services_test.py</p></li>
+<li><p>core/tests/test_utils.py (Change the VERSION_(Old_version)_STATE_DICT to a new one)</p></li>
+<li><p>core/domain/QuestionObjectFactorySpec.js</p></li>
+<li><p>core/templates/components/question-directives/modal-templates/question-editor-modal.controller.spec.ts</p></li>
+<li><p>core/templates/components/question-directives/question-player/services/question-player-state.service.spec.ts</p></li>
+<li><p>core/templates/components/state-editor/state-content-editor/state-content-editor.directive.spec.ts</p></li>
+<li><p>core/templates/domain/question/question-update.service.spec.ts</p></li>
+<li><p>core/templates/pages/contributor-dashboard-page/modal-templates/question-suggestion-editor-modal.controller.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/editor-tab/exploration-editor-tab.component.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/editor-tab/services/solution-verification.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/editor-tab/templates/modal-templates/teach-oppia-modal.controller.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/editor-tab/training-panel/training-data-editor-panel-modal.controller.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/editor-tab/training-panel/training-data.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/editor-tab/training-panel/training-modal.controller.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/editor-tab/training-panel/training-panel.component.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/services/exploration-states.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/services/graph-data.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/services/parameter-metadata.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/services/router.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/statistics-tab/statistics-tab.component.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/translation-tab/services/translation-status.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-editor-page/translation-tab/state-translation-editor/state-translation-editor.component.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-player-page/services/answer-classification.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-player-page/services/audio-preloader.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-player-page/services/extract-image-filenames-from-state.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-player-page/services/image-preloader.service.spec.ts</p></li>
+<li><p>core/templates/pages/exploration-player-page/services/learner-answer-info.service.spec.ts</p></li>
+<li><p>core/templates/pages/skill-editor-page/services/question-creation-service.spec.ts</p></li>
+<li><p>core/templates/pages/skill-editor-page/skill-preview-tab/skill-preview-tab.controller.spec.ts</p></li>
+<li><p>core/templates/services/question-validation.service.spec.ts</p></li>
+<li><p>core/templates/services/state-interaction-stats.service.spec.ts</p></li>
+<li><p>core/templates/services/state-top-answers-stats.service.spec.ts</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Create a PR. If the tests fail, try resolving the test issues.</p></li>
+<li><p>Once your PR is finalized, file a one off job request for the ExplorationMigrationAuditJob using this <a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSfvYWscAn18ok06An1oQ54h1VmBHfCX8uuuV01kIvY9WX0-Ug/viewform">form</a>. The job tests a migration by running your conversion function on the dicts of existing exploration models and validating that the migration will be successful. It does this without committing the changes to the datastore.</p></li>
+<li><p>Fix any issues or errors from the audit job above.</p></li>
+<li><p>Get your migration PR merged.</p></li>
+<li><p>Once your PR is merged, please submit a request using this <a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSfvYWscAn18ok06An1oQ54h1VmBHfCX8uuuV01kIvY9WX0-Ug/viewform">form</a> to run this migration in production. Before submitting this request, please ensure that the migration has already been tested manually on your local machine, passed code review, and been merged into develop.</p></li>
+</ol>
+<p><strong>Note:</strong> These steps are for the migration where one is changing the schema of all existing states, depending on the changes your migration is going to make the steps will be less as you’ll have to change very fewer test files.</p>
+<p>If you find new test files where changes needed to be required, try updating the list.</p>
+<p><strong>Links to relevant PRs:</strong></p>
+<ul class="simple">
+<li><p>Migration related to changing state schema for all possible states: <a class="reference external" href="https://github.com/oppia/oppia/pull/6249">#6249</a></p></li>
+<li><p>Migration related to changing specific interaction schema: <a class="reference external" href="https://github.com/oppia/oppia/pull/6177">#6177</a></p></li>
+<li><p>One-off job related to migration: <a class="reference external" href="https://github.com/oppia/oppia/pull/6249">#6249</a></p></li>
+</ul>
+</section>
+<section id="important-note">
+<h2>Important note:<a class="headerlink" href="#important-note" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Make sure to add a thorough test for the migration function covering each possible case. Check the PR <a class="reference external" href="https://github.com/oppia/oppia/pull/11466/files">#11466</a> for reference.</p></li>
+</ul>
+</section>
+<section id="testing-state-migration-locally">
+<h2>Testing state migration locally:<a class="headerlink" href="#testing-state-migration-locally" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Checkout develop.</p></li>
+<li><p>Start the server and go to the admin page.</p></li>
+<li><p>Load all demo exploration.</p></li>
+<li><p>Create a new exploration, make some changes and save them.</p></li>
+<li><p>Checkout the feature branch which contains state migration.</p></li>
+<li><p>Go to 0.0.0.0:8000 and flush existing Memcache from the Memcache tab.</p></li>
+<li><p>Go to the Misc tab of admin page and flush cache.</p></li>
+<li><p>Go to the Jobs tab of admin page.</p></li>
+<li><p>Run ExplorationMigrationJobManager and wait for the job to get completed.</p></li>
+<li><p>Check the output of the job and post the screen-shot in your PR.</p></li>
+<li><p>Go to the exploration you have created lately, check whether it’s working as expected.</p></li>
+<li><p>Check demo exploration (note demo exploration ids are 0, 1, 2, etc.)</p></li>
+<li><p>Add a report in your migration PR.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Apache-Beam-Jobs.html" class="btn btn-neutral float-left" title="Apache Beam jobs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Writing-audit-jobs.html" class="btn btn-neutral float-right" title="Writing audit jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

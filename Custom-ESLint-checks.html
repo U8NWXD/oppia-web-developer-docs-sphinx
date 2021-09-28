@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom ESLint checks &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Oppia’s code owners and checks to be carried out by developers" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html" />
+    <link rel="prev" title="Custom Pylint checks" href="Custom-Pylint-checks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lint.html">Lint Checks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Lint-Checks.html">Lint checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Custom-Pylint-checks.html">Custom Pylint checks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Custom ESLint checks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-rules">Write rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-tests">Write tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beyond-hello-world">Beyond hello world</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+          <li><a href="lint.html">Lint Checks</a> &raquo;</li>
+      <li>Custom ESLint checks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Custom-ESLint-checks.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="custom-eslint-checks">
+<h1>Custom ESLint checks<a class="headerlink" href="#custom-eslint-checks" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p>
+<ul>
+<li><p><a class="reference external" href="#limits-of-linters">Limits of linters</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#write-rules">Write rules</a></p>
+<ul>
+<li><p><a class="reference external" href="#hello-world">Hello world</a></p>
+<ul>
+<li><p><a class="reference external" href="#examine-the-ast">Examine the AST</a></p></li>
+<li><p><a class="reference external" href="#design-the-rule">Design the rule</a></p></li>
+<li><p><a class="reference external" href="#write-the-rule">Write the rule</a></p></li>
+<li><p><a class="reference external" href="#add-the-rule-to-oppia">Add the rule to Oppia</a></p></li>
+<li><p><a class="reference external" href="#run-the-linter-with-the-new-rule">Run the linter with the new rule</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#write-tests">Write tests</a></p></li>
+<li><p><a class="reference external" href="#beyond-hello-world">Beyond hello world</a></p>
+<ul>
+<li><p><a class="reference external" href="#placeholders">Placeholders</a></p></li>
+<li><p><a class="reference external" href="#navigating-the-ast">Navigating the AST</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>We use <a class="reference external" href="https://eslint.org">ESLint</a> to lint our JavaScript and TypeScript files. While ESLint comes with a ton of built-in rules that we can use, we sometimes need to write our own. This guide will cover how to write these custom ESLint rules and how to test them.</p>
+<section id="limits-of-linters">
+<h3>Limits of linters<a class="headerlink" href="#limits-of-linters" title="Permalink to this headline"></a></h3>
+<p>Before we get too far into custom lint rules, let’s make sure we understand what linters like ESLint are actually capable of doing.</p>
+<p>Consider two types things you might want to prohibit with a lint rule:</p>
+<ul class="simple">
+<li><p>A property of the code’s text. For example, you might want to ensure that all lines are at most 80 characters long.</p></li>
+<li><p>A property of the code’s behavior. For example, you might want to ensure that the code, when executed, does not print a particular string.</p></li>
+</ul>
+<p>Linters operate on the code as text, so you can write a lint rule that bans a textual property with perfect accuracy. However, any lint rule that tries to prohibit a behavior must be imperfect. To see this intuitively, consider the problem we’ll approach below: writing a linter to prohibit programs that print <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>. If our linter searched for the string <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>, it would miss a program that printed <code class="docutils literal notranslate"><span class="pre">'Hello,</span> <span class="pre">'</span> <span class="pre">+</span> <span class="pre">'world!'</span></code>.</p>
+<p>If you are interested in computability theory, the technical description for this problem is that predicting a program’s behavior is an undecidable problem. Look up the halting problem if you want to learn more.</p>
+<p>Whenever you are creating a new lint rule, consider whether you are trying to prohibit a textual or a behavioral property. If you want to prohibit a textual property, then your task is easy–just write a lint rule that perfectly blocks the property. On the other hand, if you want to prohibit a behavior, then you’ll need to first decide on textual properties that you can prohibit to approximately prohibit the behavior. For example, if you want to stop programs from printing <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>, it’s approximately equivalent to prohibit literal <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> strings. Then, write your lint rule to perfectly prohibit those textual properties. <strong>Note that since your textual properties will be an imperfect translation of the behavioral properties you want to prohibit, your lint rule will miss some code that performs the banned behavior, will flag some code that doesn’t actually perform the banned behavior, or both.</strong> That’s expected given the limits of linters.</p>
+</section>
+</section>
+<section id="write-rules">
+<h2>Write rules<a class="headerlink" href="#write-rules" title="Permalink to this headline"></a></h2>
+<p>ESLint parses the code being linted into an <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree (AST)</a>, and our custom rules operate on this AST. To define our rule, we provide functions to be called on various kinds of nodes in the AST. These functions can then report lint errors.</p>
+<p>To understand how ASTs and linters work, we recommend that you use <a class="reference external" href="https://astexplorer.net">AST Explorer</a> to view the AST for your code. You should select “JavaScript” as the language and “babel-eslint” as the parser. Unless you want to write your linter code in AST Explorer, disable the “Transform” option. Your AST Explorer window should look like this:</p>
+<p><img alt="A screenshot of AST Explorer with some JavaScript code on the left and the corresponding AST on the right." src="_images/astExplorer2Pane.png" /></p>
+<p>To write your lint rule in AST Explorer, select “ESLint v4” under the “Transform” option:</p>
+<p><img alt="A screenshot of AST Explorer with JavaScript code in the upper left, the corresponding AST in the upper right, a lint rule in the lower left, and the result of running the linter in the lower right" src="_images/astExplorer4Pane.png" /></p>
+<section id="hello-world">
+<h3>Hello world<a class="headerlink" href="#hello-world" title="Permalink to this headline"></a></h3>
+<p>To get a better idea for how lint checks work, let’s try writing a simple ESLint rule that forbids the string <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>. (Maybe you don’t want people accidentally opening PRs that include code that prints <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> from when they were learning JavaScript.) First consider what kinds of code should violate the rule. Here are some examples:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="examine-the-ast">
+<h4>Examine the AST<a class="headerlink" href="#examine-the-ast" title="Permalink to this headline"></a></h4>
+<p>To develop an intuition for how ASTs work, copy the examples of code we want our linter to catch into AST Explorer. The AST should look like this:</p>
+<p><img alt="Screenshot of AST Explorer with our &quot;Hello, world!&quot; code examples." src="_images/helloWorldAST.png" /></p>
+<p>If you click on the two <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> strings, the associated parts of the AST will be highlighted. Notice that both are described by a node like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Literal&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+  <span class="nt">&quot;loc&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;line&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;column&quot;</span><span class="p">:</span> <span class="mi">8</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;line&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;column&quot;</span><span class="p">:</span> <span class="mi">23</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;rawValue&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;raw&quot;</span><span class="p">:</span> <span class="s2">&quot;\&quot;Hello, world!\&quot;&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;range&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="mi">8</span><span class="p">,</span>
+    <span class="mi">23</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;_babelType&quot;</span><span class="p">:</span> <span class="s2">&quot;StringLiteral&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;raw&quot;</span><span class="p">:</span> <span class="s2">&quot;\&quot;Hello, world!\&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the numbers you see may be different since they specify the location of the node in the file.</p>
+</section>
+<section id="design-the-rule">
+<h4>Design the rule<a class="headerlink" href="#design-the-rule" title="Permalink to this headline"></a></h4>
+<p>Suppose you decide to write a rule that raises an error whenever it finds a node that:</p>
+<ul class="simple">
+<li><p>is of type “Literal”</p></li>
+<li><p>has value “Hello, world!”</p></li>
+</ul>
+<p>After designing any rule, it’s important to consider what benign code it will raise errors on (false positives) and what bad code it will miss (false negatives). For our rule:</p>
+<ul class="simple">
+<li><p>False positives</p>
+<ul>
+<li><p>Code that includes the string <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> but doesn’t print it will still raise errors. There probably aren’t any good reasons to do this though.</p></li>
+</ul>
+</li>
+<li><p>False negatives</p>
+<ul>
+<li><p>Code that constructs the string <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> instead of including it as a literal will pass the lint check. This is an acceptable imperfection though since developers are almost always going to use the string literal when writing a hello world program.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="write-the-rule">
+<h4>Write the rule<a class="headerlink" href="#write-the-rule" title="Permalink to this headline"></a></h4>
+<p>To write the rule, enable “Transform” on AST Explorer.</p>
+<p>ESLint rules are defined as functions that return objects. The returned objects have keys for different types of nodes, and each key maps to a function that checks whether a node of that type violates the rule. In our case, we want to check whether nodes of type <code class="docutils literal notranslate"><span class="pre">Literal</span></code> have a <code class="docutils literal notranslate"><span class="pre">value</span></code> attribute equal to <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>, so we can write this rule in AST Explorer’s bottom-left panel:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">Literal</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">context</span><span class="p">.</span><span class="nx">report</span><span class="p">({</span>
+          <span class="nx">node</span><span class="p">,</span>
+          <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Do not use &quot;Hello, world!&quot; strings&#39;</span><span class="p">,</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Notice that the node we are examining gets passed into our function and that we report errors by calling <code class="docutils literal notranslate"><span class="pre">context.report</span></code>. In the lower right on AST Explorer, you can see that this lint rule works as expected:</p>
+<p><img alt="Screenshot of AST Explorer with the lint rule running on code with two &quot;Hello, world!&quot; literals and one constructed string. The linter output flags only the literals." src="_images/helloWorldRule.png" /></p>
+</section>
+<section id="add-the-rule-to-oppia">
+<h4>Add the rule to Oppia<a class="headerlink" href="#add-the-rule-to-oppia" title="Permalink to this headline"></a></h4>
+<p>To add the rule to Oppia’s suite of lint checks, we need to add some more metadata describing each problem the rule can find. For our hello world rule, we would create a JavaScript file in <code class="docutils literal notranslate"><span class="pre">scripts/linters/custom_eslint_checks/rules/hello-world.js</span></code> with the following code:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;problem&#39;</span><span class="p">,</span>
+    <span class="nx">docs</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;&quot;Hello, world!&quot; strings should not be used&#39;</span><span class="p">,</span>
+      <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;Best Practices&#39;</span><span class="p">,</span>
+      <span class="nx">recommended</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">fixable</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">schema</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">messages</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">helloWorld</span><span class="o">:</span> <span class="s1">&#39;Do not use &quot;Hello, world!&quot; strings&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+
+  <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">Literal</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">context</span><span class="p">.</span><span class="nx">report</span><span class="p">({</span>
+            <span class="nx">node</span><span class="o">:</span> <span class="nx">node</span><span class="p">,</span>
+            <span class="nx">messageId</span><span class="o">:</span> <span class="s1">&#39;helloWorld&#39;</span><span class="p">,</span>
+          <span class="p">});</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>First, consider the <code class="docutils literal notranslate"><span class="pre">meta</span></code> key at the top of the exported object. The associated object contains the rule’s metadata. Under <code class="docutils literal notranslate"><span class="pre">docs</span></code> we describe the rule, and under <code class="docutils literal notranslate"><span class="pre">messages</span></code> we list the error messages that this rule can raise. ESLint supports rules that suggest fixes, but since we can’t automatically fix a <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> usage, we set <code class="docutils literal notranslate"><span class="pre">fixable</span></code> to <code class="docutils literal notranslate"><span class="pre">null</span></code>. When writing your rule you should include all of these keys, but replace the values as needed to describe your rule.</p>
+<p>Next, consider the <code class="docutils literal notranslate"><span class="pre">create</span></code> key, which is required for ESLint rules. This key maps to the function we wrote in AST Explorer. However, notice that the values passed to <code class="docutils literal notranslate"><span class="pre">context.report()</span></code> have changed. Instead of specifying the error message directly like before, we now provide a <code class="docutils literal notranslate"><span class="pre">messageId</span></code> key that matches one of the keys under <code class="docutils literal notranslate"><span class="pre">meta.messages</span></code>. Now when we call <code class="docutils literal notranslate"><span class="pre">context.report</span></code>, the user will be shown the <code class="docutils literal notranslate"><span class="pre">helloWorld</span></code> message from <code class="docutils literal notranslate"><span class="pre">meta.messages</span></code>. You should use the message ID structure when writing your rules.</p>
+<p>We also need to add our rule to <code class="docutils literal notranslate"><span class="pre">.eslintrc</span></code>. Add <code class="docutils literal notranslate"><span class="pre">&quot;oppia/hello-world&quot;:</span> <span class="pre">&quot;error&quot;,</span></code> under the top-level <code class="docutils literal notranslate"><span class="pre">rules</span></code> key.</p>
+</section>
+<section id="run-the-linter-with-the-new-rule">
+<h4>Run the linter with the new rule<a class="headerlink" href="#run-the-linter-with-the-new-rule" title="Permalink to this headline"></a></h4>
+<p>To run the linter with your new rule, follow these steps:</p>
+<ol>
+<li><p>Delete the <code class="docutils literal notranslate"><span class="pre">node_modules/eslint-plugin-oppia/</span></code> directory so that in the next steps, the lint rules get re-installed.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">install</span></code> from the <code class="docutils literal notranslate"><span class="pre">oppia/</span></code> directory to install the custom rules, including the one you just wrote.</p></li>
+<li><p>Execute the pre-commit linter, which will use your new rule. To speed up the lint checks, we recommend running the rule on just a single file when testing it. If you created a <code class="docutils literal notranslate"><span class="pre">test.js</span></code> file with some code to try linting, you would run the linter like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m scripts.linters.pre_commit_linter --path test.js
+<span class="go">...</span>
+<span class="go">----------------------------------------</span>
+<span class="go">Please fix the errors below:</span>
+<span class="go">----------------------------------------</span>
+<span class="go">...</span>
+<span class="go">/oppia/test.js</span>
+<span class="go">  2:11    Do not use &quot;Hello, world!&quot; strings  oppia/hello-world</span>
+
+<span class="go">✖ 1 problem (1 error, 0 warnings)</span>
+
+
+
+<span class="go">---------------------------</span>
+<span class="go">Checks Not Passed.</span>
+<span class="go">---------------------------</span>
+</pre></div>
+</div>
+<p>Note that you might see other lint errors too related to your <code class="docutils literal notranslate"><span class="pre">test.js</span></code>. Those are fine to ignore since you won’t actually be committing the <code class="docutils literal notranslate"><span class="pre">test.js</span></code> file.</p>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="write-tests">
+<h2>Write tests<a class="headerlink" href="#write-tests" title="Permalink to this headline"></a></h2>
+<p>Along with every new rule you write, you should include a <code class="docutils literal notranslate"><span class="pre">*spec.js</span></code> file with tests for that rule. ESLint provides a handy <a class="reference external" href="https://eslint.org/docs/developer-guide/nodejs-api#ruletester">RuleTester</a> utility to make testing easier.</p>
+<p>The tests for our hello world rule might look like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">rule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./hello-world&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">RuleTester</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;eslint&#39;</span><span class="p">).</span><span class="nx">RuleTester</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">ruleTester</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RuleTester</span><span class="p">();</span>
+<span class="nx">ruleTester</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;hello-world&#39;</span><span class="p">,</span> <span class="nx">rule</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">valid</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">code</span><span class="o">:</span> <span class="s1">&#39;var s = 0;&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">code</span><span class="o">:</span> <span class="s1">&#39;var s = &quot;Hello, &quot; + &quot;world!&quot;&#39;</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+
+  <span class="nx">invalid</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">code</span><span class="o">:</span> <span class="s1">&#39;var s = &quot;Hello, world!&quot;&#39;</span><span class="p">,</span>
+      <span class="nx">errors</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Do not use &quot;Hello, world!&quot; strings&#39;</span>
+      <span class="p">}],</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">code</span><span class="o">:</span> <span class="s1">&#39;console.log(&quot;Hello, world!&quot;)&#39;</span><span class="p">,</span>
+      <span class="nx">errors</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Do not use &quot;Hello, world!&quot; strings&#39;</span>
+      <span class="p">}],</span>
+    <span class="p">},</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Pay attention to the parts after <code class="docutils literal notranslate"><span class="pre">valid</span></code> and <code class="docutils literal notranslate"><span class="pre">invalid</span></code>. <code class="docutils literal notranslate"><span class="pre">valid</span></code> maps to a list of objects. Each object has one key, <code class="docutils literal notranslate"><span class="pre">code</span></code>, whose value is a string containing the code to lint. The linter will be expected to raise no errors on this code.</p>
+<p><code class="docutils literal notranslate"><span class="pre">invalid</span></code> maps to another list of objects that have <code class="docutils literal notranslate"><span class="pre">code</span></code> and <code class="docutils literal notranslate"><span class="pre">errors</span></code> properties. <code class="docutils literal notranslate"><span class="pre">code</span></code> maps to a string to lint, and <code class="docutils literal notranslate"><span class="pre">errors</span></code> maps to a list of objects, where each object describes an error that should be raised when linting the code. You will probably only need to specify the <code class="docutils literal notranslate"><span class="pre">message</span></code> of the error, but you can find more options in the <a class="reference external" href="https://eslint.org/docs/developer-guide/nodejs-api#ruletester">documentation</a>.</p>
+<p>As you write your tests, think back to when you designed your rule. You should write cases for:</p>
+<ul class="simple">
+<li><p>True positives: Bad code that you expect to result in lint errors.</p></li>
+<li><p>True negatives: Good code that you don’t expect to result in lint errors.</p></li>
+<li><p>False positives: Good code that you expect to result in lint errors because you can’t write a perfect linter.</p></li>
+<li><p>False negatives: Bad code that you don’t expect to result in lint errors because the linter is imperfect.</p></li>
+</ul>
+<p>Once you have written your tests, you can run them like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_custom_eslint_tests</span>
+</pre></div>
+</div>
+</section>
+<section id="beyond-hello-world">
+<h2>Beyond hello world<a class="headerlink" href="#beyond-hello-world" title="Permalink to this headline"></a></h2>
+<p>ESLint has many more features described in the <a class="reference external" href="https://eslint.org/docs/developer-guide/working-with-rules">ESLint documentation</a>. In particular, you may find the following features useful:</p>
+<section id="placeholders">
+<h3>Placeholders<a class="headerlink" href="#placeholders" title="Permalink to this headline"></a></h3>
+<p>Your error messages can have <a class="reference external" href="https://eslint.org/docs/developer-guide/working-with-rules#using-message-placeholders">placeholders</a> that are filled by the data you pass to <code class="docutils literal notranslate"><span class="pre">context.report()</span></code>. For example, you might have an error message like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">literals</span><span class="o">:</span> <span class="s1">&#39;Please do not use &quot;{{stringValue}}&quot; literals.&#39;</span>
+</pre></div>
+</div>
+<p>Then you could call <code class="docutils literal notranslate"><span class="pre">context.report()</span></code> like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">context</span><span class="p">.</span><span class="nx">report</span><span class="p">({</span>
+  <span class="nx">node</span><span class="o">:</span> <span class="nx">node</span><span class="p">,</span>
+  <span class="nx">messageId</span><span class="o">:</span> <span class="s1">&#39;literals&#39;</span><span class="p">,</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">stringValue</span><span class="o">:</span> <span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">node.value</span></code> will be substituted in place of <code class="docutils literal notranslate"><span class="pre">{{stringValue}}</span></code>.</p>
+</section>
+<section id="navigating-the-ast">
+<h3>Navigating the AST<a class="headerlink" href="#navigating-the-ast" title="Permalink to this headline"></a></h3>
+<p>You’ll often want to move up or down the AST to check neighboring nodes. For example, suppose you want to forbid calling <code class="docutils literal notranslate"><span class="pre">console.log()</span></code>. <code class="docutils literal notranslate"><span class="pre">console</span></code> and <code class="docutils literal notranslate"><span class="pre">log</span></code> are different nodes, and you need to check both. Here’s an abbreviated version of the AST for <code class="docutils literal notranslate"><span class="pre">console.log()</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;callee&quot;: {
+    &quot;type&quot;: &quot;MemberExpression&quot;,
+    ...
+    &quot;object&quot;: {
+      &quot;type&quot;: &quot;Identifier&quot;,
+      ...
+      &quot;name&quot;: &quot;console&quot;,
+      ...
+    },
+    &quot;property&quot;: {
+      &quot;type&quot;: &quot;Identifier&quot;,
+      ...
+      &quot;name&quot;: &quot;log&quot;,
+      ...
+    },
+    ...
+  },
+}
+</pre></div>
+</div>
+<p>You could identify this pattern by specifying a function to run on all nodes of type <code class="docutils literal notranslate"><span class="pre">MemberExpression</span></code>. Inside your function, you could then check that <code class="docutils literal notranslate"><span class="pre">node.object.name</span> <span class="pre">===</span> <span class="pre">&quot;console&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">node.property.name</span> <span class="pre">===</span> <span class="pre">&quot;log&quot;</span></code>. We recommend identifying the node types you need by examining the ASTs generated from examples you provide to AST Explorer, but you can also refer to the documentation for <a class="reference external" href="https://github.com/estree/estree"><code class="docutils literal notranslate"><span class="pre">ESTree</span></code></a>, which defines the AST used by ESLint. The types you need are probably defined in <a class="reference external" href="https://github.com/estree/estree/blob/master/es5.md"><code class="docutils literal notranslate"><span class="pre">es5.md</span></code></a>.</p>
+<p>It is also possible to work up the AST by calling <code class="docutils literal notranslate"><span class="pre">context.getAncestors()</span></code>. This call will return an array of all the ancestors of the current node.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Custom-Pylint-checks.html" class="btn btn-neutral float-left" title="Custom Pylint checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html" class="btn btn-neutral float-right" title="Oppia’s code owners and checks to be carried out by developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

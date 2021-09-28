@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google summer of code 2019 &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Google summer of code 2018" href="Google-Summer-of-Code-2018.html" />
+    <link rel="prev" title="Google summer of code 2020" href="Google-Summer-of-Code-2020.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="past-events.html">Past Events</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gsoc.html">Google Summer of Code</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2020.html">Google summer of code 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2020.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2020.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Google summer of code 2019</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#completed-projects">Completed Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#students">Students</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faqs">FAQs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gsoc-proposal-template">GSoC Proposal Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#types-of-work-related-to-oppia-projects">Types of work related to Oppia projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selection-criteria">Selection Criteria</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#oppia-s-project-ideas">Oppia’s Project Ideas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creator-experience-projects">“Creator Experience” Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#learner-view-projects">Learner View Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#infrastructure-projects">Infrastructure Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">“Creator Experience” Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Learner View Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Infrastructure Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-useful-information">Other useful information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dates-and-deadlines">Dates and Deadlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-potential-mentors">List of Potential Mentors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#communication">Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html">Google summer of code 2018</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html">Google summer of code 2017</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html">Google summer of code 2016</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#dates-and-deadlines">Dates and Deadlines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#mentors">Mentors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#communication">Communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hacktoberfest.html">Hacktoberfest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ghc.html">GHC Open Source Day</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sod.html">Season of Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#timeline">Timeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#instructions-for-students">Instructions for students</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#instructions-for-mentors">Instructions for mentors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#escalation-policy">Escalation Policy</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="past-events.html">Past Events</a> &raquo;</li>
+          <li><a href="gsoc.html">Google Summer of Code</a> &raquo;</li>
+      <li>Google summer of code 2019</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Google-Summer-of-Code-2019.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="google-summer-of-code-2019">
+<h1>Google summer of code 2019<a class="headerlink" href="#google-summer-of-code-2019" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#getting-started">Getting started</a></p></li>
+<li><p><a class="reference external" href="#faqs">FAQs</a></p></li>
+<li><p><a class="reference external" href="#gsoc-proposal-template">GSoC Proposal Template</a></p>
+<ul>
+<li><p><a class="reference external" href="#tips-for-writing-a-good-project-plan">Tips for writing a good project plan</a></p></li>
+<li><p><a class="reference external" href="#sample-proposals-from-past-years">Sample proposals from past years</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#types-of-work-related-to-oppia-projects">Types of work related to Oppia projects</a></p></li>
+<li><p><a class="reference external" href="#selection-criteria">Selection Criteria</a></p></li>
+<li><p><a class="reference external" href="#oppias-project-ideas">Oppia’s Project Ideas</a></p></li>
+<li><p><a class="reference external" href="#other-useful-information">Other useful information</a></p>
+<ul>
+<li><p><a class="reference external" href="#dates-and-deadlines">Dates and Deadlines</a></p></li>
+<li><p><a class="reference external" href="#list-of-potential-mentors">List of Mentors</a></p></li>
+<li><p><a class="reference external" href="#communication">Communication</a></p></li>
+</ul>
+</li>
+</ul>
+<p>Oppia is participating in <a class="reference external" href="https://developers.google.com/open-source/gsoc/">Google Summer of Code 2019</a>! GSoC is a global program which offers post-secondary students an opportunity to discover and work with open source organizations over the course of 3 months, while being paid a stipend. Students work closely with one or more mentors from an open source organization in order to implement either a project idea by the organization, or a proposal of their own.</p>
+<p>You might be interested in our GSoC info pages from previous years: <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2018">2018</a>, <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2017">2017</a>, <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2016">2016</a>.</p>
+<p>Also, please note that acceptance into GSoC isn’t a prerequisite for <a class="reference external" href="https://github.com/oppia/oppia/wiki">becoming an Oppia contributor</a>. The Oppia project is run by the community for the community, and we warmly welcome anyone who’d like to help out!</p>
+</section>
+<section id="completed-projects">
+<h2>Completed Projects<a class="headerlink" href="#completed-projects" title="Permalink to this headline"></a></h2>
+<p>The following projects were fully completed during GSoC 2019:</p>
+<ul class="simple">
+<li><p><span class="xref myst">&#64;anubhavsinha98’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;anubhavsinha98/gsoc19-journey-oppia-308704ffa3a">final blog post</a> for enabling students to say why they provided a given answer. Mentor: Akshay Anand.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: The creator can add an option, for each state, to ask learners for a response. The infrastructure for storing, retrieving and processing responses from the datastore is implemented.</p></li>
+<li><p><strong>Milestone 2</strong>: Learners can submit responses for states (if the creator has asked for this).</p></li>
+<li><p><strong>Milestone 3</strong>: The creator can view all responses received for a state, and can resolve a set of responses by creating a new answer group or updating an existing one.</p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">&#64;Jamesjay4199’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;jamesjay4199/google-summer-of-code-19-at-oppia-foundation-ce18bf34eb8c">final blog post</a> for enabling pages to be served statically. Mentor: Vojtěch Jelínek.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: All static pages serve without Jinja. (NB: dynamic pages are: profile, admin, library, creator_dashboard, skill_editor, story_editor, exploration_{player|editor}, topic_{viewer|editor}, collection_{player|editor}. All others are static.)</p></li>
+<li><p><strong>Milestone 2</strong>: All dynamic pages have no Jinja constructs except: interaction_templates, dependencies_html, visualizations_html, value_generators_js, rich_text_components.</p></li>
+<li><p><strong>Milestone 3</strong>: Jinja is fully removed from the Oppia codebase.</p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">&#64;lilithxxx’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;reshav01/google-summer-of-code-19-with-oppia-a4d4318b1808">final blog post</a> for making the codebase compatible with Python 3 and covering the backend fully with tests. Mentor: Brian Rodriguez.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: At most 500 lines of Python code (outside ‘scripts/’) remain untested.</p></li>
+<li><p><strong>Milestone 2</strong>: The Python coverage for the codebase reaches 100% and the codebase supports both Python 2 and 3. There are checks which ensure that both these conditions are preserved going forward.</p></li>
+<li><p><strong>Milestone 3</strong>: All bash files are removed from the codebase.</p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">&#64;sophiewu6’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;wushiqi1998/google-summer-of-code-2019-with-oppia-bf585e142a65">final blog post</a> for improvements to the questions framework. Mentor: Vinita Murthi.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: Students encounter review tests after every 2-3 explorations. The modal after each test shows their results for that test.</p></li>
+<li><p><strong>Milestone 2</strong>: The results of the review test are used to pass or fail students, and show follow-up learning advice. Answer groups are linked to misconceptions in the state editor.</p></li>
+<li><p><strong>Milestone 3</strong>: Skill mastery levels are updated after every test, and shown in the frontend (in both the skills tab and the result modals). Questions are selected based on difficulty and skill mastery levels.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="students">
+<h1>Students<a class="headerlink" href="#students" title="Permalink to this headline"></a></h1>
+<p>GSoC is an excellent opportunity for students to get paid to work on an open source project. If you’re interested in applying as a student, you should definitely read the following resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://google.github.io/gsocguides/student/">Google Summer of Code student guide</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/open-source/gsoc/resources/">Google’s list of resources</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/open-source/gsoc/faq">GSoC FAQ</a></p></li>
+</ul>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
+<p>If you’re interested in applying to work with Oppia for GSoC, please follow these steps:</p>
+<ol class="simple">
+<li><p>Sign up to the <a class="reference external" href="https://groups.google.com/forum/#%21forum/oppia-gsoc-announce">oppia-gsoc-announce&#64;</a> mailing list in order to receive important notifications about Oppia’s participation in GSoC. If you like, you can also sign up to the <a class="reference external" href="https://groups.google.com/forum/#%21forum/oppia-gsoc-discuss">oppia-gsoc-discuss&#64;</a> mailing list to participate in general discussion related to Oppia’s involvement in GSoC (see point 5 below, too). Make sure to set your mailing list preferences correctly so that you actually get the emails!</p></li>
+<li><p>Get a better understanding of what Oppia is all about by taking a look at our <a class="reference external" href="http://oppia.github.io/#/">user documentation</a> – this will help you become familiar with important concepts like explorations and interactions. We also recommend having a go at playing some of the existing lessons on <a class="reference external" href="https://www.oppia.org">Oppia.org</a>, like <a class="reference external" href="https://www.oppia.org/fractions">these ones on Fractions</a>, to get a better idea of what they look like.</p></li>
+<li><p>Read and follow the instructions in the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up">contributors’ guide</a> carefully.</p></li>
+<li><p>Consider taking up one or more starter projects in order to become familiar with the contribution process. This will help us get an idea of what it’s like to work with you – e.g. how independent, resourceful, responsive, etc. you are. It will also help you get a better understanding of the codebase, so that you can write a good, detailed project proposal.</p>
+<ul class="simple">
+<li><p><strong>Pro-tip!</strong> Quality is more important than quantity; we want to see examples of your best work. So, please make sure to follow the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#instructions-for-making-a-code-change">dev workflow</a> carefully, manually test your code before submitting (to ensure it does what you want it to and doesn’t break anything else), ensure that your code conforms to the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Coding-style-guide">style rules</a>, and pay attention to small details. These are good skills to learn when developing software in general, and they will also help you build credibility as a responsible developer who can be trusted to be a good steward of the Oppia codebase.</p></li>
+</ul>
+</li>
+<li><p>When you’ve done enough starter projects to get a good understanding for the “lay of the land”, select one or more GSoC projects that you’re most interested in, and write your project proposal! We strongly encourage you to discuss your project ideas and share your proposal with the community, so that you can get feedback and ensure that what you’re writing makes sense to others. The best way to do this is to put your proposal into a collaborative editing tool like Google Docs, allow others to comment on it, and share a link to it on the <a class="reference external" href="mailto:oppia-gsoc-discuss&#37;&#52;&#48;googlegroups&#46;com">GSoC discussion mailing list</a>. You can also email this mailing list if you have any questions about a project, or would like to discuss your approach with the Oppia community and get feedback. Please be specific when asking questions, since this makes it easier for us to help you.</p></li>
+</ol>
+</section>
+<section id="faqs">
+<h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline"></a></h2>
+<p><strong>Q: What technical skills do I need to work on Oppia?</strong></p>
+<p>A: Familiarity with AngularJS (v1), Python 2.7 and Google App Engine is useful and recommended for most Oppia work. In addition, UI design skills are useful for frontend, user-facing work. Please see the individual project ideas to determine whether these skills are recommended for the project in question.</p>
+<p><strong>Q: How can I increase my chances of getting selected?</strong></p>
+<p>A: Writing a good project proposal, engaging with the community, helping other students, successfully contributing patches, and demonstrating that you can work independently can all help you. We’ve also compiled some notes below on the <a class="reference external" href="#selection-criteria">selection criteria</a> we’ll be using this year.</p>
+<p><strong>Q: Can you be flexible around my other commitments in the summer?</strong></p>
+<p>A: GSoC is intended to be a full-time commitment, so the main concern is whether you can still get the project done on time. Be upfront about your other commitments and make sure you schedule your time accordingly when creating your proposal. Other commitments you should list include time when you’ll be in school and will commit less time to GSoC, time when you’ll be travelling and away from GSoC work, any summer jobs you need to commit to, etc. We will try to be flexible around other time commitments, as long as your proposal convinces us that you will have enough time to complete the project by the end of the summer. On the other hand, if you do not disclose other commitments, and it turns out that you are unable to commit to what you wrote on your proposal, this is grounds for failing the program.</p>
+<p><strong>Q: Which projects are most important for Oppia?</strong></p>
+<p>A: All the projects we’ve listed here are important, and we’d be very happy to see good progress made on any of them! Projects are treated as equally important during selection. Note that the relative importance of a project to Oppia is not part of the <a class="reference external" href="#selection-criteria">selection criteria</a>.</p>
+<p><strong>Q: Can I submit more than one proposal to Oppia?</strong></p>
+<p>A: Yes you can. However, we strongly recommend picking one project and writing a solid proposal for the same. Splitting attention across multiple projects might not be a great idea.</p>
+<p><strong>Q: How early should I start working on the proposal?</strong></p>
+<p>A: As early as possible. Make sure to get feedback from mentors before finally submitting the proposal. This will help you to write a better proposal as you can refine the details based on the feedback you receive. The mentors would need some time to review, and hence it is a good idea to begin as early as possible.</p>
+</section>
+<section id="gsoc-proposal-template">
+<h2>GSoC Proposal Template<a class="headerlink" href="#gsoc-proposal-template" title="Permalink to this headline"></a></h2>
+<p><strong>Important:</strong> Please make sure that your final proposal is self-contained! In particular, to be fair to all applicants, key components of the proposal should not be editable after the deadline, and you shouldn’t assume that reviewers will follow external links.</p>
+<p>When submitting a proposal, please use the following template:</p>
+<p><strong>Project Details</strong></p>
+<ul class="simple">
+<li><p>Name of the project.</p></li>
+<li><p>Why are you interested in working with Oppia?</p></li>
+<li><p>What interests you about this project?</p></li>
+<li><p>Prior experience (especially with regards to technical skills that are needed for the project).</p></li>
+<li><p>Links to 1-5 PRs you’ve made that showcase your best work, especially any Oppia ones. The list should include at least one Oppia PR, but you can also include some other PRs from major open-source projects if you like.</p></li>
+<li><p>Project plan and implementation strategy. This is the most important section of the proposal. If you’re not sure how to structure it, we strongly recommend following a structure similar to <a class="reference external" href="https://docs.google.com/document/d/1eMivKj5uWkOkj4AB684JVJslAe49gSskZ-VsyUjgPN4/edit">Oppia’s design doc template</a>.</p></li>
+</ul>
+<p><strong>Summer Plans</strong></p>
+<ul class="simple">
+<li><p>Which timezone(s) will you primarily be in during the summer?</p></li>
+<li><p>How much time will you be able to commit to this project?</p></li>
+<li><p>What jobs, summer classes, and other obligations might you need to work around? Please be upfront about any existing commitments you may have. (See the <a class="reference external" href="#faqs">FAQs</a>.)</p></li>
+</ul>
+<p><strong>Communication</strong></p>
+<ul class="simple">
+<li><p>What is your contact information, and preferred method of communication?</p></li>
+<li><p>How often, and through which channel(s), do you plan on communicating with your mentor?</p></li>
+</ul>
+<section id="tips-for-writing-a-good-project-plan">
+<h3>Tips for writing a good project plan<a class="headerlink" href="#tips-for-writing-a-good-project-plan" title="Permalink to this headline"></a></h3>
+<p>The project plan is the most important section of the proposal, since it outlines what you’ll be doing during the summer. We recommend that you follow a structure similar to <a class="reference external" href="https://docs.google.com/document/d/1eMivKj5uWkOkj4AB684JVJslAe49gSskZ-VsyUjgPN4/edit">Oppia’s design doc template</a> – if any section isn’t relevant for the project, please keep the section and explain why it’s not relevant.</p>
+<p>Here’s some guidance on what the mentors and organization admins will be looking for in this section:</p>
+<ul class="simple">
+<li><p><strong>Three clear milestones</strong> explaining the deliverables to be achieved by the end of each of the three GSoC coding periods. Strong proposals will have clear, concrete and measurable milestones, whose success can be objectively evaluated by an external observer. It’s OK to break up a milestone into smaller milestones over smaller timescales, but individual milestones should represent <em>concrete</em> deliverables that can be merged safely into the “develop” branch and included in a subsequent Oppia release. <strong><u>Please try to be realistic when setting milestones, and don’t over-promise.</u></strong></p></li>
+<li><p><strong>A technical design and implementation plan</strong>. The project ideas below are annotated with some notes from the mentors, but please bear in mind that these notes are not exclusive and shouldn’t serve as a substitute for thinking carefully and critically about the project from first principles – their main purpose is to suggest ideas or possible starting points. If, in your thinking, you find aspects not mentioned in the notes, feel free to include a discussion of these aspects in your proposal. (For example, certain projects may require a migration of existing production data, and this needs to be accounted for in the project plan.) Strong proposals will demonstrate familiarity with the codebase, a realistic implementation plan, and attention to detail.</p></li>
+<li><p><strong>Mocks or wireframes</strong>, if appropriate. For user-facing projects, we strongly favour proposals that demonstrate an empathy for the user. If you’re proposing frontend design mocks, we suggest showing your ideas to your friends and getting their critical feedback, so that you can be confident that others find them intuitive as well. Note that your mocks need not be pixel-perfect, but they should illustrate the primary user journeys clearly enough for us to understand exactly what you’re proposing. Also, bear in mind that “more is not necessarily better” – an important aspect of user-focused design is deciding what <em>not</em> to do.</p></li>
+<li><p><strong>A testing plan.</strong> Testing is an important part of any coding project, and should be taken into account when planning the schedule. In particular, any new functionality added to Oppia’s codebase should be backed by unit tests, and any new core user journey should be accompanied by a corresponding end-to-end test. If your project includes migrations, please also take the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Running-jobs-in-production">pre-release testing in production</a> process into account when planning. Finally,  make sure to budget enough time to test your changes manually before submitting each PR – otherwise, any bugs that are subsequently discovered during review (or the monthly QA process) could result in significant delays and lead to the failure of an otherwise successful project.</p></li>
+</ul>
+<p><strong>[NEW!]</strong> Here’s some advice about proposals and milestone timeline planning that we collated from 2018 students and mentors:</p>
+<ul class="simple">
+<li><p>Choose a project you’re interested in! If you have a strong interest in your project, this will help you pick up necessary skills and tackle any unforeseen difficulties that arise during GSoC.</p></li>
+<li><p>Familiarize yourself with the relevant part of the codebase for your project, especially if you haven’t touched it before. It’s important to think about how to integrate your project with the current Oppia structure – don’t design in a vacuum.</p></li>
+<li><p>Define milestones with enough detail to get a proper ETA for each milestone (so, don’t just say “write e2e tests”), otherwise you run the risk of significantly underestimating the timeline.</p></li>
+<li><p>Try to design milestones in such a way that the last 1 week of each milestone period is free, and can be used as a testing period.</p></li>
+<li><p>The timeline should account for the time it will take to get PRs reviewed. One way to do this is to explicitly specify two dates: (a) when the initial PR should be sent in by, and (b) when it should be merged by.</p></li>
+<li><p>If work needs to be done in time for a particular release, the initial PR should be sent well in advance of the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Release-Schedule">release cutoff date</a>.</p></li>
+<li><p>If you’re working on tasks that depend on jobs being <a class="reference external" href="https://github.com/oppia/oppia/wiki/Running-jobs-in-production">run in production</a>, the timeline should account for any delays inherent in this process.</p></li>
+</ul>
+</section>
+<section id="sample-proposals-from-past-years">
+<h3>Sample proposals from past years<a class="headerlink" href="#sample-proposals-from-past-years" title="Permalink to this headline"></a></h3>
+<p>If you’d like to get a sense of what a proposal might contain, please see our <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2018">GSoC 2018 page</a> for examples of proposals that we accepted in 2018.</p>
+<p><em><strong>Note:</strong> although some of these proposals are a bit on the long side, there’s no formal length requirement for your proposal – in general, the quality of what you write is much more important than the amount of text you write. For the actual requirements, please see the <a class="reference external" href="#gsoc-proposal-template">GSoC Proposal Template</a> section above.</em></p>
+</section>
+</section>
+<section id="types-of-work-related-to-oppia-projects">
+<h2>Types of work related to Oppia projects<a class="headerlink" href="#types-of-work-related-to-oppia-projects" title="Permalink to this headline"></a></h2>
+<p>In order to ensure a well-rounded engineering experience, developers will do some or all of the following depending on their project:</p>
+<ul class="simple">
+<li><p>Meet with their mentors regularly</p></li>
+<li><p>Meet with other contributors related to their project area</p></li>
+<li><p>Receive code reviews for all code they write for their project</p></li>
+<li><p>Write automated tests for their projects</p></li>
+<li><p>Create UI mocks (if doing frontend development)</p></li>
+<li><p>Write design documents (if implementing large features or introducing new systems)</p></li>
+</ul>
+<p><strong>[NEW!]</strong> In 2018, we asked our students what they learned during GSoC. Here are the collated answers:</p>
+<ul class="simple">
+<li><p>Technical ability</p>
+<ul>
+<li><p>Writing clean code with comments</p></li>
+<li><p>Writing tests</p></li>
+<li><p>My debugging skills improved a lot.</p></li>
+<li><p>Refactoring skills.</p></li>
+</ul>
+</li>
+<li><p>Technical domain knowledge</p>
+<ul>
+<li><p>I’m much more fluent in Python and AngularJS.</p></li>
+<li><p>I feel that I can now pick up any new framework/language/skill easily, without much uncertainty.</p></li>
+<li><p>I got to know about the one-off jobs in detail.</p></li>
+</ul>
+</li>
+<li><p>Technical leadership skills</p>
+<ul>
+<li><p>Single-handedly releasing a big feature end-to-end.</p></li>
+<li><p>Reviewing others’ code</p></li>
+<li><p>Technical design skills (and validation of technical ideas)</p></li>
+<li><p>Organizing release testing teams</p></li>
+<li><p>I feel that I can think about a feature end to end and prune out all the not so essential features, so that we can create a minimum viable product!</p></li>
+<li><p>I learnt how to coordinate with folks around me.</p></li>
+</ul>
+</li>
+<li><p>Communication</p>
+<ul>
+<li><p>Putting forward my thoughts more systematically and deeply so that everyone can understand me well.</p></li>
+<li><p>Better communication skills.</p></li>
+<li><p>How to write a good proposal.</p></li>
+</ul>
+</li>
+<li><p>I learned a lot other than coding, including writing technical documents, doing meetings, presentations, testing, etc. This was also the first time I was writing well-tested backend code, which was also an interesting learning experience for me.</p></li>
+</ul>
+</section>
+<section id="selection-criteria">
+<h2>Selection Criteria<a class="headerlink" href="#selection-criteria" title="Permalink to this headline"></a></h2>
+<p>In order to select students for GSoC, we will mainly be looking at three things:</p>
+<ul class="simple">
+<li><p>The quality of the submitted proposal</p></li>
+<li><p>The quality of the applicant’s previously-submitted PRs (in order to assess their ability to code, debug, break down complex tasks, etc.). Note that quantity isn’t a prerequisite in itself, though contributors who’ve submitted multiple PRs are likely to have had more opportunities to demonstrate the abilities needed to succeed in GSoC.</p></li>
+<li><p>Our prior experience working with the student (do they keep commitments, communicate well, demonstrate independence/initiative/responsiveness, help others, etc.)</p></li>
+</ul>
+<p>We believe that strong performance in these dimensions is likely to correlate well with the student having an enjoyable, fulfilling and productive experience over the summer, and successfully completing the GSoC program.</p>
+<p>For the proposal, we generally look for a clear indication that the student has a good, deep understanding of the project, and has broken it down sufficiently well, in a way that makes it very likely to succeed. Some indicators that could help with this include:</p>
+<ul class="simple">
+<li><p>A clear analysis of (and good design decisions that build on top of) the original project idea, with a strong focus on creating a simple, intuitive experience for end users.</p></li>
+<li><p>A concrete, specific breakdown of the work to be done for each milestone. Here’s an <a class="reference external" href="https://docs.google.com/document/d/1vuwXvHOYXqfM2S2B2KIWhZrAa1PL59wJRUYsqJEd67E/edit">example</a> from a previous design doc. (Note that, in the implementation plan, the author has carefully considered and listed which tests need to be written alongside the code; this is a positive indicator.)</p></li>
+<li><p>Sufficient concreteness (e.g. references to particular files and methods) to demonstrate that the applicant is familiar with both the scope of the problem and the existing codebase.</p></li>
+<li><p>A description, if applicable, of how the applicant plans to mitigate risks that could potentially derail the project.</p></li>
+<li><p>Clear, unambiguous communication. (This is important; your proposal will be read by many mentors!)</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="oppia-s-project-ideas">
+<h1>Oppia’s Project Ideas<a class="headerlink" href="#oppia-s-project-ideas" title="Permalink to this headline"></a></h1>
+<p>The following is a list of Oppia’s 2019 GSoC project ideas. (Please note that all mentor assignments listed below are provisional, and may change depending on which proposals are eventually accepted.)</p>
+<p>You are welcome to choose among these ideas, or propose your own! However, if you’re planning to propose something original, it’s essential to engage with the Oppia community in order to get feedback and guidance to improve the proposal. We also recommend taking a look at <a class="reference external" href="https://github.com/oppia/oppia/wiki/Oppia%27s-Mission">Oppia’s mission</a> and seeing if there is a natural way to tie your idea to the Oppia project’s goals, otherwise it might not be a good fit at this time.</p>
+<p>This year, the Oppia team is offering three types of projects: projects that improve the creator experience, projects that improve the learner experience, and infrastructure projects. Some of the project ideas are annotated with notes and suggestions from the mentors, but please bear in mind that the main purpose of these notes is simply to suggest ideas or possible starting points; they aren’t meant to be prescriptive. You’d also be welcome to include discussions of other relevant aspects (that aren’t mentioned in the notes) in your proposal. For more information, see: <a class="reference external" href="#tips-for-writing-a-good-project-plan">Tips for writing a good project plan</a>.</p>
+<section id="creator-experience-projects">
+<h2>“Creator Experience” Projects<a class="headerlink" href="#creator-experience-projects" title="Permalink to this headline"></a></h2>
+<p>1.1. <a class="reference external" href="#11-building-a-lesson-artist-dashboard">Building a lesson artist dashboard</a></p>
+<p>1.2. <a class="reference external" href="#12-infrastructure-for-measuring-exploration-enjoyability">Infrastructure for measuring exploration enjoyability</a></p>
+<p>1.3. <a class="reference external" href="#13-translation-infrastructure-enhancements">Translation infrastructure enhancements</a></p>
+<p>1.4. <a class="reference external" href="#14-improvements-to-the-editor-saving-flow">Improvements to the editor saving flow</a></p>
+<p>1.5. <a class="reference external" href="#15-creating-a-reviewer-view-for-explorations">Creating a “reviewer view” for explorations</a></p>
+<p>1.6. <a class="reference external" href="#16-allow-creation-of-parameterized-questions">Allow creation of parameterized questions</a></p>
+<p>1.7. <a class="reference external" href="#17-community-based-voice-over-and-translation">Community-based voice-over and translation</a></p>
+</section>
+<section id="learner-view-projects">
+<h2>Learner View Projects<a class="headerlink" href="#learner-view-projects" title="Permalink to this headline"></a></h2>
+<p>2.1. <a class="reference external" href="#21-highlight-text-in-a-lesson-as-audio-is-played">Highlight text in a lesson as audio is played</a></p>
+<p>2.2. <a class="reference external" href="#22-review-tests-and-other-improvements-to-the-questions-framework">Review tests and other improvements to the questions framework</a></p>
+<p>2.3. <a class="reference external" href="#23-asking-students-why-they-picked-a-particular-answer">Asking students why they picked a particular answer</a></p>
+<p>2.4. <a class="reference external" href="#24-memorization-experience-for-learners">Memorization experience for learners</a></p>
+</section>
+<section id="infrastructure-projects">
+<h2>Infrastructure Projects<a class="headerlink" href="#infrastructure-projects" title="Permalink to this headline"></a></h2>
+<p>3.1. <a class="reference external" href="#31-improve-frontend-and-end-to-end-tests">Improve frontend and end-to-end tests</a></p>
+<p>3.2. <a class="reference external" href="#32-improve-backend-test-coverage-and-upgrade-it-to-support-python-3">Improve backend test coverage and upgrade it to support Python 3</a></p>
+<p>3.3. <a class="reference external" href="#33-migrate-the-frontend-to-angular-2">Migrate the frontend to Angular 2</a></p>
+<p>3.4. <a class="reference external" href="#34-upgrade-third-party-libraries">Upgrade third-party libraries</a></p>
+<p>3.5. <a class="reference external" href="#35-static-serving">Static serving</a></p>
+<p>3.6. <a class="reference external" href="#36-validate-invariants-between-data-models">Validate invariants between data models</a></p>
+</section>
+<section id="id1">
+<h2>“Creator Experience” Projects<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<section id="building-a-lesson-artist-dashboard">
+<h3>1.1. Building a lesson artist dashboard<a class="headerlink" href="#building-a-lesson-artist-dashboard" title="Permalink to this headline"></a></h3>
+<p>Art and graphics form an integral part of most explorations on Oppia, and are especially important for making lessons learner-friendly and communicating key concepts to learners, especially since good graphics can transcend language barriers. However, one major blocker when creating lessons is the lack of an easy way for designers/artists to add images to lessons. We would like to enable artists to contribute to lessons as easily as developers can contribute to GitHub repositories.</p>
+<p>This project has two goals. Firstly, we would like to make it possible to have dedicated artists for explorations: this will allow creators to assign artist roles, and allow the art development workflow to happen in parallel with other creative work. Secondly, we would like to implement a way to organize creation of graphics (using the existing suggestions framework) in a way that mimics the issue tracker on GitHub. More specifically, all open image requests should be surfaced to non-editors/artists of the exploration, who should have the option to suggest an image; once a suggested image is subsequently approved by the editors/artists, it can be added to the lesson.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;nithusha21</strong> (primary)</p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Good technical design</p></li>
+<li><p>UX design</p></li>
+<li><p>Full stack development (Python + AngularJS)</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Implement an “image placeholder” component in rich-text editor fields for explorations, and implement a new role for artists that gives them permissions to contribute images to these image placeholders (or replace existing images). It should also be possible for exploration creators (who, typically, aren’t artists) to upload temporary images to these placeholders, but mark those temporary images as still needing to be replaced with a proper image.</p></li>
+<li><p>Implement a single common view for all explorations that lists all open image requests. The creator of the exploration should be able to flip a boolean setting which would enable image placeholders within their (typically, not yet published) explorations to be displayed in this common view. The common view should be accessible to all logged-in users and easily reachable from the creator/learner dashboards. Suggestions for images would be submitted through this view.</p></li>
+<li><p>Enable users to contribute images for the requests in the common view. Suggested images should appear on the feedback tab of the editor page for the specific exploration. The exploration’s artists/editors should then be able to review the suggestion. If the image is accepted, the suggested image should then be added to the exploration.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="infrastructure-for-measuring-exploration-enjoyability">
+<h3>1.2. Infrastructure for measuring exploration enjoyability<a class="headerlink" href="#infrastructure-for-measuring-exploration-enjoyability" title="Permalink to this headline"></a></h3>
+<p>In order to ensure that students enjoy the lessons on Oppia, we need to develop a way to measure lesson “enjoyability” so that creators can see the effects of their changes. The aim of this project is to define and put in place the necessary infrastructure for this. By the end of the project, we’d like to make it possible for creators to see whether their lessons are enjoyable, as well as figure out which parts of their lessons might be frustrating/confusing/boring so that they can fix those for future learners. We’d also like to introduce a dashboard that makes it easy to see at a glance which lessons need improvement, so that they can be fixed.</p>
+<p>In order to do this, we would need to figure out what “enjoyability” means. Here are some initial suggestions for metrics (but you are welcome to suggest your own):</p>
+<ul class="simple">
+<li><p>Enjoyability:</p>
+<ul>
+<li><p>Did a student finish the exploration?</p></li>
+<li><p>Did they carry on to the next exploration in the series?</p></li>
+</ul>
+</li>
+<li><p>Possible ways to detect issues:</p>
+<ul>
+<li><p>Frustration: The student submits more than two answers in a row without leaving the card.</p></li>
+<li><p>Confusion: In a particular card, the same answer is submitted more than once, with at least one other answer to that card appearing between consecutive submissions.</p></li>
+<li><p>Boredom: <em>We’re not sure :) What do you think?</em></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Potential mentors</strong>: <strong>&#64;brianrodri</strong> (primary), <strong>&#64;kevinlee12</strong></p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Full stack development (Python + AngularJS)</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Find a way to calculate and store the “continuation metric” (i.e. does the student continue with the next lesson in the series). Then, create a dashboard for all curated lessons that shows, for each lesson, the combined completion + continuation stats.</p></li>
+<li><p>Introduce a frontend service which detects signals indicating student boredom / frustration / confusion, creates cross-sectional metrics in real-time, and sends those metrics to the backend, which stores them as aggregate metrics. Additionally, add new playthrough types to match these metrics as needed (e.g., a playthrough which demonstrates “boredom”), so that these can be used as supporting evidence when debugging the issues.</p></li>
+<li><p>Show the signals detected in Milestone 2 in the statistics tab. Audit the full detection/resolution flow and fix any other issues in order to ensure that the end-to-end experience for debugging and improving lessons is fully intuitive.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>In Milestone 2, you may be able to reuse quite a bit of the existing infrastructure for playthroughs.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="translation-infrastructure-enhancements">
+<h3>1.3. Translation infrastructure enhancements<a class="headerlink" href="#translation-infrastructure-enhancements" title="Permalink to this headline"></a></h3>
+<p>Currently, Oppia provides a simple platform for translators to record and track the progress of audio voiceovers that are contributed to lessons. From talking to translators, we have found that there are some improvements that could be made to this platform that would make it easier to translate lessons, namely:</p>
+<ul class="simple">
+<li><p>Caching/storing recorded audio locally until it is saved, so that translators can easily check their work by clicking “Play” after uploading an audio file.</p></li>
+<li><p>Allowing users to upload multiple audio files at a time.</p></li>
+<li><p>Allowing multiple translators to work in parallel without losing their draft changes.</p></li>
+</ul>
+<p><strong>Potential mentors</strong>: <strong>&#64;DubeySandeep</strong> (primary)</p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Frontend development</p></li>
+<li><p>Good UI/UX design</p></li>
+</ul>
+<p><strong>Suggested milestones</strong>:</p>
+<ol class="simple">
+<li><p>Make it possible for translators to upload multiple audio files at a time for a single card, and automatically match audio files to the correct place (or allow them to do this manually).</p></li>
+<li><p>Cache recorded audio, so that translators can easily check their work by playing audio after uploading it.</p></li>
+<li><p>Enable multiple translators to work in parallel without losing their draft changes.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="improvements-to-the-editor-saving-flow">
+<h3>1.4. Improvements to the editor saving flow<a class="headerlink" href="#improvements-to-the-editor-saving-flow" title="Permalink to this headline"></a></h3>
+<p>There are several serious issues with current workflows in the exploration editor that can occasionally cause loss of work. In particular:</p>
+<ul class="simple">
+<li><p>When an exploration is migrated to a newer schema version, any existing draft changelists should also be updated accordingly. Currently, draft changelists are not updated, resulting in a version mismatch and a loss of work when the exploration creator subsequently tries to apply the draft. (See #4438 for some discussion.)</p></li>
+<li><p>When an exploration is updated, any existing suggestions in the feedback tab should be updated accordingly. Currently, such suggestions are not updated, resulting in a version mismatch and a loss of work when the exploration creator subsequently tries to apply the suggestion.</p></li>
+<li><p>When changes cannot be saved to an exploration, a “lost changes” modal pops up so that the creator can make a copy of their edits and then reapply them. However, the code for this modal is not robust, and in particular it does not take into account draft changelists that were stored in an older format. Thus, when it tries to display such drafts, it breaks and ends up not showing anything.</p></li>
+<li><p>It is difficult to change an interaction into a slightly different one (e.g. from text input to number-with-input) without losing all the associated responses, hints and solutions. It would be nice to declare a suitable transformation that allows this data to be carried over from one interaction type to a closely-related one, and to auto-migrate as much of the responses as possible so that the creator does not lose their work.</p></li>
+</ul>
+<p>The aim of this project is to fix any three of these issues.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;seanlip</strong> (primary)</p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Full stack development including Python and AngularJS</p></li>
+<li><p>Good technical design</p></li>
+</ul>
+<p><strong>Suggested milestones</strong>
+Choose three of the issues above, and fix them. Fixing each issue counts as a single milestone.</p>
+<p><strong>Notes</strong>:
+If you’d like to get a bit more familiar with the exploration editor, here is a simpler issue along the same lines that you might like to have a go at: When switching from a rule type to a different rule type, the inputs to the old rule type get lost, even though both rule types have the same types of inputs and it is possible to carry the inputs over.</p>
+</section>
+<hr class="docutils" />
+<section id="creating-a-reviewer-view-for-explorations">
+<h3>1.5. Creating a “reviewer view” for explorations<a class="headerlink" href="#creating-a-reviewer-view-for-explorations" title="Permalink to this headline"></a></h3>
+<p>In order to ensure a high level of quality, explorations are often reviewed by an experienced lesson creator before publication. However, this is currently a somewhat tedious process that requires lots of clicking from one state to another, which can make it difficult for the reviewer to get a sense of the main “flow” of the exploration.</p>
+<p>It would be nice to have a more linear, scrollable view of the entire exploration which is optimized for reviewers, and which supports basic commenting functionality. The aim of this project is to build this view.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;aks681</strong> (primary), <strong>&#64;seanlip</strong></p>
+<p><strong>Difficulty</strong>: Medium/Hard</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Python and AngularJS</p></li>
+<li><p>Good UI/UX design</p></li>
+<li><p>Good technical design</p></li>
+<li><p>Very good understanding of what an exploration is, and what its various components are</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Implement a basic “reviewer’s view” of the exploration in the editor tab. In addition to the “content” section of each card, this view should also include a representation of at least two of the following: interaction, feedback/responses, hints, solution.</p></li>
+<li><p>Fully implement the reviewer’s view. Implement the backend storage for reviewer comments on parts of an exploration.</p></li>
+<li><p>Implement the frontend system for reviewer comments on parts of an exploration.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Proposals must include clear mockups or wireframes for how the display would look. A sample exploration converted into linear view as an example would be great!</p></li>
+<li><p>Proposals should clearly indicate how each of the components of an exploration would be handled (interaction, hints, solutions, answer groups). Be sure to think about what makes the most sense for the reviewer – you don’t need to include everything in full detail. For example, the reviewer probably won’t need to see fully-fledged interactions that they can interact with.</p></li>
+<li><p>The proposal should explain how branching explorations would be handled. (Note, though, that explorations are typically fairly linear in nature, with branching used only for reviewing earlier material and/or going back to earlier cards. The reviewers’ view should be strongly optimized for that use case, but there should be a clear plan for how to handle non-linear explorations.) Note that the overview graph in the exploration editor page already shows a “main trunk” for the exploration, which could serve as the basis for how to pick the cards to display in a linear view.</p></li>
+<li><p>In milestone 2, we recommend trying to expand the existing feedback system to allow references to specific parts of a card, rather than creating a brand-new system from scratch.</p></li>
+<li><p>The reviewer view should support simple threaded comments like Google Docs and the existing exploration editor feedback tab (but it doesn’t need to support any form of collaborative editing).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="allow-creation-of-parameterized-questions">
+<h3>1.6. Allow creation of parameterized questions<a class="headerlink" href="#allow-creation-of-parameterized-questions" title="Permalink to this headline"></a></h3>
+<p>The addition of the upcoming questions framework allows us to create a large question bank for practice questions. However, it would be tedious for creators to create a large number of questions with similar formats but slight variations (e.g. “Add 4/5 and 3/4”, “Add 2/3 and 3/5”, etc.)</p>
+<p>Instead, we would like to introduce the concept of parameterized questions, where the creator can specify parameters which can be used to generate many questions at once. (In the example given above, the question might be of the form “Add a/b + c/d”, with parameters a, b, c, d. The question creator would specify ranges of values for the parameters in order to generate questions.)</p>
+<p>Note that parameterization might potentially extend to expressing the same question in different ways. For example, we might want to be able to treat the questions “Add a/b + c/d”, “Find the sum of a/b and c/d”, and “{{name}} has a/b of a cake and {{other_name}} has c/d of the same cake; what is the total amount of cake they have?” as the same.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;aks681</strong> (primary), <strong>&#64;vinitamurthi</strong></p>
+<p><strong>Difficulty</strong>: Hard</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Full stack development</p></li>
+<li><p>Good technical design</p></li>
+<li><p>Good UX design</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Make any backend changes that are necessary to allow parameter values / ranges to be stored along with a question, and implement functionality (hidden behind a flag) for specifying these values / ranges in the frontend.</p></li>
+<li><p>Implement functionality that allows authors to use parameters in question content and rules.</p></li>
+<li><p>Implement functionality to allow creators to audit that the parameterizations they have chosen work well in all cases, and result in sensible questions.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Good technical judgement is really important for this project, particularly in ensuring that the system that is built is not too complicated. We expect a GSoC project for this idea to cover only a sub-part of what is described in the description above; figuring out a suitable scope for this subproblem (and explaining clearly how it could be extended in the future) is an important part of the proposal.</p></li>
+<li><p>The existing <a class="reference external" href="http://oppia.github.io/#/Parameters">parameters/expressions framework</a> might be a useful starting point. Note that there is some existing functionality for parameters in the codebase, but it is not well-maintained. It is probably best to figure out a design for this system from scratch, and only then see whether the existing “parameter” functionality can fit well into the proposed system.</p></li>
+<li><p>There should be a way for creators to audit that the parameterizations they have picked work well in all cases and result in sensible questions (cf. Milestone 3). The user flow for doing this should be clearly laid out.</p></li>
+<li><p>Proposals should explain clearly how the rules in answer groups will handle parameters without complicating the default lesson creation experience. Perhaps there could be an “advanced view” which shows a more complicated UI only when parameters are activated in the Settings tab.</p></li>
+<li><p>[Bonus] Currently, Oppia lessons can be augmented with translations and voiceovers in other languages, which are very helpful for learners. It would be great if you could suggest a clean way to handle audio translations for parameterized questions – but note that this isn’t a requirement for the project!</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="community-based-voice-over-and-translation">
+<h3>1.7. Community-based voice-over and translation<a class="headerlink" href="#community-based-voice-over-and-translation" title="Permalink to this headline"></a></h3>
+<p>Most of the Oppia lessons are in the English language which is used by 15-20% of the entire population in the world. To make our lessons more accessible to people around the world we need our lessons to have translations in different languages. This project focuses on making Oppia lessons more shareable and breaking the language barrier for learning new things by allowing the Oppia community to help to translate and voice-over the exploration in different languages.</p>
+<p>The workflow for voiceovers and translations are going to be different as translations can be done incrementally whereas the voiceovers for the entire exploration needs to be done by a single contributor so that we have a consistent voice throughout the exploration. To accommodate such pattern we are thinking of having two workflows:</p>
+<p>“Project” workflow for voiceover:
+As part of their application, the translator or voice actor should submit a voiceover of the initial state. The proficient voice-artist (in that specific language) would review this and decide:
+Whether to accept or reject the application and based on that the contributor will get assigned as a voice-artist for that exploration.</p>
+<p>All translators and voice actors should only be actively assigned to one exploration at a time. Once an assignment is made, any remaining pending applications should be cancelled until that task is completed.</p>
+<p>“Suggestion” workflow for translations:</p>
+<p>A user may decide to suggest a few written translations to exploration, they should be redirected to the translation tab and allowed to add translation suggestion in the specified language. Once they submit a translation, a proficient translator (in that specific language) should either accept or reject the suggestion.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;DubeySandeep</strong> (Primary), <strong>&#64;nithusha21</strong></p>
+<p><strong>Difficulty</strong>: Medium/Hard</p>
+<p><strong>Knowledge/Skills needed</strong>:</p>
+<ul class="simple">
+<li><p>Python and AngularJS</p></li>
+<li><p>Good UI/UX design</p></li>
+<li><p>Good technical design</p></li>
+<li><p>Good understanding of existing suggestion and review structure.</p></li>
+</ul>
+<p><strong>Suggested milestones</strong>:</p>
+<ol class="simple">
+<li><p>Create a backend structure to provide points to translators/voice-artists based on their work as a translator/voice-artist. Create the backend structure for the “suggestion” workflow (including review system).</p></li>
+<li><p>Create the full UI for the suggestion workflow, including functionality for contributors to see the list of explorations which they can translate/voiceover in the dashboard. Create a backend structure for the “project” workflow.</p></li>
+<li><p>Create the full UI for the project workflow, including allowing users to see reviews of their audio-applications and respond to them.</p></li>
+</ol>
+<p><strong>Related issues</strong>: #6536</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>Learner View Projects<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<section id="highlight-text-in-a-lesson-as-audio-is-played">
+<h3>2.1. Highlight text in a lesson as audio is played<a class="headerlink" href="#highlight-text-in-a-lesson-as-audio-is-played" title="Permalink to this headline"></a></h3>
+<p>We have found that audio voiceovers (especially in native languages) are very helpful for learners for whom English isn’t a first language. However, for longer cards, it is difficult for learners to match the audio voiceover to the text on the card. It would be great for learners to be able to track the audio with the text.</p>
+<p>The aim of this project would be to allow lesson translators and voiceover artists to annotate textual translations and voiceover audio respectively, so that the relevant text can be highlighted in the exploration player while the corresponding audio is playing. A rough requirements doc for this project can be found <a class="reference external" href="https://docs.google.com/document/d/1VUaXm4V0YxyPXRBz8W_YMWEC_guzcnccju8d3KWz5jw/edit">here</a>.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;DubeySandeep</strong> (primary)</p>
+<p><strong>Difficulty</strong>: Hard</p>
+<p><strong>Knowledge/Skills needed</strong>:</p>
+<ul class="simple">
+<li><p>Full stack development</p></li>
+<li><p>Good UX design</p></li>
+</ul>
+<p><strong>Suggested milestones</strong>:</p>
+<ol class="simple">
+<li><p>Change the backend schema for an exploration as required (in order to include annotations) and migrate existing explorations to the new schema.</p></li>
+<li><p>Create a frontend UI that allows translators and voiceover artists to easily specify the correspondences between an audio voiceover (possibly in a different language), the text of the written translation in that language, and the text of the original exploration card.</p></li>
+<li><p>Update the learner view to allow the corresponding text to be highlighted when the audio is playing.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Proposals should include clear descriptions of the workflows for annotators (both those who are working on written translations and audio voiceovers).</p></li>
+<li><p>A lot of the difficulty of this project arises in handling edge cases correctly, while still ensuring that the workflow for creators is as simple as possible. Strong proposals would carefully explain how they plan to handle edge cases.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="review-tests-and-other-improvements-to-the-questions-framework">
+<h3>2.2. Review tests and other improvements to the questions framework<a class="headerlink" href="#review-tests-and-other-improvements-to-the-questions-framework" title="Permalink to this headline"></a></h3>
+<p>While explorations and stories help encourage a learner to continue learning, it is also useful for a learner to be able to keep track of their understanding as their learning progresses. Review tests are an upcoming feature in Oppia that aims to help learners test the skills they’ve learned after they have completed 2-3 lessons in a story in that topic. These review tests would be automatically presented to the learner once they have progressed up to a certain point in the story, and would need to be completed successfully in order to advance to the next part of the story.</p>
+<p>This project aims to create the learner view for review tests, and to improve the question framework as a whole so that the experience of practising questions on Oppia (via pre-tests, review tests and practice sessions) is as effective and enjoyable as possible.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;vinitamurthi</strong> (primary), <strong>&#64;aks681</strong></p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>UI/UX design</p></li>
+<li><p>Full-stack development (Python and AngularJS)</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Implement the full user flow for review tests. After this milestone, review tests should be presented to students at the right time, making use of the existing question player component. At the end of the review test, there should be a way for the student to return to the story they were on.</p></li>
+<li><p>Update the question player framework to return more information than just the score, once the learner has completed the test. Specifically, the question player framework should be able to return the score, as well as calculate and return the mastery of the skill(s) that were tested. At the end of this milestone, the question player API should return score as well as a list of skills tested along with their mastery levels.</p></li>
+<li><p>Use the skill mastery information returned by the question player API in each of the tests (i.e. pre-tests, practice sessions, and review tests). Each of the tests would have to use the skill mastery levels in different ways. Pre-tests would use mastery to decide whether the learner has passed the requirements and can proceed with the lesson, whereas review tests and practice sessions would use the mastery values primarily to keep track of the learner’s progress and pass on recommendations for next steps to the learner.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Proposals should include user flows for what the review tests experience would look like.</p></li>
+<li><p>For Milestone 2, proposals should define a reasonable approach for measuring and modifying skill mastery levels (which would be represented as floating-point numbers between 0.0 and 1.0 for each skill).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="asking-students-why-they-picked-a-particular-answer">
+<h3>2.3. Asking students why they picked a particular answer<a class="headerlink" href="#asking-students-why-they-picked-a-particular-answer" title="Permalink to this headline"></a></h3>
+<p>We would like to add a feature to the lesson player that allows students to explain how they arrived at a (wrong) answer. The aim of this feature is to encourage reflection on the student’s part, as well as provide (anonymized) information to creators about student misconceptions, so that the creator can improve Oppia’s feedback for future students.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;nithusha21</strong> (primary), <strong>&#64;aks681</strong></p>
+<p>Difficulty: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Good technical and UI/UX design</p></li>
+<li><p>Full stack development</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Implement the backend data storage models, domain objects, services and controllers needed for this feature. Note that this feature should be whitelisted to the same set of explorations for which learner playthroughs are whitelisted.</p></li>
+<li><p>Augment the learner view UI to enable learners to fill out responses.</p></li>
+<li><p>Augment the editor view UI to surface these responses to creators, and complete the end-to-end feature so that the complete life-cycle functions correctly. Add e2e tests to verify the overall life-cycle.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Proposals must clearly state what conditions trigger this flow. The process should not unduly obstruct the learner – e.g, it would not be nice to surface a modal with “explain your approach” every time the learner clicks submit, and perhaps we might want to do this at most once per lesson. Proposals should also outline when and where this data is surfaced to creators.</p></li>
+<li><p>Proposals must clearly explain the complete lifecycle of this feature, starting from the learner’s submission and proceeding all the way to the creator improving the lesson based on that feedback. Be sure to consider “non happy path” flows as well, such as when the student does not provide an explanation that the creator can understand, or does not want to provide an explanation at all.</p></li>
+<li><p>Proposals should include mocks for both the learner and creator user journeys.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="memorization-experience-for-learners">
+<h3>2.4. Memorization Experience for Learners<a class="headerlink" href="#memorization-experience-for-learners" title="Permalink to this headline"></a></h3>
+<p>For some topics, attention needs to be given on memorizing data (such as the names of the counting numbers, the times table, the months in a year, or the planets in the solar system). There should be an effective way for learners to do this as needed, in a topic or in an exploration. The creator should be able to specify the information that needs to be memorized, and there should be a built-in mechanism in Oppia that helps the learner commit this information to memory as quickly and accurately as possible.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;seanlip</strong> (primary)</p>
+<p><strong>Difficulty</strong>: Medium/Hard. This project is somewhat open-ended. We encourage coming up with a proposal which is reasonable in scope, but which also can be backed by evidence that implementing it would lead to an effective learning experience.</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Full-stack development</p></li>
+<li><p>Good technical design</p></li>
+<li><p>Good UX design</p></li>
+</ul>
+<p><strong>Suggested milestones</strong>
+These will depend strongly on the nature of the proposal. In general, we recommend:</p>
+<ol class="simple">
+<li><p>Make all necessary backend changes for this project, working through the stack, starting from the storage models to the backend controllers.</p></li>
+<li><p>Make all necessary frontend changes for the editor view to enable the creation of such experiences for learners.</p></li>
+<li><p>Make all necessary frontend changes for the learner view to enable them to experience this feature.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Proposals should define where this experience takes place, and why – is this a separate experience at the topic level, or is it part of an exploration? The overall user experience for the student should be a natural one, and be defined in the proposal as clearly as possible.</p></li>
+<li><p>The success of this project is based on how effectively it helps students memorize a list of predetermined facts/words. The proposal should explain why the approach chosen is likely to be effective.</p></li>
+<li><p>For this project, simple and elegant approaches are preferred to more complex ones.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>Infrastructure Projects<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<section id="improve-frontend-and-end-to-end-tests">
+<h3>3.1. Improve frontend and end-to-end tests<a class="headerlink" href="#improve-frontend-and-end-to-end-tests" title="Permalink to this headline"></a></h3>
+<p>In order to ensure that users of Oppia have a smooth experience, we would like to ensure that all frontend functionality in Oppia is fully tested, at all times, before it goes into production.</p>
+<p>The aim of this project is twofold: (a) to achieve 100% coverage for the frontend tests and ensure that this state is preserved in the future, as well as (b) to improve Oppia’s end-to-end tests coverage and make them run faster.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;apb7</strong> (primary), <strong>&#64;nithusha21</strong></p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Familiarity with Karma and Protractor</p></li>
+<li><p>Basic understanding of AngularJS</p></li>
+<li><p>A good “testing” mentality.</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Extend frontend unit tests to reach at least 75% coverage.</p></li>
+<li><p>Extend frontend unit tests to reach 100% coverage and lay down guidelines/rules which ensure that this state is preserved, that is, the coverage always remains at 100%. These guidelines/rules should make it easy for future developers to incorporate the necessary tests along with their code, and prevent insufficiently-tested code from making it into the codebase.</p></li>
+<li><p>Optimize the e2e tests on the following grounds (while ensuring that coverage remains at 100%):</p>
+<ol class="simple">
+<li><p>Pull out common flows from the e2e tests that run on both desktop (core/protractor_desktop) and mobile (core/protractor_mobile), and organize them in core/protractor instead.</p></li>
+<li><p>Make the tests faster by minimizing repetition of statements between different tests. (Refer to the first bullet point under Notes.)</p></li>
+</ol>
+</li>
+</ol>
+<p><strong>Related issues</strong>: #4057</p>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>A general problem observed with the end-to-end tests is the repetition of actions, in both the initial setup and the steps performed. This makes the end-to-end tests a bit inefficient and results in their taking more time to be completed. Proposals should clearly explain how they are planning to ensure that this problem is removed once and for all, and what amendments must be made to the guidelines for end-to-end tests.</p></li>
+<li><p>The present frontend coverage is 46.07% with respect to statements (12562 statements covered out of a total of 27266 statements). Proposals should explain a plan to reach 100% coverage and outline how this state of affairs will be preserved in the future.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="improve-backend-test-coverage-and-upgrade-it-to-support-python-3">
+<h3>3.2. Improve backend test coverage and upgrade it to support Python 3<a class="headerlink" href="#improve-backend-test-coverage-and-upgrade-it-to-support-python-3" title="Permalink to this headline"></a></h3>
+<p>This project aims to improve backend test coverage to 100%, and then migrate the backend codebase to be simultaneously compatible with both Python 2 and Python 3. The reason these two projects are linked is because one prerequisite for a safe migration is to have full test coverage, so it’s important to make sure that the backend coverage is 100% before migrating. We would also like to standardize all scripts in the codebase to be written in Python (currently, there is a mixture of bash and Python being used).</p>
+<p>Unfortunately, we cannot do a full migration to Python 3 at this time due to incompatibility issues with Google App Engine (GAE) dependencies. So, the current plan is to have the codebase python3 ready, so that we can easily upgrade to python3 as soon as the GAE issues are resolved.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;apb7</strong> (primary), <strong>&#64;brianrodri</strong></p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Python</p></li>
+<li><p>A good testing mentality</p></li>
+<li><p>Bash scripting knowledge.</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Improve the coverage of the existing backend code from 89% to 100% (2314 lines missing of 21562 at the time this was written), and put automated checks and guidelines in place to ensure that no untested backend code makes it into the develop branch.</p></li>
+<li><p>Convert all bash scripts to python. Update the codebase to ensure that it is compatible with both Python 2 and Python 3, while ensuring that all setup and deployment scripts continue to work fine. Make sure that all libraries we use are compatible with python 3: if not, suggest mitigation approaches and migrate the libraries accordingly.</p></li>
+<li><p>Put measures in place (like lint checks) to ensure that the backend code always remains compatible with both python 2 and python 3, regardless of subsequent developer changes. Create a list of remaining steps that need to be taken for a final migration to python 3 (once a solution is found for the GAE dependency issues); this list should be as short as possible.</p></li>
+</ol>
+<p><strong>Related issues</strong>: <a class="reference external" href="https://github.com/oppia/oppia/issues/6550">#6550</a></p>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>See https://docs.python.org/3/howto/pyporting.html for migration instructions.</p></li>
+<li><p>Proposals must clearly state a plan for how to achieve the 100% coverage state from our current state.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="migrate-the-frontend-to-angular-2">
+<h3>3.3. Migrate the frontend to Angular 2<a class="headerlink" href="#migrate-the-frontend-to-angular-2" title="Permalink to this headline"></a></h3>
+<p>With the announcement that <a class="reference external" href="https://blog.angular.io/stable-angularjs-and-long-term-support-7e077635ee9c">AngularJS will no longer be maintained or updated</a>, we would like to upgrade our frontend to use Angular 2. The migration will need to happen step by step, while maintaining the working state of the codebase.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;kevinlee12</strong> (primary), <strong>&#64;bansalnitish</strong></p>
+<p>Difficulty: Hard</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>AngularJS and Angular2</p></li>
+<li><p>Good technical design</p></li>
+</ul>
+<p><strong>Prerequisites</strong>
+This project will only be offered for GSoC if the pre-work to convert the codebase to a migratable state (and update any necessary third-party libraries) is completed before the start of GSoC. This work is tracked in the <a class="reference external" href="https://github.com/oppia/oppia/projects/32">“Angular 2 Migration” GitHub project</a>.</p>
+<p><strong>Suggested milestones</strong>:</p>
+<ol class="simple">
+<li><p>Upgrade at least 40% of the codebase to Angular 2, including test files. Communicate to developers the changes that are going on, and ensure that documentation exists for them to easily set up an Angular 2 environment and get started with development using Angular 2.</p></li>
+<li><p>Upgrade at least 70% of the codebase to Angular 2, including test files.</p></li>
+<li><p>Upgrade the entire codebase to Angular 2, including test files.</p></li>
+</ol>
+<p><strong>Notes</strong>:</p>
+<ul class="simple">
+<li><p>Proposals should demonstrate a clear understanding of the upgrade process, and specify a clear plan for tackling this project that can be fully conducted during the GSoC period.</p></li>
+<li><p>Proposals should explain the impact of the changes on developers, and how to minimize this.</p></li>
+<li><p>Proposals should explain how they intend to measure progress, and how the “40%” and “70%” numbers above can be verified objectively. (Note that the number for Milestone 1 is slightly higher because we expect the easier parts of this project to be completed earlier.)</p></li>
+<li><p>See https://angular.io/guide/upgrade for the official upgrade instructions.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="upgrade-third-party-libraries">
+<h3>3.4. Upgrade third-party libraries<a class="headerlink" href="#upgrade-third-party-libraries" title="Permalink to this headline"></a></h3>
+<p>Some of the third party libraries that Oppia uses have been updated, and migrating to newer versions of these libraries might help fix some issues on the issue tracker. The aim of this project is to upgrade all third-party libraries (carefully!) to the latest stable version.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;vojtechjelinek</strong> (primary), <strong>&#64;bansalnitish</strong></p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Bash</p></li>
+<li><p>Python (to understand the use cases of the library)</p></li>
+<li><p>Javascript (to understand the use cases of the library)</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Upgrade 70% of the libraries in ./third_party, with no regressions.</p></li>
+<li><p>Upgrade 100% of the libraries in ./third_party, with no regressions.</p></li>
+<li><p>Upgrade Node to the latest stable version and then upgrade all libraries in ../node_modules. Upgrade all libraries in ../oppia_tools.</p></li>
+</ol>
+<p><strong>Difficulty</strong>: Easy/Medium</p>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>An important part of upgrading libraries is to make necessary changes to support the upgraded libraries (in case new versions introduce breaking changes or are not backward-compatible). There are several libraries in ./third_party for which this is more difficult than others. The proposal should explain which libraries these are, and describe a plan to upgrade them safely.</p></li>
+<li><p>Note that Milestone 3 comes last because node and ../oppia_tools are not user-facing.</p></li>
+<li><p>Proposals should explain how they intend to measure progress, and how the “70%” number in Milestone 1 can be verified objectively.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="static-serving">
+<h3>3.5. Static serving<a class="headerlink" href="#static-serving" title="Permalink to this headline"></a></h3>
+<p>Currently, Oppia serves all pages using the Jinja templating engine, which isn’t very efficient – for one thing, because pages are dynamically composed using Jinja, they can’t be cached. The aim of this project is therefore to serve as much of Oppia’s pages as we can statically, and handle all dynamic content using AJAX calls. In order to do this, we’ll need to get rid of the Jinja footprint in our codebase. Furthermore, we sometimes use Jinja to include static files (like header_js_libs.html or footer.html); and will therefore need to find an alternative way to include these in a Jinja-less environment (perhaps in our build process, or with ngInclude).</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;vojtechjelinek</strong> (primary)</p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Full-stack development</p></li>
+<li><p>Technical design</p></li>
+</ul>
+<p><strong>Suggested milestones</strong>:</p>
+<ol class="simple">
+<li><p>Devise a way to serve the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/dev/head/pages/about/about.html">About page</a> or the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/dev/head/pages/landing/topic_landing_page.html">Fractions landing page</a> statically (this requires getting rid of any remaining Jinja constructs on that page), using an approach that is generalizable to other pages. Identify other issues that can arise from serving the remaining pages statically.</p></li>
+<li><p>Convert all mostly-static pages in Oppia, as well as at least one non-static page, to use the new framework developed in Milestone 1.</p></li>
+<li><p>Serve all pages in Oppia statically.</p></li>
+</ol>
+<p><strong>Related issues</strong>:</p>
+<ul class="simple">
+<li><p>#4220: MusicNotesInput static images are not hash interpolated.</p></li>
+<li><p>#2308: Add pre-rendering and other pre improvements to Oppia pages.</p></li>
+<li><p>#5002: Remove GLOBALS from HTML</p></li>
+<li><p>#5597: Jinja replacement with angular for page title</p></li>
+<li><p>#3950: Replace Jinja templates in the frontend with Angular</p></li>
+</ul>
+<p><strong>Notes</strong>:</p>
+<ul class="simple">
+<li><p>The proposal should include a clear analysis of how to get rid of Jinja for all pages.</p></li>
+<li><p>This project may require some changes in the build process, because we currently sometimes use <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">include</span> <span class="pre">%}</span></code> just to have clearer dev processes. Good proposals will include a coherent analysis of how to deal with this issue, as well as the pros/cons of possible approaches. Some starting-point ideas are provided below, but there may be others:</p>
+<ul>
+<li><p>re-build the finalized templates at release time, then serve them statically from then on (rather than try
+to re-construct them at every request). But how would we handle local development, where the changed files must be available immediately?</p></li>
+<li><p>Look into stuff like ngInclude in Angular. But that might lead to too many calls to the server (even if only to retrieve static files). That said, we could cache the templates.</p></li>
+</ul>
+</li>
+<li><p>This project requires the usage of some kind of module bundling (webpack). We hope to have this completed prior to GSoC – please talk to <strong>&#64;vojtechjelinek</strong> for more details.</p></li>
+<li><p>In order to get rid of Jinja, we need to find alternative ways to handle all the GLOBALS variables that are currently sent to the frontend using Jinja. Work on this is currently ongoing at #5002 – please talk to <strong>&#64;vojtechjelinek</strong> if you’d like to help with this.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="validate-invariants-between-data-models">
+<h3>3.6. Validate invariants between data models<a class="headerlink" href="#validate-invariants-between-data-models" title="Permalink to this headline"></a></h3>
+<p>We would like to validate that Oppia deployments have valid data and relationships between datastore storage models. Some sample validations include:</p>
+<ul class="simple">
+<li><p>All explorations have correct ExplorationRights objects defined</p></li>
+<li><p>All images are linked up with an existing exploration</p></li>
+<li><p>All audio files are linked up with an existing exploration</p></li>
+<li><p>All explorations in collections have corresponding model instances</p></li>
+<li><p>Feedback/Suggestions have corresponding explorations attached to them</p></li>
+<li><p>All RTE fields are correctly formatted</p></li>
+</ul>
+<p>The aim of this project is to figure out all the invariants that should hold between Oppia storage models, and put in place an audit job to verify that they hold in a production deployment, as well as put steps in place to ensure that, if the invariants hold at a point in time, they continue to hold in perpetuity.</p>
+<p><strong>Potential mentors</strong>: <strong>&#64;bansalnitish</strong> (primary), <strong>&#64;seanlip</strong></p>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Knowledge/Skills needed</strong></p>
+<ul class="simple">
+<li><p>Python</p></li>
+<li><p>Map Reduce jobs</p></li>
+<li><p>Good technical design</p></li>
+<li><p>Good eye for testing</p></li>
+</ul>
+<p><strong>Suggested milestones</strong></p>
+<ol class="simple">
+<li><p>Update the backend code to ensure that all desired invariants continue to hold in perpetuity, and create an audit job to verify that all desired invariants hold. This audit job should be run in production immediately after Milestone 1 and will produce a list of discrepancies that need to be addressed.</p></li>
+<li><p>Resolve at least half of the discrepancies found during Milestone 1.</p></li>
+<li><p>Resolve all the discrepancies found during Milestone 1.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>The above list is not representative, and we expect there to be many more such validations. The proposal should include a full list of these.</p></li>
+<li><p>This project ties in very closely to Oppia’s release process. Make sure you are acquainted with <a class="reference external" href="https://github.com/oppia/oppia/wiki/Release-Schedule">Oppia’s release timeline</a>, as well as the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Running-jobs-in-production">procedure for running one-off jobs in production</a>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="other-useful-information">
+<h1>Other useful information<a class="headerlink" href="#other-useful-information" title="Permalink to this headline"></a></h1>
+<section id="dates-and-deadlines">
+<h2>Dates and Deadlines<a class="headerlink" href="#dates-and-deadlines" title="Permalink to this headline"></a></h2>
+<p>Noteworthy dates for 2019:</p>
+<ul class="simple">
+<li><p><strong>Jan 16 - Feb 7</strong>: Mentoring organizations apply</p></li>
+<li><p><strong>Feb 27</strong>: Mentoring organizations are announced</p></li>
+<li><p><strong>Mar 25 - Apr 9</strong>: Student application period</p></li>
+<li><p><strong>May 6</strong>: Accepted students are announced</p></li>
+<li><p><strong>May 6 - May 27</strong>: Community bonding period</p></li>
+<li><p><strong>May 27 - Aug 19</strong>: Students enjoy the summer by contributing code to their projects</p></li>
+<li><p><strong>Aug 26</strong>: GSoC officially ends</p></li>
+</ul>
+</section>
+<section id="list-of-potential-mentors">
+<h2>List of Potential Mentors<a class="headerlink" href="#list-of-potential-mentors" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Akshay (&#64;aks681)</p></li>
+<li><p>Apurv (&#64;apb7)</p></li>
+<li><p>Brian (&#64;brianrodri)</p></li>
+<li><p>Kevin (&#64;kevinlee12)</p></li>
+<li><p>Nithesh (&#64;nithusha21)</p></li>
+<li><p>Nitish (&#64;bansalnitish)</p></li>
+<li><p>Sandeep (&#64;DubeySandeep)</p></li>
+<li><p>Sean (&#64;seanlip)</p></li>
+<li><p>Vinita (&#64;vinitamurthi)</p></li>
+<li><p>Vojta (&#64;vojtechjelinek)</p></li>
+</ul>
+</section>
+<section id="communication">
+<h2>Communication<a class="headerlink" href="#communication" title="Permalink to this headline"></a></h2>
+<p><strong>Chat</strong></p>
+<p>Oppia doesn’t have an official IRC channel, but we do have a real-time chat channel on <a class="reference external" href="https://gitter.im/oppia/oppia-chat">Gitter</a>! You can log in using your GitHub account (Gitter will ask to be associated with your GitHub account for authentication) and you will then be able to talk in it. Please feel free to use Gitter if you just want to say hi to the community or if you have any questions related to getting started. For project-specific questions, please direct your queries to the <a class="reference external" href="mailto:oppia-gsoc-discuss&#37;&#52;&#48;googlegroups&#46;com">GSoC discussion mailing list</a>.</p>
+<p><strong>Email</strong></p>
+<p>If you have questions pertaining to “how-to-get-started”, please ask them on <a class="reference external" href="https://gitter.im/oppia/oppia-chat">Gitter</a>, or the oppia-dev&#64; mailing list. Please be specific when asking questions; this makes it easier for us to help you.</p>
+<p>To discuss your project ideas or share your proposal for feedback from the community, please email the <a class="reference external" href="mailto:oppia-gsoc-discuss&#37;&#52;&#48;googlegroups&#46;com">GSoC discussion mailing list</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Google-Summer-of-Code-2020.html" class="btn btn-neutral float-left" title="Google summer of code 2020" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Google-Summer-of-Code-2018.html" class="btn btn-neutral float-right" title="Google summer of code 2018" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

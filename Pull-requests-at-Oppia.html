@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pull requests at Oppia &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Get help" href="Get-help.html" />
+    <link rel="prev" title="Make a pull request" href="Make-a-pull-request.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pull requests at Oppia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-request-lifecycle">Pull request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#draft-pull-requests">Draft pull requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#labeling-pull-requests">Labeling pull requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-on-multiple-pull-requests">Working on multiple pull requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Pull requests at Oppia</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Pull-requests-at-Oppia.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="pull-requests-at-oppia">
+<h1>Pull requests at Oppia<a class="headerlink" href="#pull-requests-at-oppia" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#pull-request-lifecycle">Pull request lifecycle</a></p></li>
+<li><p><a class="reference external" href="#draft-pull-requests">Draft pull requests</a></p></li>
+<li><p><a class="reference external" href="#labeling-pull-requests">Labeling pull requests</a></p></li>
+<li><p><a class="reference external" href="#working-on-multiple-pull-requests">Working on multiple pull requests</a></p></li>
+</ul>
+</section>
+<section id="pull-request-lifecycle">
+<h2>Pull request lifecycle<a class="headerlink" href="#pull-request-lifecycle" title="Permalink to this headline"></a></h2>
+<p><img alt="Flowchart of PR lifecycle" src="_images/prLifecycle.png" /></p>
+<details>
+<summary>Flowchart source code</summary>
+<p>The flowchart was generated from the below source code by https://flowchart.fun.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>~~~
+layout:
+  name: dagre
+  rankDir: LR
+~~~
+Draft PR
+  Ready for review: PR awaiting review
+    Request changes: Changes requested
+      Addresses comments: (PR awaiting review)
+    All reviewers approve: PR labeled LGTM
+      Merge: PR closed
+</pre></div>
+</div>
+</details>
+<ol class="simple">
+<li><p>(optional) Draft PR: Authors can open draft PRs to get early feedback or debug CI tests. Reviewers usually won’t leave comments on these PRs unless the author leaves a comment of the form <code class="docutils literal notranslate"><span class="pre">&#64;reviewer_username</span> <span class="pre">PTAL</span></code> to request a review from GitHub user <code class="docutils literal notranslate"><span class="pre">reviewer_username</span></code>.</p></li>
+<li><p>PR ready for review: Once authors mark PRs as ready for review (or if they skip the draft PR stage entirely), reviews will automatically be requested from all code owners. Oppiabot will assign one developer (typically the developer from the changelog label) to take a first pass. Oppiabot will assign the other code owners to review once the first pass is complete.</p></li>
+<li><p>Changes requested: Reviewers will either approve the PR or request changes. Almost all PRs will have at least some changes requested. PR authors address each comment, either by making the requested change or explaining why they think it is unnecessary. Once all comments are addressed, reviewers will re-review.</p></li>
+<li><p>LGTM: A PR gets labeled LGTM (“looks good to me”) when it has sufficient reviews. This means that a code owner from each modified file has approved. When multiple developers share code ownership, only one has to approve.</p></li>
+<li><p>PR merged: PRs can be merged once CI checks pass and the LGTM label has been applied. Only members of the Oppia organization can merge PRs.</p></li>
+</ol>
+</section>
+<section id="draft-pull-requests">
+<h2>Draft pull requests<a class="headerlink" href="#draft-pull-requests" title="Permalink to this headline"></a></h2>
+<p>While making a contribution, you may discover that your change is not complete and needs some more work. You can make a draft pull request to make it easy for other developers to give you feedback; however, draft pull requests consume resources like time on our CI runners, which slows down CI runs for other developers. Hence, you should prefix the commit messages with <code class="docutils literal notranslate"><span class="pre">[skip</span> <span class="pre">ci]</span></code> or <code class="docutils literal notranslate"><span class="pre">[ci</span> <span class="pre">skip]</span></code> to disable CI runs when those commits are going to a draft PR. If you want those tests to run to help you debug a problem, you should open a PR against your fork’s <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch instead of the <code class="docutils literal notranslate"><span class="pre">oppia/oppia</span></code> develop. This will still delay other developers’ CircleCI runs, but not their GitHub Actions runs.</p>
+<p>Learn more about <a class="reference external" href="https://circleci.com/docs/2.0/skip-build/#skipping-a-build">skipping a CircleCI build</a> and <a class="reference external" href="https://github.blog/changelog/2021-02-08-github-actions-skip-pull-request-and-push-workflows-with-skip-ci/">skipping a GitHub Actions run</a>.</p>
+</section>
+<section id="labeling-pull-requests">
+<h2>Labeling pull requests<a class="headerlink" href="#labeling-pull-requests" title="Permalink to this headline"></a></h2>
+<p>While contributing to Oppia, you will need to add different labels to issues or pull requests which you are working on. However, not all labels are allowed on issues and pull requests. Below are labels which can be applied to pull requests:</p>
+<ul class="simple">
+<li><p>Added by PR author:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code>: Should be added to pull requests that update one or more dependencies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PR:</span> <span class="pre">Affects</span> <span class="pre">datastore</span> <span class="pre">layer</span></code>: Indicates that a PR changes the datastore layer. Adding this label notifies the developers in charge of datastore stability so they can review the PR. Sometimes this label gets added automatically by Oppiabot, but if you open a PR that changes the datastore layer and the label isn’t added automatically, you should add it manually. You can also add the label without waiting for Oppiabot.</p></li>
+<li><p>Changelog (labels containing <code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">CHANGELOG</span></code>): Each PR should have one of these labels added to indicate what project this PR applies to. The developer mentioned in the label will be assigned to review the PR first.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PR:</span> <span class="pre">require</span> <span class="pre">post-merge</span> <span class="pre">sync</span> <span class="pre">to</span> <span class="pre">HEAD</span></code>: Should only be applied to pull requests which, when merged, will require all other open pull requests to be updated with the develop branch.</p></li>
+<li><p>Added automatically:</p>
+<ul>
+<li><p>Labels starting with <code class="docutils literal notranslate"><span class="pre">PR:</span> <span class="pre">don't</span> <span class="pre">merge</span></code>: Indicates that some problem with the PR needs to be addressed before merging. For example, one of these labels gets added if the PR author hasn’t signed the CLA yet.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REVIEWERS:</span> <span class="pre">Please</span> <span class="pre">add</span> <span class="pre">changelog</span> <span class="pre">label</span></code>: When a new contributor opens a PR, they don’t have permission to add labels. In that case, Oppiabot adds this label to tell reviewers to assign the appropriate changelog label.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stale</span></code>: This label gets added by oppiabot to PRs that have been inactive for a week. They will be automatically closed after 4 more days of inactivity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PR:</span> <span class="pre">LGTM</span></code>: Indicates that a PR has all necessary approvals. The PR can be merged as soon as the CI checks pass.</p></li>
+<li><p>Added by the release team:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PR:</span> <span class="pre">for</span> <span class="pre">current</span> <span class="pre">release</span></code>: Identifies PRs that need to be included in the release that is currently in progress. This label is used by the release team to identify PRs to cherry-pick into the release.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PR:</span> <span class="pre">released</span></code>: Identifies PRs that have been cherry-picked into the release. Should only be used by the release team.</p></li>
+</ul>
+</li>
+</ul>
+<p>A complete list of labels can be found <a class="reference external" href="https://github.com/oppia/oppia/labels">here</a>. If you don’t have permission to add labels, leave a comment asking one of your reviewers to add the label for you.</p>
+</section>
+<section id="working-on-multiple-pull-requests">
+<h2>Working on multiple pull requests<a class="headerlink" href="#working-on-multiple-pull-requests" title="Permalink to this headline"></a></h2>
+<p>After you’ve submitted a PR, and are waiting for it to get reviewed, you might want to start working on a new issue in the meantime. Just follow the <a class="reference internal" href="Make-a-pull-request.html"><span class="doc std std-doc">instructions for making a pull request</span></a> again from the beginning.</p>
+<p>Always prioritize following up on your existing PRs and getting them ready for the next round of review. In particular, only start working on new issues/PRs after <strong>all</strong> the other PRs you’re working on are in the “waiting for review” stage. This helps avoids creating a logjam in the build queues.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Make-a-pull-request.html" class="btn btn-neutral float-left" title="Make a pull request" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Get-help.html" class="btn btn-neutral float-right" title="Get help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

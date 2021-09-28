@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview of the Oppia codebase &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary of terms" href="Glossary-of-terms.html" />
+    <link rel="prev" title="Get started with the code base" href="get-started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get-started.html">Get started with the code base</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview of the Oppia codebase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#web-server-anatomy-explaining-frontend-and-backend">Web server anatomy: Explaining “frontend” and “backend”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backend">Backend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#controller-layer">Controller layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backend-service-layer">Backend service layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backend-models">Backend models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#domain-layer">Domain layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage-layer">Storage layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backend-tests">Backend tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#component-layer">Component layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frontend-service-layer">Frontend service layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frontend-models">Frontend models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-parts-of-the-frontend">Other parts of the frontend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frontend-tests">Frontend tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#extensions">Extensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-files-and-folders">Other files and folders</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Glossary-of-terms.html">Glossary of terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analyzing-the-Codebase.html">Analyzing the codebase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-access-Oppia-webpages.html">How to access Oppia webpages</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://oppia.github.io/">User documentation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/oppia/oppia/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22">Good first issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="get-started.html">Get started with the code base</a> &raquo;</li>
+      <li>Overview of the Oppia codebase</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Overview-of-the-Oppia-codebase.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="overview-of-the-oppia-codebase">
+<h1>Overview of the Oppia codebase<a class="headerlink" href="#overview-of-the-oppia-codebase" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#web-server-anatomy-explaining-frontend-and-backend">Web server anatomy: Explaining “frontend” and “backend”</a></p></li>
+<li><p><a class="reference external" href="#backend">Backend</a></p>
+<ul>
+<li><p><a class="reference external" href="#controller-layer">Controller layer</a></p></li>
+<li><p><a class="reference external" href="#backend-service-layer">Backend service layer</a></p></li>
+<li><p><a class="reference external" href="#backend-models">Backend models</a></p></li>
+<li><p><a class="reference external" href="#domain-layer">Domain layer</a></p></li>
+<li><p><a class="reference external" href="#storage-layer">Storage layer</a></p></li>
+<li><p><a class="reference external" href="#backend-tests">Backend tests</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#frontend">Frontend</a></p>
+<ul>
+<li><p><a class="reference external" href="#component-layer">Component layer</a></p></li>
+<li><p><a class="reference external" href="#frontend-service-layer">Frontend service layer</a></p>
+<ul>
+<li><p><a class="reference external" href="#backend-api-services">Backend API services</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#frontend-models">Frontend models</a></p></li>
+<li><p><a class="reference external" href="#other-parts-of-the-frontend">Other parts of the frontend</a></p></li>
+<li><p><a class="reference external" href="#frontend-tests">Frontend tests</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#extensions">Extensions</a></p></li>
+<li><p><a class="reference external" href="#other-files-and-folders">Other files and folders</a></p></li>
+</ul>
+<p>Oppia is built with <a class="reference external" href="https://developers.google.com/appengine/docs/whatisgoogleappengine">Google App Engine</a>. Its backend is written in <a class="reference external" href="https://www.python.org/">Python</a>, and its frontend is written using <a class="reference external" href="https://angularjs.org/">AngularJS</a> and <a class="reference external" href="https://angular.io">Angular</a>.</p>
+</section>
+<section id="web-server-anatomy-explaining-frontend-and-backend">
+<h2>Web server anatomy: Explaining “frontend” and “backend”<a class="headerlink" href="#web-server-anatomy-explaining-frontend-and-backend" title="Permalink to this headline"></a></h2>
+<p>If you aren’t too familiar with web servers, you might be wondering what terms like “frontend” and “backend” mean. Here’s a quick primer.</p>
+<p>Suppose you want to view the profile page of the Oppia user <code class="docutils literal notranslate"><span class="pre">oppialearner</span></code>, so you point your browser to <code class="docutils literal notranslate"><span class="pre">/profile/oppialearner</span></code>. If you start a local development server and create a user with username <code class="docutils literal notranslate"><span class="pre">oppialearner</span></code>, you can see this page at http://localhost:8181/profile/oppialearner. This diagram illustrates what happens:</p>
+<p><img alt="UML sequence diagram showing a website frontend and backend" src="_images/anatomy.png" /></p>
+<details>
+<summary>Diagram source code</summary>
+<p>This diagram can be generated by pasting the text below into https://bramp.github.io/js-sequence-diagrams/.</p>
+<div class="highlight-uml notranslate"><div class="highlight"><pre><span></span>Title: Anatomy of a Web Server
+
+participant client
+participant frontend
+participant web server as webserver
+participant backend
+
+client -&gt; webserver: GET /profile/oppialearner
+webserver -&gt; backend: ProfilePage.get()
+backend -&gt; webserver: web page with frontend
+webserver -&gt; frontend: web page with frontend
+Note over frontend: frontend starts
+frontend -&gt; webserver: GET /profilehandler/data/oppialearner
+webserver -&gt; backend: ProfileHandler.get(&quot;oppialearner&quot;)
+backend -&gt; webserver: profile data as JSON
+webserver -&gt; frontend: profile data as JSON
+frontend -&gt; client: final web page
+</pre></div>
+</div>
+</details>
+<p>First, your browser (the client) sends a request to Oppia’s web server for the path <code class="docutils literal notranslate"><span class="pre">/profile/oppialearner</span></code>. The webserver passes this request to the appropriate handler function in the backend code. The backend code responds with a web page that contains the frontend code, which the web server passes along to your browser.</p>
+<p>Now the frontend code starts running in your browser and, in this example, requests additional data from the web server by issuing a request for the <code class="docutils literal notranslate"><span class="pre">/profilehandler/data/oppialearner</span></code> path. Once again, the web server passes this request to the appropriate backend function, which responds. This time however, the response is <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON">JSON-formatted data</a>, not a web page. This JSON data is passed to the frontend. The JSON data is not very readable, but you can see it by navigating to http://localhost:8181/profilehandler/data/oppialearner.</p>
+<p>While all these operations have been running, your browser has been showing a loading page. Now, the frontend code uses the profile JSON data to create the final web page, which you then see.</p>
+<p>For most websites, including Oppia, backend code runs on the server and does most of the site’s complicated logic. It works with information and mostly ignores how that information will be conveyed to the user.</p>
+<p>On the other hand, frontend code runs in the user’s browser and doesn’t handle much logic. Instead, it is responsible for conveying the information from the backend to the user and passing user commands to the backend.</p>
+</section>
+<section id="backend">
+<h2>Backend<a class="headerlink" href="#backend" title="Permalink to this headline"></a></h2>
+<p>This diagram illustrates how Oppia’s backend works. Don’t worry, we’ll work through it step by step.</p>
+<p><img alt="UML sequence diagram illustrating backend architecture" src="_images/backend.png" /></p>
+<details>
+<summary>Diagram source code</summary>
+<p>This diagram can be generated by pasting the text below into https://bramp.github.io/js-sequence-diagrams/.</p>
+<div class="highlight-uml notranslate"><div class="highlight"><pre><span></span>Title: Backend Architecture
+
+participant client
+participant web server as webserver
+participant controller
+participant service
+participant domain
+participant storage
+participant datastore
+
+client -&gt; webserver: HTTP Request
+webserver -&gt; controller: handler()
+controller -&gt; service: service_func()
+service -&gt; storage: lookup_by_name(name)
+storage -&gt; datastore: get_all().filter(name)
+datastore -&gt; storage: datastore_model
+storage -&gt; service: datastore_model
+service -&gt; domain: get(datastore_model.id)
+domain -&gt; storage: get(id)
+storage -&gt; datastore: get(id)
+datastore -&gt; storage: datastore_model
+storage -&gt; domain: datastore_model
+Note over domain: domain_model = Model(datastore_model)
+domain -&gt; service: domain_model
+service -&gt; controller: domain_model
+controller -&gt; webserver: JSON or HTML Response
+webserver -&gt; client: HTTP Response
+</pre></div>
+</div>
+</details>
+<p>Like before, we have the client and webserver on the left. However, this time we’re ignoring the frontend and we’re showing all the layers that make up the backend. Note that here the “client” could be the frontend code!</p>
+<section id="controller-layer">
+<h3>Controller layer<a class="headerlink" href="#controller-layer" title="Permalink to this headline"></a></h3>
+<p>Controllers are the handler functions that get called by the web server each time an HTTP request is received. These functions are usually pretty short and offload most of their work to services, which we’ll discuss next. These controllers will often look something like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Handler accepts arguments from the HTTP request</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument_1</span><span class="p">,</span> <span class="n">argument_2</span><span class="p">):</span>
+    <span class="c1"># Call some services</span>
+    <span class="n">value_1</span> <span class="o">=</span> <span class="n">service_1</span><span class="p">(</span><span class="n">argument_1</span><span class="p">)</span>
+    <span class="n">value_2</span> <span class="o">=</span> <span class="n">service_2</span><span class="p">(</span><span class="n">argument_2</span><span class="p">)</span>
+
+    <span class="c1"># Do a little logic to combine the results from the services</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">value_1</span> <span class="o">+</span> <span class="n">value_2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+    <span class="c1"># Return the result</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_json</span><span class="p">({</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Controllers are stored in <code class="docutils literal notranslate"><span class="pre">core/controllers/</span></code>. <code class="docutils literal notranslate"><span class="pre">main.py</span></code> defines which controller should handle each request.</p>
+</section>
+<section id="backend-service-layer">
+<h3>Backend service layer<a class="headerlink" href="#backend-service-layer" title="Permalink to this headline"></a></h3>
+<p>Services get called by controller functions or other services to perform various computations. They often need to access Oppia’s stored data, which they do by calling functions in the domain and storage layers.  We’ll look at those next.</p>
+<p>Services are, confusingly, defined by files in the <code class="docutils literal notranslate"><span class="pre">core/domain/</span></code> folder. Services end in <code class="docutils literal notranslate"><span class="pre">_services.py</span></code>.</p>
+</section>
+<section id="backend-models">
+<h3>Backend models<a class="headerlink" href="#backend-models" title="Permalink to this headline"></a></h3>
+<p>Before we talk about the domain layer, we need to discuss models.</p>
+<p>A model is a data structure, often a class, that stores the information that defines a particular object in Oppia. For example, we have a model for each exploration. (Note that we use “model” to refer to both the class that defines the exploration model and each instance of that class. Sorry, we know it’s confusing, but this language is all over the code base.)</p>
+<p>There are many different kinds of models in Oppia. We have frontend models, backend (domain) models, and storage models.</p>
+</section>
+<section id="domain-layer">
+<h3>Domain layer<a class="headerlink" href="#domain-layer" title="Permalink to this headline"></a></h3>
+<p>The domain layer defines the domain, or backend, models. These models are very similar to the frontend models, and they are what most of the backend code operates on. Each model is defined as a class.</p>
+<p>These classes don’t just store information. They also provide <code class="docutils literal notranslate"><span class="pre">from_dict</span></code> and <code class="docutils literal notranslate"><span class="pre">to_dict</span></code> methods to convert between classes and dictionaries (which can be converted to JSON), and they can contain validation and converters to convert between different versions of the model.</p>
+<p>The domain models are defined in <code class="docutils literal notranslate"><span class="pre">*_domain.py</span></code> files under <code class="docutils literal notranslate"><span class="pre">core/domain/</span></code>.</p>
+</section>
+<section id="storage-layer">
+<h3>Storage layer<a class="headerlink" href="#storage-layer" title="Permalink to this headline"></a></h3>
+<p>Finally, we have the storage layer, which defines the storage models.  These are also classes, but they define how data is stored in whatever system we are using to store data to the file system. In production, we use the <a class="reference external" href="https://cloud.google.com/datastore">Google Cloud Datastore</a>, and we interface with it from Python using <a class="reference external" href="https://googleapis.dev/python/python-ndb/latest/index.html">Cloud NDB</a>. (Cloud NDB is for Python 3. For Python 2, we use App Engine NDB.)</p>
+<p>The storage models are defined in <code class="docutils literal notranslate"><span class="pre">core/storage</span></code>, while the code that handles interacting with the datastore is in <code class="docutils literal notranslate"><span class="pre">core/platform</span></code>.  <code class="docutils literal notranslate"><span class="pre">core/platform/models.py</span></code> provides an interface to these storage models and the underlying datastore that dynamically loads the correct classes to interface with whatever datastore is currently in use. All the code in the controller, service, and domain layers should remain platform-agnostic by relying on the storage layer.</p>
+<p>For example, we use different underlying file storage platforms in dev mode (when running locally on developer machines) versus in prod mode (when running in production). Switching between these platforms is handled by the code in <code class="docutils literal notranslate"><span class="pre">core/platform</span></code>, so the rest of the backend layers can ignore them.</p>
+</section>
+<section id="backend-tests">
+<h3>Backend tests<a class="headerlink" href="#backend-tests" title="Permalink to this headline"></a></h3>
+<p>The backend codebase is heavily tested. Tests are contained in <code class="docutils literal notranslate"><span class="pre">*_test.py</span></code> files next to the Python module they test. This naming convention allows them to be automatically detected and compiled into a test suite by Python’s <code class="docutils literal notranslate"><span class="pre">unittest</span></code> module. For more information, see <a class="reference internal" href="Running-Tests.html"><span class="doc std std-doc">Running Tests</span></a>.</p>
+</section>
+</section>
+<section id="frontend">
+<h2>Frontend<a class="headerlink" href="#frontend" title="Permalink to this headline"></a></h2>
+<p>Oppia’s frontend code is currently being migrated from AngularJS to Angular, so when reading the following sections, you’ll see things that have one name in AngularJS and another name in Angular.</p>
+<p>The frontend includes the HTML and CSS code that define what the user sees, and it includes the JavaScript (and TypeScript) code that runs in the user’s browser.</p>
+<p>Oppia’s frontend follows the <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/MVC">Model-View-Controller (MVC)</a> software design pattern. You should be familiar with that pattern before reading further.</p>
+<p>Here are the Angular and AngularJS features we use to implement the MVC paradigm:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>MVC Term</p></th>
+<th class="head"><p>Angular Term</p></th>
+<th class="head"><p>AngularJS Term</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Model</p></td>
+<td><p>Model</p></td>
+<td><p>Object Factory</p></td>
+</tr>
+<tr class="row-odd"><td><p>View and Controller</p></td>
+<td><p>Component</p></td>
+<td><p>Directive</p></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s start with a diagram of Oppia’s frontend architecture. Then we will discuss each layer in turn.</p>
+<p><img alt="UML sequence diagram illustrating Oppia's frontend" src="_images/frontend.png" /></p>
+<details>
+<summary>Diagram source code</summary>
+<p>This diagram can be generated by pasting the text below into https://bramp.github.io/js-sequence-diagrams/.</p>
+<div class="highlight-uml notranslate"><div class="highlight"><pre><span></span>Title: Frontend Architecture
+
+participant user
+participant component
+participant service
+participant backend API service as backendAPI
+participant backend
+
+user -&gt; component: click save button
+component -&gt; service: save()
+component -&gt; user: show loading indicator
+service -&gt; backendAPI: updateProfile(profile)
+backendAPI -&gt; backend: PUT /preferenceshandler/data
+backendAPI -&gt; service: promise
+service -&gt; component: promise
+backend -&gt; backendAPI: 200 OK
+backendAPI -&gt; component: resolve promise
+component -&gt; user: success message
+</pre></div>
+</div>
+</details>
+<section id="component-layer">
+<h3>Component layer<a class="headerlink" href="#component-layer" title="Permalink to this headline"></a></h3>
+<p>Components (directives in AngularJS) define both the view (the layout of the page the user sees) and the controller logic that responds to user input.</p>
+<p>Most pages begin with a <code class="docutils literal notranslate"><span class="pre">*.mainpage.html</span></code> file, for example <code class="docutils literal notranslate"><span class="pre">topic-editor-page.mainpage.html</span></code>. This HTML file contains a <code class="docutils literal notranslate"><span class="pre">&lt;topic-editor-page&gt;</span></code> tag, which refers to the <code class="docutils literal notranslate"><span class="pre">topic-editor-page.component.html</span></code> file.</p>
+<p>Both files are HTML, but <code class="docutils literal notranslate"><span class="pre">*.mainpage.html</span></code> is what the browser sees as the webpage, so it begins with <code class="docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">html&gt;</span></code>, contains <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>, and so on like a normal HTML page. <code class="docutils literal notranslate"><span class="pre">*.component.html</span></code> on the other hand is just defining a tag, so it won’t have those lines. Instead, it could just begin with a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag.</p>
+<p>Alongside each component, you’ll also find a <code class="docutils literal notranslate"><span class="pre">*.module.ts</span></code>, for example <code class="docutils literal notranslate"><span class="pre">topic-editor-page.module.ts</span></code>. This defines the component as an Angular module and specifies its dependencies. You’ll also see a <code class="docutils literal notranslate"><span class="pre">*.import.ts</span></code> file, which imports third-party dependencies.</p>
+<p>Finally, each component comes with a <code class="docutils literal notranslate"><span class="pre">*.component.ts</span></code> file that provides the controller logic. Here you’ll find a class for the component that looks something like this:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="kd">@Component</span><span class="p">({</span>
+  <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;oppia-profile-page&#39;</span><span class="p">,</span>
+  <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;./profile-page.component.html&#39;</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">ProfilePageComponent</span> <span class="p">{</span>
+
+  <span class="nx">userLoggedIn</span>: <span class="kt">boolean</span><span class="p">;</span>
+  <span class="c1">// ... more instance fields ...</span>
+
+  <span class="kr">constructor</span><span class="p">(</span>
+    <span class="c1">// ... dependencies ...</span>
+  <span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span><span class="o">:</span> <span class="ow">void</span> <span class="p">{</span>
+    <span class="c1">// ... initialization code ...</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">userLoggedIn</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">logIn</span><span class="p">()</span><span class="o">:</span> <span class="ow">void</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">userLoggedIn</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// ... more methods ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>(Note that here we used the profile page as an example since the topic editor page hadn’t been migrated to Angular yet at time of writing.)</p>
+<p>Then this code gets used in the component HTML file like this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>&lt;div *ngIf=&quot;!userLoggedIn&quot;&gt;
+  &lt;button class=&quot;btn&quot;
+          (click)=&quot;logIn()&quot;&gt;
+    Log In
+  &lt;/button&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+<p>Components for pages are defined in <code class="docutils literal notranslate"><span class="pre">core/templates/pages</span></code>. Some components get re-used across many pages, and these live in <code class="docutils literal notranslate"><span class="pre">core/templates/components</span></code>.</p>
+<p>While components’ <code class="docutils literal notranslate"><span class="pre">*.component.ts</span></code> files handle controller logic, they offload complex logic to the service layer.</p>
+</section>
+<section id="frontend-service-layer">
+<h3>Frontend service layer<a class="headerlink" href="#frontend-service-layer" title="Permalink to this headline"></a></h3>
+<p>Services are just TypeScript files that define Angular modules to handle more complex controller logic. These are defined in a <code class="docutils literal notranslate"><span class="pre">services/</span></code> folder alongside the rest of the component files we saw above.</p>
+<p>Services that are used across components live under <code class="docutils literal notranslate"><span class="pre">core/templates/services</span></code>.</p>
+<section id="backend-api-services">
+<h4>Backend API services<a class="headerlink" href="#backend-api-services" title="Permalink to this headline"></a></h4>
+<p>Some service files end in <code class="docutils literal notranslate"><span class="pre">-backend-api.ts</span></code> (their module names end in <code class="docutils literal notranslate"><span class="pre">BackendApiService</span></code>). These submit HTTP requests to Oppia’s backend. For example, when you update your profile, a backend API service issues a PUT request to Oppia’s backend with your updated profile.</p>
+<p>Ideally, all interaction with the backend would happen through these backend API services. However, there is unfortunately still some code that makes backend calls elsewhere.</p>
+</section>
+</section>
+<section id="frontend-models">
+<h3>Frontend models<a class="headerlink" href="#frontend-models" title="Permalink to this headline"></a></h3>
+<p>Everything we’ve described so far lives in the “view” and “controller” realms of MVC. Now let’s get to the “model” part.</p>
+<p>Models (or object factories in AngularJS) are data structures that represent objects in Oppia. For example, we have a model for a user and another for a user’s profile. These are just classes that hold information about the object they represent and provide methods for getting that information.</p>
+<p>Here’s an (overly simplified) example of a model:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="kd">class</span> <span class="nx">Light</span> <span class="p">{</span>
+  <span class="nx">_isOn</span>: <span class="kt">boolean</span><span class="p">;</span>
+
+  <span class="kr">constructor</span><span class="p">(</span><span class="nx">isOn</span>: <span class="kt">boolean</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_isOn</span> <span class="o">=</span> <span class="nx">isOn</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">static</span> <span class="nx">createFromBackendDict</span><span class="p">(</span>
+      <span class="nx">data</span>: <span class="kt">UserInfoBackendDict</span><span class="p">)</span><span class="o">:</span> <span class="nx">Light</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="ow">new</span> <span class="nx">Light</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">is_on</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">createDefault</span><span class="p">()</span><span class="o">:</span> <span class="nx">Light</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="ow">new</span> <span class="nx">Light</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">isOn</span><span class="p">()</span><span class="o">:</span> <span class="kt">boolean</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_isOn</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>This model describes whether a light is on or off. It stores this state in a private <code class="docutils literal notranslate"><span class="pre">_isOn</span></code> instance variable. A new light can be created using the constructor by passing in whether the light is on, but more commonly you will use the <code class="docutils literal notranslate"><span class="pre">createFromBackendDict</span></code> to create a light from the JSON data provided by a backend API service. We also have methods to create a default light and to read the state of the light.</p>
+<p>Models are defined in <code class="docutils literal notranslate"><span class="pre">core/templates/domain/</span></code>.</p>
+</section>
+<section id="other-parts-of-the-frontend">
+<h3>Other parts of the frontend<a class="headerlink" href="#other-parts-of-the-frontend" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><strong>CSS</strong> code defines the site’s visual style. CSS code lives within each HTML file, but the <code class="docutils literal notranslate"><span class="pre">core/templates/css</span></code> directory holds the CSS code shared across the website.</p></li>
+<li><p><strong>Expression services</strong> help us parse mathematical expressions. We use <a class="reference external" href="https://pegjs.org">PEG.js</a> to generate our parser, and the parser code lives in <code class="docutils literal notranslate"><span class="pre">core/templates/expressions</span></code>.</p></li>
+<li><p><strong>Filters</strong> are TypeScript classes that perform common filtering operations, like truncating a long string. These are stored in <code class="docutils literal notranslate"><span class="pre">core/templates/filters</span></code>.</p></li>
+</ul>
+</section>
+<section id="frontend-tests">
+<h3>Frontend tests<a class="headerlink" href="#frontend-tests" title="Permalink to this headline"></a></h3>
+<p>The frontend isn’t quite as heavily tested as the backend yet, but we’re working on that! Any new code you write should be fully tested. For information on how, check out our <a class="reference internal" href="Frontend-unit-tests-guide.html"><span class="doc std std-doc">guide to frontend testing</span></a>.</p>
+<p>Our frontend tests live in <code class="docutils literal notranslate"><span class="pre">*.spec.ts</span></code> files that accompany each frontend code file. For example, <code class="docutils literal notranslate"><span class="pre">topic-editor-page.ts</span></code> will be in the same directory as its test file, <code class="docutils literal notranslate"><span class="pre">topic-editor-page.spec.ts</span></code>.</p>
+</section>
+</section>
+<section id="extensions">
+<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline"></a></h2>
+<p>Oppia has a number of extension points that allow developers to augment its functionality, all of which are located in the <code class="docutils literal notranslate"><span class="pre">extensions/</span></code> folder.</p>
+<p>There are several different types of extensions:</p>
+<ul class="simple">
+<li><p><strong>Objects</strong> represent object types that Oppia recognizes, such as NonnegativeInt, UnicodeString and Filepath. In general, they each come with an editor view, a readonly view, and a normalizer which tries to convert a Python object to the given type.</p></li>
+<li><p><strong>Rules</strong> allow learner answers to be classified, so that Oppia can provide appropriate feedback in response.</p></li>
+<li><p><strong>Value generators</strong> are essentially functions which take some inputs and produce a single output. They are used when defining parameter changes: for example, they allow an exploration author to specify an exact value for the parameter, or a range of values, one of which is selected at random.</p></li>
+<li><p><strong>Rich-text-editor extensions</strong> provide additional functionality for content that is shown to the learner. They are accessed via control buttons in the rich-text editor toolbar, and include things like videos, images, links and LaTeX math expressions.</p></li>
+<li><p><strong>Interactions</strong>, such as interactive maps and numeric input, allow the learner to submit an answer, which is then sent to the server for Oppia to respond to.</p></li>
+</ul>
+</section>
+<section id="other-files-and-folders">
+<h2>Other files and folders<a class="headerlink" href="#other-files-and-folders" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feconf.py</span></code> contains various constants that are referred to by other backend files in the app.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">data/explorations</span></code> folder contains sample explorations that are bundled with the Oppia distribution.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">scripts/</span></code> folder contains several utility scripts that automate processes like starting a development server, running tests, and deploying a copy of Oppia to a production server.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="get-started.html" class="btn btn-neutral float-left" title="Get started with the code base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Glossary-of-terms.html" class="btn btn-neutral float-right" title="Glossary of terms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

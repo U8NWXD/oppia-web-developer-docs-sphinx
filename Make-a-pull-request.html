@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Make a pull request &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pull requests at Oppia" href="Pull-requests-at-Oppia.html" />
+    <link rel="prev" title="Tips for common IDEs" href="Tips-for-common-IDEs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Make a pull request</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-create-a-new-branch-with-a-descriptive-name">Step 1: Create a new branch with a descriptive name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-make-commits-locally-to-your-feature-branch">Step 2: Make commits locally to your feature branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-push-changes-to-your-github-fork">Step 3: Push changes to your GitHub fork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-create-a-pull-request">Step 4: Create a pull request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-address-review-comments-until-all-reviewers-approve">Step 5: Address review comments until all reviewers approve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-6-make-sure-all-continuous-integration-checks-pass">Step 6: Make sure all continuous integration checks pass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-7-tidy-up">Step 7: Tidy up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-8-celebrate">Step 8: Celebrate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Make a pull request</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Make-a-pull-request.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="make-a-pull-request">
+<h1>Make a pull request<a class="headerlink" href="#make-a-pull-request" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#step-1-create-a-new-branch-with-a-descriptive-name">Step 1: Before writing any code, choose a descriptive branch name</a></p></li>
+<li><p><a class="reference external" href="#step-2-make-commits-locally-to-your-feature-branch">Step 2: Make commits locally to your feature branch</a></p></li>
+<li><p><a class="reference external" href="#step-3-push-changes-to-your-github-fork">Step 3: Push changes to your GitHub fork</a></p></li>
+<li><p><a class="reference external" href="#step-4-create-a-pull-request">Step 4: Create a pull request</a></p></li>
+<li><p><a class="reference external" href="#step-5-address-review-comments-until-all-reviewers-approve">Step 5: Address review comments until all reviewers approve</a></p></li>
+<li><p><a class="reference external" href="#step-6-make-sure-all-continuous-integration-checks-pass">Step 6: Make sure all continuous integration checks pass</a></p></li>
+<li><p><a class="reference external" href="#step-7-tidy-up">Step 7: Tidy up</a></p></li>
+<li><p><a class="reference external" href="#step-8-celebrate">Step 8: Celebrate</a></p></li>
+</ul>
+<p><strong>Working on your first pull request?</strong> Pull requests can be tricky to understand at first, so if the instructions on this page don’t make sense to you, check out the free series <a class="reference external" href="https://app.egghead.io/series/how-to-contribute-to-an-open-source-project-on-github">How to Contribute to an Open Source Project on GitHub</a> or <a class="reference external" href="https://www.atlassian.com/git/tutorials/making-a-pull-request">Atlassian’s tutorial to pull requests</a>.</p>
+<p><strong>Note:</strong> If your change involves more than around 500 lines of code, we recommend first creating a short <a class="reference external" href="https://github.com/oppia/oppia/wiki/Writing-design-docs">design doc</a>. This helps avoid duplication of effort, and allows us to offer advice and suggestions on the implementation approach.</p>
+<p>To make code changes, please follow the following instructions carefully! Otherwise, your code review may be delayed.</p>
+</section>
+<section id="step-1-create-a-new-branch-with-a-descriptive-name">
+<h2>Step 1: Create a new branch with a descriptive name<a class="headerlink" href="#step-1-create-a-new-branch-with-a-descriptive-name" title="Permalink to this headline"></a></h2>
+<p>The new branch should be based on the latest code in <code class="docutils literal notranslate"><span class="pre">develop</span></code>, so checkout the latest version of <code class="docutils literal notranslate"><span class="pre">develop</span></code> like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git fetch upstream</span>
+<span class="go">git checkout develop</span>
+<span class="go">git merge upstream/develop</span>
+</pre></div>
+</div>
+<p>Then create a new branch. In this example the branch is named <code class="docutils literal notranslate"><span class="pre">your-branch-name</span></code>. The branch name should be lowercase and hyphen-separated, e.g. <code class="docutils literal notranslate"><span class="pre">fuzzy-rules</span></code>. Make sure that your branch name doesn’t start with <code class="docutils literal notranslate"><span class="pre">develop</span></code>, <code class="docutils literal notranslate"><span class="pre">release</span></code> or <code class="docutils literal notranslate"><span class="pre">test</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git checkout -b your-branch-name</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-make-commits-locally-to-your-feature-branch">
+<h2>Step 2: Make commits locally to your feature branch<a class="headerlink" href="#step-2-make-commits-locally-to-your-feature-branch" title="Permalink to this headline"></a></h2>
+<p>Each commit should be self-contained and have a descriptive commit message that helps other developers understand why the changes were made.</p>
+<p>However, <strong>do not write “Fix #ISSUE_NUMBER”</strong> (e.g. “Fix #99999”) in your commit messages (or any of the other closing phrases from <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword">GitHub’s documentation</a>), as this will cause Github to close the original issue automatically.</p>
+<p>You can change your most recent commit message using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code>. <strong>It is difficult to change any commit messages other than your most recent one or messages on commits that have been pushed, so write your commit messages carefully!</strong></p>
+<ul>
+<li><p>Before making the commit, do some sanity-checks:</p>
+<ul>
+<li><p>Ensure that your code follows <a class="reference internal" href="Coding-style-guide.html"><span class="doc std std-doc">the style rules</span></a>.</p></li>
+<li><p>Start up a local instance of Oppia and do some manual testing in order to check that you haven’t broken anything!</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to check that your changes are what you expect.  To inspect the changes made to any particular file, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">your-file-name</span></code>.</p></li>
+<li><p>Stage all your changes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git add .</span>
+</pre></div>
+</div>
+<p>(<code class="docutils literal notranslate"><span class="pre">.</span></code> refers to your current directory)</p>
+</li>
+</ul>
+</li>
+<li><p>To actually make the commit, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git commit -m &quot;{{YOUR COMMIT MESSAGE HERE}}&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Note</strong>: There is no maximum or minimum number of commits required in a PR. Instead of aiming for a certain number, you should try to make each commit a logical “chunk” of work. There are many opinions about how big commits should be, but a useful rule of thumb is that you should be able to read the first lines of all your commit messages to get a good idea of what you changed. If you find yourself needing lots of clauses to capture what you changed, your commit is probably too big.</p>
+</section>
+<section id="step-3-push-changes-to-your-github-fork">
+<h2>Step 3: Push changes to your GitHub fork<a class="headerlink" href="#step-3-push-changes-to-your-github-fork" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p><strong>Before pushing</strong>, make sure to check the following things, otherwise you will incur delays with the review process or the automated checks:</p>
+<ul class="simple">
+<li><p><strong>Do some manual testing</strong> on your local instance of Oppia to check that you haven’t broken anything. This is important to avoid breakages. <strong>Don’t rely on the automated tests alone.</strong> Once you’re sure that your changes are correct, make a screen recording showing that the part of the website you changed still works correctly. You’ll need to add this video to the pull request description.</p></li>
+<li><p>Use a tool like <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">upstream/develop</span></code> to check that the changes you’ve made are exactly what you want them to be, and that you haven’t left in anything spurious like debugging code.</p></li>
+<li><p>Ensure that your code is fully covered by automated tests. (For more info, see the wiki pages on writing tests in the sidebar menu.)</p></li>
+</ul>
+<p><strong>We don’t allow force-pushing at Oppia, so once you push your commits, you can’t change them.</strong> You can still add new commits though.</p>
+</li>
+<li><p>When you’re ready to push, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git push origin {{YOUR BRANCH NAME}}</span>
+</pre></div>
+</div>
+<p><strong>Make sure to do this from the command line</strong> (and not GitHub’s Desktop client), since this also runs some important presubmit checks before your code gets uploaded to GitHub. If any of these checks fail, read the failure messages and fix the issues by making a new commit (see step 3), then <strong>repeat the previous instructions</strong> to retry the push. <strong>Do not bypass these presubmit checks!</strong> The checks get run on your PR too, so if you bypass failures on your local machine, you’ll just have to fix them later when they fail on the PR.</p>
+</li>
+</ul>
+</section>
+<section id="step-4-create-a-pull-request">
+<h2>Step 4: Create a pull request<a class="headerlink" href="#step-4-create-a-pull-request" title="Permalink to this headline"></a></h2>
+<p>Once your feature is ready, you can open a pull request (PR)!</p>
+<ul>
+<li><p>Go to your fork on GitHub, select your branch from the dropdown menu, and click “pull request”. Ensure that the base repository is <code class="docutils literal notranslate"><span class="pre">oppia/oppia</span></code> and that the base branch is <code class="docutils literal notranslate"><span class="pre">develop</span></code>. The head repository should be your fork, and the head branch should be your branch. If you don’t see the repository, click the link to <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">across</span> <span class="pre">forks</span></code>.</p>
+<p>On this page you can also see your commits and your changes.  Read these changes carefully to make sure that the changes are correct (e.g., no missing newlines at the ends of files; no files left out by mistake). This is a good way to catch obvious errors that would otherwise lead to delays in the review process.</p>
+<p><img alt="The GitHub PR creation screen" src="_images/makingAPR.png" /></p>
+</li>
+<li><p>Click “Create pull request”.</p></li>
+<li><p>Following the guidance in the PR checklist, add a descriptive title explaining the purpose of the PR (e.g. “Fix issue #bugnum: add a warning when the user leaves a page in the middle of an exploration.”).</p></li>
+<li><p>Fill out the rest of the PR checklist.</p></li>
+<li><p>Add the screen recording you saved to the description.</p></li>
+<li><p>Click “Create pull request”.</p></li>
+<li><p>If you have already completed 2 pull requests and been added as a collaborator to the project, you should also add a changelog label.  If you are a new contributor, you don’t have permission to do this.  Don’t worry! Oppiabot will automatically ask someone to do it for you.</p></li>
+<li><p>Oppiabot will check that you filled out the PR description correctly. If you didn’t, it will leave a comment explaining what you need to do to fix it. More details on the kinds of comments Oppiabot leaves are coming soon.</p></li>
+<li><p>GitHub will automatically assign reviewers, and Oppiabot will assign the issue’s “owner” (from the changelog label) to do the first review.</p>
+<p>If you need to assign someone else but aren’t a collaborator yet, leave a comment of the form <code class="docutils literal notranslate"><span class="pre">&#64;{{reviewer</span> <span class="pre">username}}</span> <span class="pre">PTAL</span></code>, which will tell Oppiabot to assign that person for you. (“PTAL” means “Please take a look”.)</p>
+</li>
+<li><p>After a while, check your pull request to see whether the CI checks have passed. If not, follow the instructions at <a class="reference internal" href="If-your-build-fails.html"><span class="doc std std-doc">If your build fails</span></a>.</p></li>
+<li><p>Then, wait for your code to get reviewed! While you’re waiting, it’s totally fine to start work on a new PR if you like. Just follow these instructions again from the beginning.</p></li>
+</ul>
+</section>
+<section id="step-5-address-review-comments-until-all-reviewers-approve">
+<h2>Step 5: Address review comments until all reviewers approve<a class="headerlink" href="#step-5-address-review-comments-until-all-reviewers-approve" title="Permalink to this headline"></a></h2>
+<p>Note that reviewers will often say “LGTM,” which means “looks good to me”.</p>
+<p>When your reviewer has completed their review, they will reassign the pull request back to you, at which point you should push updates, respond to <strong>all</strong> comments, and reassign it back to them. This continues until the reviewer approves, after which the pull request is merged. Here is the procedure for responding to a review:</p>
+<ul>
+<li><p>Merge develop into your branch. If you run into conflicts, run the following commands to resolve them (<strong>note:</strong> replace new-branch-name with the name of your branch):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git checkout new-branch-name</span>
+<span class="go">git fetch upstream</span>
+<span class="go">git merge upstream/develop</span>
+<span class="go">...[fix the conflicts -- see https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line]...</span>
+<span class="go">...[make sure the tests pass before committing]...</span>
+<span class="go">git commit -a</span>
+<span class="go">git push origin new-branch-name</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Do not squash commits when you merge develop into your branch! This often happens when you are using an graphical interface instead of the command line. Squashing commits can confuse GitHub and cause the changes you merge in from develop to be treated as changes you made. If this happens, you’ll need to close the pull request and open a new one.</p>
+</li>
+<li><p>Make a new commit addressing the comments you agree with, and push it to the same branch. (Continue to use descriptive commit messages, or something like “Address review comments” if you’re addressing many disparate review comments in the same commit.) <strong>You do not need to close your pull request and create a new one – it’s fine to push new commits to the existing pull request.</strong></p></li>
+<li><p><strong>Always make commits locally, and then push to GitHub.</strong> Don’t make changes using the online GitHub editor – this bypasses lint/presubmit checks, and will cause the code on GitHub to diverge from the code on your machine.</p></li>
+<li><p><strong>Never force-push changes to GitHub.</strong> This will lead to the PR being closed.</p></li>
+<li><p>As you are making changes, track them by replying to each comment via the Files Changed tab. Each reply should be either “Done” or a response explaining why the corresponding suggestion wasn’t implemented. Also, please <strong>do not</strong> mark the comment as resolved, since this just makes it harder to actually read the comment thread.</p>
+<p><strong>Tip:</strong> If a reviewer asks questions about the “why” behind something, consider proactively adding a clear comment above the relevant line in your code, since the fact that the reviewer had to ask suggests that at least one developer doesn’t understand what is going on from the code alone. Otherwise, you’ll probably get a follow-up review comment asking you to leave a code comment anyway :)</p>
+<p><strong>Note:</strong> If any comments require follow-up PRs, please file an issue to track the necessary changes, and mention the issue number in the relevant review comment thread. (You should do this automatically for any deferred changes; reviewers may defer approval until you do.)</p>
+</li>
+<li><p>Once you’ve addressed everything and would like the reviewer(s) to take another look:</p>
+<ul>
+<li><p>Follow the instructions in Step 3 to test your changes locally before pushing.</p></li>
+<li><p>Make the push, and then immediately check that the changes in the “Files Changed” tab are what you intend them to be.</p>
+<p><strong>Important:</strong> Make sure you’ve posted responses to <strong>all</strong> the review comments from the reviewer(s).</p>
+<p><strong>Important:</strong> In the conversation thread, <strong>write a top-level comment</strong> explicitly asking the reviewer(s) to take another look (“&#64;XXX PTAL”), and assign them to the PR. If however, you forget to assign the reviewer(s), Oppiabot will assign them for you.</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="step-6-make-sure-all-continuous-integration-checks-pass">
+<h2>Step 6: Make sure all continuous integration checks pass<a class="headerlink" href="#step-6-make-sure-all-continuous-integration-checks-pass" title="Permalink to this headline"></a></h2>
+<p>While waiting to get approval from reviewers, make sure that all the continuous integration (CI) checks (GitHub Actions, CircleCI, etc.) pass, since otherwise you won’t be able to merge your pull requests. CI checks are shown at the bottom of your pull request on GitHub.</p>
+<p><img alt="CI results at the bottom of a PR" src="_images/prCiResults.png" /></p>
+<p>(See <a class="reference internal" href="If-your-build-fails.html"><span class="doc std std-doc">If your build fails</span></a> for some suggestions on what to do if you run into issues.)</p>
+<p>If all reviewers have approved but you’re still waiting for the CI checks to pass, make sure you’re assigned to the PR, so that you can merge it once the CI checks are complete.</p>
+</section>
+<section id="step-7-tidy-up">
+<h2>Step 7: Tidy up<a class="headerlink" href="#step-7-tidy-up" title="Permalink to this headline"></a></h2>
+<p>After the PR status has changed to “Merged”, delete the feature branch from both your local clone and the GitHub repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git branch -D new-branch-name</span>
+<span class="go">git push origin --delete new-branch-name</span>
+</pre></div>
+</div>
+</section>
+<section id="step-8-celebrate">
+<h2>Step 8: Celebrate<a class="headerlink" href="#step-8-celebrate" title="Permalink to this headline"></a></h2>
+<p>Congratulations, you have contributed to Oppia!</p>
+<!--
+TODO(#1): Add link to "How we use pull requests" guide.
+-->
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tips-for-common-IDEs.html" class="btn btn-neutral float-left" title="Tips for common IDEs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Pull-requests-at-Oppia.html" class="btn btn-neutral float-right" title="Pull requests at Oppia" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

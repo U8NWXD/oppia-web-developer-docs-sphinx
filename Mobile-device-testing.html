@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile device testing &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Performance testing" href="Performance-Testing.html" />
+    <link rel="prev" title="Mobile development" href="Mobile-development.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mobile device testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-an-oppia-development-instance-via-a-mobile-device">Accessing an Oppia development instance via a mobile device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-chrome-mobile-emulator">Using the Chrome mobile emulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-ios-simulator-for-os-x">Installing iOS Simulator (for OS X)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-android-emulator">Installing Android Emulator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Mobile device testing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Mobile-device-testing.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="mobile-device-testing">
+<h1>Mobile device testing<a class="headerlink" href="#mobile-device-testing" title="Permalink to this headline"></a></h1>
+<p>The following instructions (contributed by &#64;edallison) outline how to test the behavior an Oppia development server on iOS and Android. If you have one of these devices, you should be able to test the development server directly; otherwise, you may have to use the Chrome mobile emulator or install an emulator on your desktop machine. Instructions for all these cases are provided below.</p>
+<section id="accessing-an-oppia-development-instance-via-a-mobile-device">
+<h2>Accessing an Oppia development instance via a mobile device<a class="headerlink" href="#accessing-an-oppia-development-instance-via-a-mobile-device" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Ensure that the device hosting your Oppia developer instance, as well as the mobile device you will be testing the instance on, are both connected to the same network.</p></li>
+<li><p>Determine the local IP of the device hosting your Oppia instance:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Windows: Open the Command Prompt and enter <code class="docutils literal notranslate"><span class="pre">ipconfig</span></code>.</p></li>
+<li><p>OS X: Open <code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">Preferences</span> <span class="pre">&gt;</span> <span class="pre">Network</span></code></p></li>
+<li><p>Linux: In a terminal, enter <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">addr</span> <span class="pre">show</span></code>.</p></li>
+</ul>
+<ol class="simple">
+<li><p>In the browser on your mobile device, enter the local IP address found in the previous step into the browser address bar, followed by <code class="docutils literal notranslate"><span class="pre">:8181</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">xxx.xxx.xxx.x:8181</span></code>).</p></li>
+</ol>
+<p>A lot of developers have faced an issue “Request Host not whitelisted”. To workaround this issue, modify the host parameter <a class="reference external" href="https://github.com/oppia/oppia/blob/450e094392995794553b2ad64cd82c233d9b591d/scripts/start.py#L148">here</a> from <code class="docutils literal notranslate"><span class="pre">--host</span> <span class="pre">0.0.0.0</span></code> to <code class="docutils literal notranslate"><span class="pre">--host</span> <span class="pre">xxx.xxx.x.xxx</span></code> where xxx.xxx.x.xxx is your local IP. After restarting the server, you can access the Oppia instance on your mobile device as mentioned in step 3 above. (Note: If you make a PR after testing using these steps, please remember to revert these changes.)</p>
+</section>
+<section id="using-the-chrome-mobile-emulator">
+<h2>Using the Chrome mobile emulator<a class="headerlink" href="#using-the-chrome-mobile-emulator" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Follow the instructions on this <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/iterate/device-mode/">Google Developers page</a>.</p></li>
+</ol>
+</section>
+<section id="installing-ios-simulator-for-os-x">
+<h2>Installing iOS Simulator (for OS X)<a class="headerlink" href="#installing-ios-simulator-for-os-x" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Install Xcode via the <a class="reference external" href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a>.</p></li>
+<li><p>Right click on the Xcode icon in the dock, then select <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Developer</span> <span class="pre">Tools</span> <span class="pre">&gt;</span> <span class="pre">Simulator</span></code>.</p></li>
+<li><p>Once the simulator app icon appears in the dock, you can either pin it in the dock, or move/copy the app to a more convenient location for future access. This allows you to open the simulator without having to first open Xcode.</p></li>
+<li><p>Open Safari, then navigate to a locally-hosted developer instance to test Oppia on iOS.</p></li>
+</ol>
+</section>
+<section id="installing-android-emulator">
+<h2>Installing Android Emulator<a class="headerlink" href="#installing-android-emulator" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Follow the directions for installing the <a class="reference external" href="https://developer.android.com/sdk/installing/index.html?pkg=tools">Android SDK Tools</a>.</p></li>
+<li><p>Run the SDK manager:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Windows: Double-click the <code class="docutils literal notranslate"><span class="pre">SDK</span> <span class="pre">Manager.exe</span></code> file at the root of the Android SDK directory.</p></li>
+<li><p>OS X/Linux: Open a terminal and navigate to the <code class="docutils literal notranslate"><span class="pre">tools/</span></code> directory in the location where the Android SDK was installed. Then, execute <code class="docutils literal notranslate"><span class="pre">android</span> <span class="pre">sdk</span></code>.</p></li>
+</ul>
+<ol class="simple">
+<li><p>Download all packages under a given Android API directory (e.g. Android 6.0), as well as all packages under the Tools directory.</p></li>
+<li><p>Using the command line, navigate to your SDK’s <code class="docutils literal notranslate"><span class="pre">tools/</span></code> directory and execute <code class="docutils literal notranslate"><span class="pre">android</span> <span class="pre">avd</span></code>.</p></li>
+<li><p>With Android Virtual Device selected, click the <code class="docutils literal notranslate"><span class="pre">Create</span></code> button.</p></li>
+<li><p>Create a name for the AVD Name field.</p></li>
+<li><p>Select an available device for the Device field.</p></li>
+<li><p>Select an available target API for the Target field.</p></li>
+<li><p>Select an available CPU for the CPU field.</p></li>
+<li><p>Select a skin for the Skin field.</p></li>
+<li><p>Click OK to create an AVD.</p></li>
+<li><p>In AVD Manager, select your AVD, and click Start to boot your virtual device.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Mobile-development.html" class="btn btn-neutral float-left" title="Mobile development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Performance-Testing.html" class="btn btn-neutral float-right" title="Performance testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

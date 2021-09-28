@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revert and regression policy &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Debugging" href="debugging.html" />
+    <link rel="prev" title="Writing design docs" href="Writing-design-docs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Revert and regression policy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-handle-regressions">How to handle regressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-identify-the-bad-commit">How to identify the bad commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-to-revert-a-pr">When to revert a PR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-revert-a-pr">How to revert a PR?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-do-i-do-if-i-caused-a-regression">What do I do if I caused a regression?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+      <li>Revert and regression policy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Revert-and-Regression-Policy.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="revert-and-regression-policy">
+<h1>Revert and regression policy<a class="headerlink" href="#revert-and-regression-policy" title="Permalink to this headline"></a></h1>
+<section id="how-to-handle-regressions">
+<h2>How to handle regressions<a class="headerlink" href="#how-to-handle-regressions" title="Permalink to this headline"></a></h2>
+<ol>
+<li><p>File a detailed issue on the Github <a class="reference external" href="https://github.com/oppia/oppia/issues/">tracker</a>.</p></li>
+<li><p>If the regression introduced causes a functionality to be broken or unusable on production, send an email to the release coordinator (see <a class="reference external" href="https://github.com/oppia/oppia/wiki/Release-Schedule#release-coordinators-and-qa-coordinators-for-upcoming-releases">assignments</a>) of the previous release so that they can do a hotfix to fix the bug on the production server. Also, cc the original PR author (or notify them in some other way) so that they’re aware.</p></li>
+<li><p>If the regression causes problems for developers (e.g. failing tests), send an email to oppia-dev to let developers know. The email should include a link to the issue you opened so that developers can follow along as we fix the regression.</p></li>
+<li><p>Investigate to find the cause of the regression. Ideally, we want to find the PR that introduced the regression, but failing that, we want to understand what problem in the code is causing the regression.</p>
+<ul class="simple">
+<li><p>If you identify the PR that caused the regression, mention it in the issue thread and &#64;-mention the author of the PR so that they are aware of the problem. The problematic PR may be reverted if it matches the criteria mentioned in the <a class="reference external" href="#when-to-revert-a-pr">”When to revert a PR?” section</a>.</p></li>
+<li><p>If you can’t find the PR / commit that caused the regression, make sure to mention this in the issue thread. Instead of reverting the PR, you should open a PR to fix the problem.</p></li>
+</ul>
+</li>
+<li><p>Consider what mitigation steps we could take to prevent similar regressions in the future. Here are some potential mitigations to consider:</p>
+<ul class="simple">
+<li><p>New tests, for example if a breakage occurred in a bit of code that wasn’t thoroughly tested.</p></li>
+<li><p>Adding lint checks, for example if the regression was caused by a coding pattern we should avoid.</p></li>
+<li><p>Changes to how we review PRs, for example if the regression was a UI bug that would have been caught had the PR description included screenshots.</p>
+<ul>
+<li><p>Consider how much your mitigation will slow down the review process. Some mitigations, like adding screenshots, might not be a problem. Others, like requiring many more reviewers, might be more trouble than they’re worth.</p></li>
+</ul>
+</li>
+<li><p>Emailing oppia-dev, for example to warn developers to avoid the coding pattern that caused the regression.</p>
+<ul>
+<li><p>While we want to notify the developer community of how they can avoid regressions, we don’t want to spam them with so many emails that they stop reading oppia-dev. Emailing oppia-dev is often the easiest mitigation, but it is not always the most effective.</p></li>
+</ul>
+</li>
+</ul>
+<p>You may conclude that no mitigation is worth implementing, for example if the mitigations would introduce too much friction into the PR approval process. However, you should document your thought process in the issue in case someone has an idea for a mitigation you didn’t consider.</p>
+</li>
+<li><p>Unless you can implement the mitigations immediately, you should open an issue for them. You should assign the issue to whoever is going to be in charge of implementation (often the dev workflow team lead).</p></li>
+</ol>
+</section>
+<section id="how-to-identify-the-bad-commit">
+<h2>How to identify the bad commit<a class="headerlink" href="#how-to-identify-the-bad-commit" title="Permalink to this headline"></a></h2>
+<p>To systematically locate a bad commit, you can use the git-bisect tool. It internally uses a binary search algorithm to find the offending commit from the project history. To use this tool:</p>
+<ol>
+<li><p>Git checkout develop branch where the bug is observed (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">develop</span></code>).</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">bisect</span> <span class="pre">start</span></code> to start a bisect session.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">bisect</span> <span class="pre">bad</span></code> to verify that the current commit contains the bug.</p></li>
+<li><p>Go to <a class="reference external" href="https://github.com/oppia/oppia/commits/develop">this</a> page to find an older (“good”) commit where the bug did not exist. Copy the commit id of the commit, and do git checkout on it (git checkout <commit-id>). Start the dev server (by running the start script) and try to figure out whether the error still exists. If so, you will need to find an even older commit than the current one. Kill the server, and repeat this step until you find a “good” commit.</p></li>
+<li><p>Once you’ve found a “good” commit, run “git bisect good”. The tool will automatically perform a binary search and checkout a commit between the “good” commit and “bad” commit. Start the dev server (by running the start script) and try to reproduce the error. At each step:</p>
+<ul class="simple">
+<li><p>If the bug is reproducible, run “git bisect good”.</p></li>
+<li><p>If not, run “git bisect bad”.</p></li>
+</ul>
+<p>Repeat this step until the tool reports the offending commit.</p>
+</li>
+</ol>
+</section>
+<section id="when-to-revert-a-pr">
+<h2>When to revert a PR<a class="headerlink" href="#when-to-revert-a-pr" title="Permalink to this headline"></a></h2>
+<p>If the PR exhibits either of the following two cases:</p>
+<ul class="simple">
+<li><p>Introduces a flaky (there is any reported failure of the test on the develop branch) or consistently failing test.</p></li>
+<li><p>Introduces a regression in a critical functionality.</p></li>
+</ul>
+<p>Then, follow these steps:</p>
+<ol class="simple">
+<li><p>Automatically revert the PR if it has no merge conflicts or merge conflicts are trivial to resolve and inform the author that you have reverted their PR. You can find instructions for reverting PRs on Github <a class="reference external" href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reverting-a-pull-request">here</a>.</p></li>
+<li><p>If the revert PR has non-trivial merge conflicts, do not revert. Create an issue and mark it as a blocking bug for the on-going release and inform the author of the PR about the same by &#64;-mentioning on the PR thread.</p></li>
+<li><p>If the PR introduced a flaky or failing test and contains other changes too, create a PR to delete or disable the test. Also, create an issue to add back the deleted/disabled test and inform the author of the PR about the same by &#64;-mentioning on the PR thread.</p></li>
+<li><p>If the functionality is broken on the production server and needs to be fixed, inform the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Release-Schedule#release-coordinators-and-qa-coordinators-for-upcoming-releases">release coordinator</a> for the previous release so that a hotfix can be done.</p></li>
+<li><p>Add “PR: require post-merge sync to HEAD” label to the revert or fix PR if developers need to update their branches once the fix/revert PR has been merged into develop. Oppiabot will comment on open PRs to merge from develop once the reverted PR has been merged.</p></li>
+</ol>
+</section>
+<section id="how-to-revert-a-pr">
+<h2>How to revert a PR?<a class="headerlink" href="#how-to-revert-a-pr" title="Permalink to this headline"></a></h2>
+<p>In the PR page, you will find a “revert” button at the point where the PR was merged.<br />
+<img alt="" src="https://lh5.googleusercontent.com/dGgjIANi9zathEV_g9e5FKjpWTSn2tUSIUCdwalzUN6w1ocR1j5cuMoxq6tPOMYtk-1xsMPxj7tdkkK9jbOJP8f399DE1AAKmmCIcBMyYmd0MGJ3j3tO6P1R3b4frVMZy72UnAW_" /></p>
+<p>Clicking on this button will create a new PR with the reverted changes. Feel free to add a detailed comment in the PR description explaining why the PR needs to be reverted and tag the author of the original PR.</p>
+<p>If you see this:</p>
+<p><img alt="" src="https://lh3.googleusercontent.com/4uYWOO2yXW8eBVTG9BH-wYZKRo7rB2WNUBbBudtaprlp4btYJ3avdQP-fRnZSBXGAq1DM05Hc_c9haASvHTFF8gRHgPZNqQ3ZKZc7vkZrPy13rTZ2EwOuQXQM6Sz7j0gVpF-61Z5" /></p>
+<p>You will need to make the code changes on your local machine and create a PR by hand.</p>
+</section>
+<section id="what-do-i-do-if-i-caused-a-regression">
+<h2>What do I do if I caused a regression?<a class="headerlink" href="#what-do-i-do-if-i-caused-a-regression" title="Permalink to this headline"></a></h2>
+<p>If the PR that introduced the regression hasn’t been reverted, please follow the steps above to revert. Once your PR is reverted, follow these steps:</p>
+<ol class="simple">
+<li><p>Ensure you can repro the issue fully. If you can’t, talk to the original author to better understand how to repro the issue.</p></li>
+<li><p>Make sure you fully understand why your change caused the observed regression(s)–without this step, no progress can actually be made. Remember: fix issues not symptoms. We don’t just want the observed problem to go away, we want the underlying root cause to be understood &amp; addressed.</p></li>
+<li><p>Once you understand the root cause, think through potential edge cases that may break other aspects of the app. It’s quite likely that the observed regression was just one of several broken behaviors caused by the underlying issue.</p></li>
+<li><p>Turn the behaviors from (3) into tests. Verify that these tests fail without a fix, and pass with a fix to the original regression.</p></li>
+<li><p>Submit a new PR with your original changes + the fixes and tests from (4). Make sure to detail the investigation in this new PR, and reference the original issue that tracked the regression.</p></li>
+</ol>
+<p>Finally, be aware that everyone causes regressions. While we have a lot of checks in place to try and avoid regressions from being checked in, they will still happen. Focus on learning from the situation rather focusing on the fact that a regression happened.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Writing-design-docs.html" class="btn btn-neutral float-left" title="Writing design docs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

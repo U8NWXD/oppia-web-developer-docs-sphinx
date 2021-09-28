@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>End to end tests &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lighthouse CI Automated Tests" href="Lighthouse-Tests.html" />
+    <link rel="prev" title="Frontend unit tests guide" href="Frontend-unit-tests-guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="testing.html">Testing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Running-Tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-tests.html">Backend tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Frontend-unit-tests-guide.html">Frontend unit tests guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">End to end tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flaky-tests">Flaky tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-a-flake">What is a flake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-flakes-are-problematic">Why flakes are problematic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-flakes">Preventing flakes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-the-end-to-end-tests-are-failing-on-your-pr">If the end-to-end tests are failing on your PR</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#layout-of-the-e2e-test-files">Layout of the E2E test files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#suite-files">Suite files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utilities">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run-e2e-tests">Run E2E tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#write-e2e-tests">Write E2E tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#where-to-add-the-tests">Where to add the tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-the-tests">Writing the tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-utilities">Writing utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-robust-tests">Writing robust tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-for-flakiness">Checking for flakiness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#codeowner-checks">Codeowner Checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#important-tips">Important Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#metrics">Metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#forms-and-objects">Forms and objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#async-await-tips">Async-Await Tips</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-kinds-of-flakes">Known kinds of flakes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html">Lighthouse CI Automated Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#how-to-add-new-pages-to-lighthouse-tests">How to add new pages to lighthouse tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#debugging-lighthouse-tests">Debugging Lighthouse Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html">General Good Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#visual-disabilities">Visual Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#physical-disabilities">Physical Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#hearing-disabilities">Hearing Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-accessibility-checklist.html">Accessibility Manual Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="testing.html">Testing</a> &raquo;</li>
+      <li>End to end tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/End-to-End-Tests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="end-to-end-tests">
+<h1>End to end tests<a class="headerlink" href="#end-to-end-tests" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#flaky-tests">Flaky tests</a></p>
+<ul>
+<li><p><a class="reference external" href="#what-is-a-flake">What is a flake</a></p></li>
+<li><p><a class="reference external" href="#why-flakes-are-problematic">Why flakes are problematic</a></p></li>
+<li><p><a class="reference external" href="#preventing-flakes">Preventing flakes</a></p></li>
+<li><p><a class="reference external" href="#if-the-end-to-end-tests-are-failing-on-your-pr">If the end-to-end tests are failing on your PR</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#layout-of-the-e2e-test-files">Layout of the E2E test files</a></p>
+<ul>
+<li><p><a class="reference external" href="#suite-files">Suite files</a></p>
+<ul>
+<li><p><a class="reference external" href="#coretestsprotractor"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor</span></code></a></p></li>
+<li><p><a class="reference external" href="#coretestsprotractor_desktop"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_desktop</span></code></a></p></li>
+<li><p><a class="reference external" href="#coretestsprotractor_mobile"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_mobile</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#utilities">Utilities</a></p>
+<ul>
+<li><p><a class="reference external" href="#coretestsprotractor_utils"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_utils</span></code></a></p></li>
+<li><p><a class="reference external" href="#extensionsprotractorjs"><code class="docutils literal notranslate"><span class="pre">extensions/**/protractor.js</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#run-e2e-tests">Run E2E tests</a></p></li>
+<li><p><a class="reference external" href="#write-e2e-tests">Write E2E tests</a></p>
+<ul>
+<li><p><a class="reference external" href="#where-to-add-the-tests">Where to add the tests</a></p>
+<ul>
+<li><p><a class="reference external" href="#interactions">Interactions</a></p></li>
+<li><p><a class="reference external" href="#existing-suite">Existing suite</a></p></li>
+<li><p><a class="reference external" href="#new-suite">New suite</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#writing-the-tests">Writing the tests</a></p></li>
+<li><p><a class="reference external" href="#writing-utilities">Writing utilities</a></p>
+<ul>
+<li><p><a class="reference external" href="#selecting-elements">Selecting elements</a></p></li>
+<li><p><a class="reference external" href="#non-angular-pages">Non-Angular pages</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#writing-robust-tests">Writing robust tests</a></p>
+<ul>
+<li><p><a class="reference external" href="#flakiness">Flakiness</a></p></li>
+<li><p><a class="reference external" href="#independence">Independence</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#checking-for-flakiness">Checking for flakiness</a></p></li>
+<li><p><a class="reference external" href="#codeowner-checks">Codeowner Checks</a></p></li>
+<li><p><a class="reference external" href="#important-tips">Important Tips</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#metrics">Metrics</a></p></li>
+<li><p><a class="reference external" href="#reference">Reference</a></p>
+<ul>
+<li><p><a class="reference external" href="#forms-and-objects">Forms and objects</a></p>
+<ul>
+<li><p><a class="reference external" href="#rich-text">Rich Text</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#async-await-tips">Async-Await Tips</a></p>
+<ul>
+<li><p><a class="reference external" href="#good-patterns">Good Patterns</a></p></li>
+<li><p><a class="reference external" href="#anti-patterns">Anti-Patterns</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#known-kinds-of-flakes">Known kinds of flakes</a></p>
+<ul>
+<li><p><a class="reference external" href="#document-unloaded-while-waiting-for-result">document unloaded while waiting for result</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>At Oppia, we highly regard the end user, so we have end-to-end (E2E) tests to test our features from the user’s perspective. These tests interact with pages just like a user would, for example by clicking buttons and typing into text boxes, and they check that pages respond appropriately from the user’s perspective, for example by checking that the correct text appears in response to the user’s actions.</p>
+</section>
+<section id="flaky-tests">
+<h2>Flaky tests<a class="headerlink" href="#flaky-tests" title="Permalink to this headline"></a></h2>
+<section id="what-is-a-flake">
+<h3>What is a flake<a class="headerlink" href="#what-is-a-flake" title="Permalink to this headline"></a></h3>
+<p>Unfortunately, E2E tests are much less deterministic than our other tests. The tests operate on a web browser that accesses a local Oppia server, so the non-determinism of web browsers makes the tests less deterministic as well. For example, suppose that you write a test that clicks a button to open a modal and then clicks a button inside the modal to close it. Sometimes, the modal will open before the test tries to click the close button, so the test will pass. Other times, the test will try to click before the modal has opened, and the test will fail. We can see this schematically:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>               &lt;---A---&gt;
+
+                        +-------+
+                        | Modal |
++----------+   +---//---+ opens +-----------+
+| Click to |   |        +-------+           |
+| open     +---+                            +----&gt;
+| modal    |   |        +-------------+     |
++----------+   +---//---+ Click to    +-----+
+                        | close modal |
+                        +-------------+
+
+               &lt;---B---&gt;
+
+
+--------------------- time ----------------------&gt;
+</pre></div>
+</div>
+<p>The durations of steps <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> are non-deterministic because <code class="docutils literal notranslate"><span class="pre">A</span></code> depends on how quickly the browser executes the frontend code to open the modal, and <code class="docutils literal notranslate"><span class="pre">B</span></code> depends on how fast the test code runs. Since these operations are happening on separate processes, the operating system makes no guarantees about which will complete first. In other words, we have a race condition.</p>
+<p>This race condition means that the test can fail randomly even when there’s nothing wrong with the code of the Oppia application (excluding tests). These failures are called <em>flakes</em>.</p>
+</section>
+<section id="why-flakes-are-problematic">
+<h3>Why flakes are problematic<a class="headerlink" href="#why-flakes-are-problematic" title="Permalink to this headline"></a></h3>
+<p>Flakes are annoying because they cause failures on PRs even when the code changes in those PRs are fine. This forces developers to rerun the failing tests, which slows development.</p>
+<p>Further, flakes are especially problematic to certain groups of developers:</p>
+<ul class="simple">
+<li><p><strong>New contributors</strong>, who are often brand-new to open source software development, can be discouraged by flakes. When they see a failing E2E test on their PR, they may think that they made a mistake and become frustrated when they can’t find anything wrong with their code.</p></li>
+<li><p><strong>Developers without write access to the repository</strong> cannot rerun tests, so they have to ask another developer to restart their tests for them. Waiting for someone to restart their tests can really slow down their work.</p></li>
+</ul>
+<p>Finally, flakes mean that developers rerun failing tests more readily. We even introduced code to automatically rerun tests under certain conditions. These reruns make it easier for new flakes to slip through because if a new flake causes a test to fail, we might just rerun the test until it passes.</p>
+</section>
+<section id="preventing-flakes">
+<h3>Preventing flakes<a class="headerlink" href="#preventing-flakes" title="Permalink to this headline"></a></h3>
+<p>Conceptually, preventing flakes is easy. We can use <code class="docutils literal notranslate"><span class="pre">waitFor</span></code> statements to make the tests deterministic despite testing a non-deterministic system. For example, suppose we have a function <code class="docutils literal notranslate"><span class="pre">waitForModal()</span></code> that waits for a modal to appear. Then we could write our test like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>               &lt;---A---&gt;
+
+                        +-------+
+                        | Modal |
++----------+   +---//---+ opens +---------------------------------+
+| Click to |   |        +-------+                                 |
+| open     +---+                                                  +----&gt;
+| modal    |   |        +----------------+    +-------------+     |
++----------+   +---//---+ waitForModal() +-//-+ Click to    +-----+
+                        +----------------+    | close modal |
+                                              +-------------+
+
+               &lt;---B---&gt;&lt;-------C--------&gt;
+
+
+--------------------- time --------------------------------------------&gt;
+</pre></div>
+</div>
+<p>Now, we know that the test code won’t move past <code class="docutils literal notranslate"><span class="pre">waitForModal()</span></code> until after the modal opens. In other words, we know that <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">+</span> <span class="pre">C</span> <span class="pre">&gt;</span> <span class="pre">A</span></code>. This assures us that the test won’t try to close the modal until after the modal has opened.</p>
+<p>The challenge in writing robust E2E tests is making sure to always include a waitFor statement like <code class="docutils literal notranslate"><span class="pre">waitForModal()</span></code>. It’s common for people to write E2E tests and forget to include a waitFor somewhere, but when they run the tests, they pass. Their tests might even pass consistently if their race condition only causes the test to fail very rarely. However, months later, an apparently unrelated change might change the runtimes enough that one of the test starts flaking frequently.</p>
+<p><a class="reference external" href="#writing-e2e-tests">Below</a>, we’ll discuss specific techniques you should use to prevent flakes in new tests that you write.</p>
+</section>
+<section id="if-the-end-to-end-tests-are-failing-on-your-pr">
+<h3>If the end-to-end tests are failing on your PR<a class="headerlink" href="#if-the-end-to-end-tests-are-failing-on-your-pr" title="Permalink to this headline"></a></h3>
+<p>First, check that your changes couldn’t be responsible. For example, if your PR updates the README, then there’s no way it caused an E2E test to fail.</p>
+<p>If your changes could be responsible for the failure, you’ll need to investigate more. Try running the test locally on your computer. If it fails there too, you can debug locally. Even if you can only reproduce the flake on CI, there are lots of other ways you can debug. See our <a class="reference internal" href="Debug-end-to-end-tests.html"><span class="doc std std-doc">guide to debugging E2E tests</span></a>.</p>
+<p>If you are <em>absolutely certain</em> that the failure was not caused by your changes, then you can restart the test. Remember that restarting tests can let new flakes into our code, so please be careful.</p>
+</section>
+</section>
+<section id="layout-of-the-e2e-test-files">
+<h2>Layout of the E2E test files<a class="headerlink" href="#layout-of-the-e2e-test-files" title="Permalink to this headline"></a></h2>
+<p>E2E test logic is divided between two kinds of files: suite files and utility files. Utility files provide functions for interacting with pages, for example by clicking buttons or checking that the expected text is visible. Suite files define the E2E tests using calls to the utility files.</p>
+<p>Suppose you wanted to write an E2E test that changes a user’s profile picture and then checks that the change was successful. Your utility file might define <code class="docutils literal notranslate"><span class="pre">setProfilePicture()</span></code> and <code class="docutils literal notranslate"><span class="pre">checkProfilePicture</span></code> functions. Then your suite file would first call <code class="docutils literal notranslate"><span class="pre">setProfilePicture()</span></code> and then call <code class="docutils literal notranslate"><span class="pre">checkProfilePicture()</span></code>.</p>
+<section id="suite-files">
+<h3>Suite files<a class="headerlink" href="#suite-files" title="Permalink to this headline"></a></h3>
+<p>Note that “suite files” are also known as “test files.”</p>
+<section id="core-tests-protractor">
+<h4><code class="docutils literal notranslate"><span class="pre">core/tests/protractor</span></code><a class="headerlink" href="#core-tests-protractor" title="Permalink to this headline"></a></h4>
+<p>This directory contains test suites which were applicable to both desktop and mobile interfaces. However, we don’t run the mobile tests anymore. Certain operations were possible only on one or the other interface. To distinguish between the interfaces, we use the boolean, <code class="docutils literal notranslate"><span class="pre">browser.isMobile</span></code> defined in <code class="docutils literal notranslate"><span class="pre">onPrepare</span></code> of the protractor configuration file. Even though we don’t run the mobile tests anymore, you might see some legacy code that uses this boolean.</p>
+</section>
+<section id="core-tests-protractor-desktop">
+<h4><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_desktop</span></code><a class="headerlink" href="#core-tests-protractor-desktop" title="Permalink to this headline"></a></h4>
+<p>This directory houses all test suites which are exclusive to desktop interfaces. This generally includes core creator components like the rich-text editor.</p>
+</section>
+<section id="core-tests-protractor-mobile">
+<h4><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_mobile</span></code><a class="headerlink" href="#core-tests-protractor-mobile" title="Permalink to this headline"></a></h4>
+<p>This directory contains all test suites which are exclusive to mobile interfaces. This includes navigating around the website using the hamburger menu. However, we don’t run these tests anymore.</p>
+</section>
+</section>
+<section id="utilities">
+<h3>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline"></a></h3>
+<section id="core-tests-protractor-utils">
+<h4><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_utils</span></code><a class="headerlink" href="#core-tests-protractor-utils" title="Permalink to this headline"></a></h4>
+<p>This directory contains utilities for performing actions using elements from the core components of Oppia (those found in <code class="docutils literal notranslate"><span class="pre">core/templates</span></code>).</p>
+<p>The core protractor utilities consist of the following files:</p>
+<ul class="simple">
+<li><p>Page objects, for example <code class="docutils literal notranslate"><span class="pre">AdminPage</span></code> in <code class="docutils literal notranslate"><span class="pre">AdminPage.js</span></code>. These objects provide functions for interacting with a particular page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forms.js</span></code>: Utilities for interacting with forms.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">general.js</span></code>: Various utilities that are useful for many different pages.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">users.js</span></code>: Utilities for creating users, logging in, and logging out.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">waitFor.js</span></code>: Utilities for delaying actions with Protractor’s ExpectedConditions. This lets you wait for some condition to be true before proceeding with the test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workflow.js</span></code>: Functions for common tasks like creating explorations and assigning roles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">action.js</span></code>: Functions for common interactions with elements, such as clicking or sending keys. All new tests should use these functions instead of interacting with elements directly because these functions include appropriate waitFor statements. For example, use <code class="docutils literal notranslate"><span class="pre">action.click('Element</span> <span class="pre">name',</span> <span class="pre">elem)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">elem.click()</span></code>.</p></li>
+</ul>
+<p>The protractor tests use the above functions to simulate a user interacting with Oppia. They should not interact with the page directly (e.g. using <code class="docutils literal notranslate"><span class="pre">element()</span></code>) but instead make use of the utilities in <code class="docutils literal notranslate"><span class="pre">protractor_utils/</span></code>. If new functionality is needed for a test then it should be added in the utilities directory, so that is available for future tests to use and easy to maintain.</p>
+</section>
+<section id="extensions-protractor-js">
+<h4><code class="docutils literal notranslate"><span class="pre">extensions/**/protractor.js</span></code><a class="headerlink" href="#extensions-protractor-js" title="Permalink to this headline"></a></h4>
+<p>Extensions provide <code class="docutils literal notranslate"><span class="pre">protractor.js</span></code> files to make them easier to test. The E2E test files call the utilities provided by these files to interact with an extension. For example, interactions include a <code class="docutils literal notranslate"><span class="pre">protractor.js</span></code> file that provides functions for customizing an interaction and checking that the created interaction matches expected criteria.</p>
+</section>
+</section>
+</section>
+<section id="run-e2e-tests">
+<h2>Run E2E tests<a class="headerlink" href="#run-e2e-tests" title="Permalink to this headline"></a></h2>
+<p>If you don’t know the name of the suite you want to run, you can find it in <code class="docutils literal notranslate"><span class="pre">core/tests/protractor.conf.js</span></code>. Then you can run your test like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m scripts.run_e2e_tests --suite<span class="o">=</span><span class="s2">&quot;suiteName&quot;</span>
+</pre></div>
+</div>
+<p>Chrome will open and start running your tests.</p>
+</section>
+<section id="write-e2e-tests">
+<h2>Write E2E tests<a class="headerlink" href="#write-e2e-tests" title="Permalink to this headline"></a></h2>
+<section id="where-to-add-the-tests">
+<h3>Where to add the tests<a class="headerlink" href="#where-to-add-the-tests" title="Permalink to this headline"></a></h3>
+<section id="interactions">
+<h4>Interactions<a class="headerlink" href="#interactions" title="Permalink to this headline"></a></h4>
+<p>If you are just creating a new interaction and want to add end-to-end tests for it then you can follow the guidance given at <a class="reference internal" href="Creating-Interactions.html"><span class="doc std std-doc">Creating Interactions</span></a>, though the <a class="reference external" href="#forms-and-objects">forms and objects</a> section of this page may also be helpful.</p>
+<p>If you are adding functionality to an existing interaction, you can probably just add test cases to its <code class="docutils literal notranslate"><span class="pre">protractor.js</span></code> file. For example, the <code class="docutils literal notranslate"><span class="pre">AlgebraicExpressionInput</span></code> interaction’s file is at <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/interactions/AlgebraicExpressionInput/protractor.js"><code class="docutils literal notranslate"><span class="pre">oppia/extensions/interactions/AlgebraicExpressionInput/protractor.js</span></code></a>.</p>
+</section>
+<section id="existing-suite">
+<h4>Existing suite<a class="headerlink" href="#existing-suite" title="Permalink to this headline"></a></h4>
+<p>First, take a look at the existing test suites in <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/tests/protractor"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor</span></code></a> and <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/tests/protractor_desktop"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_desktop</span></code></a>. If your test fits well into any of those suites, you should add it there.</p>
+</section>
+<section id="new-suite">
+<h4>New suite<a class="headerlink" href="#new-suite" title="Permalink to this headline"></a></h4>
+<p>If you need to, you can add a new test suite to <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/tests/protractor_desktop"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_desktop</span></code></a> like this:</p>
+<ol class="simple">
+<li><p>Create the new suite file under <code class="docutils literal notranslate"><span class="pre">core/tests/protractor_desktop</span></code>.</p></li>
+<li><p>Add the suite to <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/tests/protractor.conf.js"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor.conf.js</span></code></a>.</p></li>
+<li><p>Add your new suite to GitHub Actions, whose workflow files are in <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/.github/workflows"><code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code></a>. If there is an existing workflow that your suite would fit well with, add your suite there. Otherwise, create a new workflow. Note that we want all CI workflows to finish in less than 30 minutes, so check the workflow runtimes after your change!</p></li>
+</ol>
+</section>
+</section>
+<section id="writing-the-tests">
+<h3>Writing the tests<a class="headerlink" href="#writing-the-tests" title="Permalink to this headline"></a></h3>
+<ol>
+<li><p>Think through what user journeys you want to test. Each user journey is a sequence of actions that a user could take. The end-to-end tests you write should execute those steps and make sure that Oppia behaves appropriately. Remember:</p>
+<ul>
+<li><p>Test everything from the user’s perspective. For example, instead of jumping to a page by the URL, navigate to the page using the links on the webpage like a user would.</p></li>
+<li><p>Check the “happy paths” where the user does what you expect.</p></li>
+<li><p>Check the “unhappy paths” where the user does something wrong. For example, if a text field only accepts 30 characters, your test should try entering 31 characters to make sure the appropriate error messages appear.</p></li>
+<li><p>E2E tests are relatively “expensive,” meaning that they take a while to run. Therefore, you should avoid testing something twice wherever possible. This usually means that fewer, larger tests are preferable to more, smaller tests. For example, consider these tests:</p>
+<ul class="simple">
+<li><p>Test exploration creation by creating a new exploration.</p></li>
+<li><p>Test exploration deletion by creating a new exploration and then deleting it.</p></li>
+</ul>
+<p>Notice that we create an exploration in both tests. It would be more efficient to combine these into a single test:</p>
+<ul class="simple">
+<li><p>Test exploration creation and deletion by creating an exploration and then deleting it.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Write the <a class="reference external" href="#writing-utilities">utilities</a> you will need. Your test file should never interact with the page directly. Use utilities instead. A good way to check that you’re doing all page interactions through the utilities is to ensure that you have no element selectors (e.g. <code class="docutils literal notranslate"><span class="pre">element(by.css(...))</span></code>) in your suite files.</p></li>
+<li><p>Write the tests! Each test should step through one of your user journeys, asserting that the page is in the expected state along the way.</p></li>
+</ol>
+<p>For information on writing tests with protractor, see the <a class="reference external" href="https://www.protractortest.org/#/">protractor documentation</a>. If you need to work out why your tests aren’t working, check out our <a class="reference internal" href="Debug-end-to-end-tests.html"><span class="doc std std-doc">debugging guide for E2E tests</span></a>.</p>
+</section>
+<section id="writing-utilities">
+<h3>Writing utilities<a class="headerlink" href="#writing-utilities" title="Permalink to this headline"></a></h3>
+<section id="selecting-elements">
+<h4>Selecting elements<a class="headerlink" href="#selecting-elements" title="Permalink to this headline"></a></h4>
+<p>Much of the difficulty of writing protractor code lies in specifying the element with which you wish to interact. It is important to do so in a way that is as insensitive as possible to superficial DOM features such as text and styling, so as to reduce the likelihood that the test will break when the production HTML is changed. Here are some ways to specify an element, in order of decreasing preference:</p>
+<ol class="simple">
+<li><p>Adding a <code class="docutils literal notranslate"><span class="pre">protractor-test-some-name</span></code> class to the element in question, and then referencing it by <code class="docutils literal notranslate"><span class="pre">by.css('.protractor-test-some-name')</span></code>. We do not use <code class="docutils literal notranslate"><span class="pre">by.id</span></code> for this purpose because Oppia frequently displays multiple copies of a DOM element on the same page, and if an <code class="docutils literal notranslate"><span class="pre">id</span></code> is repeated then references to it will not work properly. This is the preferred method, since it makes clear to those editing production code exactly what the dependence on protractor is, thus minimizing the likelihood of confusing errors when they make changes. Sometimes this may not work, though (e.g. for embedded pages, third-party libraries and generated HTML), in which case you may instead need to use one of the options below.</p></li>
+<li><p>Using existing element ids. We avoid using existing classes for this purpose as they are generally style specifications such as <code class="docutils literal notranslate"><span class="pre">big-button</span></code> that may be changed in the future.</p></li>
+<li><p>You can use <code class="docutils literal notranslate"><span class="pre">by.tagName</span></code> if you are sure you are in a context where only one element will have (and is likely to have in future) the given name. The <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;button&gt;</span></code> tags often fall under this category. Try to avoid <code class="docutils literal notranslate"><span class="pre">by.buttonText</span></code> and <code class="docutils literal notranslate"><span class="pre">by.linkText</span></code> since they are sensitive to the choice of user-facing text.</p></li>
+<li><p>Finally, you can use <code class="docutils literal notranslate"><span class="pre">by.xpath</span></code> to specify an exact path from the starting element to the one you get to. This is not ideal since it renders the tests fragile to changes in the DOM.</p></li>
+</ol>
+<p>If you use one of options 2-4, you should create a chain of element selectors where the top of the chain uses option 1. Suppose we have a DOM like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       Root
+       /  \
+      /   ...
+     /      \
+   ...   Element A: class=&quot;protractor-test-elem-a&quot;
+             \
+             ...
+            /  \
+           ...  \
+                 \
+              Element B: id=&quot;elem-b&quot;
+</pre></div>
+</div>
+<p>Then you can select Element B with this selector chain:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">elemB</span> <span class="o">=</span> <span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;.protractor-test-elem-a&#39;</span><span class="p">)).</span><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;elem-b&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Notice that the top of the chain, where we select Element A, uses method 1.</p>
+<p>Sometimes you need to distinguish between several different elements which all look the same to element selectors. You can iterate over all the elements to find the right one. For example, suppose we want to click on the button to open a topic, where the button text is the topic name. We could find the right button like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;.protractor-test-button&#39;</span><span class="p">));</span>
+<span class="p">...</span>
+<span class="kd">var</span> <span class="nx">openTopic</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">topicName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">waitFor</span><span class="p">.</span><span class="nx">elementToBeClickable</span><span class="p">(</span>
+    <span class="nx">buttons</span><span class="p">.</span><span class="nx">first</span><span class="p">(),</span>
+    <span class="s1">&#39;Topic buttons taking too long to become clickable.&#39;</span>
+  <span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">count</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">buttonText</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">action</span><span class="p">.</span><span class="nx">getText</span><span class="p">(</span>
+      <span class="sb">`Topic button </span><span class="si">${</span><span class="nx">i</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">buttonText</span> <span class="o">===</span> <span class="nx">topicName</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">action</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">&#39;Topic button ${i}&#39;</span><span class="p">,</span> <span class="nx">button</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">True</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">False</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It might be tempting to use the <code class="docutils literal notranslate"><span class="pre">.first()</span></code>, <code class="docutils literal notranslate"><span class="pre">.last()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.get(n)</span></code> functions directly when you know what order the elements will come in. However, this makes the tests fragile to changes in the page, and it makes the code hard to read. You should also avoid accessing page elements by index because that’s not how most users will find elements. They will be relying on the text identifying those elements, and your test should too.</p>
+<p>Except for cases where an element selector is crafted dynamically, all element selectors should be at the top of a utility file. There should be no element selectors in suite files.</p>
+</section>
+<section id="non-angular-pages">
+<h4>Non-Angular pages<a class="headerlink" href="#non-angular-pages" title="Permalink to this headline"></a></h4>
+<p>All the protractor code assumes you are working in an Angular webpage. If you need to move to non-Angular context (for example in an iframe) then look at the login function of <code class="docutils literal notranslate"><span class="pre">users.js</span></code> or the <code class="docutils literal notranslate"><span class="pre">embedding.js</span></code> test for examples of how to proceed.</p>
+</section>
+</section>
+<section id="writing-robust-tests">
+<h3>Writing robust tests<a class="headerlink" href="#writing-robust-tests" title="Permalink to this headline"></a></h3>
+<section id="flakiness">
+<h4>Flakiness<a class="headerlink" href="#flakiness" title="Permalink to this headline"></a></h4>
+<p>It is easy to accidentally write <em>flaky</em> end-to-end tests, which means that the tests sometimes pass and sometimes fail for non-deterministic reasons. For example, you might write a test assuming that all the elements of the page load at once. However, you have probably noticed that when your browser slows down, it sometimes loads parts of the page before others. This could lead your test to fail randomly, which is called flaking. Here are some tips for avoiding flakiness in your tests:</p>
+<ul>
+<li><p>HTML tags should be unique if possible. When they are not unique, for instance when multiple copies of the same HTML are created dynamically, we should not find one with indexing, <code class="docutils literal notranslate"><span class="pre">.first()</span></code>, or <code class="docutils literal notranslate"><span class="pre">.last()</span></code>. A great example of how to do this correctly is in <code class="docutils literal notranslate"><span class="pre">this.playTutorial</span></code> in <code class="docutils literal notranslate"><span class="pre">ExplorationEditorMainTab.js</span></code>.</p>
+<p>There is really only one case where it is acceptable to identify HTML elements by index, which is when the following conditions all hold:</p>
+<ol class="simple">
+<li><p>The elements you want to choose among are siblings, meaning that they share the same parent element. If they aren’t siblings, then you can add use the parent elements to distinguish between them, for example by adding HTML classes to the parents.</p></li>
+<li><p>The elements you want to choose among are identical. In particular, if the elements contain different text, then you can use that text to distinguish them.</p></li>
+<li><p>The elements you want to choose among are generated dynamically, so you can’t modify them to add HTML classes.</p></li>
+</ol>
+</li>
+<li><p>Avoid for loops where the loop index is used in asynchronous calls. <code class="docutils literal notranslate"><span class="pre">this.expectHintsTabContentsToMatch</span></code> in <code class="docutils literal notranslate"><span class="pre">ExplorationEditorTranslationTab.js</span></code> is a better way because it puts the index in the CSS selector, so the index is used before the asynchronous part kicks in.</p></li>
+<li><p>Do not use URLs to navigate to a page, for example opening the about page by navigating to <code class="docutils literal notranslate"><span class="pre">/about</span></code> instead of clicking the appropriate buttons</p></li>
+<li><p>Do not use <code class="docutils literal notranslate"><span class="pre">browser.sleep()</span></code> calls. They are fine for debugging, but in the final test you should use <code class="docutils literal notranslate"><span class="pre">waitFor</span></code> instead.</p></li>
+<li><p>In page objects, each function should use <code class="docutils literal notranslate"><span class="pre">waitFor.js</span></code> to wait for the elements it acts on to appear or be clickable. Alternatively, you can use a function from <code class="docutils literal notranslate"><span class="pre">action.js</span></code> that has the waitFor calls built-in. If the function effects a change, it should also wait for the change to complete (e.g. the next page to finish loading if the function clicks a link).</p></li>
+</ul>
+</section>
+<section id="independence">
+<h4>Independence<a class="headerlink" href="#independence" title="Permalink to this headline"></a></h4>
+<p>The tests may be run either sequentially or in isolation, and they need to be written to function correctly in both cases. Further, we may rearrange which tests are run together to optimize performance. This means that each <code class="docutils literal notranslate"><span class="pre">describe(...</span></code> block of tests should work regardless of what tests are run before (or after) it. Here are some tips for writing independent tests:</p>
+<ul class="simple">
+<li><p>Ensure that usernames and emails used in each test are unique by giving them a distinctive form; in e.g. the editorAndPlayer page usernames should look like <code class="docutils literal notranslate"><span class="pre">user1EditorAndPlayer</span></code> and emails like <code class="docutils literal notranslate"><span class="pre">user1&#64;editorAndPlayer.com</span></code>. Use this pattern for other names in the tests, for example topic and skill names, for example <code class="docutils literal notranslate"><span class="pre">skill1EditorAndPlayer</span></code>. Some structures have character limits that may disallow this convention. In that case, feel free to shorten the name, e.g. with an abbreviation. You may want to use a constant though if the name gets too unreadable.</p></li>
+<li><p>Avoid accessing items by index. For example, to select an exploration from a list, search for the name of the exploration instead of assuming the exploration will be at some index. Take a look at the <code class="docutils literal notranslate"><span class="pre">_getExplorationElements</span></code> function in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/tests/protractor_utils/LibraryPage.js"><code class="docutils literal notranslate"><span class="pre">core/tests/protractor_utils/LibraryPage.js</span></code></a> for an example.</p></li>
+</ul>
+</section>
+</section>
+<section id="checking-for-flakiness">
+<h3>Checking for flakiness<a class="headerlink" href="#checking-for-flakiness" title="Permalink to this headline"></a></h3>
+<p>When submitting a pull request that adds end-to-end tests, please re-run your new tests many times to make sure they pass consistently. We will ask for screenshots in the PR thread showing 5 consecutive passes of the suite(s) where you added tests.</p>
+<p>When re-running your test, you will likely see flakes that are not related to your changes. These do not count toward the required number of passes, and they do not count against the requirement that the passes be consecutive. For example, the following would be sufficient:</p>
+<ol class="simple">
+<li><p>All tests pass</p></li>
+<li><p>All but one test pass. The failing test is not one you added.</p></li>
+<li><p>All tests pass</p></li>
+<li><p>All tests pass</p></li>
+<li><p>All tests pass</p></li>
+<li><p>All tests pass</p></li>
+</ol>
+<p>Please re-run your tests on CI, not locally on your machine, because flakes often appear only on CI and are not reproducible locally.</p>
+</section>
+<section id="codeowner-checks">
+<h3>Codeowner Checks<a class="headerlink" href="#codeowner-checks" title="Permalink to this headline"></a></h3>
+<p>When the Automated QA Team does a codeowner review on your PR that changes the e2e tests, they will be looking to make sure that you follow all the guidance in this wiki page. In the checklist below, we list some of the most common problems we see. To get your PR merged faster, please check that your PR satisfies each item:</p>
+<ul class="simple">
+<li><p>[ ] All constants should be in all-caps. (This isn’t really an e2e test issue, but we see it a lot.)</p></li>
+<li><p>[ ] All element selectors, e.g. <code class="docutils literal notranslate"><span class="pre">element(by.css('.protractor-test-my-element'))</span></code>, need to be at the top of the file. There are a few exceptions:</p>
+<ul>
+<li><p>Keeping selectors with the code that uses them is okay in some utility files where the utilities do not generally share selectors.</p></li>
+<li><p>When you are chaining selectors, only the root selector (first in the chain) needs to be at the top of the file.</p></li>
+</ul>
+</li>
+<li><p>[ ] Any time you create something in Oppia that needs a globally unique name to be identified by the tests (e.g. explorations, topics, skills, and users), make sure to follow the naming guidance in the <a class="reference external" href="https://github.com/oppia/oppia/wiki/End-to-End-Tests#independence">Independence</a> section above.</p></li>
+<li><p>[ ] Each <code class="docutils literal notranslate"><span class="pre">it</span></code> block in the test must be able to be run independently of the others. Imagine running any number of your <code class="docutils literal notranslate"><span class="pre">it</span></code> blocks in any order. Regardless of which you choose and in what order you run them, they should work correctly.</p></li>
+<li><p>[ ] Before you interact with <em>any</em> element on the page, you must wait for it to be present, visible, or clickable (depending on how you interact with it) using the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/tests/protractor_utils/waitFor.js"><code class="docutils literal notranslate"><span class="pre">waitFor</span></code></a> functions. The <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/tests/protractor_utils/action.js"><code class="docutils literal notranslate"><span class="pre">actions</span></code></a> functions handle this for you.</p></li>
+<li><p>[ ] You don’t need (and shouldn’t include) <code class="docutils literal notranslate"><span class="pre">await</span></code> keywords for <code class="docutils literal notranslate"><span class="pre">.first()</span></code>, <code class="docutils literal notranslate"><span class="pre">.last()</span></code> or <code class="docutils literal notranslate"><span class="pre">.get(i)</span></code> calls.</p></li>
+<li><p>[ ] If you repeat some code a lot, make it a function! This also makes it a lot easier to review your code.</p></li>
+<li><p>[ ] If you make a generally useful function, add it to the relevant utilities file so that other people can benefit from it too.</p></li>
+<li><p>[ ] You will need to provide screenshots showing that the tests aren’t flaky after your changes. The requirements are detailed above in the <a class="reference external" href="https://github.com/oppia/oppia/wiki/End-to-End-Tests#temporary-flakiness-mitigation-measures">Temporary Flakiness Mitigation Measures</a> section.</p></li>
+<li><p>[ ] Variables should be named as nouns, and functions should be named as verbs. In particular, make sure your page element variable names are nouns. For example, use <code class="docutils literal notranslate"><span class="pre">itemSelectButton</span></code> instead of <code class="docutils literal notranslate"><span class="pre">itemSelect</span></code>.</p></li>
+<li><p>[ ] All HTML classes you reference in root selectors in the tests should begin with <code class="docutils literal notranslate"><span class="pre">protractor-test-</span></code>. If you can’t change the classes on an element you need to select, find a parent element you can change and then chain the selectors like this: <code class="docutils literal notranslate"><span class="pre">element(by.css('.protractor-test-parent-element')).element(by.css('.class-of-element-you-cannot-change'))</span></code> or like this: <code class="docutils literal notranslate"><span class="pre">element(by.css('.protractor-test-parent-element</span> <span class="pre">.class-of-element-you-cannot-change'))</span></code>.</p></li>
+</ul>
+</section>
+<section id="important-tips">
+<h3>Important Tips<a class="headerlink" href="#important-tips" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>All test blocks should have an <code class="docutils literal notranslate"><span class="pre">afterEach</span></code> that runs <code class="docutils literal notranslate"><span class="pre">general.checkForConsoleErrors</span></code> to verify no unexpected console errors appeared while the test was running.</p></li>
+<li><p>Check your assumptions! For example, if you are assuming that only one exploration on the server will have a particular title, use an <code class="docutils literal notranslate"><span class="pre">expect</span></code> call to check.</p></li>
+</ul>
+</section>
+</section>
+<section id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline"></a></h2>
+<p>We track passes, known flakes, and failures that aren’t known to be flakes (called “failures”) using a logging server. You can view these metrics at https://oppia-e2e-test-results-logger.herokuapp.com.</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline"></a></h2>
+<section id="forms-and-objects">
+<h3>Forms and objects<a class="headerlink" href="#forms-and-objects" title="Permalink to this headline"></a></h3>
+<p>There are certain types of input that are used so commonly throughout Oppia that they are defined in <code class="docutils literal notranslate"><span class="pre">core/templates/forms/</span></code> and reused across many pages. There are corresponding protractor functions to manipulate the forms, and these functions are located in <code class="docutils literal notranslate"><span class="pre">core/tests/protractor_utils/forms.js</span></code>.</p>
+<p>There are more specialized input types in <code class="docutils literal notranslate"><span class="pre">extensions/objects</span></code> which you can also make use of (generally in interactions).</p>
+<p>To get a form or object editor, you can use the <code class="docutils literal notranslate"><span class="pre">getEditor</span></code> function in <code class="docutils literal notranslate"><span class="pre">forms.js</span></code>. It accepts the name of the form or object as an argument, and it searches first in <code class="docutils literal notranslate"><span class="pre">forms.js</span></code> and then in <code class="docutils literal notranslate"><span class="pre">extensions/objects/protractor.js</span></code> for a function of the same name. For example, suppose we want to set the value of a real number field. We can use <code class="docutils literal notranslate"><span class="pre">getEditor</span></code> like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">realNumberFieldElement</span> <span class="o">=</span> <span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;protractor-test-real-number&#39;</span><span class="p">));</span>
+<span class="p">...</span>
+<span class="kd">var</span> <span class="nx">realEditor</span> <span class="o">=</span> <span class="nx">getEditor</span><span class="p">(</span><span class="s1">&#39;RealEditor&#39;</span><span class="p">)(</span><span class="nx">realNumberFieldElement</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">realEditor</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mf">3.14</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Notice that we did not use an <code class="docutils literal notranslate"><span class="pre">await</span></code> before <code class="docutils literal notranslate"><span class="pre">getEditor</span></code> because the <code class="docutils literal notranslate"><span class="pre">RealEditor</span></code> function is not asynchronous. However, other editors are, in which case they will include <code class="docutils literal notranslate"><span class="pre">async</span></code> in their declaration lines. For these, you will need to use <code class="docutils literal notranslate"><span class="pre">await</span></code>.</p>
+<section id="rich-text">
+<h4>Rich Text<a class="headerlink" href="#rich-text" title="Permalink to this headline"></a></h4>
+<p>One of the most important forms is the rich-text editor, which is used both directly in the editor and in various interactions. Commonly, a page utility will provide a <code class="docutils literal notranslate"><span class="pre">setContent</span></code> function that accepts an “instructions” argument. This argument accepts an instructions function that the <code class="docutils literal notranslate"><span class="pre">setContent</span></code> function will call with the rich text editor as an argument. For example, you might have an instructions function like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">instructions</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">richTextEditor</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">richTextEditor</span><span class="p">.</span><span class="nx">appendBoldText</span><span class="p">(</span><span class="s1">&#39;bold&#39;</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">richTextEditor</span><span class="p">.</span><span class="nx">appendItalicText</span><span class="p">(</span><span class="s1">&#39;italic&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then you can pass this function to <code class="docutils literal notranslate"><span class="pre">ExplorationEditorMainTab.setContent</span></code>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="nx">explorationEditorMainTab</span><span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">instructions</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then inside <code class="docutils literal notranslate"><span class="pre">setContent</span></code>, you instructions function will be called:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">editorElement</span> <span class="o">=</span> <span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;.protractor-test-editor&#39;</span><span class="p">));</span>
+<span class="p">...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setContent</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">instructions</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="kd">var</span> <span class="nx">richTextEditor</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">forms</span><span class="p">.</span><span class="nx">RichTextEditor</span><span class="p">(</span><span class="nx">editorElement</span><span class="p">);</span>
+  <span class="nx">instructions</span><span class="p">(</span><span class="nx">richTextEditor</span><span class="p">);</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Later on you will probably want to check that your content is being displayed correctly, for example using a page utility function <code class="docutils literal notranslate"><span class="pre">expectContentToMatch</span></code>. To this you should send a function which will then be supplied with a <code class="docutils literal notranslate"><span class="pre">richTextChecker</span></code> which exposes analogous functions. For example you might send:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">instructions</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">richTextChecker</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">richTextChecker</span><span class="p">.</span><span class="nx">readBoldText</span><span class="p">(</span><span class="s1">&#39;bold&#39;</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">richTextChecker</span><span class="p">.</span><span class="nx">readItalicText</span><span class="p">(</span><span class="s1">&#39;italic&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then inside the <code class="docutils literal notranslate"><span class="pre">expectContentToMatch</span></code> function, we can pass your instructions to the <code class="docutils literal notranslate"><span class="pre">forms.expectRichText</span></code> function:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">richTextDisplay</span> <span class="o">=</span> <span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;.protractor-test-rich-text&#39;</span><span class="p">));</span>
+<span class="p">...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">expectContentToMatch</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">instructions</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">forms</span><span class="p">.</span><span class="nx">expectRichText</span><span class="p">(</span><span class="nx">richTextDisplay</span><span class="p">).</span><span class="nx">toMatch</span><span class="p">(</span><span class="nx">instructions</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The full range of editing and checking functions can be found in <code class="docutils literal notranslate"><span class="pre">core/tests/protractor_utils/forms.js</span></code> in the <code class="docutils literal notranslate"><span class="pre">RichTextEditor</span></code> and <code class="docutils literal notranslate"><span class="pre">RichTextChecker</span></code> classes.</p>
+<p>Frequently you will just want to put plain text into a rich text area. For this you can quickly generate instruction functions like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">instructions</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">forms</span><span class="p">.</span><span class="nx">toRichText</span><span class="p">(</span><span class="s1">&#39;plain text&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This works for both editors and checkers.</p>
+</section>
+</section>
+<section id="async-await-tips">
+<h3>Async-Await Tips<a class="headerlink" href="#async-await-tips" title="Permalink to this headline"></a></h3>
+<section id="good-patterns">
+<h4>Good Patterns<a class="headerlink" href="#good-patterns" title="Permalink to this headline"></a></h4>
+<ul>
+<li><p>Getting a URL</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;someURL&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Expectations</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">expect</span><span class="p">(</span><span class="k">await</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">getText</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;expectedText&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</li>
+<li><p>Variable assignments</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">myAsyncFunc</span><span class="p">();</span>
+</pre></div>
+</div>
+</li>
+<li><p>If statements</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">getText</span><span class="p">()</span> <span class="o">===</span> <span class="s2">&quot;hi&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">driver.findElement</span></code>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(...)</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map()</span></code> returns a list of promises, but <code class="docutils literal notranslate"><span class="pre">await</span></code> will only wait if the expression it is provided evaluates to a single promise. To wait until all of the <code class="docutils literal notranslate"><span class="pre">map()</span></code> operations are complete, use <code class="docutils literal notranslate"><span class="pre">Promise.all</span></code> like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">myList</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+<span class="p">}));</span>
+</pre></div>
+</div>
+<ul>
+<li><p>This is the advice we see online, but we’ve also encountered cases where removing the <code class="docutils literal notranslate"><span class="pre">Promise.all</span></code> seems to fix bugs, so this guidance might not be right. Try both.</p></li>
+<li><p>If you are mapping over an element.all selector, we’ve encountered cases where <code class="docutils literal notranslate"><span class="pre">element.all(selector).map(function)</span></code> does not properly await for async functions. Instead of this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">mappedElements</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">selector</span><span class="p">)</span>
+<span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="k">await</span> <span class="nx">mappedElements</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="nx">functionThatIsAsync</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">}));</span>
+</pre></div>
+</div>
+<p>Try:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">mappedElements</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">selector</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="k">of</span> <span class="p">(</span><span class="k">await</span> <span class="nx">mappedElements</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">functionThatIsAsync</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above should properly await for each functionThatIsAsync to resolve.</p>
+</li>
+</ul>
+</li>
+<li><p>When multiple elements might match a locator, we often use <code class="docutils literal notranslate"><span class="pre">element.all</span></code> to get an <a class="reference external" href="https://www.protractortest.org/#/api?view=ElementArrayFinder"><code class="docutils literal notranslate"><span class="pre">ElementArrayFinder</span></code></a>. This object can usually be used just like a list, but it appears that with async-await, we can only use the functions it defines. In particular:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">elems.count()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">elems.length</span></code> to get the length. This is asynchronous!</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">elems.get(i)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">elems[i]</span></code>. <code class="docutils literal notranslate"><span class="pre">elems.first()</span></code> and <code class="docutils literal notranslate"><span class="pre">elems.last()</span></code> work too.</p></li>
+</ul>
+<p>You do <em>not</em> need to <code class="docutils literal notranslate"><span class="pre">await</span></code> the <code class="docutils literal notranslate"><span class="pre">element.all</span></code> call itself. Also note that a <code class="docutils literal notranslate"><span class="pre">.map()</span></code> or <code class="docutils literal notranslate"><span class="pre">.filter()</span></code> operation on an <code class="docutils literal notranslate"><span class="pre">ElementArrayFinder</span></code> yields a normal array, so you <em>need</em> to use <code class="docutils literal notranslate"><span class="pre">.length</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.count()</span></code>.</p>
+</li>
+<li><p>Chained Function Calls</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="nx">asyncFunc1</span><span class="p">()).</span><span class="nx">asyncFunc2</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>We have to <code class="docutils literal notranslate"><span class="pre">await</span></code> the result of <code class="docutils literal notranslate"><span class="pre">asyncFunc1</span></code> before calling <code class="docutils literal notranslate"><span class="pre">asyncFunc2</span></code>. This won’t work:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="nx">asyncFunc1</span><span class="p">().</span><span class="nx">asyncFunc2</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Here’s a common example of when we need these nested <code class="docutils literal notranslate"><span class="pre">await</span></code>s:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">switchTo</span><span class="p">().</span><span class="nx">activeElement</span><span class="p">()).</span><span class="nx">sendKeys</span><span class="p">(</span><span class="nx">explanation</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Rejection callbacks</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">waitFor</span><span class="p">.</span><span class="nx">visibilityOf</span><span class="p">(</span><span class="nx">dismissWelcomeModalButton</span><span class="p">,</span>
+  <span class="s1">&#39;Welcome modal not becoming visible&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+  <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">waitFor</span><span class="p">.</span><span class="nx">elementToBeClickable</span><span class="p">(</span>
+      <span class="nx">dismissWelcomeModalButton</span><span class="p">,</span>
+      <span class="s1">&#39;Welcome modal is taking too long to appear&#39;</span><span class="p">);</span>
+    <span class="nx">dismissWelcomeModalButton</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+  <span class="p">},</span>
+  <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Since the welcome modal appears only once, the wait for its</span>
+    <span class="c1">// visibilty will only resolve once and timeout the other times.</span>
+    <span class="c1">// This is just an empty error function to catch the timeouts that</span>
+    <span class="c1">// happen when the the welcome modal has been dismissed once. If</span>
+    <span class="c1">// this is not present then protractor uses the default error</span>
+    <span class="c1">// function which is not appropriate in this case as this is not an</span>
+    <span class="c1">// error.</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Here, we specify an empty rejection callback so that the test can still pass if the wait times out. To replicate this behavior with async-await, we can use a <code class="docutils literal notranslate"><span class="pre">try</span></code> block:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">waitFor</span><span class="p">.</span><span class="nx">visibilityOf</span><span class="p">(</span>
+    <span class="nx">dismissWelcomeModalButton</span><span class="p">,</span> <span class="s1">&#39;Welcome modal not becoming visible&#39;</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">waitFor</span><span class="p">.</span><span class="nx">elementToBeClickable</span><span class="p">(</span>
+    <span class="nx">dismissWelcomeModalButton</span><span class="p">,</span>
+    <span class="s1">&#39;Welcome modal is taking too long to appear&#39;</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">dismissWelcomeModalButton</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+  <span class="k">await</span> <span class="nx">waitFor</span><span class="p">.</span><span class="nx">invisibilityOf</span><span class="p">(</span>
+    <span class="nx">translationWelcomeModal</span><span class="p">,</span>
+    <span class="s1">&#39;Translation welcome modal takes too long to disappear&#39;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Since the welcome modal appears only once, the wait for its</span>
+  <span class="c1">// visibilty will only resolve once and timeout the other times.</span>
+  <span class="c1">// This is just an empty error function to catch the timeouts that</span>
+  <span class="c1">// happen when the the welcome modal has been dismissed once. If</span>
+  <span class="c1">// this is not present then protractor uses the default error</span>
+  <span class="c1">// function which is not appropriate in this case as this is not an</span>
+  <span class="c1">// error.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Checking for movement:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">pos1</span> <span class="o">=</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;pos&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pos2</span> <span class="o">=</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;pos&#39;</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">pos1</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">pos2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Here we want to check that <code class="docutils literal notranslate"><span class="pre">elem</span></code> is moving (represented as its <code class="docutils literal notranslate"><span class="pre">pos</span></code> attribute changing). This might work because the <code class="docutils literal notranslate"><span class="pre">getAttribute</span></code> calls take long enough to execute that in the meantime, <code class="docutils literal notranslate"><span class="pre">elem</span></code> has moved. After migrating to async-await, however, they might run faster. To address this, we can instead wait for the element to move:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">pos1</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;pos&#39;</span><span class="p">);</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">waitFor</span><span class="p">.</span><span class="nx">elementAttributeToBe</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="s1">&#39;pos&#39;</span><span class="p">,</span> <span class="nx">pos1</span> <span class="o">+</span> <span class="mf">1</span><span class="p">,</span> <span class="s1">&#39;elem not moving&#39;</span><span class="p">);</span>
+<span class="p">}</span> <span class="nx">except</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">pos2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;pos&#39;</span><span class="p">);</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">pos1</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">pos2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice that here, we wait for <code class="docutils literal notranslate"><span class="pre">elem</span></code> to advance one unit. If that happens, then the test passes. However, what if <code class="docutils literal notranslate"><span class="pre">elem</span></code> advances 2 units before <code class="docutils literal notranslate"><span class="pre">waitFor</span></code> checks again? To address this, we check whether <code class="docutils literal notranslate"><span class="pre">elem</span></code> has moved after catching the error from the <code class="docutils literal notranslate"><span class="pre">waitFor</span></code>.</p>
+</li>
+<li><p>Make sure you add <code class="docutils literal notranslate"><span class="pre">async</span></code> and <code class="docutils literal notranslate"><span class="pre">await</span></code> in the <code class="docutils literal notranslate"><span class="pre">afterAll</span></code> blocks if they check for console errors (they all should). If you don’t the test might pass even though errors are appearing in the console log.</p></li>
+</ul>
+</section>
+<section id="anti-patterns">
+<h4>Anti-Patterns<a class="headerlink" href="#anti-patterns" title="Permalink to this headline"></a></h4>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">forEach</span></code> does not work for async-await. Use a <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">...</span> <span class="pre">of</span></code> loop instead if you want to operate in sequence, or use <code class="docutils literal notranslate"><span class="pre">map()</span></code> to operate in parallel. See <a class="reference external" href="https://stackoverflow.com/a/37576787">this Stack Overflow post</a> for examples.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter</span></code> can be problematic. Consider re-writing as a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.then()</span></code> functions</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">someAsynchronousFunction</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">output</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="c1">// doing something with output</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>should be written instead as</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">output</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">someAsynchronousFunction</span><span class="p">();</span>
+<span class="k">await</span> <span class="c1">// do something with &quot;output&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">browser.switchTo().activeElement()</span></code> can cause problems when combined with our <code class="docutils literal notranslate"><span class="pre">action</span></code> functions. One such problem is a <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">read</span> <span class="pre">property</span> <span class="pre">'bind'</span> <span class="pre">of</span> <span class="pre">undefined</span></code> error. Instead, use the normal <code class="docutils literal notranslate"><span class="pre">element(...)</span></code> element selectors to get the element you want to interact with. You can use a <code class="docutils literal notranslate"><span class="pre">debugger</span></code> statement (see the <a class="reference internal" href="Debug-end-to-end-tests.html"><span class="doc std std-doc">debugging guide</span></a>) right before <code class="docutils literal notranslate"><span class="pre">browser.switchTo().activeElement()</span></code> to find what active is element there.</p></li>
+</ul>
+</section>
+</section>
+<section id="known-kinds-of-flakes">
+<h3>Known kinds of flakes<a class="headerlink" href="#known-kinds-of-flakes" title="Permalink to this headline"></a></h3>
+<section id="document-unloaded-while-waiting-for-result">
+<h4>document unloaded while waiting for result<a class="headerlink" href="#document-unloaded-while-waiting-for-result" title="Permalink to this headline"></a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">document</span> <span class="pre">unloaded</span> <span class="pre">while</span> <span class="pre">waiting</span> <span class="pre">for</span> <span class="pre">result</span></code> errors indicates that while protractor was waiting for a condition (usually because of a waitFor call), the browser switched to a new page. This usually indicates a race condition between the test beginning or finishing the waitFor call and the page changing.</p>
+<p>For example, consider a test with the following steps:</p>
+<ol class="simple">
+<li><p>Click the submit button on the login form. The user is sent to the home page, where frontend code redirects them to their dashboard page.</p></li>
+<li><p>Wait for the dashboard page to appear.</p></li>
+</ol>
+<p>Next, let’s draw a diagram to illustrate why this causes a race condition:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                       redirect
+                                          |
+                          +-----------+   |     +------------+
+                          | Home page |   v     | Dashboard  |
+    +--------+     +-//---+ loads     +---//----+ page loads +-//-+
+    | Click  |     |      +-----------+         +------------+    |
+----+ submit +-----+                                              +-----&gt;
+    | button |     |      +----------------+                      |
+    +--------+     +-//---| Wait for       +----------//----------+
+                          | dashboard page |
+                          +----------------+
+</pre></div>
+</div>
+<p>Now given what’s on this wiki page so far, this diagram looks fine. Waiting for the dashboard page to load should eliminate any race conditions. The problem is that protractor throws a <code class="docutils literal notranslate"><span class="pre">document</span> <span class="pre">unloaded</span></code> error when there is a client-side redirect (i.e. a redirect from the frontend code) while the test is waiting for an element on the page. Therefore the race condition comes from whether the “Wait for dashboard page” step starts before or after the redirect.</p>
+<p>The solution is to wait for something that’s not on the page–the URL. If wait for the URL to change before we begin waiting for the dashboard page, then we eliminate the race condition.</p>
+<p>Thanks to &#64;ashutoshc8101 for <a class="reference external" href="https://github.com/oppia/oppia/pull/13533/files/6c997857a8fbb71aa16550952b1358c88b8ddafe#diff-95842db373ce26ea0bf75debaf11f70950ad6bb7ea26f2c29e1621768495cb0b">diagnosing this flake</a>!</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Frontend-unit-tests-guide.html" class="btn btn-neutral float-left" title="Frontend unit tests guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Lighthouse-Tests.html" class="btn btn-neutral float-right" title="Lighthouse CI Automated Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

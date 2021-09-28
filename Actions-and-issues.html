@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actions and issues &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advice on creating explorations" href="Advice-on-creating-explorations.html" />
+    <link rel="prev" title="Creating value generators" href="Creating-Value-Generators.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="extension-reference.html">Extension frameworks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Extensions-Overview.html">Extensions overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rich-Text-Editor-%28RTE%29-Overview.html">Rich text editor (RTE) overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Interactions.html">Creating interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Rules.html">Creating rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Objects.html">Creating objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Dependencies.html">Creating dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Value-Generators.html">Creating value generators</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Actions and issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#actions">Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#issues">Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-actions-and-issues">Using actions and issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="extension-reference.html">Extension frameworks</a> &raquo;</li>
+      <li>Actions and issues</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Actions-and-issues.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="actions-and-issues">
+<h1>Actions and issues<a class="headerlink" href="#actions-and-issues" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#actions">Actions</a></p></li>
+<li><p><a class="reference external" href="#issues">Issues</a></p></li>
+<li><p><a class="reference external" href="#using-actions-and-issues">Using actions and issues</a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>As a user plays through an exploration, we want to track their progress to identify any problems. If we do find problems with the exploration, we can raise those to the exploration creator. For example, if a user gets stuck in a cycle of cards or submits many incorrect answers to an interaction, the exploration could probably be improved.</p>
+<p>We store the steps a user takes through an exploration as <em>actions</em>, and we create <em>issues</em> to keep track of the problems that these actions indicate. Both actions and issues are defined as <a class="reference internal" href="Schemas.html"><span class="doc std std-doc">schemas</span></a>.</p>
+</section>
+<section id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline"></a></h2>
+<p>There are three actions defined at <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/extensions/actions"><code class="docutils literal notranslate"><span class="pre">extensions/actions/</span></code></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ExplorationStart</span></code>: This action is recorded when a learner starts an exploration. It stores the name of the state (i.e. card) they start at.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AnswerSubmit</span></code>: This action is recorded when a learner submits a response to an interaction. It stores the ID of the interaction, the name of the state with the interaction, the answer that the learner submitted, the exploration’s feedback for that answer, the next state they transition to, and how long the learner spent in the state. Note that the interaction ID is just its name, for example <code class="docutils literal notranslate"><span class="pre">ItemSelectionInput</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExplorationQuit</span></code>: This action is recorded when a learner leaves an exploration. It stores the name of the state at which the learner quit and how long the user spent in the last state they visited.</p></li>
+</ul>
+<p>These actions are recorded using the functions provided by the <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/templates/pages/exploration-player-page/services/stats-reporting.service.ts">stats reporting service</a>. For example, when a learner transitions into a terminal state (a card that ends the exploration), the <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/templates/pages/exploration-player-page/learner-experience/conversation-skin.directive.ts">conversation skin directive</a> calls <code class="docutils literal notranslate"><span class="pre">StatsReportingService.recordExplorationCompleted()</span></code>.</p>
+<p>When a learner’s journey through an exploration goes smoothly, we don’t store the actions anywhere; however, when we detect a problem in a learner’s journey, then we create an issue that stores the associated actions. Note that at no point during this process do we store or process any information about the learner’s identity.</p>
+</section>
+<section id="issues">
+<h2>Issues<a class="headerlink" href="#issues" title="Permalink to this headline"></a></h2>
+<p>We define three different issues at <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/extensions/issues"><code class="docutils literal notranslate"><span class="pre">extensions/issues/</span></code></a>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultipleIncorrectSubmissions</span></code>: This issue is recorded when a user submits 3 or more incorrect answers to an interaction. It stores the name of the state where the user provided incorrect answers and the number of incorrect answers that they submitted.</p>
+<p>The logic determining whether to file this issue lives in the <code class="docutils literal notranslate"><span class="pre">MultipleIncorrectAnswersTracker</span></code> class in the <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/templates/services/playthrough.service.ts">playthrough service</a>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CyclicStateTransitions</span></code>: This issue is recorded when a user repeats a cycle of states 3 times in a row. Note that our cycle detection isn’t particularly clever. As soon as we detect a cycle, we check whether it’s equal to the most recent cycle we detected earlier. If it matches, we increment a counter. Otherwise, we reset the counter to 1. Here are some examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span></code>: An issue would be filed because the cycle <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span></code> happened 3 times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">C</span> <span class="pre">-&gt;</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">C</span> <span class="pre">-&gt;</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">C</span> <span class="pre">-&gt;</span> <span class="pre">A</span></code>: An issue would <em>not</em> be filed even though the cycle <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">C</span> <span class="pre">-&gt;</span> <span class="pre">A</span></code> repeats 3 times. The reason is that we will only detect the smaller <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">C</span> <span class="pre">-&gt;</span> <span class="pre">A</span></code> cycles, which alternate. Since they alternate, we keep resetting our counter to 1 and so never reach 3 consecutive cycles.</p></li>
+</ul>
+<p>The logic behind this cycle detection lives in the <code class="docutils literal notranslate"><span class="pre">CyclicStateTransitionsTracker</span></code> class in the <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/templates/services/playthrough.service.ts">playthrough service</a>.</p>
+<p>This issue stores a list of the state names that make up the cycle.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EarlyQuit</span></code>: This issue is recorded whenever a user quits an exploration after fewer than 300 seconds. It records the name of the state where the user quit and the time they spent on the exploration.</p>
+<p>The logic behind this cycle detection lives in the <code class="docutils literal notranslate"><span class="pre">EarlyQuitTracker</span></code> class in the <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/templates/services/playthrough.service.ts">playthrough service</a>.</p>
+</li>
+</ul>
+</section>
+<section id="using-actions-and-issues">
+<h2>Using actions and issues<a class="headerlink" href="#using-actions-and-issues" title="Permalink to this headline"></a></h2>
+<p>Right now, neither issues nor their associated actions are surfaced to exploration creators. They used to be available through the improvements tab of the exploration editor, but that tab has been removed. We are currently working on building a new improvements tab.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Creating-Value-Generators.html" class="btn btn-neutral float-left" title="Creating value generators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Advice-on-creating-explorations.html" class="btn btn-neutral float-right" title="Advice on creating explorations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

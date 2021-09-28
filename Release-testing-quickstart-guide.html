@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release testing quickstart guide &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Oppia Events team" href="Events-Team.html" />
+    <link rel="prev" title="Testing jobs and other features on production" href="Testing-jobs-and-other-features-on-production.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="release.html">Release process</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html">Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#instructions-for-deciding-whether-a-bug-is-blocking">Instructions for deciding whether a bug is blocking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#instructions-for-fixing-release-bugs">Instructions for fixing release bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#responsibilities-of-the-release-coordinator">Responsibilities of the release coordinator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#responsibilities-of-the-qa-coordinator">Responsibilities of the QA coordinator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#responsibilities-of-the-release-testing-team">Responsibilities of the release testing team</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#team-members">Team members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#release-coordinators-and-qa-coordinators-for-upcoming-releases">Release coordinators and QA coordinators for upcoming releases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-jobs-and-other-features-on-production.html">Testing jobs and other features on production</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Release testing quickstart guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-we-do-testing-in-oppia">How do we do testing in Oppia?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips-to-keep-in-mind-while-testing">Tips to keep in mind while testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="release.html">Release process</a> &raquo;</li>
+      <li>Release testing quickstart guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Release-testing-quickstart-guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="release-testing-quickstart-guide">
+<h1>Release testing quickstart guide<a class="headerlink" href="#release-testing-quickstart-guide" title="Permalink to this headline"></a></h1>
+<p>Testing features is one of the easiest ways to get familiar with the website and the various features. It makes it easy to then understand which parts of the code link to which component, and thus can improve your understanding of the codebase.</p>
+<p>At Oppia, we do monthly releases and during each release, we do a manual testing of the core user journeys we have. Anyone is welcome to participate in the release testing!</p>
+<p>Here is a quick start guide that could help you get involved with the testing:</p>
+<ul class="simple">
+<li><p>Contact Nithesh (at nithesh2108&#64;gmail.com). Hangouts or email is fine. Just mention that you would be interested to participate in the testing.</p></li>
+<li><p>Typically during the first week of the month, you’ll get an email from the release testing coordinator for the month mentioning the dates for the current release’s testing phase.</p>
+<ul>
+<li><p>If it is your first time doing the testing, you will be paired up with a tester who has done testing multiple times before. If you run into any issues while testing the feature, you can get in touch with them or the testing coordinator.</p></li>
+</ul>
+</li>
+<li><p>This doc outlines the <a class="reference external" href="https://docs.google.com/document/d/1s3MG2MVh_7m7B0wIlZb7sAcoyUdY0zq7a1JEFtwYBjI/edit#heading=h.gs2e2lh85so7">Critical User Journeys</a>. You will be assigned a few of these to test during the release testing phase.</p>
+<ul>
+<li><p>You can go through these and try some of them yourself.</p></li>
+</ul>
+</li>
+<li><p>Go through the rest of this page to understand how we do testing in Oppia!</p></li>
+</ul>
+<section id="how-do-we-do-testing-in-oppia">
+<h2>How do we do testing in Oppia?<a class="headerlink" href="#how-do-we-do-testing-in-oppia" title="Permalink to this headline"></a></h2>
+<p>Typically, we have 3 safeguards. While a contributor makes a PR, we expect that the contributor has thoroughly tested the changes made in the PR for functional correctness. The reviewer is expected to validate this (either through screenshots or by manually testing). This testing is important and mostly it doesn’t affect the release process.
+The vast majority of bugs caught during release testing can be traced back to how one particular change affected another change elsewhere in the codebase. To mitigate this, we have automated tests (backend, frontend, and e2e tests). The automated tests are necessary and good, but they are currently not complete. The ultimate goal is to have the complete codebase covered by automated tests and the release testing should be a very minimal effort. As we can’t completely rely on just the automated tests, we do a round of manual testing of what we call “Critical user journeys”. These are core pathways that cannot under any circumstance be broken.
+We have compiled a list of critical user journeys and we have listed out steps for each of them. As a tester you would be given an objective, like “Go to the library, search for an exploration by its name, and play it”. As a tester you are expected to attempt to perform the action and report any issues you face while trying to perform the action.</p>
+<p>These serve as the general skeleton for the test to be performed. A good “testing mentality” is what we look for in testers.</p>
+<p>Basically, to develop a good testing mentality, you should have the mindset that you should break a given functionality. Try to find loopholes, craft intelligent inputs, devise corner cases which might break the functionality. For example, in the view where you can suggest changes to the exploration state, you can try to create a suggestion with no changes, remove a string and add it back so that it is the same, try with and without a suggestion message, etc. In each of these cases, you would expect certain behaviour and if the functionality differs, then it is a problem!
+A large portion of the bugs we fix are visual bugs, like missing padding, alignment is off, animations not working, etc. These are important to make sure that the page looks visually pleasing to the user. We had a bug once where the exploration player’s transition from one state to another was buggy (<a class="reference external" href="https://github.com/oppia/oppia/issues/4902">#4902</a>). This wasn’t noticed during testing and was later caught and fixed outside of the testing team. Developing the skill to find such anomalies is key to becoming a good tester.
+Another group of issues occur on specific browsers or environments. There are issues that occur only on mobile, and others which happen only on safari and so on. So as part of the procedure, while testing we expect testers to test across multiple browsers. Learner facing features need to look and feel good on mobile and tablet environments as well. The learner facing views include the library, learner dashboard and the players. For examples of browser-specific issues, automatic text to speech translations wouldn’t work on safari. After one particular chrome update, it wouldn’t work on chrome mobile alone (worked perfectly fine on desktop). Debugging these are tricky and very interesting.</p>
+</section>
+<section id="tips-to-keep-in-mind-while-testing">
+<h2>Tips to keep in mind while testing<a class="headerlink" href="#tips-to-keep-in-mind-while-testing" title="Permalink to this headline"></a></h2>
+<p>A list of general tips to keep in mind while testing is mentioned below!</p>
+<ul class="simple">
+<li><p>If anything doesn’t look right, it is probably a bug. Try to clearly describe what doesn’t look as expected to a third person and confirm with them that it is indeed something that isn’t expected.</p></li>
+<li><p>File issues on GitHub for any problems you see. This way you will be able to communicate to a larger section of people that you feel something is wrong, and also will be able to get their feedback on the issue. Even if you are unsure whether the issue you have encountered is even a valid bug or not, please open up an issue on Github. It’s better to find bugs as early as possible.</p></li>
+<li><p>We generally recommend testing across various browsers and various screen sizes. We also strongly recommend testing on a mobile/tablet if you have access to one. This will help us catch and reduce bugs across a variety of operating systems, and browser configurations. (Note: we don’t support IE, but we do support Edge). Also note, currently pages facing learners on Oppia are expected to work on mobiles/tabs. Creator views are designed for desktop only.</p></li>
+<li><p>Always keep the console open. Any error logged on the console is an issue. It would be better if you know the sequence of actions that led to the console error as this will speed up the debugging process.
+Take screenshots/screen-recording of a bug when you see it. Providing a screenshot makes it easier for others to judge if what you see is indeed a bug.</p></li>
+<li><p>We give a general skeleton of what should be tested. This should be the bare minimum testing that we expect you to do. We also encourage you to digress from this “happy” path and see what outcomes you reach. Thinking-out-of-the-box can help catch many non-trivial bugs.</p></li>
+<li><p>Always remember that the testing should be from a users’ perspective, not a developers’ perspective. As a developer who knows the codebase quite well, certain UIs might be well understood by you. But a new user who lands on that page might need some hand-holding. File such problems also as issues!</p></li>
+<li><p>Another thing that we would recommend is to try learner facing views on low-speed internet (can be simulated using chrome dev tools). A large fraction of our students come from places with slower internet connections!</p></li>
+<li><p>If possible, try to guess or find out what’s causing the issue and try to debug a little of how that issue can be fixed and provide the information you have found while opening up the issue so that the person working on the issue has something to start with. And it’d be great if you can take up that issue yourself if you have found a working solution while debugging.</p></li>
+<li><p>When you see long lists, or views with multiple items (like the library page), try to test with multiple entities. It might work well for a few entities, but might break for a large number of entities (this includes page slowdowns, improper alignment of objects, broken animations, overflowing text, etc).</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Testing-jobs-and-other-features-on-production.html" class="btn btn-neutral float-left" title="Testing jobs and other features on production" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Events-Team.html" class="btn btn-neutral float-right" title="Oppia Events team" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

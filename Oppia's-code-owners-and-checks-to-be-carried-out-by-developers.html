@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oppia’s code owners and checks to be carried out by developers &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Privacy aware programming" href="Privacy-aware-programming.html" />
+    <link rel="prev" title="Custom ESLint checks" href="Custom-ESLint-checks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Oppia’s code owners and checks to be carried out by developers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prasanna08"><strong>&#64;prasanna08</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dubeysandeep"><strong>&#64;DubeySandeep</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kevinlee12"><strong>&#64;kevinlee12</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nithusha21"><strong>&#64;nithusha21</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qa-team"><strong>QA Team.</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#u8nwxd"><strong>&#64;U8NWXD</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apb7"><strong>&#64;apb7</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aks681"><strong>&#64;aks681</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ankita240796"><strong>&#64;ankita240796</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seanlip"><strong>&#64;seanlip</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lesson-analytics-team"><strong>Lesson Analytics Team.</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#brianrodri"><strong>+&#64;brianrodri</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bansalnitish"><strong>&#64;bansalnitish</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vojtechjelinek-jamesjay4199"><strong>&#64;vojtechjelinek + &#64;Jamesjay4199</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+      <li>Oppia’s code owners and checks to be carried out by developers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Oppia&#39;s-code-owners-and-checks-to-be-carried-out-by-developers.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="oppia-s-code-owners-and-checks-to-be-carried-out-by-developers">
+<h1>Oppia’s code owners and checks to be carried out by developers<a class="headerlink" href="#oppia-s-code-owners-and-checks-to-be-carried-out-by-developers" title="Permalink to this headline"></a></h1>
+<p>At Oppia, we constantly try to improve the code quality and the experience for both the developers and the end users. This requires many optimizations and checks to make sure that things don’t break down or cause any degradation to the users’ experience. This is why we have a group of code-owners for specific folders and files who keep a check on the changes to make sure all goes smoothly.</p>
+<p>Also, the developers who are making the changes to any files must bear in mind the checks they need to perform on their changes making sure it conforms to the rules the folder/file is bound to.</p>
+<p>The following is a list of the code-owners and the checks the code-owner looks for in the corresponding folders/files.</p>
+<section id="prasanna08">
+<h2><strong>&#64;prasanna08</strong><a class="headerlink" href="#prasanna08" title="Permalink to this headline"></a></h2>
+<p><strong>Answer classification team.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/controllers/classifier*.py
+   </td>
+   <td>Ensure that Signature verification algorithm is in sync with signature generation algorithm at <a href="https://github.com/oppia/oppia-ml/blob/develop/core/services/remote_access_services.py#L65">Oppia-ml</a>. This code should not break and end to end tests (synchronization between Oppia and Oppia-ml) must be carried out manually by the developer if the code is to be changed.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/classifier*.py
+   </td>
+   <td>Most of the functionality has automated tests but ensure that logic for fetching new jobs (used by Oppia-ml to poll for jobs) and logic for when to submit a new job should stay intact.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/classifier/
+   </td>
+   <td>This module is mostly covered by automated tests.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/classifier/
+   </td>
+   <td>These are domain files used by prediction services to store the prediction result. They are supported by automated tests.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/classifiers/
+   </td>
+   <td>These files (are most crucial and) use the trained model stored by Oppia-ml on Oppia.
+<ul>
+<li>Hence, data format used by these files should be in sync with those submitted by Oppia-ml.
+<li>If the code is changed then end to end tests must be carried out to ensure that Oppia and Oppia-ml are in synch.
+<li>In addition to end to end tests, developer must also verify that the prediction output by these services are same as one that would be generated by Oppia-ml, if it were to do prediction. This is important because Oppia-ml uses libraries for training whereas these files are hand coded and their accuracy should match to the one generated by libraries.
+</li>
+</ul>
+   </td>
+  </tr>
+</table>
+</section>
+<section id="dubeysandeep">
+<h2><strong>&#64;DubeySandeep</strong><a class="headerlink" href="#dubeysandeep" title="Permalink to this headline"></a></h2>
+<p><strong>Audio and Translation team.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/controllers/translator*.py
+   </td>
+   <td rowspan="2" >This comes under the audio translation project and needs an approval from the audio translation team:
+<li>General structure of translation workflow and it's coverage in the exploration.
+<p>
+<li>UI changes in the translation tab.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_editor/translation_tab/
+   </td>
+  </tr>
+</table>
+<p><strong>Exploration project.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/editor*.py
+   </td>
+   <td rowspan="7" >Ensure the structure of exploration is kept intact:
+<ul class="simple">
+<li><p>Backend/UI:</p>
+<ul>
+<li><p>The domain and controller levels are kept in a similar structure.</p></li>
+<li><p>The new changes add relevant unit tests.</p></li>
+<li><p>Migration structure is kept intact.</p></li>
+<li><p>The UI of the different tabs are kept intact and new changes adds relevent e2e tests.</p></li>
+</ul>
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/exp*.py
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/editor/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/exploration/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_editor/editor_tab/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_editor/history_tab/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_editor/settings_tab/
+   </td>
+  </tr>
+</table>
+<p><strong>Forms pages.</strong></p>
+<table>
+  <tr>
+   <td>/core/templates/components/forms/
+   </td>
+   <td>This contains schema-based editor and forms related to audio projects, we are not expecting to have a lot of changes around this files.
+   </td>
+  </tr>
+</table>
+<p><strong>Miscelleneous.</strong></p>
+<table>
+  <tr>
+   <td>/core/templates/domain/utilities/
+   </td>
+   <td>This mostly has Object factory related to the audio project. I'll be reviewing this as part of the audio project.
+   </td>
+  </tr>
+</table>
+</section>
+<section id="kevinlee12">
+<h2><strong>&#64;kevinlee12</strong><a class="headerlink" href="#kevinlee12" title="Permalink to this headline"></a></h2>
+<p><strong>Collection project.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/controllers/collection*.py
+   </td>
+   <td>Check that code is accompanied with the relevant tests; code aligns with coding patterns.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/collection*.py
+   </td>
+   <td>Check that code is accompanied with the relevant tests; code aligns with coding patterns.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/collection/
+   </td>
+   <td>No existing changes are expected.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/collection/
+   </td>
+   <td>Check that code is accompanied with the relevant tests; code aligns with coding patterns.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/collection_editor/
+   </td>
+   <td>Ensure that collection editors have a positive UX experience. Check that code aligns with existing code patterns.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/collection_player/
+   </td>
+   <td>Ensure that collection editors have a positive UX experience. Check that code aligns with existing code patterns.
+   </td>
+  </tr>
+</table>
+<p><strong>Interaction Project.</strong></p>
+<table>
+  <tr>
+   <td>/core/templates/domain/objects/
+   </td>
+   <td>Ensure that objects are related to existing interactions. In general, no changes are expected for existing interactions.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/interactions/
+   </td>
+   <td>Ensure that users have a positive UX experience. For new interactions, ensure that (informal) UX studies are done. For existing interactions, changes are expected to be minimal except for styling and bug fixes.
+   </td>
+  </tr>
+</table>
+<p><strong>Library Page.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/library*.py
+   </td>
+   <td>No changes are expected here.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/library/
+   </td>
+   <td>Check that UX for the users is positive. Changes should be compatible with mobile.
+   </td>
+  </tr>
+</table>
+<p><strong>User’s profile page.</strong></p>
+<table>
+  <tr>
+   <td>/core/templates/domain/user/
+   </td>
+   <td>Ensure that users have a positive UI/UX experience (ie. metrics are easily seen, etc).
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/profile/
+   </td>
+   <td>Ensure that users have a positive UI/UX experience (ie. metrics are easily seen, etc).
+   </td>
+  </tr>
+</table>
+</section>
+<section id="nithusha21">
+<h2><strong>&#64;nithusha21</strong><a class="headerlink" href="#nithusha21" title="Permalink to this headline"></a></h2>
+<p><strong>Dashboard frontend pages.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/controllers/creator_dashboard*.py
+   </td>
+   <td rowspan="3" >Review changes from the creator UX perspective. Make sure code is functionally correct, readable, and formatted correctly. Code must be tested using unit tests.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/creator_dashboard/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/creator_dashboard/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/learner_dashboard/
+   </td>
+   <td rowspan="2" >Review changes from the learner UX perspective. Make sure code is functionally correct, readable, and formatted correctly. Code must be tested using unit tests.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/learner_dashboard/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/email_dashboard/
+   </td>
+   <td>Changes to UI should be tested. Make sure the UX for users is good.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/notifications_dashboard/
+   </td>
+   <td>Changes to UI should be tested. Make sure the UX for users is good.
+   </td>
+  </tr>
+</table>
+<p><strong>Suggestion project</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/suggestion*.py
+   </td>
+   <td rowspan="5" >This comes under the review system project, and hence needs to be reviewed by Nithesh. Things to look out for:
+<ul>
+<li>Generalizability across various use cases.
+<li>Alignment with existing patterns in generalized review system code
+<li>Reduced code duplication, and simplified general code.
+<li>No new model additions are expected, the existing GeneralSuggestionModel is expected to be reused.
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/suggestion*.py
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/suggestion/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/suggestion/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/suggestion_editor/
+   </td>
+  </tr>
+</table>
+<p><strong>Feedback project.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/feedback*.py
+   </td>
+   <td rowspan="6" >This comes under the review system project and needs to be reviewed by Nithesh. Things to look out for:
+<ul>
+<li>Generalizability across various use cases.
+<li>Reduced code duplication, and simplified general code.
+<li>No changes to existing models is expected.
+<li>Changes to UI must include changes for the learner interface and creator interface (to give and view feedback).
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/feedback*.py
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/feedback/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/feedback_message/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/feedback_thread/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_editor/feedback_tab/
+   </td>
+  </tr>
+</table>
+<p><strong>Navigation bar project.</strong></p>
+<table>
+  <tr>
+   <td>/core/templates/domain/sidebar/
+   </td>
+   <td rowspan="4" >No significant changes are expected here. As this serves as the general navigation strategy on Oppia, this should be well tested, and user-friendly.
+<p>
+<p>The buttons on the various navigation bars should ideally not change, changes to these files would either touch functionality of existing buttons, or styling changes.</p>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/create_button/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/side_navigation_bar/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/top_navigation_bar/
+   </td>
+  </tr>
+</table>
+</section>
+<section id="qa-team">
+<h2><strong>QA Team.</strong><a class="headerlink" href="#qa-team" title="Permalink to this headline"></a></h2>
+<section id="u8nwxd">
+<h3><strong>&#64;U8NWXD</strong><a class="headerlink" href="#u8nwxd" title="Permalink to this headline"></a></h3>
+<table>
+  <tr>
+   <td>/core/tests/
+   </td>
+   <td>For e2e tests:
+<ul>
+<li>Make sure they run optimally. Any common setup needs to be written in BeforeAll blocks.
+<li>The test follows a user's path for using the feature.
+<li>Enough assertions (and meaningful ones) are made, which ensures that the state the test has reached matches the expected state.
+<li>There should be no manipulation using the code. The complete code should test a feature using just the UI.
+<li>The tests should be granular, and test a specific functionality. E.g, add a hint, add a translation, etc.
+<li>Tests must cover non-happy paths (error-prone paths) if applicable. Like, what happens when the uploaded audio is too big?
+</ul>
+<p>
+For protractor_utils:
+<ul>
+<li>Make sure style guidelines and naming guidelines are followed.
+<li>All protractor classes must start with protractor-test-.
+</ul>
+<p>
+For protractor_mobile, the tests should run successfully on Browserstack.
+<p>
+<p>Also make sure your PR meets all the points in the <a class="reference external" href="https://github.com/oppia/oppia/wiki/End-to-End-Tests#codeowner-checks">codeowners checklist on the wiki</a>.</p>
+</li>
+</ul>
+</li>
+</ul>
+   </td>
+  </tr>
+</table>
+</section>
+</section>
+<section id="apb7">
+<h2><strong>&#64;apb7</strong><a class="headerlink" href="#apb7" title="Permalink to this headline"></a></h2>
+<p><strong>Dev Workflow team</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/scripts/
+   </td>
+   <td>For pre_commit_linter.py, pylint_extensions.py and pylint_extensions_test.py, the added lint checks should be optimized and placed at the best location possible within the script.
+<p>
+For other scripts, in general, the changes done should be optimum and do not affect the existing infrastructure negatively.
+   </td>
+  </tr>
+</table>
+</section>
+<section id="aks681">
+<h2><strong>&#64;aks681</strong><a class="headerlink" href="#aks681" title="Permalink to this headline"></a></h2>
+<p><strong>Exploration project.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/exploration/
+   </td>
+   <td>Any changes here should have corresponding changes in exp_domain and everywhere else where explorations are used.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/state/
+   </td>
+   <td rowspan="2" >
+<ul>
+<li>Changes here should not break explorations or questions. Can be verified in their respective editors.
+<li>Corresponding tests should be added.
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/state_card/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_editor/preview_tab/
+   </td>
+   <td rowspan="4" >
+<ul>
+<li>Make sure the code changes here are functionally correct with appropriate tests and that the UI changes here are intuitive.
+<li>Any additional fields that are being added to the models should have the changes reflected in the respective domain and service files.
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_player/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/state_editor/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/state/
+   </td>
+  </tr>
+</table>
+<p><strong>Question project.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/question*.py
+   </td>
+   <td rowspan="3" >Any backend changes here should be functionally correct, have the corresponding tests and shouldn't break any existing functionality.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/question*.py
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/question/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/question/
+   </td>
+   <td rowspan="3" >Any changes to the question editor should be functionally correct and there should be extra care taken to not break the topic or skill editor as both of them use these directives.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/question_editor/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/questions_list/
+   </td>
+  </tr>
+</table>
+<p><strong>Skill project.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/skill*.py
+   </td>
+   <td rowspan="3" >Any backend changes here should be functionally correct, have the corresponding tests and shouldn't break any existing functionality.
+<p>
+The corresponding class  in skill_domain and the functions related to it in skill_services should be updated for any new field added to it.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/skill*.py
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/skill/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/skill/
+   </td>
+   <td rowspan="2" >Same as above, any new field added to skill should be reflected in one of the ObjectFactories.
+<p>
+UI changes should be intuitive and shouldn't break existing functionality.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/skill_editor/
+   </td>
+  </tr>
+</table>
+<p><strong>Story project.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/story*.py
+   </td>
+   <td rowspan="3" >Any backend changes here should be functionally correct, have the corresponding tests and shouldn't break any existing functionality.
+<p>
+The corresponding class in story_domain and the functions related to it in story_services should be updated for any new field added to it.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/story*.py
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/story/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/story/
+   </td>
+   <td rowspan="2" >Same as above, any new field added to story should be reflected in one of the ObjectFactories.
+<p>
+UI changes should be intuitive and shouldn't break existing functionality.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/story_editor/
+   </td>
+  </tr>
+</table>
+<p><strong>Topic project.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/topic_*.py
+   </td>
+   <td rowspan="3" >Any backend changes here should be functionally correct, have the corresponding tests and shouldn't break any existing functionality.
+<p>
+The corresponding class in topic_domain and the functions related to it in topic_services should be updated for any new field added to it.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/domain/topic*.py
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/topic/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/topic/
+   </td>
+   <td rowspan="4" >Same as above, any new field added to topic should be reflected in one of the ObjectFactories.
+<p>
+UI changes should be intuitive and shouldn't break existing functionality.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/topic_viewer
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/topic_editor/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/topic_viewer/
+   </td>
+  </tr>
+</table>
+<p><strong>Topics and skills dashboard project.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/topics_and_skills_dashboard.py
+   </td>
+   <td>Changes here should have their corresponding tests.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/topics_and_skills_dashboard/
+   </td>
+   <td rowspan="2" >There aren't many major changes expected here, but any that are there shouldn't break existing functionality and should be intuitive to the user.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/topics_and_skills_dashboard/
+   </td>
+  </tr>
+</table>
+</section>
+<section id="ankita240796">
+<h2><strong>&#64;ankita240796</strong><a class="headerlink" href="#ankita240796" title="Permalink to this headline"></a></h2>
+<p><strong>Global components.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/alerts/
+   </td>
+   <td rowspan="10" >
+<ul>
+<li>All variables are declared before use
+<li>No multiple declarations of same variable are present
+<li>Subsequent variable usage has the same type
+<li>No new properties are added to a declared variable
+<li>Loop variables are declared
+<li>If scope is used in link function, proper typings are added to custom-scope-defs.d.ts
+<li>Each file contains a single component (we have a lint check for this too)
+<li>Existing functionality does not break
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/attribution_guide/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/background/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/embed_modal/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/loading/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/profile_link/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/promo/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/share/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/social_buttons/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/summary_tile/
+   </td>
+  </tr>
+</table>
+<p><strong>Global stylesheet.</strong></p>
+<table>
+  <tr>
+   <td>/core/templates/css/oppia.css
+   </td>
+   <td>Not much to check apart from that the changes don't create any issues in the existing UI. Other css linter stuff is followed. \
+Proper comments are present if certain values are hardcoded.
+   </td>
+  </tr>
+</table>
+</section>
+<section id="seanlip">
+<h2><strong>&#64;seanlip</strong><a class="headerlink" href="#seanlip" title="Permalink to this headline"></a></h2>
+<p><strong>Interaction project.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/expressions/
+   </td>
+   <td>Familiar with expressions based on earlier work on parameters. This part of the code is largely unused currently so I expect to see no changes.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/dependencies/
+   </td>
+   <td>Want to make sure I understand what new dependencies we are taking on so that I can check that we are properly licensing them etc.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/objects/
+   </td>
+   <td>Want to ensure that we don't get an overpopulation of objects.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/value_generators/
+   </td>
+   <td>This should be unused; want to make sure that it remains unused.
+   </td>
+  </tr>
+</table>
+</section>
+<section id="lesson-analytics-team">
+<h2><strong>Lesson Analytics Team.</strong><a class="headerlink" href="#lesson-analytics-team" title="Permalink to this headline"></a></h2>
+<section id="brianrodri">
+<h3><strong>+&#64;brianrodri</strong><a class="headerlink" href="#brianrodri" title="Permalink to this headline"></a></h3>
+<table>
+  <tr>
+   <td>/core/domain/stats*.py
+   </td>
+   <td>As owner of the Statistics tab, Brian should review all code that goes in here.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/storage/statistics/
+   </td>
+   <td>As owner of the Statistics tab, Brian should review all code that goes in here.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/domain/statistics/
+   </td>
+   <td>As owner of the Statistics tab, Brian should review all code that goes in here.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_editor/improvements_tab/
+   </td>
+   <td>As owner of all aspects of the Improvements tab, Brian should review all code that goes in here.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/exploration_editor/statistics_tab/
+   </td>
+   <td>As owner of the Statistics tab, Brian should review all code that goes in here.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/actions/
+   </td>
+   <td>This is a part of Playthroughs functionality, which Brian owns.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/answer_summarizers/
+   </td>
+   <td>This is a part of Statistics display functionality, which Brian owns.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/issues/
+   </td>
+   <td>This is a part of Playthroughs functionality, which Brian owns.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/visualizations/
+   </td>
+   <td>This is a part of Statistics display functionality, which Brian owns.
+   </td>
+  </tr>
+</table>
+<p><strong>Infrastructure</strong></p>
+<table>
+  <tr>
+   <td>/core/storage/
+   </td>
+   <td>Ensure that storage models are not storing data that we do not wish to collect in the first place.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/platform/
+   </td>
+   <td>In general, changes are not expected at this layer, so I want to review this to ensure that all changes made here are actually necessary.
+   </td>
+  </tr>
+</table>
+<p><strong>Miscellaneous</strong></p>
+<table>
+  <tr>
+   <td>/core/domain/html*.py
+   </td>
+   <td>These files typically cover HTML sanitization which needs to be handled carefully from a security perspective.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/about/
+   </td>
+   <td>This page is how Oppia presents itself to the world, so I would like to keep abreast of any changes that are made to the text.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/privacy/
+   </td>
+   <td>Any changes to this are sensitive and should be approved by a data privacy lead (Ben or Sean) before being merged.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/terms/
+   </td>
+   <td>Any changes to this are sensitive and should be approved by a data privacy lead (Ben or Sean) before being merged.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/tests/
+   </td>
+   <td>Miscellaneous test files; in general, no changes are expected here.
+   </td>
+  </tr>
+  <tr>
+   <td>/export/
+   </td>
+   <td>In general, no changes are expected here.
+   </td>
+  </tr>
+</table>
+<p><strong>Restricted pages.</strong></p>
+<table>
+  <tr>
+   <td>/core/controllers/admin*.py
+   </td>
+   <td>In general, no changes are expected here.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/admin/
+   </td>
+   <td>In general, no changes are expected here.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/moderator/
+   </td>
+   <td>In general, no changes are expected here.
+   </td>
+  </tr>
+  <tr>
+   <td>/.github/CODEOWNERS
+   </td>
+   <td>This file defines the code-owner responsibilities for the entire Oppia codebase, and I would like to make sure that each file/folder is assigned to someone who has enough knowledge/understanding of the code in it so that they can review it well.
+   </td>
+  </tr>
+</table>
+</section>
+</section>
+<section id="bansalnitish">
+<h2><strong>&#64;bansalnitish</strong><a class="headerlink" href="#bansalnitish" title="Permalink to this headline"></a></h2>
+<p><strong>Rich text editor team.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/components/CkEditorRteDirective.js
+   </td>
+   <td>It's very important to check that the editor works perfectly. A lot of attention should be paid to the UI.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/rich_text_components/
+   </td>
+   <td>It's very important to check that the editor works perfectly. A lot of attention should be paid to the UI.
+   </td>
+  </tr>
+  <tr>
+   <td>/extensions/ckeditor_plugins/
+   </td>
+   <td>It's very important to check that the editor works perfectly. A lot of attention should be paid to the UI.
+<p>
+No unnecessary plugin should be added.
+   </td>
+  </tr>
+</table>
+</section>
+<section id="vojtechjelinek-jamesjay4199">
+<h2><strong>&#64;vojtechjelinek + &#64;Jamesjay4199</strong><a class="headerlink" href="#vojtechjelinek-jamesjay4199" title="Permalink to this headline"></a></h2>
+<p><strong>Simple pages.</strong></p>
+<table>
+  <tr>
+   <td><strong>Files</strong>
+   </td>
+   <td><strong>Checks carried out</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/contact-page/
+   </td>
+   <td rowspan="11" >
+Check that UX for the users is positive. Changes should be compatible with mobile.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/donate-page/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/error-pages/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/get-started-page/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/landing-page/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/maintenance-page/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/preferences-page/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/signup-page/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/splash-page/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/teach-page/
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/thanks-page/
+   </td>
+  </tr>
+</table>
+<p><strong>Speed Improvement team.</strong></p>
+<p><strong>Generally:</strong> Ensure that the modifications to these files don’t affect Oppia performance and speed.</p>
+<table>
+  <tr>
+   <td>/app.yaml
+   </td>
+   <td>Ensure that:
+<ul>
+<li>cache timeouts are not changed
+<li>new handlers have correct cache timeouts values
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>/manifest.json (+@seanlip)
+   </td>
+   <td>(seanlip) Ensure that no new libraries are added unnecessarily, and that third-party libraries have a proper license.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/footer_js_libs.html
+   </td>
+   <td>This file shouldn't be modified at all for now.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/header_css_libs.html
+   </td>
+   <td>This file shouldn't be modified at all for now.
+   </td>
+  </tr>
+  <tr>
+   <td>/core/templates/pages/header_js_libs.html
+   </td>
+   <td>This file shouldn't be modified at all for now.
+   </td>
+  </tr>
+  <tr>
+   <td>webpack.common.config.ts
+   </td>
+   <td rowspan="3">
+Changes that are common for dev and prod should be done in webpack.common.config.ts.
+All the changes should account for the speed of the webpack build.
+   </td>
+  </tr>
+  <tr>
+   <td>webpack.dev.config.ts
+   </td>
+  </tr>
+  <tr>
+   <td>webpack.prod.config.ts
+   </td>
+  </tr>
+</table>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="temporary-codeowner-transfer-process">
+<h1>Temporary codeowner transfer process<a class="headerlink" href="#temporary-codeowner-transfer-process" title="Permalink to this headline"></a></h1>
+<p>If you will be unavailable for more than 24 hours, please transfer your ownership with a delegate, follow the process detailed below:</p>
+<ol class="simple">
+<li><p>Create an issue using the “Temporary codeowner transfer” template on Github. [Note down the ISSUE_NUMBER.]</p></li>
+<li><p>Do the changes in CODOWNER file and add a top level comment: <code class="docutils literal notranslate"><span class="pre">TODO(#ISSUE_NUMBER):</span> <span class="pre">Revert</span> <span class="pre">ownership</span> <span class="pre">to</span> <span class="pre">&#64;USERNAME</span> <span class="pre">after</span> <span class="pre">YYYY-MM-DD.</span></code></p></li>
+<li><p>Create a PR with the title: <code class="docutils literal notranslate"><span class="pre">Fix</span> <span class="pre">part</span> <span class="pre">of</span> <span class="pre">#&lt;ISSUE_NUMBER&gt;:</span> <span class="pre">Temporary</span> <span class="pre">codeowner</span> <span class="pre">transfer</span></code></p></li>
+<li><p>Assign the contributor whom you have transferred the responsibility as reviewer for the PR. [Make sure to get this PR merged before you leave.]</p></li>
+<li><p>[Once you are back] Undo the old changes in CODEOWNER file and remove the TODO comment.</p></li>
+<li><p>Create a revert PR of the old-codeowner transfer PR with title Fix #&lt;ISSUE_NUMBER&gt;: Revert temporary codeowner transfer.</p></li>
+<li><p>Assign the contributor whom you had transferred the responsibility as a reviewer for the PR.</p></li>
+<li><p>Get the revert PR merged!</p></li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Custom-ESLint-checks.html" class="btn btn-neutral float-left" title="Custom ESLint checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Privacy-aware-programming.html" class="btn btn-neutral float-right" title="Privacy aware programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

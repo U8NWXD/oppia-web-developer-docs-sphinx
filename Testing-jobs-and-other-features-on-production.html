@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing jobs and other features on production &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release testing quickstart guide" href="Release-testing-quickstart-guide.html" />
+    <link rel="prev" title="Schedule" href="Release-schedule-and-other-information.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="release.html">Release process</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html">Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#instructions-for-deciding-whether-a-bug-is-blocking">Instructions for deciding whether a bug is blocking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#instructions-for-fixing-release-bugs">Instructions for fixing release bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#responsibilities-of-the-release-coordinator">Responsibilities of the release coordinator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#responsibilities-of-the-qa-coordinator">Responsibilities of the QA coordinator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#responsibilities-of-the-release-testing-team">Responsibilities of the release testing team</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#team-members">Team members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-schedule-and-other-information.html#release-coordinators-and-qa-coordinators-for-upcoming-releases">Release coordinators and QA coordinators for upcoming releases</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Testing jobs and other features on production</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instructions">Instructions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#writing-your-job">Writing your job</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submitting-a-pr-with-a-new-job-or-feature-that-requires-third-party-api">Submitting a PR with a new job or feature that requires third-party API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-to-do-if-your-job-or-feature-that-requires-third-party-api-is-not-approved-for-the-targeted-release">What to do if your job or feature that requires third-party API is not approved for the targeted release?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Release-testing-quickstart-guide.html">Release testing quickstart guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="release.html">Release process</a> &raquo;</li>
+      <li>Testing jobs and other features on production</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Testing-jobs-and-other-features-on-production.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="testing-jobs-and-other-features-on-production">
+<h1>Testing jobs and other features on production<a class="headerlink" href="#testing-jobs-and-other-features-on-production" title="Permalink to this headline"></a></h1>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
+<p>Before a job or feature that cannot be fully tested locally can be run and deployed in production, it must first be tested on the Oppia backup server. Examples of features that require backup server testing are features that add or modify code that requires some third-party API, like Cloud Tasks, Cloud Storage, or Cloud Translate.</p>
+<p>If your job or feature is not essential for the release and has not been fully tested by the release cut, then it is not going into the release. “Fully tested” means:</p>
+<ul class="simple">
+<li><p>The job or feature should run without failures on the Oppia backup server.</p></li>
+<li><p>The job or feature produces the expected output.</p></li>
+<li><p>The job or feature has the expected outcome (this must be verified by e.g. user-facing changes, or introspection of the datastore, or a validation job, or an output check, etc.).</p></li>
+<li><p>The job or feature should be explicitly approved by server jobs admin (currently &#64;seanlip and &#64;vojtechjelinek).</p></li>
+</ul>
+<p>Also, in case your job is a new migration job (not any already existing migrations), there has to be an audit job accompanying it to verify that the data that you are migrating is valid in the server. <strong>The audit job will have to be “Fully tested” before testing on the migration job can start.</strong></p>
+<p>In case there is invalid data observed, either your migration job should fix it programmatically, or the corresponding data has to be manually fixed before the migration job can be run. This is valid for both testing in the backup server and running in production.</p>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline"></a></h2>
+<section id="writing-your-job">
+<h3>Writing your job<a class="headerlink" href="#writing-your-job" title="Permalink to this headline"></a></h3>
+<p>All jobs must adhere to the following requirements before they can be run on the test server:</p>
+<ul class="simple">
+<li><p>In the “success” case, the job should yield aggregate output (like the total number of files migrated).</p></li>
+<li><p>In all possible “failure” cases, the job should yield debug/error output (like the ID of an exploration that couldn’t be migrated and the reason why).</p></li>
+<li><p>There must be automated backend tests in the codebase for both the success and failure cases.</p></li>
+<li><p>There should be a Google Doc with clear instructions on what the release coordinator needs to do, including:</p>
+<ul>
+<li><p>Additional steps that need to be taken in order to verify whether the job has succeeded or failed (such as manual testing, runs of validation jobs, inspection of datastore, checks of error logs, checks of job output, etc.)</p></li>
+<li><p>The expected job output for both the pass/fail cases</p></li>
+<li><p>What the release coordinator should do with any output produced by the job</p></li>
+<li><p>What the release coordinator should do if the job run fails midway, both in terms of how to recover from the run (e.g. by running a job to delete all instances of a newly-created model class, etc.) and how to debug the job (e.g. do other jobs need to be run to provide additional information, is there error output that can be manually investigated, etc.)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="submitting-a-pr-with-a-new-job-or-feature-that-requires-third-party-api">
+<h3>Submitting a PR with a new job or feature that requires third-party API<a class="headerlink" href="#submitting-a-pr-with-a-new-job-or-feature-that-requires-third-party-api" title="Permalink to this headline"></a></h3>
+<p><strong>If a PR introduces a new job(s) or feature(s) that requires third-party API, it can be merged only after it is tested on the backup server.</strong> The author of the PR should submit a request using <a class="reference external" href="https://goo.gl/forms/XIj00RJ2h5L55XzU2">this form</a> as soon as the main reviewers seem happy with the job that it implements. (This doesn’t mean that you need LGTMs from everyone, but the PR should be at the stage where only trivial, non-job-related comments are remaining.) Please still submit just a single request if multiple jobs need to be run in succession. The form responses should go to the server jobs admin (currently <strong>&#64;vojtechjelinek</strong>) and the admin should run the job(s) and respond to the contributor within 48 hours. The server jobs admin should send updates after running the job(s) to the job author and <a class="reference external" href="mailto:oppia-release-team&#37;&#52;&#48;googlegroups&#46;com">oppia release team</a>. If the job(s) runs successfully, the admin should approve the job(s) for release in the corresponding <a class="reference external" href="https://docs.google.com/spreadsheets/d/1Wegd0rZhVOm3Q3VCIw0xMbLC7IWtRyrEahiPn61Fhoo/edit#gid=948463314&amp;range=S:S">spreadsheet row</a> as well as merge the PR which introduces the job.</p>
+<p>Before submitting a testing request, please ensure that the job has already been tested manually on your local machine, and that all CI checks are passing in your PR on GitHub. For an existing job, make sure that you test the job locally and specify clearly, in the form, why you want to run the job.</p>
+<p>If you are hoping to run your job in a particular release, please plan your work schedule appropriately so that you get the testing completed in time for that release. Jobs must have completed a successful run on the backup server before the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Release-Schedule">date of the relevant release cutoff</a>, which is typically the first Saturday of the corresponding month.</p>
+<p>In general, we advise doing testing on your own App Engine instance beforehand. (App Engine has a <a class="reference external" href="https://cloud.google.com/free/docs/always-free-usage-limits#gae_name">free tier</a> that you can use for this.)</p>
+<p>You can check the status of your job in <a class="reference external" href="https://docs.google.com/spreadsheets/d/1Wegd0rZhVOm3Q3VCIw0xMbLC7IWtRyrEahiPn61Fhoo/edit">this spreadsheet</a>. Only release coordinators and QA leads will have edit access. If you see that something is wrong, please leave a comment on the spreadsheet, or send an email to oppia-release-team&#64;googlegroups.com .</p>
+<p>If you have any questions about the above or if you do not get any update within 48 hours, please send an email to oppia-release-team&#64;googlegroups.com .</p>
+</section>
+<section id="what-to-do-if-your-job-or-feature-that-requires-third-party-api-is-not-approved-for-the-targeted-release">
+<h3>What to do if your job or feature that requires third-party API is not approved for the targeted release?<a class="headerlink" href="#what-to-do-if-your-job-or-feature-that-requires-third-party-api-is-not-approved-for-the-targeted-release" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>If your job or feature that requires third-party API is not approved for a targeted release, you will get an email from the server jobs admin as well as a bug will be filed against you.</p></li>
+<li><p>You should fix the issue reported in the bug and create a new request for running the job or feature that requires third-party API in the next release in <a class="reference external" href="https://goo.gl/forms/XIj00RJ2h5L55XzU2">this form</a>. Make sure to link the PRs which fix the issue. (Note that, after previously filling out the form, you would have received an email with your form submissions; you might find this email useful as a reference.)</p></li>
+<li><p>If the job or feature that requires third-party API is urgent and needs to be run in the targeted release, provide an explanation in the bug filed and if it is accepted by the server jobs admin and release co-ordinator, create a new PR to fix the issues and ask the release co-ordinator to cherrypick it into the release.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Release-schedule-and-other-information.html" class="btn btn-neutral float-left" title="Schedule" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Release-testing-quickstart-guide.html" class="btn btn-neutral float-right" title="Release testing quickstart guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

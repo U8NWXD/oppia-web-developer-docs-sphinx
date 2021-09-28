@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troubleshooting &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Troubleshooting.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline"></a></h1>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline"></a></h2>
+<p>Here are some general troubleshooting tips for Oppia. The platform specific tips are <a class="reference external" href="Troubleshooting#linux.md">Linux</a>, <a class="reference external" href="Troubleshooting#windows.md">Windows</a>, and <a class="reference external" href="Troubleshooting#mac-os.md">Mac OS</a>.</p>
+<section id="no-module-named-builtins">
+<h3><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">builtins</span></code><a class="headerlink" href="#no-module-named-builtins" title="Permalink to this headline"></a></h3>
+<p>If after running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code> you get the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">174</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_module_as_main</span>
+   <span class="s2">&quot;__main__&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">pkg_name</span><span class="p">)</span>
+<span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">72</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_code</span>
+   <span class="n">exec</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">run_globals</span>
+<span class="n">File</span> <span class="s2">&quot;/home/user/oppia/oppia/scripts/start.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">30</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="kn">import</span> <span class="nn">python_utils</span>
+<span class="n">File</span> <span class="s2">&quot;python_utils.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">36</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="kn">import</span> <span class="nn">builtins</span>  <span class="c1"># isort:skip</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="n">builtins</span>
+</pre></div>
+</div>
+<p>Then run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">future</span></code>.</p>
+</section>
+<section id="no-java">
+<h3>No Java<a class="headerlink" href="#no-java" title="Permalink to this headline"></a></h3>
+<p>If running <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">java</span></code> on the terminal does not return any output, you do not have java installed. You can install it by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">openjdk-7-jre-headless</span></code>. Note that this command might vary for your local machine.</p>
+</section>
+<section id="frontend-tests-stuck">
+<h3>Frontend Tests Stuck<a class="headerlink" href="#frontend-tests-stuck" title="Permalink to this headline"></a></h3>
+<p>If you’re unable to run frontend tests while pushing your changes due to the script getting stuck, please go to “node_modules” directory (located at the same level as that of the root directory) and delete the “protractor” directory present inside that folder.</p>
+</section>
+<section id="selenium-server-not-killed-by-ctrl-c">
+<h3>Selenium Server Not Killed by Ctrl-C<a class="headerlink" href="#selenium-server-not-killed-by-ctrl-c" title="Permalink to this headline"></a></h3>
+<p>If the selenium server is not killed on pressing Ctrl-C and you get an error something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">LocalError</span><span class="p">:</span> <span class="n">Either</span> <span class="n">another</span> <span class="n">browserstack</span> <span class="n">local</span> <span class="n">client</span> <span class="ow">is</span> <span class="n">running</span> <span class="n">on</span> <span class="n">your</span> <span class="n">machine</span> <span class="ow">or</span> <span class="n">some</span> <span class="n">server</span> <span class="ow">is</span>
+  <span class="n">listening</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">45691</span>
+</pre></div>
+</div>
+<p>You can kill the process manually by <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">lsof</span> <span class="pre">-t</span> <span class="pre">-i:45691</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">kill</span> <span class="pre">$(sudo</span> <span class="pre">lsof</span> <span class="pre">-t</span> <span class="pre">-i:45691)</span></code>.
+These commands can be used anywhere to kill a running process on any port by using the appropriate port number.</p>
+</section>
+<section id="error">
+<h3>403 Error<a class="headerlink" href="#error" title="Permalink to this headline"></a></h3>
+<p>If you get 403 error while serving Oppia locally, this can be because you are working behind a proxy.</p>
+<p>go to <code class="docutils literal notranslate"><span class="pre">oppia_tools/google-cloud-sdk-XXX.X.X/google-cloud-sdk/platform/google_appengine/google/appengine/tools/</span></code> and open the <code class="docutils literal notranslate"><span class="pre">appengine_rpc.py</span></code> file. Comment the following line in it. <code class="docutils literal notranslate"><span class="pre">opener.add_handler(ProxyHandler())</span></code>. Run the server again.</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/16698621/google-app-engine-error-httperror/17522082">Resource for outdated version of the App Engine.</a></p>
+</section>
+<section id="merge-msg-newer-than-swap-file">
+<h3>MERGE_MSG Newer than Swap File<a class="headerlink" href="#merge-msg-newer-than-swap-file" title="Permalink to this headline"></a></h3>
+<p>If you’re seeing issues when trying to merge from upstream/develop that say something like <code class="docutils literal notranslate"><span class="pre">While</span> <span class="pre">opening</span> <span class="pre">file</span> <span class="pre">“/Users/….../oppia/.git/MERGE_MSG”</span> <span class="pre">dated:</span> <span class="pre">…..</span> <span class="pre">NEWER</span> <span class="pre">than</span> <span class="pre">swap</span> <span class="pre">file!</span></code> then try following the given instructions in the error message (more info <a class="reference external" href="https://stackoverflow.com/questions/13361729/found-a-swap-file-by-the-name/13361874">here</a>). If that doesn’t work, your forked repo may be out of sync with Oppia’s. Make sure your develop branch does NOT have any changes or commits that aren’t present on the original Oppia repo.</p>
+</section>
+<section id="warnings-from-start-py">
+<h3>Warnings from <code class="docutils literal notranslate"><span class="pre">start.py</span></code><a class="headerlink" href="#warnings-from-start-py" title="Permalink to this headline"></a></h3>
+<p><strong>Note:</strong> There may be a few warnings that appear after running <code class="docutils literal notranslate"><span class="pre">start.py</span></code>. Don’t worry about these so long as you see the Oppia home page once you go to http://localhost:8181. The script should continue to run so long as the development server is on (you’ll see a lot of lines that start with “INFO”) and you’re able to navigate to the page.</p>
+</section>
+<section id="no-such-file-or-directory-google-cloud-sdk">
+<h3>No Such File or Directory: Google Cloud SDK<a class="headerlink" href="#no-such-file-or-directory-google-cloud-sdk" title="Permalink to this headline"></a></h3>
+<p>If you see an error that says something along the lines of <code class="docutils literal notranslate"><span class="pre">OSError:</span> <span class="pre">[Errno</span> <span class="pre">2]</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory:</span> <span class="pre">'/.../opensource/oppia_tools/google-cloud-sdk-XXX.X.X/google-cloud-sdk/platform/google_appengine/google/appengine'</span></code> while running <code class="docutils literal notranslate"><span class="pre">scripts.start</span></code> - then try deleting the <code class="docutils literal notranslate"><span class="pre">../oppia_tools</span></code> directory and then running <code class="docutils literal notranslate"><span class="pre">scripts.start</span></code> again.</p>
+</section>
+<section id="no-module-named-sqlite3">
+<h3>No module named ‘_sqlite3’<a class="headerlink" href="#no-module-named-sqlite3" title="Permalink to this headline"></a></h3>
+<p>If you see an error that says something along the lines of <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">gcloud</span> <span class="pre">failed</span> <span class="pre">to</span> <span class="pre">load:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">_sqlite3</span></code> while running <code class="docutils literal notranslate"><span class="pre">scripts.start</span></code> - then follow the steps below:</p>
+<ol class="simple">
+<li><p>Uninstall Python 3.7.10 from pyenv with the command: <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">uninstall</span> <span class="pre">3.7.10</span></code></p></li>
+<li><p>Install the packages as per the <a class="reference external" href="https://github.com/pyenv/pyenv/wiki#suggested-build-environment">wiki</a> to have the suggested build environment.</p></li>
+<li><p>Install Python 3.7.10 from pyenv with the command: <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">install</span> <span class="pre">3.7.10</span></code> and make sure that there are no warnings or errors in the output of the command.</p></li>
+</ol>
+</section>
+<section id="problems-cloning-from-github">
+<h3>Problems Cloning from GitHub<a class="headerlink" href="#problems-cloning-from-github" title="Permalink to this headline"></a></h3>
+<p>If you have issues cloning the GitHub repository, make sure of the following:</p>
+<ol class="simple">
+<li><p>That you’ve already <a class="reference external" href="https://docs.github.com/en/free-pro-team&#64;latest/github/getting-started-with-github/fork-a-repo">forked</a> the Oppia repository</p></li>
+<li><p>That you’re making sure to <a class="reference external" href="https://docs.github.com/en/free-pro-team&#64;latest/github/getting-started-with-github/fork-a-repo#keep-your-fork-synced">clone</a> from your own fork (making sure to replace <code class="docutils literal notranslate"><span class="pre">YOUR_USERNAME</span></code> in <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/YOUR-USERNAME/oppia.git</span></code> with your GitHub username)</p></li>
+<li><p>If you have two-factor authentication (which you should), that you’re typing in your <a class="reference external" href="https://webkul.com/blog/github-push-with-two-factor-authentication/">access token</a> as your password when prompted (rather than your GitHub password).</p></li>
+</ol>
+</section>
+<section id="certificate-verify-failed">
+<h3>Certificate Verify Failed<a class="headerlink" href="#certificate-verify-failed" title="Permalink to this headline"></a></h3>
+<p>If you see an error that says something like, <code class="docutils literal notranslate"><span class="pre">IOError:</span> <span class="pre">[Errno</span> <span class="pre">socket</span> <span class="pre">error]</span> <span class="pre">[SSL:</span> <span class="pre">CERTIFICATE_VERIFY_FAILED]</span> <span class="pre">certificate</span> <span class="pre">verify</span> <span class="pre">failed</span></code> then try applying the fix detailed in <a class="reference external" href="https://stackoverflow.com/questions/49183801/ssl-certificate-verify-failed-with-urllib">this StackOverflow question</a>.</p>
+</section>
+<section id="no-module-named-scripts">
+<h3>No Module Named Scripts<a class="headerlink" href="#no-module-named-scripts" title="Permalink to this headline"></a></h3>
+<p>If you see an error that contains <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">scripts</span></code> when trying to run any of our scripts, then make sure that you’re currently in the correct folder (i.e. the directory called <code class="docutils literal notranslate"><span class="pre">oppia</span></code> that directly contains the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> directory). Note that, in general, all scripts should be run from oppia/ (and not from scripts/ or other directories). You can find more information about how to navigate folders using the command line <a class="reference external" href="https://www.macworld.com/article/2042378/master-the-command-line-navigating-files-and-folders.html">here</a>.</p>
+</section>
+<section id="invalid-syntax">
+<h3>Invalid Syntax<a class="headerlink" href="#invalid-syntax" title="Permalink to this headline"></a></h3>
+<p>If you repeatedly get errors with <code class="docutils literal notranslate"><span class="pre">SyntaxError:</span> <span class="pre">invalid</span> <span class="pre">syntax</span></code> for a module or class that you didn’t edit and/or is part of a third party library, then try doing either of the following…</p>
+<ul class="simple">
+<li><p>Be sure that libraries were installed using Python 3. If not, uninstall all Python 2 environments and reinstall everything in Python 3.</p></li>
+<li><p>Delete the <code class="docutils literal notranslate"><span class="pre">oppia_tools</span></code> directory and rerun the script</p></li>
+</ul>
+</section>
+<section id="java-read-past-eof">
+<h3>Java Read Past EOF<a class="headerlink" href="#java-read-past-eof" title="Permalink to this headline"></a></h3>
+<p>If you run into the following error when running <code class="docutils literal notranslate"><span class="pre">start.py</span></code>, you can follow the answer <a class="reference external" href="https://stackoverflow.com/a/55885634">here</a>, which says to run <code class="docutils literal notranslate"><span class="pre">../oppia_tools/elasticsearch-7.10.1/bin/elasticsearch-keystore</span> <span class="pre">create</span></code> (run it from opensource/oppia/). When prompted, confirm to manually overwrite the key already created.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">Exception</span> <span class="ow">in</span> <span class="n">thread</span> <span class="s2">&quot;main&quot;</span> <span class="n">java</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">EOFException</span><span class="p">:</span> <span class="n">read</span> <span class="n">past</span> <span class="n">EOF</span><span class="p">:</span> <span class="n">SimpleFSIndexInput</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/home/[user]/opensource/oppia_tools/elasticsearch-7.10.1/config/elasticsearch.keystore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="low-ram">
+<h3>Low RAM<a class="headerlink" href="#low-ram" title="Permalink to this headline"></a></h3>
+<p>Oppia does not work well on machines with little available memory. Contributors have reported problems running on machines with less than 4 GB of RAM that were resolved when switching to a machine with 8 GB of RAM. You may also experience problems if your computer has memory-intensive tasks running. See <a class="reference external" href="https://github.com/oppia/oppia/issues/12098">#12098</a> for an example of how this problem can manifest.</p>
+<p>For possible workarounds, see <a class="reference external" href="Troubleshooting#failed-to-start-server-on-port-xxxx.md">Failed to Start Server on Port XXXX</a>.</p>
+</section>
+<section id="failed-to-start-server-on-port-xxxx">
+<h3>Failed to Start Server on Port XXXX<a class="headerlink" href="#failed-to-start-server-on-port-xxxx" title="Permalink to this headline"></a></h3>
+<p>If you see <code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">start</span> <span class="pre">server</span> <span class="pre">on</span> <span class="pre">port</span> <span class="pre">XXXX,</span> <span class="pre">exiting</span> <span class="pre">...</span></code> here are some possible solutions:</p>
+<ul>
+<li><p>Sometimes this happens because the service is taking a long time to start running on that port. If the service takes longer than our timeout, you’ll see this message. To fix this, you can increase the timeout in <code class="docutils literal notranslate"><span class="pre">scripts/common.py</span></code> by increasing the value of <code class="docutils literal notranslate"><span class="pre">MAX_WAIT_TIME_FOR_PORT_TO_OPEN_SECS</span></code>. This can also happen when your machine is running more slowly than usual. Quitting resource-intensive applications or rebooting may help.</p></li>
+<li><p>Sometimes this happens because the server earlier failed to shutdown correctly. You may need to kill remaining processes. You can search for processes containing <code class="docutils literal notranslate"><span class="pre">oppia</span></code>, and <code class="docutils literal notranslate"><span class="pre">elasticsearch</span></code> like this: <code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">-ax</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">&lt;search</span> <span class="pre">term&gt;</span></code>. This will show the process ID numbers, which you can pass to <code class="docutils literal notranslate"><span class="pre">kill</span></code> to kill the process like this: <code class="docutils literal notranslate"><span class="pre">kill</span> <span class="pre">&lt;process</span> <span class="pre">ID&gt;</span></code>.</p></li>
+<li><p>Some developers have found that they have to run some services manually to get Oppia to work. This is an unsupported workaround, but you may find it useful:</p>
+<ul>
+<li><p>Redis (port 6379) on M1 macs:</p>
+<ol class="simple">
+<li><p>Install Rosetta 2 try <a class="reference external" href="https://www.google.com/url?q=https://stackoverflow.com/questions/64882584/how-to-run-the-homebrew-installer-under-rosetta-2-on-m1-macbook%23:~:text%3DYou%2520can%2520run%2520Terminal%2520with,%2522Open%2520using%2520Rosetta%2522%2520option&amp;sa=D&amp;source=hangouts&amp;ust=1611504651223000&amp;usg=AFQjCNFhJysGCAFdzLswFuK5JVoxjs6CwQ">this</a></p></li>
+<li><p>Inside Rosetta perform all the installations/prerequisites.
+Note: If <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">easy_install</span> <span class="pre">pyyaml</span></code> does not work try using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyyaml</span></code>.</p></li>
+<li><p>Open the Rosetta terminal and download redis server using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">redis</span></code>.</p></li>
+<li><p>Run redis-server with the following cmd: <code class="docutils literal notranslate"><span class="pre">redis-server</span></code> (<strong>Don’t stop the redis server</strong>)</p></li>
+<li><p>Open another rosetta terminal and run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code></p></li>
+</ol>
+</li>
+<li><p>Elasticsearch (port 9200):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>oppia_tools/elasticsearch-&lt;version&gt;/bin/elasticsearch
+</pre></div>
+</div>
+<p>For some version number <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="portserver-socket-is-not-listed-in-the-github-codeowners-file">
+<h3><code class="docutils literal notranslate"><span class="pre">./portserver.socket</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">listed</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">.github/CODEOWNERS</span> <span class="pre">file</span></code><a class="headerlink" href="#portserver-socket-is-not-listed-in-the-github-codeowners-file" title="Permalink to this headline"></a></h3>
+<p>Just delete the <code class="docutils literal notranslate"><span class="pre">./portserver.socket</span></code> file. It’s generated automatically by the end-to-end tests and is supposed to be cleaned up automatically. However, if your tests don’t exit cleanly, the file can get left behind, which causes lint failures. The file is just a socket for communication between processes, so it’s safe to delete once the tests exit.</p>
+</section>
+<section id="push-fails-due-to-connection-timeout">
+<h3>Push fails due to connection timeout<a class="headerlink" href="#push-fails-due-to-connection-timeout" title="Permalink to this headline"></a></h3>
+<p>If you use SSH for your GitHub remote URL, you may find that when you run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> and the tests pass, your commits don’t show up on GitHub. When this happens, the end of the terminal output after <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> will look like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>...
+Done!
+------------------------------------
+All Frontend Coverage Checks Passed.
+------------------------------------
+Already on ...
+</pre></div>
+</div>
+<p>Notice that there is no output showing that commits were pushed. To fix this, use an HTTPS remote URL for GitHub as specified in our <a class="reference internal" href="Installing-Oppia.html"><span class="doc std std-doc">installation instructions</span></a>.</p>
+<p>You can check your remote URLs like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git remote -v
+<span class="go">origin     https://github.com/{{GITHUB USERNAME}}/oppia.git (fetch)</span>
+<span class="go">origin     https://github.com/{{GITHUB USERNAME}}/oppia.git (push)</span>
+<span class="go">upstream   https://github.com/oppia/oppia.git (fetch)</span>
+<span class="go">upstream   https://github.com/oppia/oppia.git (push)</span>
+</pre></div>
+</div>
+<p>If you see SSH URLs, fix them like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git remote set-url origin https://github.com/<span class="o">{{</span>GITHUB USERNAME<span class="o">}}</span>/oppia.git
+<span class="gp">$ </span>git remote set-url upstream https://github.com/oppia/oppia.git
+</pre></div>
+</div>
+<p>Once you’ve fixed this, you should see this at the end of your output from <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>...
+Done!
+------------------------------------
+All Frontend Coverage Checks Passed.
+------------------------------------
+Already on ...
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 986 bytes | 986.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:{{GITHUB USERNAME}}/oppia.git
+   cfb1f9e..e3f8d66  cleanup -&gt; cleanup
+</pre></div>
+</div>
+<p>Note that the output above will look somewhat different for you since it’s specific to what data you’re pushing.</p>
+</section>
+</section>
+<section id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline"></a></h2>
+<section id="python-2-is-not-available">
+<h3>Python 2 is not available<a class="headerlink" href="#python-2-is-not-available" title="Permalink to this headline"></a></h3>
+<p>If you get error like this when running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ERROR</span><span class="p">:</span> <span class="p">(</span><span class="n">dev_appserver</span><span class="p">)</span> <span class="n">python2</span><span class="p">:</span> <span class="n">command</span> <span class="ow">not</span> <span class="n">found</span>
+</pre></div>
+</div>
+<p>you will need to install Python 2 on your platform, even though Oppia doesn’t use Python 2 anymore some parts of the App Engine dev server still need it. If you are on Ubuntu, you should be able to fix this using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">python2</span></code>.</p>
+</section>
+<section id="oserror-errno-2-no-such-file-or-directory">
+<h3>OSError: [Errno 2] No such file or directory<a class="headerlink" href="#oserror-errno-2-no-such-file-or-directory" title="Permalink to this headline"></a></h3>
+<p>If you get an error like this</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;/home/…/oppia/oppia_tools/google-cloud-sdk-335.0.0/google-cloud-sdk/platform/google_appengine/google/appengine/tools/devappserver2/module.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">231</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_create_instance_factory</span>
+    <span class="n">module_configuration</span><span class="o">=</span><span class="n">module_configuration</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/…/oppia/oppia_tools/google-cloud-sdk-335.0.0/google-cloud-sdk/platform/google_appengine/google/appengine/tools/devappserver2/python/instance_factory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">148</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__init__</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_SetupVirtualenvFromConfiguration</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/…/oppia/oppia_tools/google-cloud-sdk-335.0.0/google-cloud-sdk/platform/google_appengine/google/appengine/tools/devappserver2/python/instance_factory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">193</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_SetupVirtualenvFromConfiguration</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_venv_dir</span><span class="p">,</span> <span class="n">requirements_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/…/oppia/oppia_tools/google-cloud-sdk-335.0.0/google-cloud-sdk/platform/google_appengine/google/appengine/tools/devappserver2/python/instance_factory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">278</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_SetupVirtualenv</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">_RunPipInstall</span><span class="p">(</span><span class="n">venv_dir</span><span class="p">,</span> <span class="n">requirements_file_name</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/…/oppia/oppia_tools/google-cloud-sdk-335.0.0/google-cloud-sdk/platform/google_appengine/google/appengine/tools/devappserver2/python/instance_factory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">262</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_RunPipInstall</span>
+    <span class="n">pip_proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">pip_cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">pip_out</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/subprocess.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">394</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__init__</span>
+    <span class="n">errread</span><span class="p">,</span> <span class="n">errwrite</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/subprocess.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1047</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_execute_child</span>
+    <span class="k">raise</span> <span class="n">child_exception</span>
+<span class="ne">OSError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">2</span><span class="p">]</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<p>please follow the instructions mentioned in <a class="reference external" href="https://github.com/oppia/oppia/issues/13672">#13672</a> to fix it.</p>
+</section>
+<section id="pip-cannot-import-name-main">
+<h3>Pip: Cannot Import Name Main<a class="headerlink" href="#pip-cannot-import-name-main" title="Permalink to this headline"></a></h3>
+<p>If you get an error while running install_third_party.py which ends with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s2">&quot;/usr/bin/pip&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">9</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="kn">from</span> <span class="nn">pip</span> <span class="kn">import</span> <span class="n">main</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="n">cannot</span> <span class="kn">import</span> <span class="nn">name</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Try running <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">pip</span></code> followed by running <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.install_third_party</span></code> (source: <a class="reference external" href="https://stackoverflow.com/questions/49964093/file-usr-bin-pip-line-9-in-module-from-pip-import-main-importerror-canno">SO thread</a>).</p>
+</section>
+<section id="system-limit-for-number-of-file-watchers-reached">
+<h3>System Limit for Number of File Watchers Reached<a class="headerlink" href="#system-limit-for-number-of-file-watchers-reached" title="Permalink to this headline"></a></h3>
+<p>If you get an error while running a local server which says something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;watch&#39;</span> <span class="n">errored</span> <span class="n">after</span> <span class="mi">789</span> <span class="n">ms</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">ENOSPC</span><span class="p">:</span> <span class="n">System</span> <span class="n">limit</span> <span class="k">for</span> <span class="n">number</span> <span class="n">of</span> <span class="n">file</span> <span class="n">watchers</span> <span class="n">reached</span><span class="p">,</span> <span class="n">watch</span> <span class="s1">&#39;some filename&#39;</span>
+</pre></div>
+</div>
+<p>then you will need to increase the number of system watchers by running the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="n">fs</span><span class="o">.</span><span class="n">inotify</span><span class="o">.</span><span class="n">max_user_watches</span><span class="o">=</span><span class="mi">524288</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysctl</span><span class="o">.</span><span class="n">conf</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">sysctl</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>Use the same command in the cases where the changes made by you to files are not being detected by the server.</p>
+</section>
+<section id="no-module-functools-lru-cache">
+<h3>No Module functools_lru_cache<a class="headerlink" href="#no-module-functools-lru-cache" title="Permalink to this headline"></a></h3>
+<p>If you get an error of the format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="n">functools_lru_cache</span>
+</pre></div>
+</div>
+<p>First check the directory <code class="docutils literal notranslate"><span class="pre">../oppia_tools/pylint-1.9.4</span></code> and if it is empty, re-install the missing prerequisites by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">start</span>
+</pre></div>
+</div>
+<p>If the directory is not empty and you still get the same error, try installing matplotlib by running the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">matplotlib</span>
+</pre></div>
+</div>
+</section>
+<section id="no-module-appengine-api">
+<h3>No Module appengine.api<a class="headerlink" href="#no-module-appengine-api" title="Permalink to this headline"></a></h3>
+<p>If after running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.linters.pre_commit_linter</span></code>, you get an error that contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="n">appengine</span><span class="o">.</span><span class="n">api</span>
+</pre></div>
+</div>
+<p>If you’re not using a virtual environment, make sure that the path to the appengine lib is locatable. Also, make sure that there are no other versions of google libraries installed globally which may cause path conflict issues. Refer to <a class="reference external" href="https://medium.com/&#64;maanavshah/fixing-python-import-error-no-module-named-appengine-ebcb540e7f18">this blog</a> for more reference.
+If this error occurs within a virtual environment, try reinstalling the libs by running clean.py followed by start.py.</p>
+</section>
+<section id="modulenotfounderror-no-module-named-bz2">
+<h3>ModuleNotFoundError: No module named _bz2<a class="headerlink" href="#modulenotfounderror-no-module-named-bz2" title="Permalink to this headline"></a></h3>
+<ol class="simple">
+<li><p>Install bz2 headers. Use the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libbz2-dev</span></code> on Ubuntu.</p></li>
+<li><p>Install Python 3 again so that the bz2 library gets included in <code class="docutils literal notranslate"><span class="pre">~/.pyenv/versions/3.7.10/lib/python3.7/</span></code>. Use the command <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">install</span> <span class="pre">3.7.10</span></code>.</p></li>
+</ol>
+</section>
+</section>
+<section id="mac-os">
+<h2>Mac OS<a class="headerlink" href="#mac-os" title="Permalink to this headline"></a></h2>
+<section id="no-module-named-ctypes-on-m1-macs">
+<h3>No module named ‘_ctypes’ on M1 Macs<a class="headerlink" href="#no-module-named-ctypes-on-m1-macs" title="Permalink to this headline"></a></h3>
+<p>When one contributor got a <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'_ctypes'</span></code> error when installing on an M1 Mac with Rosetta, they found that using Python 3.9 worked.</p>
+</section>
+<section id="cannot-import-name-imaging">
+<h3>Cannot Import Name <code class="docutils literal notranslate"><span class="pre">_imaging</span></code><a class="headerlink" href="#cannot-import-name-imaging" title="Permalink to this headline"></a></h3>
+<p>After running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code>, if you get an error around the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="n">File</span> <span class="s2">&quot;/opensource/oppia/core/platform/models.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">176</span><span class="p">,</span> <span class="ow">in</span> <span class="n">import_gae_image_services</span>
+         <span class="kn">from</span> <span class="nn">core.platform.image</span> <span class="kn">import</span> <span class="n">gae_image_services</span>
+     <span class="n">File</span> <span class="s2">&quot;/opensource/oppia/core/platform/image/gae_image_services.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">20</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+         <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+     <span class="n">File</span> <span class="s2">&quot;/opensource/oppia_tools/Pillow-6.2.2/PIL/Image.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">93</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+         <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_imaging</span> <span class="k">as</span> <span class="n">core</span>
+   <span class="ne">ImportError</span><span class="p">:</span> <span class="n">cannot</span> <span class="kn">import</span> <span class="nn">name</span> <span class="n">_imaging</span>
+</pre></div>
+</div>
+<p>(note: <a class="reference external" href="https://pillow.readthedocs.io/en/stable/installation.html#warnings">Google search results</a> indicate that PIL and Pillow cannot coexist in the same environment)</p>
+<p>First stop the script running with Ctrl + C (or Command-period on a MAC).
+Try uninstalling PIL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ pip uninstall PIL
+</pre></div>
+</div>
+<p>Then, uninstall and reinstall Pillow</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ pip uninstall pillow
+  $ pip install pillow
+</pre></div>
+</div>
+<p>Finally, try running the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code> script again.</p>
+</section>
+<section id="command-cc-failed-with-exit-status-1">
+<h3>Command cc failed with exit status 1<a class="headerlink" href="#command-cc-failed-with-exit-status-1" title="Permalink to this headline"></a></h3>
+<p>If, on MacOS Mojave V10.14.x, you get an issue arises while installing PIL library that has a lot of gibberish and that includes stuff like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">error:</span> <span class="pre">command</span> <span class="pre">'cc'</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">exit</span> <span class="pre">status</span> <span class="pre">1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">error:</span> <span class="pre">command</span> <span class="pre">'clang'</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">exit</span> <span class="pre">status</span> <span class="pre">1</span></code></p>
+<p>then try running this command on terminal (<a class="reference external" href="https://github.com/python-pillow/Pillow/issues/3438">reference</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">sudo</span> <span class="n">installer</span> <span class="o">-</span><span class="n">pkg</span> <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">CommandLineTools</span><span class="o">/</span><span class="n">Packages</span><span class="o">/</span><span class="n">macOS_SDK_headers_for_macOS_10</span><span class="mf">.14</span><span class="o">.</span><span class="n">pkg</span> <span class="o">-</span><span class="n">target</span> <span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="gitpython-not-installed">
+<h3>GitPython Not Installed<a class="headerlink" href="#gitpython-not-installed" title="Permalink to this headline"></a></h3>
+<p>If you get an error that includes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GitPython</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installed</span> <span class="k">for</span> <span class="n">Python</span> <span class="mf">3.</span><span class="n">x</span> <span class="n">the</span> <span class="s1">&#39;dist&#39;</span> <span class="n">command</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">work</span> <span class="n">without</span> <span class="n">it</span><span class="o">.</span> <span class="n">Get</span> <span class="n">it</span> <span class="n">using</span> <span class="n">pip</span> <span class="ow">or</span> <span class="n">easy_install</span>
+</pre></div>
+</div>
+<p>please install <a class="reference external" href="http://gitpython.readthedocs.io/en/stable/intro.html#installing-gitpython">GitPython</a> before proceeding further.</p>
+</section>
+<section id="install-imaging">
+<h3>Install Imaging<a class="headerlink" href="#install-imaging" title="Permalink to this headline"></a></h3>
+<p>If you get an error that includes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Command</span> <span class="s2">&quot;/usr/local/opt/python@3/bin/python3.7 -u -c &quot;</span><span class="kn">import</span> <span class="nn">setuptools</span><span class="o">,</span> <span class="nn">tokenize</span><span class="p">;</span><span class="vm">__file__</span><span class="o">=</span><span class="s1">&#39;/private/tmp/pip-req-build-TGvu2M/setup.py&#39;</span><span class="p">;</span><span class="n">f</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">tokenize</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="nb">open</span><span class="p">)(</span><span class="vm">__file__</span><span class="p">);</span><span class="n">code</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">);</span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">();</span><span class="n">exec</span><span class="p">(</span><span class="nb">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="vm">__file__</span><span class="p">,</span> <span class="s1">&#39;exec&#39;</span><span class="p">))</span><span class="s2">&quot; install --record /private/tmp/pip-record-6nuoQh/install-record.txt --single-version-externally-managed --compile --home=/private/tmp/pip-target-CMgDrw&quot;</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">error</span> <span class="n">code</span> <span class="mi">1</span> <span class="ow">in</span> <span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">pip</span><span class="o">-</span><span class="n">req</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">TGvu2M</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>please run the following comands:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CFLAGS</span><span class="o">=-</span><span class="n">Qunused</span><span class="o">-</span><span class="n">arguments</span>
+<span class="n">export</span> <span class="n">CPPFLAGS</span><span class="o">=-</span><span class="n">Qunused</span><span class="o">-</span><span class="n">arguments</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">effbot</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">Imaging</span><span class="o">-</span><span class="mf">1.1.7</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>For more details look up the following <a class="reference external" href="https://answers.ros.org/question/145856/having-trouble-installing-pil-in-mac-osx/?answer=146471#post-id-146471">link</a></p>
+</section>
+<section id="no-java-runtime-present">
+<h3>No Java Runtime Present<a class="headerlink" href="#no-java-runtime-present" title="Permalink to this headline"></a></h3>
+<p>If you get an error that includes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">No</span> <span class="n">Java</span> <span class="n">runtime</span> <span class="n">present</span><span class="p">,</span> <span class="n">requesting</span> <span class="n">install</span><span class="o">.</span>
+<span class="n">closure</span><span class="o">-</span><span class="n">compiler</span> <span class="n">failed</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>please download <a class="reference external" href="https://support.apple.com/kb/DL1572?locale=en_US">Java</a> and install it.</p>
+</section>
+<section id="error-when-starting-appengine">
+<h3>503 Error when Starting Appengine<a class="headerlink" href="#error-when-starting-appengine" title="Permalink to this headline"></a></h3>
+<p>if you run into an error that looks like this when starting App Engine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;/System/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/urllib2.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">558</span><span class="p">,</span> <span class="ow">in</span> <span class="n">http_error_default</span>
+    <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_full_url</span><span class="p">(),</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+<span class="n">HTTPError</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">Error</span> <span class="mi">503</span><span class="p">:</span> <span class="n">Service</span> <span class="n">Unavailable</span>
+</pre></div>
+</div>
+<p>please take a look at this StackOverflow <a class="reference external" href="https://stackoverflow.com/a/19460147">answer</a> and see if it helps.</p>
+</section>
+<section id="ssl-wrong-version-number">
+<h3>SSL Wrong Version Number<a class="headerlink" href="#ssl-wrong-version-number" title="Permalink to this headline"></a></h3>
+<p>If you get an error with <code class="docutils literal notranslate"><span class="pre">IOError:</span> <span class="pre">[Errno</span> <span class="pre">socket</span> <span class="pre">error]</span> <span class="pre">[SSL:</span> <span class="pre">WRONG_VERSION_NUMBER]</span> <span class="pre">wrong</span> <span class="pre">version</span> <span class="pre">number</span> <span class="pre">(_ssl.c:727)</span></code> at the bottom, one contributor found that the error occurred intermitently. If you rerun your command, you should get further down the list of files to download. Keep rerunning until all the downloads succeed.</p>
+</section>
+<section id="ssl-verification-issues">
+<h3>SSL Verification Issues<a class="headerlink" href="#ssl-verification-issues" title="Permalink to this headline"></a></h3>
+<p>If all else fails, and you run into SSL related issues while installing third party libs, <a class="reference external" href="https://stackoverflow.com/a/40857561">here</a> is what worked for one contributor. <strong>WARNING This disables all SSL verification, so use at your own risk!</strong></p>
+</section>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h2>
+<section id="windows-firewall">
+<h3>Windows Firewall<a class="headerlink" href="#windows-firewall" title="Permalink to this headline"></a></h3>
+<p>It’s possible that Windows firewall might be preventing localhost:8181 to launch. In such a case, you should re-config the firewall by adding new inbound rule so that ports 8181 and 8000 are allowed. (Instruction about how to add inbound rules can be found <a class="reference external" href="https://msdn.microsoft.com/en-us/library/hh168549(v=nav.90).aspx">here</a>)</p>
+</section>
+<section id="no-such-file-or-directory-dev-disk-by-id">
+<h3>No Such File or Directory /dev/disk/by-id<a class="headerlink" href="#no-such-file-or-directory-dev-disk-by-id" title="Permalink to this headline"></a></h3>
+<p>If you get this error</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[OSError: [Errno 2] No such file or directory: `/dev/disk/by-id/`
+</pre></div>
+</div>
+<p>try fixing it by adding the <code class="docutils literal notranslate"><span class="pre">--no_browser</span></code> argument to your command, e.g. <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span> <span class="pre">--no_browser</span></code>.</p>
+</section>
+</section>
+<section id="if-the-above-doesn-t-work">
+<h2>If the above doesn’t work<a class="headerlink" href="#if-the-above-doesn-t-work" title="Permalink to this headline"></a></h2>
+<p>If you run into any issues with the installation process, please let us know by <a class="reference external" href="https://github.com/oppia/oppia/issues/new?title=Describe%20your%20feature%20request%20or%20bug%20report%20succinctly&amp;body=If%20you%27d%20like%20to%20propose%20a%20feature,%20describe%20what%20you%27d%20like%20to%20see.%20Mock%20ups%20would%20be%20great%21%0A%0AIf%20you%27re%20reporting%20a%20bug,%20please%20be%20sure%20to%20include%20the%20expected%20behaviour,%20the%20observed%20behaviour,%20and%20steps%20to%20reproduce%20the%20problem.%20Console%20copy-pastes%20and%20any%20background%20on%20the%20environment%20would%20also%20be%20helpful.%0A%0AThanks%21">filing an issue</a>. You should use our template on <a class="reference external" href="https://github.com/oppia/oppia/wiki/Guide-on-How-to-Ask-Questions">How to Ask Questions</a> to provide us all the necessary info. Thanks!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

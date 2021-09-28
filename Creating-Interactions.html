@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating interactions &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating rules" href="Creating-Rules.html" />
+    <link rel="prev" title="Rich text editor (RTE) overview" href="Rich-Text-Editor-%28RTE%29-Overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="extension-reference.html">Extension frameworks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Extensions-Overview.html">Extensions overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rich-Text-Editor-%28RTE%29-Overview.html">Rich text editor (RTE) overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directory-structure">Directory structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-directives-folder">The directives folder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#components">Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services">Services</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-new-interaction">Add a new interaction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Rules.html">Creating rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Objects.html">Creating objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Dependencies.html">Creating dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Value-Generators.html">Creating value generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actions-and-issues.html">Actions and issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="extension-reference.html">Extension frameworks</a> &raquo;</li>
+      <li>Creating interactions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Creating-Interactions.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-interactions">
+<h1>Creating interactions<a class="headerlink" href="#creating-interactions" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#directory-structure">Directory structure</a></p></li>
+<li><p><a class="reference external" href="#the-directives-folder">The <code class="docutils literal notranslate"><span class="pre">directives</span></code> folder</a></p>
+<ul>
+<li><p><a class="reference external" href="#components">Components</a></p></li>
+<li><p><a class="reference external" href="#services">Services</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#add-a-new-interaction">Add a new Interaction</a></p>
+<ul>
+<li><p><a class="reference external" href="#testing">Testing</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Interactions provide a way for learners to submit answers to Oppia. They are implemented using custom HTML tags built with Angular Components. Here’s an example of such a tag:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">oppia-interactive-text-input</span><span class="p">&gt;&lt;/</span><span class="nt">oppia-interactive-text-input</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="directory-structure">
+<h2>Directory structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline"></a></h2>
+<p>In the Oppia codebase, interactions live in the <code class="docutils literal notranslate"><span class="pre">extensions/interactions</span></code> directory. Each interaction’s foler has the following structure:</p>
+<ul class="simple">
+<li><p>A Python configuration file</p></li>
+<li><p>An empty <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">directives</span></code> folder that contains Angular components that make up
+the interaction. Each component is defined by a triplet of files: a
+<code class="docutils literal notranslate"><span class="pre">*.html</span></code> file, a <code class="docutils literal notranslate"><span class="pre">*.ts</span></code> file, and a <code class="docutils literal notranslate"><span class="pre">*.spec.ts</span></code> file. This folder may
+also contain <code class="docutils literal notranslate"><span class="pre">*.service.ts</span></code> files that define services, for example a
+validation service.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">*.ts</span></code> file that imports all the components from the <code class="docutils literal notranslate"><span class="pre">directives</span></code>
+folder.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">*.module.ts</span></code> file that defines the interaction as a module.</p></li>
+</ul>
+</section>
+<section id="the-directives-folder">
+<h2>The directives folder<a class="headerlink" href="#the-directives-folder" title="Permalink to this headline"></a></h2>
+<section id="components">
+<h3>Components<a class="headerlink" href="#components" title="Permalink to this headline"></a></h3>
+<p>Each interaction needs the following components in its <code class="docutils literal notranslate"><span class="pre">directives</span></code> folder:</p>
+<ul class="simple">
+<li><p>Interaction component: A form the learner will submit when responding to the interaction. For the Multiple Choice Input interaction, this form shows answer options for the user to select.</p></li>
+<li><p>Response component: Displays the learner’s response to the interaction. For the Multiple Choice Input interaction, this would be the user’s selected answer.</p></li>
+<li><p>Short response component: Displays a shortened form of the learner’s response. For some interactions, this shortened form is the same as the response component.</p></li>
+</ul>
+</section>
+<section id="services">
+<h3>Services<a class="headerlink" href="#services" title="Permalink to this headline"></a></h3>
+<p>Inside the <code class="docutils literal notranslate"><span class="pre">directives</span></code> folder, each interaction will also have the following services:</p>
+<ul class="simple">
+<li><p>Rules service: <a class="reference internal" href="Creating-Rules.html"><span class="doc std std-doc">Rules</span></a> that allow a user’s response to be evaluated for correctness. For example, the <code class="docutils literal notranslate"><span class="pre">MultipleChoiceInputRulesService</span></code> provides an <code class="docutils literal notranslate"><span class="pre">Equals</span></code> method that checks whether an answer matches a creator-configured correct answer.</p></li>
+<li><p>Validation service: A service that checks a configured interaction for correctness. For example, the validator for the Multiple Choice Input interaction checks that none of the answer choices are empty.</p></li>
+</ul>
+</section>
+</section>
+<section id="add-a-new-interaction">
+<h2>Add a new interaction<a class="headerlink" href="#add-a-new-interaction" title="Permalink to this headline"></a></h2>
+<p>To add a new interaction to Oppia, here is what you need to do:</p>
+<ol>
+<li><p>Pick a descriptive id for your interaction, like <code class="docutils literal notranslate"><span class="pre">MusicPhraseInput</span></code>. For these instructions, we’ll assume that the id of your interaction is <code class="docutils literal notranslate"><span class="pre">MyInput</span></code>.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">extensions/interactions</span></code> directory, create a new directory called <code class="docutils literal notranslate"><span class="pre">MyInput</span></code>. We will be creating our files in this directory.</p></li>
+<li><p>Create a file <code class="docutils literal notranslate"><span class="pre">MyInput/MyInput.py</span></code>. In that file, define a <code class="docutils literal notranslate"><span class="pre">MyInput</span></code> class that inherits from <code class="docutils literal notranslate"><span class="pre">extensions.interactions.base.BaseInteraction</span></code>. This class will define no new methods, but it will override class variables from <code class="docutils literal notranslate"><span class="pre">BaseInteraction</span></code>. See the comments in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/interactions/base.py"><code class="docutils literal notranslate"><span class="pre">extensions/interactions/base.py</span></code></a> for details on which variables to override and what they mean. Here are some of the variables to override:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">display_mode</span></code> field can take one of two values:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DISPLAY_MODE_INLINE</span></code> corresponds to interactions, like text and multiple choice, that are part of the learner/tutor conversation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DISPLAY_MODE_SUPPLEMENTAL</span></code> corresponds to interactions that correspond to the tutor bringing a new artifact (like a map, or a programming console) into the conversation.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">_customization_arg_specs</span></code> field should be an array specifying the options that the exploration creator can set. For each option, a dict with the following keys should be provided:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the customization option. This name should also be used by the component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: the description shown to an exploration creator in the interaction editor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">schema</span></code>: a <a class="reference internal" href="Schemas.html"><span class="doc std std-doc">schema</span></a> that defines the customization option’s type, as well as appropriate validators and UI configuration options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_value</span></code>: a default initial/fallback value for the customization option.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">answer_type</span></code> is the type of object that the learner’s answer should be represented as. This should be the name of one of the classes in <code class="docutils literal notranslate"><span class="pre">extensions/objects/models/objects</span></code>. When the learner submits an answer, the answer will be passed to the server and then through the object’s <code class="docutils literal notranslate"><span class="pre">normalize</span></code> function. You may need to <a class="reference internal" href="Creating-Objects.html"><span class="doc std std-doc">write new objects</span></a> to support your interaction. This object also determines which <a class="reference internal" href="Creating-Rules.html"><span class="doc std std-doc">rules</span></a> are available to classify answers submitted using this interaction. For example, if you specify a type of <code class="docutils literal notranslate"><span class="pre">Boolean</span></code>, then an <code class="docutils literal notranslate"><span class="pre">IsInclusivelyBetween</span></code> rule makes no sense.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_dependency_ids</span></code> argument should contain a list of strings, each of which is the name of a <a class="reference internal" href="Creating-Dependencies.html"><span class="doc std std-doc">dependency</span></a>. These allow you to specify code that you want to be available to your interaction as it runs or is edited. If the interaction you are implementing has a significant JavaScript component, we suggest packaging as much of the core functionality as possible into third-party JavaScript libraries that are also usable outside of Oppia, and writing a small directive that makes use of the imported JavaScript library. For an example of how to do this, see the <a class="reference external" href="https://github.com/oppia/oppia/tree/master/extensions/interactions/PencilCodeEditor/">PencilCode interaction</a>.</p></li>
+</ul>
+</li>
+<li><p>Create an empty <code class="docutils literal notranslate"><span class="pre">MyInput/__init__.py</span></code> file.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">MyInput/static</span></code> folder with any static content you need. For example, this folder should include an icon that represents your interaction.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">MyInput/directives</span></code> folder with all of the components and services your interaction needs. These should be named as follows:</p>
+<ul class="simple">
+<li><p>Interaction component:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">my-input-interaction.component.html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oppia-interactive-my-input.component.ts</span></code>: Defines a <code class="docutils literal notranslate"><span class="pre">InteractiveMyInputComponent</span></code> class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oppia-interactive-my-input.component.spec.ts</span></code></p></li>
+</ul>
+</li>
+<li><p>Response component:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">my-input-response.component.html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oppia-response-my-input.component.ts</span></code>: Defines a <code class="docutils literal notranslate"><span class="pre">ResponseMyInputComponent</span></code> class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oppia-response-my-input.component.spec.ts</span></code></p></li>
+</ul>
+</li>
+<li><p>Short response component:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">my-input-short-response.component.html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oppia-short-response-my-input.component.ts</span></code>: Defines a <code class="docutils literal notranslate"><span class="pre">ShortResponseMyInputComponent</span></code> class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oppia-short-response-my-input.component.spec.ts</span></code></p></li>
+</ul>
+</li>
+<li><p>Rules service:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">my-input-rules.service.ts</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">my-input-rules.service.spec.ts</span></code></p></li>
+</ul>
+</li>
+<li><p>Validation service:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">my-input-validation.service.ts</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">my-input-validation.service.spec.ts</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>Each component should implement <code class="docutils literal notranslate"><span class="pre">OnInit</span></code>. Parameters from the Python file are accessible as <code class="docutils literal notranslate"><span class="pre">parameterWithValue</span></code> where the Python variable is <code class="docutils literal notranslate"><span class="pre">parameter</span></code>. The <code class="docutils literal notranslate"><span class="pre">WithValue</span></code> is a legacy hold-over. Note that the parameters in $attrs are JSON-stringified, so you will need to use <code class="docutils literal notranslate"><span class="pre">oppiaHtmlEscaper.escapedJsonToObj()</span></code> to convert them back. (Do not use <code class="docutils literal notranslate"><span class="pre">JSON.parse()</span></code>, since it does not handle the necessary escaping.)</p>
+<p>You might be wondering what the difference is between the response component and the short response component. If you submit an incorrect answer to an interaction, you can click on “Previous responses” to see your incorrect answers. These are shown using the short response component. Then if you click on a previous answer, a pop-up appears with the response component. Here’s an example from the graph input interaction:</p>
+<p><img alt="An interaction's short response and response components" src="_images/interactionResponseAndShortResponse.png" /></p>
+<p>The graph is the response component, while the text “4 edges and 4 vertices” is the short response component.</p>
+</li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">MyInput/MyInput.ts</span></code> file that uses <code class="docutils literal notranslate"><span class="pre">require()</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span></code> statements to import all the <code class="docutils literal notranslate"><span class="pre">*.ts</span></code> files in <code class="docutils literal notranslate"><span class="pre">MyInput/directives</span></code>. If you have CSS files in your <code class="docutils literal notranslate"><span class="pre">static/</span></code> folder, import those here too.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">MyInput/my-interaction-interactions.module.ts</span></code> file that imports the interaction, response, and short response components from <code class="docutils literal notranslate"><span class="pre">MyInput/directives</span></code>. It should also import any dependencies and export a module like this:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="kd">@NgModule</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">...</span> <span class="nx">dependencies</span> <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="nx">declarations</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">...</span> <span class="nx">interaction</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">and</span> <span class="kr">short</span> <span class="nx">response</span> <span class="nx">components</span> <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="nx">entryComponents</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">...</span> <span class="nx">interaction</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">and</span> <span class="kr">short</span> <span class="nx">response</span> <span class="nx">components</span> <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="nx">exports</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">...</span> <span class="nx">interaction</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">and</span> <span class="kr">short</span> <span class="nx">response</span> <span class="nx">components</span> <span class="p">...</span>
+  <span class="p">],</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">MyInputInteractionModule</span> <span class="p">{</span> <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Activate your interaction in Oppia by editing the <code class="docutils literal notranslate"><span class="pre">ALLOWED_INTERACTION_CATEGORIES</span></code> variable in <code class="docutils literal notranslate"><span class="pre">assets/constants.ts</span></code> (you’ll need to specify its name). Interactions are classified under different categories; add yours to a suitable category. Your interaction should then be available in the interaction repository, and can be used in explorations.</p></li>
+</ol>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline"></a></h3>
+<p>We have an <a class="reference internal" href="End-to-End-Tests.html"><span class="doc std std-doc">end-to-end testing framework</span></a> using Protractor.js that you you are encouraged to use for your interaction. The tests mimic a user by interacting with the web-page, for example by clicking and typing, and then checking that the interaction behaves in the expected way.</p>
+<p>To do so will require the following:</p>
+<ol class="simple">
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">protractor.js</span></code> file in your interaction’s directory and implement the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">customizeInteraction</span></code>: a function that when sent relevant arguments will choose parameters for your interaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expectInteractionDetailsToMatch</span></code>: a function that in the player verifies the interaction is displayed correctly, including those customizations specified in the editor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">submitAnswer</span></code>: a function that simulates the user submitting an answer to an interaction, for example for a numeric interaction submitting a number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">answerObjectType</span></code>: The type of the returned object of the interaction; this should match the <code class="docutils literal notranslate"><span class="pre">obj_type</span></code> of the submission handler specified in the interaction’s python file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">testSuite</span></code>: An array of dictionaries, each of which describes a scenario in which the interaction is used and specifies how it should behave. Each entry specifies customizations for the interaction and selects and parameterizes one of the rules associated with it. The test will then move to the player, check that the interaction is displayed correctly, submit a series of correct and wrong answers, and verify that these are handled correctly.</p></li>
+</ul>
+</li>
+<li><p>Add your <code class="docutils literal notranslate"><span class="pre">protractor.js</span></code> file to the dictionary of interactions in <code class="docutils literal notranslate"><span class="pre">extensions/interactions/protractor.js</span></code>.</p></li>
+<li><p>Any new <a class="reference internal" href="Creating-Objects.html"><span class="doc std std-doc">objects</span></a> you create must have handlers for them added to <code class="docutils literal notranslate"><span class="pre">extensions/objects/protractor.js</span></code>. You can then use these handlers when writing your <code class="docutils literal notranslate"><span class="pre">customizeInteraction</span></code> and <code class="docutils literal notranslate"><span class="pre">submitAnswer</span></code> functions. Objects that are used as rule parameters must implement a <code class="docutils literal notranslate"><span class="pre">setValue()</span></code> function that fully specifies them, and this will be used automatically when a rule is being selected. Don’t forget to add the new objects both to the list of object editors and to the exports.</p></li>
+<li><p>Any new <a class="reference internal" href="Creating-Rules.html"><span class="doc std std-doc">rules</span></a> must be included in <code class="docutils literal notranslate"><span class="pre">extensions/rules/protractor.js</span></code> within the entry for the type of returned object the rule applies to. You just need to specify the <code class="docutils literal notranslate"><span class="pre">description</span></code> from the rule’s python file.</p></li>
+</ol>
+<p>When running the tests you may want to change <code class="docutils literal notranslate"><span class="pre">describe</span></code> to <code class="docutils literal notranslate"><span class="pre">ddescribe</span></code> in the “Interactions” test class of <code class="docutils literal notranslate"><span class="pre">core/tests/protractor/editorAndPlayer.js</span></code> which will cause just the interaction-specific tests to be run. Be sure to change it back before committing!</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Rich-Text-Editor-%28RTE%29-Overview.html" class="btn btn-neutral float-left" title="Rich text editor (RTE) overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Creating-Rules.html" class="btn btn-neutral float-right" title="Creating rules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tips for common IDEs &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Make a pull request" href="Make-a-pull-request.html" />
+    <link rel="prev" title="Installing Oppia" href="Installing-Oppia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tips for common IDEs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visual-studio-code">Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sublime">Sublime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#atom">Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Tips for common IDEs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Tips-for-common-IDEs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="tips-for-common-ides">
+<h1>Tips for common IDEs<a class="headerlink" href="#tips-for-common-ides" title="Permalink to this headline"></a></h1>
+<p><strong>A word of warning: Many code editors let you perform git actions from their graphical interfaces instead of through the command line. We strongly recommend that you use the command line instead. Many new contributors run into trouble because their editor’s git interface is incorrectly configured.</strong></p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#visual-studio-code">Visual Studio Code</a></p></li>
+<li><p><a class="reference external" href="#sublime">Sublime</a></p></li>
+<li><p><a class="reference external" href="#atom">Atom</a></p></li>
+</ul>
+</section>
+<section id="visual-studio-code">
+<h2>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permalink to this headline"></a></h2>
+<p>If you are brand-new to Visual Studio Code, you can watch some <a class="reference external" href="https://code.visualstudio.com/docs/getstarted/introvideos">introductory videos</a> to get started.</p>
+<p>To set up Oppia:</p>
+<ol>
+<li><p>Open the root <code class="docutils literal notranslate"><span class="pre">oppia/</span></code> folder in Code (often called “VSCode”).</p></li>
+<li><p>You may be asked whether you trust the Oppia developers.</p>
+<p><img alt="Trust modal shown by Code" src="_images/vscodeTrust.png" /></p>
+<p>The code in the Oppia repository is safe to run, so you can click “yes.” However, you can also edit code just fine if you click “no.” You’ll be in “restricted mode,” which disables some features. If you ever find you need those features, you can change your trust settings later.</p>
+</li>
+<li><p>You can navigate the files of the Oppia repository using the file tree on the left. Click on folders to show their contents, and click on files to open them in the editor that takes up the center of the window. On the far right is the minimap, which shows the file contents in small font so you can see more of the file at once.</p>
+<p><img alt="Code with a file open for editing" src="_images/vscodeEditor.png" /></p>
+</li>
+<li><p>To edit the file, just start typing!</p></li>
+</ol>
+<p>Tips:</p>
+<ul>
+<li><p>Code has lots of extensions you can install. Here are some we find useful:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">GitLens</span></code> gives you easy access to git information about your files. One particularly helpful feature shows the last commit to modify the line your cursor is on. If you hover over the annotation, GitLens shows more information about the commit.</p>
+<p><img alt="GitLens annotation showing git blame information" src="_images/vscodeGitLens.png" /></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Python</span></code> provides improved language support for Python. To configure the extension, you need to:</p>
+<ul>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> environment variable. In a <code class="docutils literal notranslate"><span class="pre">.env</span></code> file at the root of the <code class="docutils literal notranslate"><span class="pre">oppia/</span></code> repository, add these lines:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>PYTHONPATH=../oppia_tools/pylint-1.9.5/:../oppia_tools/pylint-quotes-0.1.8/
+</pre></div>
+</div>
+</li>
+<li><p>Set the following settings in the <code class="docutils literal notranslate"><span class="pre">.vscode/settings.json</span></code> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;python.linting.pylintEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;python.linting.pylintPath&quot;</span><span class="p">:</span> <span class="s2">&quot;../oppia_tools/pylint-1.9.5/bin/pylint&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Choose the correct Python interpreter from the blue bar at the bottom:</p>
+<p><img alt="Changing the Python interpreter" src="_images/vscodePythonInterpreter.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>JavaScript and TypeScript support are built-in to Code, but you can add the <code class="docutils literal notranslate"><span class="pre">dbaeumer.vscode-eslint</span></code> extension to add ESLint support. Then whenever there is a lint error in your code, you’ll see a red squiggly line. If you hover over that line, you’ll see a pop-up describing the problem:</p>
+<p><img alt="ESLint error in Code" src="_images/vscodeEslint.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>You can right-click on code elements (e.g. functions or variables) to find where they are defined and used.</p>
+<p><img alt="Options to find usages and definitions of code elements that appear after right-clicking code" src="_images/vscodeRightClick.png" /></p>
+</li>
+<li><p>To filter the file tree, first click on the file tree window. Then start typing. Your text will appear in the upper right corner, and matches will be highlighted.</p>
+<p><img alt="The file tree being filtered" src="_images/vscodeFilterHighlight.png" /></p>
+<p>If you hover over the text that appears and click the icon with three horizontal lines, only matching files will be shown.</p>
+<p><img alt="The file tree being filtered with non-matches hidden" src="_images/vscodeFilterHide.png" /></p>
+</li>
+</ul>
+<p>To learn more, check out the <a class="reference external" href="https://code.visualstudio.com/docs">Code documentation</a>.</p>
+</section>
+<section id="sublime">
+<h2>Sublime<a class="headerlink" href="#sublime" title="Permalink to this headline"></a></h2>
+<p>To start editing Oppia code:</p>
+<ol>
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">oppia/</span></code> directory (e.g. using CMD+O on MacOS or CTRL+O on Linux or Windows).</p></li>
+<li><p>From the file tree on the left side, select a file to edit. It opens in the center. On the right is a minimap, which shows the file contents in small font so you can see more of the file at once.</p>
+<p><img alt="Sublime with a file open for editing" src="_images/sublimeEditor.png" /></p>
+</li>
+<li><p>To edit the file, just start typing!</p></li>
+</ol>
+<p>Tips:</p>
+<ul>
+<li><p><a class="reference external" href="http://www.sublimelinter.com/en/stable/">Package Control</a> is the <em>de facto</em> package manager for Sublime. You can install it by selecting “Install Package Control” from the “Tools” menu. Then you can install packages by opening the command pallete (CMD-SHIFT-P on MacOS or CTRL-SHIFT-P on Windows) and typing <code class="docutils literal notranslate"><span class="pre">Package</span> <span class="pre">Control:</span> <span class="pre">Install</span> <span class="pre">Package</span></code>. We recommend the following packages:</p>
+<ul>
+<li><p><a class="reference external" href="https://packagecontrol.io/packages/SublimeLinter"><code class="docutils literal notranslate"><span class="pre">SublimeLinter</span></code></a> is a base linter package. To add support for pylint and eslint, install the following packages as well:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://packagecontrol.io/packages/SublimeLinter-eslint"><code class="docutils literal notranslate"><span class="pre">SublimeLinter-eslint</span></code></a></p></li>
+<li><p><a class="reference external" href="https://packagecontrol.io/packages/SublimeLinter-pylint"><code class="docutils literal notranslate"><span class="pre">SublimeLinter-pylint</span></code></a></p></li>
+</ul>
+<p>To configure them, open the SublimeLinter settings from the menu: Preferences &gt; Package Settings &gt; SublimeLinter &gt; Settings. Add these lines to the file that opens (should be mostly blank to start), replacing <code class="docutils literal notranslate"><span class="pre">{{PARENT_DIRECTORY}}</span></code> with the absolute path to the folder containing both the <code class="docutils literal notranslate"><span class="pre">oppia_tools</span></code> and <code class="docutils literal notranslate"><span class="pre">oppia</span></code> directories:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;linters&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;pylint&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;executable&quot;</span><span class="p">:</span> <span class="s2">&quot;{{PARENT_DIRECTORY}}/oppia_tools/pylint-1.9.5/bin/pylint&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;env&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;PYTHONPATH&quot;</span><span class="p">:</span> <span class="s2">&quot;{{PARENT_DIRECTORY}}/oppia_tools/pylint-1.9.5/:{{PARENT_DIRECTORY}}/oppia_tools/pylint-quotes-0.1.8/&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;eslint&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;executable&quot;</span><span class="p">:</span> <span class="s2">&quot;{{PARENT_DIRECTORY}}/oppia/node_modules/eslint/bin/eslint.js&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;selector&quot;</span><span class="p">:</span> <span class="s2">&quot;source.ts, source.js - meta.attribute-with-value&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>To find where a function is defined and used, just hover over the function call or declaration:</p>
+<p><img alt="Pop-up showing a function's definition and usages in Sublime" src="_images/sublimeFunctionDefinitionAndUsage.png" /></p>
+</li>
+</ul>
+<p>To learn more, check out the <a class="reference external" href="https://www.sublimetext.com/docs/index.html">official</a> and <a class="reference external" href="https://docs.sublimetext.io/">unofficial</a> documentation.</p>
+</section>
+<section id="atom">
+<h2>Atom<a class="headerlink" href="#atom" title="Permalink to this headline"></a></h2>
+<p>If you are new to using Atom, you may find this <a class="reference external" href="https://www.youtube.com/watch?v=U5POoGSrtGg">getting started video</a> helpful.</p>
+<p>To start editing Oppia code:</p>
+<ol>
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">oppia/</span></code> directory (e.g. using CMD+O on MacOS or CTRL+O on Linux or Windows).</p></li>
+<li><p>From the file tree on the left side, select a file to edit. It opens in the center.</p>
+<p><img alt="Atom with a file open for editing" src="_images/atomEditor.png" /></p>
+</li>
+<li><p>To edit the file, just start typing!</p></li>
+</ol>
+<p>Tips:</p>
+<ul class="simple">
+<li><p>Out of the box, Atom is quite a minimal editor that only provides basic functionality. To get more features, install packages. Be warned though that we found the packages of the canonical Atom linting framework, <a class="reference external" href="https://atomlinter.github.io">AtomLinter</a>, to be unmaintained, and we were unable to get them working (as of August 2021). We recommend running lint checks from the command line instead.</p></li>
+</ul>
+<p>To learn more, take a look at the <a class="reference external" href="https://flight-manual.atom.io/">documentation</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Installing-Oppia.html" class="btn btn-neutral float-left" title="Installing Oppia" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Make-a-pull-request.html" class="btn btn-neutral float-right" title="Make a pull request" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

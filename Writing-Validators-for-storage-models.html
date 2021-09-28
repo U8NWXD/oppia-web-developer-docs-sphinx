@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing validators for storage models &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coding for speed in GAE" href="Coding-for-speed-in-GAE.html" />
+    <link rel="prev" title="Creating and modifying storage models" href="Creating-and-modifying-storage-models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="backend-reference.html">Backend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Apache-Beam-Jobs.html">Apache Beam jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-state-migrations.html">Writing state migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-audit-jobs.html">Writing audit jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-new-one-off-jobs-using-map-reduce.html">Writing new one off jobs using map reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating-statistics.html">Calculating statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-and-modifying-storage-models.html">Creating and modifying storage models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing validators for storage models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basemodelvalidator">BaseModelValidator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basesummarymodelvalidator">BaseSummaryModelValidator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basesnapshotcontentmodelvalidator">BaseSnapshotContentModelValidator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basesnapshotmetadatamodelvalidator">BaseSnapshotMetadataModelValidator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basecommitlogentrymodelvalidator">BaseCommitLogEntryModelValidator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baseusermodelvalidator">BaseUserModelValidator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Coding-for-speed-in-GAE.html">Coding for speed in GAE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-static-assets.html">Adding static assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html">Wipeout implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html#wipeout-design">Wipeout design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notes-on-NDB-Datastore-Transactions.html">Notes on NDB datastore transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="backend-reference.html">Backend</a> &raquo;</li>
+      <li>Writing validators for storage models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Writing-Validators-for-storage-models.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="writing-validators-for-storage-models">
+<h1>Writing validators for storage models<a class="headerlink" href="#writing-validators-for-storage-models" title="Permalink to this headline"></a></h1>
+<p>All the storage models defined in <code class="docutils literal notranslate"><span class="pre">core/storage</span></code>should have a corresponding validator defined in <code class="docutils literal notranslate"><span class="pre">core/domain/prod_validation_jobs_one_off.py</span></code>.</p>
+<p>The file contains a set of base validators and each new validator can inherit from those validators to use the common functionality. The base validators are as follows:</p>
+<section id="basemodelvalidator">
+<h2>BaseModelValidator<a class="headerlink" href="#basemodelvalidator" title="Permalink to this headline"></a></h2>
+<p>A base validator which defines the following functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_model_id_regex</span></code>: Returns a regular expression which is used to validate the model id. The function returns a default regex for models which do not have a specific id format but you should override this method if your model has a different id format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_model_id</span></code>: Validates the model id using the regex obtained from <code class="docutils literal notranslate"><span class="pre">_get_model_id_regex</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_model_domain_object_instance</span></code>: Returns a domain object corresponding to the storage model. The domain object should have a <code class="docutils literal notranslate"><span class="pre">validate</span></code> function defined for the validation of object properties. This function returns a default value of <code class="docutils literal notranslate"><span class="pre">None</span></code> but it should be overridden if the model being validated has a domain object validation defined.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_model_domain_object_instances</span></code>: Validates the model properties using the validate method of domain object corresponding to the model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_external_id_relationships</span></code>: Returns a mapping of external ids related to a model instance mapped to the corresponding external models. The returned dict is of the format: <code class="docutils literal notranslate"><span class="pre">{FIELD_NAME:</span> <span class="pre">(MODEL_CLASS,</span> <span class="pre">[MODEL_IDS_TO_FETCH])}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_external_id_relationships</span></code>: Validates that the external model instances corresponding to the model instance are not deleted and exist in the datastore.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_fetch_external_instance_details</span></code>: Fetches the external model instances corresponding to a model instance using the dict returned from <code class="docutils literal notranslate"><span class="pre">_get_external_id_relationships</span></code>. Ensure that this method is called before other <code class="docutils literal notranslate"><span class="pre">_validate</span></code> methods so that external models are fetched already if required. The external model details are stored in the dict <code class="docutils literal notranslate"><span class="pre">external_instance_details</span></code>. The format is <code class="docutils literal notranslate"><span class="pre">{FIELD_NAME:</span> <span class="pre">(MODEL_CLASS_NAME,</span> <span class="pre">MODEL_ID,</span> <span class="pre">MODEL_INSTANCE)}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_model_time_fields</span></code>: Validates the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> and <code class="docutils literal notranslate"><span class="pre">created_on</span></code> fields of a model instance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_custom_validation_functions</span></code>: Returns a list of custom validation functions specific to a model. It returns an empty list by default and can be overridden in subclasses.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate</span></code>: Clears the errors dict for the validator class, fetches the external instance details and then runs all the validation functions for the model instance.</p></li>
+</ul>
+<p>This Validator can be used for all the general models which do not need the common functions defined in other base validators.</p>
+</section>
+<section id="basesummarymodelvalidator">
+<h2>BaseSummaryModelValidator<a class="headerlink" href="#basesummarymodelvalidator" title="Permalink to this headline"></a></h2>
+<p>A validator for summary models. It inherits from Base Validator and adds the following common functions:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_external_model_properties</span></code>: Returns the properties of external model corresponding to the summary model which should match the corresponding properties in the summary model. The return value is a tuple of the format: <code class="docutils literal notranslate"><span class="pre">(EXTERNAL_MODEL_NAME,</span> <span class="pre">EXTERNAL_MODEL_INSTANCE_DETAILS,</span> <span class="pre">{PROPERTY_NAME_IN_SUMMARY_MODEL:</span> <span class="pre">PROPERTY_NAME_IN_EXTERNAL_MODEL})</span></code>. The external model name should be in lowercase split by space.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>CollectionModel - collection</p></li>
+<li><p>CollectionRightsModel - collection rights</p></li>
+</ul>
+<p>The external model instance details can be fetched from <code class="docutils literal notranslate"><span class="pre">external_instance_details</span></code> dict for the summary model.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_external_model_properties</span></code>: Validates that properties of the summary model match the corresponding properties in the external model.</p></li>
+</ul>
+</section>
+<section id="basesnapshotcontentmodelvalidator">
+<h2>BaseSnapshotContentModelValidator<a class="headerlink" href="#basesnapshotcontentmodelvalidator" title="Permalink to this headline"></a></h2>
+<p>A base validator for Snapshot Content Models. It inherits from Base Validator and adds the following common functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_base_model_version_from_item_id</span></code>: Validates that the version of model corresponding to the snapshot content model matches the version used in model id.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">EXTERNAL_MODEL_NAME</span></code> should be defined by the subclasses. The external model name should be in lowercase split by space.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>CollectionModel - collection</p></li>
+<li><p>CollectionRightsModel - collection rights</p></li>
+</ul>
+</section>
+<section id="basesnapshotmetadatamodelvalidator">
+<h2>BaseSnapshotMetadataModelValidator<a class="headerlink" href="#basesnapshotmetadatamodelvalidator" title="Permalink to this headline"></a></h2>
+<p>A base validator for Snapshot Metadata Models. It inherits from Base Snapshot Content Validator and adds the following common functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_commit_type</span></code>: Validates the commit type defined in the model instance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_change_domain_class</span></code>: Returns the change domain class corresponding to the model instance. This method should be overridden by subclasses. The change domain class defines the schema for the commit commands used in the model instance. For a detailed view, feel free to check the base class for change domain defined in <code class="docutils literal notranslate"><span class="pre">core/domain/change_domain.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_commit_cmds_schema</span></code>: Validates the commit commands used in the model instance by using the validation of the change domain class corresponding to the model instance.</p></li>
+</ul>
+</section>
+<section id="basecommitlogentrymodelvalidator">
+<h2>BaseCommitLogEntryModelValidator<a class="headerlink" href="#basecommitlogentrymodelvalidator" title="Permalink to this headline"></a></h2>
+<p>A base validator for commit log entry models. It inherits from Base Snapshot Metadata Validator and adds the following common functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_post_commit_status</span></code>: Validates that post_commit_status is either public or private.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_post_commit_is_private</span></code>: Validates that post_commit_is_private is true iff post_commit_status is private.</p></li>
+</ul>
+</section>
+<section id="baseusermodelvalidator">
+<h2>BaseUserModelValidator<a class="headerlink" href="#baseusermodelvalidator" title="Permalink to this headline"></a></h2>
+<p>A base validator for user models. It inherits from Base Validator and adds the following common functions:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_exp_ids</span></code>: Returns a list of exploration ids corresponding to a user model. This returns an empty list but it should be overridden for User models which keep track of exploration ids associated to a user, for example: CompletedActivitiesModelValidator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_col_ids</span></code>: Returns a list of collection ids corresponding to a user model. This returns an empty list but it should be overridden for User models which keep track of collection ids associated to a user, for example: CompletedActivitiesModelValidator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_explorations_are_public</span></code>: Validates that explorations associated with a user model are public.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_collections_are_public</span></code>: Validates that collections associated with a user model are public.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_common_properties_of_external_model_which_should_not_match</span></code>: Returns a list of common properties to dismatch. For example: the exploration ids present in a CompletedActivitiesModel should not be present in an IncompleteActivitiesModel. So, this function will return the following list for CompletedActivitiesModel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;IncompleteActivitiesModel&#39;</span><span class="p">,</span>
+<span class="s1">&#39;exploration_ids&#39;</span><span class="p">,</span>
+<span class="nb">list</span> <span class="n">of</span> <span class="n">exploration_ids</span> <span class="ow">in</span> <span class="n">completed</span> <span class="n">activities</span><span class="p">,</span> 
+<span class="s1">&#39;exploration_ids&#39;</span><span class="p">,</span>
+<span class="nb">list</span> <span class="n">of</span> <span class="n">exploration_ids</span> <span class="ow">in</span> <span class="n">incomplete</span> <span class="n">activities</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_validate_common_properties_do_not_match</span></code>: Validates that properties common with an external model are different in model instance and external model.</p></li>
+</ul>
+<p>When you create a new validator, choose the base validator which covers the common code and no extra code is needed for the functions already defined. If you are adding a set of common validators which require some common functions not defined in any of the base validators, add a new base validators with all these common functions.</p>
+<p>For writing a validator, prepare a complete list of validation rules which the storage model should follow and ensure that your validator is testing each of those rules.</p>
+<p>Once you are done with writing the validator, add a new one off job for audit of the model which inherits from <code class="docutils literal notranslate"><span class="pre">ProdValidationAuditOneOffJob</span></code> and also update the <code class="docutils literal notranslate"><span class="pre">MODEL_TO_VALIDATOR_MAPPING</span></code>.</p>
+<p>You can also have extra audit jobs apart from the ones that use the validator. For example, <code class="docutils literal notranslate"><span class="pre">UserNormalizedNameAuditOneOffJob</span></code> does not use a validator but instead iterates over a list of normalized usernames of all user models and ensures that no two names are the same.</p>
+<p>Ensure that all audit jobs defined in <code class="docutils literal notranslate"><span class="pre">core/domain/prod_validation_jobs_one_off.py</span></code> have a corresponding test defined in <code class="docutils literal notranslate"><span class="pre">core/domain/prod_validation_jobs_one_off_test.py</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Creating-and-modifying-storage-models.html" class="btn btn-neutral float-left" title="Creating and modifying storage models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Coding-for-speed-in-GAE.html" class="btn btn-neutral float-right" title="Coding for speed in GAE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

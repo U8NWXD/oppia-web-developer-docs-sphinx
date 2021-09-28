@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lint checks &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Custom Pylint checks" href="Custom-Pylint-checks.html" />
+    <link rel="prev" title="Lint Checks" href="lint.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lint.html">Lint Checks</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lint checks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-linters">Run linters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-lint-checks">Write lint checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#types-of-lint-checks">Types of lint checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact">Contact</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Custom-Pylint-checks.html">Custom Pylint checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Custom-ESLint-checks.html">Custom ESLint checks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+          <li><a href="lint.html">Lint Checks</a> &raquo;</li>
+      <li>Lint checks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Lint-Checks.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="lint-checks">
+<h1>Lint checks<a class="headerlink" href="#lint-checks" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#run-linters">Run linters</a></p></li>
+<li><p><a class="reference external" href="#write-lint-checks">Write lint checks</a></p></li>
+<li><p><a class="reference external" href="#types-of-lint-checks">Types of lint checks</a></p>
+<ul>
+<li><p><a class="reference external" href="#third-party-linters">Third-party linters</a></p>
+<ul>
+<li><p><a class="reference external" href="#eslint">ESLint</a></p></li>
+<li><p><a class="reference external" href="#pylint">Pylint</a></p></li>
+<li><p><a class="reference external" href="#isort">isort</a></p></li>
+<li><p><a class="reference external" href="#htmllint">htmllint</a></p></li>
+<li><p><a class="reference external" href="#stylelint">stylelint</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#our-custom-linters">Our custom linters</a></p>
+<ul>
+<li><p><a class="reference external" href="#jsts-linter">JS/TS linter</a></p></li>
+<li><p><a class="reference external" href="#html-linter">HTML linter</a></p></li>
+<li><p><a class="reference external" href="#general-purpose-linter">General-purpose linter</a></p></li>
+<li><p><a class="reference external" href="#codeowner-linter">Codeowner linter</a></p></li>
+<li><p><a class="reference external" href="#other-files-linter">Other files linter</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#examples">Examples</a></p></li>
+<li><p><a class="reference external" href="#contact">Contact</a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>We use linters to check our code for common errors or bad patterns. The Oppia linter runs our linters, flags any problems the linters find, and reports those problems on the terminal.</p>
+</section>
+<section id="run-linters">
+<h2>Run linters<a class="headerlink" href="#run-linters" title="Permalink to this headline"></a></h2>
+<ol>
+<li><p>To lint only files that have been changed but not committed:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.linters.pre_commit_linter</span>
+</pre></div>
+</div>
+</li>
+<li><p>To lint the file or files at a path:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.linters.pre_commit_linter --path {{path}}</span>
+</pre></div>
+</div>
+<p>If you specify the path to a file, only that file will be linted, but if you provide a directory, all the files under that directory will be linted.</p>
+</li>
+<li><p>To lint a specific list of files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.linters.pre_commit_linter --files {{file paths}}</span>
+</pre></div>
+</div>
+<p>Separate file paths with spaces. For example, to lint <code class="docutils literal notranslate"><span class="pre">scripts/start.py</span></code> and <code class="docutils literal notranslate"><span class="pre">python_utils.py</span></code>, you could run this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.linters.pre_commit_linter --files scripts/start.py python_utils.py</span>
+</pre></div>
+</div>
+</li>
+<li><p>To lint files in verbose mode, add the <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> flag like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.linters.pre_commit_linter --verbose</span>
+</pre></div>
+</div>
+<p>This also enables logging, so it is very useful for debugging!</p>
+</li>
+<li><p>To lint a specific list of file extensions (separated by spaces):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.linters.pre_commit_linter --only-check-file-extensions {{extensions}}</span>
+</pre></div>
+</div>
+<p>For example, to lint Python and JavaScript files, you could run this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.linters.pre_commit_linter --only-check-file-extensions py js</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="write-lint-checks">
+<h2>Write lint checks<a class="headerlink" href="#write-lint-checks" title="Permalink to this headline"></a></h2>
+<p>If you see a bad pattern cropping up a lot in the code base, you might want to add a lint check to help you find and fix them all. Then, the lint check will ensure no one ever uses that bad pattern again. When adding a new lint check, you should follow the following approach:</p>
+<ol class="simple">
+<li><p>Identify what types of files your lint check needs to evaluate. This is important because we use different linters for different file types.</p></li>
+<li><p>Check which of <a class="reference external" href="#types-of-lint-checks">our linters</a> apply to your file types, and decide which linters you want to use. Add your lint check following the linter-specific instructions below.</p></li>
+<li><p>Run your lint check locally to find all existing violations in the code base. Fix these until the linter passes.</p></li>
+<li><p>Open a PR that both fixes all existing violations and adds the lint check. Once your PR merges, your lint check will prevent any future PRs from introducing new violations.</p></li>
+</ol>
+</section>
+<section id="types-of-lint-checks">
+<h2>Types of lint checks<a class="headerlink" href="#types-of-lint-checks" title="Permalink to this headline"></a></h2>
+<section id="third-party-linters">
+<h3>Third-party linters<a class="headerlink" href="#third-party-linters" title="Permalink to this headline"></a></h3>
+<p>We make use of several third-party linters, some of which also accept custom rules.</p>
+<section id="eslint">
+<h4>ESLint<a class="headerlink" href="#eslint" title="Permalink to this headline"></a></h4>
+<p>We use <a class="reference external" href="https://eslint.org">ESLint</a> to lint our JavaScript and TypeScript code. It has lots of <a class="reference external" href="https://stylelint.io/">built-in rules</a>, and if one of them does what you want, you can enable it in <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/.eslintrc"><code class="docutils literal notranslate"><span class="pre">.eslintrc</span></code></a>. If no existing rule does what you need, you can write a <a class="reference internal" href="Custom-ESLint-checks.html"><span class="doc std std-doc">custom rule</span></a>.</p>
+<p>The ESLint checks are run by <code class="docutils literal notranslate"><span class="pre">scripts.linters.js_ts_linter.JsTsLintChecksManager</span></code>.</p>
+</section>
+<section id="pylint">
+<h4>Pylint<a class="headerlink" href="#pylint" title="Permalink to this headline"></a></h4>
+<p>We use <a class="reference external" href="https://pylint.pycqa.org">Pylint</a> to lint our Python code. It provides many <a class="reference external" href="https://pylint.pycqa.org/en/latest/technical_reference/features.html">rules and configuration options</a> that you may find useful. They are configured in <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/.pylintrc"><code class="docutils literal notranslate"><span class="pre">.pylintrc</span></code></a>. If they aren’t enough though, you can also write a <a class="reference internal" href="Custom-Pylint-checks.html"><span class="doc std std-doc">custom rule</span></a>.</p>
+<p>The Pylint checks are run by <code class="docutils literal notranslate"><span class="pre">scripts.linters.python_linter.ThirdPartyPythonLintChecksManager</span></code>.</p>
+</section>
+<section id="isort">
+<h4>isort<a class="headerlink" href="#isort" title="Permalink to this headline"></a></h4>
+<p>We use <a class="reference external" href="https://pycqa.github.io/isort/">isort</a> to make sure our Python imports are properly sorted. It is configured by <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/.isort.cfg"><code class="docutils literal notranslate"><span class="pre">.isort.cfg</span></code></a>, but it does not support custom rules.</p>
+<p>The isort checks are run by <code class="docutils literal notranslate"><span class="pre">scripts.linters.python_linter.ThirdPartyPythonLintChecksManager</span></code>.</p>
+</section>
+<section id="htmllint">
+<h4>htmllint<a class="headerlink" href="#htmllint" title="Permalink to this headline"></a></h4>
+<p>We lint our HTML code with <a class="reference external" href="https://github.com/htmllint/htmllint/">htmllint</a>, which is configured in <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/.htmllintrc"><code class="docutils literal notranslate"><span class="pre">.htmllintrc</span></code></a>. See the <a class="reference external" href="https://github.com/htmllint/htmllint/wiki/Options">htmllint documentation</a> for a list of the available configuration options.</p>
+<p>Unfortunately, htmllint doesn’t support custom rules.</p>
+<p>The htmllint checks are run by <code class="docutils literal notranslate"><span class="pre">scripts.linters.html_linter.ThirdPartyHTMLLintChecksManager</span></code>.</p>
+</section>
+<section id="stylelint">
+<h4>stylelint<a class="headerlink" href="#stylelint" title="Permalink to this headline"></a></h4>
+<p>We lint CSS and HTML files with <a class="reference external" href="https://stylelint.io">stylelint</a>. The linter is configured by <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/.stylelintrc"><code class="docutils literal notranslate"><span class="pre">.stylelintrc</span></code></a> for HTML files and by <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/css/.stylelintrc"><code class="docutils literal notranslate"><span class="pre">core/templates/css/.stylelintrc</span></code></a> for CSS files. Check out its documentation for a list of the available <a class="reference external" href="https://stylelint.io/user-guide/rules/list">rules</a> and <a class="reference external" href="https://stylelint.io/user-guide/configure">configuration options</a>.</p>
+<p>Since stylelint does not support custom rules, you’ll need to use other linters if the built-in rules don’t suit your needs.</p>
+</section>
+</section>
+<section id="our-custom-linters">
+<h3>Our custom linters<a class="headerlink" href="#our-custom-linters" title="Permalink to this headline"></a></h3>
+<p>Even with custom rules, the third-party linters above are sometimes insufficient. That’s why we also wrote some linters ourselves.</p>
+<section id="js-ts-linter">
+<h4>JS/TS linter<a class="headerlink" href="#js-ts-linter" title="Permalink to this headline"></a></h4>
+<p>Our custom JavaScript and TypeScript lint checks are defined in the <code class="docutils literal notranslate"><span class="pre">JsTsLintChecksManager</span></code> class of <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/linters/js_ts_linter.py"><code class="docutils literal notranslate"><span class="pre">scripts/linters/js_ts_linter.py</span></code></a>. The individual lint checks are defined as private helper methods in that class, and those methods are called from the <code class="docutils literal notranslate"><span class="pre">JsTsLintChecksManager.perform_all_lint_checks()</span></code> method when the linter runs.</p>
+<p>We do not allow adding new checks to this linter. Instead, you should use <a class="reference external" href="#eslint">ESLint</a>.</p>
+</section>
+<section id="html-linter">
+<h4>HTML linter<a class="headerlink" href="#html-linter" title="Permalink to this headline"></a></h4>
+<p>Since we cannot add custom rules to htmllint, we have written our own HTML linter in the <code class="docutils literal notranslate"><span class="pre">HTMLLintChecksManager</span></code> class in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/linters/html_linter.py"><code class="docutils literal notranslate"><span class="pre">scripts/linters/html_linter.py</span></code></a>. If you need to add custom HTML lint checks, you can do so here.</p>
+</section>
+<section id="general-purpose-linter">
+<h4>General-purpose linter<a class="headerlink" href="#general-purpose-linter" title="Permalink to this headline"></a></h4>
+<p>The general-purpose linter relies on regular expressions to identify bad patterns in the code, but it is less efficient since it has to run over every file. We do not allow adding Python, JavaScript, or TypeScript checks here. Instead, you should use <a class="reference external" href="#pylint">Pylint</a> or <a class="reference external" href="#eslint">ESLint</a>.</p>
+<p>Even though we do not allow new checks to this linter, we explain below how the checks are defined to help you understand the existing checks.</p>
+<p>We define regular expression checks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;regexp&#39;</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;TODO[^\(]*[^\)][^:]*[^A-Z]+[^\w]*$&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Please assign TODO comments to a user &#39;</span>
+               <span class="s1">&#39;in the format TODO(username): XXX. &#39;</span><span class="p">,</span>
+    <span class="s1">&#39;excluded_files&#39;</span><span class="p">:</span> <span class="p">(),</span>
+    <span class="s1">&#39;excluded_dirs&#39;</span><span class="p">:</span> <span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We have 4 keys in this dictionary:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">regexp</span></code>: The regular expression here that the check matches. Depending on the situation, this could be either a forbidden or a required pattern.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message</span></code> The error message that will be shown to the user if the lint check fails.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">excluded_files</span></code>: A tuple of excluded files, if really necessary (<strong>not recommended</strong>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">excluded_dirs</span></code>: A tuple of excluded directories if really necessary (<strong>not recommended</strong>).</p></li>
+</ul>
+<p>These regular expression checks can be added to any of the following constants in <code class="docutils literal notranslate"><span class="pre">general_purpose_linter.py</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BAD_PATTERNS_REGEXP</span></code>: The regular expressions here are forbidden in any file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MANDATORY_PATTERNS_REGEXP</span></code>: The regular expressions here must be present in every file. The <code class="docutils literal notranslate"><span class="pre">included_types</span></code> key may be specified to limit what files this applies to.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MANDATORY_PATTERNS_JS_REGEXP</span></code>: The regular expressions here must be present in all JavaScript and TypeScript files. The <code class="docutils literal notranslate"><span class="pre">included_types</span></code> key should specify JavaScript files, TypeScript files, or both.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BAD_LINE_PATTERNS_HTML_REGEXP</span></code>: The regular expressions here are forbidden in HTML files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BAD_PATTERNS_PYTHON_REGEXP</span></code>: The regular expressions here are forbidden in Python files.</p></li>
+</ul>
+<p>There are also two additional constants you can add values to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BAD_PATTERNS</span></code>: This dictionary stores mappings from forbidden substrings to dictionaries like those defining regular expression checks, but without the <code class="docutils literal notranslate"><span class="pre">regexp</span></code> key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BAD_STRINGS_CONSTANTS</span></code>: This dictionary stores mappings from forbidden substrings to dictionaries like those defining regular expression checks, but without the <code class="docutils literal notranslate"><span class="pre">regexp</span></code> key. These substrings are only checked in <code class="docutils literal notranslate"><span class="pre">constants.ts</span></code>.</p></li>
+</ul>
+<p>For more complicated rules, you can also add a method to the <code class="docutils literal notranslate"><span class="pre">GeneralPurposeLinter</span></code> class.</p>
+</section>
+<section id="codeowner-linter">
+<h4>Codeowner linter<a class="headerlink" href="#codeowner-linter" title="Permalink to this headline"></a></h4>
+<p>In <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/linters/codeowner_linter.py"><code class="docutils literal notranslate"><span class="pre">scripts/linters/codeowner_linter.py</span></code></a>, we have a custom linter that helps us maintain the codeowners file. You probably won’t ever have to change this linter, but if you ever get a warning that says <code class="docutils literal notranslate"><span class="pre">{{some</span> <span class="pre">file}}</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">listed</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">.github/CODEOWNERS</span> <span class="pre">file</span></code>, that’s the codeowner linter reminding you to add a new file to the codeowners file.</p>
+</section>
+<section id="other-files-linter">
+<h4>Other files linter<a class="headerlink" href="#other-files-linter" title="Permalink to this headline"></a></h4>
+<p>Finally, we have some miscellaneous lint checks defined in the <code class="docutils literal notranslate"><span class="pre">CustomLintChecksManager</span></code> class in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/linters/other_files_linter.py"><code class="docutils literal notranslate"><span class="pre">scripts/linters/other_files_linter.py</span></code></a>.</p>
+</section>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<p>Sample PRs where checks were added:</p>
+<ul class="simple">
+<li><p>Custom ESLint check: https://github.com/oppia/oppia/pull/10494</p></li>
+<li><p>Custom Pylint check: https://github.com/oppia/oppia/pull/10107</p></li>
+</ul>
+</section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline"></a></h2>
+<p>Please reach out to <strong>Sajal Asati (&#64;sajalasati, sajalasati107&#64;gmail.com) or Sandeep Dubey (&#64;DubeySandeep, dubeysandeep.in&#64;gmail.com)</strong> with any questions.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lint.html" class="btn btn-neutral float-left" title="Lint Checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Custom-Pylint-checks.html" class="btn btn-neutral float-right" title="Custom Pylint checks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

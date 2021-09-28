@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing design docs &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Revert and regression policy" href="Revert-and-Regression-Policy.html" />
+    <link rel="prev" title="Guide on defining types" href="Guide-on-defining-types.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing design docs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-respond-to-doc-reviews">How to respond to doc reviews</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-we-write-design-documents">Why we write design documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips-when-writing-design-documents">Tips when writing design documents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#additional-tips-for-large-projects">Additional tips for large projects</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-sequence-diagrams-using-text">Generating Sequence Diagrams using Text</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tutorial-to-write-source-text">Tutorial to write source text</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+      <li>Writing design docs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Writing-design-docs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="writing-design-docs">
+<h1>Writing design docs<a class="headerlink" href="#writing-design-docs" title="Permalink to this headline"></a></h1>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline"></a></h2>
+<p>When writing design docs at Oppia, please use this <a class="reference external" href="https://docs.google.com/document/d/1eMivKj5uWkOkj4AB684JVJslAe49gSskZ-VsyUjgPN4/edit">design doc template</a>. This will ensure that all the necessary information for the project is documented in a central location, and enable project reviews to be done effectively.</p>
+<p>More specifically, here’s how to get started:</p>
+<ol class="simple">
+<li><p>Make a copy of <a class="reference external" href="https://docs.google.com/document/d/1eMivKj5uWkOkj4AB684JVJslAe49gSskZ-VsyUjgPN4/edit">this document</a>.</p></li>
+<li><p>Delete the top “instructions” box.</p></li>
+<li><p>Fill in all the sections with details pertaining to your feature/project (you can remove the existing text, which is just meant to help you get started). For sections that are not required for the particular project you’re working on, write a short explanation of why they’re not required, rather than deleting them altogether.</p></li>
+<li><p>Make sure to proofread your design doc before asking reviewers to look at it.</p></li>
+</ol>
+</section>
+<section id="how-to-respond-to-doc-reviews">
+<h2>How to respond to doc reviews<a class="headerlink" href="#how-to-respond-to-doc-reviews" title="Permalink to this headline"></a></h2>
+<p>When you’re responding to a reviewer’s comments in a doc, we recommend that you treat it like <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#instructions-for-making-a-code-change">responding to a code review</a>.</p>
+<p>More specifically:</p>
+<ul class="simple">
+<li><p>Feel free to accept (or reject!) suggestions. If you reject a suggestion, that’s fine, but say why.</p></li>
+<li><p>In general, treat comments similarly to how you would treat comments in a standard code review. In other words:</p>
+<ul>
+<li><p>Before asking for a follow-up review, make sure to reply to each comment (maybe with “Done”) and update the doc as needed, but <strong>don’t resolve the comment thread</strong>. Let the reviewer handle that, so that they can keep track of which comments still need to be addressed. Sometimes, more follow-up might be needed when the reviewer looks at the updated version of the doc.</p></li>
+<li><p>If you have any questions about the reviewer’s comments, feel free to ask them for clarification.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="why-we-write-design-documents">
+<h2>Why we write design documents<a class="headerlink" href="#why-we-write-design-documents" title="Permalink to this headline"></a></h2>
+<p>Design documents provide team members with the opportunity to review the future implementation of a project before the code has been fully written. A good design document:</p>
+<ol class="simple">
+<li><p>Outlines the technical goals of a feature or project that needs to be implemented</p></li>
+<li><p>Describes the architectural changes in the codebase that the project will include</p></li>
+<li><p>Describes how the project will be implemented (specific details of what you plan to build, but not the actual code)</p></li>
+<li><p>Provides a break-down of tasks that will be completed</p></li>
+<li><p>Provides time estimates for each task &amp; how they will fit within defined milestones</p></li>
+<li><p>Considers other aspects of the project, including privacy, security, accessibility, and others</p></li>
+</ol>
+</section>
+<section id="tips-when-writing-design-documents">
+<h2>Tips when writing design documents<a class="headerlink" href="#tips-when-writing-design-documents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Make sure that you understand the high-level goals of the project, then add increasingly more detail once that’s established. Consider using the following strategy:</p>
+<ol class="simple">
+<li><p>Start with the overview &amp; goals of the project</p></li>
+<li><p>Make sure that other team members are in agreement</p></li>
+<li><p>Fill in the product design section of the document (mocks are really helpful)</p></li>
+<li><p>Make sure that other team members are in agreement with the product design</p></li>
+<li><p>Then, go into detail on the technical &amp; architectural approach</p></li>
+<li><p>Make sure other team members are in agreement with the architectural changes</p></li>
+<li><p>Go into specifics of how the project will be implemented</p></li>
+<li><p>Make sure other team members are in agreement with the specifics of the implementation</p></li>
+<li><p>Fill in the milestones, PRs, time estimates, and other sections</p></li>
+<li><p>Make sure other team members are in final agreement with the approach before beginning implementation</p></li>
+</ol>
+</li>
+<li><p>Use dependency graphs, flow diagrams, and bullet lists when communicating the high-level architectural changes of the project.</p></li>
+<li><p>When considering additional options that go beyond the initial goals of the project, consider whether these are essential. If they aren’t, add them to a “future work” section that could be worked on alongside or after the project (but not as part of the project itself). If it is essential, make sure you factor that into the implementation plan.</p></li>
+<li><p>When breaking down a project, determine all of the tasks that need to be completed for the project. A task is either performing a migration, adding/updating documentation, or creating a PR (each PR should correspond to a single task).</p></li>
+<li><p>When estimating how long a task will take for a project, assume it will take longer than you expect. Engineers often have a tendency of assuming implementation will go perfectly, but they sometimes don’t and it’s difficult to anticipate the things that could go wrong (e.g. bugs are found, a chosen library won’t work, etc.). Suggest always multiplying your time estimates by 1.5x or 2x based on past experience (we call this a “fudge factor”). Consider also going back to old projects and comparing how much time you spent versus your estimates–this can help you figure out a good “fudge factor” to use when providing time estimates for future projects.</p></li>
+<li><p>If you’re unsure how to approach the implementation, start by writing a basic hacked-together prototype to help solve specific questions of the implementation that you’re unsure of. Look at other similar features for how they’re laid out to compare. You should avoid implementing too much of the project in advance: the main purpose of a design document is to get feedback for a project before spending the large amount of time implementing it. For that reason, the document should take much less time than the project to create.</p></li>
+<li><p>If you’re unsure about specific parts of the project: call these out as open questions so that other team members can weigh in and provide suggestions or resources that can help you resolve the open questions.</p></li>
+<li><p>If there’s something you don’t fully understand when writing any part of the design document, ask more questions. Sometimes we make mistakes in how we explain things, and that can lead to projects being taken in a direction we didn’t anticipate. Other times, we see contributors make assumptions about one particular technical area (such as testing) and describe something other than what we expect. More questions can help bridge any missing knowledge, and can result in changes to our document templates or project goals.</p></li>
+<li><p>Use related artifacts when coming up with designs. We have lots of past design docs that can provide more detail on the types of things we value as a team, and how to describe those things. Things that follow established patterns are easier to understand since they minimize the amount of context needed to comprehend it. One way to evaluate how much a particular design document or proposal minimizes context is by considering how much easier/harder it is to understand when compared with other documents describing a project of similar complexity.</p></li>
+</ul>
+<section id="additional-tips-for-large-projects">
+<h3>Additional tips for large projects<a class="headerlink" href="#additional-tips-for-large-projects" title="Permalink to this headline"></a></h3>
+<p>The following tips correspond to projects that span 3+ months:</p>
+<ul class="simple">
+<li><p>Use milestones to organize tasks &amp; specify expected completion times to communicate expectations with the team</p></li>
+<li><p>When creating milestones, consider the high-level “deliverables” of a project: what can you demonstrate to someone else after a set of tasks are completed that move Oppia toward the finished result of your project? For full-stack projects, an example set of milestones may look something like (note that the order of milestone is often interchangeable, but sometimes there are dependencies between tasks that force a specific order):
+i. Milestone 1: Implement the backend/logical/service portion of the feature
+ii. Milestone 2: Implement the frontend/user-facing portion of the feature
+iii. Milestone 3: Performing any necessary migrations in production</p></li>
+<li><p>When estimating a milestone, first estimate how much time each task takes and then fit as many tasks as you can within a milestone. Don’t change your time estimates based on the milestone (just because something is expected to get done within a certain timeframe doesn’t mean it can). If the milestones don’t provide enough time to finish the project, that may indicate that the project needs to be rescoped.</p></li>
+<li><p>If the project has multiple developers, ensure tasks and milestones have clear owners assigned to them</p></li>
+</ul>
+</section>
+</section>
+<section id="generating-sequence-diagrams-using-text">
+<h2>Generating Sequence Diagrams using Text<a class="headerlink" href="#generating-sequence-diagrams-using-text" title="Permalink to this headline"></a></h2>
+<p>Sequence diagrams can be used to convey the structure of a system more clearly. It helps represent the main interactions between different layers such as controllers / domain / storage.</p>
+<p>In order to create a sequence diagram, you can use this <a class="reference external" href="https://bramp.github.io/js-sequence-diagrams/">tool</a>. The tool takes a text source as input to generate an SVG file with the sequence diagram. You will use a text editor to type out the source text following the steps below. Once source text is complete, we will copy-paste it in one of the ‘Demo’ boxes in the webpage, select ‘Simple’ as the theme, and then download the generated SVG file.</p>
+<section id="tutorial-to-write-source-text">
+<h3>Tutorial to write source text<a class="headerlink" href="#tutorial-to-write-source-text" title="Permalink to this headline"></a></h3>
+<p>For the sake of this tutorial, assume that you have to generate a sequence diagram for <code class="docutils literal notranslate"><span class="pre">get_topic_page()</span></code> (defined below).</p>
+<p><code class="docutils literal notranslate"><span class="pre">controller.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_topic_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">topic</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">get_all_topics</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">topic</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">service.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_all_topics</span><span class="p">():</span>
+    <span class="n">topics</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">MAX_TOPICS</span><span class="p">):</span>
+        <span class="n">topics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fetcher</span><span class="o">.</span><span class="n">get_topic</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">topics</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fetcher.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_topic</span><span class="p">(</span><span class="n">topic_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">topic_models</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">topic_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The entry point of the sequence diagram will be <code class="docutils literal notranslate"><span class="pre">controller.get_topic_page()</span></code>. Starting from that method, whenever a new file is referred to, add it as a ‘participant’ in the top of the source text.
+Remember to also add the file containing the entry method as a participant.
+In the example, <code class="docutils literal notranslate"><span class="pre">get_topic_page()</span></code> refers to service to execute the method <code class="docutils literal notranslate"><span class="pre">service.get_all_topics()</span></code>. So ‘service’ needs to be added as a participant. The source file will look like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">text_source.txt</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">participant</span> <span class="n">controller</span>
+<span class="n">participant</span> <span class="n">service</span>
+</pre></div>
+</div>
+<p>When a call is made to a method in a different file, use this syntax: <code class="docutils literal notranslate"><span class="pre">current_file-&gt;new_file:</span> <span class="pre">method_being_called()</span></code>. In other words, this represents <code class="docutils literal notranslate"><span class="pre">new_file.method_being_called()</span></code> is executed in current_file.
+In the example, <code class="docutils literal notranslate"><span class="pre">service.get_all_topics()</span></code> is called in get_topic_page(). The corresponding representation in the source text will be as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">text_source.txt</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">participant</span> <span class="n">controller</span>
+<span class="n">participant</span> <span class="n">service</span>
+
+<span class="n">controller</span> <span class="o">-&gt;</span> <span class="n">service</span><span class="p">:</span> <span class="n">get_all_topics</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This also represents that the control flow goes to <code class="docutils literal notranslate"><span class="pre">service.get_all_topics()</span></code>. In <code class="docutils literal notranslate"><span class="pre">service.get_all_topics()</span></code>, <code class="docutils literal notranslate"><span class="pre">fetcher.get_topic()</span></code> is called inside a loop.
+In order to represent a loop, add 2 notes to the left of the calling method where the first indicates the beginning and the second inidates the end of the loop.
+The statements between the two notes should represent the calls made inside the loop. The source text for this will look as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Note</span> <span class="n">left</span> <span class="n">of</span> <span class="n">service</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">BEGIN</span><span class="p">:</span>\<span class="n">nLoop</span> <span class="n">MAX_TOPICS</span> <span class="n">times</span>
+<span class="o">//</span> <span class="n">Logic</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">loop</span><span class="o">.</span>
+<span class="n">Note</span> <span class="n">left</span> <span class="n">of</span> <span class="n">service</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">END</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fetcher.get_topic()</span></code> does a fetch from the datastore. This can be represented in the source text like this:
+<code class="docutils literal notranslate"><span class="pre">Note</span> <span class="pre">over</span> <span class="pre">fetcher:</span> <span class="pre">Get</span> <span class="pre">Topic</span> <span class="pre">from</span> <span class="pre">datastore</span></code></p>
+<p>When a method execution is completed, use this syntax to show control returning to the calling method and the data returned: <code class="docutils literal notranslate"><span class="pre">current_file</span> <span class="pre">--&gt;</span> <span class="pre">new_file:</span> <span class="pre">XYZ</span> <span class="pre">model</span></code>
+In the example, <code class="docutils literal notranslate"><span class="pre">get_topic()</span></code> returns the Topic model to the calling method. This can be represented in the source text like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fetcher</span> <span class="o">--&gt;</span> <span class="n">service</span><span class="p">:</span> <span class="n">Topic</span> <span class="n">model</span>
+</pre></div>
+</div>
+<p>After combining these statements, the source text should look like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">text_source.txt</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">participant</span> <span class="n">controller</span>
+<span class="n">participant</span> <span class="n">service</span>
+<span class="n">participant</span> <span class="n">fetcher</span>
+
+<span class="n">controller</span> <span class="o">-&gt;</span> <span class="n">service</span><span class="p">:</span> <span class="n">get_all_topics</span><span class="p">()</span>
+<span class="n">Note</span> <span class="n">left</span> <span class="n">of</span> <span class="n">service</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">BEGIN</span><span class="p">:</span>\<span class="n">nLoop</span> <span class="n">MAX_TOPICS</span> <span class="n">times</span>
+<span class="n">service</span> <span class="o">-&gt;</span> <span class="n">fetcher</span><span class="p">:</span> <span class="n">get_topic</span><span class="p">()</span>
+<span class="n">Note</span> <span class="n">over</span> <span class="n">fetcher</span><span class="p">:</span> <span class="n">Get</span> <span class="n">Topic</span> <span class="kn">from</span> <span class="nn">datastore</span>
+<span class="n">fetcher</span> <span class="o">--&gt;</span> <span class="n">service</span><span class="p">:</span> <span class="n">Topic</span> <span class="n">model</span>
+<span class="n">Note</span> <span class="n">left</span> <span class="n">of</span> <span class="n">service</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">END</span>
+<span class="n">service</span> <span class="o">-&gt;</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Topic</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>You can generate an SVG sequence diagram by copying this source text into one of the ‘Demo’ boxes at https://bramp.github.io/js-sequence-diagrams/.</p>
+<p>Select ‘Simple’ as the theme and download the SVG file. The downloaded SVG file will contain the sequence diagram.</p>
+<p>The generated sequence diagram will look like this:</p>
+<img src="https://user-images.githubusercontent.com/11008603/91026669-b34d1b80-e618-11ea-9df8-e234f3f6d0fe.png" width="600px"/>
+<p>See more examples <a class="reference external" href="https://gist.github.com/kevintab95/3b2375f71f04476b507b22e7ad8d123f">here</a>.</p>
+<p>Reference for syntax:
+https://bramp.github.io/js-sequence-diagrams/</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Guide-on-defining-types.html" class="btn btn-neutral float-left" title="Guide on defining types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Revert-and-Regression-Policy.html" class="btn btn-neutral float-right" title="Revert and regression policy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

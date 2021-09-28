@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing audit jobs &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Writing new one off jobs using map reduce" href="Writing-new-one-off-jobs-using-map-reduce.html" />
+    <link rel="prev" title="Writing state migrations" href="Writing-state-migrations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="backend-reference.html">Backend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Apache-Beam-Jobs.html">Apache Beam jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-state-migrations.html">Writing state migrations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing audit jobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#steps-to-follow-while-writing-audit-jobs">Steps to follow while writing audit jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-new-one-off-jobs-using-map-reduce.html">Writing new one off jobs using map reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating-statistics.html">Calculating statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-and-modifying-storage-models.html">Creating and modifying storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-Validators-for-storage-models.html">Writing validators for storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Coding-for-speed-in-GAE.html">Coding for speed in GAE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-static-assets.html">Adding static assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html">Wipeout implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html#wipeout-design">Wipeout design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notes-on-NDB-Datastore-Transactions.html">Notes on NDB datastore transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="backend-reference.html">Backend</a> &raquo;</li>
+      <li>Writing audit jobs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Writing-audit-jobs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="writing-audit-jobs">
+<h1>Writing audit jobs<a class="headerlink" href="#writing-audit-jobs" title="Permalink to this headline"></a></h1>
+<p>Audit jobs are a type of one-off jobs that are to be run in production in order to investigate/modify certain aspects of entities like explorations, collections, interactions, topics, stories, questions, skills, etc. Now, as the dataset can be enormous, we use a MapReduce job to perform such audits, efficiently.</p>
+<p>The following instructions describe how to write a one-off MapReduce job to audit entities.</p>
+<section id="steps-to-follow-while-writing-audit-jobs">
+<h2>Steps to follow while writing audit jobs<a class="headerlink" href="#steps-to-follow-while-writing-audit-jobs" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Depending on the entity you’re going to be working on, you’ll write your audit job in the corresponding *_jobs_one_off.py file. (for eg, exp_jobs_one_off.py has all one-off jobs that operate on explorations).</p></li>
+<li><p>The job will usually comprise of 3 functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">entity_classes_to_map_over</span></code>: This function should return a list of datastore class references to map over. These can be imported from models registry in core/platform.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code>: Here you need to implement the map function for this job. This function would take in the entity that needs to be audited, *_model (for eg, exploration_model) and state what operations need to be performed on that entity. Based on the necessary conditions, this function should return a generator (with <code class="docutils literal notranslate"><span class="pre">yield</span></code>) that can then be reduced to form the final output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reduce</span></code>: This function should aggregate all the mapped results into an output with the required format.</p></li>
+</ul>
+</li>
+<li><p>The tests for the job should be written in the *_jobs_one_off_test.py. The tests should at least have functions that would validate that the job runs only for the desired entities and that the job does not run for deleted entities. Beyond this, you may have to add more tests based on your particular use-case.</p></li>
+<li><p>Lastly, add an entry to core/jobs_registry to mention the new job that you wrote.</p></li>
+</ol>
+<p>After writing the job with appropriate tests, follow instructions <a class="reference external" href="https://github.com/oppia/oppia/wiki/Running-jobs-in-production">here</a> in order to run your job in production.</p>
+<p>For reference, let’s walk through one example. Consider <a class="reference external" href="https://github.com/oppia/oppia/blob/5eda7cd1bab85730e4feefbd5833ba19329c0979/core/domain/exp_jobs_one_off.py#L338">this</a> Audit Job which outputs a list of private explorations that are viewable. Following the aforementioned steps, notice that 3 functions have been implemented. Let’s take a brief overview of each of them.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">entity_classes_to_map_over</span></code>: This returns a list of datastore class references containing the exploration model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code>: This function takes in an “item” which is the exploration_model that needs to be operated upon. Here, the condition for privacy and viewability is checked, and if the condition is matched, that particular exploration’s id and title are generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reduce</span></code>: The reduce function here, simply aggregates the mapped generations and returns (id, title) pairs of the explorations that are private, yet viewable.</p></li>
+</ul>
+<p>Now, let’s take a look at the tests for this job, <a class="reference external" href="https://github.com/oppia/oppia/blob/5eda7cd1bab85730e4feefbd5833ba19329c0979/core/domain/exp_jobs_one_off_test.py#L1389">here</a>.</p>
+<p>After setting up with dummy values for email, username, exploration ids, and titles, 3 kinds of tests have been written.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_output_contains_only_viewable_private_explorations</span></code>: This tests if the job outputs only viewable explorations. The way this works is, dummy explorations are created and then the job is run on these explorations. An instance of the job is created by calling the create_new() method, which returns a job_id, which is then enqueued and eventually processed. In this case, two explorations are created. One is private and viewable and the other is not. The job is run on both explorations. A null output is expected from the 2nd exploration and an (id, title) pair is expected from the job when it’s run on the 1st exploration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_no_action_is_performed_when_exploration_rights_is_none</span></code>: Similar procedure as mentioned above with the sample exploration being private and viewable but the exploration rights model is deleted. So the output of the job should yield an empty list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_no_action_is_performed_for_deleted_exploration</span></code>: Here a sample exploration, private and viewable, is created and then deleted. A generic function to test that the job yields empty output for deleted explorations, run_job_for_deleted_exp, is run on that exploration.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Writing-state-migrations.html" class="btn btn-neutral float-left" title="Writing state migrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Writing-new-one-off-jobs-using-map-reduce.html" class="btn btn-neutral float-right" title="Writing new one off jobs using map reduce" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

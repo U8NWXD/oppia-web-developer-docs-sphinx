@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debug backend tests &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Debug frontend tests" href="Debug-frontend-tests.html" />
+    <link rel="prev" title="Debug end to end tests" href="Debug-end-to-end-tests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="debugging.html">Debugging</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="If-your-build-fails.html">If your build fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="If-your-presubmit-check-fails.html">If your presubmit check fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Interpreting-CircleCI-Results.html">Interpreting CircleCI Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging-Docs.html">Debugging docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-end-to-end-tests.html">Debug end to end tests</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Debug backend tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpret-log-output">Interpret log output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#find-tests">Find tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-tests-in-isolation">Run tests in isolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#increase-verbosity">Increase verbosity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-the-python-debugger">Use the Python debugger</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-frontend-tests.html">Debug frontend tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging-Stories.html">Debugging stories</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+          <li><a href="debugging.html">Debugging</a> &raquo;</li>
+      <li>Debug backend tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Debug-backend-tests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="debug-backend-tests">
+<h1>Debug backend tests<a class="headerlink" href="#debug-backend-tests" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#interpret-log-output">Interpret log output</a></p></li>
+<li><p><a class="reference external" href="#find-tests">Find tests</a></p></li>
+<li><p><a class="reference external" href="#run-tests-in-isolation">Run tests in isolation</a></p></li>
+<li><p><a class="reference external" href="#increase-verbosity">Increase verbosity</a></p></li>
+<li><p><a class="reference external" href="#use-the-python-debugger">Use the Python debugger</a></p>
+<ul>
+<li><p><a class="reference external" href="#step-1-insert-break-points">Step 1: Insert break points</a></p></li>
+<li><p><a class="reference external" href="#step-2-run-test-with-unittest">Step 2: Run test with unittest</a></p></li>
+<li><p><a class="reference external" href="#step-3-pdb-commands">Step 3: PDB commands</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>When your backend tests fail, the strategies below can help you figure out how to fix them. We recommend the following workflow:</p>
+<ol class="simple">
+<li><p><a class="reference external" href="#interpret-log-output">Look at the log output</a> to understand what it means.</p></li>
+<li><p><a class="reference external" href="#find-tests">Find the test that failed</a> and examine its code.</p></li>
+<li><p><a class="reference external" href="#run-tests-in-isolation">Run the failing test in isolation</a> so that you can iterate more quickly.</p></li>
+<li><p>Use <a class="reference external" href="#increase-verbosity">print statements</a> and/or <a class="reference external" href="#use-the-python-debugger">the Python debugger</a> to investigate further.</p></li>
+</ol>
+</section>
+<section id="interpret-log-output">
+<h2>Interpret log output<a class="headerlink" href="#interpret-log-output" title="Permalink to this headline"></a></h2>
+<p>When your backend tests fail, look near the end of the log for output that looks like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>======================================================================
+FAIL: test_failed_api_call_logs_the_exception (jobs.jobs_manager_test.RefreshStateOfBeamJobRunModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &quot;/home/runner/work/oppia/oppia/jobs/jobs_manager_test.py&quot;, line 158, in test_failed_api_call_logs_the_exception
+    lambda: jobs_manager.refresh_state_of_beam_job_run_model(
+  File &quot;/home/runner/work/oppia/oppia/core/tests/test_utils.py&quot;, line 1306, in assertRaisesRegexp
+    expected_exception, expected_regex, *args, **kwargs)
+AssertionError: Exception not raised by &lt;lambda&gt;
+
+---------------------------------------------------------------------
+</pre></div>
+</div>
+<p>This is the part of the log that you should pay attention to. It tells you which test failed and why the failure occurred. Here’s how to read it:</p>
+<ul class="simple">
+<li><p>At the top, the line beginning with <code class="docutils literal notranslate"><span class="pre">FAIL</span></code> tells you which test failed. In this case, it’s the <code class="docutils literal notranslate"><span class="pre">test_failed_api_call_logs_the_exception</span></code> test in the <code class="docutils literal notranslate"><span class="pre">jobs.jobs_manager_test.RefreshStateOfBeamJobRunModelTests</span></code> class. Note that this line can also start with <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>. <code class="docutils literal notranslate"><span class="pre">FAIL</span></code> indicates that an assertion failed, while <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> indicates that an exception (other than <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code>) was raised unexpectedly.</p></li>
+<li><p>Next is the traceback. This shows you the state of the stack when the error was raised. In this example:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> was raised by line 1306 of <code class="docutils literal notranslate"><span class="pre">test_utils.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">assertRaisesRegexp()</span></code> function.</p></li>
+<li><p>That <code class="docutils literal notranslate"><span class="pre">assertRaisesRegexp()</span></code> function was called on line 158 of <code class="docutils literal notranslate"><span class="pre">jobs_manager_test.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">test_failed_api_call_logs_the_exception()</span></code> function. Since this is the function defining our test, it’s the end of the trace.</p></li>
+</ul>
+</li>
+<li><p>Lastly, the line starting with <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> describes what caused the test to fail. In this case, it’s because we expected an exception to be raised, but that didn’t happen.</p></li>
+</ul>
+</section>
+<section id="find-tests">
+<h2>Find tests<a class="headerlink" href="#find-tests" title="Permalink to this headline"></a></h2>
+<p>You usually want to look at the full code of the failing test to better understand what could have gone wrong. Unittest, the Python testing framework we use, makes this really easy: the description of which test failed also tells us exactly where to find it. In the example above, we saw this line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FAIL: test_failed_api_call_logs_the_exception (jobs.jobs_manager_test.RefreshStateOfBeamJobRunModelTests)
+</pre></div>
+</div>
+<p>This means that the full dotted name of the failing test function is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>jobs.jobs_manager_test.RefreshStateOfBeamJobRunModelTests.test_failed_api_call_logs_the_exception
+</pre></div>
+</div>
+<p>In Python, the first part of a dotted name describes a file path. In this case, the <code class="docutils literal notranslate"><span class="pre">jobs</span></code> at the start of the name refers to the <code class="docutils literal notranslate"><span class="pre">jobs/</span></code> folder at the root of the repository. Inside that folder is <code class="docutils literal notranslate"><span class="pre">jobs_manager_test.py</span></code>, which matches the <code class="docutils literal notranslate"><span class="pre">jobs_manager_test</span></code> part of the dotted name. (Notice that the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension of the file name disappeared.)</p>
+<p>Now that we’ve reached a file, the rest of the dotted name refers to Python attributes. The <code class="docutils literal notranslate"><span class="pre">jobs_manager_test.py</span></code> file defines the <code class="docutils literal notranslate"><span class="pre">RefreshStateOfBeamJobRunModelTests</span></code> class, which has a <code class="docutils literal notranslate"><span class="pre">test_failed_api_call_logs_the_exception</span></code> method. This is the method that defines our test!</p>
+</section>
+<section id="run-tests-in-isolation">
+<h2>Run tests in isolation<a class="headerlink" href="#run-tests-in-isolation" title="Permalink to this headline"></a></h2>
+<p>When you know which test is causing you problems, running it in isolation can help you debug. For one thing, the tests will run much faster if you only run a few in isolation. Further, the console output from the test run will be much easier to understand.</p>
+<p>To run a test in isolation, you can use the <code class="docutils literal notranslate"><span class="pre">--test_target</span></code> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests --test_target jobs.jobs_manager_test.RefreshStateOfBeamJobRunModelTests.test_failed_api_call_logs_the_exception</span>
+</pre></div>
+</div>
+<p>If you wanted to run all the tests defined by the <code class="docutils literal notranslate"><span class="pre">RefreshStateOfBeamJobRunModelTests</span></code>, you could do that too. Just shorten the dotted name to end at the class:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests --test_target jobs.jobs_manager_test.RefreshStateOfBeamJobRunModelTests</span>
+</pre></div>
+</div>
+<p>Note that if you want to run all the tests in a directory, you need to use <code class="docutils literal notranslate"><span class="pre">--test_path</span></code> instead like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests --test_path jobs</span>
+</pre></div>
+</div>
+<p><strong>Make sure that you can reproduce the problem you are trying to debug when you run the test in isolation!</strong> While rare, it is possible for a test failure to have been caused by previous tests. In these cases, you may not be able to reproduce the problem when you only run the test that initially failed.</p>
+</section>
+<section id="increase-verbosity">
+<h2>Increase verbosity<a class="headerlink" href="#increase-verbosity" title="Permalink to this headline"></a></h2>
+<p>Normally, we suppress any console output from passing tests, so even if you add print statements for debugging, you’ll only see a success message:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[datastore] Sep 19, 2021 3:30:21 PM io.gapi.emulators.grpc.GrpcServer$3 operationComplete
+[datastore] INFO: Adding handler(s) to newly registered Channel.
+[datastore] Sep 19, 2021 3:30:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+[datastore] INFO: Detected HTTP/2 connection.
+19:30:23 FINISHED scripts.run_e2e_tests_test.RunE2ETestsTests.test_is_oppia_server_already_running_when_ports_closed: 22.1 secs
+Stopping Redis Server(name=&quot;redis-server&quot;, pid=37086)...
+Stopping Cloud Datastore Emulator(name=&quot;python2.7&quot;, pid=37069)...
+
++------------------+
+| SUMMARY OF TESTS |
++------------------+
+
+SUCCESS   scripts.run_e2e_tests_test.RunE2ETestsTests.test_is_oppia_server_already_running_when_ports_closed: 1 tests (1.2 secs)
+
+Ran 1 test in 1 test class.
+All tests passed.
+</pre></div>
+</div>
+<p>However if you pass the <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> flag when running the backend tests, you’ll see console output. For example, here we added a <code class="docutils literal notranslate"><span class="pre">print('HELLO</span> <span class="pre">THERE')</span></code> statement to the test:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[datastore] Sep 19, 2021 3:32:28 PM io.gapi.emulators.grpc.GrpcServer$3 operationComplete
+[datastore] INFO: Adding handler(s) to newly registered Channel.
+[datastore] Sep 19, 2021 3:32:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+[datastore] INFO: Detected HTTP/2 connection.
+19:32:30 LOG scripts.run_e2e_tests_test.RunE2ETestsTests.test_is_oppia_server_already_running_when_ports_closed:
+HELLO THERE
+test_is_oppia_server_already_running_when_ports_closed (scripts.run_e2e_tests_test.RunE2ETestsTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.455s
+
+OK
+----------------------------------------
+19:32:30 FINISHED scripts.run_e2e_tests_test.RunE2ETestsTests.test_is_oppia_server_already_running_when_ports_closed: 26.3 secs
+Stopping Redis Server(name=&quot;redis-server&quot;, pid=37294)...
+Stopping Cloud Datastore Emulator(name=&quot;python2.7&quot;, pid=37277)...
+
++------------------+
+| SUMMARY OF TESTS |
++------------------+
+
+SUCCESS   scripts.run_e2e_tests_test.RunE2ETestsTests.test_is_oppia_server_already_running_when_ports_closed: 1 tests (1.5 secs)
+
+Ran 1 test in 1 test class.
+All tests passed.
+</pre></div>
+</div>
+<p>If a test fails, you’ll always see its console output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[datastore] Sep 19, 2021 3:34:41 PM io.gapi.emulators.grpc.GrpcServer$3 operationComplete
+[datastore] INFO: Adding handler(s) to newly registered Channel.
+[datastore] Sep 19, 2021 3:34:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+[datastore] INFO: Detected HTTP/2 connection.
+19:34:42 ERROR scripts.run_e2e_tests_test.RunE2ETestsTests.test_is_oppia_server_already_running_when_ports_closed: 21.1 secs
+Error 1
+HELLO THERE
+test_is_oppia_server_already_running_when_ports_closed (scripts.run_e2e_tests_test.RunE2ETestsTests) ... FAIL
+
+======================================================================
+FAIL: test_is_oppia_server_already_running_when_ports_closed (scripts.run_e2e_tests_test.RunE2ETestsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &quot;/oppia/scripts/run_e2e_tests_test.py&quot;, line 70, in test_is_oppia_server_already_running_when_ports_closed
+    raise AssertionError(&#39;hi&#39;)
+AssertionError: hi
+
+----------------------------------------------------------------------
+Ran 1 test in 1.078s
+
+FAILED (failures=1)
+Traceback (most recent call last):
+  File &quot;/oppia/core/tests/gae_suite.py&quot;, line 126, in &lt;module&gt;
+    main()
+  File &quot;/oppia/core/tests/gae_suite.py&quot;, line 122, in main
+    result.testsRun, len(result.errors), len(result.failures)))
+Exception: Test suite failed: 1 tests run, 0 errors, 1 failures.
+
+Stopping Redis Server(name=&quot;redis-server&quot;, pid=38032)...
+Stopping Cloud Datastore Emulator(name=&quot;python2.7&quot;, pid=38015)...
+
++------------------+
+| SUMMARY OF TESTS |
++------------------+
+...
+</pre></div>
+</div>
+<p>Notice that the <code class="docutils literal notranslate"><span class="pre">HELLO</span> <span class="pre">THERE</span></code> output appears above the summary of tests.</p>
+</section>
+<section id="use-the-python-debugger">
+<h2>Use the Python debugger<a class="headerlink" href="#use-the-python-debugger" title="Permalink to this headline"></a></h2>
+<p>The Python debugger, or <a class="reference external" href="https://docs.python.org/3/library/pdb.html">pdb</a>, is very helpful for debugging tests. It is very similar to <a class="reference external" href="https://www.gnu.org/software/gdb/">GDB</a>, the GNU Debugger, in case you are familiar with GDB already.</p>
+<p>With pdb, you set break points to tell the debugger where to pause when executing your code. When the debugger pauses, you are dropped into a debugging shell where you can execute normal Python statements or pdb commands. The shell reflects the state of your program at the break point, so you can print out variable values, call functions, and even change variables in your program.</p>
+<section id="step-1-insert-break-points">
+<h3>Step 1: Insert break points<a class="headerlink" href="#step-1-insert-break-points" title="Permalink to this headline"></a></h3>
+<p>To begin, insert a break point in your code like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When your test executes, the debugger will pause every time it executes this line.</p>
+</section>
+<section id="step-2-run-test-with-unittest">
+<h3>Step 2: Run test with unittest<a class="headerlink" href="#step-2-run-test-with-unittest" title="Permalink to this headline"></a></h3>
+<p>To use pdb, you cannot use the <code class="docutils literal notranslate"><span class="pre">run_backend_tests.py</span></code> script. Instead, you need to run the test you want to debug using Python’s native <a class="reference external" href="https://docs.python.org/3/library/unittest.html">unittest</a> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m unittest [full dotted name to test function]</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-pdb-commands">
+<h3>Step 3: PDB commands<a class="headerlink" href="#step-3-pdb-commands" title="Permalink to this headline"></a></h3>
+<p>Once you are in a debugging shell, you can also use any of the following pdb commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">w(here)</span></code>: Print a stack trace based on your current location in the program.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d(own)</span></code>: Move down one frame in the stack (to a newer frame).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u(p)</span></code>: Move up one frame in the stack (to an older frame).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s(tep)</span></code>: Execute the current line and stop at the next line of code, even if that next line is inside the function called on the current line. You can think of this as stepping into the function call on the current line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n(ext)</span></code>: Execute the current line and stop at the next line in the current function. If a function is called on the current line, the debugger will not stop inside that function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c(ontinue)</span></code>: Continue executing the program until the next break point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l(ist)</span></code>: List the source code around your current line, or continue your previous listing if you’ve already called <code class="docutils literal notranslate"><span class="pre">list</span></code> on the current line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">[expression]</span></code>: Evaluate <code class="docutils literal notranslate"><span class="pre">[expression]</span></code> and print it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pp</span> <span class="pre">[expression]</span></code>: Evaluate <code class="docutils literal notranslate"><span class="pre">[expression]</span></code> and pretty-print it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">q(uit)</span></code>: Abort the program and quit the debugger.</p></li>
+</ul>
+<p>The parentheses indicate optional parts of the commands. For example, you can use the <code class="docutils literal notranslate"><span class="pre">where</span></code> command either by typing <code class="docutils literal notranslate"><span class="pre">w</span></code> or by typing <code class="docutils literal notranslate"><span class="pre">where</span></code>. These are just a few of the most useful commands. See the <a class="reference external" href="https://docs.python.org/3/library/pdb.html#debugger-commands">pdb documentation</a> for more information.</p>
+<p><strong>Be careful when executing Python code directly in the debugging shell. If your commands look like a PDB command, the PDB command may be executed instead.</strong></p>
+<p>For example, this works just as you’d expect:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">z</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>However, this fails:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">***</span> <span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</pre></div>
+</div>
+<p>This second case fails because <code class="docutils literal notranslate"><span class="pre">p</span></code> looks to PDB like the print command, not a variable.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Debug-end-to-end-tests.html" class="btn btn-neutral float-left" title="Debug end to end tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Debug-frontend-tests.html" class="btn btn-neutral float-right" title="Debug frontend tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

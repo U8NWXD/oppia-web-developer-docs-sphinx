@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating objects &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating dependencies" href="Creating-Dependencies.html" />
+    <link rel="prev" title="Creating rules" href="Creating-Rules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="extension-reference.html">Extension frameworks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Extensions-Overview.html">Extensions overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rich-Text-Editor-%28RTE%29-Overview.html">Rich text editor (RTE) overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Interactions.html">Creating interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Rules.html">Creating rules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-objects-are-defined">How objects are defined</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-classes">Python classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#angular-components">Angular components</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-new-object">Create a new object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-objects">Using objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Dependencies.html">Creating dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Value-Generators.html">Creating value generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actions-and-issues.html">Actions and issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="extension-reference.html">Extension frameworks</a> &raquo;</li>
+      <li>Creating objects</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Creating-Objects.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-objects">
+<h1>Creating objects<a class="headerlink" href="#creating-objects" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#how-objects-are-defined">How objects are defined</a></p>
+<ul>
+<li><p><a class="reference external" href="#python-classes">Python classes</a></p></li>
+<li><p><a class="reference external" href="#angular-components">Angular components</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#create-a-new-object">Create a new object</a></p></li>
+<li><p><a class="reference external" href="#using-objects">Using objects</a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>When collecting user input, we often define the kind of input we expect using <a class="reference internal" href="Schemas.html"><span class="doc std std-doc">schemas</span></a>. These schemas can use certain Python base types, but they can also use custom types, called <em>objects</em>, that we define. For example, consider this schema:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dict&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;length&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="nt">&quot;custom&quot;</span>
+        <span class="nt">&quot;obj_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Real&quot;</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The schema would match a dictionary like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="mf">34.5</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This schema describes a dictionary with a <code class="docutils literal notranslate"><span class="pre">length</span></code> key whose value is of custom type <code class="docutils literal notranslate"><span class="pre">Real</span></code>, and the <code class="docutils literal notranslate"><span class="pre">Real</span></code> type is one of our objects. We define these objects as classes in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/objects/models/objects.py"><code class="docutils literal notranslate"><span class="pre">extensions/objects/models/objects.py</span></code></a> and components in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/objects/templates"><code class="docutils literal notranslate"><span class="pre">extensions/objects/templates</span></code></a>.</p>
+</section>
+<section id="how-objects-are-defined">
+<h2>How objects are defined<a class="headerlink" href="#how-objects-are-defined" title="Permalink to this headline"></a></h2>
+<section id="python-classes">
+<h3>Python classes<a class="headerlink" href="#python-classes" title="Permalink to this headline"></a></h3>
+<p>The Python classes for objects are defined in <code class="docutils literal notranslate"><span class="pre">objects.py</span></code>. For example, here’s the class for the <code class="docutils literal notranslate"><span class="pre">int</span></code> type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Int</span><span class="p">(</span><span class="n">BaseObject</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Integer class.&quot;&quot;&quot;</span>
+
+    <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;An integer.&#39;</span>
+    <span class="n">default_value</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_schema</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the object schema.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict. The object schema.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>Object classes all meet the following criteria:</p>
+<ul class="simple">
+<li><p>They inherit from either <code class="docutils literal notranslate"><span class="pre">BaseObject</span></code> or another object class.</p></li>
+<li><p>Their <code class="docutils literal notranslate"><span class="pre">description</span></code> class variables are set to a string describing the object.</p></li>
+<li><p>Their <code class="docutils literal notranslate"><span class="pre">default_value</span></code> class variables are set to the value that should be the default whenever this type is used in a rule. Note that this variable is technically not required if the object will never be used in a <a class="reference internal" href="Creating-Rules.html"><span class="doc std std-doc">rule</span></a>.</p></li>
+<li><p>They provide a <code class="docutils literal notranslate"><span class="pre">normalize()</span></code> class method that accepts a raw Python object. The method should first validate the raw object to check whether it is malformed. If the validation checks pass, then the method should return a normalized form of the object. Note that in this context, “normalized” means a primitive Python type or multiple primitive types combined with lists and/or dicts.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">BaseObject</span></code> class provides a <code class="docutils literal notranslate"><span class="pre">normalize</span></code> class method that can normalize any object so long as the object’s class provides a <code class="docutils literal notranslate"><span class="pre">get_schema</span></code> class method that returns a schema describing the object. <code class="docutils literal notranslate"><span class="pre">BaseObject.normalize</span></code> passes the schema to <code class="docutils literal notranslate"><span class="pre">schema_utils.normalize_against_schema</span></code>, so make sure that <code class="docutils literal notranslate"><span class="pre">normalize_against_schema</span></code> won’t try to normalize the object using the object class. Otherwise, there will be an endless loop between <code class="docutils literal notranslate"><span class="pre">normalize_against_schema</span></code> and <code class="docutils literal notranslate"><span class="pre">BaseObject.normalize</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="angular-components">
+<h3>Angular components<a class="headerlink" href="#angular-components" title="Permalink to this headline"></a></h3>
+<p>Every object is accompanied by a component defined in <code class="docutils literal notranslate"><span class="pre">extensions/objects/templates</span></code> and imported in <code class="docutils literal notranslate"><span class="pre">extensions/objects/object-components.module.ts</span></code>. Each component provides the HTML and frontend code needed to create a form for the user to provide input in the form of the object. These components rely heavily on <a class="reference external" href="https://github.com/oppia/oppia/wiki/Schemas#schema-based-forms">schema-based forms</a>. For example, the <code class="docutils literal notranslate"><span class="pre">int-editor</span></code> component’s HTML is just this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>&lt;schema-based-editor [schema]=&quot;getSchema.bind(this)&quot;
+                     [localValue]=&quot;value&quot;
+                     (localValueChange)=&quot;updateValue($event)&quot;&gt;
+&lt;/schema-based-editor&gt;
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">getSchema</span></code> function is defined in <code class="docutils literal notranslate"><span class="pre">int-editor.component.ts</span></code> and returns this schema:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  type: &quot;int&quot;,
+  validators: [{
+    id: &quot;is_integer&quot;
+  }]
+}
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">schema-based-editor</span></code> component already knows how to construct a form for this schema.</p>
+</section>
+</section>
+<section id="create-a-new-object">
+<h2>Create a new object<a class="headerlink" href="#create-a-new-object" title="Permalink to this headline"></a></h2>
+<p>Let’s suppose you’re creating a new object called <code class="docutils literal notranslate"><span class="pre">MyObject</span></code> (in practice you should use a more descriptive name). You’ll need to follow these steps:</p>
+<ol class="simple">
+<li><p>Create a new object class named <code class="docutils literal notranslate"><span class="pre">MyObject</span></code>. It must satisfy the <a class="reference external" href="#python-classes">criteria documented above</a>.</p></li>
+<li><p>Add tests for your class in <code class="docutils literal notranslate"><span class="pre">extensions/objects/models/objects_test.py</span></code>. You should add normalization tests to the <code class="docutils literal notranslate"><span class="pre">ObjectNormalizationUnitTests</span></code> class. You can also create a new test class to hold additional test cases.</p></li>
+<li><p>Add a new <a class="reference external" href="#angular-components">Angular component</a> to accept input in the form of your object. Your component files should be named <code class="docutils literal notranslate"><span class="pre">my-object-editor.component.*</span></code>, and your component class should be named <code class="docutils literal notranslate"><span class="pre">MyObjectEditorComponent</span></code>.</p></li>
+<li><p>Import your component in <code class="docutils literal notranslate"><span class="pre">extensions/objects/object-components.module.ts</span></code> and add it to the module there.</p></li>
+</ol>
+</section>
+<section id="using-objects">
+<h2>Using objects<a class="headerlink" href="#using-objects" title="Permalink to this headline"></a></h2>
+<p>You will usually use objects by referencing them as you <a class="reference internal" href="Creating-Interactions.html"><span class="doc std std-doc">create interactions</span></a>, <a class="reference internal" href="Creating-Rules.html"><span class="doc std std-doc">define rules</span></a>, or otherwise use <a class="reference internal" href="Schemas.html"><span class="doc std std-doc">schemas</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Creating-Rules.html" class="btn btn-neutral float-left" title="Creating rules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Creating-Dependencies.html" class="btn btn-neutral float-right" title="Creating dependencies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webpack &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Extension frameworks" href="extension-reference.html" />
+    <link rel="prev" title="How to develop for i18n" href="How-to-develop-for-i18n.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Webpack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#common-errors-in-webpack">Common Errors in webpack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-not-found-error-can-t-resolve">Module not found: Error: Can’t resolve ‘…’</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-webpack">What is webpack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-we-use-webpack">How we use webpack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dev-mode">Dev mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prod-mode">Prod mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#e2e-tests">E2e tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#frontend-tests">Frontend tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-config">Overview of the config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#webpack-common-config-ts">webpack.common.config.ts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#htmlwebpackplugin">HtmlWebpackPlugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cleanwebpackplugin">CleanWebpackPlugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loaderoptionsplugin">LoaderOptionsPlugin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#webpack-common-macros-ts">webpack.common.macros.ts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webpack-dev-config-ts">webpack.dev.config.ts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webpack-prod-config-ts">webpack.prod.config.ts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webpack-prod-sourcemap-config-ts-and-webpack-dev-sourcemap-config-ts">webpack.prod.sourcemap.config.ts and webpack.dev.sourcemap.config.ts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webpack-terser-config-ts">webpack.terser.config.ts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Webpack</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Webpack.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="webpack">
+<h1>Webpack<a class="headerlink" href="#webpack" title="Permalink to this headline"></a></h1>
+<section id="common-errors-in-webpack">
+<h2>Common Errors in webpack<a class="headerlink" href="#common-errors-in-webpack" title="Permalink to this headline"></a></h2>
+<section id="module-not-found-error-can-t-resolve">
+<h3>Module not found: Error: Can’t resolve ‘…’<a class="headerlink" href="#module-not-found-error-can-t-resolve" title="Permalink to this headline"></a></h3>
+<p>This is most likely caused due to incorrect path mentioned in import or require statements. In this case, try to look for errors like spelling mistakes in the path or ensure that a file exists in that path.</p>
+<p>If the import statement refers to a third-party library. Running <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">install</span></code> should fix this problem.</p>
+</section>
+</section>
+<section id="what-is-webpack">
+<h2>What is webpack<a class="headerlink" href="#what-is-webpack" title="Permalink to this headline"></a></h2>
+<p>Webpack is an open-source JavaScript module bundler. Webpack takes modules with dependencies and generates static assets representing those modules. It takes the dependencies and generates a dependency graph allowing web developers to use a modular approach for their web application development purposes.</p>
+</section>
+<section id="how-we-use-webpack">
+<h2>How we use webpack<a class="headerlink" href="#how-we-use-webpack" title="Permalink to this headline"></a></h2>
+<p>We use Webpack to bundle almost all TypeScript files in our codebase into bundles for every HTML page that we have. Entry points and HTML pages are configurated in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/webpack.common.config.ts"><code class="docutils literal notranslate"><span class="pre">webpack.common.config.ts</span></code></a>. We use webpack both for dev and prod mode, also when frontend tests and e2e tests are run. There is a section in the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Coding-style-guide#webpack">Coding style guide about webpack</a>.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"></a></h2>
+<p>The common configuration settings for both dev and prod mode are located in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/webpack.common.config.ts"><code class="docutils literal notranslate"><span class="pre">webpack.common.config.ts</span></code></a>.</p>
+<section id="dev-mode">
+<h3>Dev mode<a class="headerlink" href="#dev-mode" title="Permalink to this headline"></a></h3>
+<p>The configuration info for dev mode is located in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/webpack.dev.config.ts"><code class="docutils literal notranslate"><span class="pre">webpack.dev.config.ts</span></code></a>. The bundled files are generated into <code class="docutils literal notranslate"><span class="pre">webpack_bundles</span></code> and then directly used from there in our server.</p>
+</section>
+<section id="prod-mode">
+<h3>Prod mode<a class="headerlink" href="#prod-mode" title="Permalink to this headline"></a></h3>
+<p>The configuration info for prod mode is located in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/webpack.prod.config.ts"><code class="docutils literal notranslate"><span class="pre">webpack.prod.config.ts</span></code></a>. The bundled files are generated into <code class="docutils literal notranslate"><span class="pre">backend_prod_files/webpack_bundles</span></code> as in dev mode, then are transferred into <code class="docutils literal notranslate"><span class="pre">build/</span></code> folder by <code class="docutils literal notranslate"><span class="pre">scripts/build.py</span></code>.</p>
+<section id="e2e-tests">
+<h4>E2e tests<a class="headerlink" href="#e2e-tests" title="Permalink to this headline"></a></h4>
+<p>We use modified <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/webpack.terser.config.ts"><code class="docutils literal notranslate"><span class="pre">webpack.terser.config.ts</span></code></a> configuration for running the webpack in e2e tests, this configuration is almost the same as the prod config but with the parallelization disabled.</p>
+</section>
+</section>
+<section id="frontend-tests">
+<h3>Frontend tests<a class="headerlink" href="#frontend-tests" title="Permalink to this headline"></a></h3>
+<p>The configuration info for frontend tests webpack is included in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/tests/karma.conf.ts"><code class="docutils literal notranslate"><span class="pre">karma.conf.ts</span></code></a>. Karma handles the execution of webpack by itself and there is no need to call the webpack build ourselves.</p>
+</section>
+</section>
+<section id="overview-of-the-config">
+<h2>Overview of the config<a class="headerlink" href="#overview-of-the-config" title="Permalink to this headline"></a></h2>
+<section id="webpack-common-config-ts">
+<h3>webpack.common.config.ts<a class="headerlink" href="#webpack-common-config-ts" title="Permalink to this headline"></a></h3>
+<p>Firstly in the <code class="docutils literal notranslate"><span class="pre">resolve</span></code> property, we define some basic things like the modules, the extensions that should be handled by webpack, the alias used by webpack. For example, we have defined the following alias</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">alias</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s1">&#39;@angular/upgrade/static&#39;</span><span class="o">:</span> <span class="p">(</span>
+  <span class="s1">&#39;@angular/upgrade/bundles/upgrade-static.umd.js&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>now whenever webpack sees something like</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@angular/upgrade/static&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>in the code that it’s building it automatically resolves the path <code class="docutils literal notranslate"><span class="pre">&#64;angular/upgrade/bundles/upgrade-static.umd.js</span></code>.</p>
+<p>Btw, we need this alias for angular migration because of an issue in the <code class="docutils literal notranslate"><span class="pre">&#64;angular/upgrade</span></code> package. Reference -&gt; https://github.com/angular/angular/issues/13137</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">entry</span></code> property, we define the entry files for webpack. Basically, we have a separate entry file for each page. The entry files end with <code class="docutils literal notranslate"><span class="pre">.import.ts</span></code> and present in each of the folders in <code class="docutils literal notranslate"><span class="pre">core/templates/pages/</span></code>. For example, an entry looks something like</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">about</span>: <span class="kt">commonPrefix</span> <span class="o">+</span> <span class="s1">&#39;/pages/about-page/about-page.import.ts&#39;</span>
+</pre></div>
+</div>
+<p>The name given to the chunk before the colon (:) i.e. <code class="docutils literal notranslate"><span class="pre">about</span></code> in this case will be used in the config later.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> property, we define the plugins we use with webpack. We currently use the following three plugins.</p>
+<section id="htmlwebpackplugin">
+<h4>HtmlWebpackPlugin<a class="headerlink" href="#htmlwebpackplugin" title="Permalink to this headline"></a></h4>
+<p>This basically helps us with loading the built webpack bundles as script imports in the html files, providing meta tags for our templates, etc. We add an instance of this plugin for every page like</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="ow">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+  <span class="nx">chunks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;about&#39;</span><span class="p">],</span>
+  <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;about-page.mainpage.html&#39;</span><span class="p">,</span>
+  <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span>: <span class="kt">defaultMeta.name</span><span class="p">,</span>
+    <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;With Oppia, you can access free lessons on &#39;</span> <span class="o">+</span>
+      <span class="s1">&#39;math, physics, statistics, chemistry, music, history and &#39;</span> <span class="o">+</span>
+      <span class="s1">&#39;more from anywhere in the world. Oppia is a nonprofit &#39;</span> <span class="o">+</span>
+      <span class="s1">&#39;with the mission of providing high-quality &#39;</span> <span class="o">+</span>
+      <span class="s1">&#39;education to those who lack access to it.&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">template</span>: <span class="kt">commonPrefix</span> <span class="o">+</span> <span class="s1">&#39;/pages/about-page/about-page.mainpage.html&#39;</span><span class="p">,</span>
+  <span class="nx">minify</span>: <span class="kt">htmlMinifyConfig</span><span class="p">,</span>
+  <span class="nx">inject</span>: <span class="kt">false</span>
+<span class="p">}),</span>
+</pre></div>
+</div>
+<p>Here the <code class="docutils literal notranslate"><span class="pre">chunks</span></code> contain a chunk whose name should be the same as the name we gave to its chunk in the entry component above.</p>
+<p>Similar to the <code class="docutils literal notranslate"><span class="pre">.import.ts</span></code> files all the pages i.e. all the folders in <code class="docutils literal notranslate"><span class="pre">core/templates/pages/</span></code> directory contain a <code class="docutils literal notranslate"><span class="pre">.mainpage.html</span></code> file that serves as the main HTML template for that page. As you can see we set the <code class="docutils literal notranslate"><span class="pre">template</span></code> and <code class="docutils literal notranslate"><span class="pre">filename</span></code> properties according to this file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">meta</span></code> is used to include the meta tags in the HTML page. <code class="docutils literal notranslate"><span class="pre">minify</span></code> is used to provide the config for minifying the output HTML page.</p>
+<p><code class="docutils literal notranslate"><span class="pre">inject</span></code> property is used to inject all the assets to the output HTML. We have set it to <code class="docutils literal notranslate"><span class="pre">false</span></code> because we do this manually in our templates <a class="reference external" href="https://github.com/oppia/oppia/blob/e088975944db1b7f44acdc88f72caeac4dd2674e/core/templates/pages/footer_js_libs.html#L5-L11">here</a>.</p>
+</section>
+<section id="cleanwebpackplugin">
+<h4>CleanWebpackPlugin<a class="headerlink" href="#cleanwebpackplugin" title="Permalink to this headline"></a></h4>
+<p>This plugin is used to clean the webpack files after every successful rebuild.</p>
+</section>
+<section id="loaderoptionsplugin">
+<h4>LoaderOptionsPlugin<a class="headerlink" href="#loaderoptionsplugin" title="Permalink to this headline"></a></h4>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="ow">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">LoaderOptionsPlugin</span><span class="p">({</span>
+  <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">macros</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">load</span>: <span class="kt">macros.load</span><span class="p">,</span>
+      <span class="nx">loadExtensions</span>: <span class="kt">macros.loadExtensions</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">}),</span>
+</pre></div>
+</div>
+<p>This plugin is used to load the macros we defined in <a class="reference external" href="#webpack.common.macros.ts">webpack.common.macros.ts</a>.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">module</span></code> property we define the loaders we use for different files.
+We use <code class="docutils literal notranslate"><span class="pre">cache-loader</span></code> before every loader to maximize the rebuild speed.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">externals</span></code> property is used to define the external libs that are not included in the bundle but are required by some bundled libraries. Reference -&gt; <a class="reference external" href="https://webpack.js.org/configuration/externals/">https://webpack.js.org/configuration/externals/</a></p>
+</section>
+</section>
+<section id="webpack-common-macros-ts">
+<h3>webpack.common.macros.ts<a class="headerlink" href="#webpack-common-macros-ts" title="Permalink to this headline"></a></h3>
+<p>In this file, we have defined two macros i.e. <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">loadExtensions</span></code>. We use these in the HTML template files for loading other HTML files.
+These work like <code class="docutils literal notranslate"><span class="pre">require</span></code> statements in typescript files.</p>
+<p>Examples where macros are used -&gt; <a class="reference external" href="https://github.com/oppia/oppia/blob/424c985d940951a0e5688c272c4dfa54d58db0dd/core/templates/pages/contributor-dashboard-page/contributor-dashboard-page.mainpage.html#L22">load</a>, <a class="reference external" href="https://github.com/oppia/oppia/blob/424c985d940951a0e5688c272c4dfa54d58db0dd/extensions/interactions/dependency_html.html#L1">loadExtensions</a>.</p>
+</section>
+<section id="webpack-dev-config-ts">
+<h3>webpack.dev.config.ts<a class="headerlink" href="#webpack-dev-config-ts" title="Permalink to this headline"></a></h3>
+<p>This file adds some additional config to the <code class="docutils literal notranslate"><span class="pre">webpack.common.config.ts</span></code>. In particular, the config specified in this file is</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span>
+<span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;[name].bundle.js&#39;</span><span class="p">,</span>
+  <span class="nx">path</span>: <span class="kt">path.resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;webpack_bundles&#39;</span><span class="p">)</span>
+<span class="p">},</span>
+<span class="nx">devtool</span><span class="o">:</span> <span class="s1">&#39;eval&#39;</span><span class="p">,</span>
+<span class="nx">watchOptions</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">aggregateTimeout</span>: <span class="kt">500</span><span class="p">,</span>
+  <span class="nx">poll</span>: <span class="kt">1000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see we specify the build mode to development, the output files and the path, the devtool and watch options (these are used when webpack is watching the files).</p>
+<p>This is the config that is used while running the dev server using <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code>.</p>
+</section>
+<section id="webpack-prod-config-ts">
+<h3>webpack.prod.config.ts<a class="headerlink" href="#webpack-prod-config-ts" title="Permalink to this headline"></a></h3>
+<p>Similar to the <code class="docutils literal notranslate"><span class="pre">webpack.dev.config.ts</span></code> this is the config used for the production build. The config specified in this file is</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span>
+<span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;[name].[contenthash].bundle.js&#39;</span><span class="p">,</span>
+  <span class="nx">path</span>: <span class="kt">path.resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;backend_prod_files/webpack_bundles&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here we specify the build mode i.e. production and the output config. We don’t use a devtool here to make the build faster.</p>
+<p>This is the config that is used while running the dev server using
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span> <span class="pre">--prod_env</span></code>.</p>
+</section>
+<section id="webpack-prod-sourcemap-config-ts-and-webpack-dev-sourcemap-config-ts">
+<h3>webpack.prod.sourcemap.config.ts and webpack.dev.sourcemap.config.ts<a class="headerlink" href="#webpack-prod-sourcemap-config-ts-and-webpack-dev-sourcemap-config-ts" title="Permalink to this headline"></a></h3>
+<p>These are the webpack configs that are used for building using source maps. We do not use devtools that use source maps in <code class="docutils literal notranslate"><span class="pre">webpack.dev.config.ts</span></code> and <code class="docutils literal notranslate"><span class="pre">webpack.prod.config.ts</span></code> because building using source maps is slow. More in <a class="reference external" href="https://webpack.js.org/configuration/devtool/">webpack documentation</a>.</p>
+<p>This config is used while deploying oppia. You can also build using source maps by adding a <code class="docutils literal notranslate"><span class="pre">--source_maps</span></code> flag in the start script. Like <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span> <span class="pre">--source_maps</span></code>.</p>
+<p>In these config files, we use the main config (<code class="docutils literal notranslate"><span class="pre">webpack.dev.config.ts</span></code> or <code class="docutils literal notranslate"><span class="pre">webpack.prod.config.ts</span></code>) and change the devtools used in them. For example, this is how <code class="docutils literal notranslate"><span class="pre">webpack.dev.sourcemap.config.ts</span></code> looks like.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="p">{</span> <span class="nx">merge</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpack-merge&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">dev</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./webpack.dev.config.ts&#39;</span><span class="p">);</span>
+
+<span class="kr">module</span><span class="nx">.exports</span> <span class="o">=</span> <span class="nx">merge</span><span class="p">(</span><span class="nx">dev</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">devtool</span><span class="o">:</span> <span class="s1">&#39;inline-source-map&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>These are the devtools we use</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Config</p></th>
+<th class="text-align:center head"><p>Devtool</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Development</p></td>
+<td class="text-align:center"><p>eval</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Development + Source Maps</p></td>
+<td class="text-align:center"><p>inline-source-map</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Production</p></td>
+<td class="text-align:center"><p>none</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Production + Source Maps</p></td>
+<td class="text-align:center"><p>source-map</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="webpack-terser-config-ts">
+<h3>webpack.terser.config.ts<a class="headerlink" href="#webpack-terser-config-ts" title="Permalink to this headline"></a></h3>
+<p>This config was written so that it can be used in the e2e tests run on Circle CI. You can refer to this <a class="reference external" href="https://discuss.circleci.com/t/build-fails-with-error-spawn-enomem/30537/10">discussion</a> on why it was needed. This basically disables the parallelism in the terser config.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="How-to-develop-for-i18n.html" class="btn btn-neutral float-left" title="How to develop for i18n" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="extension-reference.html" class="btn btn-neutral float-right" title="Extension frameworks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

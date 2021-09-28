@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google summer of code 2016 &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hacktoberfest" href="hacktoberfest.html" />
+    <link rel="prev" title="Google summer of code 2017" href="Google-Summer-of-Code-2017.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="past-events.html">Past Events</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gsoc.html">Google Summer of Code</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2020.html">Google summer of code 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2020.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2020.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2019.html">Google summer of code 2019</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2019.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2019.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2019.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html">Google summer of code 2018</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html">Google summer of code 2017</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Google summer of code 2016</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#students">Students</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faqs">FAQs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gsoc-proposal-template">GSoC Proposal Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#types-of-work-related-to-oppia-projects">Types of work related to Oppia projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selection-criteria">Selection Criteria</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dates-and-deadlines">Dates and Deadlines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mentors">Mentors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-mentors">List of Mentors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#becoming-a-mentor">Becoming a Mentor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#communication">Communication</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#joining-oppia-s-gitter">Joining Oppia’s Gitter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#oppia-s-developer-mailing-list">Oppia’s Developer Mailing List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#oppia-s-project-ideas">Oppia’s Project Ideas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#making-oppia-usable-offline-and-being-more-lightweight-in-transmitting-data">Making Oppia usable offline and being more lightweight in transmitting data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#making-it-possible-to-submit-and-prioritize-requests-for-learning-material">Making it possible to submit and prioritize requests for learning material</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creator-dashboard">Creator dashboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#android-app-to-enable-learning-on-the-go">Android app to enable learning-on-the-go</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#applying-machine-learning-to-code-interaction-training-and-generalizing">Applying machine learning to code interaction training and generalizing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-imagining-the-exploration-editor">Re-imagining the exploration editor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hacktoberfest.html">Hacktoberfest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ghc.html">GHC Open Source Day</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sod.html">Season of Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#timeline">Timeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#instructions-for-students">Instructions for students</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#instructions-for-mentors">Instructions for mentors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#escalation-policy">Escalation Policy</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="past-events.html">Past Events</a> &raquo;</li>
+          <li><a href="gsoc.html">Google Summer of Code</a> &raquo;</li>
+      <li>Google summer of code 2016</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Google-Summer-of-Code-2016.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="google-summer-of-code-2016">
+<h1>Google summer of code 2016<a class="headerlink" href="#google-summer-of-code-2016" title="Permalink to this headline"></a></h1>
+<p>Oppia is excited to be participating in <a class="reference external" href="https://developers.google.com/open-source/gsoc/">Google Summer of Code 2016</a>! GSoC is a global program which offers post-secondary students an opportunity to discover and work with open source organizations over the course of 3 months and be paid a stipend. Students work one-on-one with a mentor of an open source organization in order to implement either a project idea by the organization or a proposal of their own.
+Feel free to check out our <a class="reference external" href="https://summerofcode.withgoogle.com/organizations/5631832271880192/">GSoC organization page</a>.</p>
+<p>The following are Oppia’s 2016 GSoC project ideas:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#making-oppia-usable-offline-and-being-more-lightweight-in-transmitting-data">Oppia usable offline with more lightweight data transfer</a>.</p></li>
+<li><p><a class="reference external" href="#making-it-possible-to-submit-and-prioritize-requests-for-learning-material">Learning material requests and submission</a></p></li>
+<li><p><a class="reference external" href="#creator-dashboard">Creator dashboard</a>.</p></li>
+<li><p><a class="reference external" href="#android-app-to-enable-learning-on-the-go">Android app to enable learning-on-the-go</a></p></li>
+<li><p><a class="reference external" href="#applying-machine-learning-to-code-interaction-training-and-generalizing">Applying machine learning to code interaction</a></p></li>
+<li><p><a class="reference external" href="#re-imagining-the-exploration-editor">Re-imagining the exploration editor</a></p></li>
+</ul>
+<p>We accepted the following two proposals in 2016:</p>
+<ul class="simple">
+<li><p><span class="xref myst"><strong>&#64;gvishal</strong>’s proposal</span> for offline/lightweight Oppia</p></li>
+<li><p><span class="xref myst"><strong>&#64;526avijitgupta</strong>’s proposal</span> for the creator dashboard.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="students">
+<h1>Students<a class="headerlink" href="#students" title="Permalink to this headline"></a></h1>
+<p>GSoC is an excellent opportunity for students to get paid to work on an open source project. If you’re interested in applying as a student, you should definitely read the following resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://write.flossmanuals.net/gsocstudentguide/what-is-google-summer-of-code/">Google Summer of Code student guide</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/open-source/gsoc/resources/">Google’s list of resources</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/open-source/gsoc/faq">GSoC FAQ</a></p></li>
+</ul>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
+<p>If you’re specifically interested in applying to work with Oppia in Google Summer of Code, we recommend you follow these steps:</p>
+<ol class="simple">
+<li><p>Sign up to the <a class="reference external" href="https://groups.google.com/forum/#%21forum/oppia-gsoc-announce">oppia-gsoc-announce&#64;</a> mailing list in order to receive important notifications about Oppia’s participation in GSoC.</p></li>
+<li><p>Take a look at the project ideas below, and select a project you’re most interested in.</p></li>
+<li><p>If you’re not very familiar with what Oppia is all about (or wish to become familiarized with concepts like explorations and interactions), then our <a class="reference external" href="http://oppia.github.io/#/">user documentation</a> will be very helpful for you! Read the <a class="reference external" href="https://github.com/oppia/oppia/wiki">developer wiki</a>, and especially <a class="reference external" href="https://github.com/oppia/oppia/wiki/Overview-of-the-Oppia-codebase">Overview of the Oppia codebase</a> to get familiar with the codebase, and start planning your project proposal.</p></li>
+<li><p>(Optional) Read the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/CONTRIBUTING.md">contributors’ guide</a>, set up a development instance and work on a <a class="reference external" href="https://github.com/oppia/oppia/issues?q=is%3Aopen+is%3Aissue+label%3A%22starter+project%22">starter project</a> to get more familiar with the Oppia codebase and the contribution process. This will also help us get to understand your skills, and get an idea of what it’s like to work with you. (<strong>Note:</strong> If you can’t find a suitable starter project, you can also pick an issue labeled “TODO: needs instructions” – these issues require a bit more investigation, but some of them are not too difficult.)</p></li>
+<li><p>Write your project proposal! If you have any questions about your project, feel free to ask on <a class="reference external" href="https://gitter.im/oppia/oppia-chat">Gitter chat</a>, or email the mentors’ mailing list at oppia-gsoc-mentors&#64;googlegroups.com. Please be specific when asking questions; this makes it easier for us to help you.</p></li>
+</ol>
+</section>
+<section id="faqs">
+<h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline"></a></h2>
+<p><strong>Q: What technical skills do I need to work on Oppia?</strong></p>
+<p>A: Familiarity with JavaScript, Python, and Google App Engine is useful and recommended for most Oppia work. In addition UI design skills is useful for frontend work. Please see the individual project ideas to determine whether these skills are recommended or required for the project in question.</p>
+<p><strong>Q: How can I increase my chances of getting selected?</strong></p>
+<p>A: Writing a good project proposal, engaging with the community, helping other students can all help you. Your application will be evaluated holistically, so there’s no one thing you must or must not do (other than apply!) to get selected.</p>
+<p><strong>Q: Can you be flexible around other my commitments in the summer?</strong></p>
+<p>A: GSoC is intended to be a full-time job, so the main concern is whether you can still get the project done on time. Be upfront about your other commitments and make sure you schedule your time accordingly when creating your proposal. The proposal should be able to reflect you being able to complete the project by the end of the summer.</p>
+<p><strong>Q: Why hasn’t anyone responded to my question/email/PR? :(</strong></p>
+<p>A: We are pleasantly surprised at the amount of interest we have been getting :) However, we have a limited amount of manpower, and hence may take a while to get back to you. Please be patient! If we haven’t responded in more than a day or two, you can try pinging us again over chat or email.</p>
+<p><strong>Q: How can I get feedback on my project proposal before submitting it?</strong></p>
+<p>A: Please submit a <em>draft</em> proposal at our <a class="reference external" href="https://summerofcode.withgoogle.com/organizations/5631832271880192/">GSoC Organization Page</a> and one or more organization members will try to review and leave comments on it (through Google Docs). The earlier you submit the draft, the more likely we will be able to review it.</p>
+</section>
+<section id="gsoc-proposal-template">
+<h2>GSoC Proposal Template<a class="headerlink" href="#gsoc-proposal-template" title="Permalink to this headline"></a></h2>
+<p>When proposing a project, please use the following template:</p>
+<p><strong>Project</strong></p>
+<ul class="simple">
+<li><p>Project name</p></li>
+<li><p>Project description</p></li>
+<li><p>What interests you about this project?</p></li>
+<li><p>What areas of research will you do in this project (if applicable)?</p></li>
+<li><p>Outline of a project plan and implementation schedule</p></li>
+</ul>
+<p><strong>Related Technical Skills</strong></p>
+<p>Please outline any prior experience you have, especially where it relates to technical skills that are needed for the above project. (Depending on the complexity of the project, we may write back and request more information in this category.)</p>
+<p><strong>Open Source and Education</strong></p>
+<p>Why are you interested in open source development? Why education?</p>
+<p><strong>Summer Plans</strong></p>
+<ul class="simple">
+<li><p>Which timezone(s) will you primarily be in during the summer?</p></li>
+<li><p>How much time will you be able to commit to this project?</p></li>
+<li><p>Please list jobs, summer classes, and other obligations you may need to work around.</p></li>
+</ul>
+<p><strong>Communication</strong></p>
+<ul class="simple">
+<li><p>What is your preferred method of communication and contact information?</p></li>
+<li><p>How often do you plan on communicating with your mentor?</p></li>
+</ul>
+</section>
+<section id="types-of-work-related-to-oppia-projects">
+<h2>Types of work related to Oppia projects<a class="headerlink" href="#types-of-work-related-to-oppia-projects" title="Permalink to this headline"></a></h2>
+<p>In order to ensure a well-rounded engineering experience, developers will do some or all of the following depending on their project:</p>
+<ul class="simple">
+<li><p>Meet with their mentors regularly</p></li>
+<li><p>Meet with other contributors related to their project area</p></li>
+<li><p>Receive code reviews for all code they write for their project</p></li>
+<li><p>Write automated tests for their projects</p></li>
+<li><p>Create UI mocks (if doing frontend development)</p></li>
+<li><p>Write design documents (if implementing large features or introducing new systems)</p></li>
+</ul>
+</section>
+<section id="selection-criteria">
+<h2>Selection Criteria<a class="headerlink" href="#selection-criteria" title="Permalink to this headline"></a></h2>
+<p>In order to select students for GSoC, we will mainly be looking at two things:</p>
+<ul class="simple">
+<li><p>The quality of the submitted proposal</p></li>
+<li><p>Our prior history/experience working with the student</p></li>
+</ul>
+<p>This is because we believe that strong performance in these two dimensions is likely to correlate well with the student having an enjoyable, fulfilling and productive experience over the summer, and successfully completing the GSoC program.</p>
+<p>For the proposal, we will be looking for the following:</p>
+<ul class="simple">
+<li><p>Specific ideas that build on the original project idea, with a strong focus on creating a simple, intuitive experience for end users.</p></li>
+<li><p>The ability to break down a complex task into reasonable milestones, with a clear, well-defined (and, ideally, shippable) deliverable at the end of each milestone.</p></li>
+<li><p>Sufficient detail (e.g. references to particular files and methods) to convince us that the applicant is not hand-waving, and has a very good understanding of both the scope of the problem and the existing codebase.</p></li>
+<li><p>Clarity of communication.</p></li>
+</ul>
+<p>For prior history/experience, we will take the following into consideration:</p>
+<ul class="simple">
+<li><p>The quality of students’ previously-submitted PRs to the project (including coding ability, debugging ability, initiative, responsiveness, independence, ability to break down complex tasks, and ability to keep commitments).</p></li>
+<li><p>Communication skills and English language skills.</p></li>
+<li><p>Enthusiasm for helping others by explaining things well.</p></li>
+</ul>
+<p>Please note that, although we are expecting many GSoC applicants this year, we are only likely to be awarded a small number of slots since this is our first year as a participant. However, please note that you don’t need to be accepted to GSoC in order to become a regular contributor to the Oppia project – this project is run by the community for the community, and we warmly welcome anyone who would like to help out!</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dates-and-deadlines">
+<h1>Dates and Deadlines<a class="headerlink" href="#dates-and-deadlines" title="Permalink to this headline"></a></h1>
+<p>Noteworthy dates:</p>
+<ul class="simple">
+<li><p><strong>February 8-19, 2016</strong>: Mentoring organizations apply</p></li>
+<li><p><strong>February 29, 2016</strong>: Mentoring organizations are announced</p></li>
+<li><p><strong>March 14-25, 2016</strong>: Student application period</p></li>
+<li><p><strong>April 22, 2016</strong>: Accepted students announced</p></li>
+<li><p><strong>April 22-May 22, 2016</strong>: Community bonding period</p></li>
+<li><p><strong>May 23-Aug 23, 2016</strong>: Students enjoy the summer by programming amazing projects for open source projects</p></li>
+<li><p><strong>Aug 30, 2016</strong>: GSoC officially ends</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mentors">
+<h1>Mentors<a class="headerlink" href="#mentors" title="Permalink to this headline"></a></h1>
+<section id="list-of-mentors">
+<h2>List of Mentors<a class="headerlink" href="#list-of-mentors" title="Permalink to this headline"></a></h2>
+<p>The following are definitely mentors during Google Summer of Code:</p>
+<ul class="simple">
+<li><p>Ben Henning (&#64;BenHenning)</p></li>
+<li><p>Sean Lip (&#64;seanlip)</p></li>
+<li><p>Xinyu Wu (&#64;wxyxinyu)</p></li>
+</ul>
+<p>The following are partial mentors (will not be assigned a student, but will help other mentors when possible):</p>
+<ul class="simple">
+<li><p>Allan Zhou (&#64;AllanYangZhou)</p></li>
+<li><p>Bren Briggs (&#64;bbriggs)</p></li>
+<li><p>Jacob Davis (&#64;jacobdavis11)</p></li>
+<li><p>Madiyar Aitbayev (&#64;maitbayev)</p></li>
+</ul>
+</section>
+<section id="becoming-a-mentor">
+<h2>Becoming a Mentor<a class="headerlink" href="#becoming-a-mentor" title="Permalink to this headline"></a></h2>
+<p>Are you interested in mentoring in Google Summer of Code 2016 for Oppia? Mentoring can be an extremely rewarding experience, though it is a commitment and a responsibility. You can be sure you will learn a lot from your potential mentee. To better understand what mentoring entails, check out this <a class="reference external" href="https://flossmanuals.net/GSoCMentoring/">GSoC mentoring guide</a>.</p>
+<p>Please be aware that there are no guarantees that Oppia will have enough students for all mentors to be assigned one. Nevertheless, please email oppia-gsoc-mentors&#64;googlegroups.com if you’re interested in being a mentor!</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="communication">
+<h1>Communication<a class="headerlink" href="#communication" title="Permalink to this headline"></a></h1>
+<p>There are several ways to communicate with us (see sections below). Please feel free to also email the organization administrators if you have additional questions and we’ll be happy to help:</p>
+<ul class="simple">
+<li><p>Ben Henning henning(dot)benmax(at)gmail(dot)com</p></li>
+<li><p>Sean Lip sean(at)seanlip(dot)org</p></li>
+</ul>
+<p>It may help to email the Google Summer of Code mailing list, as well, which is oppia-gsoc-mentors&#64;googlegroups.com.</p>
+<section id="joining-oppia-s-gitter">
+<h2>Joining Oppia’s Gitter<a class="headerlink" href="#joining-oppia-s-gitter" title="Permalink to this headline"></a></h2>
+<p>We don’t have an official IRC channel, but we do have a real-time chat channel through Gitter. Joining our Gitter chat is easily. Simply head to the following link:</p>
+<p>https://gitter.im/oppia/oppia-chat#</p>
+<p>You can login using your GitHub account (Gitter will ask to be associated with your GitHub account for authentication) and you will then be able to talk in it.</p>
+</section>
+<section id="oppia-s-developer-mailing-list">
+<h2>Oppia’s Developer Mailing List<a class="headerlink" href="#oppia-s-developer-mailing-list" title="Permalink to this headline"></a></h2>
+<p>You should also join Oppia’s developer mailing list: oppia-dev&#64;googlegroups.com. You can join by going to https://groups.google.com/forum/#!forum/oppia-dev and requesting to join the group. A group manager will need to approve the request (usually happens within a couple of hours).</p>
+<p>Nearly all contributors to Oppia (past and present) are in this mailing list, so it’s a fantastic place to ask questions that the entire team will see. All developers working on Oppia are highly recommended to join this mailing list, as major announcements are listed here (including early details on future releases and major work being done across the project).</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="oppia-s-project-ideas">
+<h1>Oppia’s Project Ideas<a class="headerlink" href="#oppia-s-project-ideas" title="Permalink to this headline"></a></h1>
+<p>We have several projects that will have significant impact on Oppia and we feel would make excellent Google Summer of Code projects. This is the specific list we are outlining for GSoC, but there are many more project ideas being discussed on the team.</p>
+<p>Feel free to suggest your own or look at our various <a class="reference external" href="https://github.com/oppia/oppia/issues?q=is%3Aopen+is%3Aissue+label%3A%22starter+project%22">starter projects</a> to help generate ideas for new projects, if none of the below interest you. We’re also happy to discuss new ideas that you’d like to implement, outside of the projects listed below or our existing starter projects.</p>
+<p>Finally, be aware that the projects below may either seem larger than they are or will be sized down once a student is paired with one. These projects were picked because they were self-contained, high-impact projects. Most of them involve end-to-end development, which can be very hard to do within only a summer of work. We have ranked each project based on our assumed difficulty; the projects themselves should be scoped based on students’ applications and discussion with the corresponding mentors once the summer begins.</p>
+<p>Many of the projects below involve significant work in either Oppia’s frontend, backend, or both. It is very helpful to look at <a class="reference external" href="https://github.com/oppia/oppia/wiki/Overview-of-the-Oppia-codebase">the overview of Oppia’s codebase</a> as a reference.</p>
+<section id="making-oppia-usable-offline-and-being-more-lightweight-in-transmitting-data">
+<h2>Making Oppia usable offline and being more lightweight in transmitting data<a class="headerlink" href="#making-oppia-usable-offline-and-being-more-lightweight-in-transmitting-data" title="Permalink to this headline"></a></h2>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Potential mentor(s)</strong>: Ben Henning (primary)</p>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"></a></h3>
+<p>This is a two-part project. Oppia currently requires users to be connected to the internet at all times while playing explorations. Furthermore, Oppia sends quite a lot of data across the network while playing explorations or visiting the website in general. Both of these have a negative effect on the user experience on the site, and are likely to make Oppia difficult or impossible to use for many users who are visiting it on poor connections.</p>
+<p>The first part of this project involves allowing some explorations to be played without an internet connection. This is a multi-step problem. While playing an exploration, there are many things that happen, including:</p>
+<ul class="simple">
+<li><p>Statistics recording</p></li>
+<li><p>Answer classification</p></li>
+<li><p>Response selection</p></li>
+<li><p>State transitions</p></li>
+</ul>
+<p>Most of these now happen in the frontend, however, there are still a few aspects of the communication between the frontend and backend that need to be changed in order to allow offline playing. Furthermore, there’s no concept of persistent frontend storage at the moment (which might be needed in order to save some explorations and go back to play them without an internet connection).</p>
+<p>The second part of this project is decreasing the amount of data Oppia sends between the backend and frontend. Oppia was not originally written with mobile or poor internet connections in mind. There have been recent efforts by contributors to concatenate and minify Oppia’s CSS and JS resources, though these are just stepping stones in the longer strategy of making Oppia more efficient bandwidth-wise for users.</p>
+<p><strong>Expected results</strong>: Users will be able to play some Oppia explorations without any Internet connection. Also, there is a measurable decrease in data sent between the browser and the server when visiting any pages on Oppia.</p>
+</section>
+<section id="required-skills-knowledge">
+<h3>Required skills/knowledge<a class="headerlink" href="#required-skills-knowledge" title="Permalink to this headline"></a></h3>
+<p>Required:</p>
+<ul class="simple">
+<li><p>Familiarity with AngularJS</p></li>
+<li><p>Familiarity with Python</p></li>
+<li><p>Familiarity with Google App Engine</p></li>
+</ul>
+<p>Recommended:</p>
+<ul class="simple">
+<li><p>Code investigation skills</p></li>
+<li><p>Familiarity with frontend data storage solutions</p></li>
+<li><p>Understanding of RESTful APIs</p></li>
+</ul>
+<p>Both parts of this project involve a lot of investigation, since you will need to figure out which parts of the protocol need to be adjusted in order to facilitate offline playing or how to optimize the protocol or other parts of the Oppia stack to reduce the amount of data sent across the network.</p>
+</section>
+</section>
+<section id="making-it-possible-to-submit-and-prioritize-requests-for-learning-material">
+<h2>Making it possible to submit and prioritize requests for learning material<a class="headerlink" href="#making-it-possible-to-submit-and-prioritize-requests-for-learning-material" title="Permalink to this headline"></a></h2>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Potential mentor(s)</strong>: Ben Henning (primary), Xinyu Wu (secondary)</p>
+<section id="id1">
+<h3>Summary<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>Currently, https://www.oppia.org serves as a repository of almost random explorations users have created. Although it’s fantastic that users create these explorations, we think Oppia will be a lot more effective to both learners and exploration creators if there is some way for people to submit requests for new explorations and have creators address those requests by directly creating the corresponding exploration(s) (see <a class="reference external" href="https://github.com/oppia/oppia/issues/490">issue 490</a>).</p>
+<p>This project involves writing a system for creating, listing, and addressing requests for new content. Users should be able to see and search for content requests, be able to create a new request for content (including a brief description), and vote on existing requests. Creators will be able to use the same searching functionality to find top-ranked requests and address them by listing a specific exploration or collection which they feel satisfies the request. It’s not yet clear what the exact flow of this should be; we will leave it up to the student’s proposal to clarify how they feel learners and creators should interact when addressing content requests. Some things to consider in this area include:</p>
+<ul class="simple">
+<li><p>Should any creator be able to address any request (even very popular ones)?</p></li>
+<li><p>Should the request be closed when an exploration/collection is associated with a request?</p></li>
+<li><p>Should explorations and interactions even be associated with requests?</p></li>
+<li><p>Should requests allow back-and-forth discussion among the community?</p></li>
+<li><p>Should the author of the request be responsible for closing the request when an exploration/collection is made which satisfies it?</p></li>
+</ul>
+<p>Those are just a few questions to get started thinking about the system.</p>
+<p><strong>Expected results</strong>: Users will be able to navigate to a dashboard containing existing requests for new explorations and collections. They will be able to create new requests and view their own. Creators will be able to solve these requests in some way by creating an exploration or collection and addressing a particular request or requests. The exact nature of this resolving behavior is up to the student and will be discussed as part of this project. The overall user flow and interfaces will also be up to the student.</p>
+</section>
+<section id="id2">
+<h3>Required skills/knowledge<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>This is an end-to-end project and involves hands-on work with both frontend and backend code.</p>
+<p>Required:</p>
+<ul class="simple">
+<li><p>Familiarity with Python</p></li>
+<li><p>Familiarity with AngularJS</p></li>
+</ul>
+<p>Recommended:</p>
+<ul class="simple">
+<li><p>Familiarity with Google App Engine (which uses a NoSQL data store)</p></li>
+<li><p>Familiarity with creating mocks with programs such as Sketch (definitely not a requirement, but it will help)</p></li>
+</ul>
+<p>Students will be requested to create mocks (even if they’re just drawings on paper) and a design document outlining the technical changes needed in the frontend and backend for implementing this system. The mocks are expected to be a first iteration of the overall learner request system, so they will not be expected to be highly detailed or fleshed out. They should be able to express the basic UI structure and demonstrate user flow through the system. Students will also be working with people across the team since this project is multi-disciplinary.</p>
+</section>
+</section>
+<section id="creator-dashboard">
+<h2>Creator dashboard<a class="headerlink" href="#creator-dashboard" title="Permalink to this headline"></a></h2>
+<p><strong>Difficulty</strong>: Medium</p>
+<p><strong>Potential mentor(s)</strong>: Sean Lip (primary), Allan Zhou (secondary)</p>
+<section id="id3">
+<h3>Summary<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>Oppia’s approach to creating educational content is incremental – that is, the content is not created all at once, but is improved over time based on answers and feedback from students. Analysis of these answers can help lesson creators detect and respond to common misconceptions, so that students who encounter similar issues in the future can receive better feedback from Oppia.</p>
+<p>The purpose of this project is to implement a creator dashboard that allows lesson creators to see, at a glance, completion rates, common student misconceptions, and student-submitted feedback for their lessons – and to make it easy for creators to take action on this information. There should also be a button on that page that allows creators to build a new exploration. A design project for this page is currently underway, and we already have some preliminary wireframes (see <a class="reference external" href="https://github.com/oppia/oppia/issues/1366#issuecomment-198021655">issue #1366</a>), but these may undergo further iterations as we make progress on implementation and usability testing. If you are interested, we welcome your participation in the design process!</p>
+<p><strong>Expected results</strong>: A page in Oppia that displays the above information for creators in a way that is easy to understand and that also makes it easy for them to take action. Some backend computation would also be needed to aggregate the relevant data and keep it up to date.</p>
+</section>
+<section id="id4">
+<h3>Required skills/knowledge<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>Familiarity with Python and AngularJS; ability to accurately implement UIs based on designers’ mocks. Also useful (but not required): ability to create and edit design mocks (e.g. using Sketch).</p>
+<p>Since this is a full-stack project, you might also find the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Overview-of-the-Oppia-codebase">Overview of the Codebase</a> wiki page helpful in order to get a sense of how the Oppia stack works.</p>
+</section>
+</section>
+<section id="android-app-to-enable-learning-on-the-go">
+<h2>Android app to enable learning-on-the-go<a class="headerlink" href="#android-app-to-enable-learning-on-the-go" title="Permalink to this headline"></a></h2>
+<p><strong>Difficulty</strong>: Hard</p>
+<p><strong>Potential mentor(s)</strong>: Ben Henning</p>
+<section id="id5">
+<h3>Summary<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>The world is increasingly becoming a mobile-driven environment, with well over one billion users of smart phones. Although Oppia is a responsive website for learners, there is much to gain by having a dedicated Android app. Maintaining a responsive website is challenging and there are almost certainly going to be issues when viewing the site on different devices.</p>
+<p>This project will introduce a dedicated mobile interface for Oppia, through either web views, targeted styling for the web application, or a native Android interface. This mobile interface will make it easier for users to access their profile, browse the gallery, and play through explorations.</p>
+<p><strong>Expected results</strong>: An Android app which allows users to access primary portions of Oppia’s website (the profile page, gallery, and exploration player) and be able to play through an exploration.</p>
+</section>
+<section id="id6">
+<h3>Required skills/knowledge<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>Required:</p>
+<ul class="simple">
+<li><p>Java and extensive comfort writing Java applications</p></li>
+<li><p>Familiarity with AngularJS: the developer working on this project will need to understand how Oppia’s frontend works (which can be learned prior to the project starting)</p></li>
+</ul>
+<p>Recommended:</p>
+<ul class="simple">
+<li><p>Android development experience</p></li>
+<li><p>Familiarity with Google App Engine (Python)</p></li>
+<li><p>Familiarity with RESTful APIs</p></li>
+</ul>
+</section>
+</section>
+<section id="applying-machine-learning-to-code-interaction-training-and-generalizing">
+<h2>Applying machine learning to code interaction training and generalizing<a class="headerlink" href="#applying-machine-learning-to-code-interaction-training-and-generalizing" title="Permalink to this headline"></a></h2>
+<p><strong>Difficulty</strong>: Hard</p>
+<p><strong>Potential mentor(s)</strong>: Ben Henning (primary), Allan Zhou (secondary)</p>
+<section id="id7">
+<h3>Summary<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>Since Oppia needs to be a smart tutor which provides personalized feedback to learners, machine learning has great potential application to Oppia. There are some efforts into allowing creators to train Oppia to reply with targeted responses based on which answers a user submits when playing through an exploration. This support is not yet enabled on https://oppia.org as of the beginning of Google Summer of Code, but is being actively developed and can support the work on this project. It will also be turned on for the public to use before the end of summer.</p>
+<p>The new functionality introduces a training interface in the exploration editor wherein creators can see previous user answers, then select which response Oppia should use if it encounters that answer again (or the creator can create a new response, instead). We then train a classifier in the background so that Oppia can hopefully place new answers in the correct response “bucket” before the creator teaches it to do so. The training interface will be available for a few interactions, but the machine learning part will only be available for text input. Although text input with machine learning is a fascinating and highly useful topic, this project focuses on applying machine learning for training our code evaluation interactions, instead.</p>
+<p>The code evaluation interaction allows learners to type in code in order to match some sort of output, avoid an error, or match specific code. The code is evaluated in the frontend, but the learner’s answer is stored in the backend. Python is the only supported language, though we will definitely be adding more languages in the future.</p>
+<p>This project involves figuring out a way to cluster together similar pieces of code (though not exactly the same) and then use that to train a classification model that can predict which cluster a new piece of code belongs to. Originally, members of the Oppia team were considering integration with <a class="reference external" href="http://people.csail.mit.edu/elg/overcode">OverCode</a>, though there were some technical concerns with how it would integrate with Oppia. Using an existing library is completely fine for this project and even encouraged. The complexity of this project includes discovering a library, integrating it, and making sure it works well in practice.</p>
+<p>At the end of the project, creators will be able to train Oppia to respond to certain types of code submitted by learners. Oppia will be able to encounter new pieces of code it has not yet seen, and intelligently classify them into previously learned buckets, if that new piece of code is sufficiently similar semantically to previously taught bits of code.</p>
+<p><strong>Expected results</strong>: Creators will be able to train Oppia to recognize buckets of user-submitted Python code answers using the existing training infrastructure and a new code classifier. Creators will also be able to test if a particular code sample fits within the bucket they expect, where buckets lead to Oppia providing a targeted reply based on the answer.</p>
+</section>
+<section id="id8">
+<h3>Required skills/knowledge<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<p>Required:</p>
+<ul class="simple">
+<li><p>An understanding of machine learning concepts, including clustering and statistical classification techniques</p></li>
+<li><p>Experience with coding in Python</p></li>
+</ul>
+<p>Recommended:</p>
+<ul class="simple">
+<li><p>Google App Engine</p></li>
+<li><p>NoSQL storage systems</p></li>
+<li><p>RESTful APIs</p></li>
+</ul>
+<p>Students working on this project will need to write a design document explaining which library/libraries they plan on integrating, as well as an overall solution to solving the clustering problem. Some emphasis will be placed on ensuring it will work within the answer classification infrastructure, though there are many members of the Oppia team who will happily assist with explaining this to the student. Finally, there may be some emphasis also placed on solving this project in such a way that it can be extended to future languages, rather than being fixed specifically to Python.</p>
+</section>
+</section>
+<section id="re-imagining-the-exploration-editor">
+<h2>Re-imagining the exploration editor<a class="headerlink" href="#re-imagining-the-exploration-editor" title="Permalink to this headline"></a></h2>
+<p><strong>Difficulty</strong>: Hard</p>
+<p><strong>Potential mentor(s)</strong>: Sean Lip</p>
+<section id="id9">
+<h3>Summary<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p>The Oppia editor is powerful and feature-rich. This is good for users who desire flexibility, but not good for first-time users and people who “just want to teach online”. Hence, a priority for Oppia this year is to simplify the editor to the point where it is easily accessible to first-time exploration creators.</p>
+<p>More specifically, when someone creates an exploration for the first time, we’d like them to create something that’s fairly linear (see the notes on “critical path” <a class="reference external" href="http://oppia.github.io/#/DesignTips">here</a>). The emphasis here is on minimizing the amount of time needed for the creator to build something that they are happy with publishing and sharing; generally speaking, this should happen in 30 minutes or less, and be of similar difficulty to writing a short blog post on the subject. Note that it is totally fine for the explorations thereby created to use only a small subset of the functionality that Oppia provides – they can always be augmented later.</p>
+<p>This project is currently in the conceptualization/idea phase. A number of Oppia’s current contributors are now working on ideas and creation UX stories (e.g., should the ‘simple’ experience be: “write a dialog, and then press a button to break it up into cards?”). The plan is to test these ideas with users and produce low-fidelity mocks by the end of April. The GSoC project itself will then involve building prototypes of these mocks, validating them with users, planning a suitable implementation strategy for integrating this into the current editor, and implementing the new editor.</p>
+<p><strong>Expected results</strong>: New creators discovering Oppia for the first time should, within 30 minutes, be able to successfully create and publish an exploration that they are proud of.</p>
+</section>
+<section id="id10">
+<h3>Required skills/knowledge<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<p>Required:</p>
+<ul class="simple">
+<li><p>Strong experience coding in AngularJS.</p></li>
+<li><p>Strong familiarity with the existing editor codebase.</p></li>
+<li><p>Willingness and ability to do frequent user experience testing.</p></li>
+</ul>
+<p>Recommended:</p>
+<ul class="simple">
+<li><p>Good design taste.</p></li>
+<li><p>Prior experience with major codebase refactoring.</p></li>
+</ul>
+<p>Students working on this project are encouraged to submit: (a) ideas for a “simpler” editor (ideally fleshed out using concrete examples of lessons), (b) an overview of how they would plan the transition from the current editor to the simpler one.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Google-Summer-of-Code-2017.html" class="btn btn-neutral float-left" title="Google summer of code 2017" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hacktoberfest.html" class="btn btn-neutral float-right" title="Hacktoberfest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Testing jobs and other features on production" href="Testing-jobs-and-other-features-on-production.html" />
+    <link rel="prev" title="Release process" href="release.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="release.html">Release process</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instructions-for-deciding-whether-a-bug-is-blocking">Instructions for deciding whether a bug is blocking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instructions-for-fixing-release-bugs">Instructions for fixing release bugs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deciding-whether-to-fix-the-bug-or-remove-the-changes-from-the-release">Deciding whether to fix the bug or remove the changes from the release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-fix-a-release-bug">How to fix a release bug</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#responsibilities-of-the-release-coordinator">Responsibilities of the release coordinator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#responsibilities-of-the-qa-coordinator">Responsibilities of the QA coordinator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#responsibilities-of-the-release-testing-team">Responsibilities of the release testing team</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#team-members">Team members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-coordinators-and-qa-coordinators-for-upcoming-releases">Release coordinators and QA coordinators for upcoming releases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-jobs-and-other-features-on-production.html">Testing jobs and other features on production</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-testing-quickstart-guide.html">Release testing quickstart guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="release.html">Release process</a> &raquo;</li>
+      <li>Schedule</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Release-schedule-and-other-information.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="schedule">
+<h1>Schedule<a class="headerlink" href="#schedule" title="Permalink to this headline"></a></h1>
+<p><strong>The Friday before the first Saturday of each month</strong>: Release branch gets created. Push the release branch onto a test server.
+Features merged into <code class="docutils literal notranslate"><span class="pre">develop</span></code> after this date will only go out in the following release.</p>
+<p>The Friday before the first Saturday of each month is the soft deadline for the start of the release. The release cut should be made on the soft deadline if there is no PR that needs to get into the release. If there is some PR that needs to get into the release, the release cut can be delayed. The maximum delay for the release cut is one week, so the Friday before the second Saturday of each month is the hard deadline for the release cut. In between the soft and the hard deadline the release coordinator is the person that decides when the release should happen exactly.</p>
+<p><strong>First weekend of each month</strong>: The release team will focus on testing. Typically the testing deadline is chosen to be the Monday after the weekend. The testing should be completed by the deadline. All bugs caught should be filed as blocking bugs on Github, and should be assigned to a bugfixer ASAP.</p>
+<p><strong>Second weekend of each month</strong>: The release/QA team and the project leads council will focus on fixing the reported bugs. By the Monday after the second weekend, the bug-fixing phase should be completed.</p>
+<p><strong>Third week of each month</strong>: First the fixes will be cherrypicked and deployed to the test server, and then we test that the bugs are fixed on the test server. Once this verification is complete, we can go ahead with the next step.</p>
+<p><strong>Third weekend of each month</strong>: The release will be made and an update will be pushed to the live site.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="instructions-for-deciding-whether-a-bug-is-blocking">
+<h1>Instructions for deciding whether a bug is blocking<a class="headerlink" href="#instructions-for-deciding-whether-a-bug-is-blocking" title="Permalink to this headline"></a></h1>
+<p>Bugs reported during a release fall under two categories: Blocking &amp; Non-blocking. The release coordinator and QA coordinator are responsible for deciding, in a timely manner, which bugs should block the release. To make this decision, the following rules should be followed:</p>
+<ol class="simple">
+<li><p><strong>Interference with Critical Journeys</strong>: If a bug prevents a user from completing any of the critical user journeys, it should block the release. This requirement should only be overridden in the most extreme circumstances. For example, if a bug prevents the publication of new explorations, it should block the release.</p></li>
+<li><p><strong>Confusing User Interface</strong>: If a bug results in a confusing or unintuitive user interface, especially for critical user journeys, that bug should block the release. This requirement should be overridden only in the most extreme circumstances. For example, a bug that swaps the labels of the “Create” and “Learn” buttons in the top menu bar should not be allowed to go live.</p></li>
+<li><p><strong>Poor Aesthetics</strong>: If a bug results in a poor aesthetic appearance, the bug should probably block the release. A common example is a CSS issue that causes text to extend beyond a box or page elements to overlap. Such a bug should normally block a release, except perhaps when the problem is so obscure that users are highly unlikely to encounter it.</p></li>
+<li><p><strong>Problems with Live Behaviour</strong>: If the discovered bug is already live, whether the bug should block the release depends on how established the live behaviour is:</p>
+<ul class="simple">
+<li><p><strong>Behaviour is Long-Standing</strong>: In this case, the bug is probably more of a feature request. The existing behaviour has been live for a while, so a deployment without fixing the bug just maintains the status quo. The bug should still be fixed, but it probably does not need to block the release. For example, if we discover that our quality control for new explorations has never checked for profanity in exploration text, we might deploy the release without fixing the bug, but work on a profanity checker for the next release. The reasoning here is that deploying without the checker is okay because it does not make the user experience any worse – we just haven’t made it better yet. An important note here is that there might be debate within the Oppia developer community over whether this “bug” is intended behaviour or over how it should be addressed. It may be important to let this debate be resolved in due time, rather than rushing to get a release out with the “fix.”</p></li>
+<li><p><strong>Behaviour is Newly Introduced</strong>: If the behaviour was only introduced in the last few releases, then it may make sense to ensure that the upcoming release fixes it. For example, if we discover that the previous release resulted in explorations crashing for users with slow connections, we might want to make sure that the upcoming release fixes this problem, even if that means delaying the release, because it is important to fix the crashes as soon as possible.</p></li>
+</ul>
+</li>
+<li><p><strong>Invisible Bugs</strong>: Sometimes we discover bugs that have no apparent impact on the user experience, for example console warnings that don’t seem to change the site’s behaviour. If we are sure that the user experience is not impacted, it might make sense to plan a fix for the bug, but not let it hold up the release.</p></li>
+<li><p><strong>Regressions</strong>: Regressions can be thought of as bugs where the behaviour of something on the current live site is better than its behaviour in the release cut. This entails a breakage of existing functionality, and needs to be considered blocking since it impacts the user experience.</p></li>
+<li><p><strong>Broken Jobs</strong>: If a job cannot be run on the test server, this should be considered a blocking bug.</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="instructions-for-fixing-release-bugs">
+<h1>Instructions for fixing release bugs<a class="headerlink" href="#instructions-for-fixing-release-bugs" title="Permalink to this headline"></a></h1>
+<section id="deciding-whether-to-fix-the-bug-or-remove-the-changes-from-the-release">
+<h2>Deciding whether to fix the bug or remove the changes from the release<a class="headerlink" href="#deciding-whether-to-fix-the-bug-or-remove-the-changes-from-the-release" title="Permalink to this headline"></a></h2>
+<p>If the blocking bug arises from a newly introduced feature, the release coordinator <strong>can</strong> allow small fixes for UI problems. However, for all other problems, the feature needs to be removed from the release (preferably by disabling the feature via the appropriate flag), and the issues need to be fixed before the <strong>next release</strong>.</p>
+<p>If the blocking bug arises from a job that cannot be run, the decision whether to exclude or include it in the release depends on whether the job can be delayed to the next release or not. Jobs that clean up old stuff should be delayed until the next release, but jobs needed for a new feature should be fixed immediately.</p>
+</section>
+<section id="how-to-fix-a-release-bug">
+<h2>How to fix a release bug<a class="headerlink" href="#how-to-fix-a-release-bug" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Make a branch off of <code class="docutils literal notranslate"><span class="pre">develop</span></code>, and fix the bug.</p></li>
+<li><p>Apply the label <a class="reference external" href="https://github.com/oppia/oppia/labels/PR%3A%20for%20current%20release">PR: for current release</a> to PRs containing bugfixes that need to go into the current release.</p></li>
+<li><p>(<strong>This should only be done by the release coordinator.</strong>) When the PR has been cherry-picked onto the release branch, apply the label <a class="reference external" href="https://github.com/oppia/oppia/labels/PR%3A%20released">PR: released</a> to the PR.</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="responsibilities-of-the-release-coordinator">
+<h1>Responsibilities of the release coordinator<a class="headerlink" href="#responsibilities-of-the-release-coordinator" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Ensuring that the release (and all related processes) for the month happen on schedule and are performed correctly.</p></li>
+<li><p>Handling all deployments to the test server and the production server.</p></li>
+<li><p>Running any one-off jobs for the release.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="responsibilities-of-the-qa-coordinator">
+<h1>Responsibilities of the QA coordinator<a class="headerlink" href="#responsibilities-of-the-qa-coordinator" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Gathering a group of testers for the release testing team for the month.</p></li>
+<li><p>Adding any new user journeys which are critical to the <a class="reference external" href="https://docs.google.com/document/d/1T3HyMU8cMvXY1tyzs801Zgf5oSxLqaHICUH_YZJa4JM/edit#heading=h.ri1uw1xkq033">critical user journeys</a> doc. Any changes to existing user journeys will also need to be reflected in the doc.</p></li>
+<li><p>Assigning tasks (in the doc for the release), and notifying the testers about the same.</p></li>
+<li><p>Making sure all assigned tasks are completed on time.</p></li>
+<li><p>Triaging all reported bugs as blocking/non-blocking. The blocking bugs need to be assigned to a bugfixer ASAP. Help with fixing some of the blocking bugs.</p></li>
+<li><p>Once bug fixes are complete, and deployed to the test server, verify that the bugs no longer exist and affected user journeys play out fine. (This can be a team effort too).</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="responsibilities-of-the-release-testing-team">
+<h1>Responsibilities of the release testing team<a class="headerlink" href="#responsibilities-of-the-release-testing-team" title="Permalink to this headline"></a></h1>
+<p>The release testing team focuses on testing the <a class="reference external" href="https://docs.google.com/document/d/1T3HyMU8cMvXY1tyzs801Zgf5oSxLqaHICUH_YZJa4JM/edit#heading=h.ri1uw1xkq033">critical user journeys</a> on Oppia. This ensures that all the core functionality is working fine!</p>
+<p>The QA coordinator for the month assembles the release testing team before the QA testing weekend (the first weekend of every month). All bugs that need to be prioritized for the current release need to be reported and triaged by the Monday after the QA weekend. All bugs will need to be fixed before the following Monday, and the release will be pushed during the third weekend.</p>
+<p>The testers have to be in constant touch with both the QA coordinator as well as the release coordinator for that release. During the testing weekend and the week after that, please prioritize fixing issues under the <a class="reference external" href="https://github.com/oppia/oppia/milestone/39">blocking bugs milestone</a> so that we can complete the release process on time.</p>
+<p>We also have a project leads council who will be contacted about project specific bugs, and the QA team will report the bug to the concerned project lead. This will help us get people with experience in the area to help fix the bug quicker.</p>
+<p><strong>Note:</strong> If you would like to help out with the release testing, please contact &#64;nithusha21 or &#64;aks681. They will be able to guide you further.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="team-members">
+<h1>Team members<a class="headerlink" href="#team-members" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Release team:</p>
+<ul>
+<li><p>Sandeep Dubey (<strong>&#64;DubeySandeep</strong>)</p></li>
+<li><p>Nithesh Hariharan (<strong>&#64;nithusha21</strong>)</p></li>
+<li><p>Akshay Anand (<strong>&#64;aks681</strong>)</p></li>
+<li><p>Vojtěch Jelínek (<strong>&#64;vojtechjelinek</strong>)</p></li>
+<li><p>Kevin Thomas (<strong>&#64;kevintab95</strong>)</p></li>
+<li><p>Chris Skalnik (<strong>&#64;U8NWXD</strong>)</p></li>
+</ul>
+</li>
+<li><p>Release Coordination team:</p>
+<ul>
+<li><p>Nithesh Hariharan (<strong>&#64;nithusha21</strong>)</p></li>
+<li><p>Vojtěch Jelínek (<strong>&#64;vojtechjelinek</strong>)</p></li>
+</ul>
+</li>
+<li><p>QA coordinators team:</p>
+<ul>
+<li><p>Nithesh Hariharan (<strong>&#64;nithusha21</strong>)</p></li>
+<li><p>Akshay Anand (<strong>&#64;aks681</strong>)</p></li>
+<li><p>Chris Skalnik (<strong>&#64;U8NWXD</strong>)</p></li>
+<li><p>Kevin Thomas (<strong>&#64;kevintab95</strong>)</p></li>
+<li><p>Vojtěch Jelínek (<strong>&#64;vojtechjelinek</strong>)</p></li>
+<li><p>Rohit Katlaa (<strong>&#64;rohitkatlaa</strong>)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="release-coordinators-and-qa-coordinators-for-upcoming-releases">
+<h1>Release coordinators and QA coordinators for upcoming releases<a class="headerlink" href="#release-coordinators-and-qa-coordinators-for-upcoming-releases" title="Permalink to this headline"></a></h1>
+<p><strong>Note:</strong> If you can’t make it to a shift mentioned in the below rota, please make sure to swap with someone else in advance!</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Month</p></th>
+<th class="head"><p>Release team member</p></th>
+<th class="head"><p>QA coordinator</p></th>
+<th class="head"><p>Server errors coordinator</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>June</p></td>
+<td><p>Nithesh (<strong>&#64;nithusha21</strong>)</p></td>
+<td><p>Rohit (<strong>&#64;rohitkatlaa</strong>)</p></td>
+<td><p>Kevin (<strong>&#64;kevintab95</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>July</p></td>
+<td><p>Sandeep (<strong>&#64;DubeySandeep</strong>)</p></td>
+<td><p>Rohit (<strong>&#64;rohitkatlaa</strong>)</p></td>
+<td><p>Vojta (<strong>&#64;vojtechjelinek</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p>August</p></td>
+<td><p>Kevin (<strong>&#64;kevintab95</strong>)</p></td>
+<td><p>Chris (<strong>&#64;U8NWXD</strong>)</p></td>
+<td><p>Kevin (<strong>&#64;kevintab95</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>September</p></td>
+<td><p>Nithesh (<strong>&#64;nithusha21</strong>)</p></td>
+<td><p>Akshay (<strong>&#64;aks681</strong>)</p></td>
+<td><p>Kevin (<strong>&#64;kevintab95</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p>October</p></td>
+<td><p>Vojta (<strong>&#64;vojtechjelinek</strong>)</p></td>
+<td><p>Kevin (<strong>&#64;kevintab95</strong>)</p></td>
+<td><p>Vojta (<strong>&#64;vojtechjelinek</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>November</p></td>
+<td><p>Chris (<strong>&#64;U8NWXD</strong>)</p></td>
+<td><p>Vojta (<strong>&#64;vojtechjelinek</strong>)</p></td>
+<td><p>Kevin (<strong>&#64;kevintab95</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p>December</p></td>
+<td><p>Akshay (<strong>&#64;aks681</strong>)</p></td>
+<td><p>Nithesh (<strong>&#64;nithusha21</strong>)</p></td>
+<td><p>Kevin (<strong>&#64;kevintab95</strong>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="release.html" class="btn btn-neutral float-left" title="Release process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Testing-jobs-and-other-features-on-production.html" class="btn btn-neutral float-right" title="Testing jobs and other features on production" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

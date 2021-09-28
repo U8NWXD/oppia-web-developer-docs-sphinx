@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating rules &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating objects" href="Creating-Objects.html" />
+    <link rel="prev" title="Creating interactions" href="Creating-Interactions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="extension-reference.html">Extension frameworks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Extensions-Overview.html">Extensions overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rich-Text-Editor-%28RTE%29-Overview.html">Rich text editor (RTE) overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Interactions.html">Creating interactions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-rules-work">How rules work</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rule-templates">Rule templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rule-descriptions">Rule descriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evaluation-functions">Evaluation functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-rule">Adding a New Rule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Objects.html">Creating objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Dependencies.html">Creating dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Value-Generators.html">Creating value generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actions-and-issues.html">Actions and issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="extension-reference.html">Extension frameworks</a> &raquo;</li>
+      <li>Creating rules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Creating-Rules.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-rules">
+<h1>Creating rules<a class="headerlink" href="#creating-rules" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#how-rules-work">How rules work</a></p>
+<ul>
+<li><p><a class="reference external" href="#rule-templates">Rule templates</a></p></li>
+<li><p><a class="reference external" href="#rule-descriptions">Rule descriptions</a></p></li>
+<li><p><a class="reference external" href="#evaluation-functions">Evaluation functions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#adding-a-new-rule">Adding a New Rule</a></p></li>
+</ul>
+<p>This page is an introduction to creating new Oppia rules. An Oppia rule takes a reader’s response, normalizes it, and evaluates it against a predicate. A card’s interaction will correspond to a set of rules, and the first rule that is triggered by the response determines what Oppia will display to the reader next.</p>
+</section>
+<section id="how-rules-work">
+<h2>How rules work<a class="headerlink" href="#how-rules-work" title="Permalink to this headline"></a></h2>
+<section id="rule-templates">
+<h3>Rule templates<a class="headerlink" href="#rule-templates" title="Permalink to this headline"></a></h3>
+<p>Rules are listed in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/interactions/rule_templates.json"><code class="docutils literal notranslate"><span class="pre">extensions/interactions/rule_templates.json</span></code></a>, where they are grouped by interaction. For example, here are the rules for the <code class="docutils literal notranslate"><span class="pre">MathEquationInput</span></code> interaction:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  ...
+  &quot;MathEquationInput&quot;: {
+    &quot;MatchesExactlyWith&quot;: {
+      &quot;description&quot;: &quot;matches exactly with {{x|MathEquation}} {{y|PositionOfTerms}}&quot;
+    },
+    &quot;IsEquivalentTo&quot;: {
+      &quot;description&quot;: &quot;is equivalent to {{x|MathEquation}}&quot;
+    },
+    &quot;ContainsSomeOf&quot;: {
+      &quot;description&quot;: &quot;contains at least one of the terms present in {{x|MathEquation}} {{y|PositionOfTerms}}&quot;
+    },
+    &quot;OmitsSomeOf&quot;: {
+      &quot;description&quot;: &quot;omits at least one of the terms present in {{x|MathEquation}} {{y|PositionOfTerms}}&quot;
+    },
+    &quot;MatchesWithGeneralForm&quot;: {
+      &quot;description&quot;: &quot;matches the form of {{x|MathEquation}} with placeholders {{y|SetOfAlgebraicIdentifier}}&quot;
+    }
+  },
+  ...
+}
+</pre></div>
+</div>
+</section>
+<section id="rule-descriptions">
+<h3>Rule descriptions<a class="headerlink" href="#rule-descriptions" title="Permalink to this headline"></a></h3>
+<p>Rule descriptions can specify rule inputs with curly braces. For an input <code class="docutils literal notranslate"><span class="pre">p</span></code> of type <code class="docutils literal notranslate"><span class="pre">Type</span></code>, the description would include <code class="docutils literal notranslate"><span class="pre">{{p|Type}}</span></code>. The types are defined as classes in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/objects/models/objects.py"><code class="docutils literal notranslate"><span class="pre">extensions/objects/models/objects.py</span></code></a>, and each class provides a <code class="docutils literal notranslate"><span class="pre">normalize</span></code> method that transforms the input into a canonical form.</p>
+</section>
+<section id="evaluation-functions">
+<h3>Evaluation functions<a class="headerlink" href="#evaluation-functions" title="Permalink to this headline"></a></h3>
+<p>Each rule is implemented in the interaction’s rules service as a method (evaluation function). In <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/interactions/MathEquationInput/directives/math-equation-input-rules.service.ts"><code class="docutils literal notranslate"><span class="pre">extensions/interactions/MathEquationInput/directives/math-equation-input-rules.service.ts</span></code></a>, the <code class="docutils literal notranslate"><span class="pre">MathEquationInputRulesService</span></code> class defines a <code class="docutils literal notranslate"><span class="pre">MatchesExactlyWith</span></code> method, an <code class="docutils literal notranslate"><span class="pre">IsEquivalentTo</span></code> method, and so on. Each method takes exactly two arguments: <code class="docutils literal notranslate"><span class="pre">answer</span></code>, which is the correct answer, and <code class="docutils literal notranslate"><span class="pre">inputs</span></code>, an object with the rule inputs as attributes. For example the <code class="docutils literal notranslate"><span class="pre">inputs</span></code> argument to the <code class="docutils literal notranslate"><span class="pre">MatchesWithGeneralForm</span></code> method of <code class="docutils literal notranslate"><span class="pre">MathEquationInputRulesService</span></code> would have two attributes: <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. The types for these inputs are defined in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/interactions/rule-input-defs.ts"><code class="docutils literal notranslate"><span class="pre">extensions/interactions/rule-input-defs.ts</span></code></a> and <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/interactions/answer-defs.ts"><code class="docutils literal notranslate"><span class="pre">extensions/interactions/answer-defs.ts</span></code></a>.</p>
+<p>The return value from a rule is always a boolean that describes whether <code class="docutils literal notranslate"><span class="pre">answer</span></code> and <code class="docutils literal notranslate"><span class="pre">inputs</span></code> obey the rule. For example, the <code class="docutils literal notranslate"><span class="pre">IsEquivalentTo</span></code> rule returns whether the user’s inputs are equivalent to the creator-configured answer.</p>
+<p>For example, suppose we have a rule <code class="docutils literal notranslate"><span class="pre">IsBetweenInclusive</span></code> with the description <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">at</span> <span class="pre">least</span> <span class="pre">{{x|Real}}</span> <span class="pre">and</span> <span class="pre">at</span> <span class="pre">most</span> <span class="pre">{{y|Real}}</span></code>. Then our evaluation function could be:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="kd">class</span> <span class="nx">MyInteractionRulesService</span> <span class="p">{</span>
+  <span class="nx">IsBetweenInclusive</span><span class="p">(</span>
+      <span class="nx">answer</span>: <span class="kt">MyInteractionAnswer</span><span class="p">,</span>
+      <span class="nx">inputs</span>: <span class="kt">MyInteractionInputs</span><span class="p">)</span><span class="o">:</span> <span class="kt">boolean</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">inputs</span><span class="p">.</span><span class="nx">x</span> <span class="o">&lt;=</span> <span class="nx">answer</span> <span class="o">&lt;=</span> <span class="nx">inputs</span><span class="p">.</span><span class="nx">y</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the evaluation function must not use any external information, for example the reader’s current card. The <code class="docutils literal notranslate"><span class="pre">inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">answer</span></code> must be sufficient to determine whether the rule is satisfied.</p>
+</section>
+</section>
+<section id="adding-a-new-rule">
+<h2>Adding a New Rule<a class="headerlink" href="#adding-a-new-rule" title="Permalink to this headline"></a></h2>
+<p>Suppose you have just <a class="reference internal" href="Creating-Interactions.html"><span class="doc std std-doc">created a new interaction</span></a>, say <code class="docutils literal notranslate"><span class="pre">MyInteraction</span></code>, and now you want to define the rules associated with it. To do so, follow these steps:</p>
+<ol class="simple">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">extensions/interactions/rule_templates.json</span></code>, add a dictionary under the key <code class="docutils literal notranslate"><span class="pre">MyInteraction</span></code>. You can skip this step if you are adding a rule to an existing interaction.</p></li>
+<li><p>For each rule you want to create add an appropriate key that names the rule. The corresponding value should be a dictionary with a single key, <code class="docutils literal notranslate"><span class="pre">description</span></code>, whose value is a string describing the rule. The string should contain rule inputs as substrings of the form <code class="docutils literal notranslate"><span class="pre">{{inputName|InputType}}</span></code>. See the <a class="reference external" href="#rule-descriptions">descriptions section above</a> for details.</p></li>
+<li><p>Add a corresponding evaluation function to the interaction’s rules service, as described in the <a class="reference external" href="#evaluation-functions">evaluation functions section above</a>.</p></li>
+<li><p>Add tests for the evaluation function by creating a <code class="docutils literal notranslate"><span class="pre">*.spec.ts</span></code> file for the rules service. Create a separate test for each rule and check the various corner cases to make sure that rules are defined correctly. You must do this for any new rule that you create so that you can ensure that the rule works properly and returns the correct results on a variety of inputs.</p></li>
+</ol>
+<p>If you would like to contribute a rule to Oppia, please feel free to do so, but we recommend that you talk to us first! This helps ensure that work is not duplicated, and that the added rules are useful for creators and learners. We also welcome suggestions for new rules.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Creating-Interactions.html" class="btn btn-neutral float-left" title="Creating interactions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Creating-Objects.html" class="btn btn-neutral float-right" title="Creating objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

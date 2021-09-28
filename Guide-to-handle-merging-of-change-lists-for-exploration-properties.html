@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guide to handle merging of change lists for exploration properties &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Guide to handle merging of change lists for exploration properties</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Guide-to-handle-merging-of-change-lists-for-exploration-properties.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="guide-to-handle-merging-of-change-lists-for-exploration-properties">
+<h1>Guide to handle merging of change lists for exploration properties<a class="headerlink" href="#guide-to-handle-merging-of-change-lists-for-exploration-properties" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>Currently, we allow multiple collaborators to work on the same exploration. If collaborators are making changes while someone updates the exploration in the backend, then the change list goes through the ExplorationChangeMergeVerifier class that checks whether the changes from the old version are mergeable on the latest version. So to check for mergeability, we have some conditions that can be improved, and if any new property is added, then the conditions to merge the changes in the new property need to be added in that class.
+While adding a new property or new cmd, these changes, as explained below in the implementation, need to be done.</p>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline"></a></h2>
+<p>These are some important variables for the reference used later in these instructions:</p>
+<ol class="simple">
+<li><p>old_version: Refers to the version of an exploration on which the changes were made.</p></li>
+<li><p>latest_version: Refers to the latest version of exploration in the backend on which the changes need to be applied in order to merge the changes.</p></li>
+<li><p>composite_change_list: This list consists of all the changes made between the old_version and the latest_version in the backend.</p></li>
+<li><p>current_change_list: This list consists of the changes between the old_version and the latest_version of an exploration.</p></li>
+</ol>
+<p>Now let’s start with the changes we’ll need to make.</p>
+<ul class="simple">
+<li><p>Make a list of all the properties that depend on the new property. What this means is, if a user makes some changes in the newly added property, what are the other properties they may need to make changes to. The editor usually informs the user in the form of validation checks or the hiding of certain components to let them know that certain properties need to be updated if there are changes made to the new property.
+For example, if the user makes changes in the answer_groups of any interaction, they may need to make the changes in the solution as the solution is dependent on the answer rule. They may also need to change the translations and voiceovers corresponding to answer_groups feedback and solution explanation if they exist because these things may have changed. This means that translations, voiceovers, and solution properties are affected by answer_groups.
+When the interaction is updated, the customization_args get updated as well, i.e., for every interaction, the customization_args are different. For interactions like image region, item selection, multiple-choice, drag and drop sort, all the maths interaction, code editor, and music interaction, the answer_groups are also affected by customization_args i.e. if the customization_args are changed, then the answer_groups may need to change. Thus answers_groups are affected by customization_args and thus indirectly affected by interaction id.</p></li>
+</ul>
+<p>So the properties related to the answer_groups are interaction id, customization_args, solutions, voiceovers, and translations.
+This means that if changes are made to the answer_groups in a state then editors working on the previous version of the exploration can not make changes to these related properties, including answer_groups in the same state.</p>
+<section id="if-the-change-cmd-corresponding-to-the-newly-added-property-is-edit-state-property">
+<h3># If the change CMD corresponding to the newly added property is “edit-state-property.”<a class="headerlink" href="#if-the-change-cmd-corresponding-to-the-newly-added-property-is-edit-state-property" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Add the condition to handle the changes made in the new property as an else if block in the <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2687">is_change_list_mergeable()</a> function inside the code block related to the <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2746">“edit_state_property” cmd</a>. Inside that else-if block, add the conditions to check whether the composite change list contains changes to properties related to the newly added property and if they can be handled or not.
+For example, this block handles answer_groups changes.</p></li>
+</ul>
+<p>  <img src="https://user-images.githubusercontent.com/56637531/125595877-fc334535-c164-485a-914e-6839c3c8dac4.png" width="600" height="250"/></p>
+<p>  <strong>Snippet 1</strong></p>
+<p>The changed_properties dict records the changed properties in a particular state. Here, all the properties related to answer_groups are handled and checked for changes. First, we’re checking whether the latest version has the same interaction as that of the old_version of an exploration. If it is then only the change in answer_group can be merged, and thus we are moving on to the next properties. Changes in the solution, cust_args, and voiceovers will directly conflict with the answer_groups changes and so, we are grouping these properties in one list called PROPERTIES_CONFLICTING_ANSWER_GROUPS_CHANGES. It looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROPERTIES_CONFLICTING_ANSWER_GROUPS_CHANGES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">STATE_PROPERTY_INTERACTION_SOLUTION</span><span class="p">,</span>
+    <span class="n">STATE_PROPERTY_RECORDED_VOICEOVERS</span><span class="p">,</span>
+    <span class="n">STATE_PROPERTY_INTERACTION_CUST_ARGS</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Snippet 2</strong></p>
+<p>So as we can see on line number 2811-2812 inside snippet 1, we check if any changes are made in PROPERTIES_CONFLICTING_ANSWER_GROUPS_CHANGES in the backend, if yes, then we simply reject the changes as they can not be handled but if not, then we’ll proceed further to the next steps to confirm if the change is mergeable. We are also checking that if there are any changes in the answer_groups itself in the composite_change_list, if yes then that means that the answer_group property is changed by some other user and then we can not merge any changes in that related to the answer_group.
+If any of the conditions mentioned above returns False, we check if there is any change made in the same state as of answer group change, if not, then that answer_group change will be easily mergeable as there are no property changes in the same state; thus, there will not be any conflicting change.
+In a similar way, we’ll need to write the conditions to handle the merging conditions of the new property. If there are more than 2 related properties handled in the same way, we can create a list just like in Snippet 2 and write the common condition to avoid repetitive if-else blocks.</p>
+<ul class="simple">
+<li><p>So after handling the new property changes above, we should handle the changes to the properties related to the newly added property from the current change list.
+To do this, add the conditions in the existing blocks of all the properties related to the new property inside the <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2687">is_change_list_mergeable()</a> function to check if there are any new property changes in the composite_change_list. If so, also check if they affect the related property.
+For example:
+Ex. 1: PROPERTIES_CONFLICTING_SOLUTION_CHANGES includes the answer group property as it is affected by the answer_groups, and if there are any changes in the answer groups, the solution changes can not be merged.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">PROPERTIES_CONFLICTING_SOLUTION_CHANGES</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">STATE_PROPERTY_INTERACTION_ANSWER_GROUPS</span><span class="p">,</span>
+        <span class="n">STATE_PROPERTY_RECORDED_VOICEOVERS</span><span class="p">,</span>
+        <span class="n">STATE_PROPERTY_INTERACTION_CUST_ARGS</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Ex. 2: Inside the condition of the content property changes we check if the content has really changed or not, i.e. if the final content is similar to the old content then the net change is zero and thus we can merge the new content changes by another user. We also check if the voiceover and/or translations of the content have changed or not, if yes then the content changes will be conflicting and will not be able to get merged.</p>
+<img src="https://user-images.githubusercontent.com/56637531/125607112-2917feef-3bc9-4861-94ee-b198ad0a7373.png" width="600" height="250"/>
+<p>So similarly, add the condition to check if there are any changes made in the newly added property in the composite_change_list, and if yes, will they affect the related property or not.</p>
+</section>
+<section id="if-the-newly-added-property-is-non-state-property-i-e-change-command-associated-with-the-new-property-is-not-edit-state-property-and-is-a-new-command-like-for-renaming-the-states-we-use-rename-state-and-for-adding-new-state-its-add-new-state">
+<h3># If the newly added property is non-state property, i.e. change command associated with the new property is not edit_state_property and is a new command, like for renaming the states we use ‘rename_state’ and for adding new state it’s ‘add_new_state’.<a class="headerlink" href="#if-the-newly-added-property-is-non-state-property-i-e-change-command-associated-with-the-new-property-is-not-edit-state-property-and-is-a-new-command-like-for-renaming-the-states-we-use-rename-state-and-for-adding-new-state-its-add-new-state" title="Permalink to this headline"></a></h3>
+<p>In such cases:</p>
+<ul class="simple">
+<li><p>First, add a condition to keep the record of the changes made in the new property from the composite_change_list. Go to the exp_domain.py file and add an else if block for the new cmd there inside the <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2634">_parse_exp_change(self, change)</a> function. Inside that new cmd block add the conditions to record the changes made in the new property.
+For example:
+Example 1: Inside the <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2666">“edit_state_property” block</a> we keep the record of the changed properties of a state inside the dict where the key is the state name and the value is the list of the changed properties inside that state. We call this dict the  changed_properties dict and use it later when we need to check if a particular property has changed in the backend.
+Example 2: In order to keep the record of the new states added in the latest_version from the composite_change_list, we store the names of newly added states inside the added_state_names list like this:</p></li>
+</ul>
+<img src="https://user-images.githubusercontent.com/56637531/125607712-788e21b3-fed2-4cbc-b02e-e801da0db658.png" width="600" height="50"/>
+<p>So, keep the record of the changes in the newly added property from the composite change list inside its new cmd block as explained above.</p>
+<ul>
+<li><p>Now add a condition to handle the merging of the new property changes inside the <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2687">is_change_list_mergeable()</a> function under the <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2732">for loop</a> and create a new else block for the new cmd just like other commands blocks. Now inside that cmd block, add the conditions to check whether the properties related to the new property have changed in the composite_change_list or not.
+For example:
+To handle the translation changes, we have an “add_written_translation” cmd block. So the translation is only related to the property for which the translation is added or changed. Inside that <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2875">“add_written_translation” cmd block</a>, we just check if the property for which the translation is added/changed has been updated if so, we can not merge the translation change, and if not we can easily merge that translation change.  So the condition looks like this:</p>
+  <img src="https://user-images.githubusercontent.com/56637531/125611780-0c31e835-de6f-49a6-ac18-a10c88b157d0.png" width="600" height="200"/>
+</li>
+</ul>
+<p>So in a similar way as explained, add the conditions for the new property change mergeability according to how the newly added property is related to the other properties.</p>
+<ul class="simple">
+<li><p>So after handling the new property changes above, we should handle the changes of the properties related to the new property from the current change list.
+To do this, add the conditions in the existing blocks of all the properties related to the new property inside the <a class="reference external" href="https://github.com/oppia/oppia/blob/a2223926fb5ca6f1e8daaa9cb8909fdbfa5507e4/core/domain/exp_domain.py#L2687">is_change_list_mergeable()</a> function to check if there are any new property changes in the composite_change_list, and if yes, will they affect the related property.
+For example:
+Hints are related to the translations, so if there are any changes in the hint’s translation in the composite_change_list, we can not merge the hints changes from the current change list, therefore we have just checked if the hints exist in the changed_translations dict. The conditions look like this:</p></li>
+</ul>
+<img src="https://user-images.githubusercontent.com/56637531/125612054-86f27171-1a4c-4ad0-8887-c0c80faa963c.png" width="600" height="200"/>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating and modifying storage models &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Writing validators for storage models" href="Writing-Validators-for-storage-models.html" />
+    <link rel="prev" title="Calculating statistics" href="Calculating-statistics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="backend-reference.html">Backend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Apache-Beam-Jobs.html">Apache Beam jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-state-migrations.html">Writing state migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-audit-jobs.html">Writing audit jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-new-one-off-jobs-using-map-reduce.html">Writing new one off jobs using map reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating-statistics.html">Calculating statistics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating and modifying storage models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-model-class">Creating a new model class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-pseudonymizable-models">Adding pseudonymizable models</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-a-model-field">Modifying a model field</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-an-index-to-a-field">Adding an index to a field</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#removing-an-old-field-from-a-model">Removing an old field from a model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#steps-to-remove-a-field-from-models-that-inherit-from-basemodel">Steps to remove a field from models that inherit from <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-Validators-for-storage-models.html">Writing validators for storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Coding-for-speed-in-GAE.html">Coding for speed in GAE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-static-assets.html">Adding static assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html">Wipeout implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html#wipeout-design">Wipeout design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notes-on-NDB-Datastore-Transactions.html">Notes on NDB datastore transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="backend-reference.html">Backend</a> &raquo;</li>
+      <li>Creating and modifying storage models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Creating-and-modifying-storage-models.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-and-modifying-storage-models">
+<h1>Creating and modifying storage models<a class="headerlink" href="#creating-and-modifying-storage-models" title="Permalink to this headline"></a></h1>
+<p><em>If you miss any info or do not understand some instruction in this wiki page please contact &#64;vojtechjelinek (vojtin.j&#64;gmail.com).</em></p>
+<p>The purpose of this wiki is to provide step-by-step guides on how to add, remove, or modify model classes.</p>
+<section id="creating-a-new-model-class">
+<h2>Creating a new model class<a class="headerlink" href="#creating-a-new-model-class" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Decide if the model should be versioned or not.</p>
+<ul class="simple">
+<li><p>Versioned storage models preserve the history of all fields in their snapshots, and support reverts to any historical version. All versioned models should inherit from the <code class="docutils literal notranslate"><span class="pre">VersionedModel</span></code> class (see the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/storage/base_model/gae_models.py#L526">VersionedModel docstring</a> for more info).</p></li>
+<li><p>Normal (non-versioned) models preserve just the current version. Normal storage models should inherit from <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Add properties to the model. For more information about properties, please see the <a class="reference external" href="https://cloud.google.com/appengine/docs/standard/python/ndb/entity-property-reference">GAE “Entity property reference” docs</a>.</p></li>
+<li><p>Decide the model deletion and takeout policy.</p>
+<ul class="simple">
+<li><p>The deletion policy is used when the user requests the deletion of their user account. The deletion policy should be decided together with the data admins (<strong>&#64;BenHenning</strong> and <strong>&#64;seanlip</strong>). There are multiple deletion policies:</p>
+<ul>
+<li><p>KEEP — the model should be kept for auditing or logging purposes (e.g. <code class="docutils literal notranslate"><span class="pre">DeletedUserModel</span></code> or <code class="docutils literal notranslate"><span class="pre">SentEmailModel</span></code>).</p></li>
+<li><p>DELETE — the model only belongs to one user, and should be deleted (e.g. <code class="docutils literal notranslate"><span class="pre">CompletedActivitiesModel</span></code> or <code class="docutils literal notranslate"><span class="pre">LearnerPlaylistModel</span></code>).</p></li>
+<li><p>DELETE_AT_END — the model only belongs to one user, and should be deleted. But, since the data in that model is relevant for the wipeout process, the model should only be deleted at the end after all other models are deleted. (E.g. <code class="docutils literal notranslate"><span class="pre">UserSettingsModel</span></code> or <code class="docutils literal notranslate"><span class="pre">UserAuthDetailsModel</span></code>.)</p></li>
+<li><p>LOCALLY_PSEUDONYMIZE — the model should be anonymized accounting for the local context (e.g. <code class="docutils literal notranslate"><span class="pre">GeneralFeedbackThreadModel</span></code> is pseudonymized together with <code class="docutils literal notranslate"><span class="pre">GeneralFeedbackMessageModel</span></code> and <code class="docutils literal notranslate"><span class="pre">GeneralSuggestionModel</span></code>).</p></li>
+<li><p>PSEUDONYMIZE_IF_PUBLIC_DELETE_IF_PRIVATE — the model should be pseudonymized if it is accessible by the general public (like published explorations) and deleted if it is not public (e.g. <code class="docutils literal notranslate"><span class="pre">ExplorationRightsModel</span></code> or <code class="docutils literal notranslate"><span class="pre">ExpSummaryModel</span></code>).</p></li>
+<li><p>NOT_APPLICABLE — the model is not related to user data at all (e.g. <code class="docutils literal notranslate"><span class="pre">ClassifierTrainingJobModel</span></code> or <code class="docutils literal notranslate"><span class="pre">CommunityContributionStatsModel</span></code>).</p></li>
+</ul>
+</li>
+<li><p>Takeout policy (define both methods below)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_model_association_to_user</span></code>: This method should return one of the following:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_models.MODEL_ASSOCIATION_TO_USER.ONE_INSTANCE_PER_USER</span></code>. In this case, there is a single instance of the model per user. An example of this would be the UserSettingsModel. The UserSettingsModel has a one-to-one relationship with the user.’</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_models.MODEL_ASSOCIATION_TO_USER.ONE_INSTANCE_SHARED_ACROSS_USERS</span></code>. In this case, an instance of a model is shared across users. For example, explorations may have multiple contributors, so the ExplorationRightsModel is shared by multiple users, but there is only one instance of this model per exploration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_models.MODEL_ASSOCIATION_TO_USER.MULTIPLE_INSTANCES_PER_USER</span></code>. In this case, there could be multiple models associated with a single user. For example, a user could have multiple feedback threads, thus they could have multiple GeneralFeedbackThreadModels associated with their account.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_models.MODEL_ASSOCIATION_TO_USER.NOT_CORRESPONDING_TO_USER</span></code>. In this case, the model has no association with any user. In other words, the model does not contain user data.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_export_policy</span></code>. This method should return a dictionary which indicates whether each field in the model is exported or not exported. Each field in the dictionary must be one of the values in the enum base_models.EXPORT_POLICY. Specifically, this field will contain a key-value pair mapping like so:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">field_name:</span> <span class="pre">base_models.EXPORT_POLICY.EXPORTED</span></code>. (In this case, the indicated field is exported as one of the values in the takeout dictionary).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">field_name:</span> <span class="pre">base_models.EXPORTED_AS_KEY_FOR_TAKEOUT_DICT</span></code>. In this case, the indicated field is exported as one of the keys for a subdictionary within the takeout dictionary. For example, consider the case where we have a model with a MULTIPLE_INSTANCE_PER_USER association to a user. In this case, in order to distinguish between multiple models in the Takeout dictionary, we need a unique ID per model. Thus, we may export the model ID as a key for the subdictionaries within the takeout dictionary. For an example of this, reference any model with a MULTIPLE_INSTANCE_PER_USER association.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">field_name:</span> <span class="pre">base_models.EXPORT_POLICY.NOT_APPLICABLE</span></code>. In this case, the indicated field is not exported as part of the Takeout dictionary.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>(Only if deletion policy <strong>is not</strong> NOT_APPLICABLE) Add a <code class="docutils literal notranslate"><span class="pre">has_reference_to_user_id(cls,</span> <span class="pre">user_id)</span></code> method to the model. This method should return <code class="docutils literal notranslate"><span class="pre">True</span></code> when any of the model fields contains the given <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p></li>
+<li><p>If the deletion policy is:</p>
+<ul class="simple">
+<li><p>DELETE or DELETE_AT_END: Add an <code class="docutils literal notranslate"><span class="pre">apply_deletion_policy(cls,</span> <span class="pre">user_id)</span></code> method to the model. This method should delete all the models of this class that in any field reference the user through the user ID.</p></li>
+<li><p>LOCALLY_PSEUDONYMIZE or PSEUDONYMIZE_IF_PUBLIC_DELETE_IF_PRIVATE: You will need to know the context of this model and do the pseudonymization in a wipeout service. See <a class="reference external" href="https://github.com/oppia/oppia/wiki/Creating-and-modifying-storage-models#adding-pseudonymizable-models">Adding pseudonymizable models</a> below for more information.</p></li>
+</ul>
+</li>
+<li><p>(Only if the takeout policy is CONTAINS_USER_DATA) Add an <code class="docutils literal notranslate"><span class="pre">export_data(user_id)</span></code> method to the model. This method should return the data fields that are associated with or refer to the given user.</p></li>
+<li><p>(Only if the keys in the Takeout dictionary are different from the names of the fields being exported). Add a <code class="docutils literal notranslate"><span class="pre">get_field_names_for_takeout</span></code> method. This method defines the mapping of field names to Takeout keys.</p></li>
+</ol>
+<ul class="simple">
+<li><p>By default, the Takeout key will have the exact same name as the field – for example, a field named <code class="docutils literal notranslate"><span class="pre">asdf</span></code> is by default exported as <code class="docutils literal notranslate"><span class="pre">asdf</span></code>.</p></li>
+<li><p>However, there are cases where we want to rename a field for the sake of clarity in the Takeout dictionary. For example, instead of exporting dates (such as <code class="docutils literal notranslate"><span class="pre">last_updated</span></code>) as simply their names, we append <code class="docutils literal notranslate"><span class="pre">_msec</span></code> to the end of their name, to make it clear to a user that the data they are viewing is represented as time since the Epoch. Furthermore, we also use this for when we want to hide user IDs – e.g. if we want to export information about a user’s parent, rather than exporting the parent_id, we will instead export the username of the parent. Thus, we define a mapping from parent_id to parent_username, since instead of exporting the information as an ID, we export it as a username.</p></li>
+</ul>
+<ol class="simple">
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/wiki/Writing-Validators-for-storage-models">Add a validator for the model</a>.</p></li>
+<li><p><strong>If this model relates to other models</strong> (e.g., if this model exists for every exploration, the “other models” would be <code class="docutils literal notranslate"><span class="pre">ExplorationModel</span></code> and other exploration-related models) <strong>then make sure that, when the other models are deleted, this model is also deleted</strong>. (For example, in the case of <code class="docutils literal notranslate"><span class="pre">ExplorationModel</span></code>, the <code class="docutils literal notranslate"><span class="pre">delete_explorations</span></code> method should also be modified to include the newly added model). Also, add tests that verify that the model is deleted when the other models are deleted (e.g., in the case of <code class="docutils literal notranslate"><span class="pre">ExplorationModel</span></code>, a test should be added for <code class="docutils literal notranslate"><span class="pre">delete_exploration()</span></code> which explicitly tests that the newly-added model is also deleted).</p></li>
+</ol>
+<section id="adding-pseudonymizable-models">
+<h3>Adding pseudonymizable models<a class="headerlink" href="#adding-pseudonymizable-models" title="Permalink to this headline"></a></h3>
+<ol class="simple">
+<li><p>Check whether the new model is already connected to some existing model or set of models. (For example, when you add a model that is supposed to track statistics for a feedback thread, it would be connected to <code class="docutils literal notranslate"><span class="pre">GeneralFeedbackThreadModel</span></code>.)</p>
+<ul class="simple">
+<li><p>If it is connected to an existing model, find where the existing model is handled in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/domain/wipeout_service.py">wipeout_service.py</a> and include the new model in that place to be part of the pseudonymization. (Continuing with the example above, the new feedback model would need to be included in the <code class="docutils literal notranslate"><span class="pre">_pseudonymize_feedback_models()</span></code> function.)</p></li>
+<li><p>If it is not connected to an existing model, create a new function in the wipeout service that will handle the pseudonymization. (You can take a look at the existing pseudonymization functions like <code class="docutils literal notranslate"><span class="pre">_pseudonymize_feedback_models()</span></code> or <code class="docutils literal notranslate"><span class="pre">_pseudonymize_activity_models_without_associated_rights_models()</span></code> for inspiration.)</p></li>
+</ul>
+</li>
+<li><p>If the model has a deletion policy of PSEUDONYMIZE_IF_PUBLIC_DELETE_IF_PRIVATE, make sure that, for private models, the whole model is actually deleted and not just pseudonymized. This should be done in deletion functions that are usually placed in the model services files. (E.g., for explorations, there is a <code class="docutils literal notranslate"><span class="pre">delete_exploration()</span></code> function in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/domain/exp_services.py">exp_services.py</a>).</p></li>
+<li><p>Make sure to add tests for the newly-added model in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/domain/wipeout_service_test.py">wipeout_service_test.py</a>. The tests are structured as follows: for each storage module, there are two test classes, one for deletion and the other for verification. Add new test methods for your newly-created model to both classes.</p></li>
+</ol>
+</section>
+</section>
+<section id="modifying-a-model-field">
+<h2>Modifying a model field<a class="headerlink" href="#modifying-a-model-field" title="Permalink to this headline"></a></h2>
+<section id="adding-an-index-to-a-field">
+<h3>Adding an index to a field<a class="headerlink" href="#adding-an-index-to-a-field" title="Permalink to this headline"></a></h3>
+<p>If you need to index a field (i.e., add <code class="docutils literal notranslate"><span class="pre">indexed=True</span></code> to the field constructor), you’ll need to also build the index manually in the production datastore. This can be done by a simple MapReduce job that iterates over all the models and, without any modification, puts them again in the datastore. An example job can be seen at https://github.com/oppia/oppia/blob/624e4b1a9f09996df5ffcd4cbed96ebd6ba96e32/core/domain/takeout_domain_jobs_one_off.py#L38-L79.</p>
+</section>
+</section>
+<section id="removing-an-old-field-from-a-model">
+<h2>Removing an old field from a model<a class="headerlink" href="#removing-an-old-field-from-a-model" title="Permalink to this headline"></a></h2>
+<p>Firstly, remove the field to the bottom of the list of fields, and mark it with a comment saying <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO(#XXXX):</span> <span class="pre">DEPRECATED</span> <span class="pre">in</span> <span class="pre">&lt;version&gt;.</span> <span class="pre">Do</span> <span class="pre">not</span> <span class="pre">use.</span></code>. If the field was previously set as required, it should be set to optional instead. Also, create an issue for proper removal of the field in next release.</p>
+<p>To actually remove the field, perform the following steps:</p>
+<section id="steps-to-remove-a-field-from-models-that-inherit-from-basemodel">
+<h3>Steps to remove a field from models that inherit from <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code><a class="headerlink" href="#steps-to-remove-a-field-from-models-that-inherit-from-basemodel" title="Permalink to this headline"></a></h3>
+<ol class="simple">
+<li><p>Remove the field from the storage model code itself.</p></li>
+<li><p>Add a migration job to remove the field from already-existing models. For example, the one-off job for removing the <code class="docutils literal notranslate"><span class="pre">username</span></code> from commit log models looks like this: https://github.com/oppia/oppia/blob/170bdeae5912ced0abc71257f5b0e5ca98fd1418/core/domain/activity_jobs_one_off.py#L142-L182</p></li>
+<li><p><strong>If the model inherits from <code class="docutils literal notranslate"><span class="pre">VersionedModel</span></code></strong>: add a <code class="docutils literal notranslate"><span class="pre">_reconstitute()</span></code> method for the model that will ensure that, when we revert to an older version of the model, we properly remove the field so that the model can be loaded. (To see an example, take a look at the <code class="docutils literal notranslate"><span class="pre">_reconstitute()</span></code> methods in <code class="docutils literal notranslate"><span class="pre">CollectionRightsModel</span></code> and <code class="docutils literal notranslate"><span class="pre">ExplorationRightsModel</span></code> (https://github.com/oppia/oppia/blob/7623cd028d15a6326cac186f673f368dcae30929/core/storage/exploration/gae_models.py#L403-L440).)</p></li>
+<li><p>Create a PR and <a class="reference external" href="https://github.com/oppia/oppia/wiki/Running-jobs-in-production">submit the job to be tested on the backup server</a>.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Calculating-statistics.html" class="btn btn-neutral float-left" title="Calculating statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Writing-Validators-for-storage-models.html" class="btn btn-neutral float-right" title="Writing validators for storage models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

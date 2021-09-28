@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find the right code to change &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Find the right code to change</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Find-the-right-code-to-change.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="find-the-right-code-to-change">
+<h1>Find the right code to change<a class="headerlink" href="#find-the-right-code-to-change" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#support-editing">Support editing</a></p>
+<ul>
+<li><p><a class="reference external" href="#frontend-changes-to-support-editing">Frontend changes to support editing</a></p></li>
+<li><p><a class="reference external" href="#backend-changes-to-support-editing">Backend changes to support editing</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#support-viewing">Support viewing</a></p>
+<ul>
+<li><p><a class="reference external" href="#backend-changes-to-support-viewing">Backend changes to support viewing</a></p></li>
+<li><p><a class="reference external" href="#frontend-changes-to-support-viewing">Frontend changes to support viewing</a></p></li>
+</ul>
+</li>
+</ul>
+<p>When you work on the Oppia codebase, you’ll often need to figure out what file contains the code driving some feature. This tutorial will show you how to identify these files by working through an example. Suppose we are trying to cultivate a learning community among Oppia learners. To help with that, we want to add a field to user profiles where users can describe what concepts they have experience with. This will help other learners figure out who they can ask for help.</p>
+<p>Before working through this tutorial, you should read through the <a class="reference internal" href="Overview-of-the-Oppia-codebase.html"><span class="doc std std-doc">Overview of Oppia’s codebase</span></a>.</p>
+<p><strong>Warning: This is NOT a tutorial on how to make a code change to Oppia.</strong> We will be writing code to support editing and viewing the new user experience field, but our changes will only be enough to confirm that we have identified all the relevant files. Our code will not be ready for production. Instead, working through the steps here will give you the understanding you need to write a design doc.</p>
+</section>
+<section id="support-editing">
+<h2>Support editing<a class="headerlink" href="#support-editing" title="Permalink to this headline"></a></h2>
+<section id="frontend-changes-to-support-editing">
+<h3>Frontend changes to support editing<a class="headerlink" href="#frontend-changes-to-support-editing" title="Permalink to this headline"></a></h3>
+<p>In this tutorial, we’ll work from the more user-facing code all the way back to the database. This will let us see the results of our changes in a local development server at each step.</p>
+<p>First, let’s take a look at the page we want to modify. Start up a development server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.start</span>
+</pre></div>
+</div>
+<p>A development server will open at http://localhost:8181. Create a new account and navigate to the preferences page at http://localhost:8181/preferences. It should look like this:</p>
+<p><img alt="The un-modified preferences page" src="_images/unmodifiedPreferences.png" /></p>
+<p>We want to add a new field under the user bio to store the user’s experience. First, we need to find the HTML file that provides the user’s bio. Here are two approaches:</p>
+<ul class="simple">
+<li><p>Use your browser’s developer tools to inspect the page’s HTML. Find an HTML class you think will be unique, for example <code class="docutils literal notranslate"><span class="pre">protractor-test-user-bio</span></code>. Then search the codebase for that string.</p></li>
+<li><p>Rely on your knowledge of how the code files in Oppia are organized. We know that the HTML files for each component are under <code class="docutils literal notranslate"><span class="pre">core/templates/pages</span></code>. In that folder, we see a <code class="docutils literal notranslate"><span class="pre">preferences-page</span></code> directory, which looks promising since we are trying to edit the preferences page. Inside that folder, we see the <code class="docutils literal notranslate"><span class="pre">preferences-page.component.html</span></code> file.</p></li>
+</ul>
+<p>Either approach should lead you to <code class="docutils literal notranslate"><span class="pre">core/templates/pages/preferences-page/preferences-page.component.html</span></code>.</p>
+<ol>
+<li><p>Find the code for the bio field. You can find this block by noticing from your browser’s development tools that the <code class="docutils literal notranslate"><span class="pre">protractor-test-user-bio</span></code> class is associated with the bio field. If you search for that string, you should find a section of code that looks like this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>  &lt;div class=&quot;form-group row&quot;&gt;
+    &lt;label for=&quot;label-target-user-bio&quot; class=&quot;col-lg-4 col-md-4 col-sm-4&quot;&gt;{{ &#39;I18N_PREFERENCES_BIO&#39; | translate }}&lt;/label&gt;
+    &lt;div class=&quot;col-lg-8 col-md-8 col-sm-8&quot;&gt;
+      &lt;textarea id=&quot;label-target-user-bio&quot;
+                class=&quot;oppia-bio-border protractor-test-user-bio oppia-autofocus&quot;
+                [(ngModel)]=&quot;userBio&quot;
+                [attr.value]=&quot;userBio&quot;
+                (blur)=&quot;saveUserBio(userBio)&quot;
+                (change)=&quot;registerBioChanged()&quot;
+                rows=&quot;5&quot;
+                maxlength=&quot;2000&quot;&gt;
+      &lt;/textarea&gt;
+      &lt;span class=&quot;form-text oppia-form-text&quot;&gt;{{ &#39;I18N_PREFERENCES_BIO_EXPLAIN_TEXT&#39; | translate }}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Add the experience field here --&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+<p>Pay close attention to the indentation! The last <code class="docutils literal notranslate"><span class="pre">&lt;/div&gt;</span></code> doesn’t close the <code class="docutils literal notranslate"><span class="pre">div</span></code> tag at the top, it closes a <code class="docutils literal notranslate"><span class="pre">div</span></code> from earlier in the code. Therefore, we want to add the experience field where the comment (which I added) is.</p>
+</li>
+<li><p>To confirm that we’ve found the right spot, add the following lines just below the block of code that adds the bio field.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group row&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;label-target-user-experience&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-lg-4 col-md-4 col-sm-4&quot;</span><span class="p">&gt;</span>{{ &#39;I18N_PREFERENCES_EXPERIENCE&#39; | translate }}<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-lg-8 col-md-8 col-sm-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;label-target-user-experience&quot;</span>
+              <span class="na">class</span><span class="o">=</span><span class="s">&quot;oppia-experience-border&quot;</span>
+              <span class="na">rows</span><span class="o">=</span><span class="s">&quot;5&quot;</span>
+              <span class="na">maxlength</span><span class="o">=</span><span class="s">&quot;2000&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-text oppia-form-text&quot;</span><span class="p">&gt;</span>{{ &#39;I18N_PREFERENCES_BIO_EXPLAIN_TEXT&#39; | translate }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Restart the development by killing it with Ctrl-C and then running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code> again. Load the preferences page again, and you should see something like this:</p>
+<p><img alt="Preferences page. &quot;I18N_PREFERENCES_EXPERIENCE&quot; is shown next to the new field we added." src="_images/preferencesWithoutTranslation.png" /></p>
+<p>Oops! That <code class="docutils literal notranslate"><span class="pre">I18N_PREFERENCES_EXPERIENCE</span></code> text should instead say something like <code class="docutils literal notranslate"><span class="pre">Preferences</span></code>. Translations are stored in <code class="docutils literal notranslate"><span class="pre">assets/i18n</span></code>, so We need to add a translation in the English file, <code class="docutils literal notranslate"><span class="pre">assets/i18n/en.json</span></code>:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  &quot;I18N_PREFERENCES_BIO&quot;: &quot;Bio&quot;,
+<span class="gi">+ &quot;I18N_PREFERENCES_EXPERIENCE&quot;: &quot;Experience&quot;,</span>
+  &quot;I18N_PREFERENCES_BIO_EXPLAIN_TEXT&quot;: &quot;This field is optional. Anything you write here is public and world-viewable.&quot;,
+</pre></div>
+</div>
+<p>Now let’s try reloading the development server again. Now you should see this:</p>
+<p><img alt="Preferences page with experience field correctly labeled." src="_images/preferencesTranslated.png" />.</p>
+<p>The presence of the user experience field confirms that we edited the right file.</p>
+</li>
+<li><p>Next we need to update the component’s <code class="docutils literal notranslate"><span class="pre">*.ts</span></code> file to add some logic to our field. This file will have the same path as the HTML file we just edited, except it will end in <code class="docutils literal notranslate"><span class="pre">.ts</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.html</span></code>. The file is <code class="docutils literal notranslate"><span class="pre">core/templates/pages/preferences-page/preferences-page.component.ts</span></code>, and there you’ll find a <code class="docutils literal notranslate"><span class="pre">PreferencesPageComponent</span></code> class. Add to that class an instance variable for the user experience with a default value so we can see that it works:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  userBio: string;
+<span class="gi">+ userExperience: string = &#39;I have learned a lot!&#39;;</span>
+  defaultDashboard: string;
+</pre></div>
+</div>
+<p>Let’s also add a method to handle saving the user bio:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="nx">saveUserExperience</span><span class="p">(</span><span class="nx">userExperience</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="ow">void</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`DEBUG: Saved user experience: </span><span class="si">${</span><span class="nx">userExperience</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this case we haven’t written the backend code to support saving, but we’ll be able to see in the console log that the method was called.</p>
+</li>
+<li><p>Now we can update the component HTML file to use this new logic. Update the <code class="docutils literal notranslate"><span class="pre">textarea</span></code> tag we added as follows:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  &lt;textarea id=&quot;label-target-user-experience&quot;
+            class=&quot;oppia-experience-border&quot;
+<span class="gi">+           [(ngModel)]=&quot;userExperience&quot;</span>
+<span class="gi">+           (blur)=&quot;saveUserExperience(userExperience)&quot;</span>
+            rows=&quot;5&quot;
+            maxlength=&quot;2000&quot;&gt;
+  &lt;/textarea&gt;
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">[(ngModel)]=&quot;userExperience&quot;</span></code> tells Angular to bind the value of the <code class="docutils literal notranslate"><span class="pre">textarea</span></code> element to the value of the <code class="docutils literal notranslate"><span class="pre">userExperience</span></code> attribute of the component class. <code class="docutils literal notranslate"><span class="pre">(blur)=saveUserExperience(userExperience)</span></code> causes the <code class="docutils literal notranslate"><span class="pre">saveUserExperience</span></code> method we wrote to be called with the value of the <code class="docutils literal notranslate"><span class="pre">userExperience</span></code> instance field whenever the <code class="docutils literal notranslate"><span class="pre">blur</span></code> event occurs. For more details, see <a class="reference external" href="https://angular.io/api/forms/NgModel#description">Angular’s NgModel docs</a> and <a class="reference external" href="https://angular.io/guide/event-binding">Angular’s documentation on event binding</a>.</p>
+<p>Now when we restart the server and load the preferences page, we see our default user experience text:</p>
+<p><img alt="Preferences page with default experience text." src="_images/preferencesWithDefaultExperience.png" /></p>
+<p>If you change the text in the experience field, say to <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">have</span> <span class="pre">learned</span> <span class="pre">a</span> <span class="pre">lot!</span> <span class="pre">Yay!</span></code>, and then click away, you should see the console message from our <code class="docutils literal notranslate"><span class="pre">console.log</span></code> statement: <code class="docutils literal notranslate"><span class="pre">DEBUG:</span> <span class="pre">Saved</span> <span class="pre">user</span> <span class="pre">experience:</span> <span class="pre">I</span> <span class="pre">have</span> <span class="pre">learned</span> <span class="pre">a</span> <span class="pre">lot!</span> <span class="pre">Yay!</span></code>.</p>
+</li>
+<li><p>Next, let’s tell the component to send updates to the experience field to the backend by changing the <code class="docutils literal notranslate"><span class="pre">saveUserExperience</span></code> method that we referenced in our HTML code above.</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  saveUserExperience(userExperience: string): void {
+<span class="gd">-   console.log(`DEBUG: Saved user experience: ${userExperience}`);</span>
+<span class="gi">+   this._saveDataItem(&#39;user_experience&#39;, userExperience);</span>
+  }
+</pre></div>
+</div>
+<p>Now when you try to change the experience field text, you’ll see an error in the console:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ERROR Error: Uncaught (in promise): HttpErrorResponse: {&quot;headers&quot;:{&quot;normalizedNames&quot;:{},&quot;lazyUpdate&quot;:null},&quot;status&quot;:400,&quot;statusText&quot;:&quot;Bad Request&quot;,&quot;url&quot;:&quot;http://localhost:8181/preferenceshandler/data&quot;,&quot;ok&quot;:false,&quot;name&quot;:&quot;HttpErrorResponse&quot;,&quot;message&quot;:&quot;Http failure response for http://localhost:8181/preferenceshandler/data: 400 Bad Request&quot;,&quot;error&quot;:{&quot;status_code&quot;:400,&quot;error&quot;:&quot;Invalid update type: user_experience&quot;}}
+</pre></div>
+</div>
+<p>You should also see a similar error in your terminal output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>InvalidInputException: Invalid update type: user_experience
+</pre></div>
+</div>
+<p>This is because the backend isn’t set up to handle updates to our new field. Note that we skipped the user backend API service. Since we are seeing an error in the terminal, we know our update to the user experience field is getting to the backend code, so the frontend’s backend API service doesn’t need to be changed. You should take a look at <code class="docutils literal notranslate"><span class="pre">core/templates/services/user-backend-api.service.ts</span></code> though to understand how it works. In particular, we care about the <code class="docutils literal notranslate"><span class="pre">updateUserPreferencesDataAsync</span></code> method:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="nx">updatePreferencesDataAsync</span><span class="p">(</span>
+    <span class="nx">updateType</span>: <span class="kt">string</span><span class="p">,</span>
+    <span class="nx">data</span>: <span class="kt">boolean</span> <span class="o">|</span> <span class="kt">string</span> <span class="o">|</span> <span class="kt">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">SubscriptionSummary</span><span class="p">[])</span><span class="o">:</span>
+    <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UpdatePreferencesResponse</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">put</span><span class="o">&lt;</span><span class="nx">UpdatePreferencesResponse</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PREFERENCES_DATA_URL</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">update_type</span>: <span class="kt">updateType</span><span class="p">,</span>
+    <span class="nx">data</span>: <span class="kt">data</span>
+  <span class="p">}).</span><span class="nx">toPromise</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="backend-changes-to-support-editing">
+<h3>Backend changes to support editing<a class="headerlink" href="#backend-changes-to-support-editing" title="Permalink to this headline"></a></h3>
+<p>Next let’s identify the backend files involved in handling updates to the user’s profile.</p>
+<ol>
+<li><p>We see that <code class="docutils literal notranslate"><span class="pre">updateUserPreferencesDataAsync</span></code> issues a PUT request against <code class="docutils literal notranslate"><span class="pre">PREFERENCES_DATA_URL</span></code>, which is <code class="docutils literal notranslate"><span class="pre">/preferenceshandler/data</span></code>. This path is assigned to the <code class="docutils literal notranslate"><span class="pre">PREFERENCES_DATA_URL</span></code> constant in <code class="docutils literal notranslate"><span class="pre">feconf.py</span></code>, and if you search for that constant in <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, you’ll see it mapped to the <code class="docutils literal notranslate"><span class="pre">profile.PreferencesHandler</span></code> controller, which is you can find in <code class="docutils literal notranslate"><span class="pre">core/controllers/profile.py</span></code>. In that controller, add code to handle the <code class="docutils literal notranslate"><span class="pre">user_experience</span></code> update type:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  if update_type == &#39;user_bio&#39;:
+      if len(data) &gt; feconf.MAX_BIO_LENGTH_IN_CHARS:
+          raise self.InvalidInputException(
+              &#39;User bio exceeds maximum character limit: %s&#39;
+              % feconf.MAX_BIO_LENGTH_IN_CHARS)
+      else:
+          user_services.update_user_bio(self.user_id, data)
+<span class="gi">+ elif update_type == &#39;user_experience&#39;:</span>
+<span class="gi">+     if len(data) &gt; feconf.MAX_BIO_LENGTH_IN_CHARS:</span>
+<span class="gi">+         raise self.InvalidInputException(</span>
+<span class="gi">+             &#39;User experience exceeds maximum character limit: %s&#39;</span>
+<span class="gi">+             % feconf.MAX_BIO_LENGTH_IN_CHARS)</span>
+<span class="gi">+     else:</span>
+<span class="gi">+         python_utils.PRINT(</span>
+<span class="gi">+             &#39;DEBUG Controller received update: &#39; +</span>
+<span class="gi">+             data)</span>
+</pre></div>
+</div>
+<p>Note that since we set the bio and experience maximum lengths to be the same, we are re-using the <code class="docutils literal notranslate"><span class="pre">MAX_BIO_LENGTH_IN_CHARS</span></code> variable for the user experience.</p>
+<p>When you restart the development server and update your experience field, you should see no console errors in your browser and the debugging message we added in your terminal:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEBUG Controller received update: I have learned a lot! Yay!
+</pre></div>
+</div>
+</li>
+<li><p>Next, lets add a service to the <code class="docutils literal notranslate"><span class="pre">core/domain/user_services.py</span></code> to handle updating the user experience field. This will ensure our code follows the pattern used for updating the user bio, which we saw from the controller calls a <code class="docutils literal notranslate"><span class="pre">user_services.update_user_bio</span></code> function. Here’s the code for our service:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_user_experience</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">user_experience</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Updates user_experience of user with given user_id.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id: str. The unique ID of the user.</span>
+<span class="sd">        user_experience: str. New user experience to be set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user_settings</span> <span class="o">=</span> <span class="n">get_user_settings</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">user_settings</span><span class="o">.</span><span class="n">user_experience</span> <span class="o">=</span> <span class="n">user_experience</span>
+    <span class="n">python_utils</span><span class="o">.</span><span class="n">PRINT</span><span class="p">(</span>
+        <span class="s1">&#39;DEBUG: update_user_experience: &#39;</span> <span class="o">+</span> <span class="n">user_experience</span><span class="p">)</span>
+    <span class="n">_save_user_settings</span><span class="p">(</span><span class="n">user_settings</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we can replace our print statement in the controller with a call to this service:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  elif update_type == &#39;user_experience&#39;:
+      if len(data) &gt; feconf.MAX_BIO_LENGTH_IN_CHARS:
+          raise self.InvalidInputException(
+              &#39;User experience exceeds maximum character limit: %s&#39;
+              % feconf.MAX_BIO_LENGTH_IN_CHARS)
+      else:
+<span class="gd">-         python_utils.PRINT(</span>
+<span class="gd">-             &#39;DEBUG Controller received update: &#39; +</span>
+<span class="gd">-             data)</span>
+<span class="gi">+         user_services.update_user_experience(self.user_id, data)</span>
+</pre></div>
+</div>
+<p>When you restart the development server and update your experience field, you should see our print statement output in the terminal:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEBUG: update_user_experience: I have learned a lot! Yay!
+</pre></div>
+</div>
+</li>
+<li><p>Next, we need to update the domain model. Let’s take a moment to look at how the <code class="docutils literal notranslate"><span class="pre">_save_user_settings</span></code> function works. Here’s the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_save_user_settings</span><span class="p">(</span><span class="n">user_settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Commits a user settings object to the datastore.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_settings: UserSettings. The user setting domain object to be saved.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user_settings</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+
+    <span class="n">user_settings_dict</span> <span class="o">=</span> <span class="n">user_settings</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+    <span class="c1"># If user with the given user_id already exists, update that model</span>
+    <span class="c1"># with the given user settings, otherwise, create a new one.</span>
+    <span class="n">user_model</span> <span class="o">=</span> <span class="n">user_models</span><span class="o">.</span><span class="n">UserSettingsModel</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">user_settings</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">user_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">user_model</span><span class="o">.</span><span class="n">populate</span><span class="p">(</span><span class="o">**</span><span class="n">user_settings_dict</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">user_settings_dict</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_settings</span><span class="o">.</span><span class="n">user_id</span>
+        <span class="n">user_model</span> <span class="o">=</span> <span class="n">user_models</span><span class="o">.</span><span class="n">UserSettingsModel</span><span class="p">(</span><span class="o">**</span><span class="n">user_settings_dict</span><span class="p">)</span>
+
+    <span class="c1"># TODO(#12755): Remove update_roles_and_banned_fields call once roles and</span>
+    <span class="c1"># banned fields are in use.</span>
+    <span class="n">update_roles_and_banned_fields</span><span class="p">(</span><span class="n">user_model</span><span class="p">)</span>
+    <span class="n">user_model</span><span class="o">.</span><span class="n">update_timestamps</span><span class="p">()</span>
+    <span class="n">user_model</span><span class="o">.</span><span class="n">put</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We first convert the new user settings object to a dictionary, then we fetch the existing user settings model and populate it, and finally we put the updated model back into the datastore. This means that just need to tell the <code class="docutils literal notranslate"><span class="pre">UserSettings</span></code> domain model in <code class="docutils literal notranslate"><span class="pre">core/domain/user_domain.py</span></code> about our <code class="docutils literal notranslate"><span class="pre">user_experience</span></code> field.</p>
+<p>First, let’s add a <code class="docutils literal notranslate"><span class="pre">user_experience</span></code> argument to the constructor, assign that argument to an instance field, and update the appropriate docstrings:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gu">@@ -55,6 +55,7 @@ class UserSettings(python_utils.OBJECT):</span>
+             a dataURI string.
+         default_dashboard: str or None. The default dashboard of the user.
+         user_bio: str. User-specified biography.
+<span class="gi">+        user_experience: str. User-specified experience description.</span>
+         subject_interests: list(str) or None. Subject interests specified by
+             the user.
+         first_contribution_msec: float or None. The time in milliseconds when
+<span class="gu">@@ -77,7 +78,7 @@ class UserSettings(python_utils.OBJECT):</span>
+             profile_picture_data_url=None, default_dashboard=None,
+             creator_dashboard_display_pref=(
+                 constants.ALLOWED_CREATOR_DASHBOARD_DISPLAY_PREFS[&#39;CARD&#39;]),
+<span class="gd">-            user_bio=&#39;&#39;, subject_interests=None, first_contribution_msec=None,</span>
+<span class="gi">+            user_bio=&#39;&#39;, user_experience=&#39;&#39;, subject_interests=None, first_contribution_msec=None,</span>
+             preferred_language_codes=None, preferred_site_language_code=None,
+             preferred_audio_language_code=None, pin=None, display_alias=None,
+             deleted=False, created_on=None):
+<span class="gu">@@ -106,6 +107,7 @@ class UserSettings(python_utils.OBJECT):</span>
+             creator_dashboard_display_pref: str. The creator dashboard of the
+                 user.
+             user_bio: str. User-specified biography.
+<span class="gi">+            user_experience: str. User-specified experience description.</span>
+             subject_interests: list(str) or None. Subject interests specified by
+                 the user.
+             first_contribution_msec: float or None. The time in milliseconds
+<span class="gu">@@ -140,6 +142,7 @@ class UserSettings(python_utils.OBJECT):</span>
+         self.default_dashboard = default_dashboard
+         self.creator_dashboard_display_pref = creator_dashboard_display_pref
+         self.user_bio = user_bio
+<span class="gi">+        self.user_experience = user_experience</span>
+         self.subject_interests = (
+             subject_interests if subject_interests else [])
+         self.first_contribution_msec = first_contribution_msec
+</pre></div>
+</div>
+<p>Next, we need to update the <code class="docutils literal notranslate"><span class="pre">to_dict</span></code> function to include the <code class="docutils literal notranslate"><span class="pre">user_experience</span></code> field:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gu">@@ -293,6 +296,7 @@ class UserSettings(python_utils.OBJECT):</span>
+             &#39;creator_dashboard_display_pref&#39;: (
+                 self.creator_dashboard_display_pref),
+             &#39;user_bio&#39;: self.user_bio,
+<span class="gi">+            &#39;user_experience&#39;: self.user_experience,</span>
+             &#39;subject_interests&#39;: self.subject_interests,
+             &#39;first_contribution_msec&#39;: self.first_contribution_msec,
+             &#39;preferred_language_codes&#39;: self.preferred_language_codes,
+</pre></div>
+</div>
+<p>Now if you restart the development server, you should get an error as soon as you log in:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AttributeError: type object &#39;UserSettingsModel&#39; has no attribute &#39;user_experience&#39;
+</pre></div>
+</div>
+<p>This happens because we haven’t updated the storage model yet, so there is no <code class="docutils literal notranslate"><span class="pre">user_experience</span></code> field to put into the domain model. Let’s fix that next.</p>
+</li>
+<li><p>The user storage model is defined in <code class="docutils literal notranslate"><span class="pre">core/storage/user/gae_models.py</span></code>. We can find this file this because all storage models are defined in <code class="docutils literal notranslate"><span class="pre">gae_models.py</span></code> files. Add an instance field to the <code class="docutils literal notranslate"><span class="pre">UserSettingsModel</span></code> class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># User specified experience description.</span>
+<span class="n">user_experience</span> <span class="o">=</span> <span class="n">datastore_services</span><span class="o">.</span><span class="n">TextProperty</span><span class="p">(</span>
+    <span class="n">indexed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now if you restart the development server and log in, you should not see any errors.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="support-viewing">
+<h2>Support viewing<a class="headerlink" href="#support-viewing" title="Permalink to this headline"></a></h2>
+<p>Now we can supposedly change the user’s experience field and save it to the datastore, but we need to confirm that this is actually happening. Let’s add support for viewing the updated field to make sure everything’s working.</p>
+<section id="backend-changes-to-support-viewing">
+<h3>Backend changes to support viewing<a class="headerlink" href="#backend-changes-to-support-viewing" title="Permalink to this headline"></a></h3>
+<p>Now that we have the user experience field added to all the models, we can update the backend code to serve that field when loading a user’s preferences.</p>
+<ol>
+<li><p>The backend storage models and domain models know about the user experience field, but we need to tell the user services to include the field when converting a storage model to a domain model. If you trace through how user models are retrieved through the user services, you’ll find that the <code class="docutils literal notranslate"><span class="pre">_get_user_settings_from_model</span></code> function in <code class="docutils literal notranslate"><span class="pre">core/domain/user_services.py</span></code> extracts the instance fields from the storage model. Let’s add code to that function:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  user_bio=user_settings_model.user_bio,
+<span class="gi">+ user_experience=user_settings_model.user_experience,</span>
+  subject_interests=user_settings_model.subject_interests,
+</pre></div>
+</div>
+<p>Now let’s check our work by adding a print statement to <code class="docutils literal notranslate"><span class="pre">get_user_settings</span></code> in <code class="docutils literal notranslate"><span class="pre">core/domain/user_services.py</span></code>:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  user_settings = get_users_settings([user_id])[0]
+  if strict and user_settings is None:
+      logging.error(&#39;Could not find user with id %s&#39; % user_id)
+      raise Exception(&#39;User not found.&#39;)
+<span class="gi">+ if user_settings:</span>
+<span class="gi">+     python_utils.PRINT(</span>
+<span class="gi">+         &#39;DEBUG get_user_settings experience: &#39; +</span>
+<span class="gi">+         user_settings.user_experience)</span>
+  return user_settings
+</pre></div>
+</div>
+<p>You can also remove the other print statements in that file to clean up the output. Now when you restart the server, set the user experience, and reload the preferences page, you should see in the terminal output that your updated experience text was retrieved from the datastore.</p>
+</li>
+<li><p>Now the backend models will contain our new field. Since these models get used throughout the backend, most of the backend code already handles our new field correctly. We just need to update the controller to include the user experience field when it converts the backend domain model into a dictionary. Update the <code class="docutils literal notranslate"><span class="pre">PreferencesHandler.get()</span></code> method in <code class="docutils literal notranslate"><span class="pre">core/controllers/profile.py</span></code>:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  self.values.update({
+      &#39;preferred_language_codes&#39;: user_settings.preferred_language_codes,
+      &#39;preferred_site_language_code&#39;: (
+          user_settings.preferred_site_language_code),
+      &#39;preferred_audio_language_code&#39;: (
+          user_settings.preferred_audio_language_code),
+      &#39;profile_picture_data_url&#39;: user_settings.profile_picture_data_url,
+      &#39;default_dashboard&#39;: user_settings.default_dashboard,
+      &#39;user_bio&#39;: user_settings.user_bio,
+<span class="gi">+     &#39;user_experience&#39;: user_settings.user_experience,</span>
+      &#39;subject_interests&#39;: user_settings.subject_interests,
+      &#39;can_receive_email_updates&#39;: (
+          user_email_preferences.can_receive_email_updates),
+      &#39;can_receive_editor_role_email&#39;: (
+          user_email_preferences.can_receive_editor_role_email),
+      &#39;can_receive_feedback_message_email&#39;: (
+          user_email_preferences.can_receive_feedback_message_email),
+      &#39;can_receive_subscription_email&#39;: (
+          user_email_preferences.can_receive_subscription_email),
+      &#39;subscription_list&#39;: subscription_list
+  })
+<span class="gi">+ python_utils.PRINT(self.values)</span>
+  self.render_json(self.values)
+</pre></div>
+</div>
+<p>To clean up the output, you should also remove the print statements we put in <code class="docutils literal notranslate"><span class="pre">core/domain/user_services.py</span></code>. Now, restart the development server and load the preferences page. In your terminal, you should see a dictionary printed with <code class="docutils literal notranslate"><span class="pre">'user_experience'</span></code> mapped to <code class="docutils literal notranslate"><span class="pre">''</span></code>. Next, add some text to the experience field and reload the page. In the terminal, you should now see that the dictionary maps <code class="docutils literal notranslate"><span class="pre">'user_experience'</span></code> to the text you submitted.</p>
+</li>
+</ol>
+</section>
+<section id="frontend-changes-to-support-viewing">
+<h3>Frontend changes to support viewing<a class="headerlink" href="#frontend-changes-to-support-viewing" title="Permalink to this headline"></a></h3>
+<p>Now the backend is providing us with the updated user experience text, but we need to tell the frontend how to display it.</p>
+<ol>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">PreferencesBackendDict</span></code> type in <code class="docutils literal notranslate"><span class="pre">core/templates/services/user-backend-api.service.ts</span></code> to add a <code class="docutils literal notranslate"><span class="pre">user_experience</span></code> field:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  export interface PreferencesBackendDict {
+    &#39;preferred_language_codes&#39;: string[];
+    &#39;preferred_site_language_code&#39;: string;
+    &#39;preferred_audio_language_code&#39;: string;
+    &#39;profile_picture_data_url&#39;: string;
+    &#39;default_dashboard&#39;: string;
+    &#39;user_bio&#39;: string;
+<span class="gi">+   &#39;user_experience&#39;: string;</span>
+    &#39;subject_interests&#39;: string;
+    &#39;can_receive_email_updates&#39;: boolean;
+    &#39;can_receive_editor_role_email&#39;: boolean;
+    &#39;can_receive_feedback_message_email&#39;: boolean;
+    &#39;can_receive_subscription_email&#39;: boolean;
+    &#39;subscription_list&#39;: SubscriptionSummary[];
+  }
+</pre></div>
+</div>
+<p>This reflects the fact that when we fetch a user’s preferences from the backend API, the dictionary will include the user experience field from the backend domain model.</p>
+</li>
+<li><p>Load the <code class="docutils literal notranslate"><span class="pre">user_experience</span></code> field in the preferences page component’s <code class="docutils literal notranslate"><span class="pre">ngOnInit</span></code> method:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>  preferencesPromise.then((data) =&gt; {
+    this.userBio = data.user_bio;
+<span class="gi">+   this.userExperience = data.user_experience;</span>
+</pre></div>
+</div>
+<p>We can also make the default value for user experience an empty string.</p>
+<p>Now you should be able to log in, set the user experience, and reload the page to see your submitted text preserved in the experience field.</p>
+</li>
+</ol>
+<p>Congratulations, you’ve found all the files needed to make a full-stack change! Hopefully working through this exercise has helped you understand how all the parts of Oppia fit together. Now you can take what you’ve learned about finding code in Oppia to do something similar for your own change. Doing so will prepare you to write a design doc.</p>
+<p><strong>This tutorial gets you ready to write a design doc; there’s a lot more to a full-stack change!</strong> For example:</p>
+<ul class="simple">
+<li><p>Considering data privacy and ethics in your design doc.</p></li>
+<li><p>Creating stacked pull requests to make reviews easier.</p></li>
+<li><p>Writing tests and documentation.</p></li>
+<li><p>Considering how to design the appearance of your frontend changes.</p></li>
+</ul>
+<p>You can find a copy of the completed code <a class="reference external" href="https://github.com/U8NWXD/oppia/tree/full-stack-change">on GitHub</a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

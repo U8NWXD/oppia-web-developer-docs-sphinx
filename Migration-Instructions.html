@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Migration instructions &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Migration instructions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Migration-Instructions.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="migration-instructions">
+<h1>Migration instructions<a class="headerlink" href="#migration-instructions" title="Permalink to this headline"></a></h1>
+<p>This page contains instructions for migrating a production instance of Oppia from one release to the next. Please note that a special migration occurred for version 2.5.0 and it’s <em>highly recommended</em> that you bring your instance up to a fully upgraded version of 2.4.2, then perform the 2.4.2 → 2.5.0 migration, then continue with any other migrations after that, if needed.</p>
+<section id="migrating-v2-4-2-v-2-5-0">
+<h2>Migrating v2.4.2 → v.2.5.0<a class="headerlink" href="#migrating-v2-4-2-v-2-5-0" title="Permalink to this headline"></a></h2>
+<p>Version 2.5.0 of Oppia included a migration of all answers to a new storage model. #3294 provides more context for this migration, and the steps for performing this migration are as follows:</p>
+<ol class="simple">
+<li><p>Go into the admin panel after deploying v2.5.0 of the application</p></li>
+<li><p>Stop all continuous computation jobs and wait for them to stop</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">ClearMigratedAnswersJob</span></code> and <code class="docutils literal notranslate"><span class="pre">ClearLargeAnswerBucketsJob</span></code></p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">PurgeInconsistentAnswersJob</span></code> and wait for it to complete</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">SplitLargeAnswerBucketsJob</span></code></p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">AnswersAudit</span></code> job</p></li>
+<li><p>Wait for both jobs to complete</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">AnswerMigrationJob</span></code> and wait for it to complete</p></li>
+<li><p>Check the output of the <code class="docutils literal notranslate"><span class="pre">AnswerMigrationJob</span></code> for any errors.  If there are any errors follow these sub-steps:
+a. Run <code class="docutils literal notranslate"><span class="pre">AnswerMigrationCleanupJob</span></code> and wait for it to complete
+b. Re-run the <code class="docutils literal notranslate"><span class="pre">AnswerMigrationJob</span></code> and wait for it to complete
+c. Check the output of the <code class="docutils literal notranslate"><span class="pre">AnswerMigrationJob</span></code> for any errors. If the errors are the same as the previous time the <code class="docutils literal notranslate"><span class="pre">AnswerMigrationJob</span></code> was run, stop the process and investigate.  Otherwise, repeat steps (a) through (c) until the migration job no longer reports errors.</p></li>
+<li><p>Start the <code class="docutils literal notranslate"><span class="pre">AnswersAudit2</span></code> job</p></li>
+<li><p>Start the <code class="docutils literal notranslate"><span class="pre">RuleTypeBreakdownAudit</span></code> job</p></li>
+<li><p>Wait for both to complete.  Check the output of <code class="docutils literal notranslate"><span class="pre">RuleTypeBreakdownAudit</span></code> to verify that all answer rule types were migrated (there should be no reports of specific exploration failing to migrate all of their rule types)</p></li>
+<li><p>Optionally compare the output from <code class="docutils literal notranslate"><span class="pre">AnswersAudit</span></code> and <code class="docutils literal notranslate"><span class="pre">AnswersAudit2</span></code>.  Other than some minor differences between the old and new storage models, the aggregate rule type counts should be equal for both jobs</p></li>
+<li><p>Start the <code class="docutils literal notranslate"><span class="pre">RefreshInteractionRegistryJob</span></code> and wait for it to complete</p></li>
+<li><p>Restart continuous computation jobs and start <code class="docutils literal notranslate"><span class="pre">InteractionAnswerSummariesAggregator</span></code></p></li>
+<li><p>After the aggregator has finished running a few times, look through the answer stats for some large explorations and verify they look similar to before</p></li>
+<li><p>Start the <code class="docutils literal notranslate"><span class="pre">CleanupLargeBucketLabelsFromNewAnswersJob</span></code> and wait for it to complete</p></li>
+</ol>
+<p>If you are migrating a site with regular user traffic, consider enabling maintenance mode in feconf by setting the <a class="reference external" href="https://github.com/oppia/oppia/blob/release-2.5.0/feconf.py#L264">ENABLE_MAINTENANCE_MODE</a> flag to <code class="docutils literal notranslate"><span class="pre">True</span></code>. When maintenance mode is enabled, only the admin panel is accessible to all users, and only superadmins can access the rest of the site (you may need to refresh other pages a few times before they are accessible). Don’t forget to set the flag back to <code class="docutils literal notranslate"><span class="pre">False</span></code> and push a new binary after the migration is complete.</p>
+<p>If you are migrating a large number of answers, consider increasing the number of shards your mapreduce jobs use by editing <code class="docutils literal notranslate"><span class="pre">third_party/gae-mapreduce-1.9.17.0/mapreduce/parameters.py</span></code> and changing the <code class="docutils literal notranslate"><span class="pre">SHARD_COUNT</span></code> property to a value higher (we used 64 shards for steps 1-8 and 32 shards thereafter due to limitations in the app engine mapreduce pipeline). It’s also highly recommended to increase your instance class to F4 or F4_1G when running the migration, as a lot of memory may be consumed. You can also upgrade your default queue to have a <code class="docutils literal notranslate"><span class="pre">bucket_size</span></code> of 100 and a rate of 500/s just for the migration job and follow-up audit jobs.</p>
+<p>Please note that the above information is provided for reference, and we hope that it is helpful. However, if you perform this migration, you do so at your own risk, and we cannot guarantee any assistance if you run into problems. You might also wish to consider running through the migration beforehand on a test server.</p>
+</section>
+<section id="migrating-v2-0-0-v2-0-1-or-v2-0-0-rc-4-v2-0-0-or-v2-0-0-rc-3-v2-0-0-rc-4">
+<h2>Migrating v2.0.0 → v2.0.1, or v2.0.0.rc.4 → v2.0.0, or v2.0.0.rc.3 → v2.0.0.rc.4<a class="headerlink" href="#migrating-v2-0-0-v2-0-1-or-v2-0-0-rc-4-v2-0-0-or-v2-0-0-rc-3-v2-0-0-rc-4" title="Permalink to this headline"></a></h2>
+<p>After pushing the new code to the production server and upgrading the version number in the Google App Engine ‘Versions’ panel, do the following:</p>
+<ol class="simple">
+<li><p>Flush memcache.</p></li>
+<li><p>If necessary, stop the SearchRanker job (and any others that refer to ExplorationModel).</p></li>
+<li><p>Run the ExplorationMigrationJobManager job once, and wait for it to finish.</p></li>
+<li><p>Flush memcache (as a precaution).</p></li>
+<li><p>Restart the SearchRanker job (and any others), if needed.</p></li>
+<li><p>Play through an exploration on the site to ensure that everything works as expected.</p></li>
+</ol>
+</section>
+<section id="migrating-v2-0-0-rc-2-v2-0-0-rc-3">
+<h2>Migrating v2.0.0.rc.2 → v2.0.0.rc.3<a class="headerlink" href="#migrating-v2-0-0-rc-2-v2-0-0-rc-3" title="Permalink to this headline"></a></h2>
+<p>v2.0.0.rc.3 introduced a schema change in how explorations were stored in the backend, due to the removal of the ‘special’ END state. The migration process for upgrading Oppia is therefore a little more complex than usual. This page contains instructions for performing the migration after pushing the new code to the production server and upgrading the version number to 2-0-0-rc-3 in the Google App Engine ‘Versions’ panel.</p>
+<ol class="simple">
+<li><p>Flush memcache. (This is critical.)</p></li>
+<li><p>Go to /admin, and run the ExplorationValidityJobManager job. Ensure that its output is <code class="docutils literal notranslate"><span class="pre">[]</span></code> (i.e., all explorations are valid). <strong>This must be done before continuing.</strong></p></li>
+<li><p>Run the ExplorationMigrationJobManager job once, and wait for it to finish.</p></li>
+<li><p>Run the CompletionEventsMigrator job once, and wait for it to finish.</p></li>
+<li><p>As a check, return to the Google App Engine admin panel, and verify that the explorations in the datastore all have a states_schema_version property and that the value of this property is 3.</p></li>
+<li><p>Flush memcache (as a precaution).</p></li>
+<li><p>Play through an exploration on the site to ensure that everything works as expected.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

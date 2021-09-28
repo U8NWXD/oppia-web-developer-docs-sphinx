@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Good Practices &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Accessibility Manual Tests" href="Release-accessibility-checklist.html" />
+    <link rel="prev" title="Lighthouse CI Automated Tests" href="Lighthouse-Tests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="testing.html">Testing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Running-Tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-tests.html">Backend tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Frontend-unit-tests-guide.html">Frontend unit tests guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="End-to-End-Tests.html">End to end tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html">Lighthouse CI Automated Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#how-to-add-new-pages-to-lighthouse-tests">How to add new pages to lighthouse tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#debugging-lighthouse-tests">Debugging Lighthouse Tests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">General Good Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visual-disabilities">Visual Disabilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-using-wave-plugin-and-or-worldspace-plugin">Test using WAVE Plugin and/or WorldSpace Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-using-screenreaders">Test using Screenreaders</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-youre-listening-for">What You’re Listening For</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#special-issues-for-dynamic-sites-interactions">Special Issues for Dynamic Sites/Interactions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#physical-disabilities">Physical Disabilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-using-keyboard-navigation">Test using keyboard navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hearing-disabilities">Hearing Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-accessibility-checklist.html">Accessibility Manual Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="testing.html">Testing</a> &raquo;</li>
+      <li>General Good Practices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Testing-for-Accessibility.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="general-good-practices">
+<h1>General Good Practices<a class="headerlink" href="#general-good-practices" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><strong>Every image needs an alt attribute, even if it’s empty:</strong> When you add an image (that is, an img tag) you should consider whether or not an alt description is appropriate. Alt descriptions are useful when the image has important content that isn’t described in surrounding text. If an alt description is not appropriate, note that all images must still have an alt attribute. Learn more about determining when an alt description is appropriate through WebAIM: <a class="reference external" href="http://webaim.org/techniques/alttext/#context">http://webaim.org/techniques/alttext/#context</a></p></li>
+<li><p><strong>Heading order should make sense:</strong> Every page should have an H1, and the rest of the headings should be in order. We should not use a smaller heading size (e.g. h4) in order to get the font size we want. We should use CSS for that.</p></li>
+<li><p><strong>Every video/audio needs captions or a transcript</strong></p></li>
+<li><p><strong>Icons that display important information should be read to the user:</strong> In many contemporary web apps, including Oppia, icons and icon fonts are used to denote some important information (such as number of views or dates or something). Unless these icons are accompanied with text (for example, a ratings icon that has a visible label of “Ratings” somewhere), such icons are not read by screenreaders and can leave people feeling confused about what they are listening to. We’ve implemented a fix that uses hidden text to label such icons. These should be used wherever there is iconography (that delivers important content) that is not labeled by visible text. For example:</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;oppia-icon-accessibility-label&quot;&gt;Ratings&lt;/span&gt;</span></code></p>
+<ul class="simple">
+<li><p><strong>Consider the implications of dynamic pages:</strong> In Oppia, there are some pages that change their contents dynamically based on an action (e.g. the explorations). This is a feature of many contemporary web apps, however, screenreader users are not able to tell that the page has changed which can lead to confusion and frustration. The accessibility team is working to implement a focus management approach, such that, on change, a screenreader will reread the content. Any other pages and/or new features that include dynamic content changes will need to implement the same approach.
+A focus management approach is described well in this article: <a class="reference external" href="http://simplyaccessible.com/article/spangular-accessibility/">http://simplyaccessible.com/article/spangular-accessibility/ </a></p></li>
+<li><p><strong>Use ARIA appropriately:</strong> ARIA attributes allows us to label some elements to screenreaders. Screenreader implementation is still a bit spotty, but it’s best to include these, as appropriate, to future proof the design.</p>
+<ul>
+<li><p>Note that ARIA attributes have proper hierarchies. The WorldSpace Attest checker is a good resource for checking that your ARIA attributes are used properly.</p></li>
+<li><p>Elements where ARIA attributes are helpful:</p>
+<ul>
+<li><p>Modals</p></li>
+<li><p>Navigation menus</p></li>
+<li><p>Footers (if they contain meta info about the site; also note that footers should use the semantic footer tag)</p></li>
+<li><p>Dropdowns</p></li>
+<li><p>Inputs and Forms</p></li>
+<li><p>Buttons</p></li>
+<li><p>Icons that are purely decorative</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Keep focus styles:</strong> Discussed a bit more below, under <a class="reference external" href="#physical-disabilities">Physical Disabilities</a>, but you should generally leave focus styles alone.</p></li>
+</ul>
+<p>You can learn more in our <a class="reference external" href="https://docs.google.com/presentation/d/1Vf_S4Q78Aj_O4t92viCrgX1rkQ0kbMgw4SWcXrnzjDQ/edit#slide=id.p">accessibility talk slides</a></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="visual-disabilities">
+<h1>Visual Disabilities<a class="headerlink" href="#visual-disabilities" title="Permalink to this headline"></a></h1>
+<section id="test-using-wave-plugin-and-or-worldspace-plugin">
+<h2>Test using WAVE Plugin and/or WorldSpace Plugin<a class="headerlink" href="#test-using-wave-plugin-and-or-worldspace-plugin" title="Permalink to this headline"></a></h2>
+<p>The WAVE plugin from WebAIM, a leading accessibility organization, allows you to test a document’s structure, media, and colors to ensure, as much as possible, that it will meet web accessibility standards.
+Simply install the plugin in your browser and click it when you have navigated to a page that you want to test.
+Generally, it’s a good workflow to use WAVE to fix any structural issues with the site, before moving on to testing with screenreaders. You can find this plugin here: <a class="reference external" href="http://wave.webaim.org/extension/">http://wave.webaim.org/extension/</a></p>
+<p>The WorldSpace plugin is very similar, but offers even more detailed feedback about the structure of your pages. The WorldSpace plugin is very helpful in discerning whether or not ARIA attributes are being used according to spec. You can find this plugin here: <a class="reference external" href="https://dequeuniversity.com/guide/attest-extension/1.1/using/">WorldSpace Attest Documentation</a> | <a class="reference external" href="https://chrome.google.com/webstore/detail/worldspace-attest-devtool/lfmcehohgifnaodaogknapedjiaoebgo?hl=en-US&amp;gl=US">WorldSpace Attest Plugin</a></p>
+</section>
+<section id="test-using-screenreaders">
+<h2>Test using Screenreaders<a class="headerlink" href="#test-using-screenreaders" title="Permalink to this headline"></a></h2>
+<p>On a Mac, it’s recommended to use Mac’s built in VoiceOver tool with Safari (this is the combination most blind Mac users use).</p>
+<p>On PC, you may want to use the free and open source NVDA. Good, detailed instructions on how to use these tools are available in this free course from accessibility expert Marcy Sutton on Egghead.io: <a class="reference external" href="https://egghead.io/courses/start-building-accessible-web-applications-today">https://egghead.io/courses/start-building-accessible-web-applications-today</a>.</p>
+<section id="what-youre-listening-for">
+<h3>What You’re Listening For<a class="headerlink" href="#what-youre-listening-for" title="Permalink to this headline"></a></h3>
+<p><strong>Highly recommend going through the course linked above before attempting</strong></p>
+<ul class="simple">
+<li><p>Dim the screen of your computer completely and try to navigate the site using only what you can hear.</p></li>
+<li><p>Does the site information read in the correct order?</p></li>
+<li><p>Do you know where you are?</p></li>
+<li><p>Does the information you hear make sense?</p></li>
+<li><p>Do you know how to get to where you want to go?</p></li>
+</ul>
+</section>
+</section>
+<section id="special-issues-for-dynamic-sites-interactions">
+<h2>Special Issues for Dynamic Sites/Interactions<a class="headerlink" href="#special-issues-for-dynamic-sites-interactions" title="Permalink to this headline"></a></h2>
+<p>Many sites these days or dynamic, or even one page applications. The page content changes, based on user input. The issue with this is that screenreaders don’t necessarily know that the page has been altered. To tackle this problem, there is a general need to manage screenreader focus and, on page change, have the screenreader re-read the content. This kind of focus management also applies to keyboard users.</p>
+<p>This focus management approach is well described (focuses on a one-page Angular JS site) in this article: <a class="reference external" href="http://simplyaccessible.com/article/spangular-accessibility/">http://simplyaccessible.com/article/spangular-accessibility/ </a></p>
+<p>The Egghead.io course from Marcy Sutton mentioned above also has a video on focus management which may be a helpful resource.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="physical-disabilities">
+<h1>Physical Disabilities<a class="headerlink" href="#physical-disabilities" title="Permalink to this headline"></a></h1>
+<section id="test-using-keyboard-navigation">
+<h2>Test using keyboard navigation<a class="headerlink" href="#test-using-keyboard-navigation" title="Permalink to this headline"></a></h2>
+<p>Some people may not need a screenreader but need to use their keyboard to navigate the page. Test the page using the keyboard.
+Typically:</p>
+<ul class="simple">
+<li><p><strong>Use tab to tab through all of the interactive elements on the screen (and elements that have been pushed into the tab order):</strong> Note that you will not tab through text. Generally, only elements such as links and buttons are accessible via tab.</p></li>
+<li><p><strong>Use enter or space to interact with elements:</strong> A user should be able to expand a dropdown or click on a link or button with their keyboard.</p></li>
+<li><p><strong>Where you are on the page should be visible:</strong> Some sites like to hide the built-in browser focus styles, but it’s important that keyboard users be able to see where they’re focus is on the page.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="hearing-disabilities">
+<h1>Hearing Disabilities<a class="headerlink" href="#hearing-disabilities" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Auditory media, such as videos, podcasts, etc, should have appropriate alternatives, such as transcripts (which is a full-text representation of what was said) and/or captions (for video, which shows what is being said currently).</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Lighthouse-Tests.html" class="btn btn-neutral float-left" title="Lighthouse CI Automated Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Release-accessibility-checklist.html" class="btn btn-neutral float-right" title="Accessibility Manual Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wipeout implementation &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notes on NDB datastore transactions" href="Notes-on-NDB-Datastore-Transactions.html" />
+    <link rel="prev" title="Adding static assets" href="Adding-static-assets.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="backend-reference.html">Backend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Apache-Beam-Jobs.html">Apache Beam jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-state-migrations.html">Writing state migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-audit-jobs.html">Writing audit jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-new-one-off-jobs-using-map-reduce.html">Writing new one off jobs using map reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating-statistics.html">Calculating statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-and-modifying-storage-models.html">Creating and modifying storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-Validators-for-storage-models.html">Writing validators for storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Coding-for-speed-in-GAE.html">Coding for speed in GAE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-static-assets.html">Adding static assets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Wipeout implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wipeout-design">Wipeout design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#backend">Backend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pre-deletion">Pre-deletion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deletion">Deletion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verification">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#delete-account-page-see-pages-delete-account-page">Delete Account page (see pages/delete-account-page)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pending-account-deletion-page-see-pages-pending-account-deletion-page">Pending Account Deletion page (see pages/pending-account-deletion-page)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Notes-on-NDB-Datastore-Transactions.html">Notes on NDB datastore transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="backend-reference.html">Backend</a> &raquo;</li>
+      <li>Wipeout implementation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Wipeout-Implementation.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="wipeout-implementation">
+<h1>Wipeout implementation<a class="headerlink" href="#wipeout-implementation" title="Permalink to this headline"></a></h1>
+<p><em>If you miss any info or do not understand some instruction in this wiki page please contact &#64;vojtechjelinek (vojtin.j&#64;gmail.com). See also this wiki page for reference: <a class="reference external" href="https://github.com/oppia/oppia/wiki/Creating-and-modifying-storage-models">Creating and modifying storage models</a>.</em></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="wipeout-design">
+<h1>Wipeout design<a class="headerlink" href="#wipeout-design" title="Permalink to this headline"></a></h1>
+<p>This part explains the design of the Wipeout process. It provides context for someone who would want to modify the Wipeout process or add new models to it.</p>
+<section id="backend">
+<h2>Backend<a class="headerlink" href="#backend" title="Permalink to this headline"></a></h2>
+<p>In the backend, the Wipeout process consists of three main parts: pre-deletion, deletion, and verification. This doc explains all the parts. Most of the wipeout related code is in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/domain/wipeout_service.py">wipeout_service.py</a>.</p>
+<section id="pre-deletion">
+<h3>Pre-deletion<a class="headerlink" href="#pre-deletion" title="Permalink to this headline"></a></h3>
+<p>In the pre-deletion phase, we do the following:</p>
+<ol class="simple">
+<li><p>Make sure that the user is not able to sign in anymore.</p></li>
+<li><p>Make sure the user is unsubscribed from all emails.</p></li>
+<li><p>With the help of deferred <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/domain/wipeout_service.py#L374-L474"><code class="docutils literal notranslate"><span class="pre">remove_user_from_activities_with_associated_rights_models()</span></code></a>, we:</p>
+<ol class="simple">
+<li><p>Try to delete the collections and explorations that are private and solely owned by the user that is being deleted.</p></li>
+<li><p>Remove the user from collections, explorations, and topics that the user co-owns with someone else, or has a lower tier non-owner role in them.</p></li>
+</ol>
+</li>
+</ol>
+<p>If the user is a parent account of some profile users, we also do all the previously mentioned actions to the profile users.</p>
+<p>The pre-deletion is handled by the <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L129"><code class="docutils literal notranslate"><span class="pre">pre_delete_user()</span></code></a>.</p>
+</section>
+<section id="deletion">
+<h3>Deletion<a class="headerlink" href="#deletion" title="Permalink to this headline"></a></h3>
+<p>The deletion runs periodically (via a <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/controllers/cron.py#L97-L104">CRON job</a>). The deletion is handled by the <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L195-L212"><code class="docutils literal notranslate"><span class="pre">run_user_deletion()</span></code></a></p>
+<p>First, we check whether the user has already been deleted. If yes, we skip that user.</p>
+<p>Then we run the user deletion. It consists of multiple parts. Every module in core/storage is handled separately depending on what the rules are for the models in that module:</p>
+<ul class="simple">
+<li><p>For modules that only contain models that need to be deleted, we use the  <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L520-L540"><code class="docutils literal notranslate"><span class="pre">_delete_models()</span></code></a> function. This method will run <code class="docutils literal notranslate"><span class="pre">apply_deletion_policy()</span></code> for all models in the module that have deletion policy <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>.</p></li>
+<li><p>For modules containing activities without associated rights models (like a question, story, or skill), we use <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L675-L715"><code class="docutils literal notranslate"><span class="pre">_pseudonymize_activity_models_without_associated_rights_models()</span></code></a>, which pseudonymizes all the snapshot and commit models that contain the history of changes to the activity.</p></li>
+<li><p>For modules containing activities with associated rights models (like collection, topic, or exploration), we use <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L766-L951"><code class="docutils literal notranslate"><span class="pre">_pseudonymize_activity_models_with_associated_rights_models()</span></code></a>, which pseudonymizes all the snapshot and commit models that contain the history of changes to the activity, as well as the snapshot and commit models that include the history of the rights models.</p></li>
+</ul>
+<p>To make sure that we delete the collections and explorations that are private and solely owned by the user, as well as remove the user from collections, explorations, and topics that the user co-owns with someone else (or is not an owner but has a lower tier role within), we repeat the function <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/domain/wipeout_service.py#L374-L474"><code class="docutils literal notranslate"><span class="pre">remove_user_from_activities_with_associated_rights_models()</span></code></a>.</p>
+<p>If there are summary models that contain <code class="docutils literal notranslate"><span class="pre">contributor_ids</span></code> and <code class="docutils literal notranslate"><span class="pre">contributors_summary</span></code> (as of this writing, the collection and exploration summary models fall into this category), we use the <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L954-L997"><code class="docutils literal notranslate"><span class="pre">_remove_user_id_from_contributors_in_summary_models()</span></code></a> function to remove the user from the contributors’ fields.</p>
+<p>Finally, config models are pseudonymized via <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L614-L672"><code class="docutils literal notranslate"><span class="pre">_pseudonymize_config_models()</span></code></a>, feedback models (together with <code class="docutils literal notranslate"><span class="pre">GeneralSuggestionModel</span></code>) via <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L1000-L1108"><code class="docutils literal notranslate"><span class="pre">_pseudonymize_feedback_models()</span></code></a> and remaining suggestion models with <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L1111-L1167"><code class="docutils literal notranslate"><span class="pre">_pseudonymize_suggestion_models()</span></code></a>.</p>
+</section>
+<section id="verification">
+<h3>Verification<a class="headerlink" href="#verification" title="Permalink to this headline"></a></h3>
+<p>The verification of the deletion runs periodically (via a <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/controllers/cron.py#L107-116">CRON job</a>). The verification is handled by the <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/domain/wipeout_service.py#L215-L245"><code class="docutils literal notranslate"><span class="pre">run_user_deletion_completion()</span></code></a></p>
+<p>In the verification job, we first check whether the deletion was already run for the user (by checking the current status of the pending deletion model)if the deletion was not yet run we do not run the verification</p>
+<p>When verification is running, for all models that have policies other than <code class="docutils literal notranslate"><span class="pre">KEEP</span></code>, <code class="docutils literal notranslate"><span class="pre">DELETE_AT_END</span></code>, and <code class="docutils literal notranslate"><span class="pre">NOT_APPLICABLE</span></code>, we run <code class="docutils literal notranslate"><span class="pre">has_reference_to_user_id()</span></code> for the user being deleted. At this point, two things may occur:</p>
+<ul class="simple">
+<li><p>If the user is confirmed to be properly deleted/pseudonymized, then we:</p>
+<ul>
+<li><p>Delete the remaining models with deletion policy <code class="docutils literal notranslate"><span class="pre">DELETE_AT_END</span></code>.</p></li>
+<li><p>Create a <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/storage/user/gae_models.py#L2604-L2632"><code class="docutils literal notranslate"><span class="pre">DeletedUserModel</span></code></a> with the ID of the user that was just deleted.</p></li>
+<li><p>If the user was around for more than one week create a <a class="reference external" href="https://github.com/oppia/oppia/blob/cf88caaebdc898debb312a40e3e9f10348a955ce/core/storage/user/gae_models.py#L2682-L2707"><code class="docutils literal notranslate"><span class="pre">DeletedUsernameModel</span></code></a> so that the username of the deleted user cannon be used again.</p></li>
+<li><p>Send emails to the deleted user and to the Oppia admin.</p></li>
+</ul>
+</li>
+<li><p>If the user was not properly deleted/pseudonymized, then we set the status of the pending deletion model to “not deleted”, and the deletion is then repeated again later via the CRON job.</p></li>
+</ul>
+</section>
+</section>
+<section id="frontend">
+<h2>Frontend<a class="headerlink" href="#frontend" title="Permalink to this headline"></a></h2>
+<p>In the frontend, there are two new pages: the “Delete Account” page and the “Pending Account Deletion” page.</p>
+<section id="delete-account-page-see-pages-delete-account-page">
+<h3>Delete Account page (see <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/templates/pages/delete-account-page">pages/delete-account-page</a>)<a class="headerlink" href="#delete-account-page-see-pages-delete-account-page" title="Permalink to this headline"></a></h3>
+<p>Users can get onto the delete account page through the Preferences page. This page contains information about which types of data will be deleted, pseudonymized, or kept. There is also an email address where the user can send inquiries about the data that we have about them.</p>
+<p>Most importantly, the page includes a button that allows the user to initiate the deletion of their account. When the button is clicked, a confirmation modal will pop up where the user needs to type their username to confirm the deletion. Once they do so and click a second button to proceed, the pre-deletion phase is started, and the user is redirected to the Pending Account Deletion page.</p>
+</section>
+<section id="pending-account-deletion-page-see-pages-pending-account-deletion-page">
+<h3>Pending Account Deletion page (see <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/core/templates/pages/pending-account-deletion-page">pages/pending-account-deletion-page</a>)<a class="headerlink" href="#pending-account-deletion-page-see-pages-pending-account-deletion-page" title="Permalink to this headline"></a></h3>
+<p>The Pending Account Deletion page is shown to the user after they request deletion of their account, or if they try to log in while the deletion request is pending. The page explains that the account deletion will be completed in the next few hours, and after that, they will be able to create a new account.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Adding-static-assets.html" class="btn btn-neutral float-left" title="Adding static assets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Notes-on-NDB-Datastore-Transactions.html" class="btn btn-neutral float-right" title="Notes on NDB datastore transactions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

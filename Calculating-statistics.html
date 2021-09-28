@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculating statistics &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating and modifying storage models" href="Creating-and-modifying-storage-models.html" />
+    <link rel="prev" title="Writing new one off jobs using map reduce" href="Writing-new-one-off-jobs-using-map-reduce.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="backend-reference.html">Backend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Apache-Beam-Jobs.html">Apache Beam jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-state-migrations.html">Writing state migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-audit-jobs.html">Writing audit jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-new-one-off-jobs-using-map-reduce.html">Writing new one off jobs using map reduce</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Calculating statistics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#figuring-out-what-you-need">1-4. Figuring out what you need</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-events">5. Creating the events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-backend-handlers-for-incoming-statistics">6. Create Backend Handlers for incoming statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#record-events-from-the-user">7. Record events from the User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-it-in-the-ui">8. Using it in the UI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-and-modifying-storage-models.html">Creating and modifying storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-Validators-for-storage-models.html">Writing validators for storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Coding-for-speed-in-GAE.html">Coding for speed in GAE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-static-assets.html">Adding static assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html">Wipeout implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html#wipeout-design">Wipeout design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notes-on-NDB-Datastore-Transactions.html">Notes on NDB datastore transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="backend-reference.html">Backend</a> &raquo;</li>
+      <li>Calculating statistics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Calculating-statistics.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="calculating-statistics">
+<h1>Calculating statistics<a class="headerlink" href="#calculating-statistics" title="Permalink to this headline"></a></h1>
+<!-- This guide was created by Stephanie Federwisch as a Google document and then transferred to the wiki. -->
+<p>This page should walk you through how to go from a statistic you want to calculate from Oppia data through creating the models, jobs and getting them up and running. For each step of the process, we’ve included a reference to an example Pull Request which will provide a good idea of what that step includes.</p>
+<p>This document walks through how to create each of these levels.</p>
+<p>The recommended way of going through this process is to:</p>
+<ul class="simple">
+<li><p>Plan the overall approach: start at the presentation layer and work your way down the layers to the event log (steps 1 - 4 in the diagram below). This will not involve writing code.</p></li>
+<li><p>Write code to record the data you need for your calculations (steps 5-7).</p></li>
+<li><p>Use the data in the UI (step 8).</p></li>
+</ul>
+<p>Each of these three sections will be a separate commit in a branch off of develop. After all the steps are completed and reviewed, this branch can be merged into develop.</p>
+<section id="figuring-out-what-you-need">
+<h2>1-4. Figuring out what you need<a class="headerlink" href="#figuring-out-what-you-need" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Start by thinking about what you want to display. This could mean drawing charts and/or listing out data you want to display.</p></li>
+<li><p>List out processed data fields. Figure out which data you need to display and find one field for each. For example, a bulleted list would have one field in the model for each bullet point. A histogram could be drawn by having a list of data point values, but if you want to have standard deviation or mean, you would want to have separate fields for those as well.</p></li>
+<li><p>Map out how you would calculate each field in your model. For some fields this may be straightforward, like how counting how many students go to the page for a number of students that started the exploration, whereas others might be more complex and this stage may take a while, like how confused are students.</p></li>
+<li><p>Figure out what interactions you would need to keep track of to do those calculations. For mapping out completions of an exploration, this might be “I need to know when students complete the exploration.” Keep in mind when you would record these events. So if you wanted to know an average time spent in a particular state it would become “I need to know how much time was spent in the state when the student leaves the exploration”.</p></li>
+</ol>
+<p>So, you have a model of what you want to create and you know which model it should be in.</p>
+</section>
+<section id="creating-the-events">
+<h2>5. Creating the events<a class="headerlink" href="#creating-the-events" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>(Example: <a class="reference external" href="https://github.com/oppia/oppia/pull/3841">#3841</a>) Changes to core.storage.statistics.gae_models.py:</p>
+<ol class="simple">
+<li><p>Define a class of the form &lt;statistic_name&gt;EventLogEntryModel. Each instance of this model will account for one count of the statistic you want to record. Make sure this model contains all the information you would need to identify the context of an instance of this model (exploration_id, schema_version etc…). Instances of this event model will be used to recompute the statistics aggregated model if there are any data discrepancies.</p>
+<ol class="simple">
+<li><p>Now, add the statistic count as a field of the ‘ExplorationStatsModel’ in the same file. The field should be named &lt;statistic_name&gt;_v2. Also keep in mind to update the corresponding getter methods and also, the save and retrieve methods for this model.</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>(Example: <a class="reference external" href="https://github.com/oppia/oppia/pull/3857">#3857</a>) Changes to ‘core.domain.stats_domain.py’:</p>
+<ol class="simple">
+<li><p>Add the statistics field respectively in the ExplorationStats class and similarly modify corresponding helper methods.</p></li>
+<li><p>If it is a state level statistic, modify the StateStats class instead of the ExplorationStats class.</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="create-backend-handlers-for-incoming-statistics">
+<h2>6. Create Backend Handlers for incoming statistics<a class="headerlink" href="#create-backend-handlers-for-incoming-statistics" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>(Example: <a class="reference external" href="https://github.com/oppia/oppia/pull/3916/files#diff-7dae2fea02c39c3f79ba7f502b2ec181">#3916</a>) Now, open the file ‘core.controllers.reader.py’.</p>
+<ol class="simple">
+<li><p>First, add validation for this new field in the class ‘StatsEventHandler’. This event handler will be updating the aggregated statistics model.</p></li>
+<li><p>Then, create a new EventHandler for the new statistics, of the form ‘&lt;statistics_name&gt;EventHandler’. This will be the event handler that records an instance of each count for the statistic.</p></li>
+</ol>
+</li>
+<li><p>(Example: <a class="reference external" href="https://github.com/oppia/oppia/pull/3916/files#diff-5bc02cefb3ea9e27f1a6776eabd1935d">#3916</a>) Now, open the file ‘main.py’. Create a route through which the event models will be recorded.</p></li>
+</ol>
+</section>
+<section id="record-events-from-the-user">
+<h2>7. Record events from the User<a class="headerlink" href="#record-events-from-the-user" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>(Example: <a class="reference external" href="https://github.com/oppia/oppia/pull/3916/files#diff-d12d8529029e2a0c1b2430573bace920">#3916</a>) Open the ‘core.templates.dev.head.pages.exploration-player-page.services.stats-reporting-service.ts’. Add a method to this file for handling any record of the event. The function name can be of the form ‘record<statisticName>’. This function performs two things:</p>
+<ol class="simple">
+<li><p>Make a $http.post() call to the URL we created in step 6 (part 2) with the respective args to record an instance of the event log entry model.</p></li>
+<li><p>Increment count for this statistic field in the aggregatedStats dictionary which holds the values for the ExplorationStatsModel. Periodic calls will automatically be sent to the StatsEventHandler automatically to update the ExplorationStatsModel.</p></li>
+</ol>
+</li>
+<li><p>(Example: <a class="reference external" href="https://github.com/oppia/oppia/pull/3916/files#diff-4d9e2d3cc0a2b28fdbdb3585b080610e">#3916</a>) Now, we need to figure out where in the player view recording will be required. For state related stats, we would probably capture our new statistic on entering a state or leaving a state. For answer related stats, you’d probably capture your statistic inside the submitAnswer function in the player view.</p></li>
+</ol>
+</section>
+<section id="using-it-in-the-ui">
+<h2>8. Using it in the UI<a class="headerlink" href="#using-it-in-the-ui" title="Permalink to this headline"></a></h2>
+<p>Now, your newly added statistic will be available in the ExplorationStatsModel. You should find that the ExplorationStatsModel has already been retrieved in the statistics tab. Visualizing your newly added statistic will be simply using the corresponding field from the stats model in the view.</p>
+<p>Well, that’s the gist of it. Have fun recording your stats, and don’t forget to write tests throughout the way.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Writing-new-one-off-jobs-using-map-reduce.html" class="btn btn-neutral float-left" title="Writing new one off jobs using map reduce" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Creating-and-modifying-storage-models.html" class="btn btn-neutral float-right" title="Creating and modifying storage models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

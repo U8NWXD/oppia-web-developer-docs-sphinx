@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Pylint checks &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Custom ESLint checks" href="Custom-ESLint-checks.html" />
+    <link rel="prev" title="Lint checks" href="Lint-Checks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lint.html">Lint Checks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Lint-Checks.html">Lint checks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Custom Pylint checks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-checkers">Write checkers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-custom-pylint-checks">Test custom Pylint checks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Custom-ESLint-checks.html">Custom ESLint checks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+          <li><a href="lint.html">Lint Checks</a> &raquo;</li>
+      <li>Custom Pylint checks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Custom-Pylint-checks.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="custom-pylint-checks">
+<h1>Custom Pylint checks<a class="headerlink" href="#custom-pylint-checks" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p>
+<ul>
+<li><p><a class="reference external" href="#limits-of-linters">Limits of linters</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#write-checkers">Write checkers</a></p>
+<ul>
+<li><p><a class="reference external" href="#types-of-checkers">Types of checkers</a></p></li>
+<li><p><a class="reference external" href="#hello-world">Hello world</a></p>
+<ul>
+<li><p><a class="reference external" href="#write-the-ast-checker">Write the AST checker</a></p>
+<ul>
+<li><p><a class="reference external" href="#examine-the-ast">Examine the AST</a></p></li>
+<li><p><a class="reference external" href="#design-the-ast-checker">Design the AST checker</a></p></li>
+<li><p><a class="reference external" href="#write-the-ast-checker-code">Write the AST checker code</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#write-the-token-checker">Write the token checker</a></p>
+<ul>
+<li><p><a class="reference external" href="#examine-the-tokens">Examine the tokens</a></p></li>
+<li><p><a class="reference external" href="#design-the-token-checker">Design the token checker</a></p></li>
+<li><p><a class="reference external" href="#write-the-token-checker-code">Write the token checker code</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#write-the-raw-checker">Write the raw checker</a></p>
+<ul>
+<li><p><a class="reference external" href="#design-the-raw-checker">Design the raw checker</a></p></li>
+<li><p><a class="reference external" href="#write-the-raw-checker-code">Write the raw checker code</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#register-the-checker">Register the checker</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#beyond-hello-world">Beyond hello world</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#test-custom-pylint-checks">Test custom Pylint checks</a></p>
+<ul>
+<li><p><a class="reference external" href="#design-tests">Design tests</a></p></li>
+<li><p><a class="reference external" href="#pylint-testing-utilities">Pylint testing utilities</a></p></li>
+<li><p><a class="reference external" href="#use-testing-utilities-for-hello-world-checkers">Use testing utilities for hello world checkers</a></p>
+<ul>
+<li><p><a class="reference external" href="#tests-for-hello-world-ast-checker">Tests for hello world AST checker</a></p></li>
+<li><p><a class="reference external" href="#tests-for-hello-world-token-checker">Tests for hello world token checker</a></p></li>
+<li><p><a class="reference external" href="#tests-for-hello-world-raw-checker">Tests for hello world raw checker</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#run-tests">Run tests</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>We use <a class="reference external" href="https://pylint.pycqa.org">Pylint</a> to lint our Python code. Before writing a custom rule, you should check whether you can achieve your goals with <a class="reference external" href="https://pylint.pycqa.org/en/latest/technical_reference/features.html">Pylint’s built-in rules and configurations</a>. If those are insufficient, you can follow this guide to write a custom Pylint checker.</p>
+<section id="limits-of-linters">
+<h3>Limits of linters<a class="headerlink" href="#limits-of-linters" title="Permalink to this headline"></a></h3>
+<p>Before we get too far into custom lint rules, let’s make sure we understand what linters like ESLint are actually capable of doing.</p>
+<p>Consider two types things you might want to prohibit with a lint rule:</p>
+<ul class="simple">
+<li><p>A property of the code’s text. For example, you might want to ensure that all lines are at most 80 characters long.</p></li>
+<li><p>A property of the code’s behavior. For example, you might want to ensure that the code, when executed, does not print a particular string.</p></li>
+</ul>
+<p>Linters operate on the code as text, so you can write a lint rule that bans a textual property with perfect accuracy. However, any lint rule that tries to prohibit a behavior must be imperfect. To see this intuitively, consider the problem we’ll approach below: writing a linter to prohibit programs that print <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>. If our linter searched for the string <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>, it would miss a program that printed <code class="docutils literal notranslate"><span class="pre">'Hello,</span> <span class="pre">'</span> <span class="pre">+</span> <span class="pre">'world!'</span></code>.</p>
+<p>If you are interested in computability theory, the technical description for this problem is that predicting a program’s behavior is an undecidable problem. Look up the halting problem if you want to learn more.</p>
+<p>Whenever you are creating a new lint rule, consider whether you are trying to prohibit a textual or a behavioral property. If you want to prohibit a textual property, then your task is easy–just write a lint rule that perfectly blocks the property. On the other hand, if you want to prohibit a behavior, then you’ll need to first decide on textual properties that you can prohibit to approximately prohibit the behavior. For example, if you want to stop programs from printing <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>, it’s approximately equivalent to prohibit literal <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> strings. Then, write your lint rule to perfectly prohibit those textual properties. <strong>Note that since your textual properties will be an imperfect translation of the behavioral properties you want to prohibit, your lint rule will miss some code that performs the banned behavior, will flag some code that doesn’t actually perform the banned behavior, or both.</strong> That’s expected given the limits of linters.</p>
+</section>
+</section>
+<section id="write-checkers">
+<h2>Write checkers<a class="headerlink" href="#write-checkers" title="Permalink to this headline"></a></h2>
+<section id="types-of-checkers">
+<h3>Types of checkers<a class="headerlink" href="#types-of-checkers" title="Permalink to this headline"></a></h3>
+<p>Pylint supports three kinds of checkers:</p>
+<ul class="simple">
+<li><p><strong>AST checkers</strong> operate on an <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree (AST)</a> of the code that Pylint generates. The checker provides functions to be called as Pylint traverses the AST, and these functions can raise lint errors.</p></li>
+<li><p><strong>Token checkers</strong> operate on a list of the tokens that represents the code being linted. The tokens are of the same form as the tokens generated by <a class="reference external" href="https://docs.python.org/3/library/tokenize.html#tokenize.tokenize"><code class="docutils literal notranslate"><span class="pre">tokenize.tokenize()</span></code></a>.</p></li>
+<li><p><strong>Raw checkers</strong> operate on the raw code without any pre-processing by Pylint.</p></li>
+</ul>
+<p>You should avoid writing custom raw checkers since they are less efficient than token or AST checkers. You should use an AST checker whenever the syntax information of an AST is useful. For example, if you want to count the number of variables in each function, the AST can tell you where the variables are and where the functions start and end. If you don’t need syntax information, you can just use a token checker. Since most lint rules are easier to write given syntax information, you’ll probably write mostly AST checkers. However, token checkers can be useful for simple rules, particularly those where you only need to consider one token at a time. For example, a token checker would be a great way to search for any string that uses double-quotes (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>).</p>
+<p>As we work through the example below, we’ll cover each of the three kinds of checkers.</p>
+</section>
+<section id="hello-world">
+<h3>Hello world<a class="headerlink" href="#hello-world" title="Permalink to this headline"></a></h3>
+<p>To get a better idea for how lint checks work, let’s try writing a simple Pylint rule that forbids the string <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>. (Maybe you don’t want people accidentally opening PRs that include code that prints <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> from when they were learning Python.) First consider what kinds of code should violate the rule. Here are some examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Below, we’ll walk through how to implement this rule using each of the three kinds of checkers in Pylint: AST checkers, token checkers, and raw checkers.</p>
+<section id="write-the-ast-checker">
+<h4>Write the AST checker<a class="headerlink" href="#write-the-ast-checker" title="Permalink to this headline"></a></h4>
+<section id="examine-the-ast">
+<h5>Examine the AST<a class="headerlink" href="#examine-the-ast" title="Permalink to this headline"></a></h5>
+<p>To develop an intuition for how ASTs work, let’s see how astroid represents some example <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> code. Open a Python shell in your Oppia directory and import a file from Oppia like the pre-commit linter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scripts.linters</span> <span class="kn">import</span> <span class="n">pre_commit_linter</span>
+</pre></div>
+</div>
+<p>This import will modify your PYTHONPATH to include Oppia’s Python dependencies, so you can now import <a class="reference external" href="https://pylint.pycqa.org/projects/astroid/">astroid</a>, which Pylint uses to generate the AST:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">astroid</span>
+</pre></div>
+</div>
+<p>Next, use astroid to parse the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="gp">... </span><span class="s2">s = &quot;Hello, world!&quot;</span>
+<span class="gp">... </span><span class="s2">print(&quot;Hello, world!&quot;)</span>
+<span class="gp">... </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">astroid</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">code</span><span class="p">)</span><span class="o">.</span><span class="n">repr_tree</span><span class="p">())</span>
+<span class="go">Module(</span>
+<span class="go">   name=&#39;&#39;,</span>
+<span class="go">   doc=None,</span>
+<span class="go">   file=&#39;&lt;?&gt;&#39;,</span>
+<span class="go">   path=[&#39;&lt;?&gt;&#39;],</span>
+<span class="go">   package=False,</span>
+<span class="go">   pure_python=True,</span>
+<span class="go">   future_imports=set(),</span>
+<span class="go">   body=[Assign(</span>
+<span class="go">         targets=[AssignName(name=&#39;s&#39;)],</span>
+<span class="go">         value=Const(value=&#39;Hello, world!&#39;)),</span>
+<span class="go">      Expr(value=Call(</span>
+<span class="go">            func=Name(name=&#39;print&#39;),</span>
+<span class="go">            args=[Const(value=&#39;Hello, world!&#39;)],</span>
+<span class="go">            keywords=[]))])</span>
+</pre></div>
+</div>
+<p>Notice that every time a <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">world!&quot;</span></code> literal appears in the code, the AST has a <a class="reference external" href="https://pylint.pycqa.org/projects/astroid/en/latest/api/astroid.nodes.html#id163"><code class="docutils literal notranslate"><span class="pre">Const</span></code></a> node. You can look up all the available node types in the <a class="reference external" href="https://pylint.pycqa.org/projects/astroid/en/latest/api/astroid.nodes.html">astroid documentation</a>.</p>
+</section>
+<section id="design-the-ast-checker">
+<h5>Design the AST checker<a class="headerlink" href="#design-the-ast-checker" title="Permalink to this headline"></a></h5>
+<p>Suppose you decide to write a checker that raises an error whenever it finds a node that:</p>
+<ul class="simple">
+<li><p>is of type “Const”</p></li>
+<li><p>has value “Hello, world!”</p></li>
+</ul>
+<p>After designing any rule, it’s important to consider what benign code it will raise errors on (false positives) and what bad code it will miss (false negatives). For our rule:</p>
+<ul class="simple">
+<li><p>False positives</p>
+<ul>
+<li><p>Code that includes the string <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> but doesn’t print it will still raise errors. There probably aren’t any good reasons to do this though.</p></li>
+</ul>
+</li>
+<li><p>False negatives</p>
+<ul>
+<li><p>Code that constructs the string <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> instead of including it as a literal will pass the lint check. This is an acceptable imperfection though since developers are almost always going to use the string literal when writing a hello world program.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="write-the-ast-checker-code">
+<h5>Write the AST checker code<a class="headerlink" href="#write-the-ast-checker-code" title="Permalink to this headline"></a></h5>
+<p>Start by creating a checker class with some metadata in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/linters/pylint_extensions.py"><code class="docutils literal notranslate"><span class="pre">scripts/linters/pylint_extensions.py</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelloWorldASTChecker</span><span class="p">(</span><span class="n">BaseChecker</span><span class="p">):</span>
+    <span class="n">__implements__</span> <span class="o">=</span> <span class="n">IAstroidChecker</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;hello-world-ast&#39;</span>
+    <span class="n">priority</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">msgs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;C9001&#39;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s1">&#39;Uses a &quot;Hello, world!&quot; string.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hello-world-ast&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;No code should use &quot;Hello, world!&quot; statements.&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Here’s what we’ve defined so far:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">__implements__</span></code>: Specifies what kind of checker we are creating. In this case, we are creating an AST checker.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: Short name of the checker that will be used in the configuration file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">priority</span></code>: A negative integer indicating when the check should run. Checkers run from the most negative priority to most positive.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">msgs</span></code>: A dictionary specifying what messages this checker can raise. The dictionary has the following form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;message id&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;displayed message&#39;</span><span class="p">,</span> <span class="s1">&#39;message symbol&#39;</span><span class="p">,</span> <span class="s1">&#39;message help&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>Message ID</strong>: A unique identifier for the message consisting of a letter followed by 4 digits. The letter is the first letter of the message category, and the available categories are Convention, Warning, Error, Fatal, and Refactoring. The first two digits must be the same for all of the checker’s messages.</p>
+<p>Be sure to check that your message ID isn’t already used by one of <a class="reference external" href="https://pylint.pycqa.org/en/latest/technical_reference/features.html">Pylint’s existing rules</a> or one of <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/linters/pylint_extensions.py">our custom rules</a>.</p>
+</li>
+<li><p><strong>Displayed message</strong>: The error message displayed to the user.</p></li>
+<li><p><strong>Message symbol</strong>: An alias of the message ID that can be used wherever the ID can be used. For example, to disable a message with a code comment, you can specify either the ID or the symbol.</p></li>
+<li><p><strong>Message help</strong>: Displayed when the user runs <code class="docutils literal notranslate"><span class="pre">pylint</span> <span class="pre">--help-msg</span></code> to learn more about your message.</p></li>
+</ul>
+</li>
+</ul>
+<p>You can also set an <code class="docutils literal notranslate"><span class="pre">options</span></code> variable to specify options that can be set by the configuration file and read by your rule. See the <a class="reference external" href="https://pylint.pycqa.org/en/latest/how_tos/custom_checkers.html#writing-an-ast-checker">Pylint documentation</a> for details.</p>
+<p>Next, you need to write the checker code. Pylint lets you define methods that get called as it traverses the AST. Methods of the form <code class="docutils literal notranslate"><span class="pre">visit_nodename()</span></code> are called upon entering the subtree rooted at a node of type <code class="docutils literal notranslate"><span class="pre">nodename</span></code>, and methods of the form <code class="docutils literal notranslate"><span class="pre">leave_nodename()</span></code> are called upon leaving the subtree. Each method is called with a single argument–the node of type <code class="docutils literal notranslate"><span class="pre">nodename</span></code>.</p>
+<p>For this case, you can define a method <code class="docutils literal notranslate"><span class="pre">visit_const()</span></code> that will be called whenever Pylint reaches a <code class="docutils literal notranslate"><span class="pre">Const</span></code> node. Then you can check the node’s value to see if it equals <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">world!&quot;</span></code>. The method looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visit_const</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span>
+            <span class="s1">&#39;hello-world&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That’s it! After working through the two other kinds of linters, we’ll discuss how to run and test your checker.</p>
+<p>If you want an alternative tutorial for writing an AST checker, take a look at <a class="reference external" href="https://pylint.pycqa.org/en/latest/how_tos/custom_checkers.html#writing-an-ast-checker">the one Pylint provides</a>.</p>
+</section>
+</section>
+<section id="write-the-token-checker">
+<h4>Write the token checker<a class="headerlink" href="#write-the-token-checker" title="Permalink to this headline"></a></h4>
+<section id="examine-the-tokens">
+<h5>Examine the tokens<a class="headerlink" href="#examine-the-tokens" title="Permalink to this headline"></a></h5>
+<p>Fill a file <code class="docutils literal notranslate"><span class="pre">test.py</span></code> with the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then convert the file code into tokens:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m tokenize test.py
+<span class="go">0,0-0,0:            ENCODING       &#39;utf-8&#39;</span>
+<span class="go">1,0-1,1:            NAME           &#39;s&#39;</span>
+<span class="go">1,2-1,3:            OP             &#39;=&#39;</span>
+<span class="go">1,4-1,19:           STRING         &#39;&quot;Hello, world!&quot;&#39;</span>
+<span class="go">1,19-1,20:          NEWLINE        &#39;\n&#39;</span>
+<span class="go">2,0-2,5:            NAME           &#39;print&#39;</span>
+<span class="go">2,5-2,6:            OP             &#39;(&#39;</span>
+<span class="go">2,6-2,21:           STRING         &#39;&quot;Hello, world!&quot;&#39;</span>
+<span class="go">2,21-2,22:          OP             &#39;)&#39;</span>
+<span class="go">2,22-2,23:          NEWLINE        &#39;\n&#39;</span>
+<span class="go">3,0-3,0:            ENDMARKER      &#39;&#39;</span>
+</pre></div>
+</div>
+<p>Notice that our <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> strings are each their own tokens of type <code class="docutils literal notranslate"><span class="pre">STRING</span></code>.</p>
+</section>
+<section id="design-the-token-checker">
+<h5>Design the token checker<a class="headerlink" href="#design-the-token-checker" title="Permalink to this headline"></a></h5>
+<p>We could write a checker that raises an error whenever it finds a token that:</p>
+<ul class="simple">
+<li><p>is of type “STRING”</p></li>
+<li><p>has value “Hello, world!”, ignoring quotation marks.</p></li>
+</ul>
+<p>After designing any rule, it’s important to consider what benign code it will raise errors on (false positives) and what bad code it will miss (false negatives). Our rule suffers from the <a class="reference external" href="#design-the-ast-checker">same problems as the AST checker</a>.</p>
+</section>
+<section id="write-the-token-checker-code">
+<h5>Write the token checker code<a class="headerlink" href="#write-the-token-checker-code" title="Permalink to this headline"></a></h5>
+<p>Start by creating a checker class with some metadata in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/linters/pylint_extensions.py"><code class="docutils literal notranslate"><span class="pre">scripts/linters/pylint_extensions.py</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelloWorldTokenChecker</span><span class="p">(</span><span class="n">checkers</span><span class="o">.</span><span class="n">BaseChecker</span><span class="p">):</span>
+    <span class="n">__implements__</span> <span class="o">=</span> <span class="n">interfaces</span><span class="o">.</span><span class="n">ITokenChecker</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;hello-world-token&#39;</span>
+    <span class="n">priority</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">msgs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;C9002&#39;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s1">&#39;Uses a &quot;Hello, world!&quot; string.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hello-world-token&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;No code should use &quot;Hello, world!&quot; statements.&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>To learn about these metadata options, see the <a class="reference external" href="#write-the-ast-checker-code">section above on the AST checker code</a>. Notice that unlike the AST checker, we set <code class="docutils literal notranslate"><span class="pre">__implements__</span></code> equal to <code class="docutils literal notranslate"><span class="pre">interfaces.ITokenChecker</span></code>, and we used a new message ID, name, and symbol.</p>
+<p>For the token checker, you only need to implement a <code class="docutils literal notranslate"><span class="pre">process_tokens()</span></code> method that accepts a list of tokens. Each token is described by a named 5-tuple as <a class="reference external" href="https://docs.python.org/3/library/tokenize.html#tokenize.tokenize">documented in the tokenize library</a>. The tuple takes the form <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">string,</span> <span class="pre">start,</span> <span class="pre">end,</span> <span class="pre">line)</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The token type, for example <code class="docutils literal notranslate"><span class="pre">tokenize.STRING</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: A string with the code that the token represents.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: A 2-tuple (row, col) of the row and column where the token starts in the code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end</span></code>: A 2-tuple (row, col) of the row and column where the token ends in the code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">line</span></code>: A string with the line of code where the token was found.</p></li>
+</ul>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">tokenize.tokenize()</span></code> to see what these tuples look like for our <code class="docutils literal notranslate"><span class="pre">test.py</span></code> code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pprint</span><span class="o">,</span> <span class="nn">tokenize</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.py&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>  <span class="c1"># Note that tokenize expects the file to be opened in binary mode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokenize</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+<span class="go">[TokenInfo(type=57 (ENCODING), string=&#39;utf-8&#39;, start=(0, 0), end=(0, 0), line=&#39;&#39;),</span>
+<span class="go"> TokenInfo(type=1 (NAME), string=&#39;s&#39;, start=(1, 0), end=(1, 1), line=&#39;s = &quot;Hello, world!&quot;\n&#39;),</span>
+<span class="go"> TokenInfo(type=53 (OP), string=&#39;=&#39;, start=(1, 2), end=(1, 3), line=&#39;s = &quot;Hello, world!&quot;\n&#39;),</span>
+<span class="go"> TokenInfo(type=3 (STRING), string=&#39;&quot;Hello, world!&quot;&#39;, start=(1, 4), end=(1, 19), line=&#39;s = &quot;Hello, world!&quot;\n&#39;),</span>
+<span class="go"> TokenInfo(type=4 (NEWLINE), string=&#39;\n&#39;, start=(1, 19), end=(1, 20), line=&#39;s = &quot;Hello, world!&quot;\n&#39;),</span>
+<span class="go"> TokenInfo(type=1 (NAME), string=&#39;print&#39;, start=(2, 0), end=(2, 5), line=&#39;print(&quot;Hello, world!&quot;)\n&#39;),</span>
+<span class="go"> TokenInfo(type=53 (OP), string=&#39;(&#39;, start=(2, 5), end=(2, 6), line=&#39;print(&quot;Hello, world!&quot;)\n&#39;),</span>
+<span class="go"> TokenInfo(type=3 (STRING), string=&#39;&quot;Hello, world!&quot;&#39;, start=(2, 6), end=(2, 21), line=&#39;print(&quot;Hello, world!&quot;)\n&#39;),</span>
+<span class="go"> TokenInfo(type=53 (OP), string=&#39;)&#39;, start=(2, 21), end=(2, 22), line=&#39;print(&quot;Hello, world!&quot;)\n&#39;),</span>
+<span class="go"> TokenInfo(type=4 (NEWLINE), string=&#39;\n&#39;, start=(2, 22), end=(2, 23), line=&#39;print(&quot;Hello, world!&quot;)\n&#39;),</span>
+<span class="go"> TokenInfo(type=0 (ENDMARKER), string=&#39;&#39;, start=(3, 0), end=(3, 0), line=&#39;&#39;)]</span>
+</pre></div>
+</div>
+<p>Based on this output, we can see that we need to check that the token type is <code class="docutils literal notranslate"><span class="pre">tokenize.STRING</span></code> and that the token string is <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> after we strip any quotes. Here’s a <code class="docutils literal notranslate"><span class="pre">process_tokens()</span></code> method that implements this check:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">tokenize</span><span class="o">.</span><span class="n">STRING</span><span class="p">:</span>
+            <span class="n">quotes_stripped</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">quotes_stripped</span> <span class="o">==</span> <span class="s1">&#39;Hello, world!&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="s1">&#39;hello-world-token&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">token</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="write-the-raw-checker">
+<h4>Write the raw checker<a class="headerlink" href="#write-the-raw-checker" title="Permalink to this headline"></a></h4>
+<p>When writing a raw checker, we don’t have to worry about any pre-processing by Pylint. However, that also makes these checkers slower than AST or token checkers. Therefore, <strong>you should avoid using raw checkers wherever possible</strong>. If you do need to use a raw checker, you should get approval from the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Lint-Checks#contact">linter team</a> first.</p>
+<p>Pylint provides the code file as a node, which you can read using our <code class="docutils literal notranslate"><span class="pre">read_from_node()</span></code> function. This function returns an iterable of lines from the file.</p>
+<section id="design-the-raw-checker">
+<h5>Design the raw checker<a class="headerlink" href="#design-the-raw-checker" title="Permalink to this headline"></a></h5>
+<p>We could write a checker that raises an error whenever it finds a line that contains one of the following substrings:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">world!&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Hello,</span> <span class="pre">world!'</span></code></p></li>
+</ul>
+<p>After designing any rule, it’s important to consider what benign code it will raise errors on (false positives) and what bad code it will miss (false negatives). Our rule suffers from the <a class="reference external" href="#design-the-ast-checker">same problems as the AST checker</a>.</p>
+</section>
+<section id="write-the-raw-checker-code">
+<h5>Write the raw checker code<a class="headerlink" href="#write-the-raw-checker-code" title="Permalink to this headline"></a></h5>
+<p>Start by creating a checker class with some metadata in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/linters/pylint_extensions.py"><code class="docutils literal notranslate"><span class="pre">scripts/linters/pylint_extensions.py</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelloWorldRawChecker</span><span class="p">(</span><span class="n">checkers</span><span class="o">.</span><span class="n">BaseChecker</span><span class="p">):</span>
+    <span class="n">__implements__</span> <span class="o">=</span> <span class="n">interfaces</span><span class="o">.</span><span class="n">IRawChecker</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;hello-world-raw&#39;</span>
+    <span class="n">priority</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">msgs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;C9003&#39;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s1">&#39;Uses a &quot;Hello, world!&quot; string.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hello-world-raw&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;No code should use &quot;Hello, world!&quot; statements.&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>To learn about these metadata options, see the <a class="reference external" href="#write-the-ast-checker-code">section above on the AST checker code</a>. Notice that unlike the AST checker, we set <code class="docutils literal notranslate"><span class="pre">__implements__</span></code> equal to <code class="docutils literal notranslate"><span class="pre">interfaces.IRawChecker</span></code>, and we used a new message ID, name, and symbol.</p>
+<p>Now we need to implement the <code class="docutils literal notranslate"><span class="pre">process_module()</span></code> method, which accepts the node with the file contents as an argument. Then we iterate over the lines returned by <code class="docutils literal notranslate"><span class="pre">read_from_node()</span></code> and look for the substrings we identified in our design:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="n">file_content</span> <span class="o">=</span> <span class="n">read_from_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">line_num</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">file_content</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;&quot;Hello, world!&quot;&#39;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">Hello, world!</span><span class="se">\&#39;</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="s1">&#39;hello-world-raw&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">line_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="register-the-checker">
+<h4>Register the checker<a class="headerlink" href="#register-the-checker" title="Permalink to this headline"></a></h4>
+<p>At the bottom of <code class="docutils literal notranslate"><span class="pre">pylint_extensions.py</span></code>, you need to register your new checker by calling <code class="docutils literal notranslate"><span class="pre">linter.register_checker()</span></code>. For example, here’s how to register the three checkers we wrote for hello world strings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">linter</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="n">linter</span><span class="o">.</span><span class="n">register_checker</span><span class="p">(</span><span class="n">HelloWorldASTChecker</span><span class="p">(</span><span class="n">linter</span><span class="p">))</span>
+    <span class="n">linter</span><span class="o">.</span><span class="n">register_checker</span><span class="p">(</span><span class="n">HelloWorldTokenChecker</span><span class="p">(</span><span class="n">linter</span><span class="p">))</span>
+    <span class="n">linter</span><span class="o">.</span><span class="n">register_checker</span><span class="p">(</span><span class="n">HelloWorldRawChecker</span><span class="p">(</span><span class="n">linter</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="beyond-hello-world">
+<h3>Beyond hello world<a class="headerlink" href="#beyond-hello-world" title="Permalink to this headline"></a></h3>
+<p>The example of looking for <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> strings was fairly simple because we only needed information from one small part of the code at a time to identify lint violations. For more complicated lint rules, you’ll need to think about how to keep track of information from many different places in the code. For example, the <a class="reference external" href="https://pylint.pycqa.org/en/latest/how_tos/custom_checkers.html#writing-an-ast-checker">Pylint documentation</a> describes how to write an AST checker to ensure that all the return statements in a function that return a constant return different constants. Here is some pseudocode for how you can do this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>class UniqueReturnChecker(BaseChecker):
+    ...
+    def __init__(self, linter=None):
+        create a stack to store function nodes
+
+    def visit_functiondef(self, node):
+        push node onto the stack
+
+    def leave_functiondef(self, _):
+        pop a node off the stack
+
+    def visit_return(self, node):
+        if node is not of type Const: return
+
+        for other_return in function_stack[-1]:
+            if node.value == other_return&#39;s node&#39;s value:
+                report a lint violation
+</pre></div>
+</div>
+<p>Note that we have to use a stack to track function nodes to handle nested functions! For more examples of trickier lint checkers, take a look at our existing linters in <code class="docutils literal notranslate"><span class="pre">pylint_extensions.py</span></code>.</p>
+</section>
+</section>
+<section id="test-custom-pylint-checks">
+<h2>Test custom Pylint checks<a class="headerlink" href="#test-custom-pylint-checks" title="Permalink to this headline"></a></h2>
+<p>We test our checkers with <a class="reference internal" href="Backend-tests.html"><span class="doc std std-doc">backend tests</span></a> in <code class="docutils literal notranslate"><span class="pre">pylint_extensions_test.py</span></code>.</p>
+<section id="design-tests">
+<h3>Design tests<a class="headerlink" href="#design-tests" title="Permalink to this headline"></a></h3>
+<p>You should write test cases to cover the following situations:</p>
+<ul class="simple">
+<li><p>True positives: Bad code that you expect to result in lint errors.</p></li>
+<li><p>True negatives: Good code that you don’t expect to result in lint errors.</p></li>
+<li><p>False positives: Good code that you expect to result in lint errors because you can’t write a perfect linter.</p></li>
+<li><p>False negatives: Bad code that you don’t expect to result in lint errors because the linter is imperfect.</p></li>
+</ul>
+</section>
+<section id="pylint-testing-utilities">
+<h3>Pylint testing utilities<a class="headerlink" href="#pylint-testing-utilities" title="Permalink to this headline"></a></h3>
+<p>While tests for the checkers are just normal backend tests, Pylint provides some helpful testing utilities that you can use, particularly <a class="reference external" href="https://pylint.pycqa.org/en/latest/how_tos/custom_checkers.html#testing-a-checker"><code class="docutils literal notranslate"><span class="pre">pylint.testutils.CheckerTestCase</span></code></a>. Pylint’s documentation shows how to create a test class that inherits from the <code class="docutils literal notranslate"><span class="pre">CheckerTestCase</span></code> class, but at Oppia we prefer to inherit from <code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code>. We store the <code class="docutils literal notranslate"><span class="pre">CheckerTestCase</span></code> object as an instance variable instead, so your <code class="docutils literal notranslate"><span class="pre">setUp()</span></code> methods will look like this for your checker <code class="docutils literal notranslate"><span class="pre">MyChecker</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span> <span class="o">=</span> <span class="n">testutils</span><span class="o">.</span><span class="n">CheckerTestCase</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">CHECKER_CLASS</span> <span class="o">=</span> <span class="n">pylint_extensions</span><span class="o">.</span><span class="n">MyChecker</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">setup_method</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="use-testing-utilities-for-hello-world-checkers">
+<h3>Use testing utilities for hello world checkers<a class="headerlink" href="#use-testing-utilities-for-hello-world-checkers" title="Permalink to this headline"></a></h3>
+<p>We’ll walk through how to use the <code class="docutils literal notranslate"><span class="pre">checker_test_object</span></code> for each kind of checker below. Note that these examples don’t show comprehensive test cases–see <a class="reference external" href="#design-tests">above</a> for suggestions for how you can develop test cases.</p>
+<section id="tests-for-hello-world-ast-checker">
+<h4>Tests for hello world AST checker<a class="headerlink" href="#tests-for-hello-world-ast-checker" title="Permalink to this headline"></a></h4>
+<p>To test our AST checker, we begin by using <a class="reference external" href="https://pylint.pycqa.org/projects/astroid/en/latest/inference.html#crash-course-into-astroid-s-inference"><code class="docutils literal notranslate"><span class="pre">astroid.extract_node()</span></code></a> to get some nodes that we can pass to our checker. We pass a string with code to <code class="docutils literal notranslate"><span class="pre">astroid.extract_node()</span></code>, annotating our code with <code class="docutils literal notranslate"><span class="pre">#&#64;</span></code> to indicate which lines we want to get nodes for:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_finds_hello_world</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">assignment_expr</span><span class="p">,</span> <span class="n">func_call_expr</span> <span class="o">=</span> <span class="n">astroid</span><span class="o">.</span><span class="n">extract_node</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    s = &quot;Hello, world!&quot; #@</span>
+<span class="sd">    print(&quot;Hello, world!&quot;) #@</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">assignment_node</span> <span class="o">=</span> <span class="n">assignment_expr</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">func_call_node</span> <span class="o">=</span> <span class="n">func_call_expr</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">assertAddsMessages</span><span class="p">(</span>
+        <span class="n">testutils</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span>
+            <span class="n">msg_id</span><span class="o">=</span><span class="s1">&#39;hello-world-ast&#39;</span><span class="p">,</span>
+            <span class="n">node</span><span class="o">=</span><span class="n">assignment_node</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">checker</span><span class="o">.</span><span class="n">visit_const</span><span class="p">(</span>
+            <span class="n">assignment_node</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">assertAddsMessages</span><span class="p">(</span>
+        <span class="n">testutils</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span>
+            <span class="n">msg_id</span><span class="o">=</span><span class="s1">&#39;hello-world-ast&#39;</span><span class="p">,</span>
+            <span class="n">node</span><span class="o">=</span><span class="n">func_call_node</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">checker</span><span class="o">.</span><span class="n">visit_const</span><span class="p">(</span>
+            <span class="n">func_call_node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that because astroid finds the node representing the <em>line</em> we annotated with <code class="docutils literal notranslate"><span class="pre">#&#64;</span></code>, we have to retrieve the nodes that represent the <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code> literals.</p>
+</section>
+<section id="tests-for-hello-world-token-checker">
+<h4>Tests for hello world token checker<a class="headerlink" href="#tests-for-hello-world-token-checker" title="Permalink to this headline"></a></h4>
+<p>To test our token checker, we write the code we want to lint to a temporary file. Then we can convert that file into tokens that our checker can understand:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_finds_hello_world_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">astroid</span><span class="o">.</span><span class="n">scoped_nodes</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+        <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Custom test&#39;</span><span class="p">)</span>
+    <span class="n">temp_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">temp_file</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">with</span> <span class="n">python_utils</span><span class="o">.</span><span class="n">open_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;s = &quot;Hello, world!&quot;&#39;</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">filename</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">checker</span><span class="o">.</span><span class="n">process_tokens</span><span class="p">(</span>
+        <span class="n">utils</span><span class="o">.</span><span class="n">tokenize_module</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="n">testutils</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span>
+        <span class="n">msg_id</span><span class="o">=</span><span class="s1">&#39;hello-world-token&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">assertAddsMessages</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="n">temp_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">test_finds_hello_world_func_call</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">astroid</span><span class="o">.</span><span class="n">scoped_nodes</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+        <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Custom test&#39;</span><span class="p">)</span>
+    <span class="n">temp_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">temp_file</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">with</span> <span class="n">python_utils</span><span class="o">.</span><span class="n">open_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;print(&quot;Hello, world!&quot;)&#39;</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">filename</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">checker</span><span class="o">.</span><span class="n">process_tokens</span><span class="p">(</span>
+        <span class="n">utils</span><span class="o">.</span><span class="n">tokenize_module</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="n">testutils</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span>
+        <span class="n">msg_id</span><span class="o">=</span><span class="s1">&#39;hello-world-token&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">assertAddsMessages</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="n">temp_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="tests-for-hello-world-raw-checker">
+<h4>Tests for hello world raw checker<a class="headerlink" href="#tests-for-hello-world-raw-checker" title="Permalink to this headline"></a></h4>
+<p>Testing raw checkers is a lot like testing token checkers. The main difference is that we don’t need to convert our temporary file into tokens. In the example below, we also show how you can test multiple lines at once:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_finds_hello_world_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">astroid</span><span class="o">.</span><span class="n">scoped_nodes</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+        <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Custom test&#39;</span><span class="p">)</span>
+    <span class="n">temp_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">temp_file</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">with</span> <span class="n">python_utils</span><span class="o">.</span><span class="n">open_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        s = &quot;Hello, world!&quot;</span>
+<span class="s2">        print(&quot;Hello, world!&quot;)</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">node</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">filename</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">checker</span><span class="o">.</span><span class="n">process_module</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">checker_test_object</span><span class="o">.</span><span class="n">assertAddsMessages</span><span class="p">(</span>
+        <span class="n">testutils</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span>
+            <span class="n">msg_id</span><span class="o">=</span><span class="s1">&#39;hello-world-raw&#39;</span><span class="p">,</span>
+            <span class="n">line</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">),</span>
+        <span class="n">testutils</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span>
+            <span class="n">msg_id</span><span class="o">=</span><span class="s1">&#39;hello-world-raw&#39;</span><span class="p">,</span>
+            <span class="n">line</span><span class="o">=</span><span class="mi">2</span>
+        <span class="p">),</span>
+    <span class="p">):</span>
+        <span class="n">temp_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="run-tests">
+<h3>Run tests<a class="headerlink" href="#run-tests" title="Permalink to this headline"></a></h3>
+<p>Once you’ve added test cases, you can run them like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests --test_target=scripts.linters.pylint_extensions_test --verbose</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option will help with debugging by printing out more logging information.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Lint-Checks.html" class="btn btn-neutral float-left" title="Lint checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Custom-ESLint-checks.html" class="btn btn-neutral float-right" title="Custom ESLint checks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

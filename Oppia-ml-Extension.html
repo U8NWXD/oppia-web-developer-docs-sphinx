@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oppia-ml Extension &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mobile development" href="Mobile-development.html" />
+    <link rel="prev" title="Advice on creating explorations" href="Advice-on-creating-explorations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Oppia-ml Extension</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#communication-with-oppia">Communication with Oppia</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-following-url-handler-is-used-for-fetching-job-requests">The following url handler is used for fetching job requests:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-following-url-handler-is-used-for-storing-the-result-of-job-request">The following url handler is used for storing the result of job request:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-try-your-own-algorithms">How to try your own algorithms.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Oppia-ml Extension</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Oppia-ml-Extension.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="oppia-ml-extension">
+<h1>Oppia-ml Extension<a class="headerlink" href="#oppia-ml-extension" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="https://github.com/oppia/oppia-ml/">Oppia-ml</a> is developed and maintained by Oppia developers. It allows Oppia to train machine learning models so that Oppia can provide better answers to learners. Oppia-ml is developed in its own <a class="reference external" href="https://github.com/oppia/oppia-ml/">repo</a>, separate from Oppia.</p>
+<section id="communication-with-oppia">
+<h2>Communication with Oppia<a class="headerlink" href="#communication-with-oppia" title="Permalink to this headline"></a></h2>
+<p>Oppia-ml communicates with Oppia over the network for fetching job requests and storing result of job requests.</p>
+<section id="the-following-url-handler-is-used-for-fetching-job-requests">
+<h3>The following url handler is used for fetching job requests:<a class="headerlink" href="#the-following-url-handler-is-used-for-fetching-job-requests" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">ml</span><span class="o">/</span><span class="n">trainingjobhandler</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>Request data</strong>: above handler requires following JSON data in the request:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    ‘vm_id’: a unique ID assigned to VM.
+    ‘signature’: digital signature for authenticity of VM.
+}
+</pre></div>
+</div>
+</li>
+<li><p><strong>Response data</strong>: above handler returns following JSON data in the response:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    ‘job_id’: a unique ID using which Oppia can distinguish different jobs.
+    ‘algorithm_id’: an ID using which Oppia-ml can identify the type of classifier to be trained.
+    ‘training_data’: training data using which classifier will be trained.
+}
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="the-following-url-handler-is-used-for-storing-the-result-of-job-request">
+<h3>The following url handler is used for storing the result of job request:<a class="headerlink" href="#the-following-url-handler-is-used-for-storing-the-result-of-job-request" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">ml</span><span class="o">/</span><span class="n">trainedclassifierhandler</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>Request data</strong>: Above handler requires following JSON data in the request:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    ‘vm_id’: unique ID assigned to Oppia-ml instance.
+    ‘message’: The dict that contains job_id and classifier_data, using which signature is generated.
+    ‘signature’: digital signature for authenticity of VM.
+}
+</pre></div>
+</div>
+</li>
+<li><p><strong>Response data</strong>: It returns HTTP 200 in response if “classifier_data” has been saved successfully.</p></li>
+</ul>
+<p>These URLs are defined in the <a class="reference external" href="https://github.com/oppia/oppia-ml/blob/develop/vmconf.py"><code class="docutils literal notranslate"><span class="pre">oppia-ml/vmconf.py</span></code></a> and <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/feconf.py"><code class="docutils literal notranslate"><span class="pre">oppia/feconf.py</span></code></a> files. They must match the above ones, otherwise Oppia-ml will not be able to work with Oppia.</p>
+</section>
+</section>
+<section id="how-to-try-your-own-algorithms">
+<h2>How to try your own algorithms.<a class="headerlink" href="#how-to-try-your-own-algorithms" title="Permalink to this headline"></a></h2>
+<p>The new oppia-ml project allows developers to try out their own ML algorithms for classification. The steps that need to be followed for using a new algorithm:</p>
+<ul class="simple">
+<li><p>Extend BaseClassifier in the oppia-ml repo and implement all its base functions for your chosen classifier.</p></li>
+<li><p>It is very important to add your algorithm to the Interaction-Classifier mapping. Without this step, your algorithm won’t be functional.</p></li>
+<li><p>Implement a front-end service that will be called by the PredictionAlgorithmRegistryService. This service should have a predict() method which returns the predicted labels given user responses and classifier model.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Advice-on-creating-explorations.html" class="btn btn-neutral float-left" title="Advice on creating explorations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Mobile-development.html" class="btn btn-neutral float-right" title="Mobile development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

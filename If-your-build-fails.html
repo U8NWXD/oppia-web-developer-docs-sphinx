@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>If your build fails &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="If your presubmit check fails" href="If-your-presubmit-check-fails.html" />
+    <link rel="prev" title="Debugging" href="debugging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="debugging.html">Debugging</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">If your build fails</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#common-flakiness-issues">Common flakiness issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="If-your-presubmit-check-fails.html">If your presubmit check fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Interpreting-CircleCI-Results.html">Interpreting CircleCI Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging-Docs.html">Debugging docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-end-to-end-tests.html">Debug end to end tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-backend-tests.html">Debug backend tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-frontend-tests.html">Debug frontend tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging-Stories.html">Debugging stories</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+          <li><a href="debugging.html">Debugging</a> &raquo;</li>
+      <li>If your build fails</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/If-your-build-fails.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="if-your-build-fails">
+<h1>If your build fails<a class="headerlink" href="#if-your-build-fails" title="Permalink to this headline"></a></h1>
+<p>…do not despair! The failure may be due to one of the following things:</p>
+<ul class="simple">
+<li><p>There’s a merge conflict (in which case, the CI tests won’t actually run).</p></li>
+<li><p>Your code is wrong.</p></li>
+<li><p>Actions or CircleCI is being flaky (e.g. network issues).</p></li>
+<li><p>Your code has insufficient test coverage (see <a class="reference external" href="https://github.com/oppia/oppia/wiki/Frontend-unit-tests-guide#generating-coverage-reports">this link</a> for frontend tests and <a class="reference external" href="https://github.com/oppia/oppia/wiki/Backend-tests#generating-coverage-reports">this link</a> for backend tests).</p></li>
+</ul>
+<p>To figure out which it is, check the bottom of the GitHub PR thread. If there’s a merge conflict, it will show up there. You’ll need to fix the conflict by following the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#instructions-for-making-a-code-change">instructions for making a code change</a> and pushing a new commit to the branch before the CI can run.</p>
+<p>Otherwise, if the CI explicitly shows a failure, click on the individual failed test(s) and have a look at the error log, then:</p>
+<ul class="simple">
+<li><p>If the error seems related to your PR, you probably have an error somewhere. You can try to reproduce the error locally: see the relevant section in <a class="reference external" href="https://github.com/oppia/oppia/wiki/Running-Tests#end-to-end-tests">Running Tests</a> for instructions on how to run specific e2e tests on your local machine. If it still happens locally, then it’s something that needs to be fixed. Note that all linter and backend errors fall into this category.</p></li>
+<li><p>If the error cannot be reproduced, try to merge from upstream/develop and debug. All CI tests merge from upstream develop before running your tests.</p></li>
+<li><p>If the error seems unrelated to your PR, it might be due to a recently-merged PR. Try figuring out the root cause of the error. If it is due to a recently-merged PR, then identify the PR that caused the issue and revert it. (In general, it is better to revert the bad PR rather than trying to fix the issue, since the latter would cause further delays in resolution and more PRs to get blocked while the fix is in progress.)</p></li>
+<li><p>If the error seems totally unrelated to your PR, and is not due to a recently-merged PR, or the test has just stalled (e.g. “Failed: Timed out waiting for Angular”), this might just be the CI being flaky. In this case, the test will need to be restarted.</p>
+<ul>
+<li><p><strong>Note:</strong> If you’re new to Oppia and haven’t been added yet as a collaborator to the repo, you might not have permissions to restart the failing test. In that case, please <code class="docutils literal notranslate"><span class="pre">&#64;-mention</span> <span class="pre">PTAL!</span></code> one of the codeowners, reviewers, or your mentor, and provide a URL to the  CI page for your PR so they can restart the test for you. (The <code class="docutils literal notranslate"><span class="pre">PTAL</span></code> in the comment will assign the &#64;-mentioned user to the PR so that they can help you with your comment.)</p></li>
+<li><p><strong>Note:</strong> The Core Maintainers have a <a class="reference external" href="https://docs.google.com/spreadsheets/d/1y_zk1S7YjybqxKXXh8GLPnILhBIGOr7zRvE80CPvCKk/edit#gid=0">spreadsheet</a> that tracks CI failure issues which affect multiple PRs. If you do not see your issue there (or if the issue is there but has an old filing date), and can confirm that the issue is affecting other PRs and is not due to your code specifically, please email oppia-core-maintainers&#64;googlegroups.com and the team will look into it.</p></li>
+<li><p><strong>Note:</strong> A list of known flakiness issues, for which restarting is the only option, can be found at the bottom of this wiki page. You can also check the <a class="reference external" href="https://groups.google.com/forum/#%21forum/oppia-dev">oppia-dev&#64; mailing list</a> for announcements of known issues.</p></li>
+<li><p>Each end-to-end test run begins by merging your feature branch (the HEAD branch) into the destination branch (the base branch). This means that when you rerun the test, any flakiness fixes that have been added to the base branch (typically <code class="docutils literal notranslate"><span class="pre">develop</span></code>) will be automatically included.</p></li>
+</ul>
+</li>
+</ul>
+<p>Following these instructions should result in PRs that are green and ready to merge by the time a reviewer looks at them, thus shortening the review cycle! If you are still unable to resolve the issues yourself, please follow our template on <a class="reference external" href="https://github.com/oppia/oppia/wiki/Guide-on-How-to-Ask-Questions">How to Ask Questions</a> to raise a question with necessary information.</p>
+<section id="common-flakiness-issues">
+<h2>Common flakiness issues<a class="headerlink" href="#common-flakiness-issues" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>If the error has a message like the one below, then it is due to a network error and is unrelated to your PR. Please reach out to a code owner or Core Maintainer to restart your test.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Installing</span> <span class="n">Node</span><span class="o">.</span><span class="n">js</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python2.7/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">174</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_module_as_main</span>
+    <span class="s2">&quot;__main__&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">pkg_name</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python2.7/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">72</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_code</span>
+    <span class="n">exec</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">run_globals</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/circleci/oppia/scripts/install_third_party_libs.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">311</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">main</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/circleci/oppia/scripts/install_third_party_libs.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">236</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
+    <span class="n">setup</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[])</span>
+  <span class="n">File</span> <span class="s2">&quot;scripts/setup.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">158</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
+    <span class="n">download_and_install_node</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;scripts/setup.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">120</span><span class="p">,</span> <span class="ow">in</span> <span class="n">download_and_install_node</span>
+    <span class="n">outfile_name</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;scripts/setup.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">81</span><span class="p">,</span> <span class="ow">in</span> <span class="n">download_and_install_package</span>
+    <span class="n">python_utils</span><span class="o">.</span><span class="n">url_retrieve</span><span class="p">(</span><span class="n">url_to_retrieve</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;python_utils.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">289</span><span class="p">,</span> <span class="ow">in</span> <span class="n">url_retrieve</span>
+    <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">source_url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python2.7/urllib.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">98</span><span class="p">,</span> <span class="ow">in</span> <span class="n">urlretrieve</span>
+    <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">reporthook</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python2.7/urllib.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">289</span><span class="p">,</span> <span class="ow">in</span> <span class="n">retrieve</span>
+    <span class="s2">&quot;of </span><span class="si">%i</span><span class="s2"> bytes&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">size</span><span class="p">),</span> <span class="n">result</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">ContentTooShortError</span><span class="p">:</span> <span class="n">retrieval</span> <span class="n">incomplete</span><span class="p">:</span> <span class="n">got</span> <span class="n">only</span> <span class="mi">7372553</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">18638507</span> <span class="nb">bytes</span>
+
+<span class="n">Exited</span> <span class="k">with</span> <span class="n">code</span> <span class="n">exit</span> <span class="n">status</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="debugging.html" class="btn btn-neutral float-left" title="Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="If-your-presubmit-check-fails.html" class="btn btn-neutral float-right" title="If your presubmit check fails" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

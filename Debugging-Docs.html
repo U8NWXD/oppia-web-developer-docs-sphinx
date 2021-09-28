@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debugging docs &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Debug end to end tests" href="Debug-end-to-end-tests.html" />
+    <link rel="prev" title="Interpreting CircleCI Results" href="Interpreting-CircleCI-Results.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="debugging.html">Debugging</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="If-your-build-fails.html">If your build fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="If-your-presubmit-check-fails.html">If your presubmit check fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Interpreting-CircleCI-Results.html">Interpreting CircleCI Results</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Debugging docs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#benefits">Benefits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-write-a-debugging-doc">How to Write a Debugging Doc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-started">Get Started</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-end-to-end-tests.html">Debug end to end tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-backend-tests.html">Debug backend tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-frontend-tests.html">Debug frontend tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging-Stories.html">Debugging stories</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+          <li><a href="debugging.html">Debugging</a> &raquo;</li>
+      <li>Debugging docs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Debugging-Docs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="debugging-docs">
+<h1>Debugging docs<a class="headerlink" href="#debugging-docs" title="Permalink to this headline"></a></h1>
+<p>Whenever you are debugging a problem, you may find it useful to keep a record of your debugging process. We often do this already in issues. Issues usually begin with a detailed description of the problem, which is followed by discussion, reports of attempted debugging steps, and what root cause was identified. However, issues’ linear comment structure makes them more amenable to communication among team members than organizing your thoughts. Debugging docs, on the other hand, serve primarily to organize your thoughts.</p>
+<section id="benefits">
+<h2>Benefits<a class="headerlink" href="#benefits" title="Permalink to this headline"></a></h2>
+<p>Primarily, debugging docs help keep your thoughts organized. When you have written down the steps you’ve already tried and the results of your investigations, you don’t have to worry about forgetting your earlier work. Further, when you document your work, you force yourself to reflect on what you’ve already tried. On the Automated QA team, we’ve found that this reflection often helps us see new debugging approaches.</p>
+<p>Debugging docs also make it easy for you to bring someone else up to speed on your bug. For example, one time a member of the Automated QA team was debugging an end-to-end test flake. The flake was blocking nearly all PRs from being merged, but the member had to go to sleep before they could figure it out. They sent the <a class="reference external" href="https://docs.google.com/document/d/1LAsDc1EMISjpwnn-FcdH-7TNrU20xfkJEO3uSLj_nyM/edit#heading=h.jl2gn54iqprw">debugging doc</a> to another contributor who read through the document and quickly spotted a problem. They worked with another team member to have a PR up to fix the issue before the first member woke up the next morning! The debugging doc made it easy for team members to hand the bug off and get it fixed fast.</p>
+<p>Finally, these documents can serve as records of debugging strategies and bug causes that we can reference later on. For example, we might search these debugging docs for an error message we are encountering to see if it has been fixed before.</p>
+</section>
+<section id="how-to-write-a-debugging-doc">
+<h2>How to Write a Debugging Doc<a class="headerlink" href="#how-to-write-a-debugging-doc" title="Permalink to this headline"></a></h2>
+<section id="begin-with-describing-what-goes-wrong">
+<h3>1. Begin with Describing What Goes Wrong<a class="headerlink" href="#begin-with-describing-what-goes-wrong" title="Permalink to this headline"></a></h3>
+<p>Your description should include:</p>
+<ul class="simple">
+<li><p>Context: What branch or PR is the bug happening on? If this is happening locally, what system are you running, and what code changes have you made?</p></li>
+<li><p>How the Bug Manifests: This might include error logs that you pasted into the document, screenshots, or links to a test run on a PR. <strong>If you provide a link, copy the relevant part of the page you are linking to.</strong> This keeps the document self-contained so we can search them. It also makes the doc easier for people to read.</p></li>
+</ul>
+<p>Example from a <a class="reference external" href="https://docs.google.com/document/d/1cI8fqAIFqsmZj5v35y49ohhNvgmE0_vH_sT02Aws77Y/edit">doc from the Automated QA team</a>:</p>
+<blockquote>
+<div><p><img alt="Example of a debugging doc" src="https://user-images.githubusercontent.com/19878639/111086358-15586a00-84f2-11eb-8f10-8a33473db6fe.png" /></p>
+</div></blockquote>
+</section>
+<section id="describe-your-investigations">
+<h3>2. Describe Your Investigations<a class="headerlink" href="#describe-your-investigations" title="Permalink to this headline"></a></h3>
+<p>What did you try, and what happened when you tried it? You want to include enough detail so that someone could reproduce your investigation to see if they get the same results.</p>
+<p>Here’s an example of code tracing <a class="reference external" href="https://docs.google.com/document/d/13vc63wZyMsWBLA0LO3p0YrylKEVMQlLbFA2tCvQABDY/edit">from another debugging doc</a>:</p>
+<blockquote>
+<div><p><img alt="Example of code tracing" src="https://user-images.githubusercontent.com/19878639/111086556-13db7180-84f3-11eb-9ed6-fd2f35ccb5b8.png" /></p>
+</div></blockquote>
+</section>
+<section id="document-your-guesses-and-testing">
+<h3>3. Document Your Guesses and Testing<a class="headerlink" href="#document-your-guesses-and-testing" title="Permalink to this headline"></a></h3>
+<p>After some investigation, you might have some ideas for what might be going wrong. Document your guesses and describe how you go about testing them. Report the results of that testing and describe whether you think your guess was right. What’s your reasoning?</p>
+<p>Here’s an example from <a class="reference external" href="https://docs.google.com/document/d/1cI8fqAIFqsmZj5v35y49ohhNvgmE0_vH_sT02Aws77Y/edit">one of the Automated QA team’s first debugging docs</a>:</p>
+<blockquote>
+<div><p><img alt="Example guess with associated testing and solution" src="https://user-images.githubusercontent.com/19878639/111086637-97955e00-84f3-11eb-8804-132a6230208c.png" /></p>
+</div></blockquote>
+<p>This guess turned out to be wrong, but that’s okay! The point of debugging docs is to record your debugging process, including all its twists, turns, and false starts.</p>
+</section>
+<section id="continue">
+<h3>4. Continue<a class="headerlink" href="#continue" title="Permalink to this headline"></a></h3>
+<p>Keep going! Continue documenting the your investigations, guesses, and tests of those guesses.</p>
+</section>
+<section id="document-your-solution">
+<h3>5. Document Your Solution<a class="headerlink" href="#document-your-solution" title="Permalink to this headline"></a></h3>
+<p>Once you figure out what the problem was, write that down too! Include an analysis of how the root cause you identify caused the errors you described at the top. Often, this will take the form of one of your suspected solutions. Here’s an example from a <a class="reference external" href="https://docs.google.com/document/d/1cI8fqAIFqsmZj5v35y49ohhNvgmE0_vH_sT02Aws77Y/edit">debugging doc</a>:</p>
+<blockquote>
+<div><p><img alt="Screenshot of a suspected solution that turned out to be right" src="https://user-images.githubusercontent.com/19878639/111087012-ae3cb480-84f5-11eb-80f5-a21e3090f8d4.png" /></p>
+</div></blockquote>
+</section>
+</section>
+<section id="get-started">
+<h2>Get Started<a class="headerlink" href="#get-started" title="Permalink to this headline"></a></h2>
+<p>Ready to get started with your own debugging doc? You can make a copy of <a class="reference external" href="https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit?usp=sharing">this template</a> to get started. On the Automated QA team we store all our debugging documents in a <a class="reference external" href="https://drive.google.com/drive/folders/1wYdiP6PfhiF553FEIqNBhW2hQxWmWo_Y?usp=sharing">folder</a> on Google Drive. Check with your team to see what works best for you.</p>
+<p>To see these debugging docs in action, check out these examples:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.google.com/document/d/1LAsDc1EMISjpwnn-FcdH-7TNrU20xfkJEO3uSLj_nyM/edit#heading=h.jl2gn54iqprw">2021-02-08 E2E Flake: session deleted because of page crash</a></p></li>
+<li><p><a class="reference external" href="https://docs.google.com/document/d/1cI8fqAIFqsmZj5v35y49ohhNvgmE0_vH_sT02Aws77Y/edit?usp=sharing">2020-12-23 E2E Flake: Skill Editor is Taking Too Long to Appear</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Interpreting-CircleCI-Results.html" class="btn btn-neutral float-left" title="Interpreting CircleCI Results" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Debug-end-to-end-tests.html" class="btn btn-neutral float-right" title="Debug end to end tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

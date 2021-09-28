@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyzing the codebase &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to access Oppia webpages" href="How-to-access-Oppia-webpages.html" />
+    <link rel="prev" title="Glossary of terms" href="Glossary-of-terms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get-started.html">Get started with the code base</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview-of-the-Oppia-codebase.html">Overview of the Oppia codebase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Glossary-of-terms.html">Glossary of terms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Analyzing the codebase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-what-a-function-arg-means">Understanding what a function arg means</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#class-doc">‘class_doc’</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#init-doc">‘init_doc’:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-node">‘class_node’:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-access-Oppia-webpages.html">How to access Oppia webpages</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://oppia.github.io/">User documentation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/oppia/oppia/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22">Good first issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="get-started.html">Get started with the code base</a> &raquo;</li>
+      <li>Analyzing the codebase</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Analyzing-the-Codebase.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="analyzing-the-codebase">
+<h1>Analyzing the codebase<a class="headerlink" href="#analyzing-the-codebase" title="Permalink to this headline"></a></h1>
+<section id="understanding-what-a-function-arg-means">
+<h2>Understanding what a function arg means<a class="headerlink" href="#understanding-what-a-function-arg-means" title="Permalink to this headline"></a></h2>
+<p><em>If you’re not sure what any argument in a function means, the following guidelines may help you figure it out.</em></p>
+<p>First, check whether the arg name is decipherable. A lot of information about the arg can often be obtained by just reading the name. For example, if there is an arg named ‘exploration_dicts’, you can reasonably establish that this arg is a list of dictionary representations of the ‘Exploration’ object.</p>
+<p>If that didn’t work, another thing you could try would be to figure out how this arg is initialised when the function is called. For example, assume a function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">some_arg</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">some_arg</span><span class="o">.</span><span class="n">some_field</span>
+</pre></div>
+</div>
+<p>This doesn’t make a lot of sense at first glance since it doesn’t offer any information about the arg. But, if you search the file for where this function has been called:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">some_arg</span> <span class="o">=</span> <span class="n">SomeObject</span><span class="p">(</span><span class="n">some_field</span><span class="p">,</span> <span class="n">some_field2</span><span class="p">)</span>
+<span class="n">func</span><span class="p">(</span><span class="n">some_arg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>this tells us that the arg to this function in this case is an object of type ‘SomeObject’. This, and other contextual clues, can help us decipher the meaning of the argument.</p>
+<p>Note that, in some cases, the function might be called from a different file entirely, so it would also be a good idea to ‘grep’ through the codebase to find out where the function is being called from. You can do this by <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">&quot;thing-to-grep&quot;</span> <span class="pre">.</span> <span class="pre">-r</span> <span class="pre">--exclude-dir=third_party</span> <span class="pre">--exclude_dir=build</span> <span class="pre">--exclude-dir=backend_prod_files</span></code> (replace “thing-to-grep” with the phrase that you want to search for).</p>
+<hr class="docutils" />
+<p><strong>Now, let’s go through a full example of analyzing a function for the meaning of its args.</strong></p>
+<p>There is a function defined in scripts/custom_lint_checks.py:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_single_constructor_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">class_doc</span><span class="p">,</span> <span class="n">init_doc</span><span class="p">,</span> <span class="n">class_node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">class_doc</span><span class="o">.</span><span class="n">has_params</span><span class="p">()</span> <span class="ow">and</span> <span class="n">init_doc</span><span class="o">.</span><span class="n">has_params</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span>
+            <span class="s1">&#39;multiple-constructor-doc&#39;</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">class_node</span><span class="o">.</span><span class="n">name</span><span class="p">,),</span>
+            <span class="n">node</span><span class="o">=</span><span class="n">class_node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We want to decipher the meaning of the args ‘class_doc’, ‘init_doc’ and ‘class_node’.</p>
+<section id="class-doc">
+<h3>‘class_doc’<a class="headerlink" href="#class-doc" title="Permalink to this headline"></a></h3>
+<p>It’s unclear what this means from the name, so let’s search the same file for function call for <code class="docutils literal notranslate"><span class="pre">check_single_constructor_params</span></code>. We find this block of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class_node</span> <span class="o">=</span> <span class="n">checker_utils</span><span class="o">.</span><span class="n">node_frame_class</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">class_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="n">class_doc</span> <span class="o">=</span> <span class="n">docstrings_checker</span><span class="o">.</span><span class="n">docstringify</span><span class="p">(</span><span class="n">class_node</span><span class="o">.</span><span class="n">doc</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">check_single_constructor_params</span><span class="p">(</span>
+              <span class="n">class_doc</span><span class="p">,</span> <span class="n">node_doc</span><span class="p">,</span> <span class="n">class_node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>within another function <code class="docutils literal notranslate"><span class="pre">check_functiondef_params(self,</span> <span class="pre">node,</span> <span class="pre">node_doc)</span></code>.</p>
+<p>By looking at the line before the function call, we can understand that the <code class="docutils literal notranslate"><span class="pre">class_doc</span></code> arg has to be the return value of <code class="docutils literal notranslate"><span class="pre">docstrings_checker.docstringify(class_node.doc)</span></code>.</p>
+<p>Traversing to the <code class="docutils literal notranslate"><span class="pre">docstrings_checker.py</span></code> file and searching for the <code class="docutils literal notranslate"><span class="pre">docstringify</span></code> method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">docstringify</span><span class="p">(</span><span class="n">docstring</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">docstring_type</span> <span class="ow">in</span> <span class="p">[</span><span class="n">GoogleDocstring</span><span class="p">]:</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="n">docstring_type</span><span class="p">(</span><span class="n">docstring</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">instance</span>
+
+    <span class="k">return</span> <span class="n">_check_docs_utils</span><span class="o">.</span><span class="n">Docstring</span><span class="p">(</span><span class="n">docstring</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This tells us that the return value of this function is of type <code class="docutils literal notranslate"><span class="pre">_check_docs_utils.Docstring(docstring)</span></code>. Now, checking the imports at the top of the page shows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">pylint.extensions</span> <span class="pre">import</span> <span class="pre">_check_docs_utils</span></code></p>
+<p>So, the pylint.extensions._check_docs_utils has a class called <code class="docutils literal notranslate"><span class="pre">Docstring</span></code> defined, and this is the type of <code class="docutils literal notranslate"><span class="pre">class_doc</span></code>. (This can be verified by looking at the pylint source code, since pylint is an open source library).</p>
+</section>
+<section id="init-doc">
+<h3>‘init_doc’:<a class="headerlink" href="#init-doc" title="Permalink to this headline"></a></h3>
+<p>Similarly, following the above reasoning, the <code class="docutils literal notranslate"><span class="pre">init_doc</span></code> can also be reasonably estimated to be an argument of type <code class="docutils literal notranslate"><span class="pre">Docstring</span></code>. Since the function in question is titled <code class="docutils literal notranslate"><span class="pre">check_functiondef_params</span></code>, the <code class="docutils literal notranslate"><span class="pre">init_doc</span></code> logically comes out to be “the Docstring class instance that represents the docstrings of the constructor for a class.”</p>
+</section>
+<section id="class-node">
+<h3>‘class_node’:<a class="headerlink" href="#class-node" title="Permalink to this headline"></a></h3>
+<p>Searching around the custom_lint_checks.py file for occurrences of node and a possible type relation, we come across:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func_node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">frame</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func_node</span><span class="p">,</span> <span class="n">astroid</span><span class="o">.</span><span class="n">FunctionDef</span><span class="p">):</span>
+        <span class="k">return</span>
+</pre></div>
+</div>
+<p>inside the function ‘visit_raise()’. This tells us that the ‘func_node’ is of type <code class="docutils literal notranslate"><span class="pre">astroid.FunctionDef</span></code>. Hence, we can infer that <code class="docutils literal notranslate"><span class="pre">class_node</span></code> is of type <code class="docutils literal notranslate"><span class="pre">astroid.ClassDef</span></code>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Glossary-of-terms.html" class="btn btn-neutral float-left" title="Glossary of terms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="How-to-access-Oppia-webpages.html" class="btn btn-neutral float-right" title="How to access Oppia webpages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

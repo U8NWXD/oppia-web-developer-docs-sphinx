@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy aware programming &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Backend type annotations" href="Backend-Type-Annotations.html" />
+    <link rel="prev" title="Oppia’s code owners and checks to be carried out by developers" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-data">User data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#design-stage">Design stage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-oriented-strategies-in-design-stage">Data oriented strategies in design stage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimize">Minimize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#separate">Separate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#abstract">Abstract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hide">Hide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-stage">Implementation stage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-tracing">Data tracing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wipeout-and-takeout">Wipeout and Takeout</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+      <li>Privacy aware programming</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Privacy-aware-programming.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="privacy-aware-programming">
+<h1>Privacy aware programming<a class="headerlink" href="#privacy-aware-programming" title="Permalink to this headline"></a></h1>
+<p><em>This wiki page is not a legal document and does not give binding legal advice in any way. This wiki page does not create any representation or warranty by Oppia with respect to its data practices. If you have any questions or suggestions for this wiki page, please contact <a class="reference external" href="mailto:vojtech&#46;jelinek&#37;&#52;&#48;hey&#46;com">vojtech<span>&#46;</span>jelinek<span>&#64;</span>hey<span>&#46;</span>com</a>. For any official privacy-related inquiries, please contact <a class="reference external" href="mailto:admin&#37;&#52;&#48;oppia&#46;org">admin<span>&#64;</span>oppia<span>&#46;</span>org</a>.</em></p>
+<p>This wiki page contains a basic explanation of privacy-aware programming, a section about privacy practices to follow in the design stage and a third section about privacy practices to follow in the implementation stage. A lot of the content of this page is based on <a class="reference external" href="https://www.cs.ru.nl/J.H.Hoepman/publications/pds-booklet.pdf">Privacy Design Strategies</a> by Jaap-Henk Hoepman.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="basics">
+<h1>Basics<a class="headerlink" href="#basics" title="Permalink to this headline"></a></h1>
+<p>Privacy-aware programming is an approach to coding that always makes sure that any user data is properly protected via various techniques and methods. Proper privacy measures are required by law (most notably GDPR in European Union). Since, at Oppia, we work with user data (especially, in some cases, the data of underage users), we want to protect such data properly so that it cannot be misused in any way.</p>
+<section id="user-data">
+<h2>User data<a class="headerlink" href="#user-data" title="Permalink to this headline"></a></h2>
+<p>User data refers to any data produced by the user that we collect, such as their username, email, IP address, or profile picture. Some of this data can be <strong>sensitive</strong> — this is usually defined as data about the users racial or ethnic origin, political opinions, religious beliefs, or data related to physical or mental health. Currently, we do not collect any sensitive data at Oppia, if you have even a slight suspicion that the data you plan to collect is sensitive ask the data owners for a confirmation. The data owners are Sean Lip (<a class="reference external" href="mailto:sean&#37;&#52;&#48;seanlip&#46;org">sean<span>&#64;</span>seanlip<span>&#46;</span>org</a>) and Ben Henning (<a class="reference external" href="mailto:ben&#37;&#52;&#48;oppia&#46;org">ben<span>&#64;</span>oppia<span>&#46;</span>org</a>).</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="design-stage">
+<h1>Design stage<a class="headerlink" href="#design-stage" title="Permalink to this headline"></a></h1>
+<p>This part focuses both on writing and reviewing design docs that contain changes to or additions of new user data.</p>
+<p>In the design stage of a feature or refactor, all newly-introduced handling of user data or changes to existing handling of user data should be mentioned and considered. There is a specific section to discuss privacy aspects in the <a class="reference external" href="https://docs.google.com/document/d/1eMivKj5uWkOkj4AB684JVJslAe49gSskZ-VsyUjgPN4/edit">Oppia design doc template</a>.</p>
+<p>For each piece of newly introduced user data or change in handling of existing user data, the privacy section should mention which exact data is collected and then explain how all the <strong>data-oriented privacy strategies</strong> are met for that piece of user data.</p>
+<section id="data-oriented-strategies-in-design-stage">
+<h2>Data oriented strategies in design stage<a class="headerlink" href="#data-oriented-strategies-in-design-stage" title="Permalink to this headline"></a></h2>
+<section id="minimize">
+<h3>Minimize<a class="headerlink" href="#minimize" title="Permalink to this headline"></a></h3>
+<p>The best way to minimize the amount of collected data is to not collect user data at all. If you need to collect some data, make sure that:</p>
+<ul class="simple">
+<li><p>You only collect the minimal subset of data from each user that is required for the feature that we want to implement</p></li>
+<li><p>You only collect data for the users for whom the data is actually needed.</p></li>
+<li><p>The data is destroyed when it is no longer needed.</p></li>
+</ul>
+<p>Do not store any <strong>sensitive</strong> data (see above for the explanation of <strong>sensitive</strong> data).</p>
+<p>An example of a good practice in Oppia codebase:</p>
+<ul class="simple">
+<li><p>We have a process that periodically deletes models that were marked as deleted and also some models that contain user queries.</p></li>
+<li><p>Users can register with only a small number of information and the other data are provided on a completely voluntary basis.</p></li>
+</ul>
+</section>
+<section id="separate">
+<h3>Separate<a class="headerlink" href="#separate" title="Permalink to this headline"></a></h3>
+<p>Separate the handling of user data into unique services. Some user data might make sense to add to existing models, but if we collect a bigger subset of data that was not collected before, it might make sense to separate those into its own models. In general, if the code can be easily separated into its own models or parts of the codebase, then the data should also be separated. This doesn’t mean that all the parts of the code need to be separated, for example the rules for the Wipeout and Takeout are placed in our model modules, but the code that performs the operation is then separated. (Also, if the data is <strong>sensitive</strong>, it needs to be stored in a separate model that can be easily deleted in its entirety — but see the point above on not storing any sensitive data in the first place).</p>
+<p>An example of a good practice in Oppia codebase:</p>
+<ul class="simple">
+<li><p>Most of the code that handles Wipeout and Takeout migration is separated into its own services.</p></li>
+<li><p>All admin features are separated into its own page.</p></li>
+<li><p>We separate permissions for the contributor dashboard in a separate model and only create this model for users that actually have some permissions.</p></li>
+</ul>
+</section>
+<section id="abstract">
+<h3>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline"></a></h3>
+<p>Make sure that, where possible, the less granular versions of user data are collected (e.g. collecting only a birth year instead of the whole birthdate). Also, instead of collecting data specific for one user, aggregate the data for a whole group of people. One possible approach is to collect specific data only for a particular retention period, then aggregate and rely on aggregations indefinitely. Where possible, use a more approximate value instead of the exact value for user data.</p>
+<p>An example of a good practice in Oppia codebase:</p>
+<ul class="simple">
+<li><p>When we collect the ratings that students give to explorations we both collect the individual rating of the student (so that when the student looks at the exploration again they can see what rating they gave) but also we immediately recalculate the overall average rating of the exploration. When the user deletes themselves we can remove its given rating right away, yet still benefit from the aggregate.</p></li>
+</ul>
+</section>
+<section id="hide">
+<h3>Hide<a class="headerlink" href="#hide" title="Permalink to this headline"></a></h3>
+<p>Restrict access to user data only to people with enough rights. In some cases we might want to show that some data exists to all the users, but only show the actual data to the admins. Remove links between user data where there is no need for the links.</p>
+<p>An example of a good practice in Oppia codebase:</p>
+<ul class="simple">
+<li><p>We have an admin page where all the admin features reside, the authorisation for this page is only given to the people that also have access to Oppia in the Google Cloud Console.</p></li>
+<li><p>We only show the edits to an exploration only to creators &amp; other editors of the exploration.</p></li>
+</ul>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h3>
+<section id="task">
+<h4>Task<a class="headerlink" href="#task" title="Permalink to this headline"></a></h4>
+<p>Imagine we wanted to have a time-limited promotion where every student that completed a particular math topic would receive some kind of physical item via mail. The sending of the physical item is handled by a separate company (in this example we assume that the company handles privacy with utmost concern too).</p>
+</section>
+<section id="possible-solution">
+<h4>Possible solution<a class="headerlink" href="#possible-solution" title="Permalink to this headline"></a></h4>
+<p>For every student that logs in during the time when we have the promotion, we would collect their physical mail address. That address would be saved in the UserSettingsModel. The address is then available for all admins so that they can pass the mail addresses to the company that handles the delivery.</p>
+</section>
+<section id="privacy-strategies-application">
+<h4>Privacy strategies application<a class="headerlink" href="#privacy-strategies-application" title="Permalink to this headline"></a></h4>
+<section id="minimize-privacy-strategy-applied">
+<h5>Minimize privacy strategy applied<a class="headerlink" href="#minimize-privacy-strategy-applied" title="Permalink to this headline"></a></h5>
+<p>Instead of collecting the mail address for everyone we only collect the mail address for users that successfully complete the math topic. Also, after the promotion ends and all items are sent we remove the mail addresses from Oppia.</p>
+</section>
+<section id="separate-privacy-strategy-applied">
+<h5>Separate privacy strategy applied<a class="headerlink" href="#separate-privacy-strategy-applied" title="Permalink to this headline"></a></h5>
+<p>Instead of collecting the data in the UserSettingsModel, a new model is created and used for saving the mail address.</p>
+</section>
+<section id="abstract-privacy-strategy-applied">
+<h5>Abstract privacy strategy applied<a class="headerlink" href="#abstract-privacy-strategy-applied" title="Permalink to this headline"></a></h5>
+<p>Provide the students a way to retrieve the physical item in some other way, without providing their mail address. For example, they can receive the item through their schools and thus instead of collecting their exact mail address we only need to know their school.</p>
+</section>
+<section id="hide-privacy-strategy-applied">
+<h5>Hide privacy strategy applied<a class="headerlink" href="#hide-privacy-strategy-applied" title="Permalink to this headline"></a></h5>
+<p>Instead of collecting the mail address directly, Oppia generates code for the students that successfully complete the math topic. That code can then be used for redeeming the physical item on the website of the company that handles the deliveries or the students can provide the code to their school and the school will validate it and give the students the physical item.</p>
+</section>
+</section>
+<section id="final-solution">
+<h4>Final solution<a class="headerlink" href="#final-solution" title="Permalink to this headline"></a></h4>
+<p>The final solution is to generate a code for all students that complete the math topic. This code then can be used by the students to apply for their physical item. We do not record which code was generated for which user, we only record codes that are valid. The records of codes are removed after the promotion ends.</p>
+</section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementation-stage">
+<h1>Implementation stage<a class="headerlink" href="#implementation-stage" title="Permalink to this headline"></a></h1>
+<p>This part focuses both on writing and reviewing code that contains changes to or additions of new user data.</p>
+<p>In the design stage, we mainly make sure that the overall design is privacy-aware. In the implementation stage, we therefore shouldn’t have to make big decisions about privacy-related changes. If such decisions arise,  then the design doc should be reopened and these issues should be resolved there. However, in the implementation stage, it is important to make sure that we catch all the possible bugs related to privacy or data leaks. Here are some key points to bear in mind when doing this.</p>
+<section id="data-tracing">
+<h2>Data tracing<a class="headerlink" href="#data-tracing" title="Permalink to this headline"></a></h2>
+<p>When writing code that affects or works with user data, always try to trace through all the possible paths where the user data can end up, and make sure that the data only ends up in places where it is supposed to be saved or displayed.</p>
+<p>In the backend, the data needs to be saved in models and in fields which clearly indicate that they can contain user data. Old logs or outputs of jobs are deleted periodically so it is fine to leave user data there. <strong>User data in Oppia’s backend must not be stored anywhere else, including in log statements.</strong> Determining where user data should be stored is a decision that should be handled in the design doc, and care should be taken during implementation to ensure that it is not accidentally stored in the wrong place.</p>
+<p>We need to make sure that the data is only displayed to and modifiable by the appropriate user, and that any other operation for editing user data is located on the admin page. The checks should always be performed on the backend because hiding stuff in the frontend still makes it available for malicious users who have experience with accessing frontend stuff like caches or requests.</p>
+</section>
+<section id="wipeout-and-takeout">
+<h2>Wipeout and Takeout<a class="headerlink" href="#wipeout-and-takeout" title="Permalink to this headline"></a></h2>
+<p>All user data needs to be handled with Wipeout (deletion of user data) and Takeout (export of user data). More on this can be found in <a class="reference external" href="https://github.com/oppia/oppia/wiki/Creating-and-modifying-storage-models">Creating and modifying storage models</a> and <a class="reference external" href="https://github.com/oppia/oppia/wiki/Wipeout-Implementation">Wipeout Implementation</a>.</p>
+<p><strong>Important</strong>: Note that if data is stored in external systems (such as Cloud Storage or Firebase), care must be taken to include those storage locations in the Takeout and Wipeout processes. Please consult Vojta (<a class="reference external" href="mailto:vojtech&#46;jelinek&#37;&#52;&#48;hey&#46;com">vojtech<span>&#46;</span>jelinek<span>&#64;</span>hey<span>&#46;</span>com</a>) if you need advice on this.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html" class="btn btn-neutral float-left" title="Oppia’s code owners and checks to be carried out by developers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Backend-Type-Annotations.html" class="btn btn-neutral float-right" title="Backend type annotations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

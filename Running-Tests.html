@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running tests &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Backend tests" href="Backend-tests.html" />
+    <link rel="prev" title="Testing" href="testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="testing.html">Testing</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server-side-tests">Server-side tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#client-side-tests">Client-side tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#end-to-end-tests">End-to-end tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#typescript-tests">Typescript tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-tests.html">Backend tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Frontend-unit-tests-guide.html">Frontend unit tests guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="End-to-End-Tests.html">End to end tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html">Lighthouse CI Automated Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#how-to-add-new-pages-to-lighthouse-tests">How to add new pages to lighthouse tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#debugging-lighthouse-tests">Debugging Lighthouse Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html">General Good Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#visual-disabilities">Visual Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#physical-disabilities">Physical Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#hearing-disabilities">Hearing Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-accessibility-checklist.html">Accessibility Manual Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="testing.html">Testing</a> &raquo;</li>
+      <li>Running tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Running-Tests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="running-tests">
+<h1>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this headline"></a></h1>
+<p>Oppia has tests! These tests help ensure that the code is in a working state. (We always appreciate help with writing more tests, especially for the frontend, so <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia">please let us know</a> if you can help.)</p>
+<p>Before checking in any commits to the Oppia repository, please ensure that every single test passes by following the steps below. Also, please start up a development server and click around a bit, especially in places affected by your commit, to ensure that everything is working as expected. Otherwise, people who build on top of your commit will not be able to tell if the tests or the server are failing due to their changes, or due to existing bugs in the Oppia code – and this will be rather frustrating for them.</p>
+<section id="server-side-tests">
+<h2>Server-side tests<a class="headerlink" href="#server-side-tests" title="Permalink to this headline"></a></h2>
+<p>See <a class="reference internal" href="Backend-tests.html"><span class="doc std std-doc">the backend tests wiki page</span></a>.</p>
+</section>
+<section id="client-side-tests">
+<h2>Client-side tests<a class="headerlink" href="#client-side-tests" title="Permalink to this headline"></a></h2>
+<p>Client-side JavaScript tests need to be run separately from the backend tests, by executing the following command in a terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">run_frontend_tests</span>
+</pre></div>
+</div>
+<p>This will open a <a class="reference external" href="http://karma-runner.github.io/0.10/index.html">Karma</a> server that runs in the background, together with a browser window (which you can ignore). The results of the tests will be displayed in the terminal.</p>
+<p>(If you want the tests to run continuously, go to <code class="docutils literal notranslate"><span class="pre">core/tests/karma.conf.js</span></code> and set <code class="docutils literal notranslate"><span class="pre">singleRun</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>. If you do this, the tests will automatically re-run when you save an HTML/JS file, which is very useful for iterative development. To exit the test runner when it is in this mode, type Ctrl-C in the terminal that is running the server.)</p>
+<p>The tests each relate to specific front-end components; the test file for <code class="docutils literal notranslate"><span class="pre">foo.js</span></code> is located in the same directory and called <code class="docutils literal notranslate"><span class="pre">fooSpec.js</span></code>.</p>
+<p>Karma has a handy shortcut for running a single test or a single test suite: all you need to do is to change ‘it’ to ‘fit’ or ‘describe’ to ‘fdescribe’ for that test or test suite, respectively.</p>
+<p>We also have a coverage tool that displays what fraction of the front-end code is currently covered by unit tests. After running the tests you can view the results at</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="o">../</span><span class="n">karma_coverage_reports</span><span class="o">/</span><span class="p">[</span><span class="n">your</span> <span class="n">chrome</span> <span class="n">version</span><span class="p">]</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>and clicking through will show exactly which parts of the code are still in need of tests.</p>
+<p>Unfortunately the failure messages from the frontend tests are somewhat unhelpful. The line numbers in the stack trace correspond to a file that results from combining all the spec files together, so they are correct in relative but not absolute terms. Until we figure out how to fix this, you can use <code class="docutils literal notranslate"><span class="pre">console.log(...)</span></code> statements to isolate problems.</p>
+</section>
+<section id="end-to-end-tests">
+<h2>End-to-end tests<a class="headerlink" href="#end-to-end-tests" title="Permalink to this headline"></a></h2>
+<p>Oppia has an end-to-end testing framework (Protractor) that incorporates both the client and server. It is run using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">run_e2e_tests</span>
+</pre></div>
+</div>
+<p>This will load a test version of the server (on ports 4444 and 4445), open a Google Chrome browser and automatically run through a series of simulated user actions. If any of the tests fail the simulation will attempt to move on to the next test, and then report the problem at the end. However a single failure may leave the browser in a state (e.g. with an open alert message) that causes a cascade of failures in the other tests, so generally the first failure reported is the significant one.</p>
+<p><strong>Setting chromedriver version</strong></p>
+<p>The end-to-end tests are run on Chrome browser. The chromedriver version to be used depends on the Chrome browser version installed on the machine. To manually set the chromedriver version, please use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">run_e2e_tests</span> <span class="o">--</span><span class="n">chrome_driver_version</span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>If you see a failure due to the webdriver, please double check that the chromedriver version provided is in sync with the Chrome browser version installed on the machine. To determine which version of chromedriver to use, please follow these steps:</p>
+<ol class="simple">
+<li><p>Find the Chrome browser version installed on your machine by going to <code class="docutils literal notranslate"><span class="pre">chrome://version/</span></code>. eg. In the screenshot below, the version number is <code class="docutils literal notranslate"><span class="pre">83.0.4103.61</span></code>.</p></li>
+</ol>
+<p align="center">
+  <img width="600" src="https://user-images.githubusercontent.com/11008603/87473539-3c972880-c63f-11ea-9455-04edb0196731.png"/>
+</p>
+<ol class="simple">
+<li><p>Remove the last part of the version number from step 1 and append the result to URL <code class="docutils literal notranslate"><span class="pre">https://chromedriver.storage.googleapis.com/LATEST_RELEASE_</span></code>. eg. If your version number is <code class="docutils literal notranslate"><span class="pre">83.0.4103.61</span></code>, the URL will look like “https://chromedriver.storage.googleapis.com/LATEST_RELEASE_83.0.4103”.</p></li>
+<li><p>Go to the URL from step 2 and copy the version number on the screen.</p></li>
+<li><p>The version number obtained in step 3 is the chromedriver version to be passed along to the script.</p></li>
+</ol>
+<p>Note: If this flag is not used, the chromedriver version is determined automatically.</p>
+<p><strong>Sharding tests</strong></p>
+<p>The end-to-end tests are also sharded across 3 Chrome browser instances. It is recommended to close background processes to maximize the test performance. You can disable sharding as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">run_e2e_tests</span> <span class="o">--</span><span class="n">sharding</span><span class="o">=</span><span class="n">false</span>
+</pre></div>
+</div>
+<p>You can configure the number of browser instances to use for sharding as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">run_e2e_tests</span> <span class="o">--</span><span class="n">sharding</span><span class="o">-</span><span class="n">instances</span><span class="o">=</span><span class="c1">#</span>
+</pre></div>
+</div>
+<p><strong>Running a single end-to-end test</strong></p>
+<p>To run just one test, change the “it” to “fit” for that test, and change the suite config in <code class="docutils literal notranslate"><span class="pre">core/tests/protractor.conf.js</span></code> to refer to only the file containing that test.</p>
+<p><strong>Running end-to-end tests in production mode</strong></p>
+<p>To run the end-to-end tests using minified versions of the files, use the <code class="docutils literal notranslate"><span class="pre">--prod_env</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">run_e2e_tests</span> <span class="o">--</span><span class="n">prod_env</span>
+</pre></div>
+</div>
+<p>Note that, on <a class="reference external" href="https://travis-ci.com/github/oppia/oppia/pull_requests">Travis CI</a>, the end-to-end tests run only in this mode (to save time).</p>
+<p><strong>Other notes</strong></p>
+<p>Protractor has a screenshot reporting feature, but it needs to be enabled by setting <code class="docutils literal notranslate"><span class="pre">_ADD_SCREENSHOT_REPORT</span></code> to true in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">core</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">protractor</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>Once enabled, you can view screenshots of the point at which each test failed by navigating to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">../</span><span class="n">protractor</span><span class="o">-</span><span class="n">screenshots</span><span class="o">/</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>: this reporting feature is disabled by default because it sometimes obscures the actual protractor error logs and does not close the browser after a failed run.</p>
+<p>The tests are located in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">core</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">protractor</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>and are based on utilities located in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">core</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">protractor_utils</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>together with various <code class="docutils literal notranslate"><span class="pre">protractor.js</span></code> files throughout the <code class="docutils literal notranslate"><span class="pre">extensions</span></code> directory. You can replace <code class="docutils literal notranslate"><span class="pre">it</span></code> with <code class="docutils literal notranslate"><span class="pre">fit</span></code> or <code class="docutils literal notranslate"><span class="pre">describe</span></code> with <code class="docutils literal notranslate"><span class="pre">fdescribe</span></code> to run a single test or test suite. For more information about modifying and writing such tests, see <a class="reference internal" href="End-to-End-Tests.html"><span class="doc std std-doc">Writing End-to-End Tests</span></a>.</p>
+<p>Please report any unexpected or inexplicable failures of the tests, together with the error log produced, as there have been some stability issues that we are trying to iron out.</p>
+<section id="debugging">
+<h3>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline"></a></h3>
+<p>If you find that the e2e tests are failing, first check the error message. If it looks something like “Cannot determine loading status”, “Cannot read property ‘nodeType’ of undefined”, or “A Jasmine spec timed out”, this is probably a transient issue, and the best thing to do (if the failure is on Travis) is to ask a maintainer to restart the relevant test.</p>
+<p>Otherwise, run the affected test on your local machine, and watch it running, so that you can see where things are going wrong. Note that you can pass in a ‘suite’ parameter to run a subset of the tests – see scripts/run_e2e_tests.sh for details. Another alternative is to go to core/tests/protractor.js and modify the *.js to just the specific file you want to test.</p>
+<ul class="simple">
+<li><p><strong>Important:</strong> When running the tests locally, make sure to use exactly the same commands as TravisCI/CircleCI. You’ll want your local environment to match those environments as closely as possible, and those commands include additional arguments that could cause unwanted differences. You can find the TravisCI/CircleCI config files in <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> (in the Oppia root directory) and in <code class="docutils literal notranslate"><span class="pre">.circleci/config.yml</span></code> – look through them to find the “script” section or the “command” sections respectively, which contain the commands that you can run on your local machine.</p></li>
+</ul>
+<p>Finally, if this isn’t helping (e.g. the issue is with console errors or something that’s not obviously apparent), look up the test file in <code class="docutils literal notranslate"><span class="pre">core/tests/protractor</span></code> and follow its actions manually on a fresh dev server (they should be pretty easy to understand). Keep the browser console open so that you can spot any warnings. This should help you find problems, and fix them.</p>
+<p>Also, note that the test logs can sometimes be quite long. In general, it is better to focus on the earliest error for each suite (i.e. the one that appears top-most in the log) since that error will usually cause other follow-up errors. If you fix that error, then the later ones may end up getting fixed automatically as well!</p>
+<p><strong>Troubleshooting</strong></p>
+<p>If you get an error similar to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">selenium</span> <span class="n">standalone</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span><span class="o">.</span>
+ <span class="n">chromedriver</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span><span class="o">.</span>
+ <span class="n">nc</span><span class="p">:</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">localhost</span> <span class="n">port</span> <span class="mi">8181</span> <span class="p">(</span><span class="n">tcp</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span>
+ <span class="n">nc</span><span class="p">:</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">localhost</span> <span class="n">port</span> <span class="mi">4444</span> <span class="p">(</span><span class="n">tcp</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span>
+ <span class="n">seleniumProcess</span><span class="o">.</span><span class="n">pid</span><span class="p">:</span> <span class="n">undefined</span>
+ <span class="n">nc</span><span class="p">:</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">localhost</span> <span class="n">port</span> <span class="mi">4444</span> <span class="p">(</span><span class="n">tcp</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span>
+ <span class="n">nc</span><span class="p">:</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">localhost</span> <span class="n">port</span> <span class="mi">4444</span> <span class="p">(</span><span class="n">tcp</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span>
+ <span class="n">nc</span><span class="p">:</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">localhost</span> <span class="n">port</span> <span class="mi">4444</span> <span class="p">(</span><span class="n">tcp</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span>
+ <span class="n">nc</span><span class="p">:</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">localhost</span> <span class="n">port</span> <span class="mi">4444</span> <span class="p">(</span><span class="n">tcp</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span>
+</pre></div>
+</div>
+<p>while running e2e tests, download and install <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">Java SE Development Kit 7u79</a>.
+If the problem still persists, try installing/updating Java Runtime Environment. This should resolve the issue – see discussion in <a class="reference external" href="https://github.com/oppia/oppia/issues/1824#issuecomment-219192563">#1824</a></p>
+</section>
+</section>
+<section id="typescript-tests">
+<h2>Typescript tests<a class="headerlink" href="#typescript-tests" title="Permalink to this headline"></a></h2>
+<p>You can run typescript tests using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">typescript_checks</span>
+</pre></div>
+</div>
+<p>These tests compile all ts files in the codebase and checks for errors during compilation.</p>
+<p>The compiled files are generated in a folder <code class="docutils literal notranslate"><span class="pre">local_compiled_js_for_test</span></code> which is automatically deleted after the tests.</p>
+<p><strong>How do you know whether the tests have passed?</strong></p>
+<p>The tests pass if, at the end of the test output, you see the message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    Compilation successful!
+</pre></div>
+</div>
+<p>However, if you get a message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Errors</span> <span class="n">found</span> <span class="n">during</span> <span class="n">compilation</span>
+</pre></div>
+</div>
+<p>then this means that the test has failed, and the error messages will be displayed below this line.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Backend-tests.html" class="btn btn-neutral float-right" title="Backend tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

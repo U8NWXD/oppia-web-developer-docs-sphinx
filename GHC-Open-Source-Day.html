@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Ready for Open Source Day &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Season of Docs" href="sod.html" />
+    <link rel="prev" title="Getting Ready for Open Source Day" href="GHC-Open-Source-Day-2019.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="past-events.html">Past Events</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gsoc.html">Google Summer of Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacktoberfest.html">Hacktoberfest</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="ghc.html">GHC Open Source Day</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="GHC-Open-Source-Day-2019.html">2019</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2018</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-contents">Table Of Contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-get-started">How To Get Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-before-open-source-day">Setting Up Before Open Source Day</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#some-useful-links">Some useful links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#making-a-code-change">Making A Code Change</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-to-do-when-you-are-stuck">What to do when you are stuck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-projects">List of Projects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sod.html">Season of Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#timeline">Timeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#instructions-for-students">Instructions for students</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#instructions-for-mentors">Instructions for mentors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#escalation-policy">Escalation Policy</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="past-events.html">Past Events</a> &raquo;</li>
+          <li><a href="ghc.html">GHC Open Source Day</a> &raquo;</li>
+      <li>Getting Ready for Open Source Day</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/GHC-Open-Source-Day.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-ready-for-open-source-day">
+<h1>Getting Ready for Open Source Day<a class="headerlink" href="#getting-ready-for-open-source-day" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#how-to-get-started">How To Get Started</a></p></li>
+<li><p><a class="reference external" href="#setting-up-before-open-source-day">Setting Up Before Open Source Day</a></p></li>
+<li><p><a class="reference external" href="#some-useful-links">Some Useful Links</a></p></li>
+<li><p><a class="reference external" href="#making-a-code-change">Making A Code Change</a></p></li>
+<li><p><a class="reference external" href="#what-to-do-when-you-are-stuck">What To Do When You Are Stuck</a></p></li>
+<li><p><a class="reference external" href="#list-of-projects">List Of Projects</a></p></li>
+</ul>
+</section>
+<section id="how-to-get-started">
+<h2>How To Get Started<a class="headerlink" href="#how-to-get-started" title="Permalink to this headline"></a></h2>
+<p>Welcome to Oppia! This wiki page aims to provide a quick-start guide to Oppia and guide you in making your first changes to Oppia’s codebase. For a longer, more comprehensive guide to getting started, please see our <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up">full “Getting Started” page</a>.</p>
+<p>Some background info about the project:</p>
+<ul class="simple">
+<li><p>The Oppia codebase sits in Github at https://github.com/oppia. Some knowledge of Github would be useful to make changes to the repository. Take a look at the <a class="reference external" href="https://guides.github.com/activities/hello-world/">Github guides</a> for a brief introduction to Github along with some common methods!</p></li>
+<li><p>AngularJS (v1) is used for Oppia’s frontend. A nice youtube video tutorial can be found <a class="reference external" href="https://www.youtube.com/watch?v=nO1ROKMjPqI&amp;list=PLvZkOAgBYrsS_ugyamsNpCgLSmtIXZGiz">here</a>. For an outline of AngularJS, please see this <a class="reference external" href="https://egghead.io/articles/new-to-angularjs-start-learning-here">short overview</a> with pointers to other resources.</p></li>
+<li><p>If you are new to HTML, some useful tutorials are <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML">Mozilla’s guide</a> (which includes some practice assessments), as well as <a class="reference external" href="http://htmldog.com/guides/html/beginner/">this tutorial for beginners</a>.</p></li>
+<li><p>Some new features will require backend work. Oppia’s backend is written in Python 2.7.</p></li>
+</ul>
+</section>
+<section id="setting-up-before-open-source-day">
+<h2>Setting Up Before Open Source Day<a class="headerlink" href="#setting-up-before-open-source-day" title="Permalink to this headline"></a></h2>
+<section id="sign-the-cla">
+<h3>Sign the CLA<a class="headerlink" href="#sign-the-cla" title="Permalink to this headline"></a></h3>
+<p>Oppia is licensed under Apache v2. Please <a class="reference external" href="https://goo.gl/forms/AttNH80OV0">sign the CLA</a> so that we can accept your contributions and redistribute the code you contribute under this license.</p>
+<p>Once you’ve done this, you’ll receive a confirmation email which includes some suggestions for next steps! These are completely optional, but if time permits, it might not be a bad idea to try a <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#finding-something-to-do">starter project</a> to get familiar with the codebase and development workflow.</p>
+</section>
+<section id="create-a-github-account">
+<h3>Create a GitHub account<a class="headerlink" href="#create-a-github-account" title="Permalink to this headline"></a></h3>
+<p>To make code changes, you will require a Github account with 2 factor authentication set up.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://help.github.com/articles/set-up-git/">Install Github</a>.</p></li>
+<li><p><a class="reference external" href="https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/">Set up 2FA</a> on your GitHub account. This is important to prevent people from impersonating you.</p>
+<ul>
+<li><p>You might need to create a <a class="reference external" href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/">personal access token</a> so you can log in from the command line.</p></li>
+</ul>
+</li>
+<li><p>Go to your settings page (click the Settings option under the profile menu in the top right), then go to ‘Notifications’ and ensure that everything’s as you want it.</p></li>
+<li><p>(Optional) Consider setting up <a class="reference external" href="https://help.github.com/articles/caching-your-github-password-in-git/">automatic auth</a> so you don’t have to type in a username and password each time you commit a change.</p></li>
+<li><p>(Optional) Go to the <a class="reference external" href="https://github.com/oppia/oppia">Oppia repo</a>, and click ‘Watch’ at the top right. Ensure that you’re not ‘ignoring’ the repo, so that you’ll be notified when someone replies to a conversation you’re part of.</p></li>
+</ul>
+</section>
+<section id="install-oppia-on-your-machine">
+<h3>Install Oppia on your machine<a class="headerlink" href="#install-oppia-on-your-machine" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Create a new, empty folder called <code class="docutils literal notranslate"><span class="pre">opensource/</span></code> in your computer’s home folder. Navigate to it (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">opensource</span></code>), then <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">fork and clone</a> the Oppia repo so that it gets downloaded into <code class="docutils literal notranslate"><span class="pre">opensource/oppia</span></code>.</p></li>
+<li><p>Then follow the appropriate installation instructions – <a class="reference external" href="https://github.com/oppia/oppia/wiki/Installing-Oppia-%28Linux%29">Linux</a>, <a class="reference external" href="https://github.com/oppia/oppia/wiki/Installing-Oppia-%28Mac-OS%29">Mac OS</a>, <a class="reference external" href="https://github.com/oppia/oppia/wiki/Installing-Oppia-%28Windows%29">Windows</a>. (If you run into any problems during installation, please read <a class="reference external" href="https://github.com/oppia/oppia/wiki/Issues-with-installation%3F">these notes</a>.)</p></li>
+</ul>
+</section>
+<section id="join-the-gitter-channel">
+<h3>Join the Gitter channel<a class="headerlink" href="#join-the-gitter-channel" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Join the GHC open source day chatroom at https://gitter.im/oppia/ghc2018 to meet other mentors and participants!</p></li>
+</ul>
+</section>
+</section>
+<section id="some-useful-links">
+<h2>Some useful links<a class="headerlink" href="#some-useful-links" title="Permalink to this headline"></a></h2>
+<p><em>Gitter</em> <a class="reference external" href="https://gitter.im/oppia/ghc2018">GHC chatroom</a> | <a class="reference external" href="https://gitter.im/oppia/oppia-chat">General chatroom</a></p>
+<p><em>Oppia</em> <a class="reference external" href="https://github.com/oppia/oppia/wiki">Wiki Page</a> | <a class="reference external" href="https://oppia.github.io/#/">Documentation</a> | <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up">Full “Getting Started” page</a></p>
+<p><em>Github</em> <a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">Cheat Sheet</a> | <a class="reference external" href="https://guides.github.com/activities/hello-world/">Guide</a></p>
+<p><em>AngularJS</em> <a class="reference external" href="https://docs.angularjs.org/tutorial/index">Tutorial</a> | <a class="reference external" href="https://docs.angularjs.org/guide">Guide</a></p>
+<p><em>Python 2.7</em> <a class="reference external" href="https://docs.python.org/2/library/intro.html">Introduction</a> | <a class="reference external" href="https://docs.python.org/2/tutorial/index.html">Tutorial</a> | <a class="reference external" href="https://docs.python.org/2/index.html">Documentation</a></p>
+<p><em>Bash</em> <a class="reference external" href="http://cs.lmu.edu/~ray/notes/bash/">Introduction</a></p>
+</section>
+<section id="making-a-code-change">
+<h2>Making A Code Change<a class="headerlink" href="#making-a-code-change" title="Permalink to this headline"></a></h2>
+<p>Our central development branch is <strong>develop</strong>, which should be clean and ready for release at any time. In general, all changes should be done as feature branches based off of <em>develop</em>. For a more detailed explanation on how to make a code change, please take a look at <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#instructions-for-making-a-code-change">this wiki page</a>.
+In order to make a change in the repository, you can follow the steps below:</p>
+<ol class="simple">
+<li><p>Sync with the <em>develop</em> branch and create a new branch, starting from <em>develop</em> (e.g. <em>your-branch-name</em>). The branch name should be descriptive, lowercase, and hyphen-separated. It shouldn’t start with the words <em>hotfix</em> or <em>release</em>.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git fetch upstream
+git checkout develop  
+git merge upstream/develop 
+git checkout -b your-branch-name
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Make commit(s) to your feature branch. Each commit should be self-contained and have a descriptive commit message that helps other developers understand why the changes were made.</p>
+<ul class="simple">
+<li><p>Before your code gets uploaded to GitHub, a script is automatically executed that checks the styling of all changed files and runs some front-end tests. <strong>Run the ‘push’ command in command line</strong> as the script needs access to other tools like pip.</p></li>
+<li><p>If any of the tests fail, the push will be interrupted. If this happens, fix the issues that the tests tell you about and repeat the instructions above (‘commit’ and then ‘push’).</p></li>
+</ul>
+</li>
+<li><p>When your feature is ready to merge, create a pull request on Github. When you create a pull request, you will be assigned a reviewer who will take a look at your code.</p></li>
+<li><p><strong>Address review comments until all reviewers give LGTM (‘looks good to me’).</strong></p>
+<ul class="simple">
+<li><p>Resolve any merge conflicts that arise.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code> and play with the dev server in order to make sure that everything still works, and also to install any new dependencies that have been added since you last synced the repo.</p></li>
+<li><p>WARNING: Do not make changes using the online GitHub editor – this bypasses lint/presubmit checks, and will cause the code on GitHub to diverge from the code on your machine. Always make commits locally, and then push to GitHub.</p></li>
+</ul>
+</li>
+<li><p>Tidy up! After the PR status has changed to “Merged”, delete the feature branch from both your local clone and the GitHub repository</p></li>
+<li><p>Celebrate. Congratulations, you have contributed to Oppia!</p></li>
+</ol>
+</section>
+<section id="what-to-do-when-you-are-stuck">
+<h2>What to do when you are stuck<a class="headerlink" href="#what-to-do-when-you-are-stuck" title="Permalink to this headline"></a></h2>
+<p>Oppia has a <a class="reference external" href="https://gitter.im/oppia/oppia-chat">Gitter chat room</a> where everyone can post their questions and help each other out! The organizers and mentors will also be walking around to help with any questions. We also have a dedicated <a class="reference external" href="https://gitter.im/oppia/ghc2018">GHC Open Source Day chatroom</a> that you can use too!</p>
+</section>
+<section id="list-of-projects">
+<h2>List of Projects<a class="headerlink" href="#list-of-projects" title="Permalink to this headline"></a></h2>
+<p>For Open Source Day, we tried to shortlist projects that are fairly self-contained, and can be completed within 3-4 hours by a group of 2-3 people. We also tried to pick those projects directly from our issue tracker, so that you get an idea of what it’s like to contribute to Oppia on a regular basis.</p>
+<p>Each project has a brief explanation, a link to the issue tracker, the skills required, and some deliverables. We encourage you to look at the issue tracker link for the project that interests you. You can comment expressing interest in that project (and mention you will be working on it for OSD). Feel free to ask questions on the issue thread to gain more context, to help get a kickstart for the day! <strong>We recommend working in groups of 2-3 people.</strong></p>
+<p>This list is not an exhaustive list of projects. If none of these projects appeal to you, take a look at our <a class="reference external" href="https://github.com/oppia/oppia/issues">issue tracker</a> and comment on an issue that interests you. (Also, please mention that you will be working on it during the OSD event, so that others are aware. Please also tag us (<strong>&#64;seanlip</strong> and <strong>&#64;vinitamurthi</strong>) in any comment expressing interest in a project so that we get notified about this!)</p>
+<p><strong>Note:</strong> Some of the projects relate to functionality (like topics, skills and questions) that is still in development. You can turn it on by flipping the ENABLE_NEW_STRUCTURES flag in feconf.py. Also, if you’d like to understand the vocabulary and general structure of content in Oppia, please take a look at <a class="reference external" href="https://docs.google.com/document/d/1yFrFAXaKARzj1DSfiiy1pOH6ypugNkRLQGz5W5QifMQ/edit?usp=sharing">this document</a>. Please don’t hesitate to ask us if you have any questions about this!</p>
+<hr class="docutils" />
+<section id="project-list">
+<h3>Project List<a class="headerlink" href="#project-list" title="Permalink to this headline"></a></h3>
+<p>We’ve tried to categorize the projects by difficulty, but please note that this is just a rough estimate and your mileage may vary. Feel free to pick any project that interests you :)</p>
+<p>Also, we recommend trying any file within Project 8 (unit tests) before taking on larger projects, so that you can get a good feel for the codebase and the development workflow. You’re welcome to do this before Open Source Day, if you like!</p>
+<p>Starter project</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#project-8-improve-unit-tests">Project 8: Improve unit tests</a></p></li>
+</ul>
+<p>Easy</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#getting-ready-for-open-source-day">Getting Ready for Open Source Day</a></p>
+<ul>
+<li><p><a class="reference external" href="#table-of-contents">Table Of Contents</a></p></li>
+<li><p><a class="reference external" href="#how-to-get-started">How To Get Started</a></p></li>
+<li><p><a class="reference external" href="#setting-up-before-open-source-day">Setting Up Before Open Source Day</a></p>
+<ul>
+<li><p><a class="reference external" href="#sign-the-cla">Sign the CLA</a></p></li>
+<li><p><a class="reference external" href="#create-a-github-account">Create a GitHub account</a></p></li>
+<li><p><a class="reference external" href="#install-oppia-on-your-machine">Install Oppia on your machine</a></p></li>
+<li><p><a class="reference external" href="#join-the-gitter-channel">Join the Gitter channel</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#some-useful-links">Some useful links</a></p></li>
+<li><p><a class="reference external" href="#making-a-code-change">Making A Code Change</a></p></li>
+<li><p><a class="reference external" href="#what-to-do-when-you-are-stuck">What to do when you are stuck</a></p></li>
+<li><p><a class="reference external" href="#list-of-projects">List of Projects</a></p>
+<ul>
+<li><p><a class="reference external" href="#project-list">Project List</a></p></li>
+<li><p><a class="reference external" href="#project-1-implement-a-reusable-sortfilter-list-view-for-skills">Project 1: Implement a reusable sort/filter list view for skills</a></p></li>
+<li><p><a class="reference external" href="#project-2-create-toasts-for-success-messages">Project 2: Create toasts for success messages</a></p></li>
+<li><p><a class="reference external" href="#project-3-use-case-insensitive-names-rather-than-ids-in-the-url-for-a-topic">Project 3: Use case-insensitive names rather than IDs in the URL for a topic</a></p></li>
+<li><p><a class="reference external" href="#project-4-allow-users-to-suggest-new-questions-for-a-skill">Project 4: Allow users to suggest new questions for a skill</a></p></li>
+<li><p><a class="reference external" href="#project-5-allow-users-to-suggest-edits-to-concept-cards">Project 5: Allow users to suggest edits to concept cards</a></p></li>
+<li><p><a class="reference external" href="#project-6-allow-translators-to-see-the-changes-made-in-content-by-editor">Project 6: Allow translators to see the changes made in content by editor</a></p></li>
+<li><p><a class="reference external" href="#project-7-improve-linter-checks">Project 7: Improve linter checks</a></p></li>
+<li><p><a class="reference external" href="#project-8-improve-unit-tests">Project 8: Improve unit tests</a></p></li>
+<li><p><a class="reference external" href="#project-9-writing-selenium-tests-for-interactions">Project 9: Writing Selenium tests for interactions</a></p></li>
+<li><p><a class="reference external" href="#project-10-expose-%22upload-exploration%22-functionality-in-admin-page">Project 10: Expose “upload exploration” functionality in admin page</a></p></li>
+<li><p><a class="reference external" href="#project-11-randomize-the-pretest-questions">Project 11: Randomize the pretest questions.</a></p></li>
+<li><p><a class="reference external" href="#project-12-multiple-choice-answers-could-be-shuffled">Project 12: Multiple choice answers could be shuffled</a></p></li>
+<li><p><a class="reference external" href="#project-13-find-ways-to-make-the-audio-translation-tab-interface-clearer">Project 13: Find ways to make the audio translation tab interface clearer</a></p></li>
+<li><p><a class="reference external" href="#project-14-feedback-threads-in-feedback-tab-do-not-reorder-by-recent-updates-in-real-time">Project 14: Feedback threads in feedback tab do not reorder by recent updates in real time</a></p></li>
+<li><p><a class="reference external" href="#project-15-speed-improvements">Project 15: Speed Improvements</a></p></li>
+<li><p><a class="reference external" href="#project-16-cross-browser-compatibility-improvement---translation-console-for-safari">Project 16: Cross Browser Compatibility Improvement - Translation console for Safari</a></p></li>
+<li><p><a class="reference external" href="#project-17-improving-the-library-page-experience-on-mobile">Project 17: Improving the library page experience on mobile</a></p></li>
+<li><p><a class="reference external" href="#project-18-accessibility-improvements---tabbing-order">Project 18: Accessibility Improvements - Tabbing Order</a></p></li>
+<li><p><a class="reference external" href="#project-19-accessibility-improvements---fixing-contrast-in-image-region-selectors">Project 19: Accessibility Improvements - Fixing Contrast in Image Region Selectors</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Intermediate</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#project-1-implement-a-reusable-sortfilter-list-view-for-skills">Project 1: Implement a reusable sort/filter list view for skills</a></p></li>
+<li><p><a class="reference external" href="#project-3-use-case-insensitive-names-rather-than-ids-in-the-url-for-a-resource">Project 3: Use case-insensitive names rather than IDs in the URL for a resource</a></p></li>
+<li><p><a class="reference external" href="#project-11-randomize-the-pretest-questions">Project 11: Randomize the pretest questions</a></p></li>
+<li><p><a class="reference external" href="#project-12-multiple-choice-answers-could-be-shuffled">Project 12: Multiple choice answers could be shuffled</a></p></li>
+<li><p><a class="reference external" href="#project-15-speed-improvements">Project 15: Speed Improvements</a></p></li>
+</ul>
+<p>Hard</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#project-4-allow-users-to-suggest-new-questions-for-a-skill">Project 4: Allow users to suggest new questions for a skill</a></p></li>
+<li><p><a class="reference external" href="#project-5-allow-users-to-suggest-edits-to-concept-cards">Project 5: Allow users to suggest edits to concept cards</a></p></li>
+<li><p><a class="reference external" href="#project-6-allow-translators-to-see-the-changes-made-in-content-by-editor">Project 6: Allow translators to see the changes made in content by editor</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="project-1-implement-a-reusable-sort-filter-list-view-for-skills">
+<h3>Project 1: Implement a reusable sort/filter list view for skills<a class="headerlink" href="#project-1-implement-a-reusable-sort-filter-list-view-for-skills" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>We are currently working on organizing our lessons into topics. At Oppia, a topic is a high-level concept related to a subject. Each topic can have multiple skills within it – for example, the topic “Fractions” may contain the skill “find the sum of two fractions with the same denominator”. Questions will always be tied to a skill, and when we want to test a skill, we look up questions for that particular skill. Hence, when creating topics, as well as questions, we need to go through a list of skills to tie that topic/question to. Unfortunately, the number of skills can be extremely large and going through such a big list gets difficult. So we would like to have a simple sort/filter view for the skills, which is reusable wherever the skills are listed down. (Bonus: Instead of creating a reusable sort/filter view only for skills, it would be nice to have a generic sort/filter list view that can be used for all types of data). Note that, since the feature is currently in development, you’ll need to enable the feconf.ENABLE_NEW_STRUCTURES flag and log in as an admin to use the skill editor.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5670">Issue Tracker Link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Create a simple design document (1 - 2 pages) explaining the approach</p></li>
+<li><p>Create the sort/filter list view for skills in AngularJS</p></li>
+<li><p>(Optional) Make a sort/filter list view that can work with any data that is given to it (explain the design in the document)</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>Python, AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Intermediate</p>
+</section>
+<hr class="docutils" />
+<section id="project-2-create-toasts-for-success-messages">
+<h3>Project 2: Create toasts for success messages<a class="headerlink" href="#project-2-create-toasts-for-success-messages" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>We have various flows where a user does a task and an AJAX request is sent to the backend. When this results in an error, we show a toast with the error message. However, we do not inform the user on success. We would like to show a toast message to inform the user that their action is completed successfully.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5671">Issue Tracker Link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Go through the UI of oppia and try creating questions/skills/topics etc. Identify and list down all places where success message toasts would be useful. (Note that, since skills etc. are currently in development, you’ll need to enable the feconf.ENABLE_NEW_STRUCTURES flag and log in as an admin to use these pages.)</p></li>
+<li><p>Create success message toasts in those areas with meaningful messages.</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-3-use-case-insensitive-names-rather-than-ids-in-the-url-for-a-topic">
+<h3>Project 3: Use case-insensitive names rather than IDs in the URL for a topic<a class="headerlink" href="#project-3-use-case-insensitive-names-rather-than-ids-in-the-url-for-a-topic" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>Currently the ID of a topic shows up on the URL whenever we open that page. We would like to have a human-readable topic name show up in the URL instead, similar to Wikipedia. These names should probably be case-insensitive. (Note that, since topics are currently in development, you’ll need to enable the feconf.ENABLE_NEW_STRUCTURES flag and log in as an admin to use these pages.) [<a class="reference external" href="https://github.com/oppia/oppia/issues/5672">Issue Tracker Link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Write a small design document (1-2 pages) explaining the approach you will be taking to solve this problem, including ensuring that URLs are unique across topics.</p></li>
+<li><p>Remove the IDs from the URLs for all resources</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>Python, AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Intermediate</p>
+</section>
+<hr class="docutils" />
+<section id="project-4-allow-users-to-suggest-new-questions-for-a-skill">
+<h3>Project 4: Allow users to suggest new questions for a skill<a class="headerlink" href="#project-4-allow-users-to-suggest-new-questions-for-a-skill" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>We are currently working on a project to add practice questions to Oppia. Currently, Oppia supports the creation of questions by topic managers and admins. However, in the long run, Oppia aims to be a collaborative platform for create lessons, so it would be great if we could enable any user to suggest a new question for a particular skill. These suggestions can then be reviewed and then either added (with or without modifications), or rejected. We need to design a framework to support this option. We already have a suggestion framework designed for edits to lesson content, and if possible we would like to reuse that for question suggestions as well.</p>
+<p><em>This project is more aimed at creating a design rather than a working implementation, as it is quite open ended and will take time to create a working solution. However, if you plan on taking this up, we encourage you to continue to work with us on this project even after open source day!</em>
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5673">Issue Tracker Link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Present a design for a framework that can enable user suggestions for questions.</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>Python, AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Hard</p>
+</section>
+<hr class="docutils" />
+<section id="project-5-allow-users-to-suggest-edits-to-concept-cards">
+<h3>Project 5: Allow users to suggest edits to concept cards<a class="headerlink" href="#project-5-allow-users-to-suggest-edits-to-concept-cards" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>We are developing a feature that allows topic managers to add concept cards whenever they create a topic. These concept cards each aim to explain a particular skill, and they get shown on-demand in lessons when Oppia detects that a student is having difficulty with that skill. It would be very useful to have users suggest edits to the concept cards. Edit suggestions could range from grammar issues or typos, semantic improvements, or even adding new content like examples to better explain the concept. The topic manager can review the edit, and either add it (with modifications), or reject it with some explanation.</p>
+<p><em>This project is more to create a design rather than a working implementation, as it is quite open-ended and will take time to create a working solution. However, if you plan on taking this up, we encourage you to continue to work with us on this project even after open source day!</em>
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5674">Issue Tracker Link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Present a design for a framework that can enable user suggestions for concept cards.</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>Python, AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Hard</p>
+</section>
+<hr class="docutils" />
+<section id="project-6-allow-translators-to-see-the-changes-made-in-content-by-editor">
+<h3>Project 6: Allow translators to see the changes made in content by editor<a class="headerlink" href="#project-6-allow-translators-to-see-the-changes-made-in-content-by-editor" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>All lessons in Oppia aim to have audio subtitles for learners who do not have a good command of English. These audio files are translated to multiple languages by translators. Currently, when a lesson creator marks an audio file as “needing update”, the translators get informed about this through a warning icon, but it’s not easy for them to figure out what changes the lesson creator has made. We would like to develop this functionality for the translators. For this, we would have to design and implement a UI which helps translators identify where the change was made and what the change was.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5571">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Write a design document for a user interface that solves this problem.</p></li>
+<li><p>Create an MVP (minimum viable product) for the interface.</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>Python, AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Hard</p>
+</section>
+<hr class="docutils" />
+<section id="project-7-improve-linter-checks">
+<h3>Project 7: Improve linter checks<a class="headerlink" href="#project-7-improve-linter-checks" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>Coding style is very important when maintaining a large codebase with multiple contributors! Oppia has a <a class="reference external" href="https://github.com/oppia/oppia/wiki/Coding-style-guide">style guide</a> that highlights basic requirements for coding style. To ensure our code follows the style guide, we use lint-check scripts that are called before any code is pushed in the github repo. However, our Python linter doesn’t check if strings use single quotes and not double quotes. It would be useful to have that check added for Python as well.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5663">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Update the python linter checks to ensure strings use single quotes</p></li>
+<li><p>(Optional) Identify any other code style issues that are not being caught by our linter</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>Python, Bash</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-8-improve-unit-tests">
+<h3>Project 8: Improve unit tests<a class="headerlink" href="#project-8-improve-unit-tests" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>Unit tests are just as important as coding style while maintaining a large codebase with multiple contributors. At Oppia, we try to ensure all code paths are covered by some unit test. This also ensures that changes to the code don’t break our code base. Before pushing code to github, we run all frontend tests and the push is blocked if even one test is broken. Also, code cannot be merged into the main branch unless both frontend and backend tests pass (the backend checks are done through a <a class="reference external" href="https://travis-ci.com/">Travis</a> continuous integration system). We analyze the code coverage of unit tests to identify which functions still need unit tests.</p>
+<p><em>These projects are typically the kinds of starter projects we assign to new developers. Consider giving this a shot before moving to a larger project!</em></p>
+<p>Frontend Tests: [<a class="reference external" href="https://github.com/oppia/oppia/issues/4057">Issue tracker link</a>]</p>
+<p>Backend Tests: [<a class="reference external" href="https://github.com/oppia/oppia/issues/5134">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Write a unit test for any frontend or backend file that covers all code paths.</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS (Frontend), Python (Backend)</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-9-writing-selenium-tests-for-interactions">
+<h3>Project 9: Writing Selenium tests for interactions<a class="headerlink" href="#project-9-writing-selenium-tests-for-interactions" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>While unit tests cover a lot of cases, end-to-end integration tests are also extremely useful to ensure all UI elements are working as intended. It can also catch bugs that unit tests may not be able to, such as UI elements not being in view, browsers freezing, and so on. We use Protractor end-to-end tests to cover these cases (Protractor is an end-to-end testing framework based on Selenium). The goal would be to pick up one of Oppia’s question types (“interactions”) and write Protractor tests for it that are similar to the existing examples for other interactions in the codebase.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/4558">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Write one end to end interaction test in selenium</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>Javascript</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-10-expose-upload-exploration-functionality-in-admin-page">
+<h3>Project 10: Expose “upload exploration” functionality in admin page<a class="headerlink" href="#project-10-expose-upload-exploration-functionality-in-admin-page" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>Oppia uses explorations to present lessons to the user (<a class="reference external" href="https://www.oppia.org/explore/umPkwp0L1M0-?collection_id=4UgTQUc1tala">example</a>). When developing, it is sometimes useful to upload an exploration, but this functionality should be limited to developers and not turned on in production. We would therefore like to create an upload exploration button in the Activities tab of the admin page (which gets shown only on develop and not in production).
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5438">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Fix the issue mentioned in the tracker and present it</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-11-randomize-the-pretest-questions">
+<h3>Project 11: Randomize the pretest questions.<a class="headerlink" href="#project-11-randomize-the-pretest-questions" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>A pretest is a variably-long set of questions that has been randomly created from the list of prerequisite skills specified by a lesson. Before learning a lesson with prerequisites, students have to pass the pretest for every prerequisite skill. Currently, the first 3 pretest questions sorted by their keys will be returned for a fixed set of prerequisite skill ids for an exploration. This needs to be changed to make it a random set of 3 questions (or potentially some other smarter approach to selecting the questions). (Note that, since questions are currently in development, you’ll need to enable the feconf.ENABLE_NEW_STRUCTURES flag and log in as an admin to use these pages.) [<a class="reference external" href="https://github.com/oppia/oppia/issues/5436">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Design and implement a solution to randomize the pretest questions</p></li>
+<li><p>(Optional) Create a design to select pretest questions in a smarter way (some possible directions could be to select maybe by difficulty or by user performance in the previous questions or similar skills)</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Python</p>
+<p><strong>Difficulty</strong></p>
+<p>Intermediate</p>
+</section>
+<hr class="docutils" />
+<section id="project-12-multiple-choice-answers-could-be-shuffled">
+<h3>Project 12: Multiple choice answers could be shuffled<a class="headerlink" href="#project-12-multiple-choice-answers-could-be-shuffled" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>In the learner view, multiple-choice answers are always in the same order. We should instead consider shuffling them on-the-fly (while preserving the “index” that’s currently reported to the backend) so that the student does not end up memorizing the correct answer based on its location if they need to repeat the question later. (This sometimes happens when, in a future question, Oppia detects that the student has not mastered a prerequisites skill.) [<a class="reference external" href="https://github.com/oppia/oppia/issues/5254">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Write a design document with the approach to solve this problem</p></li>
+<li><p>Implement a solution that can shuffle multiple choice answers</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Python</p>
+<p><strong>Difficulty</strong></p>
+<p>Intermediate</p>
+</section>
+<hr class="docutils" />
+<section id="project-13-find-ways-to-make-the-audio-translation-tab-interface-clearer">
+<h3>Project 13: Find ways to make the audio translation tab interface clearer<a class="headerlink" href="#project-13-find-ways-to-make-the-audio-translation-tab-interface-clearer" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>The UI for the audio translation isn’t very intuitive. Users have asked questions like -</p>
+<ul class="simple">
+<li><p>“I uploaded the voiceover but can’t find where I can listen to it?”</p></li>
+<li><p>“Also how do I move to the next section?”</p></li>
+</ul>
+<p>This suggests that we might need to make the UI/layout a bit more clear.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5639">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Write a design document with mocks for a potential UI</p></li>
+<li><p>Present the mocks and (optional) create the bare bones UI for the same.</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>UI/UX Design experience would be useful</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-14-feedback-threads-in-feedback-tab-do-not-reorder-by-recent-updates-in-real-time">
+<h3>Project 14: Feedback threads in feedback tab do not reorder by recent updates in real time<a class="headerlink" href="#project-14-feedback-threads-in-feedback-tab-do-not-reorder-by-recent-updates-in-real-time" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>It is possible for students to submit feedback to any exploration, and this generates an “issue thread” which can have further messages appended to it. The feedback threads are viewable within the exploration editor, but they are not ordered correctly. We would like to order them in real-time to show the most recent feedback threads at the top.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5508">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Take a look at the issue and design and implement a solution that follows the expected behavior.</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Python</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-15-speed-improvements">
+<h3>Project 15: Speed Improvements<a class="headerlink" href="#project-15-speed-improvements" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>A primary audience of Oppia is students in developing countries such as India and Africa. At such places, network issues arise quite often. Moreover, the devices that the students use tend to be low-performing, and optimization and speed improvements are something we constantly try to work towards. One case is to determine which version/resolution of an image to send, based on the quality of the network.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5470">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Write a design doc explaining the approach to solving this problem</p></li>
+<li><p>Implement the solution and present it (You can use chrome dev tools to change network conditions)</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Python</p>
+<p><strong>Difficulty</strong></p>
+<p>Intermediate</p>
+</section>
+<hr class="docutils" />
+<section id="project-16-cross-browser-compatibility-improvement-translation-console-for-safari">
+<h3>Project 16: Cross Browser Compatibility Improvement - Translation console for Safari<a class="headerlink" href="#project-16-cross-browser-compatibility-improvement-translation-console-for-safari" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>Audio subtitles in lessons are really important for learners in our target audience. However, we have encountered several issues with the Safari browser. For example, the translation console in Safari doesn’t play the audio correctly. Users have reported that after uploading audio, they click on the icon to the far left to listen but nothing happens. This is only on Safari; it works fine in Chrome.
+Also, the audio player at the bottom shows NaN/NaN which indicates that the audio is most likely not loading correctly on Safari. The UI elements also dont seem to be rendered correctly. We would like to fix the audio player experience for the translation console on Safari browsers.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5642">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Design and implement a fix for the audio player in the translation console, that works across all major browsers.</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<section id="project-17-improving-the-library-page-experience-on-mobile">
+<h3>Project 17: Improving the library page experience on mobile<a class="headerlink" href="#project-17-improving-the-library-page-experience-on-mobile" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>The Oppia library can show only one exploration at a time on the mobile UI. It has arrow icons that can be clicked to move to the next exploration, but this is not very intuitive for mobile views, especially now that swipe gestures are so common. We would like to make the explorations into a swipeable carousel for the mobile UI.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/5678">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Create a swipeable carousel for the explorations in oppia.org</p></li>
+<li><p>(Optional) Create a reusable swipeable carousel element that can be used as a template. Write a design document for this as well</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-18-accessibility-improvements-tabbing-order">
+<h3>Project 18: Accessibility Improvements - Tabbing Order<a class="headerlink" href="#project-18-accessibility-improvements-tabbing-order" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>We have found some accessibility-related issues in Oppia that we would like to improve. This project looks at tabbing order. Tabbing is useful for screen readers and various other accessibility software, and our order of tabbing is wrong; we would like to fix that. More details can be found in the issue tracker:
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/4883">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Fix the tabbing order for the menu bars and other buttons and UI elements</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+</section>
+<hr class="docutils" />
+<section id="project-19-accessibility-improvements-fixing-contrast-in-image-region-selectors">
+<h3>Project 19: Accessibility Improvements - Fixing Contrast in Image Region Selectors<a class="headerlink" href="#project-19-accessibility-improvements-fixing-contrast-in-image-region-selectors" title="Permalink to this headline"></a></h3>
+<p><strong>Context</strong></p>
+<p>Our Image region indicators show a red dot when a user clicks on a portion of the image (regardless of the image background at that area). The aim of this issue is to ensure that the indicator contrasts with the background, so that it’s clear that it’s a touch indicator.
+[<a class="reference external" href="https://github.com/oppia/oppia/issues/4615">Issue tracker link</a>]</p>
+<p><strong>Deliverables</strong></p>
+<ul class="simple">
+<li><p>Design and implement a solution that can clearly show image region indicators to the user (either by using dots with contrasting colors, or using a different shape or a larger size)</p></li>
+</ul>
+<p><strong>Required Skills</strong></p>
+<p>AngularJS, Web Development</p>
+<p><strong>Difficulty</strong></p>
+<p>Easy</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="GHC-Open-Source-Day-2019.html" class="btn btn-neutral float-left" title="Getting Ready for Open Source Day" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sod.html" class="btn btn-neutral float-right" title="Season of Docs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google summer of code 2020 &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Google summer of code 2019" href="Google-Summer-of-Code-2019.html" />
+    <link rel="prev" title="Google Summer of Code" href="gsoc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="past-events.html">Past Events</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gsoc.html">Google Summer of Code</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Google summer of code 2020</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#completed-projects">Completed Projects:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#students">Students</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faqs">FAQs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gsoc-proposal-template">GSoC Proposal Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#types-of-work-related-to-oppia-projects">Types of work related to Oppia projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selection-criteria">Selection Criteria</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#oppia-s-project-ideas-list">Oppia’s Project Ideas List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Full-stack Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Frontend Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Backend Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Android Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-useful-information">Other useful information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dates-and-deadlines">Dates and Deadlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-mentors">List of Mentors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#communication">Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2019.html">Google summer of code 2019</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2019.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2019.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2019.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html">Google summer of code 2018</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2018.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html">Google summer of code 2017</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2017.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html">Google summer of code 2016</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#students">Students</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#dates-and-deadlines">Dates and Deadlines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#mentors">Mentors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#communication">Communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Google-Summer-of-Code-2016.html#oppia-s-project-ideas">Oppia’s Project Ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hacktoberfest.html">Hacktoberfest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ghc.html">GHC Open Source Day</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sod.html">Season of Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#timeline">Timeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#instructions-for-students">Instructions for students</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#instructions-for-mentors">Instructions for mentors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLoP-2020.html#escalation-policy">Escalation Policy</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="past-events.html">Past Events</a> &raquo;</li>
+          <li><a href="gsoc.html">Google Summer of Code</a> &raquo;</li>
+      <li>Google summer of code 2020</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Google-Summer-of-Code-2020.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="google-summer-of-code-2020">
+<h1>Google summer of code 2020<a class="headerlink" href="#google-summer-of-code-2020" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#completed-projects">Completed Projects</a></p></li>
+<li><p><a class="reference external" href="#getting-started">Getting started</a></p></li>
+<li><p><a class="reference external" href="#faqs">FAQs</a></p></li>
+<li><p><a class="reference external" href="#gsoc-proposal-template">GSoC Proposal Template</a></p>
+<ul>
+<li><p><a class="reference external" href="#tips-for-writing-a-good-project-plan">Tips for writing a good project plan</a></p></li>
+<li><p><a class="reference external" href="#what-should-applicants-expect-from-mentors-in-a-proposal-review">What should applicants expect from mentors in a proposal review?</a></p></li>
+<li><p><a class="reference external" href="#sample-proposals-from-past-years">Sample proposals from past years</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#types-of-work-related-to-oppia-projects">Types of work related to Oppia projects</a></p></li>
+<li><p><a class="reference external" href="#selection-criteria">Selection Criteria</a></p></li>
+<li><p><a class="reference external" href="#oppias-project-ideas-list">Oppia’s Project Ideas List</a></p></li>
+<li><p><a class="reference external" href="#other-useful-information">Other useful information</a></p>
+<ul>
+<li><p><a class="reference external" href="#dates-and-deadlines">Dates and Deadlines</a></p></li>
+<li><p><a class="reference external" href="#list-of-mentors">List of Mentors</a></p></li>
+<li><p><a class="reference external" href="#communication">Communication</a></p></li>
+</ul>
+</li>
+</ul>
+<p>Oppia has been selected to participate in <a class="reference external" href="https://summerofcode.withgoogle.com/">Google Summer of Code 2020</a>! GSoC is a global program which offers post-secondary students an opportunity to discover and work with open source organizations over the course of 3 months, while being paid a stipend. Students work closely with one or more mentors from an open source organization in order to implement either a project idea by the organization, or a proposal of their own.</p>
+<p>You might be interested in our GSoC info pages from previous years: <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2019">2019</a>, <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2018">2018</a>, <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2017">2017</a>, <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2016">2016</a>.</p>
+<p>Also, please note that acceptance into GSoC isn’t a prerequisite for becoming an Oppia contributor. The Oppia project is run by the community for the community, and we warmly welcome anyone who’d like to help out! You can get started by following the instructions <a class="reference external" href="https://github.com/oppia/oppia/wiki">here</a>.</p>
+</section>
+<section id="completed-projects">
+<h2>Completed Projects:<a class="headerlink" href="#completed-projects" title="Permalink to this headline"></a></h2>
+<p>The following projects were fully completed during GSoC 2020:</p>
+<ul class="simple">
+<li><p><span class="xref myst">Abhith Krishna’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;abyk476/google-summer-of-code20-with-oppia-1c5bd87ad9d7">final blog post</a>: Generate images for LaTeX expressions. Mentor: Sandeep Dubey.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: All RTE math expressions have a new “SVG filename” attribute in addition to the LaTeX value. For existing expressions, this filename will be an empty string. For newly-created expressions other than expressions created in suggestions, the filename will be non-empty and the corresponding SVG file is guaranteed to exist on the server (but will not be used for display yet).</p></li>
+<li><p><strong>Milestone 2</strong>: All RTE math expressions in the server (in explorations, questions, topics, skills, question/translation suggestions, and any other RTEs) include a non-empty SVG filename that points to a valid file. There is a validation job that can be used to audit this, and that validation job runs to completion successfully on existing production data.</p></li>
+<li><p><strong>Milestone 3</strong>:</p>
+<ul>
+<li><p>All math expressions are displayed using SVGs in the learner view.</p></li>
+<li><p>MathJax is fully removed from the learner view.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="xref myst">Anshul Hudda’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;anshulhudda.ssap/google-summer-of-code20-with-oppia-60208850be57">final blog post</a>: Fix the linter and implement all the lint checks. Mentor: Nitish Bansal.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: In non-verbose mode, the linter has less verbose output, and raises an exception if there is any error due to the operation of the linter script. All existing lint checks have tests written for them. The linter handles all general and CSS lint errors except for at most one CSS check, and the linter script has 100% test coverage.</p></li>
+<li><p><strong>Milestone 2</strong>: The linter fully handles all Python checks. All JS/TS lint checks are fully implemented, except for at most 11.</p></li>
+<li><p><strong>Milestone 3</strong>: The linter fully handles all JS/TS lint checks and CSS lint checks.</p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">James James’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;jamesjay4199/google-summer-of-code-20-at-oppia-foundation-b2b39c3ebde7">final blog post</a>: Make Oppiabot more useful. Mentor: Ankita Saxena.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: All issue-related Checks and the following “PR creation” checks are fully operational:</p>
+<ul>
+<li><p>WIP PR checks</p></li>
+<li><p>PR branch name check</p></li>
+<li><p>PR job check</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 2</strong>: All Oppiabot checks that should run on PR creation, PR labelling, and force pushes are fully operational.</p></li>
+<li><p><strong>Milestone 3</strong>: All Oppiabot checks that should run on PR reviews, PR review comments, merge conflicts, and CI result publication are fully operational. In addition, the following periodic checks are implemented:  PR’s aren’t stale, issues are associated with a project.</p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">Jim Zhan’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;jimz_89254/google-summer-of-code-20-with-oppia-a1a366d03aea">final blog post</a>: Ensure that Oppia is Fully Accessible. Mentor: Sagang Wee.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>:</p>
+<ul>
+<li><p>Set up LightHouse CI for automated testing</p></li>
+<li><p>For the following web pages: Admin, Classroom, About, Collection_editor, Collection_player, Contact, Console_errors, Creator_dashboard, Community_dashboard, Delete_account, Donate, Email_dashboard, Email_dashboard_Result</p>
+<ul>
+<li><p>Achieve Google Chrome Lighthouse audit report scores of 100</p></li>
+<li><p>Complete manual accessibility review (<a class="reference external" href="https://docs.google.com/document/d/1UQpNSqVi2sSoj3nUiArdq5KgK0NPYuTbQrnSXAe5X-w/edit">Review Checklist</a>)</p></li>
+</ul>
+</li>
+<li><p>Develop and refine a robust manual testing methodology to catch accessibility issues that cannot be checked automatically by Lighthouse, and create documentation for this, so that the QA process includes a full suite of manual tests for accessibility starting from July onwards.</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 2</strong>:</p>
+<ul>
+<li><p>For all web pages listed above in M1, as well as: Error, Exploration_Editor, Exploration_Player, Get_Started, Landing, Learner_Dashboard, Library, Maintenance, Moderator, Notifications_Dashboard, Pending_Account_Deletion, Practice_session, Privacy.</p>
+<ul>
+<li><p>Achieve Google Chrome Lighthouse audit report scores of 100</p></li>
+<li><p>Complete manual accessibility review (<a class="reference external" href="https://docs.google.com/document/d/1UQpNSqVi2sSoj3nUiArdq5KgK0NPYuTbQrnSXAe5X-w/edit">Review Checklist</a>)</p></li>
+</ul>
+</li>
+<li><p>Users can use keyboard shortcuts to navigate to all critical pages (Get Started, Library, Creator Dashboard, Learner Dashboard, Profile, Notification, Preferences)</p></li>
+<li><p>Users can use keyboard shortcuts for critical actions on the Library page and Exploration Viewer. Users also have a way of discovering these keyboard shortcuts</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 3</strong>:</p>
+<ul>
+<li><p>For all web pages in the Oppia web application, including all webpages listed above in M1 and M2, as well as: Preferences, Profile, Review_Test, Signup, Skill_Editor, Splash, Stewards, Story_Editor, Story_Viewer, Subtopic_Viewer, Teach, Terms, Thanks, Topic_Editor, Topics_and_Skills_Dashboard, Topic_Viewer, and any other pages.</p>
+<ul>
+<li><p>Achieve Google Chrome Lighthouse audit report scores of 100</p></li>
+<li><p>Complete manual accessibility review (<a class="reference external" href="https://docs.google.com/document/d/1UQpNSqVi2sSoj3nUiArdq5KgK0NPYuTbQrnSXAe5X-w/edit">Review Checklist</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="xref myst">Mariana Zangrossi’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;mari.zangue/my-journey-through-gsoc20-with-oppia-9eb6b27e7a02">final blog post</a>: Frontend testing of controllers and directives. Mentor: Nithesh Hariharan.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>:  Achieve 100% coverage of non-inline controllers and fully cover 33 out of 69 inline controllers.</p></li>
+<li><p><strong>Milestone 2</strong>: Achieve 100% coverage of inline controllers and 87.5% coverage of files in /core/templates/pages/exploration-editor-page folder.</p></li>
+<li><p><strong>Milestone 3</strong>: Achieve 100% on some /core/templates/pages folders:</p>
+<ul>
+<li><p>/exploration-editor-page</p></li>
+<li><p>/subtopic-viewer-page</p></li>
+<li><p>/profile-page</p></li>
+<li><p>/library-page</p></li>
+<li><p>/story-viewer-page</p></li>
+<li><p>/review-test-page</p></li>
+<li><p>/classroom-page</p></li>
+<li><p>/community-dashboard-page</p></li>
+<li><p>/learner-dashboard-page</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="xref myst">Mohamed Medhat’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;mohamed.medhat0298/gsoc-2020-oppia-foundation-ef9ecaf69903">final blog post</a>: Support tablet interfaces. Mentor: Rajat Talesra.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: Review and provide suggestions for all tablet mocks. Implement low-fidelity &amp; high-fidelity code for tablet UI in the Onboarding Flow, HomeFragment , ProfileChooser, NavigationDrawer, and RecentlyPlayedStoryList.</p></li>
+<li><p><strong>Milestone 2</strong>: Implement low-fidelity &amp; high-fidelity code for tablet UI in following screens: Topic including all Tabs, ExplorationPlayer, Hints &amp; Solution, QuestionPlayer and Concept Card.</p></li>
+<li><p><strong>Milestone 3</strong>:</p>
+<ul>
+<li><p>Implement low-fidelity &amp; high-fidelity code for tablet UI in following screens:</p>
+<ul>
+<li><p>Admin Controls</p></li>
+<li><p>Options and its 3 child screens(Audio Selection, Language Selection and StoryTextSize Selection).</p></li>
+</ul>
+</li>
+<li><p>Create an API in android which can take a screenshot in the test case and the image should be accessible for comparison.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="xref myst">Nishant Mittal’s proposal</span> and <a class="reference external" href="https://www.nishantwrp.com/posts/google-summer-of-code-2020-with-oppia/">final blog post</a>: Solve all typescript and webpack issues in the codebase. Mentor: Vojtěch Jelínek.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>:</p>
+<ul>
+<li><p>All third-party libraries have type definitions.</p></li>
+<li><p>All HTTP requests are made by backend-api-services. (Only in files migrated to angular).</p></li>
+<li><p>There are less than 20 files in the codebase with ‘any’ under the issue # 7176.</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 2</strong>:</p>
+<ul>
+<li><p>There are no occurrences of ‘any’ in the codebase, except for the AngularJS constants <span class="math notranslate nohighlight">\(uibModalInstance, \)</span>uibModal, <span class="math notranslate nohighlight">\(rootScope and \)</span>translate (if these are not yet upgraded).</p></li>
+<li><p>No PRs that reach the review stage have ‘any’ defined.</p></li>
+<li><p>All backend api services migrated to angular return camelCase objects.</p></li>
+<li><p>There is proper documentation on adding type definitions.</p></li>
+<li><p>No PRs that reach the review stage have any typescript errors.</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 3</strong>:</p>
+<ul>
+<li><p>There will be no generated third_party.js file.</p></li>
+<li><p>All *scripts.ts files have been renamed to *import.ts</p></li>
+<li><p>There will be no script imports,  except for jQuery, MathJax, and PencilCode embed.</p></li>
+<li><p>The webpack compile speed will be reduced to under 30s for dev and under 120s for production (locally).</p></li>
+<li><p>We may be using Webpack 5.0 (if a non-beta release is made by 15 August and it is compatible with our webpack config).</p></li>
+<li><p>There will be documentation on:</p>
+<ul>
+<li><p>Dealing with different types of typescript errors.</p></li>
+<li><p>How our webpack config works.</p></li>
+<li><p>How to deal with some common errors in webpack.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="xref myst">Prayush Dawda’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;ThePegasus/google-summer-of-code-2020-with-oppia-7542804bb9e9">final blog post</a>: Revamping Math Interactions. Mentor: Akshay Anand.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>:</p>
+<ul>
+<li><p>The Algebraic Expression Input and Math Equation Input interactions will be ready for lesson creators to use with the following two rules:</p>
+<ul>
+<li><p>MatchesExactlyWith</p></li>
+<li><p>IsEquivalentTo.</p></li>
+</ul>
+</li>
+<li><p>The old Math Expression Input interaction will be disabled (will not be visible in the Choose Interaction modal) in order to disallow any new explorations from using it.</p></li>
+<li><p>An audit job will be merged and ready to run on production that will output the validity and type of inputs present in the explorations that use the old MathExpressionInput interaction. This will help in the migration of these explorations to the new interactions.</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 2</strong>:</p>
+<ul>
+<li><p>The Numeric Expression Input interaction will be ready to use with all its rules implemented.</p></li>
+<li><p>A customized OSK will be added for mobile friendliness of the guppy editor.</p></li>
+<li><p>A migration job will be merged and ready to be run on production that will appropriately upgrade the explorations that use the old math interaction based on the output of the audit job that would have been merged in Milestone 1.</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 3</strong>:</p>
+<ul>
+<li><p>The migration job from M2 will be run on prod and no exploration on the production server will use the old MathExpressionInput interaction.</p></li>
+<li><p>The following rules will be added to the Algebraic Expression Input and Math Equation Input interaction:</p>
+<ul>
+<li><p>ContainsSomeOf</p></li>
+<li><p>OmitsSomeOf</p></li>
+<li><p>MatchesWithGeneralForm</p></li>
+</ul>
+</li>
+<li><p>The old Math Expression Input interaction will be stably deprecated and all related code will be removed from the codebase.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="xref myst">Pulkit Aggarwal’s proposal</span> and <a class="reference external" href="https://gist.github.com/aggarwalpulkit596/84c23a09cd4244624092f2967b0eae38">final blog post</a>: Additional Interaction Types. Mentor: Ben Henning.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: Fully implement the drag-and-drop sorting interaction in the Android app.</p></li>
+<li><p><strong>Milestone 2</strong>:</p>
+<ul>
+<li><p>Fully implement the image region interaction in the Android app.</p></li>
+<li><p>Implement backend support for ratio input.</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 3</strong>: Fully implement the ratio input interaction in the Android app.</p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">Rishabh Rawat’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;coolrishabhrawat/google-summer-of-code-20-at-oppia-foundation-944359e027fe">final blog post</a>: Editor Page Redesigns. Mentor: Sean Lip.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: Complete the Topics-and-Skills dashboard, Topic Editor page, and Skill Editor page redesigns (both mobile and desktop).</p></li>
+<li><p><strong>Milestone 2</strong>:</p>
+<ul>
+<li><p>Redesign the Subtopic Editor(Desktop and mobile view)</p></li>
+<li><p>Redesign the Story Editor(Desktop and mobile view)</p></li>
+<li><p>Redesign the Chapter Editor(Desktop and mobile view)</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 3</strong>:</p>
+<ul>
+<li><p>Redesign the Question Editor(Desktop and mobile view)</p></li>
+<li><p>Redesign the Exploration Editor(Desktop and mobile view)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="xref myst">Rohit Katlaa’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;rohitkatlaa/my-work-with-oppia-during-gsoc20-8adf72de92bd?sk=573e4fe56ea30a4d9cee72aec541ed51">final blog post</a>: Adding SVG editor to RTE. Mentor: Kevin Thomas.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>:</p>
+<ul>
+<li><p>All required backend changes and validations will be in place.</p></li>
+<li><p>It is possible to create and save the diagrams, but the UI for doing so will be hidden behind a flag variable (to be turned on for the public in Milestone 2). Saved diagrams will be displayed in the card content.</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 2</strong>:</p>
+<ul>
+<li><p>All E2E tests for the svg editor will be completed.</p></li>
+<li><p>The flag variable is removed and the UI is fully available for creators.</p></li>
+<li><p>The user will be able to use the pie chart tool to add pie charts to the editor.</p></li>
+</ul>
+</li>
+<li><p><strong>Milestone 3</strong>:</p>
+<ul>
+<li><p>The user will be able to use the arc tool to draw arcs.</p></li>
+<li><p>The user will be able to use the import image tool to import the required image into the editor.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="xref myst">Sarthak Agarwal’s proposal</span> and <a class="reference external" href="https://medium.com/&#64;agarwal.sarthak262012/google-summer-of-code-2020-oppia-f7a71dba5506">final blog post</a>: Analytics Support. Mentor: Vinita Murthi.</p>
+<ul>
+<li><p><strong>Milestone 1</strong>: When a crash or an event arises, the corresponding crash report or event report is uploaded to the Firebase console when there is network connectivity. A full suite of unit tests will be written for both the crashlytics logging wrapper and the event analytics logging wrapper.</p></li>
+<li><p><strong>Milestone 2</strong>: In the absence of network connectivity, event analytics stats are stored offline. Logs will be stored in disk, with the maximum size of the files determined by a constant specified in the code. If the max size is reached, logs will be removed based on their priority and their recency (i.e. timestamp). This functionality will be achieved via a log persistence class. A full suite of unit tests will be written for the log persistence functionality.</p></li>
+<li><p><strong>Milestone 3</strong>: In the absence of network connectivity, crash reports are stored offline. In the presence of network connectivity, these offline records of crashes/events are uploaded to the firebase console using a work manager. There will be a full suite of unit tests for this work manager. In addition, event stats for the following 5 views of the oppia application can be analysed via the Firebase analytics dashboard: the home screen, and the 4 tabs of the topic page (i.e. info, lessons, practice, and revision). There is also clear documentation for how to create similar dashboards in the future for other views.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="students">
+<h1>Students<a class="headerlink" href="#students" title="Permalink to this headline"></a></h1>
+<p>GSoC is an excellent opportunity for students to get paid to work on an open source project. If you’re interested in applying as a student, you should definitely read the following resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://google.github.io/gsocguides/student/">Google Summer of Code student guide</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/open-source/gsoc/resources/">Google’s list of resources</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/open-source/gsoc/faq">GSoC FAQ</a></p></li>
+</ul>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
+<p>If you’re interested in applying to work with Oppia for GSoC, please follow these steps:</p>
+<ol class="simple">
+<li><p>Sign up to the <a class="reference external" href="https://groups.google.com/forum/#%21forum/oppia-gsoc-announce">oppia-gsoc-announce&#64;</a> mailing list in order to receive important notifications about Oppia’s participation in GSoC. If you like, you can also sign up to the <a class="reference external" href="https://groups.google.com/forum/#%21forum/oppia-gsoc-discuss">oppia-gsoc-discuss&#64;</a> mailing list to participate in general discussion related to Oppia’s involvement in GSoC (see point 6 below, too). Make sure to set your preferences correctly so that you actually get the emails!</p></li>
+<li><p>Get a better understanding of what Oppia is all about by taking a look at our <a class="reference external" href="http://oppia.github.io/#/">user documentation</a> – this will help you become familiar with important concepts like explorations and interactions. We also recommend having a go at playing lessons on <a class="reference external" href="https://www.oppia.org/splash">Oppia.org</a>, which hosts a live instance of Oppia.</p></li>
+<li><p>Read and follow the instructions in the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up">contributors’ guide</a> carefully.</p></li>
+<li><p>Consider taking up one or more starter projects in order to become familiar with the contribution process. This will help us get an idea of what it’s like to work with you – e.g. how independent, resourceful, responsive, etc. you are. It will also help you get a better understanding of the codebase, so that you can write a good, detailed project proposal.</p>
+<ul class="simple">
+<li><p><strong>Pro-tip!</strong> Quality is more important than quantity; we want to see examples of your best work. So, please make sure to follow the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#instructions-for-making-a-code-change">dev workflow</a> carefully, manually test your code before submitting (to ensure it does what you want it to and doesn’t break anything else), ensure that your code conforms to the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Coding-style-guide">style rules</a>, and pay attention to small details. These are good skills to learn when developing software in general, and they will also help you build credibility as a responsible developer who can be trusted to be a good steward of the Oppia codebase.</p></li>
+</ul>
+</li>
+<li><p>Once you’ve merged at least 2 pull requests, you will get an invitation to become a collaborator to the Oppia repository and be officially onboarded! <strong>This step is a prerequisite</strong> to applying for GSoC.</p></li>
+<li><p>Now, you can select one or more GSoC projects that you’re most interested in, and write your project proposal! We strongly encourage you to discuss your project ideas and share your proposal with the community, so that you can get feedback and ensure that what you’re writing makes sense to others. The best way to do this is to put your proposal into a collaborative editing tool like Google Docs, allow others to comment on it, and share a link to it on the <a class="reference external" href="mailto:oppia-gsoc-discuss&#37;&#52;&#48;googlegroups&#46;com">GSoC discussion mailing list</a>. You can also email this mailing list if you have any questions about a project, or would like to discuss your approach with the Oppia community and get feedback. Please be specific when asking questions, since this makes it easier for us to help you.</p>
+<ul class="simple">
+<li><p><strong>Important note:</strong> Please read <a class="reference external" href="https://groups.google.com/forum/#%21topic/oppia-gsoc-discuss/S6Ge3vQ3cuc">this oppia-gsoc-discuss&#64; thread</a> carefully for details about the recommended review process. Note that you do not need to write the entire proposal before getting your first review – see the instructions in that thread for more details. Thanks!</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="faqs">
+<h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline"></a></h2>
+<p><strong>Q: What technical skills do I need to work on Oppia?</strong></p>
+<p>A: Familiarity with AngularJS (v1), Angular8, Python 2.7 and Google App Engine is useful and recommended for most Oppia work. In addition, UI design skills are useful for frontend, user-facing work. Please see the individual project ideas to determine whether these skills are recommended for the project in question.</p>
+<p><strong>Q: How can I increase my chances of getting selected?</strong></p>
+<p>A: Writing a good project proposal, engaging with the community, helping other students, successfully contributing patches, and demonstrating that you can work independently can all help you. We’ve also compiled some notes below on the <a class="reference external" href="#selection-criteria">selection criteria</a> we’ll be using this year.</p>
+<p><strong>Q: Can you be flexible around my other commitments in the summer?</strong></p>
+<p>A: GSoC is intended to be a full-time commitment, so the main concern is whether you can still get the project done on time. Be upfront about your other commitments and make sure you schedule your time accordingly when creating your proposal. Other commitments you should list include time when you’ll be in school and will commit less time to GSoC, time when you’ll be travelling and away from GSoC work, any summer jobs you need to commit to, etc. We will try to be flexible around other time commitments, as long as your proposal convinces us that you will have enough time to complete the project by the end of the summer. On the other hand, if you do not disclose other commitments, and it turns out that you are unable to commit to what you wrote on your proposal, this is grounds for failing the program.</p>
+<p><strong>Q: Which projects are most important for Oppia?</strong></p>
+<p>A: All the projects we’ve listed here are important, and we’d be very happy to see good progress made on any of them! Projects are treated as equally important during selection. Note that the relative importance of a project to Oppia is not part of the <a class="reference external" href="#selection-criteria">selection criteria</a>. We would encourage you to pick a project that you would enjoy doing over the summer.</p>
+<p><strong>Q: Can I submit more than one proposal to Oppia?</strong></p>
+<p>A: Yes you can. However, we strongly recommend picking one project and writing a solid proposal for it. Splitting attention across multiple projects might not be a great idea.</p>
+<p><strong>Q: How early should I start working on the proposal?</strong></p>
+<p>A: As early as possible. Make sure to get feedback from mentors before finally submitting the proposal. This will help you to write a better proposal as you can refine the details based on the feedback you receive. The mentors would need some time to review, and hence it is a good idea to begin as early as possible.</p>
+<p><strong>Q: I only discovered this project recently. Does this mean that, during selection, my application would automatically be ranked lower than those by other applicants who have a longer tenure with Oppia?</strong></p>
+<p>A: Definitely not! Here are the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2020#selection-criteria">selection criteria</a> we use when selecting students for GSoC; note that tenure is not part of these criteria. Also, our philosophy is to consider each application based on its own merits, not relative to other applications, and we try to accept every student whose application “meets the bar”. The only cases in which we’d need to compare applications against each other are when a project idea receives multiple applications, or we receive fewer “slots” to host students than we originally applied for.</p>
+<p><strong>Q: What are the minimum number of PRs that one should have?</strong></p>
+<p>A: There is no specific minimum number. Remember that quality is more important than quantity. It is better to submit a nontrivial PRs rather than a simple bug fix. Start with starter issues, then prioritize ones that are related to your project.</p>
+<p><strong>Q: What is the total number we’ll accept?</strong></p>
+<p>A: As many as we think we’ll succeed, though GSoC admins may impose quotas.</p>
+<p><strong>Q: I do not have any experience in some XYZ skill. Is some certification required?</strong></p>
+<p>A: Try to work on good first issues and take courses online. You develop experience &amp; expertise once you start working. We do not need any certification.</p>
+<p><strong>Q: Is it okay to focus only on the frontend or backend?</strong></p>
+<p>A: This depends on your project. Focus on the project’s goals.</p>
+</section>
+<section id="gsoc-proposal-template">
+<h2>GSoC Proposal Template<a class="headerlink" href="#gsoc-proposal-template" title="Permalink to this headline"></a></h2>
+<p>When submitting a proposal, please use the provided <a class="reference external" href="https://docs.google.com/document/d/1C6OgWa5I2wTWYPLTOqoZMVvWrVQ10BGXbe4SNEBMu-s/edit">GSoC proposal template</a>. We will only consider proposals submitted using this template.</p>
+<p>You are welcome to ask mentors for reviews during the proposal preparation phase. Mentors will review proposals incrementally. That is, they will work through the Mocks section, and, only after they are satisfied with it, they will review the Technical Design section, and, similarly, only after that section looks good, they will review the Milestones section. This is meant to help ensure that later sections of the proposal are building on a solid baseline.</p>
+<p><strong>Important:</strong> Please make sure that your final proposal is self-contained. In particular, to be fair to all applicants, key components of the proposal should not be editable after the deadline, and you shouldn’t assume that reviewers will follow external links.</p>
+<section id="tips-for-writing-a-good-project-plan">
+<h3>Tips for writing a good project plan<a class="headerlink" href="#tips-for-writing-a-good-project-plan" title="Permalink to this headline"></a></h3>
+<p>Here’s some advice about proposals and milestone timeline planning that we collated from previous students and mentors:</p>
+<ul class="simple">
+<li><p>Choose a project you’re interested in! If you have a strong interest in your project, this will help you pick up necessary skills and tackle any unforeseen difficulties that arise during GSoC.</p></li>
+<li><p>Familiarize yourself with the relevant part of the codebase for your project, especially if you haven’t touched it before. It’s important to think about how to integrate your project with the current Oppia structure – don’t design in a vacuum.</p></li>
+<li><p>Define milestones with enough detail to get a proper ETA for each milestone (so, don’t just say “write e2e tests”), otherwise you run the risk of significantly underestimating the timeline.</p></li>
+<li><p>Clear written communication and presentation is crucial in preparing your proposal. The proposal should show that you have a clear understanding of the codebase and the final goal of the project. Eg. In a user-facing proposal, writing about just the files that have to be changed is not enough, detailed mocks and userflows (in the form of diagrams or points) are also essential.</p></li>
+<li><p>Limit proposal length. Remember a lengthy proposal is not equivalent to an excellent proposal.</p></li>
+<li><p>Ensure that the problem statement is within your limits to tackle. You should make sure that what you are proposing is within your capabilities. What we have in the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2020#oppias-project-ideas-list">project ideas section</a> are suggested milestones; it is up to you to come up with a complete plan that is within your ability. i.e., students can propose whatever they want; it’s up to us to subsequently figure out (during selection) whether we’re happy about what’s being proposed.</p></li>
+<li><p>Students who make milestone 3 bulky normally run into issues. So, make sure that you distribute work evenly.</p></li>
+</ul>
+</section>
+<section id="what-should-applicants-expect-from-mentors-in-a-proposal-review">
+<h3>What should applicants expect from mentors in a proposal review?<a class="headerlink" href="#what-should-applicants-expect-from-mentors-in-a-proposal-review" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Please write your proposal on the assumption that you “own” your chosen project. From your perspective, the submitted proposal should be in as good a condition as possible before you ask for a review. Make sure you have a sufficiently good understanding of the codebase/project to find flaws in the design; don’t assume that reviewers are responsible for doing this for you. Note that, by “as good a condition as possible”, we don’t mean that your proposal needs to be flawless – we expect that you might make mistakes, and reviewers will be happy to guide you on how to improve. Instead, by “as good a condition as possible”, we mean that your proposal should demonstrate:</p>
+<ul>
+<li><p>Your ownership of the project</p></li>
+<li><p>The research you have put into writing it</p></li>
+<li><p>Your analytical skills</p></li>
+<li><p>Your independence in making complex decisions</p></li>
+</ul>
+</li>
+<li><p>Make sure to present solutions and ask for feedback, rather than just asking for solutions. You can do this by presenting the various solutions you came up with in your proposal, and doing an analysis of their advantages &amp; disadvantages from the end-user perspective. Finally, choose the best solution you have and explain your reasoning behind your choice. Note that this doesn’t mean that you must always have multiple ideas to solve a problem, but you should instead always explain how you reached a solution, and why is it the best one from the end-user’s perspective.</p></li>
+<li><p>Mentor’s suggestions are “suggestions”, not orders (often, reviewers may not be certain whether their suggestion is correct), so, as the proposal owner, you are welcome to decide whether to accept/reject it. In either case, when you are accepting/rejecting a suggestion provided by a reviewer, explain your reasoning and the research that led to your decision. Don’t use an “appeal to authority” (e.g. “I am doing it this way because XXX said so”) – the rational analysis that underlies the decision is what’s important.</p></li>
+<li><p>We do not expect you to always agree with your reviewers. If you think that the suggestion doesn’t suit your project, it is totally fine to explain your decision and provide reasons for it. It is always a good idea to have discussions when you have confusions, rather than simply agreeing. Note that this does not mean that we encourage you to disagree with your reviewers on everything – this is just a suggestion to bear in mind if you get confused.</p></li>
+<li><p>Please note that your reviewer may or may not be involved in the final selection process. It is also <strong>not</strong> the case that you need to implement all your reviewers’ suggestions/requests in order to be selected. As mentioned above, it is important that you actively take help and work together with your proposal reviewers in order to prepare a strong proposal that meets the guidelines for your chosen project.</p></li>
+</ul>
+</section>
+<section id="sample-proposals-from-past-years">
+<h3>Sample proposals from past years<a class="headerlink" href="#sample-proposals-from-past-years" title="Permalink to this headline"></a></h3>
+<p>If you’d like to get a sense of what a proposal might contain, please see our <a class="reference external" href="https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2019">GSoC 2019 page</a> for examples of proposals that we accepted in 2019. Note that the <a class="reference external" href="https://docs.google.com/document/d/1C6OgWa5I2wTWYPLTOqoZMVvWrVQ10BGXbe4SNEBMu-s/edit">GSoC Proposal Template</a> was only created in 2020, so although it may seem like none of the previous proposals follow the template, please be sure to follow it this year.</p>
+<p><em><strong>Note:</strong> although some of these proposals are a bit on the long side, there’s <strong>no</strong> formal length requirement for your proposal. In general, the quality of what you write is much more important than the amount of text you write, and we encourage you to write shorter proposals that still convey the main aim of the project. For the actual requirements, please see the <a class="reference external" href="#gsoc-proposal-template">GSoC Proposal Template</a> section above.</em></p>
+</section>
+</section>
+<section id="types-of-work-related-to-oppia-projects">
+<h2>Types of work related to Oppia projects<a class="headerlink" href="#types-of-work-related-to-oppia-projects" title="Permalink to this headline"></a></h2>
+<p>In order to ensure a well-rounded engineering experience, developers will do some or all of the following depending on their project:</p>
+<ul class="simple">
+<li><p>Meet with their mentors regularly</p></li>
+<li><p>Meet with other contributors related to their project area</p></li>
+<li><p>Read and understand parts of the code base related to their project</p></li>
+<li><p>Receive code reviews for all code they write for their project</p></li>
+<li><p>Write automated tests for their projects</p></li>
+<li><p>Create UI mocks (if doing frontend development)</p></li>
+<li><p>Write design documents (if implementing large features or introducing new systems)</p></li>
+</ul>
+<p><strong>[NEW!]</strong> We asked our previous students what they learned during GSoC. Here are the collated answers:</p>
+<ul class="simple">
+<li><p>Technical ability</p>
+<ul>
+<li><p>Writing clean code with comments</p></li>
+<li><p>Writing tests</p></li>
+<li><p>My debugging skills improved a lot.</p></li>
+<li><p>Refactoring skills.</p></li>
+</ul>
+</li>
+<li><p>Technical domain knowledge</p>
+<ul>
+<li><p>I’m much more fluent in Python and AngularJS.</p></li>
+<li><p>I feel that I can now pick up any new framework/language/skill easily, without much uncertainty.</p></li>
+<li><p>I got to know about the one-off jobs in detail.</p></li>
+</ul>
+</li>
+<li><p>Technical leadership skills</p>
+<ul>
+<li><p>Single-handedly releasing a big feature end-to-end.</p></li>
+<li><p>Reviewing others’ code</p></li>
+<li><p>Technical design skills (and validation of technical ideas)</p></li>
+<li><p>Organizing release testing teams</p></li>
+<li><p>I feel that I can think about a feature end to end and prune out all the not so essential features, so that we can create a minimum viable product!</p></li>
+<li><p>I learnt how to coordinate with folks around me.</p></li>
+</ul>
+</li>
+<li><p>Communication</p>
+<ul>
+<li><p>Putting forward my thoughts more systematically and deeply so that everyone can understand me well.</p></li>
+<li><p>Better communication skills.</p></li>
+<li><p>How to write a good proposal.</p></li>
+</ul>
+</li>
+<li><p>I learned a lot other than coding, including writing technical documents, doing meetings, presentations, testing, etc. This was also the first time I was writing well-tested backend code, which was also an interesting learning experience for me.</p></li>
+</ul>
+</section>
+<section id="selection-criteria">
+<h2>Selection Criteria<a class="headerlink" href="#selection-criteria" title="Permalink to this headline"></a></h2>
+<p>In order to select students for GSoC, we will mainly be looking at three things:</p>
+<ul class="simple">
+<li><p>The quality of the submitted proposal</p></li>
+<li><p>The quality of the applicant’s previously-submitted PRs (in order to assess their ability to code, debug, break down complex tasks, etc.). Note that quantity isn’t a prerequisite in itself, though contributors who’ve submitted multiple PRs are likely to have had more opportunities to demonstrate the abilities needed to succeed in GSoC.</p></li>
+<li><p>Our prior experience working with the student (do they keep commitments, communicate well, demonstrate independence/initiative/responsiveness, help others, etc.)</p></li>
+</ul>
+<p>We believe that strong performance in these dimensions is likely to correlate well with the student having an enjoyable, fulfilling and productive experience over the summer, and successfully completing the GSoC program.</p>
+<p>For the proposal, we generally look for a clear indication that the student has a good, deep understanding of the project, and has broken it down sufficiently well, in a way that makes it very likely to succeed. Some indicators that could help with this include:</p>
+<ul class="simple">
+<li><p>A clear analysis of (and good design decisions that build on top of) the original project idea, with a strong focus on creating a simple, intuitive experience for end users.</p></li>
+<li><p>A concrete, specific breakdown of the work to be done for each milestone. Here’s an <a class="reference external" href="https://docs.google.com/document/d/1vuwXvHOYXqfM2S2B2KIWhZrAa1PL59wJRUYsqJEd67E/edit">example</a> from a previous design doc. (Note that, in the implementation plan, the author has carefully considered and listed which tests need to be written alongside the code; this is a positive indicator.)</p></li>
+<li><p>Sufficient concreteness (e.g. references to particular files and methods) to demonstrate that the applicant is familiar with both the scope of the problem and the existing codebase.</p></li>
+<li><p>A description, if applicable, of how the applicant plans to mitigate risks that could potentially derail the project.</p></li>
+<li><p>Clear, unambiguous communication. (This is important; your proposal will be read by many mentors!)</p></li>
+</ul>
+</section>
+<section id="oppia-s-project-ideas-list">
+<h2>Oppia’s Project Ideas List<a class="headerlink" href="#oppia-s-project-ideas-list" title="Permalink to this headline"></a></h2>
+<p><em><strong>Note:</strong> If you’re coming to this section from an external link, please make sure to scroll up and read this entire wiki page carefully, not just this section. There’s a lot of useful information on the rest of the page, including a FAQ and a section describing selection criteria. Thanks!</em></p>
+<p>The following is a list of Oppia’s 2020 GSoC project ideas. (Please note that all mentor assignments listed below are provisional, and may change depending on which proposals are eventually accepted.)</p>
+<p>You are welcome to choose among these ideas, or propose your own! However, if you’re planning to propose something original, it’s essential to engage with the Oppia community in order to get feedback and guidance to improve the proposal. We also recommend taking a look at <a class="reference external" href="https://github.com/oppia/oppia/wiki/Oppia%27s-Mission">Oppia’s mission</a> and seeing if there is a natural way to tie your idea to the Oppia project’s goals, otherwise it might not be a good fit at this time.</p>
+<p>This year, the Oppia team is offering projects in four categories: Full-stack, Backend, Frontend and Android. Some of the project ideas are annotated with notes and suggestions from the mentors, but please bear in mind that the main purpose of these notes is simply to suggest ideas or possible starting points; they aren’t meant to be prescriptive. You’d also be welcome to include discussions of other relevant aspects (that aren’t mentioned in the notes) in your proposal. Also, please note that the suggested milestones are only suggestions. You are welcome to divide up the project in an appropriate way based on how you plan to approach it, as long as each milestone has a concrete deliverable and the timeline makes sense. For more information, see: <a class="reference external" href="#tips-for-writing-a-good-project-plan">Tips for writing a good project plan</a>.</p>
+<section id="full-stack-projects">
+<h3>Full-stack Projects<a class="headerlink" href="#full-stack-projects" title="Permalink to this headline"></a></h3>
+<p>1.1. <a class="reference external" href="#11-fix-exploration-saving-flows">Fix Exploration Saving Flows</a></p>
+<p>1.2. <a class="reference external" href="#12-generate-images-for-latex-expressions">Generate Images for LaTeX expressions</a></p>
+<p>1.3. <a class="reference external" href="#13-bulk-upload-of-voiceovers">Bulk Upload of Voiceovers</a></p>
+<p>1.4. <a class="reference external" href="#14-add-an-svg-diagram-editor-to-the-rte">Add an SVG Diagram Editor to the RTE</a></p>
+<p>1.5. <strong>[WITHDRAWN]</strong> ~~<a class="reference external" href="#15-provide-an-easy-lightweight-way-for-students-to-log-in-to-save-progress">Provide an easy, lightweight way for students to log in to save progress</a>~~</p>
+<p>1.6. <a class="reference external" href="#16-improvements-to-textclassifier-for-ml-based-responses-to-student-inputs">Improvements to TextClassifier for ML based response to student inputs</a></p>
+<p>1.7. <a class="reference external" href="#17-image-contributions">Image contributions</a></p>
+</section>
+<section id="frontend-projects">
+<h3>Frontend Projects<a class="headerlink" href="#frontend-projects" title="Permalink to this headline"></a></h3>
+<p>2.1. <a class="reference external" href="#21-editor-page-redesigns">Editor Page Redesigns</a></p>
+<p>2.2. <a class="reference external" href="#22-solve-all-typescript-and-webpack-issues-in-the-codebase">Solve all typescript and webpack issues in the codebase</a></p>
+<p>2.3. <a class="reference external" href="#23-frontend-testing-of-controllers-and-directives">Frontend testing of controllers and directives</a></p>
+<p>2.4. <a class="reference external" href="#24-ensure-that-oppia-is-fully-accessible">Ensure that Oppia is fully accessible</a></p>
+</section>
+<section id="backend-projects">
+<h3>Backend Projects<a class="headerlink" href="#backend-projects" title="Permalink to this headline"></a></h3>
+<p>3.1. <a class="reference external" href="#31-simplify-the-oppia-build-process">Simplify the Oppia build process</a></p>
+<p>3.2. <a class="reference external" href="#32-validate-data-invariants-between-storage-models">Validate data invariants between storage models</a></p>
+<p>3.3. <a class="reference external" href="#33-fix-the-linter-and-implement-all-lint-checks">Fix the linter and implement all lint checks</a></p>
+<p>3.4. <a class="reference external" href="#34-make-oppiabot-more-useful">Make Oppiabot more useful</a></p>
+</section>
+<section id="android-projects">
+<h3>Android Projects<a class="headerlink" href="#android-projects" title="Permalink to this headline"></a></h3>
+<p>4.1. <a class="reference external" href="#41-support-tablet-interfaces">Support tablet interfaces</a></p>
+<p>4.2. <a class="reference external" href="#42-analytics-support">Analytics Support</a></p>
+<p>4.3. <a class="reference external" href="#43-additional-interaction-types">Additional interaction types</a></p>
+</section>
+</section>
+<section id="id1">
+<h2>Full-stack Projects<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<section id="fix-exploration-saving-flows">
+<h3>1.1. Fix Exploration Saving Flows<a class="headerlink" href="#fix-exploration-saving-flows" title="Permalink to this headline"></a></h3>
+<p>There are several serious issues with current saving/migration workflows in the exploration editor that can occasionally cause loss of work. In particular:</p>
+<ul class="simple">
+<li><p>When an exploration is updated, any existing suggestions in the feedback tab should be updated accordingly. Currently, such suggestions are not updated, resulting in a version mismatch and a loss of work when the exploration creator subsequently tries to apply the suggestion.</p></li>
+<li><p>When changes cannot be saved to an exploration, a “lost changes” modal pops up so that the creator can make a copy of their edits and then reapply them. However, the code for this modal is not robust, and in particular it does not take into account draft changelists that were stored in an older format. Thus, when it tries to display such drafts, it breaks and ends up not showing anything.</p></li>
+<li><p>Each model type (topic, story, exploration, etc.) currently has its own migration system, and all these systems are similar. We would like to consolidate this by having the migration functionality come “out of the box” when creating a new model type. This involves implementing a generalized migration system for all model types, and moving the migration methods to their own files.</p></li>
+<li><p>It’s currently hard to tell the difference between a commit to an exploration that is a small typo fix, or a large content change. We would like to add support for creators to indicate whether changes to explorations are major/minor, in order to provide signal to inform Android app users when they might want to update their lessons.</p></li>
+<li><p>It is difficult to change an interaction into a slightly different one (e.g. from text input to number-with-input) without losing all the associated responses, hints and solutions. It would be nice to declare a suitable transformation that allows this data to be carried over from one interaction type to a closely-related one, and to auto-migrate as much of the responses as possible so that the creator does not lose their work.</p></li>
+</ul>
+<p>The aim of this project is to fix any three of these issues.</p>
+<p><strong>Team</strong>: Learner and Creator Experience</p>
+<p><strong>Potential Mentors</strong>: &#64;seanlip (primary), &#64;kevintab95, &#64;aks681</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy debugging and tracing through Python and JavaScript code to find out how something works</p></li>
+<li><p>Are familiar with the flow of logic between the Oppia backend and frontend</p></li>
+<li><p>Have good analytical and technical design skills</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<p>Choose three of the issues above, and fix them. Fixing each issue counts as a single milestone.</p>
+<p><strong>Notes</strong></p>
+<p>Your proposal should include clear explanations for how you plan to solve each of the problems you decide to tackle. (This may entail repeating the sections suggested in the proposal template three times, since this GSoC project is essentially made up of three separate mini-projects.)</p>
+</section>
+<section id="generate-images-for-latex-expressions">
+<h3>1.2. Generate images for LaTeX expressions<a class="headerlink" href="#generate-images-for-latex-expressions" title="Permalink to this headline"></a></h3>
+<p>This project aims to introduce SVG rendering for all LaTeX expressions in explorations, so that MathJax can be removed as a dependency from the learner pages (which has the nice side effect of making the explorations load faster).</p>
+<p><strong>Team</strong>: Learner and Creator Experience</p>
+<p><strong>Potential Mentors</strong>: &#64;kevintab95 (primary), &#64;aks681</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy full-stack development (Python and Angular).</p></li>
+<li><p>Have good technical design skills.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Extend the current “math expression” rich-text editor component to include an SVG field. The image for this field should be auto-generated for newly-created math expressions.</p></li>
+<li><p>Migrate all existing expressions on the server to populate the SVG field, and validate that all SVG fields are populated.</p></li>
+<li><p>Use the SVG image instead of the LaTeX when showing the formula to the user. Remove MathJax libraries from the frontend pages.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>The proposal should explain the convention for how the SVG files will be stored. (The rich-text editor component would only include a reference that can be used to compute the URL at which to retrieve the image.) Note that there is already a system for storing images in explorations, and we recommend reading the code to understand how it works so that you can implement something similar here.</p></li>
+<li><p>Proposals should include a clear explanation of how to carry out the migration procedure, as well as how to carry out an audit in order to ensure that the procedure has been performed correctly.</p></li>
+</ul>
+</section>
+<section id="bulk-upload-of-voiceovers">
+<h3>1.3. Bulk Upload of Voiceovers<a class="headerlink" href="#bulk-upload-of-voiceovers" title="Permalink to this headline"></a></h3>
+<p>Voiceover recording is an important feature for making lessons accessible in more than one language. As one of the most used features for creators, there are 2 ways voiceovers can be added to the platform: recording and uploading files.</p>
+<p>Recently there was a concern raised with the workflow for uploading files. The current workflow that exists for uploads is to update one section of the lesson at a time, which is quite time-consuming. The main aim of this project is to address this by providing voice artists and creators the ability to bulk upload files and give them improved control of assigning the individual audio files to desired sections of the lesson. This will streamline the process and reduce the time needed for adding voiceovers to the lessons.</p>
+<p><strong>Team</strong>: Audio and Translations</p>
+<p><strong>Potential Mentors</strong>: &#64;mzaman07 (primary), &#64;DubeySandeep</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy designing UI and care about UX.</p></li>
+<li><p>Want to expand on your frontend development skills (Angular).</p></li>
+<li><p>Have strong analytical and technical design skills.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Implement a bulk upload function for audio files. Create a form that will take the resulting file upload(s). Cache all the files in the browser. Provide a way for the user to empty/refresh the cache.</p></li>
+<li><p>Implement functionality that will allow the user to see all the cached files, play them as a preview, and assign files (or selections of files) to a lesson card. Ensure that the whole file upload process doesn’t require refreshing the page, and is efficient in terms of network performance. Get confirmation from voiceover artists that the implemented workflow is a significant improvement over the previous one.</p></li>
+<li><p>Apply minor cosmetic indicators to show that the file has been uploaded to Oppia. Display its byte size, duration, and mime type. If certain browser(s) have niche constraints, indicate that to the user.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>The main goal of this project is to improve the workflow for the voiceover artists. This requires careful consideration towards figuring out the correct UX design for the voiceover flow, so please make sure that you think carefully about the design and make it as intuitive as possible. Remember that voiceover artists will be using this flow a lot (there are perhaps 150 audio clips per exploration, typically), so it should not be cumbersome. The proposal should clearly explain the design and how it improves the experience.</p></li>
+<li><p>You may need to do some research on the constraints of saving raw audio file data on different browsers. Each browser may have different constraints.</p></li>
+</ul>
+</section>
+<section id="add-an-svg-diagram-editor-to-the-rte">
+<h3>1.4. Add an SVG Diagram Editor to the RTE<a class="headerlink" href="#add-an-svg-diagram-editor-to-the-rte" title="Permalink to this headline"></a></h3>
+<p>The aim of this project is to introduce an SVG diagram editor in the rich-text editor (RTE). Creators can use this to create custom diagrams for their lessons in the browser itself. The images produced would then be stored as SVGs for use in the lesson.</p>
+<p><strong>Team</strong>: Learner and Creator Experience</p>
+<p><strong>Potential Mentors</strong>: &#64;kevintab95 (primary), &#64;aks681</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy debugging and tracing JavaScript code to find out how something works</p></li>
+<li><p>Are familiar with the flow of logic between the Oppia backend and frontend</p></li>
+<li><p>Have good analytical and technical design skills</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ul class="simple">
+<li><p>Milestone 1: Complete the backend changes for introducing literallycanvas, svgedit or a similar editor to the RTE framework (eg. saving/retrieving SVG data).</p></li>
+<li><p>Milestone 2: Complete the frontend changes for the SVG editor.</p></li>
+<li><p>Milestone 3: Add at least 2 custom controls for standard types of diagrams (such as geometrical shapes for mathematics lessons) to the SVG editor. These should build on the existing editor and show that the editor can be customized easily to include new types of diagrams for specific types of lessons.</p></li>
+</ul>
+<p><strong>Notes</strong></p>
+<p>Your proposal should contain a detailed plan for each of the milestones. It should also include mocks for how the SVG editor would look like once it has been integrated into the RTE.</p>
+</section>
+<section id="provide-an-easy-lightweight-way-for-students-to-log-in-to-save-progress">
+<h3>1.5. Provide an easy, lightweight way for students to log in to save progress<a class="headerlink" href="#provide-an-easy-lightweight-way-for-students-to-log-in-to-save-progress" title="Permalink to this headline"></a></h3>
+<p><strong>(Update 19 Mar 2020) We are withdrawing this project because we’ve learned that having two login systems is likely to cause user confusion. Sorry for the inconvenience!</strong></p>
+<p>Currently, the only way for a user to save their progress in an exploration is to log in with a Google account, which not every person may have or know how to create. The aim of this project is to create a lightweight and intuitive way to signup and login without having a google account, by just asking the user for a username, password, and optional email / mobile number, and then allowing them to login using these. Here, the username, email and mobile number (if provided) should be validated to be unique. (If a mobile number / email is provided, this can subsequently be used for profile recovery if the password is lost.)</p>
+<p>This project also aims to add functionality in the corresponding user’s profile page to support the upgrading of “lightweight accounts” into “full accounts” later on, if the user wants to link a google account to it and gain, e.g. editing privileges.</p>
+<p><strong>Team</strong>: Learner and Creator Experience</p>
+<p><strong>Potential Mentors</strong>: &#64;aks681 (primary), &#64;seanlip</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Are familiar with the flow of logic between the Oppia backend and frontend</p></li>
+<li><p>Are interested in creating an end-to-end user flow</p></li>
+<li><p>Have good technical design skills</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Finish the backend for signup/login using lightweight accounts, and implement the migration to add the mobile number field to the user model. Also, make sure that the email and mobile number fields are optional in the user model.</p></li>
+<li><p>Create the signup and login page frontend that communicates with the backend that was created in the previous milestone.</p></li>
+<li><p>Integrate these pages into the main website by editing the Signup button on the top right to show 2 options when clicked. Make sure login with redirect URL works as well. Also, write e2e tests for this functionality.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>The proposal should discuss the following design decision: is it better to build profiles on top of the existing UserModels or should there be a separate LightweightUserModel created instead? It is useful, when making this decision, to think through all the possible workflows (e.g. if we decide to use two separate models, would the lightweight model get deleted when linked to an account?).</p></li>
+</ul>
+</section>
+<section id="improvements-to-textclassifier-for-ml-based-responses-to-student-inputs">
+<h3>1.6. Improvements to TextClassifier for ML-based responses to student inputs<a class="headerlink" href="#improvements-to-textclassifier-for-ml-based-responses-to-student-inputs" title="Permalink to this headline"></a></h3>
+<p>Oppia provides several ways to interact with students when they are going through an exploration. Text input interaction is one such interaction, in which students provide their answer as a text string. Currently, Oppia uses “hard” rules such as ‘answer contains xyz’, ‘answer starts with abc’ etc… to figure out proper response to student inputs. Providing a proper response is very important, because an improper response may confuse students and lead to them leaving the lesson. These rules are created by the creators of the exploration. However, it is hard for them to enumerate all possible conditions.</p>
+<p>Recent advances in machine learning / deep learning could prove to be very useful here. The creator simply labels student inputs with proper responses which could be treated as training data in order to train an ML model. The goal of this project is to research and implement a machine learning model which can be used to provide appropriate responses to textual user inputs. This is a classification problem: based on training data, the model should predict the appropriate class which would map to a response that should be used by Oppia for the given answer.</p>
+<p>Currently, Oppia has already implemented a naive version of such a classifier, which uses a Bag-of-Words and SVM model. The aim is to use techniques from recent advances in distributed representational learning in order to improve upon the current model.</p>
+<p><strong>Team</strong>: Machine learning</p>
+<p><strong>Potential Mentors</strong>: &#64;prasanna08 (primary)</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Are excited about recent research in the NLP community (especially deep learning based models such as BERT, GPT).</p></li>
+<li><p>Enjoy reading deep learning research papers, critically analysing them, and implementing state-of-the-art models for your own experiments.</p></li>
+<li><p>Enjoy applying cutting-edge ML techniques to real-world, production environment specifications.</p></li>
+<li><p>Have a fair amount of experience with implementing models in Python (note that Oppia currently uses Python 2.7).</p></li>
+<li><p>Have experience coding in AngularJS or Angular.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p><strong>Literature review</strong>: Compile relevant research papers. Explore their methodologies, and implement them (possibly adapting code published by researchers), then test your implementations on the proposed datasets and compare the results with 1-2 baselines. Provide working implementations and a report of the results for at least the initially-proposed idea and the baselines. Submit a list of at least 4 ideas that you would like to try in the next month.</p></li>
+<li><p><strong>Experiment and build a classifier</strong>: Experiment with the ideas proposed in the previous milestone, and provide a report on the results, including a clear specification of the model you are going to implement in Oppia, as well as a full list of changes that are required to implement the classifier using the current ML pipeline. The performance of the final classifier must be adequate (compared to state-of-the-art performance on the proposed datasets), and it must satisfy the constraints in the “notes” section below. You will need to provide sufficient evidence to show that the classifier meets these criteria.</p></li>
+<li><p><strong>Implement and test</strong>: Implement the final classifier in the Oppia code base, and create a dummy exploration on which it can be tested. Note that the responses that end up being given by the classifier in manual testing are the primary success criterion here (rather than the reports that were created in earlier milestones). Also, depending upon the model you propose, you might need to make some changes to the existing ML pipeline.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<p>The ML pipeline implemented in Oppia performs the classification in the browser of a learner’s machine. The models are trained by a backend server called “Oppia-ML”, and then they are transferred to the frontend where prediction is carried out in the browser in JavaScript. Hence, there are several constraints on the model which need to be adhered to:</p>
+<ol class="simple">
+<li><p>The model must be small, i.e., it should fit within a few MBs.</p></li>
+<li><p>Inference must be fast on a machine with nominal specifications (4GB RAM, i3 process, no GPUs).</p></li>
+<li><p>It must be possible to implement the inference code in JavaScript in the frontend. The backend could be anything Python-based (e.g. tensorflow, pytorch), but the inference code has to be implemented in JavaScript.</p></li>
+<li><p>The model must have reasonably good performance (compared to state-of-the-art benchmarks) on natural language inference datasets (e.g. SNLI or equivalent).</p></li>
+</ol>
+<p>The student proposal should focus on the following points. (<strong>Important:</strong> While preparing your proposal, please use <a class="reference external" href="https://docs.google.com/document/d/1RiOlOKcztnjv69wyhUI-n17lmSN81Y2jKLpnna39bPs/edit?usp=sharing">this</a> template instead of the default one for the “Project Details” section of the proposal.)</p>
+<ul class="simple">
+<li><p><strong>Selection of promising techniques</strong>. Start by providing a list of at least 3 deep learning / NLP / ML techniques that could potentially be used to address this problem. From this list, pick the most promising options and explain why you think they are the most promising; also, explain why the rejected options are not worth pursuing. Develop the promising options into initial ideas that (i) can be implemented and tested quickly and (ii) could form baselines for further experiments that you will do during GSoC. (These ideas do not need to be complex.)</p></li>
+<li><p><strong>Baselines</strong>. Provide baseline models that you are going to compare against, and specify which metrics you will be using for comparison. Student should propose an ambitious baseline, rather than something simple such as “SVM with tf-idf”. (It may happen that, at the end of your experiments, your baseline turns out to perform the best; that is OK.)</p></li>
+<li><p><strong>Datasets</strong>. Specify the datasets on which the classifier will be tested. One such example is SNLI, but you can use any dataset you wish, as long as you give an explanation on why that particular dataset would be a good choice.</p></li>
+<li><p>Prior experience. Provide details of any previous experience you may have with researching such models.</p></li>
+</ul>
+</section>
+<section id="image-contributions">
+<h3>1.7. Image contributions<a class="headerlink" href="#image-contributions" title="Permalink to this headline"></a></h3>
+<p>Art and graphics form an integral part of most explorations on Oppia, and are especially important for making lessons learner-friendly and communicating key concepts to learners, especially since good graphics can transcend language barriers. However, one major blocker when creating lessons is the lack of an easy way for designers/artists to add images to lessons. We would like to enable artists to contribute art to lessons as easily as developers can contribute code to GitHub repositories.</p>
+<p><strong>Team</strong>: Contributor Experience team</p>
+<p><strong>Potential Mentors</strong>: &#64;DubeySandeep (primary), &#64;sagangwee</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Are familiar with the flow of logic between the Oppia backend and frontend</p></li>
+<li><p>Are familiar with the state migration functionality</p></li>
+<li><p>Are familiar with the rich-text editor workflow</p></li>
+<li><p>Have good technical design skills</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Build a separate section for images in different backend entities. Write migrations (if required) to populate these sections. Allow owners and editors of explorations to add placeholder images specifying what art is needed there.</p></li>
+<li><p>Add new models for opportunities to contribute art to explorations, and present the available opportunities in the Community Dashboard page.</p></li>
+<li><p>Allow contributors to submit a suggestion for available opportunities, and reviewers to review these suggestions.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<p>A few things should be considered while writing the design doc:</p>
+<ul class="simple">
+<li><p>There should be a separate section in the state object which should have reference to images. (Similar to RecordedVoiceover and WrittenTranslation.) This will help establish a specific section in the backend objects which contributors can edit.</p></li>
+<li><p>While designing the workflow for the rich-text editor, please note that this editor is used in several different places (stories, topics, etc.). Currently, we aren’t implementing the image suggestion workflow for those other places, but we might do so in the future. So, when designing the infrastructure for this project, it would be a good idea to think about how the functionality (such as any necessary changes to the RTE) can be reused in other places.</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2>Frontend Projects<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<section id="editor-page-redesigns">
+<h3>2.1. Editor Page Redesigns<a class="headerlink" href="#editor-page-redesigns" title="Permalink to this headline"></a></h3>
+<p>The aim of this project is to redesign the topic, exploration, story and skill editor pages so they are more visually appealing and work better on mobile, while retaining all of their features. Some initial mocks that we created visualizing these changes can be found here (<a class="reference external" href="https://xd.adobe.com/view/3940de63-c416-4008-4b32-a73dc43fd7a1-4f71/">desktop</a>, <a class="reference external" href="https://xd.adobe.com/view/84eb3b8d-3d19-4971-7e79-9ff756b25c83-f2da/grid">mobile</a>); please note that these mocks will be updated over time as we finalize the design. (Feel free to suggest changes to the mocks if you think that would enhance the creator experience, or ask any questions on the oppia-gsoc-discuss&#64; mailing list.)</p>
+<p><strong>Team</strong>: Learner and Creator Experience</p>
+<p><strong>Potential Mentors</strong>: &#64;aks681 (primary), &#64;kevintab95</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Are interested in UI/UX design</p></li>
+<li><p>Enjoy debugging and tracing JavaScript (and Typescript) code to find out how something works</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Complete the topic and skill editor pages redesign.</p></li>
+<li><p>Complete the story editor page redesign.</p></li>
+<li><p>Complete the exploration editor page redesign.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>The mocks for these editor pages will be provided. The goal of this project is to implement them.</p></li>
+<li><p>The proposal should explain the files that would be changed and briefly explain the nature of the changes to be made.</p></li>
+<li><p>The proposal review will be based on whether the student understands the codebase well enough, as well as past PRs related to the editor (or other user-facing) pages, with emphasis on attention to detail in the UI.</p></li>
+</ul>
+</section>
+<section id="solve-all-typescript-and-webpack-issues-in-the-codebase">
+<h3>2.2. Solve all typescript and webpack issues in the codebase<a class="headerlink" href="#solve-all-typescript-and-webpack-issues-in-the-codebase" title="Permalink to this headline"></a></h3>
+<p>The aim of this project is to complete all remaining typescript and webpack tasks in order to ensure a smooth development workflow. In particular:</p>
+<ul class="simple">
+<li><p>Remove all custom typings for typescript</p></li>
+<li><p>Remove “any” types for third-party libraries</p></li>
+<li><p>Remove all “any” types from the codebase</p></li>
+<li><p>Replace third_party and remaining <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> imports with webpack</p></li>
+<li><p>Reduce the overall time for webpack compilation (under 8s for develop and 60s for production builds)</p></li>
+<li><p>Add documentation on all typescript and webpack errors and solutions on how to fix them.</p></li>
+</ul>
+<p><strong>Related issues</strong>: 7601, 7434, 6431, 6351</p>
+<p><strong>Team</strong>: Dev Workflow</p>
+<p><strong>Potential Mentors</strong>: &#64;vojtechjelinek (primary), &#64;ankita240796</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Want to work with TypeScript and Webpack.</p></li>
+<li><p>Are fine with working mainly on the build process and not the final product.</p></li>
+<li><p>Enjoy making processes simpler and easier to understand.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Remove all custom typings for typescript. “Custom typings” denotes the extra typing files that we have for jQuery, HTML element and scope defs. We have custom type definitions for third party libraries <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/typings">here</a>. We need to remove these and add our own typedefs for third party libraries instead of defining them as “any”.</p></li>
+<li><p>Remove “any” types for third-party libraries. Remove all “any” types from the codebase. (Here, “any” types denotes all the declarations which do not have a type specified, or where the type specified is <code class="docutils literal notranslate"><span class="pre">any</span></code>.)</p></li>
+<li><p>Replace third_party and remaining <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tags with webpack. Reduce the overall time for webpack compilation. Add documentation on all typescript and webpack errors, and solutions on how to fix them.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>This project should simplify the TypeScript and Webpack part of the build process as much as possible for the ordinary developer. Always keep this aim in mind.</p></li>
+</ul>
+</section>
+<section id="frontend-testing-of-controllers-and-directives">
+<h3>2.3. Frontend testing of controllers and directives<a class="headerlink" href="#frontend-testing-of-controllers-and-directives" title="Permalink to this headline"></a></h3>
+<p>This project aims at improving the frontend test coverage of controllers and directives to reach 100%.</p>
+<p><strong>Team</strong>: QA Team</p>
+<p><strong>Potential Mentors</strong>: &#64;nithusha21 (primary)</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Are interested in testing (since most of the project would involve writing unit tests).</p></li>
+<li><p>Have the ability to read through someone else’s code, in order to understand what needs to be tested. (This project will involve reading through a lot of Oppia’s source code.)</p></li>
+<li><p>Like to handle technical challenges! It is very likely that you’ll run into problems while trying to test the code as is, and you will almost certainly need to research and come up with solutions to test certain constructs.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Develop a pattern for testing controllers and directives and implement it for about 20% of the files.</p></li>
+<li><p>Fully cover 60% of the controllers and directives.</p></li>
+<li><p>Fully cover 100% of the controllers and directives.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ol class="simple">
+<li><p>Currently we don’t have a way to test controllers and directives in the codebase. The applicant would need to research suggested methods and pick one such strategy to implement the tests in Oppia (this should be a part of the proposal). A proof of concept pull request would be great.</p></li>
+<li><p>Please checkout our wiki page for best practices while writing frontend tests. It outlines standard guidelines which need to be followed while writing frontend tests.</p></li>
+<li><p>The project would involve applying the testing template to a large number of controllers and directives. The proposals must contain a concrete plan (preferably as a table) which outlines which file will be worked out at what time.</p></li>
+</ol>
+</section>
+<section id="ensure-that-oppia-is-fully-accessible">
+<h3>2.4. Ensure that Oppia is Fully Accessible<a class="headerlink" href="#ensure-that-oppia-is-fully-accessible" title="Permalink to this headline"></a></h3>
+<p>Ensure that the entire Oppia website is fully accessible to screen readers (i.e., all pages should score 100% on the Chrome browser’s inbuilt Accessibility audit tool), and that automated tests are put in place to ensure this is the case going forward.</p>
+<p><strong>Team</strong>: Learner and Creator Experience</p>
+<p><strong>Potential Mentors</strong>: &#64;kevintab95 (primary), &#64;aks681</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy debugging and tracing JavaScript code to find out how something works.</p></li>
+<li><p>Have good technical design skills.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ul class="simple">
+<li><p>Milestone 1:</p>
+<ul>
+<li><p>The following pages should score 100% in both Chrome and manual accessibility audits:</p>
+<ul>
+<li><p>Learner dashboard</p></li>
+<li><p>Creator dashboard</p></li>
+<li><p>Topics and Skills dashboard</p></li>
+<li><p>Classroom page</p></li>
+<li><p>Exploration editor page</p></li>
+</ul>
+</li>
+<li><p>Ensure that automated tests are put in place (eg. <a class="reference external" href="https://github.com/dequelabs/axe-core">axe-core</a>, <a class="reference external" href="https://github.com/angular/protractor-accessibility-plugin/">protractor-accessiblity-plugin</a>, <a class="reference external" href="https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md">lighthouse CI</a>) to ensure that this score is maintained, going forward.</p></li>
+</ul>
+</li>
+<li><p>Milestone 2:</p>
+<ul>
+<li><p>The following pages should score 100% in the accessibility audit:</p>
+<ul>
+<li><p>Editor page (stats, history, feedback)</p></li>
+<li><p>Topics editor</p></li>
+<li><p>Skills editor</p></li>
+</ul>
+</li>
+<li><p>Complete the “Keyboard navigation” feature (eg. <a class="reference external" href="https://www.facebook.com/help/156151771119453">Facebook’s shortcuts</a>):</p>
+<ul>
+<li><p>Keyboard shortcuts for navigation across Oppia (eg. moving to a particular section of the same page, navigating to a new page).</p></li>
+<li><p>Must include an easy to access “quick reference”.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Milestone 3:</p>
+<ul>
+<li><p>The following pages should score 100% in the accessibility audit:</p>
+<ul>
+<li><p>Story editor</p></li>
+<li><p>Preferences</p></li>
+<li><p>Profile</p></li>
+<li><p>Library</p></li>
+<li><p>Splash and remaining pages.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Notes</strong>:</p>
+<ul class="simple">
+<li><p>A good proposal would evaluate how accessible Oppia is currently and describe clearly how it can be improved.</p></li>
+<li><p>Evaluate relevant automated tools that can be used and how they can be introduced into the project.</p></li>
+<li><p>Explain in detail how the “Keyboard navigation” feature will be introduced.</p></li>
+</ul>
+</section>
+</section>
+<section id="id3">
+<h2>Backend Projects<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<section id="simplify-the-oppia-build-process">
+<h3>3.1. Simplify the Oppia build process<a class="headerlink" href="#simplify-the-oppia-build-process" title="Permalink to this headline"></a></h3>
+<p>The build process that Oppia uses to prepare the files for reliably serving the site was changed quite a lot in the last few months: we introduced webpack, changed our build scripts from bash to Python, and also upgraded some libraries. Since a lot of these changes affected the build process and sometimes weren’t accounted for, the build process is now clunky and quite hard to understand.</p>
+<p>This project’s aim is to simplify the build process, making it easy for developers to work with it and unifying the multiple entry points that need to build some files (backend tests, e2e tests, frontend tests, local dev server) as much as possible. After the project is complete, all the build-related stuff should be handled exclusively with either Python or webpack.</p>
+<p><strong>Related issues</strong>: 7061, 5676, 6369, 6866, 7601, 6988</p>
+<p><strong>Team</strong>: Speed Team</p>
+<p><strong>Potential Mentors</strong>: &#64;vojtechjelinek (primary)</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Want to critically analyze and then propose a new architecture for our build process.</p></li>
+<li><p>Enjoy refactoring previously-written code.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Remove gulp build (#5676). Simplify directory structure (#6369). Replace Java yuicompressor minification of CSS by some npm or webpack alternative.</p></li>
+<li><p>Refactor the production build process to only move and build the files that are actually needed.</p></li>
+<li><p>Tidy up various scripts that developers use so that they’re more self-explaining. Currently, there’s usually one big (hundreds of lines) main method that does everything; this should be replaced with multiple smaller methods. Document the updated build process either in a separate document, or together with the code.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<p>While writing your proposal, please make sure to keep in mind that a key aim of this project is to simplify the Python part of the build process as much as possible for the ordinary developer. Proposals should demonstrate an understanding of the current build process and explain clearly what the eventual build process (after the refactor) should look like. Clarity of thought and expression is important here.</p>
+</section>
+<section id="validate-data-invariants-between-storage-models">
+<h3>3.2. Validate data invariants between storage models<a class="headerlink" href="#validate-data-invariants-between-storage-models" title="Permalink to this headline"></a></h3>
+<p>The storage models for Oppia’s datastore have audit jobs implemented in core/domain/prod_validation_jobs_one_off.py. Run the audit jobs for all storage models and perform a migration to bring them to a valid state. Add tests for all these migration jobs to ensure that they work correctly. Update the existing models to ensure that they remain in a valid state, and complete all <a class="reference external" href="https://github.com/oppia/oppia/issues/8510">remaining TODOs</a> in the storage models.</p>
+<p><strong>Team</strong>: Server Team</p>
+<p><strong>Potential Mentors</strong>: &#64;ankita240796 (primary), &#64;bansalnitish</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy debugging and fixing validation issues.</p></li>
+<li><p>Enjoy analyzing errors and finding their root cause, as well as fixing the pipeline by eliminating the sources of error.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Select half of the storage models in the codebase. Run the validation jobs for them, diagnose the errors, find ways to fix them, and write a migration job to bring all the models to a valid state (as well as make code modifications to ensure that they continue to be in a valid state henceforth).</p></li>
+<li><p>Do the same thing as in Milestone 1 for the rest of the model classes in the codebase.</p></li>
+<li><p>Complete all remaining TODOs defined in core/storage/. See <a class="reference external" href="https://github.com/oppia/oppia/issues/8510">this issue</a> for details.</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<p>This project follows the following pipeline for a model. This is explained with an example for <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/storage/exploration/gae_models.py#L43">ExplorationModel</a>:</p>
+<ul class="simple">
+<li><p>Understand our <a class="reference external" href="https://github.com/oppia/oppia/wiki/Release-Schedule">release schedule</a> and the way to <a class="reference external" href="https://github.com/oppia/oppia/wiki/Running-jobs-in-production">make a request to run a job</a>.</p></li>
+<li><p>Run the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/domain/prod_validation_jobs_one_off.py#L5199">validation job for ExplorationModel</a> on a backup prod server (you can ask an admin to help you with this).</p></li>
+<li><p>If the job fails, collect all the cases which are produced as job output, and analyze the root cause for these invalid cases. Write a migration job to fix these issues and run it on the backup prod server. Also, fix the code to ensure that such cases do not occur in future. Repeat this step until the validation job passes.</p></li>
+</ul>
+<p>We recommend that you try to run a complete pipeline for at least one model before GSoC, and include, in your proposal, the details on how the pipeline was implemented and run.</p>
+</section>
+<section id="fix-the-linter-and-implement-all-lint-checks">
+<h3>3.3. Fix the linter and implement all lint checks<a class="headerlink" href="#fix-the-linter-and-implement-all-lint-checks" title="Permalink to this headline"></a></h3>
+<p>The Oppia development workflow uses lint checks to help detect style errors before they reach the review phase. This project aims to implement the remaining lint checks in the codebase and make the linting process more robust by adding tests (since we’ve had some cases in the past where the linter happily let everything through, and this wasn’t detected until several months later!)</p>
+<p><strong>Team</strong>: Development Workflow</p>
+<p><strong>Potential Mentors</strong>: &#64;bansalnitish (primary), &#64;ankita240796</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy debugging and fixing issues</p></li>
+<li><p>Enjoy refactoring a process and increasing its efficiency</p></li>
+<li><p>Have a good sense for how the linting process works for different programming languages</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Refactor the linter to make it more robust, and implement tests for it. Specifically:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Refactor it to split it up into two (if this makes sense).</p></li>
+<li><p>Make the lint output cleaner and less verbose.</p></li>
+<li><p>Handle errors correctly.</p></li>
+<li><p>Make the code simpler.</p></li>
+<li><p>Make sure that verbose mode does the right thing.</p></li>
+</ul>
+<p>2+3. Writing new lint checks. See the master list: <a class="reference external" href="https://github.com/oppia/oppia/issues/8423">#8423</a></p>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>The proposal should include a detailed plan in the format of a table which mentions which new lint checks will be added along with the timeline. It should include code samples for implementing at least 2 new checks (if you like, these can be done by linking to PRs that you have previously submitted to the codebase).</p></li>
+<li><p>Milestones 2 and 3 should be separately defined by the student in their proposal.</p></li>
+<li><p>The proposal should also include implementation details for the refactor process, as well as a clear description of the “end state” and an explanation of how this refactoring will improve the linter.</p></li>
+<li><p>Mentors will examine proposals for this project to see whether the applicant has a good understanding of the existing linting process, as well as organizational clarity (i.e. do they have a good understanding of the “big picture” and a clear vision for how these and future lint checks should be implemented so as to fit into a standard organizational structure).</p></li>
+</ul>
+</section>
+<section id="make-oppiabot-more-useful">
+<h3>3.4. Make Oppiabot more useful<a class="headerlink" href="#make-oppiabot-more-useful" title="Permalink to this headline"></a></h3>
+<p>This project aims to add more functionality to <a class="reference external" href="https://github.com/oppia/oppiabot">Oppiabot</a> to make the overall developer workflow smoother. The doc with the required functionality is <a class="reference external" href="https://docs.google.com/spreadsheets/d/1hFSfl6eQs14m-eLPDCTfwWAZazmFUyTbHwDox15qoW8/edit?usp=sharing">here</a>.</p>
+<p><strong>Team</strong>: Development workflow</p>
+<p><strong>Potential Mentors</strong>: &#64;ankita240796 (primary), &#64;bansalnitish</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy automating stuff</p></li>
+<li><p>Enjoy adding new features to an existing framework</p></li>
+<li><p>Have a good understanding of GitHub APIs</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<p>All the rows in the doc mentioned in the project description above should be completed by the end of the 3 GSoC milestones. It is up to the student how to split this work between the 3 milestones, though we recommend grouping related functionality into the same milestone.</p>
+<p><strong>Notes</strong></p>
+<p>We recommend implementing at least two of the rows mentioned in the <a class="reference external" href="https://docs.google.com/spreadsheets/d/1hFSfl6eQs14m-eLPDCTfwWAZazmFUyTbHwDox15qoW8/edit?usp=sharing">functionalities doc</a> and explaining your implementation in the proposal. The proposal should also include details of how you would implement the remaining functionality, along with mocks to illustrate what Oppiabot does in the various situations that occur.</p>
+<p>Use the following <a class="reference external" href="https://docs.google.com/document/d/1DdQVdTkGShIbqdz2TTQ9UAKJSoeJ7ut_9jnKFvXnUdc/edit?usp=sharing">technical design template</a> for describing technical design of each task mentioned in the <a class="reference external" href="https://docs.google.com/spreadsheets/d/1hFSfl6eQs14m-eLPDCTfwWAZazmFUyTbHwDox15qoW8/edit?usp=sharing">functionalities doc</a>.</p>
+</section>
+</section>
+<section id="id4">
+<h2>Android Projects<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="support-tablet-interfaces">
+<h3>4.1. Support Tablet Interfaces<a class="headerlink" href="#support-tablet-interfaces" title="Permalink to this headline"></a></h3>
+<p>Currently, the Oppia Android app is designed for Android Phones only. This design can be scaled to Android Tablets to increase the application user domain. The project also aims to add screendiff/screenshot testing to validate the UI designs so that no regressions occur.</p>
+<p><strong>Team</strong>: Android</p>
+<p><strong>Potential Mentors</strong>: &#64;rt4914 (primary), &#64;BenHenning, &#64;vinitamurthi</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy working on the user interface of the Android application (Kotlin/Java &amp; XML).</p></li>
+<li><p>Can design new screens based on existing screens in the application.</p></li>
+<li><p>Are able to use design software (such as Adobe XD) to design mocks.</p></li>
+<li><p>Have experience with writing UI-based test cases.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Introduce screen-diff/screenshot testing to the application, and write test cases to cover the current (mobile phone) UI. This framework should also be used in subsequent milestones to validate the tablet UI and ensure that no regressions occur.</p></li>
+<li><p>Create designs for all tablet screens. Implement high-fidelity code for tablet UI in the HomeFragment, Navigation Drawer and TopicTabs screens.</p></li>
+<li><p>Implement high-fidelity code for tablet UI in all remaining screens (ExplorationPlayer, QuestionPlayer, Settings, Help, Feedback, Profile, Revision and any other screens present in the application).</p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Your proposal should include the approach for screenshot testing and how the tablet layout will be introduced in the current codebase. Also, add designs/mocks for at least 3 screens from any of the following: HomeFragment, Navigation Drawer, TopicTabs, ExplorationPlayer, QuestionPlayer, Revision.</p></li>
+<li><p>It is fine to switch around the tasks in milestones 2 and 3. The above is just a rough breakdown of work items based on the assumption that the more important ones should be done first.</p></li>
+</ul>
+</section>
+<section id="analytics-support">
+<h3>4.2. Analytics Support<a class="headerlink" href="#analytics-support" title="Permalink to this headline"></a></h3>
+<p>Analytics support needs to be built in the Android app so that it is possible to reliably send usage data to a central location while ensuring that no sensitive information leaves the phone. The aim of this project is to:</p>
+<ul class="simple">
+<li><p>Collect &amp; upload crash scenarios</p></li>
+<li><p>Collect &amp; upload app health metrics (e.g. memory, CPU usage, etc.)</p></li>
+<li><p>Collect &amp; upload key usage events (e.g. activities &amp; dialogs being opened, button clicks, etc.), and ensure these can be tested</p></li>
+<li><p>Ensure logs can be uploaded offline, potentially months later for users who have infrequent internet access</p></li>
+</ul>
+<p><strong>Team</strong>: Android</p>
+<p><strong>Potential Mentors</strong>: &#64;vinitamurthi (primary), &#64;rt4914, &#64;BenHenning</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Are interested in using Firebase in an Android app.</p></li>
+<li><p>Are interested in working on system usage tracking and analytics.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Integrate with Firebase to track crashes (all crashes in the app, including ANRs), and app health metrics:</p>
+<ul class="simple">
+<li><p>App battery usage (distinguishing between foreground/background app usage isn’t necessary)</p></li>
+<li><p>App memory usage (this doesn’t need to be broken down by memory type; total_pss is sufficient)</p></li>
+<li><p>App CPU usage (this doesn’t need to be broken down by threads)</p></li>
+<li><p>App network/bandwidth usage (aggregated data is sufficient; this doesn’t need to be broken down by request)</p></li>
+<li><p>Disk usage (doesn’t need to be broken down by cache/app storage; total storage is fine. Should include APK install size, if possible)</p></li>
+<li><p>Other performance metrics are optional and should only be considered if they’re trivial to implement, otherwise they can be implemented by the team later</p></li>
+</ul>
+</li>
+<li><p>Analytics tracking with Firebase for usage events like certain activities opening, dialogs opening/closing, key buttons being pressed, expensive operations starting/finishing, and errors being detected. The dimensions for this data in Firebase should have parity with the existing dimensions we track with Google Analytics for Oppia Web (i.e. geography, device information, and language of the user). This milestone includes introducing testing infrastructure to verify that such events are logged (see the notes section below). Your project should outline a list of these events. Consider analyzing the following in the codebase in order to build this list:</p>
+<ul class="simple">
+<li><p>Each screen in the app (including both activities &amp; dialogs)</p></li>
+<li><p>Each button in the app</p></li>
+<li><p>Cases when the UI requests to load data and when that data loads/fails</p></li>
+<li><p>Other failure cases in service code (e.g. domain controllers)</p></li>
+</ul>
+</li>
+<li><p>The Oppia Android app is being designed to support users who may go months without internet connectivity. For this reason, an additional solution needs to be built to ensure all of the stats from (1) and (2) can be uploaded later after the user reconnects to the internet. It’s not expected that Firebase can solve this out of the box, and that additional work will be needed. The following should additionally be considered when outlining the work for this milestone:</p>
+<ul class="simple">
+<li><p>How should we retain performance, crash, and usage statistics for potentially months after they initially occurred &amp; upload them later?</p></li>
+<li><p>How should we ensure the timestamps on submitted data stays correct?</p></li>
+<li><p>How should we handle limited space on devices? We probably can’t retain stats in perpetuity, and therefore need to clean up old stats</p></li>
+<li><p>How do we ensure data is correctly associated with a specific user? Locally, the user’s app profile ID can be used for this purpose. Stats shouldn’t be associated with a specific user when uploaded, only with generic information about their device, geography, etc. so that these stats can be aggregated and analyzed later.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>Your proposal should include how Firebase will be introduced in the application.</p></li>
+<li><p>Your proposal should include how the team can access collected stats to create graphs to monitor app health over time.</p></li>
+<li><p>You should also focus on mentioning the approach for saving the stats/analytics/logs offline and uploading these analytics once the user is online (keep in mind that users may go weeks or months without internet connectivity).</p></li>
+<li><p>Your project should consider device constraints (such as lack of consistent internet connectivity, internet connectivity failures when uploading stats, short bursts of available time to upload stats due to the app being frequently killed by the system, battery considerations (e.g. no wakelocks), and storage consumption).</p></li>
+<li><p>Please consider how each of the stats measurements will be associated with other measurements from the same user/device/play session. App health statistics shouldn’t be associated with a user, but they do need to be tied to country/locale/device so that we can perform aggregated analyses on these stats.</p></li>
+<li><p>Milestone 2 includes introducing test infrastructure so that we can verify that specific usage events are logged at the correct time in automated tests. To keep this simple, we suggest describing in your proposal a class that provides a way to verify that a specific usage event was logged, was not logged, and logged N times. You should describe how this will be hooked up. No additional testing infrastructure work is needed beyond this.</p></li>
+</ul>
+</section>
+<section id="additional-interaction-types">
+<h3>4.3. Additional interaction types<a class="headerlink" href="#additional-interaction-types" title="Permalink to this headline"></a></h3>
+<p>Oppia Android currently includes a subset of the interactions (i.e., question types) from the web app. Some additional interactions can be implemented in the Android app, since they are likely to be useful for the mathematics lessons that will be released on it. These interactions include:</p>
+<ul class="simple">
+<li><p>Image Region Selection</p></li>
+<li><p>Ratio Input</p></li>
+<li><p>Drag and Drop Sort</p></li>
+</ul>
+<p><strong>Team</strong>: Android</p>
+<p><strong>Potential Mentors</strong>: &#64;rt4914 (primary), &#64;benhenning, &#64;vinitamurthi</p>
+<p><strong>Consider taking up this project if you…</strong></p>
+<ul class="simple">
+<li><p>Enjoy debugging and tracing through the Oppia web/backend codebase (which is written using Python and Angular).</p></li>
+<li><p>Have good analytical and technical design skills</p></li>
+<li><p>Are interested in introducing both UI and service functionality in the Android app.</p></li>
+</ul>
+<p><strong>Suggested Milestones</strong></p>
+<ol class="simple">
+<li><p>Add an interaction for Image Region Selection.</p></li>
+<li><p>Add an interaction for Ratio input. This includes changing Oppia’s web backend, too.</p></li>
+<li><p>Add an interaction for Drag and Drop Sort.</p></li>
+</ol>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>Your proposal should focus on the best approach for introducing these interactions in such a way that they can be used anywhere throughout the application easily.</p></li>
+<li><p>Going through the Oppia web codebase and knowing how the interaction has been implemented on the web can help you write a better approach for the Android app. Note that there are already quite a few examples of existing interactions in the Web codebase, and some documentation on the wiki for how to create new ones.</p></li>
+<li><p>We’re specifically looking for how the interactions will be developed in both codebases (note that some of these are already implemented in Oppia’s backend/web codebase).</p></li>
+<li><p>Introducing interactions also includes introducing support for classifying answers for each, which in turn may require additional Oppia Android/web work (see how other rule classifiers are implemented in both of these codebases). Proposals should demonstrate understanding of how interactions are structured, rendered, represented in schemas, and how they interact with the rest of the Oppia system, especially answer classification. A good understanding of this is key to coming up with a feasible plan for implementing new interactions, and porting over existing ones.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="other-useful-information">
+<h1>Other useful information<a class="headerlink" href="#other-useful-information" title="Permalink to this headline"></a></h1>
+<section id="dates-and-deadlines">
+<h2>Dates and Deadlines<a class="headerlink" href="#dates-and-deadlines" title="Permalink to this headline"></a></h2>
+<p>Noteworthy dates for 2020:</p>
+<ul class="simple">
+<li><p><strong>Jan 15 - Feb 6</strong>: Mentoring organizations apply</p></li>
+<li><p><strong>Feb 21</strong>: Mentoring organizations are announced</p></li>
+<li><p><strong>Mar 16 - Mar 31</strong>: Student application period</p></li>
+<li><p><strong>Apr 27</strong>: Accepted students are announced</p></li>
+<li><p><strong>Apr 27 - May 18</strong>: Community bonding period</p></li>
+<li><p><strong>May 18 - Aug 10</strong>: Students enjoy the summer by contributing code to their projects</p></li>
+<li><p><strong>Aug 25</strong>: GSoC officially ends</p></li>
+</ul>
+</section>
+<section id="list-of-mentors">
+<h2>List of Mentors<a class="headerlink" href="#list-of-mentors" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Akshay (&#64;aks681)</p></li>
+<li><p>Ankita (&#64;ankita240796)</p></li>
+<li><p>Ben (&#64;BenHenning)</p></li>
+<li><p>Kevin Thomas (&#64;kevintab95)</p></li>
+<li><p>Nithesh (&#64;nithusha21)</p></li>
+<li><p>Nitish (&#64;bansalnitish)</p></li>
+<li><p>Prasanna (&#64;prasanna08)</p></li>
+<li><p>Rajat (&#64;rt4914)</p></li>
+<li><p>Sagang (&#64;sagangwee)</p></li>
+<li><p>Sandeep (&#64;DubeySandeep)</p></li>
+<li><p>Sean (&#64;seanlip)</p></li>
+<li><p>Vinita (&#64;vinitamurthi)</p></li>
+<li><p>Vojta (&#64;vojtechjelinek)</p></li>
+<li><p>Zaman (&#64;mzaman07)</p></li>
+</ul>
+</section>
+<section id="communication">
+<h2>Communication<a class="headerlink" href="#communication" title="Permalink to this headline"></a></h2>
+<p><strong>Chat</strong></p>
+<p>Oppia doesn’t have an official IRC channel, but we do have a real-time chat channel on <a class="reference external" href="https://gitter.im/oppia/oppia-chat">Gitter</a>! You can log in using your GitHub account (Gitter will ask to be associated with your GitHub account for authentication) and you will then be able to talk in it. Please feel free to use Gitter if you just want to say hi to the community or if you have any questions related to getting started. For project-specific questions, please direct your queries to the <a class="reference external" href="mailto:oppia-gsoc-discuss&#37;&#52;&#48;googlegroups&#46;com">GSoC discussion mailing list</a>.</p>
+<p><strong>Email</strong></p>
+<p>If you have questions pertaining to “how-to-get-started”, please ask them on <a class="reference external" href="https://gitter.im/oppia/oppia-chat">Gitter</a>, or the oppia-dev&#64; mailing list. Please be specific when asking questions; this makes it easier for us to help you. Also, please make sure to read our <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up">“getting started” wiki page</a> before sending an email, since the answer to your question might already be contained there!</p>
+<p>To discuss your project ideas, or share your proposal for feedback from the community, please email the <a class="reference external" href="mailto:oppia-gsoc-discuss&#37;&#52;&#48;googlegroups&#46;com">GSoC discussion mailing list</a>. You can also use this list for specific questions about GSoC.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gsoc.html" class="btn btn-neutral float-left" title="Google Summer of Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Google-Summer-of-Code-2019.html" class="btn btn-neutral float-right" title="Google summer of code 2019" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

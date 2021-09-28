@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guide on defining types &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Writing design docs" href="Writing-design-docs.html" />
+    <link rel="prev" title="Adding new page" href="Adding-new-page.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to write type definitions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-do-we-need-to-define-types">Why do we need to define types?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#where-should-the-types-be-defined">Where should the types be defined?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-determine-the-types-while-migrating-to-angular">How to determine the types while migrating to Angular?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-types-for-a-third-party-library">Defining types for a third-party library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typescript-interfaces">Typescript interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#some-coding-style-conventions">Some Coding Style Conventions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-string-number-boolean-and-array-as-types">Using string, number, boolean and array as types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#while-using-http-client">While using HTTP Client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#declaring-generic-types">Declaring generic types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-interfaces-should-not-begin-with-i">The interfaces should not begin with <code class="docutils literal notranslate"><span class="pre">I</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-types">Advanced types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#union-types">Union Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#discriminated-unions">Discriminated Unions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conditional-types">Conditional Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#why-enable-strict-mode">Why Enable Strict Mode?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cases-encountered-in-oppia-codebase">Cases Encountered in Oppia Codebase:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ts-1">[TS-1]:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ts-2">[TS-2]:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ts-3">[TS-3]:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ts-4">[TS-4]:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ts-5">[TS-5]:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ts-6">[TS-6]:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ts-7">[TS-7]:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+      <li>Guide on defining types</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Guide-on-defining-types.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="guide-on-defining-types">
+<h1>Guide on defining types<a class="headerlink" href="#guide-on-defining-types" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#why-do-we-need-to-define-types-">Why do we need to define types?</a></p></li>
+<li><p><a class="reference external" href="#where-should-the-types-be-defined-">Where should the types be defined?</a></p>
+<ul>
+<li><p><a class="reference external" href="#functions">Functions</a></p></li>
+<li><p><a class="reference external" href="#classes">Classes</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#how-to-determine-the-types-while-migrating-to-angular-">How to determine the types while migrating to Angular?</a></p></li>
+<li><p><a class="reference external" href="#defining-types-for-a-third-party-library">Defining types for a third-party library</a></p></li>
+<li><p><a class="reference external" href="#typescript-interfaces">Typescript interfaces</a></p></li>
+<li><p><a class="reference external" href="#some-coding-style-conventions">Some Coding Style Conventions</a></p>
+<ul>
+<li><p><a class="reference external" href="#using-string--number--boolean-and-array-as-types">Using string, number, boolean and array as types</a></p></li>
+<li><p><a class="reference external" href="#while-using-http-client">While using HTTP Client</a></p></li>
+<li><p><a class="reference external" href="#declaring-generic-types">Declaring generic types</a></p></li>
+<li><p><a class="reference external" href="#the-interfaces-should-not-begin-with-i">The interfaces should not begin with <code class="docutils literal notranslate"><span class="pre">I</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#advanced-types">Advanced types</a></p>
+<ul>
+<li><p><a class="reference external" href="#union-types">Union Types</a></p></li>
+<li><p><a class="reference external" href="#discriminated-unions">Discriminated Unions</a></p></li>
+<li><p><a class="reference external" href="#conditional-types">Conditional Types</a></p></li>
+<li><p><a class="reference external" href="#example">Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#cases-encountered-in-oppia-codebase">Cases encountered in Codebase:</a></p></li>
+</ul>
+</section>
+<section id="why-do-we-need-to-define-types">
+<h2>Why do we need to define types?<a class="headerlink" href="#why-do-we-need-to-define-types" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Earlier detection of errors which in turn speeds development</p></li>
+<li><p>No run-time penalty for determining the type.</p></li>
+<li><p>Clean code. This allows developers to write more robust code and maintain it, resulting in better, cleaner code.</p></li>
+<li><p>Makes it easier for fellow developers to understand and use the already written code.</p></li>
+</ul>
+</section>
+<section id="where-should-the-types-be-defined">
+<h2>Where should the types be defined?<a class="headerlink" href="#where-should-the-types-be-defined" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>NOTE: These conventions apply to the files in Angular.</p>
+</div></blockquote>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>All the arguments of the function should have a type.</p></li>
+<li><p>The function should have a return type.</p></li>
+</ul>
+<p>For example - A function with types would look something like this.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">exampleFunction</span><span class="p">(</span><span class="nx">arg1</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">arg2</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="kt">boolean</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>NOTE - You can skip adding types if the argument has default values like</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">exampleFunction</span><span class="p">(</span><span class="nx">arg1</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+  <span class="c1">// Here typescript compiler assumes arg1 to be of type string.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>The properties of the class should have a type.</p></li>
+<li><p>The arguments in the constructor should have a type.</p></li>
+<li><p>The functions specified in the class should have types as listed in the section above.</p></li>
+</ul>
+<p>For example - A class with types would look something like this.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nx">ExampleClass</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nx">propertyOne</span>: <span class="kt">number</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">propertyTwo</span>: <span class="kt">string</span><span class="p">;</span>
+
+    <span class="kr">constructor</span><span class="p">(</span><span class="nx">someService</span>: <span class="kt">SomeService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+
+    <span class="nx">someFunction</span><span class="p">(</span><span class="nx">arg1</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="how-to-determine-the-types-while-migrating-to-angular">
+<h2>How to determine the types while migrating to Angular?<a class="headerlink" href="#how-to-determine-the-types-while-migrating-to-angular" title="Permalink to this headline"></a></h2>
+<p>Determining types of variables is often an easy job. Most of the time, the types can be determined by a little reading of the code. However, if you’re unable to determine the type of variable in a file, you can look for the places where that class or function is used.</p>
+<p>Also, if you are working on a backend api service, you can try to look at the corresponding backend Python <code class="docutils literal notranslate"><span class="pre">controllers</span></code> file to check the response dict. The backend <code class="docutils literal notranslate"><span class="pre">controller</span></code> and <code class="docutils literal notranslate"><span class="pre">domain</span></code> layers have docstrings which clearly explain the types of data that are passed to the frontend.</p>
+</section>
+<section id="defining-types-for-a-third-party-library">
+<h2>Defining types for a third-party library<a class="headerlink" href="#defining-types-for-a-third-party-library" title="Permalink to this headline"></a></h2>
+<p>First of all check if the library already has types -</p>
+<ul class="simple">
+<li><p>Some libraries already have types along with them. If yes, you need not do anything.</p></li>
+<li><p>Check if the library has types in <a class="reference external" href="https://github.com/DefinitelyTyped/DefinitelyTyped">DefinitelyTyped</a>. If yes, you can just install the types using <code class="docutils literal notranslate"><span class="pre">yarn</span></code>. For example, you need types for node. You can install them using command <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">add</span> <span class="pre">&#64;types/node</span> <span class="pre">--dev</span></code>.</p></li>
+</ul>
+<p>If the library doesn’t have any types. You’ll have to write types for the lib using the following instructions.</p>
+<ol>
+<li><p>Find the source code of the third-party library</p>
+<p>For adding type definitions for a js library, the first step is to find the source code of the library.</p>
+<p>Try to find the file that imports the js script of the library. For example <strong>PencilCodeEmbed</strong> is imported by the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/extensions/interactions/pencilcode.html">pencilcode.html</a> file.</p>
+</li>
+<li><p>Create a file for the type definitions</p>
+<p>Create a file that will contain the type definitions in the typings directory with the name <code class="docutils literal notranslate"><span class="pre">library-name-defs.d.ts</span></code>.</p>
+</li>
+<li><p>Write the type definitions</p>
+<p>For writing custom definitions, existing type definitions in <a class="reference external" href="https://github.com/DefinitelyTyped/DefinitelyTyped">DefinitelyTyped</a> and <a class="reference external" href="http://blog.wolksoftware.com/contributing-to-definitelytyped">this guide</a> can be used as a reference.</p>
+</li>
+</ol>
+<p>Refer <a class="reference external" href="https://docs.google.com/document/d/19V1d46DSRgTC9K2StZAcgUABpaRjzSzYaEVZIRo_Mlk/edit?usp=sharing">this doc</a> for detailed instructions &amp; example.</p>
+<p>Sample PRs</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/pull/9831">Upgrade version of wavesurfer and use type defs from DefinitelyTyped</a> - Here the custom types for wavesurfer were declared, but we found that there were definitions for wavesurfer in DefinitelyTyped. So, this PR deletes the custom types and uses the definitions from DefinitelyTyped.</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/pull/9266">Type definitions for midi, skulpt, math expressions</a> - In this PR the custom types for midi skulpt and math expressions libraries are declared.</p></li>
+</ul>
+<p>When updating the version of the library look for the difference in the code of the library compared to the present version. Update the type definitions accordingly if the arguments or return types are modified, or some new functions or variables are defined.</p>
+</section>
+<section id="typescript-interfaces">
+<h2>Typescript interfaces<a class="headerlink" href="#typescript-interfaces" title="Permalink to this headline"></a></h2>
+<p>You can read the detailed documentation on interfaces <a class="reference external" href="https://www.typescriptlang.org/docs/handbook/interfaces.html">here</a>.</p>
+</section>
+<section id="some-coding-style-conventions">
+<h2>Some Coding Style Conventions<a class="headerlink" href="#some-coding-style-conventions" title="Permalink to this headline"></a></h2>
+<section id="using-string-number-boolean-and-array-as-types">
+<h3>Using string, number, boolean and array as types<a class="headerlink" href="#using-string-number-boolean-and-array-as-types" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code> and <code class="docutils literal notranslate"><span class="pre">t[]</span></code> should be used when declaring types instead of <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Number</span></code>, <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> and <code class="docutils literal notranslate"><span class="pre">Array&lt;t&gt;</span></code>. This is because the latter are javascript types for constructing those things. Reference - https://stackoverflow.com/a/14727461</p>
+</section>
+<section id="while-using-http-client">
+<h3>While using HTTP Client<a class="headerlink" href="#while-using-http-client" title="Permalink to this headline"></a></h3>
+<p>Don’t do</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(...).</span><span class="nx">toPromise</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span>: <span class="kt">BackendDict</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{...})</span>
+</pre></div>
+</div>
+<p>Instead do</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="nx">BackendDict</span><span class="o">&gt;</span><span class="p">(...).</span><span class="nx">toPromise</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{...})</span>
+</pre></div>
+</div>
+</section>
+<section id="declaring-generic-types">
+<h3>Declaring generic types<a class="headerlink" href="#declaring-generic-types" title="Permalink to this headline"></a></h3>
+<p>If there’s a generic type that needs to be declared. For example</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">type</span> <span class="nx">A</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">abc</span>: <span class="kt">T</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Avoid <strong>exporting</strong> these kind of types unless its <strong>necessary</strong> to do so because other developers may be confused on how to use that generic type and what arguments does it need. So, it’s better to not export these generic types.</p>
+</section>
+<section id="the-interfaces-should-not-begin-with-i">
+<h3>The interfaces should not begin with <code class="docutils literal notranslate"><span class="pre">I</span></code><a class="headerlink" href="#the-interfaces-should-not-begin-with-i" title="Permalink to this headline"></a></h3>
+<p>The interfaces should not have an extra <code class="docutils literal notranslate"><span class="pre">I</span></code>. For example <code class="docutils literal notranslate"><span class="pre">IAnswerStats</span></code> should just be <code class="docutils literal notranslate"><span class="pre">AnswerStats</span></code>.</p>
+<p>We use them mainly in the places where we have to define types for objects or dicts. Mostly in <code class="docutils literal notranslate"><span class="pre">*backend-api.service.ts</span></code> and <code class="docutils literal notranslate"><span class="pre">*object.factory.ts</span></code> files.</p>
+</section>
+</section>
+<section id="advanced-types">
+<h2>Advanced types<a class="headerlink" href="#advanced-types" title="Permalink to this headline"></a></h2>
+<p>These are just a few example of Advanced Types that we use. For full documentaion go <a class="reference external" href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">here</a>.</p>
+<section id="union-types">
+<h3>Union Types<a class="headerlink" href="#union-types" title="Permalink to this headline"></a></h3>
+<p>This can be used when we a variable may be of different types. In some cases Discriminated Unions (described below) may be a better option to make the types more strict.</p>
+<p>For example, when a variable may be either string or a number. We can do</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">a</span>: <span class="kt">string</span> <span class="o">|</span> <span class="kt">number</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>But when you use this variable <code class="docutils literal notranslate"><span class="pre">a</span></code> like a string or a number, there can be typescript errors.</p>
+<p>For example, if you try to do</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>An error like the following may come up.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Property <span class="s1">&#39;length&#39;</span> does not exist on <span class="nb">type</span> <span class="s1">&#39;string | number&#39;</span>.
+  Property <span class="s1">&#39;length&#39;</span> does not exist on <span class="nb">type</span> <span class="s1">&#39;number&#39;</span>.
+</pre></div>
+</div>
+<p>So, now you have two options.</p>
+<p>The first method is to add an <code class="docutils literal notranslate"><span class="pre">if</span></code> condition checking if the <code class="docutils literal notranslate"><span class="pre">a</span></code> is a string.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">typeof</span> <span class="nx">a</span> <span class="o">===</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The second method is typecasting. However, you should <em>prefer</em> the first method if possible.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span> <span class="nx">a</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="discriminated-unions">
+<h3>Discriminated Unions<a class="headerlink" href="#discriminated-unions" title="Permalink to this headline"></a></h3>
+<p>You can combine singleton types, union types, type guards, and type aliases to build an advanced pattern called discriminated unions, also known as tagged unions or algebraic data types. Discriminated unions are useful in functional programming. These are very helpful in making types more strict. There are three ingredients:</p>
+<ol class="simple">
+<li><p>Types that have a common, singleton type property — the discriminant.</p></li>
+<li><p>A type alias that takes the union of those types — the union.</p></li>
+<li><p>Type guards on the common property.</p></li>
+</ol>
+<p>Example</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nx">Square</span> <span class="p">{</span>
+    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;square&quot;</span><span class="p">;</span>
+    <span class="nx">size</span>: <span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">interface</span> <span class="nx">Rectangle</span> <span class="p">{</span>
+    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;rectangle&quot;</span><span class="p">;</span>
+    <span class="nx">width</span>: <span class="kt">number</span><span class="p">;</span>
+    <span class="nx">height</span>: <span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">interface</span> <span class="nx">Circle</span> <span class="p">{</span>
+    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;circle&quot;</span><span class="p">;</span>
+    <span class="nx">radius</span>: <span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">type</span> <span class="nx">Shape</span> <span class="o">=</span> <span class="nx">Square</span> <span class="o">|</span> <span class="nx">Rectangle</span> <span class="o">|</span> <span class="nx">Circle</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">area</span><span class="p">(</span><span class="nx">s</span>: <span class="kt">Shape</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">kind</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s2">&quot;square&quot;</span><span class="o">:</span> <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">size</span> <span class="o">*</span> <span class="nx">s</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s2">&quot;rectangle&quot;</span><span class="o">:</span> <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">height</span> <span class="o">*</span> <span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s2">&quot;circle&quot;</span><span class="o">:</span> <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="nx">s</span><span class="p">.</span><span class="nx">radius</span> <span class="o">**</span> <span class="mf">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="conditional-types">
+<h3>Conditional Types<a class="headerlink" href="#conditional-types" title="Permalink to this headline"></a></h3>
+<p>You can also change the types in a generic type function using <code class="docutils literal notranslate"><span class="pre">extends</span></code>.</p>
+<p>Example</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">type</span> <span class="nx">TypeName</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span>
+    <span class="nx">T</span> <span class="k">extends</span> <span class="kt">string</span> <span class="o">?</span> <span class="s2">&quot;string&quot;</span> <span class="o">:</span>
+    <span class="nx">T</span> <span class="k">extends</span> <span class="kt">number</span> <span class="o">?</span> <span class="s2">&quot;number&quot;</span> <span class="o">:</span>
+    <span class="nx">T</span> <span class="k">extends</span> <span class="kt">boolean</span> <span class="o">?</span> <span class="s2">&quot;boolean&quot;</span> <span class="o">:</span>
+    <span class="nx">T</span> <span class="k">extends</span> <span class="kc">undefined</span> <span class="o">?</span> <span class="s2">&quot;undefined&quot;</span> <span class="o">:</span>
+    <span class="nx">T</span> <span class="k">extends</span> <span class="nb">Function</span> <span class="o">?</span> <span class="s2">&quot;function&quot;</span> <span class="o">:</span>
+    <span class="s2">&quot;object&quot;</span><span class="p">;</span>
+
+<span class="kr">type</span> <span class="nx">T0</span> <span class="o">=</span> <span class="nx">TypeName</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>  <span class="c1">// &quot;string&quot;</span>
+<span class="kr">type</span> <span class="nx">T1</span> <span class="o">=</span> <span class="nx">TypeName</span><span class="o">&lt;</span><span class="s2">&quot;a&quot;</span><span class="o">&gt;</span><span class="p">;</span>  <span class="c1">// &quot;string&quot;</span>
+<span class="kr">type</span> <span class="nx">T2</span> <span class="o">=</span> <span class="nx">TypeName</span><span class="o">&lt;</span><span class="kc">true</span><span class="o">&gt;</span><span class="p">;</span>  <span class="c1">// &quot;boolean&quot;</span>
+<span class="kr">type</span> <span class="nx">T3</span> <span class="o">=</span> <span class="nx">TypeName</span><span class="o">&lt;</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>  <span class="c1">// &quot;function&quot;</span>
+<span class="kr">type</span> <span class="nx">T4</span> <span class="o">=</span> <span class="nx">TypeName</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>  <span class="c1">// &quot;object&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h3>
+<p>You can refer <a class="reference external" href="https://github.com/oppia/oppia/blob/ef6f64122988057f161bde3e6fd212ed307425a9/core/templates/domain/statistics/LearnerActionObjectFactory.ts">this file</a> to check an example where Discriminated Unions and Conditional Types are both used to build strict types.</p>
+<p>In this file the <code class="docutils literal notranslate"><span class="pre">Learner</span> <span class="pre">Action</span></code> has an <code class="docutils literal notranslate"><span class="pre">action_type</span></code> and <code class="docutils literal notranslate"><span class="pre">action_customization_args</span></code> which are interdependent i.e. the schema of customization args depend on the action type.
+So, here first we defined a generic type that changes its type according to the type parameter.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">type</span> <span class="nx">ActionCustomizationArgs</span><span class="o">&lt;</span><span class="nx">ActionType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">ActionType</span> <span class="k">extends</span> <span class="s1">&#39;ExplorationStart&#39;</span> <span class="o">?</span>
+  <span class="nx">ExplorationStartCustomizationArgs</span> :
+  <span class="kt">ActionType</span> <span class="k">extends</span> <span class="s1">&#39;AnswerSubmit&#39;</span> <span class="o">?</span> <span class="nx">AnswerSubmitCustomizationArgs</span> :
+  <span class="kt">ActionType</span> <span class="k">extends</span> <span class="s1">&#39;ExplorationQuit&#39;</span> <span class="o">?</span>
+  <span class="nx">ExplorationQuitCustomizationArgs</span> : <span class="kt">never</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then we built a generic interface for the learner action backend dict.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nx">LearnerActionBackendDictBase</span><span class="o">&lt;</span><span class="nx">ActionType</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="s1">&#39;action_type&#39;</span><span class="o">:</span> <span class="nx">ActionType</span><span class="p">;</span>
+  <span class="s1">&#39;action_customization_args&#39;</span><span class="o">:</span> <span class="nx">ActionCustomizationArgs</span><span class="o">&lt;</span><span class="nx">ActionType</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="s1">&#39;schema_version&#39;</span><span class="o">:</span> <span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then we defined the strict backend dict interfaces to avoid exporting the generic type.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="kr">type</span> <span class="nx">ExplorationStartLearnerActionBackendDict</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">LearnerActionBackendDictBase</span><span class="o">&lt;</span><span class="s1">&#39;ExplorationStart&#39;</span><span class="o">&gt;</span><span class="p">);</span>
+
+<span class="k">export</span> <span class="kr">type</span> <span class="nx">AnswerSubmitLearnerActionBackendDict</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">LearnerActionBackendDictBase</span><span class="o">&lt;</span><span class="s1">&#39;AnswerSubmit&#39;</span><span class="o">&gt;</span><span class="p">);</span>
+
+<span class="k">export</span> <span class="kr">type</span> <span class="nx">ExplorationQuitLearnerActionBackendDict</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">LearnerActionBackendDictBase</span><span class="o">&lt;</span><span class="s1">&#39;ExplorationQuit&#39;</span><span class="o">&gt;</span><span class="p">);</span>
+
+<span class="k">export</span> <span class="kr">type</span> <span class="nx">LearnerActionBackendDict</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">ExplorationStartLearnerActionBackendDict</span> <span class="o">|</span>
+  <span class="nx">AnswerSubmitLearnerActionBackendDict</span> <span class="o">|</span>
+  <span class="nx">ExplorationQuitLearnerActionBackendDict</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Similarly, we can create a base class for learner action.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nx">LearnerActionBase</span><span class="o">&lt;</span><span class="nx">ActionType</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span>
+      <span class="k">public</span> <span class="k">readonly</span> <span class="nx">actionType</span>: <span class="kt">ActionType</span><span class="p">,</span>
+      <span class="k">public</span> <span class="nx">actionCustomizationArgs</span>: <span class="kt">ActionCustomizationArgs</span><span class="o">&lt;</span><span class="nx">ActionType</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="k">public</span> <span class="nx">schemaVersion</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="nx">toBackendDict</span><span class="p">()</span><span class="o">:</span> <span class="nx">LearnerActionBackendDictBase</span><span class="o">&lt;</span><span class="nx">ActionType</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">action_type</span>: <span class="kt">this.actionType</span><span class="p">,</span>
+      <span class="nx">action_customization_args</span>: <span class="kt">this.actionCustomizationArgs</span><span class="p">,</span>
+      <span class="nx">schema_version</span>: <span class="kt">this.schemaVersion</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">ExplorationStartLearnerAction</span> <span class="k">extends</span>
+  <span class="nx">LearnerActionBase</span><span class="o">&lt;</span><span class="s1">&#39;ExplorationStart&#39;</span><span class="o">&gt;</span> <span class="p">{}</span>
+
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AnswerSubmitLearnerAction</span> <span class="k">extends</span>
+  <span class="nx">LearnerActionBase</span><span class="o">&lt;</span><span class="s1">&#39;AnswerSubmit&#39;</span><span class="o">&gt;</span> <span class="p">{}</span>
+
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">ExplorationQuitLearnerAction</span> <span class="k">extends</span>
+  <span class="nx">LearnerActionBase</span><span class="o">&lt;</span><span class="s1">&#39;ExplorationQuit&#39;</span><span class="o">&gt;</span> <span class="p">{}</span>
+
+<span class="k">export</span> <span class="kr">type</span> <span class="nx">LearnerAction</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">ExplorationStartLearnerAction</span> <span class="o">|</span>
+  <span class="nx">AnswerSubmitLearnerAction</span> <span class="o">|</span>
+  <span class="nx">ExplorationQuitLearnerAction</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>And now, finally, the object factory can create domain objects based on the <code class="docutils literal notranslate"><span class="pre">action_type</span></code> in the backend dict.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="kd">class</span> <span class="nx">LearnerActionObjectFactory</span> <span class="p">{</span>
+  <span class="nx">createFromBackendDict</span><span class="p">(</span>
+      <span class="nx">learnerActionBackendDict</span>: <span class="kt">LearnerActionBackendDict</span><span class="p">)</span><span class="o">:</span> <span class="nx">LearnerAction</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">action_type</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="s1">&#39;ExplorationStart&#39;</span><span class="o">:</span>
+        <span class="k">return</span> <span class="ow">new</span> <span class="nx">ExplorationStartLearnerAction</span><span class="p">(</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">action_type</span><span class="p">,</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">action_customization_args</span><span class="p">,</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">schema_version</span><span class="p">);</span>
+      <span class="k">case</span> <span class="s1">&#39;AnswerSubmit&#39;</span><span class="o">:</span>
+        <span class="k">return</span> <span class="ow">new</span> <span class="nx">AnswerSubmitLearnerAction</span><span class="p">(</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">action_type</span><span class="p">,</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">action_customization_args</span><span class="p">,</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">schema_version</span><span class="p">);</span>
+      <span class="k">case</span> <span class="s1">&#39;ExplorationQuit&#39;</span><span class="o">:</span>
+        <span class="k">return</span> <span class="ow">new</span> <span class="nx">ExplorationQuitLearnerAction</span><span class="p">(</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">action_type</span><span class="p">,</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">action_customization_args</span><span class="p">,</span>
+          <span class="nx">learnerActionBackendDict</span><span class="p">.</span><span class="nx">schema_version</span><span class="p">);</span>
+      <span class="nx">default</span>:
+        <span class="kt">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">invalidBackendDict</span>: <span class="kt">never</span> <span class="o">=</span> <span class="nx">learnerActionBackendDict</span><span class="p">;</span>
+    <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span>
+      <span class="s1">&#39;Backend dict does not match any known action type: &#39;</span> <span class="o">+</span>
+      <span class="nx">angular</span><span class="p">.</span><span class="nx">toJson</span><span class="p">(</span><span class="nx">invalidBackendDict</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Passing invalid combinations of <code class="docutils literal notranslate"><span class="pre">action_type</span></code> and <code class="docutils literal notranslate"><span class="pre">customization_args</span></code> to the <code class="docutils literal notranslate"><span class="pre">createFromBackendDict</span></code> function would throw typescript errors, and that’s what we want.</p>
+</section>
+</section>
+<section id="why-enable-strict-mode">
+<h2>Why Enable Strict Mode?<a class="headerlink" href="#why-enable-strict-mode" title="Permalink to this headline"></a></h2>
+<p>We are working to enable strict mode checks for all TypeScript code in the codebase. This is because code that passes these checks has several benefits:</p>
+<ul class="simple">
+<li><p>The code becomes more self-documenting</p></li>
+<li><p>Edge cases are caught, thus reducing potential runtime errors</p></li>
+<li><p>The written code will be more robust</p></li>
+</ul>
+</section>
+<section id="cases-encountered-in-oppia-codebase">
+<h2>Cases Encountered in Oppia Codebase:<a class="headerlink" href="#cases-encountered-in-oppia-codebase" title="Permalink to this headline"></a></h2>
+<p>The following list illustrates some common TypeScript issues encountered in the Oppia codebase and explains how to update the code in each case, in order to support strict type-checking.</p>
+<section id="ts-1">
+<h3>[TS-1]:<a class="headerlink" href="#ts-1" title="Permalink to this headline"></a></h3>
+<p>Variable <code class="docutils literal notranslate"><span class="pre">&lt;variable</span> <span class="pre">name&gt;</span></code> implicitly has type ‘any’ in some locations where its type cannot be determined</p>
+<section id="ts-1-1">
+<h4>[TS-1-1]<a class="headerlink" href="#ts-1-1" title="Permalink to this headline"></a></h4>
+<section id="violation">
+<h5>Violation:<a class="headerlink" href="#violation" title="Permalink to this headline"></a></h5>
+<p>The type of variable is not defined explicitly and hence typescript assigns it an ‘any’ type. This violates the <strong>noImplicitAny</strong> rule of strict mode.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>describe(‘Test winnowing preprocessing functions’, () =&gt; {
+    var service; // error
+    beforeEach(() =&gt; {
+        service = new WinnowingPreprocessingService();
+    });
+...
+});
+</pre></div>
+</div>
+</section>
+<section id="solution">
+<h5>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline"></a></h5>
+<p>To solve this, the variable is explicitly assigned the type it belongs to. In some cases in the Oppia codebase, we may need to import the Interface, Class or Type as it is not imported in the file before.
+In this example, the service was of type <code class="docutils literal notranslate"><span class="pre">WinnowingPreprocessingService</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>describe(‘Test winnowing preprocessing functions’, () =&gt; {
+    var service: WinnowingPreprocessingService; 
+    beforeEach(() =&gt; {
+        service = new WinnowingPreprocessingService();
+    });
+...
+});
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ts-1-2">
+<h4>[TS-1-2]<a class="headerlink" href="#ts-1-2" title="Permalink to this headline"></a></h4>
+<section id="id1">
+<h5>Violation:<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h5>
+<p>The following scenario arises when we are dealing with the need to specify the type of a variable of a <strong>constant</strong>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">errors</span><span class="p">;</span> <span class="c1">// noImplicitAny Violation</span>
+
+<span class="nx">errors</span> <span class="o">=</span> <span class="nx">ObjectDomainConstants</span><span class="p">.</span><span class="nx">NUMBER_WITH_UNIT_PARSING_ERRORS</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h5>Solution:<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h5>
+<p>The way we can specify the type of a constant variable is by using <code class="docutils literal notranslate"><span class="pre">typeof</span> <span class="pre">&lt;constant&gt;</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">var</span>: <span class="kt">errors</span><span class="o">:</span> <span class="ow">typeof</span> <span class="nx">ObjectDomainConstants</span><span class="p">.</span><span class="nx">NUMBER_WITH_UNITS_PARSING_ERRORS</span><span class="p">;</span>
+
+<span class="nx">errors</span> <span class="o">=</span> <span class="nx">ObjectDomainConstants</span><span class="p">.</span><span class="nx">NUMBER_WITH_UNITS_PARSING_ERRORS</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="ts-2">
+<h3>[TS-2]:<a class="headerlink" href="#ts-2" title="Permalink to this headline"></a></h3>
+<p>Type null is not assignable to type <code class="docutils literal notranslate"><span class="pre">&lt;type</span> <span class="pre">name&gt;</span></code></p>
+<section id="ts-2-1">
+<h4>[TS-2-1]:<a class="headerlink" href="#ts-2-1" title="Permalink to this headline"></a></h4>
+<section id="id3">
+<h5>Violation:<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h5>
+<p>The <strong>strictNullChecks</strong> rule disallows assigning <code class="docutils literal notranslate"><span class="pre">null</span></code> and <code class="docutils literal notranslate"><span class="pre">undefined</span></code> as a value until the type is explicitly marked.
+In the following example taken from the codebase, <code class="docutils literal notranslate"><span class="pre">ruleObjectFactory</span></code> is of type <code class="docutils literal notranslate"><span class="pre">RuleObjectFactory</span></code>. Since it was not explicitly assigned the type <code class="docutils literal notranslate"><span class="pre">null</span></code>, the compiler throws an error when we try to assign it the value <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>describe(‘RuleObjectFactory’. () =&gt; {
+    let ruleObjectFactory: RuleObjectFactory = null; // error
+...
+})
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h5>Solution:<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h5>
+<p>In some cases that arise throughout the Oppia codebase as in this example, we can simply remove the <code class="docutils literal notranslate"><span class="pre">null</span></code> value assignment.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>describe(‘RuleObjectFactory’. () =&gt; {
+    let ruleObjectFactory: RuleObjectFactory;
+...
+})
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ts-2-2">
+<h4>[TS-2-2]:<a class="headerlink" href="#ts-2-2" title="Permalink to this headline"></a></h4>
+<section id="id5">
+<h5>Violation:<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h5>
+<p>The <strong>strictNullChecks</strong> rule does not pass and the value <code class="docutils literal notranslate"><span class="pre">null</span></code> or <code class="docutils literal notranslate"><span class="pre">undefined</span></code> is being passed to a function.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>…
+private savedMemento: string = null; // error
+setStateNameSavedMemento(stateName: string): void {
+    this.savedMemento = stateName;
+}
+
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h5>Solution:<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h5>
+<p>The first course of action to be taken is to try and refactor the code in a way that adding <code class="docutils literal notranslate"><span class="pre">null</span></code> or <code class="docutils literal notranslate"><span class="pre">undefined</span></code> may not be needed.
+We cannot refactor the code since the initial value of <code class="docutils literal notranslate"><span class="pre">savedMemento</span></code> has to be <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<p>If refactoring may not be an option as in the example above, we can convert the type to a union and add the type <code class="docutils literal notranslate"><span class="pre">null</span></code> explicitly.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>…
+private savedMemento: string | null = null;
+setStateNameSavedMemento(stateName: string | null ): void {
+    this.savedMemento = stateName;
+}
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="ts-3">
+<h3>[TS-3]:<a class="headerlink" href="#ts-3" title="Permalink to this headline"></a></h3>
+<p>In situations where the type can be <code class="docutils literal notranslate"><span class="pre">undefined</span></code> and cannot be refactored. The following errors can occur:</p>
+<p>Object is possibly <code class="docutils literal notranslate"><span class="pre">undefined</span></code>.</p>
+<p>Argument of type <code class="docutils literal notranslate"><span class="pre">&lt;type1&gt;</span> <span class="pre">|</span> <span class="pre">undefined</span></code> is not assignable to parameter of type <code class="docutils literal notranslate"><span class="pre">&lt;type1&gt;</span></code>.</p>
+<section id="ts-3-1">
+<h4>[TS-3-1]:<a class="headerlink" href="#ts-3-1" title="Permalink to this headline"></a></h4>
+<section id="id7">
+<h5>Violation:<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h5>
+<p>We would need to analyze the behavior of the code when <code class="docutils literal notranslate"><span class="pre">undefined</span></code> is actually returned.</p>
+<p>Consider the following example:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="kd">var</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">shadowPreviewCard</span><span class="p">.</span><span class="nx">height</span><span class="p">();</span>
+<span class="k">return</span> <span class="p">(</span><span class="nx">height</span> <span class="o">&gt;</span> <span class="mf">630</span><span class="p">);</span> <span class="c1">// error</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">shadowPreviewCard</span></code> is a jQuery selector and <code class="docutils literal notranslate"><span class="pre">height()</span></code> will return the height of an element and <code class="docutils literal notranslate"><span class="pre">undefined</span></code> if the element does not exist.</p>
+</section>
+<section id="id8">
+<h5>Solution:<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h5>
+<p>height() will only return undefined if shadowPreviewCard Selector does not exist.
+By analyzing the code, we come to know that the css classes do exist in the directives html code and were put there for the exact purpose of checking the height of the card. Hence, the selector will be valid, and the undefined case will never occur in this part of the code.</p>
+<p>Hence, to make sure the code behaves the way it is supposed to, we should throw an error if <code class="docutils literal notranslate"><span class="pre">height()</span></code> ever returns <code class="docutils literal notranslate"><span class="pre">undefined</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>...
+var height = shadowPreviewCard.height();
+if (typeof height === undefined){
+    throw new Error(“Shadow Preview Card Selector does not exist”)’;
+}
+return (height &gt; 630); 
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ts-3-2">
+<h4>[TS-3-2]:<a class="headerlink" href="#ts-3-2" title="Permalink to this headline"></a></h4>
+<p>File: https://github.com/oppia/oppia/blob/develop/core/templates/domain/topic/topic-summary.model.ts</p>
+<section id="id9">
+<h5>Violation:<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h5>
+<p>Using <code class="docutils literal notranslate"><span class="pre">?</span></code> before assigning values to properties makes them optional, which means that they can have type undefined alongside whichever type they were assigned.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">can_edit_topic</span></code> is implicitly of type <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">|</span> <span class="pre">undefined</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+  <span class="c1">// These properties are optional because they are only present in the</span>
+  <span class="c1">// topic summary dict of topic dashboard page.</span>
+  <span class="s1">&#39;can_edit_topic&#39;</span><span class="nx">?</span>: <span class="kt">boolean</span><span class="p">;</span>
+  <span class="s1">&#39;is_published&#39;</span><span class="nx">?</span>: <span class="kt">boolean</span><span class="p">;</span>
+  <span class="s1">&#39;classroom&#39;</span><span class="nx">?</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="p">...</span>
+   <span class="nx">topicSummaryBackendDict</span><span class="p">.</span><span class="nx">topic_model_last_updated</span><span class="p">,</span>
+   <span class="nx">topicSummaryBackendDict</span><span class="p">.</span><span class="nx">can_edit_topic</span><span class="p">,</span> <span class="c1">// error</span>
+   <span class="nx">topicSummaryBackendDict</span><span class="p">.</span><span class="nx">is_published</span><span class="p">,</span> <span class="c1">// error</span>
+   <span class="nx">topicSummaryBackendDict</span><span class="p">.</span><span class="nx">classroom</span><span class="p">,</span> <span class="c1">// error</span>
+   <span class="nx">topicSummaryBackendDict</span><span class="p">.</span><span class="nx">thumbnail_filename</span><span class="p">,</span>
+   <span class="nx">topicSummaryBackendDict</span><span class="p">.</span><span class="nx">thumbnail_bg_color</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h5>Solution:<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h5>
+<p>If possible, we should try to refactor the code so that <code class="docutils literal notranslate"><span class="pre">undefined</span></code> may not be needed.
+If not, the fix to this error will be to add <code class="docutils literal notranslate"> <span class="pre">|</span> <span class="pre">undefined</span></code> at places where these properties have been used i.e. at the point of declaration and at return types of functions as shown below</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+  <span class="k">public</span> <span class="nx">canEditTopic</span>: <span class="kt">boolean</span> <span class="o">|</span> <span class="kc">undefined</span><span class="p">,</span>
+  <span class="k">public</span> <span class="nx">isPublished</span>: <span class="kt">boolean</span> <span class="o">|</span> <span class="kc">undefined</span><span class="p">,</span>
+  <span class="k">public</span> <span class="nx">classroom</span>: <span class="kt">string</span> <span class="o">|</span> <span class="kc">undefined</span><span class="p">,</span>
+<span class="p">...</span>
+  <span class="nx">getClassroom</span><span class="p">()</span><span class="o">:</span> <span class="kt">string</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">classroom</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">...</span>
+  <span class="nx">isTopicPublished</span><span class="p">()</span><span class="o">:</span> <span class="kt">boolean</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">isPublished</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="ts-4">
+<h3>[TS-4]:<a class="headerlink" href="#ts-4" title="Permalink to this headline"></a></h3>
+<p>Element implicitly has an ‘any’ type because expression of type ‘string’ can’t be used to index type ‘{ }’. No index signature with a parameter of type ‘string’ was found on type ‘{ }’.</p>
+<section id="ts-4-1">
+<h4>[TS-4-1]:<a class="headerlink" href="#ts-4-1" title="Permalink to this headline"></a></h4>
+<section id="id11">
+<h5>Violation:<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h5>
+<p>This situation or a variant of it arises in a significant number of files in the Oppia codebase when working with dictionaries. The following error arises because there is no explicit type mentioned for the key-value pairs of the dictionary. Hence the type of value returned for the specific key cannot be determined and ends up implicitly with type <code class="docutils literal notranslate"><span class="pre">any</span></code> which is not allowed in typescript strict mode.</p>
+<p>In the example, <code class="docutils literal notranslate"><span class="pre">nodeTitles</span></code> had type <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> with no explicit mention of the types of key-value pairs and <code class="docutils literal notranslate"><span class="pre">nodes[</span> <span class="pre">].getId()</span></code> returns a <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="kd">var</span> <span class="nx">nodes</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_nodes</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">nodeTitles</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">nodes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="p">...</span>
+    <span class="c1">// nodes[i].getId() -&gt; returns string</span>
+    <span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">nodeTitles</span><span class="p">[</span><span class="nx">nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">getId</span><span class="p">()];</span> <span class="c1">//error</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h5>Solution:<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h5>
+<p>We need to explicitly mention the type of key-value pair/s present in the dictionary.
+For simple dictionaries, this can be done by using the utility type <code class="docutils literal notranslate"><span class="pre">Record&lt;Keys,Type&gt;</span></code>.</p>
+<p><strong>Note:</strong> An interface should be declared for more complicated dictionaries and anything that is used at more than one place except the following:
+Native types
+Maps
+Utility Types (e.g. <code class="docutils literal notranslate"><span class="pre">Partial&lt;Type&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">Pick&lt;Type,</span> <span class="pre">Keys&gt;,</span> <span class="pre">Record&lt;Keys,</span> <span class="pre">Type&gt;</span></code>) – see <a class="reference external" href="https://www.typescriptlang.org/docs/handbook/utility-types.html">this guide</a>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="kd">var</span> <span class="nx">nodes</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_nodes</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">nodeTitles</span>: <span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="kt">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">nodes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="p">...</span>
+    <span class="c1">// nodes[i].getId() -&gt; returns string</span>
+    <span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">nodeTitles</span><span class="p">[</span><span class="nx">nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">getId</span><span class="p">()];</span> 
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ts-4-2">
+<h4>[TS-4-2]:<a class="headerlink" href="#ts-4-2" title="Permalink to this headline"></a></h4>
+<section id="id13">
+<h5>Violation:<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h5>
+<p>When we use <code class="docutils literal notranslate"><span class="pre">Object.keys()</span></code> it returns type <code class="docutils literal notranslate"><span class="pre">string[</span> <span class="pre">]</span></code> and not type <code class="docutils literal notranslate"><span class="pre">&lt;constant</span> <span class="pre">key&gt;[</span> <span class="pre">]</span></code> which causes the error above whenever we try to use any of the key values where it expects a value of type <code class="docutils literal notranslate"><span class="pre">&lt;constant</span> <span class="pre">key&gt;</span></code> and instead gets type <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">ObjectsDomainConstants</span><span class="p">.</span><span class="nx">CURRENCY_UNITS</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">baseUnitValue</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nx">ObjectsDomainConstants</span><span class="p">.</span><span class="nx">CURRENCY_UNITS</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]].</span><span class="nx">base_unit</span><span class="p">);</span> <span class="c1">// error</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h5>Solution:<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h5>
+<p>The potential fix to this error is to explicitly identify the type of key values to be of those properties present in the constant, declare a type for it and then use it as a <strong>type assertion</strong> for the keys.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">type</span> <span class="nx">CurrencyUnitKeys</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="nx">keyof</span> <span class="ow">typeof</span> <span class="nx">ObjectDomainConstants</span><span class="p">.</span><span class="nx">CURRENCY_UNITS</span><span class="p">)[</span> <span class="p">];</span>
+<span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="p">(</span>
+     <span class="o">&lt;</span><span class="nx">CurrencyUnitsKeys</span><span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">ObjectsDomainConstants</span><span class="p">.</span><span class="nx">CURRENCY_UNITS</span><span class="p">)</span>
+   <span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">baseUnitValue</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nx">ObjectsDomainConstants</span><span class="p">.</span><span class="nx">CURRENCY_UNITS</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]].</span><span class="nx">base_unit</span><span class="p">);</span> 
+    <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Reference:</strong> <a class="reference external" href="https://github.com/oppia/oppia/pull/12643/files#diff-2d18a828071d16d44dd9131301259bef95d00247ee038b53b51e8f0cb96d77c4R185-R187">PR-12642</a></p>
+</section>
+</section>
+</section>
+<section id="ts-5">
+<h3>[TS-5]:<a class="headerlink" href="#ts-5" title="Permalink to this headline"></a></h3>
+<p>Argument of type ‘string[ ]’ is not assignable to parameter of type ‘number[ ]’</p>
+<section id="ts-5-1">
+<h4>[TS-5-1]<a class="headerlink" href="#ts-5-1" title="Permalink to this headline"></a></h4>
+<section id="id15">
+<h5>Violation:<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h5>
+<p>This error specifies that a wrong type cannot be assigned to some variable of type string[ ].
+Using <code class="docutils literal notranslate"><span class="pre">Object.keys()</span></code> returns some value of type <code class="docutils literal notranslate"><span class="pre">string[</span> <span class="pre">]</span></code> but usage of variable for assignment at other places asks for it to be a <code class="docutils literal notranslate"><span class="pre">number[</span> <span class="pre">]</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">existingNumSpaces</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">numSpacesToDesiredIndentLevel</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h5>Solution:<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h5>
+<p>The fix to this error will be to check the usage of variable at certain places and <code class="docutils literal notranslate"><span class="pre">map</span></code> it to <code class="docutils literal notranslate"><span class="pre">number</span></code> as shown below.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">existingNumSpaces</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span> 
+          <span class="nx">numSpacesToDesiredIndentLevel</span> 
+<span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="ts-6">
+<h3>[TS-6]:<a class="headerlink" href="#ts-6" title="Permalink to this headline"></a></h3>
+<p>‘this’ implicitly has type ‘any’ because it does not have a type annotation.</p>
+<section id="ts-6-1">
+<h4>[TS-6-1]<a class="headerlink" href="#ts-6-1" title="Permalink to this headline"></a></h4>
+<section id="id17">
+<h5>Violation:<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h5>
+<p>Considering the following code, it violates <code class="docutils literal notranslate"><span class="pre">noImplicitThis</span></code> rule.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>describe(&#39;High bounce rate task model&#39;, function() {
+    beforeEach(() =&gt; {
+        this.config = ( // error
+        new ExplorationImprovementConfig(‘eid’, 1, true, 0.25, 0.20, 100));
+    }
+    ...
+}
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h5>Solution:<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h5>
+<p>The way to handle this is by initializing the variables and their types and removing <code class="docutils literal notranslate"><span class="pre">this</span></code> before each call to that variable.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span>describe(&#39;High bounce rate task model&#39;, function() {
+    let config: ExplorationImprovementsConfig;
+    beforeEach(() =&gt; {
+        config = (
+        new ExplorationImprovementConfig(‘eid’, 1, true, 0.25, 0.20, 100));
+    }
+    ...
+}
+</pre></div>
+</div>
+<p><strong>Reference:</strong> <a class="reference external" href="https://github.com/oppia/oppia/pull/12643/files#diff-889c624b65e382805c19df5efe460414e323e9793fc5200b79ffeb61ea20e46dR28-R37">#12642</a></p>
+</section>
+</section>
+</section>
+<section id="ts-7">
+<h3>[TS-7]:<a class="headerlink" href="#ts-7" title="Permalink to this headline"></a></h3>
+<p>Property <code class="docutils literal notranslate"><span class="pre">&lt;PropertyName&gt;</span></code> has no initializer and is definitely not assigned in the constructor</p>
+<section id="ts-7-1">
+<h4>[TS-7-1]<a class="headerlink" href="#ts-7-1" title="Permalink to this headline"></a></h4>
+<section id="id19">
+<h5>Violation:<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h5>
+<p>The strictPropertyInitialization rule enforces that the properties are assigned either in the constructor or with a property initializer and due to this, the following situation may occur.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="kd">@Input</span><span class="p">()</span> <span class="nx">options</span>: <span class="kt">CodeMirrorMergeViewOptions</span><span class="p">;</span> <span class="c1">// error</span>
+<span class="kd">@ViewChild</span><span class="p">(</span><span class="nx">CodemirrorComponent</span><span class="p">)</span> <span class="nx">codemirrorComponent</span>: <span class="kt">CodemirrorComponent</span><span class="p">;</span>  <span class="c1">//error</span>
+<span class="nx">codemirror</span>: <span class="kt">CodeMirror.Editor</span><span class="p">;</span> <span class="c1">// error</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h5>Solution:<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h5>
+<p>Angular lifecycle hooks are used to populate the values inside the codebase. To solve this case, we will be using the non-null (!) assertion operator which asserts that the object is non-null and non-undefined. Adding <code class="docutils literal notranslate"> <span class="pre">|</span> <span class="pre">undefined</span></code> as a type will work for properties used inside components and just <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">!</span> <span class="pre">)</span></code> operator for properties that involve Component Interactions (like <code class="docutils literal notranslate"><span class="pre">&#64;Input()</span></code> in this case).</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="kd">@Input</span><span class="p">()</span> <span class="nx">options</span><span class="o">!:</span> <span class="nx">CodeMirrorMergeViewOptions</span><span class="p">;</span>
+<span class="kd">@ViewChild</span><span class="p">(</span><span class="nx">CodemirrorComponent</span><span class="p">)</span> <span class="nx">codemirrorComponent</span>: <span class="kt">CodemirrorComponent</span> <span class="o">|</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="nx">codemirror</span>: <span class="kt">CodeMirror.Editor</span> <span class="o">|</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>Reference:</strong> <a class="reference external" href="https://github.com/oppia/oppia/pull/12965/files#diff-a6de57afea05cf64679a839bccd46bd637dcd287d134ad3483a3714d033a5f16R23-R29">#12965</a></p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Adding-new-page.html" class="btn btn-neutral float-left" title="Adding new page" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Writing-design-docs.html" class="btn btn-neutral float-right" title="Writing design docs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

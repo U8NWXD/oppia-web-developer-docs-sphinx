@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding style guide &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The file naming convention and directory structure" href="The-File-Naming-Convention-and-Directory-Structure.html" />
+    <link rel="prev" title="Coding guidelines" href="coding-guidelines.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Coding style guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design-tips">Design tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apache-beam-logic">Apache Beam logic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#javascript">JavaScript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typescript">Typescript</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#karma-test-specific-guidelines">Karma test specific guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-add-custom-type-defintions-to-the-typings-folder">When to add custom type defintions to the typings folder?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-directives">Component Directives</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#webpack">Webpack</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-require-to-the-typescript-files-with-service-filter-factory">Adding <code class="docutils literal notranslate"><span class="pre">require(…)</span></code> to the TypeScript files with service/filter/factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-require-to-the-typescript-files-with-directive">Adding <code class="docutils literal notranslate"><span class="pre">require(…)</span></code> to the TypeScript files with directive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-variables-and-functions-from-a-typescript-file-to-be-imported-in-another-typescript-file">Exporting variables and functions from a Typescript file to be imported in another Typescript file.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#css">CSS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-ensure-that-your-code-follows-the-coding-guidelines">How to ensure that your code follows the coding guidelines:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-for-sublime-text-users">Note for Sublime Text users</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+      <li>Coding style guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Coding-style-guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="coding-style-guide">
+<h1>Coding style guide<a class="headerlink" href="#coding-style-guide" title="Permalink to this headline"></a></h1>
+<p>Please follow the following style rules when writing code, in order to minimize unnecessary back-and-forth during code review. (Note that most, but not all, of the rules on this page are baked into the default linters and the pre-push hook.)</p>
+<p>If you use <a class="reference external" href="http://www.sublimetext.com/">Sublime Text</a>, consider installing the SublimeLinter, <a class="reference external" href="https://github.com/SublimeLinter/SublimeLinter-jscs">SublimeLinter-jscs</a> and <a class="reference external" href="https://github.com/SublimeLinter/SublimeLinter-pylint">SublimeLinter-pylint</a> plugins, following the instructions on their respective pages.</p>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Ensure that your code looks consistent with the code surrounding it.</p></li>
+<li><p>Strings should use single quotes (<code class="docutils literal notranslate"><span class="pre">'</span></code>) throughout Python and JavaScript.</p></li>
+<li><p>Prefer having comments on their own line (above the code that’s being commented on), as opposed to next to a line. The exception is when you need to disable a pylint warning for a specific line.</p></li>
+<li><p>The last character in each file should be a newline. (If you’re using Sublime, you can enforce this locally by adding <code class="docutils literal notranslate"><span class="pre">&quot;ensure_newline_at_eof_on_save&quot;:</span> <span class="pre">true</span></code> to your user preferences file.)</p></li>
+<li><p>Avoid introducing <code class="docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">(#XYZ):</span> <span class="pre">...</span></code> comments in the files and instead try to do things correctly the first time. If you are going to add a TODO comment in any file then there needs to be (at minimum) a full comment and justification explaining what has been tried and what the issue is. The TODo should also reference an issue created on GitHub for thracking the problem.</p></li>
+</ul>
+</section>
+<section id="design-tips">
+<h2>Design tips<a class="headerlink" href="#design-tips" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Avoid referencing elements of a list by a hardcoded index number, e.g. <code class="docutils literal notranslate"><span class="pre">item[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">item[1]</span></code>. This is because the reader typically has no idea what is significant about the element index in question. If the values in the list are of different types, consider using a domain object instead to model the item being passed around.</p></li>
+<li><p>Avoid passing raw “dictionaries” (Python dicts or JS objects) between functions, because it’s possible to add new fields to them midway through their lifecycle, which can get confusing for readers of the code. Use domain objects instead, since they have a fixed set of fields.</p>
+<ul>
+<li><p>Similarly, if you are passing in two lists of variables and you require both lists to be the same length (because the elements need to correspond with each other), consider using one list of composite domain objects instead.</p></li>
+</ul>
+</li>
+<li><p>Avoid redefining the same variable more than once. Use different names to represent different variables, since each variable (conceptually) stores a different thing.</p></li>
+<li><p>Functions that start with “get”, or which have GET semantics, should, under no circumstances, update or delete anything. They should be safe to call and have no side effects.</p></li>
+</ul>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>Consider using a frozenset or tuple to a list, if the data structure is not meant to be subsequently modified. This applies especially to constants.</p></li>
+<li><p>If you need to raise an Exception, just do <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">Exception</span></code> – no need to define custom exceptions. We tend to use exceptions fairly sparingly, though.</p></li>
+<li><p>Do not use <code class="docutils literal notranslate"><span class="pre">str()</span></code> under any circumstances. Please try to use <code class="docutils literal notranslate"><span class="pre">python_utils.convert_to_bytes()</span></code> or the <code class="docutils literal notranslate"><span class="pre">b'</span></code> prefix for the strings used in webapp2’s built-in methods or for strings used directly in NDB datastore models. If you need to cast ints/floats to strings, please use <code class="docutils literal notranslate"><span class="pre">python_utils.UNICODE()</span></code> instead. Avoid casting strings to other types of strings using str(), unicode(), etc. Also, there should be no need to prefix any string literals with b’ or u’, since all string literals in Python files are prefixed with <code class="docutils literal notranslate"><span class="pre">u'</span></code> by default (due to the import of unicode_literals at the top of the file).</p></li>
+<li><p>Otherwise, please follow the <a class="reference external" href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md">Google Python style guide</a>. In particular:</p>
+<ul>
+<li><p>There should be two empty lines before any top-level class or function definition.</p></li>
+<li><p>It’s OK for the initial documentation string to be more than one line long.</p></li>
+<li><p>Prefer string interpolation over concatenation – e.g. prefer: <code class="docutils literal notranslate"><span class="pre">'My</span> <span class="pre">string</span> <span class="pre">%s'</span> <span class="pre">%</span> <span class="pre">varname</span></code> to <code class="docutils literal notranslate"><span class="pre">'My</span> <span class="pre">string</span> <span class="pre">'</span> <span class="pre">+</span> <span class="pre">varname</span></code>.</p></li>
+<li><p>When indenting from an open parenthesis (‘(‘), prefer indenting by 4 rather than indenting from the position of the parenthesis. e.g., prefer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">my_function_with_a_really_long_name</span><span class="p">(</span>
+      <span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>over</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">my_function_with_a_really_long_name</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+                                      <span class="s1">&#39;def&#39;</span><span class="p">,</span>
+                                      <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Docstrings should start with “”” and end with “””. The content of each docstring should be left-aligned. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="sd">&quot;&quot;&quot;Check whether an email message with the same recipient_id,</span>
+<span class="sd">  email_subject and (cleaned) email_html_body has been sent in</span>
+<span class="sd">  the last DUPLICATE_EMAIL_INTERVAL_MINS.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Docstrings should also contain <code class="docutils literal notranslate"><span class="pre">Args</span></code>, <code class="docutils literal notranslate"><span class="pre">Returns</span></code> and <code class="docutils literal notranslate"><span class="pre">Raises</span></code> whenever applicable in a method. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Brief description about the function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        arg1: type. Short description.</span>
+<span class="sd">        arg2: type. Short description.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        type. Short description.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeOfException: Short description.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Never use backslashes to end a line. It’s hard to tell whether they’re escaping newlines, spaces, or something else. Use parentheses instead to break the line up, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">my_variable</span> <span class="o">=</span> <span class="p">(</span>
+       <span class="n">my_very_long_module_name</span><span class="o">.</span><span class="n">my_really_long_function_name</span><span class="p">())</span>
+</pre></div>
+</div>
+</li>
+<li><p>Be careful <a class="reference external" href="https://google.github.io/styleguide/pyguide.html?showone=Default_Argument_Values#Default_Argument_Values">not to use mutable objects</a> as default values in the function or method definition. i.e., don’t do things like <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">foo(a,</span> <span class="pre">b=[]):</span></code>.</p></li>
+<li><p>Imports should be in three groups: standard libraries, files within the Oppia codebase, and third-party files. Each group should be separated by a single newline. Within each group, imports should be organized alphabetically. If you have additional questions, feel free to reference the <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#313-imports-formatting">Google Python Style Guide</a>.</p></li>
+</ul>
+</li>
+</ul>
+<section id="apache-beam-logic">
+<h3>Apache Beam logic<a class="headerlink" href="#apache-beam-logic" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>For pipe operations that span multiple lines, always have the pipe operator (<code class="docutils literal notranslate"><span class="pre">|</span></code>) begin on the new line.</p>
+<p>e.g., prefer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pcoll</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">input_pcoll</span>
+    <span class="o">|</span> <span class="s2">&quot;Op1&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Operation1</span><span class="p">()</span>
+    <span class="o">|</span> <span class="s2">&quot;Op2&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Operation2</span><span class="p">()</span>
+    <span class="o">|</span> <span class="s2">&quot;Op3&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Operation3</span><span class="p">()</span>
+    <span class="o">|</span> <span class="s2">&quot;Op4&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Operation4</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>over:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pcoll</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">input_pcoll</span> <span class="o">|</span> <span class="s2">&quot;Op1&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Operation1</span><span class="p">()</span> <span class="o">|</span> <span class="s2">&quot;Op2&quot;</span> <span class="o">&gt;&gt;</span>
+    <span class="n">Operation2</span><span class="p">()</span> <span class="o">|</span> <span class="s2">&quot;Op3&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Operation3</span><span class="p">()</span> <span class="o">|</span>
+    <span class="s2">&quot;Op4&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Operation4</span><span class="p">()</span> 
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Note: when all pipe operations can fit in a single line, there’s no need to break them up:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pcoll</span> <span class="o">=</span> <span class="n">input_pcoll</span> <span class="o">|</span> <span class="s2">&quot;Sort&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Sort</span><span class="p">()</span>
+<span class="n">pcoll</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">input_pcoll</span> <span class="o">|</span> <span class="s2">&quot;Sort&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Sort</span><span class="p">()</span> <span class="o">|</span> <span class="s2">&quot;Unique&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">Unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline"></a></h2>
+<p><em>General note: We use the ES2017 standard for our JavaScript/TypeScript code. (See <a class="reference external" href="https://github.com/oppia/oppia/blob/57333f23af7b67914dc039671f4bc4e029fbb6e7/tsconfig.json#L4">tsconfig.json</a>.)</em></p>
+<ul>
+<li><p>We use extra parentheses if a statement breaks across multiple lines, similar to Python. In particular, when code in ‘(…)’ or ‘[…]’ spans more than one line, make a line break after the opening parentheses or bracket.</p></li>
+<li><p>The indentation is always 2 spaces.</p></li>
+<li><p>Try to start only function names with verbs to help distinguish them from variables. Conversely, do not start variable names with verbs.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>For a boolean variable to check if a card is displayed:</p>
+<ul>
+<li><p>Correct: <code class="docutils literal notranslate"><span class="pre">cardIsDisplayed</span></code></p></li>
+<li><p>Wrong: <code class="docutils literal notranslate"><span class="pre">isCardDisplayed</span></code></p></li>
+</ul>
+</li>
+<li><p>For a function to check if a card is displayed:</p>
+<ul>
+<li><p>Correct: <code class="docutils literal notranslate"><span class="pre">isCardDisplayed()</span></code></p></li>
+<li><p>Wrong: <code class="docutils literal notranslate"><span class="pre">cardIsDisplayed()</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>We have started compiling a <a class="reference external" href="https://docs.google.com/document/d/1ZDmLN66f53WdDPItFChu9Lr37z0dKoqR-ASX8UM5y60">style guide for JavaScript</a>. This is currently a work in progress. However, please use this as the definitive guide when figuring out the correct way to name things (CamelCase, snake_case, etc.)</p></li>
+<li><p>The dependencies mentioned in strings and functional parameters of controllers, directives and factories should be in the following manner: dollar imports (e.g. <code class="docutils literal notranslate"><span class="pre">$log,</span> <span class="pre">$scope</span></code> etc.), regular imports (e.g. <code class="docutils literal notranslate"><span class="pre">ContextService,</span> <span class="pre">PageService</span></code> etc.), and constant imports (e.g <code class="docutils literal notranslate"><span class="pre">COLLECTION_TAGS,</span> <span class="pre">DELETE_COLLECTION</span></code> etc.) all in sorted order.</p>
+<p>For Example:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">oppia</span><span class="p">.</span><span class="nx">thing</span><span class="p">(</span><span class="s1">&#39;ThingName&#39;</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s1">&#39;$sortedDollarImports&#39;</span><span class="p">,</span> <span class="s1">&#39;SortedRegularImports&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SORTED_CONSTANT_IMPORTS&#39;</span><span class="p">,</span>
+  <span class="kd">function</span><span class="p">(</span>
+      <span class="nx">$sortedDollarImports</span><span class="p">,</span> <span class="nx">SortedRegularImports</span><span class="p">,</span>
+      <span class="nx">SORTED_CONSTANT_IMPORTS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// The implementation of `ThingName`.</span>
+  <span class="p">}]);</span>
+</pre></div>
+</div>
+</li>
+<li><p>For asynchronous functions that return a promise, use the following convention:</p>
+<ul>
+<li><p>At the function declaration, use the keyword <code class="docutils literal notranslate"><span class="pre">async</span></code> (see <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">here</a>).</p></li>
+<li><p>Add ‘Async’ to the function name. example:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">getUserInfoAsync</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;something&quot;</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mf">2000</span><span class="p">);</span>
+   <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>For functions or variables that are private and that should not be exposed outside their immediate controller/service, prefix their names with an underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>) and add the <code class="docutils literal notranslate"><span class="pre">private</span></code> keyword.</p></li>
+</ul>
+</section>
+<section id="typescript">
+<h2>Typescript<a class="headerlink" href="#typescript" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>Make sure to follow all the javascript rules here as well.</p></li>
+<li><p>Keep line lengths to at most 80 characters (with the exception of lines containing URLs, which are allowed to have a length of greater than 80 characters).</p></li>
+<li><p>Declare a variable before usage. For instance:</p>
+<p><strong>Wrong usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">exampleVar</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">someCondition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">exampleVar</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Right usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">exampleVar</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">someCondition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">exampleVar</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>All loop variables should be declared. For instance:</p>
+<p><strong>Wrong usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="nx">item</span> <span class="ow">in</span> <span class="nx">itemList</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Right usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">item</span> <span class="ow">in</span> <span class="nx">itemList</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Do not add new properties to a declared variable. Ensure that all properties are declared in the variable declaration. For instance:</p>
+<p><strong>Wrong usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+  <span class="nx">age</span><span class="o">:</span> <span class="s1">&#39;age&#39;</span>
+<span class="p">};</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">someCondition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">person</span><span class="p">.</span><span class="nx">address</span> <span class="o">=</span> <span class="s1">&#39;address&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Right usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+  <span class="nx">age</span><span class="o">:</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span>
+  <span class="nx">address</span><span class="o">:</span> <span class="kc">null</span>
+<span class="p">};</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">someCondition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">person</span><span class="p">.</span><span class="nx">address</span> <span class="o">=</span> <span class="s1">&#39;address&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Always initialize a variable at declaration. If you do not want a specific value at declaration, initialize the variable with a null value. For instance:</p>
+<p><strong>Wrong usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">person</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">someCondition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">person</span> <span class="o">=</span> <span class="s1">&#39;name&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Right usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">someCondition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">person</span> <span class="o">=</span> <span class="s1">&#39;name&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Do not overwrite the variable with a different type. Instead create a new variable whenever you have a different use case. For instance:</p>
+<p><strong>Wrong usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+  <span class="nx">schoolName</span><span class="o">:</span> <span class="s1">&#39;school name&#39;</span>
+<span class="p">};</span>
+<span class="p">...</span>
+<span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+  <span class="nx">officeName</span><span class="o">:</span> <span class="s1">&#39;office name&#39;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>Right usage:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">personForSchool</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+  <span class="nx">schoolName</span><span class="o">:</span> <span class="s1">&#39;school name&#39;</span>
+<span class="p">};</span>
+<span class="p">...</span>
+<span class="kd">var</span> <span class="nx">personForOffice</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+  <span class="nx">officeName</span><span class="o">:</span> <span class="s1">&#39;office name&#39;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>If you get compilation error which says that a property does not exist on a particular type, go through the type definitions of the type and do a type casting if required. For instance:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">checkMismatch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">searchQuery</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">isMismatch</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.oppia-search-bar-input&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">((</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">()).</span><span class="nx">trim</span><span class="p">()</span> <span class="o">===</span> <span class="nx">searchQuery</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">isMismatch</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">isMismatch</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">$(this).val()</span></code> is type casted to a string by using <code class="docutils literal notranslate"><span class="pre">&lt;string&gt;$(this).val()</span></code>
+If we do not use a typecast, typescript will give a error <code class="docutils literal notranslate"><span class="pre">Property</span> <span class="pre">'trim'</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">exist</span> <span class="pre">on</span> <span class="pre">type</span> <span class="pre">'string</span> <span class="pre">|</span> <span class="pre">number</span> <span class="pre">|</span> <span class="pre">string[]'</span></code> since val can be a string or a number or a string array. So, to use trim we specifically need it as a string.</p>
+<p>In many cases, you may also need to typecast to <code class="docutils literal notranslate"><span class="pre">&lt;any&gt;</span></code> first and then to the desired type. For example, for converting a number to string, you will need <code class="docutils literal notranslate"><span class="pre">&lt;string&gt;&lt;any&gt;</span></code> because neither type sufficiently overlaps with the other.</p>
+<p>You can add a new custom type definitions if type casting is not possible. In the file <code class="docutils literal notranslate"><span class="pre">typings/custom-element-defs.d.ts</span></code>, we add a new property to <code class="docutils literal notranslate"><span class="pre">HTMLElement</span></code> by adding a custom type defintion. In this type casting cannot be used, since we are adding a new property to the existing type instead of changing it to some other type.</p>
+</li>
+</ul>
+<section id="karma-test-specific-guidelines">
+<h3>Karma test specific guidelines<a class="headerlink" href="#karma-test-specific-guidelines" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">angular.mock.module</span></code> instead of <code class="docutils literal notranslate"><span class="pre">module</span></code> since the typings for angular-mocks does not support the usage of module.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">angular.mock.inject</span></code> instead of <code class="docutils literal notranslate"><span class="pre">inject</span></code> to maintain a consistent behaviour.</p></li>
+</ul>
+</section>
+<section id="when-to-add-custom-type-defintions-to-the-typings-folder">
+<h3>When to add custom type defintions to the typings folder?<a class="headerlink" href="#when-to-add-custom-type-defintions-to-the-typings-folder" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>If you find a missing property in a typings package, create an issue <a class="reference external" href="https://github.com/DefinitelyTyped/DefinitelyTyped">here</a> and a new file for the custom types with the issue link in the top of the file.</p></li>
+<li><p>If you add a package for which type definitions are not found <a class="reference external" href="https://github.com/DefinitelyTyped/DefinitelyTyped">here</a>, add it to <code class="docutils literal notranslate"><span class="pre">third-party-defs.d.ts</span></code></p></li>
+<li><p>If you add a new property on window which is not present in typings for window, add it to <code class="docutils literal notranslate"><span class="pre">custom-window-defs.d.ts</span></code></p></li>
+<li><p>If you add a property on scope defined in a link function, add it to <code class="docutils literal notranslate"><span class="pre">custom-scope-defs.d.ts</span></code> and add a comment specifying the filename for which it is added.</p></li>
+<li><p>Make sure that all files have comments which explain why these custom type defintions are required and additional comments to explain each new added property if required. For example, <code class="docutils literal notranslate"><span class="pre">typings/custom-scope-defs.d.ts</span></code> has a top level comment explaining that the type defintions are needed for properties defined on scope in link function and then there are additional comments with properties added specifying which file they belong to. Go through the existing files and try to follow the same pattern when adding a new file.</p></li>
+</ul>
+</section>
+<section id="component-directives">
+<h3>Component Directives<a class="headerlink" href="#component-directives" title="Permalink to this headline"></a></h3>
+<p>Usage of old-style AngularJS directives is discouraged. Instead, use component directives. Component directives are an advanced version of AngularJS directives and are more preferred because of the “isolated scope” it creates and the reusability it offers across modules. This is also the way forward in Angular 2+.</p>
+<ul class="simple">
+<li><p>Do not create standalone controllers. The standalone controllers are those which are associated with the <code class="docutils literal notranslate"><span class="pre">ng-controller</span></code> directive in the HTML file.</p></li>
+<li><p>While creating a new directive, make sure to use the component directive instead of the old style directives. Now, here’s something: The component directives create what is called an “isolated scope”. So the component directive can be thought of as a reusable component not dependent on its surroundings and hence “isolated”. Therefore you must not use <code class="docutils literal notranslate"><span class="pre">$scope</span></code> in the directive, except for some exceptions like <code class="docutils literal notranslate"><span class="pre">$scope.$on</span></code>, <code class="docutils literal notranslate"><span class="pre">$scope.$apply</span></code> and other internal functions of <code class="docutils literal notranslate"><span class="pre">$scope</span></code> which do not have a full replacement. Also <code class="docutils literal notranslate"><span class="pre">$uibmodal</span></code>s are exempted from this rule.</p></li>
+<li><p>There are many instances where this “isolated scope” needs to communicate with the surrounding, in such cases you must pass such data through the <code class="docutils literal notranslate"><span class="pre">bindToController</span></code> key of the component directive. This binds the values to the controller of the component directive and you can access those values in your directive’s isolated scope.</p></li>
+</ul>
+</section>
+</section>
+<section id="webpack">
+<h2>Webpack<a class="headerlink" href="#webpack" title="Permalink to this headline"></a></h2>
+<p>In all TypeScript files in <code class="docutils literal notranslate"><span class="pre">core/templates</span></code> we use webpack. That means that instead of including the required files by <code class="docutils literal notranslate"><span class="pre">&lt;script</span> <span class="pre">src=&quot;…&quot;&gt;&lt;/script&gt;</span></code> in HTML files we include them by using <code class="docutils literal notranslate"><span class="pre">require(…)</span></code> in the individual TS files.</p>
+<section id="adding-require-to-the-typescript-files-with-service-filter-factory">
+<h3>Adding <code class="docutils literal notranslate"><span class="pre">require(…)</span></code> to the TypeScript files with service/filter/factory<a class="headerlink" href="#adding-require-to-the-typescript-files-with-service-filter-factory" title="Permalink to this headline"></a></h3>
+<p>When you add new service/filter/factory dependency to service/filter/factory, you need to also <code class="docutils literal notranslate"><span class="pre">require(…)</span></code> it at the top of the file.</p>
+<p>For example if you have this filter:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>oppia.filter(&#39;normalizeWhitespace&#39;, [function() {
+  return function(input) {…};
+}]);
+</pre></div>
+</div>
+<p>and need to use <code class="docutils literal notranslate"><span class="pre">UtilsService</span></code> in this filter, you also need to add <code class="docutils literal notranslate"><span class="pre">require('services/UtilsService.ts');</span></code> (the paths are relative to the <code class="docutils literal notranslate"><span class="pre">core/templates</span></code> directory), the final filter will look like this:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>require(&#39;services/UtilsService.ts&#39;);
+
+oppia.filter(&#39;normalizeWhitespace&#39;, [&#39;UtilsService&#39;, function(UtilsService) {
+  return function(input) {…};
+}]);
+</pre></div>
+</div>
+<p><strong>The requires should be sorted in alphabetical order.</strong></p>
+</section>
+<section id="adding-require-to-the-typescript-files-with-directive">
+<h3>Adding <code class="docutils literal notranslate"><span class="pre">require(…)</span></code> to the TypeScript files with directive<a class="headerlink" href="#adding-require-to-the-typescript-files-with-directive" title="Permalink to this headline"></a></h3>
+<p>The rules for directives are little bit more complex. You also need to add <code class="docutils literal notranslate"><span class="pre">require(…)</span></code> for service/filter/factory dependencies, but also if you use custom directive in the HTML you need to <code class="docutils literal notranslate"><span class="pre">require(…)</span></code> it in the TypeScript file too.</p>
+<p>For example, if you have directive:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>require(&#39;domain/utilities/UrlInterpolationService.ts&#39;);
+
+oppia.directive(&#39;storySummaryTile&#39;, [&#39;UrlInterpolationService&#39;, function(UrlInterpolationService) {
+    return {…};
+}]);
+</pre></div>
+</div>
+<p>and add <code class="docutils literal notranslate"><span class="pre">&lt;sharing-links&gt;</span></code> into the <strong>story_summary_directive.html</strong> you need to also add the new <code class="docutils literal notranslate"><span class="pre">require('components/share/SharingLinksDirective.ts');</span></code> into the TypeScript file:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>require(&#39;components/share/SharingLinksDirective.ts&#39;);
+
+require(&#39;domain/utilities/UrlInterpolationService.ts&#39;);
+
+oppia.directive(&#39;storySummaryTile&#39;, [&#39;UrlInterpolationService&#39;, function(UrlInterpolationService) {
+    return {…};
+}]);
+</pre></div>
+</div>
+<p><strong>The requires for directives that are in HTML are included first and separated from the regular requires by empty line.</strong></p>
+</section>
+<section id="exporting-variables-and-functions-from-a-typescript-file-to-be-imported-in-another-typescript-file">
+<h3>Exporting variables and functions from a Typescript file to be imported in another Typescript file.<a class="headerlink" href="#exporting-variables-and-functions-from-a-typescript-file-to-be-imported-in-another-typescript-file" title="Permalink to this headline"></a></h3>
+<p>If the file adds variable to the global scope:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// functions.ts</span>
+<span class="kd">var</span> <span class="nx">functions</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// something happens here.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We want to isolate that scope, this can be done by exporting the variable using ES6 exports.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// functions.ts</span>
+<span class="kd">var</span> <span class="nx">functions</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// something happens here.</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">functions</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>And then the variable can be loaded by <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">functions</span> <span class="pre">from</span> <span class="pre">'folder/folder/functions.ts';</span></code></p>
+</section>
+</section>
+<section id="css">
+<h2>CSS<a class="headerlink" href="#css" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Do not include units if the value is 0. E.g. <code class="docutils literal notranslate"><span class="pre">margin-left:</span> <span class="pre">0</span></code> instead of <code class="docutils literal notranslate"><span class="pre">margin-left:</span> <span class="pre">0px</span></code>.</p></li>
+<li><p>Within each CSS rule, attributes should be alphabetized (e.g. ‘height’ before ‘margin’ before ‘top’). This makes it easy to find the value of an attribute if there are lots of them.</p></li>
+<li><p>Avoid using <code class="docutils literal notranslate"><span class="pre">!important</span></code> as much as possible.</p></li>
+<li><p>For colours, use hex values (like “#012345”) or rgb(a) values, instead of names (like “white”). When using hex colour codes, try to use the 3 char version if possible (see <a class="reference external" href="https://google.github.io/styleguide/htmlcssguide.html#Hexadecimal_Notation">example</a>).</p></li>
+<li><p>If the CSS class is oppia-specific, prefix it with <code class="docutils literal notranslate"><span class="pre">oppia-</span></code>. This helps distinguish it from CSS classes used by other third-party libraries.</p></li>
+<li><p>For directives, include the CSS in the directive template file, similar to what we do in <a class="reference external" href="https://github.com/oppia/oppia/blob/37a43ca249ffd2b60bf98f791995048ce0ec5269/core/templates/components/summary_tile/exploration_summary_tile_directive.html">this file</a>. (Note that, in this case, all CSS rules should start with the top-level CSS class of the directive, so that they don’t affect other elements outside it.) All other CSS should go in <code class="docutils literal notranslate"><span class="pre">core/templates/css/oppia.css</span></code>.</p></li>
+</ul>
+<hr class="docutils" />
+<section id="how-to-ensure-that-your-code-follows-the-coding-guidelines">
+<h3>How to ensure that your code follows the coding guidelines:<a class="headerlink" href="#how-to-ensure-that-your-code-follows-the-coding-guidelines" title="Permalink to this headline"></a></h3>
+<p>You can invoke the pre-commit script to ensure that your code follows the coding guidelines for a particular file that you’ve modified by running the following command from the root directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m scripts.linters.pre_commit_linter --path filepath
+</pre></div>
+</div>
+<p>If you’d like to run the checks for a list of files, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m scripts.linters.pre_commit_linter --files file_1 file_2 ... file_n
+</pre></div>
+</div>
+<p>If you’d like to run the checks for a list of file-types, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m scripts.linters.pre_commit_linter --only-check-file-extensions file_extension_type_1 file_extension_type_2 ... file_extension_type_n
+</pre></div>
+</div>
+</section>
+<section id="note-for-sublime-text-users">
+<h3>Note for Sublime Text users<a class="headerlink" href="#note-for-sublime-text-users" title="Permalink to this headline"></a></h3>
+<p>If you use Sublime Text, the following settings may be useful for your “Preferences.sublime-settings – User” file (go to Preferences &gt; Settings)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;ensure_newline_at_eof_on_save&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;font_size&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="s2">&quot;highlight_line&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;rulers&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+        <span class="mi">80</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;shift_tab_unindent&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;spell_check&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;tab_size&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;translate_tabs_to_spaces&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;trim_trailing_white_space_on_save&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;update_check&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="coding-guidelines.html" class="btn btn-neutral float-left" title="Coding guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="The-File-Naming-Convention-and-Directory-Structure.html" class="btn btn-neutral float-right" title="The file naming convention and directory structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile development &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mobile device testing" href="Mobile-device-testing.html" />
+    <link rel="prev" title="Oppia-ml Extension" href="Oppia-ml-Extension.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mobile development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#remote-debugging-on-android-with-chrome">Remote Debugging on Android with Chrome</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-chrome-for-android-using-the-chrome-developer-tools">Debugging Chrome for Android using the Chrome Developer Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remote-debugging-on-android-supports">Remote debugging on Android supports:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-your-android-device">Setting up your Android device</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-tips">Debugging tips</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#live-screencasting">Live screencasting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#port-forwarding">Port forwarding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Mobile development</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Mobile-development.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="mobile-development">
+<h1>Mobile development<a class="headerlink" href="#mobile-development" title="Permalink to this headline"></a></h1>
+<p>The following instructions, adapted by royshouvik&#64; from the <a class="reference external" href="https://developer.chrome.com/devtools/docs/remote-debugging">Chrome DevTools Docs</a>, explain how to do remote debugging on Android devices using Chrome.</p>
+<p><strong>NOTE</strong>: If you just want to view the website on a mobile device, without full fledged debugging, you can start the server as follows: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span> <span class="pre">--disable_host_checking</span></code> and connect your mobile device to the same Wi-Fi network as your PC. Then, by going to ‘http://&lt;[local-ip-address-of-pc]&gt;:8181’ on your mobile will open the dev server on it.</p>
+<section id="remote-debugging-on-android-with-chrome">
+<h2>Remote Debugging on Android with Chrome<a class="headerlink" href="#remote-debugging-on-android-with-chrome" title="Permalink to this headline"></a></h2>
+<p>The way your web content behaves on mobile can be dramatically different from the desktop experience. Remote debugging with Chrome DevTools lets you debug live content on your Android device from your development machine.</p>
+<section id="debugging-chrome-for-android-using-the-chrome-developer-tools">
+<h3>Debugging Chrome for Android using the Chrome Developer Tools<a class="headerlink" href="#debugging-chrome-for-android-using-the-chrome-developer-tools" title="Permalink to this headline"></a></h3>
+<section id="remote-debugging-on-android-supports">
+<h4>Remote debugging on Android supports:<a class="headerlink" href="#remote-debugging-on-android-supports" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Debugging websites in browser tabs.</p></li>
+<li><p>Debugging WebViews in native Android apps.</p></li>
+<li><p>Screencasting live to your development machine from your Android device.</p></li>
+<li><p>Accessing your development server on Android using port forwarding and virtual host mapping.</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h4>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h4>
+<p>We are going to talk about debugging a website in a Chrome browser tab in this document. To begin remote debugging, you need:</p>
+<ol class="simple">
+<li><p>Chrome 32 or later installed on your development machine.</p></li>
+<li><p>A USB cable to connect your Android device.</p></li>
+<li><p>For browser debugging: Android 4.0+ and Chrome for Android.</p></li>
+</ol>
+<p><strong>Note:</strong> Remote debugging requires your version of desktop Chrome to be newer than the version of Chrome for Android on your device. For best results, use Chrome Canary (Mac/Windows) or the Chrome Dev channel release (Linux) on desktop and Chrome Stable on Android. This ensures the version of desktop Chrome is newer than the version of Chrome for Android.</p>
+</section>
+<section id="setting-up-your-android-device">
+<h4>Setting up your Android device<a class="headerlink" href="#setting-up-your-android-device" title="Permalink to this headline"></a></h4>
+<p>Follow these instructions to set up your Android device for remote debugging.</p>
+<section id="enable-usb-debugging">
+<h5>Enable USB debugging<a class="headerlink" href="#enable-usb-debugging" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>On your Android device, select Settings &gt; Developer options. <strong>Note:</strong> On Android 4.2 and later, the developer options are hidden by default. To enable the developer options, select Settings &gt; About phone and tap Build number seven times.</p></li>
+<li><p>In Developer options, select the USB debugging checkbox:</p></li>
+<li><p>If an alert prompts you to allow USB debugging. Tap OK.</p></li>
+</ol>
+</section>
+<section id="connect-your-device">
+<h5>Connect your device<a class="headerlink" href="#connect-your-device" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>Connect the Android device to your development machine using a USB cable. <strong>Note:</strong> If you are developing on Windows, install the appropriate USB driver for your device. See OEM USB Drivers on the Android Developers’ site.</p></li>
+</ol>
+</section>
+<section id="discovering-devices-in-chrome">
+<h5>Discovering devices in Chrome<a class="headerlink" href="#discovering-devices-in-chrome" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>After setting up remote debugging on Android, discover your device in Chrome.</p></li>
+<li><p>On your desktop Chrome browser, navigate to chrome://inspect. Confirm that Discover USB devices is checked.</p></li>
+<li><p>On your device, an alert prompts you to allow USB debugging from your computer. Tap OK.</p></li>
+<li><p>The message USB debugging connected displays in the device’s notification drawer. <strong>Note:</strong> During remote debugging, Chrome prevents your device’s screen from going to sleep. This feature is useful for debugging, but is also less secure. So be sure to keep an eye on your device!</p></li>
+<li><p>On your computer, the chrome://inspect page displays every connected device, along with its open tabs and debug-enabled WebViews.</p></li>
+</ol>
+</section>
+<section id="debugging-remote-browser-tabs">
+<h5>Debugging remote browser tabs<a class="headerlink" href="#debugging-remote-browser-tabs" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>From the chrome://inspect page, you can launch DevTools and debug your remote browser tabs.</p></li>
+<li><p>To start debugging, click inspect below the browser tab you want to debug.</p></li>
+<li><p>A new instance of Chrome DevTools launches on your computer. From this instance, you can interact with the selected browser tab on your device in real time.</p></li>
+</ol>
+<p>For example, you can use DevTools to inspect web page elements on your device:</p>
+<ul class="simple">
+<li><p>When you mouse over an element in the Elements panel, DevTools highlights the element on your device.</p></li>
+<li><p>You can also click the Inspect Element inspect element icon icon in DevTools and tap your device screen. DevTools highlights the tapped element in the Elements panel.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="debugging-tips">
+<h3>Debugging tips<a class="headerlink" href="#debugging-tips" title="Permalink to this headline"></a></h3>
+<p>Here are a few tips to help get you started with remote debugging:</p>
+<ul class="simple">
+<li><p>Use F5 (or Cmd+r on Mac) to reload a remote page from the DevTools window.</p></li>
+<li><p>Keep the device on a cellular network. Use the Network panel to view the network waterfall under actual mobile conditions.</p></li>
+<li><p>Use the Timeline panel to analyze rendering and CPU usage. Hardware on mobile devices often runs much slower than on your development machine.</p></li>
+<li><p>If you’re running a local web server, use port forwarding or virtual host mapping to access the site on your device.</p></li>
+</ul>
+<section id="live-screencasting">
+<h4>Live screencasting<a class="headerlink" href="#live-screencasting" title="Permalink to this headline"></a></h4>
+<p>Shifting your attention between screens isn’t always convenient. Screencast displays your device’s screen right alongside DevTools on your development machine. You can interact with the content on your device from the screencast too.</p>
+<p>As of KitKat 4.4.3, screencast is available for both browser tabs and Android WebViews.</p>
+<ol class="simple">
+<li><p>To start screencasting, click the Screencast screencast icon icon in the upper right corner of your remote debugging DevTools window.</p></li>
+<li><p>The Screencast panel opens on the left and displays a live view of your device’s screen.</p></li>
+</ol>
+<p>Screencast only displays page content. Transparent portions of the screencast are covered by the omnibox, device keyboard, and other device interfaces.</p>
+<p><strong>Note:</strong> Because screencast continuously captures frames, it has some performance overhead. If your tests are sensitive to frame rate, disable screencast.</p>
+<p>When you interact with the screencast, clicks are translated into taps, firing proper touch events on the device. Keystrokes from your computer are sent to the device, so you can avoid typing with your thumbs.</p>
+<p>Other DevTools work with the screencast too. For example, to inspect an element, click the Inspect Element inspect element icon icon and then click inside the screencast.</p>
+<p><em>Tips:</em> To simulate a pinch gesture, hold Shift while dragging. To scroll, use your trackpad or mouse wheel or fling with your pointer.</p>
+</section>
+<section id="port-forwarding">
+<h4>Port forwarding<a class="headerlink" href="#port-forwarding" title="Permalink to this headline"></a></h4>
+<p>Port forwarding on Chrome for Android makes it easy to test your development site on mobile. It works by creating a listening TCP port on your mobile device that maps to a particular TCP port on your development machine. Traffic between these ports travels through USB, so the connection doesn’t depend on your network configuration.</p>
+<p>To enable port forwarding:</p>
+<ol class="simple">
+<li><p>Open chrome://inspect on your development machine.</p></li>
+<li><p>Click Port Forwarding. The port forwarding settings display.</p></li>
+<li><p>In the Device port field, enter the port number you want your Android device to listen on.
+(The default port is 8080.)</p></li>
+<li><p>In the Host field, enter the IP address (or hostname) and port number where your web application is running.</p></li>
+<li><p>This address can be any local location accessible from your development machine. Currently, port numbers must be between 1024 and 32767 (inclusive).</p></li>
+<li><p>Check Enable port forwarding.</p></li>
+<li><p>Click Done.</p></li>
+<li><p>The port status indicators on chrome://inspect are green when port forwarding is successful.</p></li>
+</ol>
+<p>Now you can open a new Chrome for Android tab and view the content of your local server on your device.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Oppia-ml-Extension.html" class="btn btn-neutral float-left" title="Oppia-ml Extension" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Mobile-device-testing.html" class="btn btn-neutral float-right" title="Mobile device testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

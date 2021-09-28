@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angular migration &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Oppia UX guidelines &amp; rationales" href="Oppia-UX-guidelines-%26-rationales.html" />
+    <link rel="prev" title="Frontend" href="frontend-reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="frontend-reference.html">Frontend</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Angular migration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#testing-videos">Testing videos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#angular-migration-tracker">Angular Migration Tracker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation-details-to-migrate-services">Implementation details to migrate services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation-details-to-migrate-tests">Implementation details to migrate tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation-details-to-migrate-directives">Implementation details to migrate directives</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#migrating-the-logic-part-ts-file">Migrating the logic part (ts file):</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrating-the-html-file">Migrating the HTML file:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-tags">Other tags</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-your-pull-request">Testing your Pull Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation-details-to-refactor-object-factories">Implementation details to refactor Object Factories:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remove-the-following-imports">1. Remove the following imports:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-the-file-overview">2. Change the file overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-functions-from-objectfactory-class">3. Move functions from ObjectFactory class.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-the-imports-and-class-listings-instantiation-from-the-following-files">4. Remove the imports and class listings/ instantiation from the following files:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rename-the-file">5. Rename the file.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-the-import-as-you-have-changed-the-name-of-the-file-and-its-usage-around-the-codebase">6. Change the import (as you have changed the name of the file) and its usage around the codebase.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-the-spec-file">7. Changing the spec file:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia-UX-guidelines-%26-rationales.html">Oppia UX guidelines &amp; rationales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-style-guide.html">Writing style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Schemas.html">Schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor-pages.html">Editor pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="frontend-reference.html">Frontend</a> &raquo;</li>
+      <li>Angular migration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Angular-Migration.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="angular-migration">
+<h1>Angular migration<a class="headerlink" href="#angular-migration" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>Angular is an app-design framework and development platform for creating efficient and sophisticated apps.</p>
+<p>Currently, the project is in a hybrid state where we have both Angular and AngularJS. This makes our application slow and bulky. The codebase has a duplication of libraries since many of the AngularJS libraries are not compatible with Angular. This project aims to migrate the entire codebase to Angular. The benefits of doing this are:</p>
+<ul class="simple">
+<li><p>Improved Developer Experience:</p>
+<ul>
+<li><p>Developing when the application is a hybrid state opens us to a whole host of complicated errors which are in some cases not possible to be solved.</p></li>
+<li><p>Angular is being actively maintained and comes out with a lot of new features that aid in developing new features.</p></li>
+</ul>
+</li>
+<li><p>Improved User Experience:</p>
+<ul>
+<li><p>When the codebase is completely migrated, the developers will focus their efforts on making new features for the website rather than fixing nasty errors that pop up because of the hybrid state.</p></li>
+<li><p>Decrease in page loading times as a result of not bundling two SPA frameworks.</p></li>
+<li><p>Better application performance in general.</p></li>
+</ul>
+</li>
+</ul>
+<p>The project plan will be iterative in nature. We will migrative the services first and then the controllers and directives. The services would be migrated in the dependency order i.e if A depends on B and B depends on C, we will migrate in the order C, B and A.</p>
+<section id="testing-videos">
+<h3>Testing videos<a class="headerlink" href="#testing-videos" title="Permalink to this headline"></a></h3>
+<p><strong>Note: Angular Migration Pull Requests must be accompanied with a video showing the before and after effects of their change to ensure that nothing is broken. This ensures faster review and lower risks of reverted PRs</strong></p>
+</section>
+</section>
+<section id="angular-migration-tracker">
+<h2>Angular Migration Tracker<a class="headerlink" href="#angular-migration-tracker" title="Permalink to this headline"></a></h2>
+<p>The <a class="reference external" href="https://docs.google.com/spreadsheets/d/1L9Udn-XT6Lk1qaTBUySTw1AnhvQMR-30Qry4rfd-Ovg/edit?usp=sharing">angular migration tracker</a> holds the record of which services which are to be migrated. The issue <a class="reference external" href="https://github.com/oppia/oppia/issues/8472">#8472</a> holds a subset of those services that can be migrated without any major blockers.</p>
+</section>
+<section id="implementation-details-to-migrate-services">
+<h2>Implementation details to migrate services<a class="headerlink" href="#implementation-details-to-migrate-services" title="Permalink to this headline"></a></h2>
+<ol>
+<li><p>Import following dependencies</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">downgradeInjectable</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;@angular/upgrade/static&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="p">{</span> <span class="n">Injectable</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>If the services uses <code class="docutils literal notranslate"><span class="pre">$http</span></code>, import <code class="docutils literal notranslate"><span class="pre">HttpClient</span></code> as a dependency:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">HttpClient</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;@angular/common/http&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Change angularJS factory definition to Angular class definition as follows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">angular</span><span class="o">.</span><span class="n">module</span><span class="p">(</span><span class="s1">&#39;oppia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="s1">&#39;ServiceName&#39;</span><span class="p">,[</span><span class="s1">&#39;dependency1&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">dependency1</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">dependency1</span> <span class="p">}</span> <span class="kn">from</span> <span class="nn">...</span> <span class="o">//</span> <span class="n">to</span> <span class="n">be</span> <span class="n">added</span> <span class="n">at</span> <span class="n">the</span> <span class="n">top</span> <span class="n">of</span> <span class="n">the</span> <span class="n">file</span>
+<span class="o">..</span>
+<span class="o">..</span>
+<span class="n">export</span> <span class="k">class</span> <span class="nc">ServiceName</span> <span class="p">{</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add decorator above the class definition</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Injectable</span><span class="p">({</span>
+  <span class="n">providedIn</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span>
+<span class="p">})</span>
+<span class="n">export</span> <span class="k">class</span> <span class="nc">ServiceName</span> <span class="p">{</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add a constructor for the class and inject the dependencies</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">constructor</span><span class="p">(</span>
+    <span class="n">private</span> <span class="n">service1</span><span class="p">:</span> <span class="n">Service1</span><span class="p">,</span>
+    <span class="n">private</span> <span class="n">service2</span><span class="p">:</span> <span class="n">Service2</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">$http.get</span></code> requests in service as follows</p>
+<p>(a) Change <code class="docutils literal notranslate"><span class="pre">$http.get</span></code> to <code class="docutils literal notranslate"><span class="pre">this.http.get</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$http.get(url).then(function(response) {
+  dataDict = angular.copy(response.data);
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">this</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+   <span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">toPromise</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">dataDict</span></code> is not required in Angular services. You can directly use the <code class="docutils literal notranslate"><span class="pre">response</span></code> variable.</p>
+<p>(b) Search in the  codebase where the service is used to obtain results from get requests and change
+<code class="docutils literal notranslate"><span class="pre">response.data</span></code> to <code class="docutils literal notranslate"><span class="pre">response</span></code>.</p>
+<p>(c) Return the <code class="docutils literal notranslate"><span class="pre">errorCallback</span></code> (the reject function) with <code class="docutils literal notranslate"><span class="pre">errorResponse.error.error</span></code> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">errorResponse</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">errorCallback</span><span class="p">(</span><span class="n">errorResponse</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">error</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>(d) Add <code class="docutils literal notranslate"><span class="pre">$rootScope.apply()</span></code> in the controller/directive that is resolving the http request similar to how it is
+added <a class="reference external" href="https://github.com/oppia/oppia/pull/8427/files#diff-ecf6cefd0707bcbafeb6a0b4009aa60cR78">here</a>. You can find this by doing a simple search of the function name in service where get request is handled.
+To do this, make a global search in the code-base for the function. eg. if the service is <code class="docutils literal notranslate"><span class="pre">SkillBackendApiService</span></code> and the function in which the call is made is <code class="docutils literal notranslate"><span class="pre">fetchSkill</span></code>. The search the code-base for <code class="docutils literal notranslate"><span class="pre">SkillBackendApiService.fetchSkill</span></code>. You will find instances like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SkillBackendApiService.fetchSkill(...).then((...) =&gt; {
+    //resolve function
+    ...
+    $rootScope.$applyAsync() //add here
+ }, (...) =&gt; {
+    ...
+    //reject function	
+ }
+);
+</pre></div>
+</div>
+<p>Do this for all functions that have <code class="docutils literal notranslate"><span class="pre">http</span></code> calls.</p>
+</li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">$http.put</span></code> or <code class="docutils literal notranslate"><span class="pre">$http.post</span></code> requests as follows</p>
+<p>(a) Change <code class="docutils literal notranslate"><span class="pre">$http.post/put</span></code> to <code class="docutils literal notranslate"><span class="pre">this.http.post/put</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$http.post(url).then(function(response) {
+  ...
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">this</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+  <span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">toPromise</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span>
+   <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">...</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>(b) Add <code class="docutils literal notranslate"><span class="pre">$rootScope.apply()</span></code> in the controller/directive that is resolving the HTTP request similar to how it is
+added <a class="reference external" href="https://github.com/oppia/oppia/pull/8427/files#diff-ecf6cefd0707bcbafeb6a0b4009aa60cR78">here</a>. You can find this by doing a simple search of the function name in service where get request is handled.</p>
+</li>
+<li><p>If you are migrating a service that is named as <code class="docutils literal notranslate"><span class="pre">.*-backend-api.service.ts</span></code> then please return a domain object and not a dict in the <code class="docutils literal notranslate"><span class="pre">successCallback</span></code> function. For example take a look at this change <a class="reference external" href="https://github.com/oppia/oppia/pull/9505/files#diff-05de50229b44c01bdaeac172928b514dR64">PR #9505</a>, where the domain object is created via an object factory and this is sent ahead. You also need to change the piece of code where this response is used because the response is now a domain object instead of a dict. If there is no specific object factory to alter the response to a domain object, create one similar to how it is done in this <a class="reference external" href="https://github.com/oppia/oppia/pull/9570/files#diff-09e3c3999c18dabdf2ddedf6e3e250f8R1">change</a>.
+Topic Domain Objects need to contain properties that are being read from the backend. So, the Topic Domain Object does not depend on the service being migrated, but the expected return value of the function. For example, in <code class="docutils literal notranslate"><span class="pre">SkillBackendApiService</span></code>, the function <code class="docutils literal notranslate"><span class="pre">fetchSkill</span></code> will clearly return a <code class="docutils literal notranslate"><span class="pre">Skill</span></code> object. Note that <code class="docutils literal notranslate"><span class="pre">SkillObjectFactory.ts</span></code> already exists, so we don’t need to create it. But if there is no corresponding Object Factory, you need to create one similar to how <code class="docutils literal notranslate"><span class="pre">SkillObjectFactory</span></code> is created. So, we take the response from the backend and instead of <code class="docutils literal notranslate"><span class="pre">successCallback(response)</span></code>, we resolve <code class="docutils literal notranslate"><span class="pre">successCallback(SkillObjectFactory.createFromBackendDict(response))</span></code>. This passes the frontend <code class="docutils literal notranslate"><span class="pre">Skill</span></code> object to functions that call <code class="docutils literal notranslate"><span class="pre">fetchSkill</span></code> when the promise gets resolved.<br />
+However, there is more to it. Since before you migrated the file, the calling functions were expecting a backend dict object, the references need to be changed as well.<br />
+To do this, do a global search in the code-base for the function, eg. <code class="docutils literal notranslate"><span class="pre">SkillBackendApiService.fetchSkill</span></code> and refactor the code inside the resolve function to reflect that the parameter is now a <code class="docutils literal notranslate"><span class="pre">Skill</span></code> object and not a backend dict object.
+Please note that interfaces/properties in Object Factories and the <code class="docutils literal notranslate"><span class="pre">.*-backend-api.service.ts</span></code> could be in snake_case, please surround them with single quotes as in <code class="docutils literal notranslate"><span class="pre">'some_property'</span></code>. Except for these two categories, all the properties inside all other files should be camel case: <code class="docutils literal notranslate"><span class="pre">someProperty</span></code>.</p></li>
+<li><p>For functions in the service, add type definitions for all the arguments as well as return values.
+<strong>Note:</strong> For complex types or some type that is being used over functions or files we can declare interface or export interface (if it has to be imported over files). For example in the file <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/components/ratings/rating-computation/rating-computation.service.ts">rating-computation.service.ts</a> we have an export interface to declare the type RatingFrequencies. In the same file, we also have a function named static, which is used by the functions of the class itself.</p></li>
+<li><p>For functions which are private to the service (used as helper functions) add the private keyword for those functions.</p></li>
+<li><p>In  the file end add</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">angular</span><span class="o">.</span><span class="n">module</span><span class="p">(</span><span class="s1">&#39;oppia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="s1">&#39;ServiceName&#39;</span><span class="p">,</span> <span class="n">downgradeInjectable</span><span class="p">(</span><span class="n">ServiceName</span><span class="p">));</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This <a class="reference external" href="https://github.com/oppia/oppia/pull/10693/files">pull request</a> can be used as a reference.</p>
+</section>
+<section id="implementation-details-to-migrate-tests">
+<h2>Implementation details to migrate tests<a class="headerlink" href="#implementation-details-to-migrate-tests" title="Permalink to this headline"></a></h2>
+<ol>
+<li><p>Remove all <code class="docutils literal notranslate"><span class="pre">beforeEach()</span></code> blocks and any other service that is not needed in the test file.</p></li>
+<li><p>Convert all the function keywords to () =&gt; (fat arrow functions) like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">describe</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span> <span class="o">...</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">describe</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="o">..</span> <span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p>Import TestBed in your spec file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">TestBed</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;@angular/core/testing&#39;</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="p">{</span> <span class="n">ServiceName</span> <span class="p">}</span> <span class="kn">from</span> <span class="nn">...</span>
+</pre></div>
+</div>
+<p>If your test is for a service that makes HTTP requests, you also need to import the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">HttpClientTestingModule</span><span class="p">,</span> <span class="n">HttpTestingController</span> <span class="p">}</span> <span class="kn">from</span>
+   <span class="s1">&#39;@angular/common/http/testing&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="p">{</span> <span class="n">TestBed</span><span class="p">,</span> <span class="n">fakeAsync</span><span class="p">,</span> <span class="n">flushMicrotasks</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;@angular/core/testing&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add a beforeEach block that creates an instance of service you want to test</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">serviceInstance</span> <span class="o">=</span> <span class="n">TestBed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ServiceName</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>(a) If your spec file needs any pipe (filters in angular), import them and add it to the providers in the
+TestBed configuration</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">TestBed</span><span class="o">.</span><span class="n">configureTestingModule</span><span class="p">({</span>
+    <span class="n">providers</span><span class="p">:</span> <span class="p">[</span><span class="n">CamelCaseToHyphensPipe</span><span class="p">,</span> <span class="n">ConvertToPlainTextPipe</span><span class="p">]</span> <span class="o">//</span> <span class="n">Any</span> <span class="n">pipe</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">required</span>
+  <span class="p">});</span>
+  <span class="n">instance</span> <span class="o">=</span> <span class="n">TestBed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ServiceName</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>(b) If your spec file tests service that makes HTTP requests, you need to make a HttpClientTestingModule and
+add afterEach statement to check there are no pending requests after each test.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">TestBed</span><span class="o">.</span><span class="n">configureTestingModule</span><span class="p">({</span>
+    <span class="n">imports</span><span class="p">:</span> <span class="p">[</span><span class="n">HttpClientTestingModule</span><span class="p">],</span>
+  <span class="p">});</span>
+  <span class="n">httpTestingController</span> <span class="o">=</span> <span class="n">TestBed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">HttpTestingController</span><span class="p">);</span>
+  <span class="n">instance</span> <span class="o">=</span> <span class="n">TestBed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ServiceName</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="n">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">httpTestingController</span><span class="o">.</span><span class="n">verify</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p>For each test, replace the name of the service with the instance name that is created above using TestBed.</p></li>
+<li><p>If your spec file is for a service that makes HTTP requests then</p>
+<p>(a) Convert each individual test defined in it block as follows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">it</span><span class="p">(</span><span class="s1">&#39;should ...&#39;</span><span class="p">,</span> <span class="n">fakeAsync</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="p">}));</span>
+</pre></div>
+</div>
+<p>(b) Change the test to create an HTTP request via httpTestingController (taking an example from the <code class="docutils literal notranslate"><span class="pre">topic-viewer-backend-api.service.spec.ts</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$httpBackend.expect(&#39;GET&#39;, &#39;/topic_data_handler/0&#39;).respond(
+  sampleDataResults);
+TopicViewerBackendApiService.fetchTopicData(&#39;0&#39;).then(
+  successHandler, failHandler);
+$httpBackend.flush();
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">topicViewerBackendApiService</span><span class="o">.</span><span class="n">fetchTopicData</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span>
+ <span class="n">successHandler</span><span class="p">,</span> <span class="n">failHandler</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">req</span> <span class="o">=</span> <span class="n">httpTestingController</span><span class="o">.</span><span class="n">expectOne</span><span class="p">(</span>
+            <span class="s1">&#39;/topic_data_handler/0&#39;</span><span class="p">);</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">)</span><span class="o">.</span><span class="n">toEqual</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">);</span>
+<span class="n">req</span><span class="o">.</span><span class="n">flush</span><span class="p">(</span><span class="n">sampleDataResults</span><span class="p">);</span>
+
+<span class="n">flushMicrotasks</span><span class="p">();</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="implementation-details-to-migrate-directives">
+<h2>Implementation details to migrate directives<a class="headerlink" href="#implementation-details-to-migrate-directives" title="Permalink to this headline"></a></h2>
+<p>There are two parts to this migration. (The ts file and the HTML file)
+Migrating directives requires the contributor to be aware of the context</p>
+<section id="migrating-the-logic-part-ts-file">
+<h3>Migrating the logic part (ts file):<a class="headerlink" href="#migrating-the-logic-part-ts-file" title="Permalink to this headline"></a></h3>
+<p>Here are the steps to migrate the logic part</p>
+<section id="create-a-basic-component-in-the-directive-file">
+<h4>1. Create a basic component in the directive file:<a class="headerlink" href="#create-a-basic-component-in-the-directive-file" title="Permalink to this headline"></a></h4>
+<p>Import Component to the file.
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">{</span> <span class="pre">Component</span> <span class="pre">}</span> <span class="pre">from</span> <span class="pre">'&#64;angular/core';</span></code></p>
+<p>The take a look at the directive declaration. For example if the directive is declared like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">angular</span><span class="o">.</span><span class="n">module</span><span class="p">(</span><span class="s1">&#39;oppia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">directive</span><span class="p">(</span><span class="s1">&#39;conceptCard&#39;</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s1">&#39;UrlInterpolationService&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">UrlInterpolationService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="n">restrict</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+      <span class="n">scope</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="n">bindToController</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">getSkillIds</span><span class="p">:</span> <span class="s1">&#39;&amp;skillIds&#39;</span><span class="p">,</span>
+        <span class="n">index</span><span class="p">:</span> <span class="s1">&#39;=&#39;</span>
+      <span class="p">},</span>
+      <span class="n">templateUrl</span><span class="p">:</span> <span class="n">UrlInterpolationService</span><span class="o">.</span><span class="n">getDirectiveTemplateUrl</span><span class="p">(</span>
+        <span class="s1">&#39;/components/concept-card/concept-card.directive.html&#39;</span><span class="p">),</span>
+      <span class="n">controllerAs</span><span class="p">:</span> <span class="s1">&#39;$ctrl&#39;</span><span class="p">,</span>
+      <span class="n">controller</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;$filter&#39;</span><span class="p">,</span> <span class="s1">&#39;$rootScope&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;ConceptCardBackendApiService&#39;</span><span class="p">,</span> <span class="s1">&#39;ConceptCardObjectFactory&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>then add the following at the end of the file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Component</span><span class="p">({</span>
+  <span class="n">selector</span><span class="p">:</span> <span class="s1">&#39;concept-card&#39;</span><span class="p">,</span>
+  <span class="n">templateUrl</span><span class="p">:</span> <span class="s1">&#39;./concept-card.directive.html&#39;</span><span class="p">,</span>
+  <span class="n">styleUrls</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">})</span>
+<span class="n">export</span> <span class="k">class</span> <span class="nc">ConceptCardComponent</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>Some points to note:</p>
+<ul class="simple">
+<li><p>Please keep in mind the name of the directive declared. In this case, it is ‘conceptCard’.</p></li>
+<li><p>The directive name converted to kebab-case is the selector (conceptCard -&gt; concept-card).</p></li>
+<li><p>The name of the class is in CamelCase (note the first letter is capital) suffixed with “Component”. So conceptCard -&gt; ConceptCardComponent.</p></li>
+<li><p>The template of the directive (in 99% of the cases) exists in the same folder as the directive.ts file.</p></li>
+</ul>
+</section>
+<section id="import-and-inject-the-dependencies">
+<h4>2. Import and inject the dependencies:<a class="headerlink" href="#import-and-inject-the-dependencies" title="Permalink to this headline"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">controller</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;$rootScope&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;ConceptCardBackendApiService&#39;</span><span class="p">,</span> <span class="s1">&#39;ConceptCardObjectFactory&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>The first two dependencies are interesting ones. They don’t have a direct equivalent in angular. In most of the cases, you will find something like <code class="docutils literal notranslate"><span class="pre">$scope.someVariable</span> <span class="pre">=</span> </code>, <code class="docutils literal notranslate"><span class="pre">$scope.$onDestroy</span></code>, <code class="docutils literal notranslate"><span class="pre">$scope.$onInit</span></code>, and <code class="docutils literal notranslate"><span class="pre">$rootScope.$applyAsync()</span></code>. In other cases contact your onboarding mentor or &#64;srijanreddy98.</p>
+<p>Now, we have the other two dependencies (‘ConceptCardBackendApiService’, ‘ConceptCardObjectFactory’). These are called injectables as they are “injected”. So these go into your constructor.</p>
+<p>First, import these two services into the directive.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">ConceptCardBackendApiService</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;service/some-service.ts&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="p">{</span> <span class="n">ConceptCardObjectFactory</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;services/some-other-service.ts&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Create a constructor for the class you made in the previous step and add those injectables there:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="k">class</span> <span class="nc">ConceptCardComponent</span> <span class="p">{</span>
+
+<span class="n">constructor</span><span class="p">(</span>
+  <span class="n">private</span> <span class="n">conceptCardBackendApiService</span><span class="p">:</span> <span class="n">ConceptCardBackendApiService</span><span class="p">,</span>
+  <span class="n">private</span> <span class="n">conceptCardObjectFactory</span><span class="p">:</span> <span class="n">ConceptCardObjectFactory</span>
+<span class="p">)</span> <span class="p">{}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Sometimes, you will also see dependencies like <span class="math notranslate nohighlight">\(window, \)</span>log, <span class="math notranslate nohighlight">\(timeout etc.
+`For \)</span>window<code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">Use</span> </code>window-ref.service.ts<code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">the</span> <span class="pre">constructor,</span> <span class="pre">with</span> <span class="pre">other</span> <span class="pre">dependencies,</span> <span class="pre">inject</span></code>WindowRef`</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">constructor</span><span class="p">(</span>
+<span class="o">...</span>
+<span class="n">private</span> <span class="n">windowRef</span><span class="p">:</span> <span class="n">WindowRef</span>
+<span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>Then instead of <code class="docutils literal notranslate"><span class="pre">window</span></code>, use <code class="docutils literal notranslate"><span class="pre">windowRef.nativeWindow</span></code>, eg <code class="docutils literal notranslate"><span class="pre">windowRef.nativeWindow.location.href</span></code> etc
+Also, instead of <code class="docutils literal notranslate"><span class="pre">location</span></code> for setting urls, use <code class="docutils literal notranslate"><span class="pre">location.href</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">For</span> <span class="pre">$timeout</span></code>: Use <code class="docutils literal notranslate"><span class="pre">setTimeout</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">For</span> <span class="pre">$log</span></code>: Use <code class="docutils literal notranslate"><span class="pre">logger.service.ts</span></code></p>
+<p><strong>Notice the casing very carefully. The service is ConceptCardBackendApiService but its instance is called conceptCardBackendApiService (with a small c)</strong></p>
+</section>
+<section id="adding-oninit-ondestroy">
+<h4>3. Adding OnInit / OnDestroy:<a class="headerlink" href="#adding-oninit-ondestroy" title="Permalink to this headline"></a></h4>
+<p>You will notice that in almost every directive you have <code class="docutils literal notranslate"><span class="pre">ctrl.$onInit</span></code> and/or <code class="docutils literal notranslate"><span class="pre">ctrl.$onDestroy</span></code>. The equivalent of this in angular is <code class="docutils literal notranslate"><span class="pre">ngOnInit</span></code> and <code class="docutils literal notranslate"><span class="pre">ngOnDestroy</span></code>.
+First, you need to import OnInit from ‘&#64;angular/core’; Then implement it in the class. So change the class declaration to this:
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">class</span> <span class="pre">ConceptCard</span> <span class="pre">implements</span> <span class="pre">OnInit</span> <span class="pre">{</span></code> and add an <code class="docutils literal notranslate"><span class="pre">ngOnInit()</span> <span class="pre">{}</span></code> below the constructor.
+After this step the component class would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">Component</span><span class="p">,</span> <span class="n">OnInit</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+<span class="o">...</span>
+<span class="n">export</span> <span class="k">class</span> <span class="nc">ConceptCardComponent</span> <span class="n">implements</span> <span class="n">OnInit</span> <span class="p">{</span>
+
+  <span class="n">constructor</span><span class="p">(</span>
+    <span class="n">private</span> <span class="n">conceptCardBackendApiService</span><span class="p">:</span> <span class="n">ConceptCardBackendApiService</span><span class="p">,</span>
+    <span class="n">private</span> <span class="n">conceptCardObjectFactory</span><span class="p">:</span> <span class="n">ConceptCardObjectFactory</span>
+  <span class="p">)</span> <span class="p">{}</span>
+  
+  <span class="n">ngOnInit</span><span class="p">():</span> <span class="n">void</span> <span class="p">{</span>
+	  <span class="o">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similarly, do this for <code class="docutils literal notranslate"><span class="pre">onDestroy</span></code></p>
+</section>
+<section id="changing-the-bindtocontroller">
+<h4>4. Changing the bindToController:<a class="headerlink" href="#changing-the-bindtocontroller" title="Permalink to this headline"></a></h4>
+<p>If there is some value in bindToController then import <code class="docutils literal notranslate"><span class="pre">Input</span></code> from <code class="docutils literal notranslate"><span class="pre">&#64;angular/core</span></code>;</p>
+<p>There are four “syntaxes” that you could run into when trying to migrate bindToController:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'&#64;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'='</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'&amp;'</span></code></p></li>
+</ol>
+<section id="the-syntax-for-is-pretty-straight-forward">
+<h5>The syntax for <code class="docutils literal notranslate"><span class="pre">'&#64;'</span></code> is pretty straight forward:<a class="headerlink" href="#the-syntax-for-is-pretty-straight-forward" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">layoutType</span><span class="p">:</span> <span class="s1">&#39;@&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>will change to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="nd">@Input</span><span class="p">()</span> <span class="n">layoutType</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Note that <code class="docutils literal notranslate"><span class="pre">'&#64;'</span></code> is always a string but <code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code> can be of any type (string, number, object or custom types).</strong></p>
+</section>
+<section id="the-syntax-for">
+<h5>The syntax for ‘&lt;’.<a class="headerlink" href="#the-syntax-for" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">layoutAlignType</span><span class="p">:</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>changes to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="nd">@Input</span><span class="p">()</span> <span class="n">layoutAlignType</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>(The type of layoutAlignType being string is an example. please be aware of the type used in your case).
+Take a look at the directive name (in this case it is conceptCard). Now do a global search for <code class="docutils literal notranslate"><span class="pre">&lt;concept-card</span></code>. (Note the change to snake_case and the extra ‘&lt;’ at the beginning).
+When you get the results, in each and every case you will find something like <code class="docutils literal notranslate"><span class="pre">layout-align-type=layoutAlign</span></code>.
+<strong>If it is an angularjs template</strong>, change that to <code class="docutils literal notranslate"><span class="pre">[layout-align-type]=layoutAlign</span></code>.
+(Notice in the component it was <code class="docutils literal notranslate"><span class="pre">layoutAlignType</span></code> but in HTML it is [layout-align-type]. The camelCase to kebab-case change is required when the template is a template of an angularjs component/directive).</p>
+<p><strong>Otherwise, change it to <code class="docutils literal notranslate"><span class="pre">[layoutAlignType]=layoutAlign</span></code>.</strong></p>
+<p><strong>If you find something like <code class="docutils literal notranslate"><span class="pre">layout-align-type=&quot;center</span> <span class="pre">center&quot;</span></code>, leave it as it is, do not change it. The <code class="docutils literal notranslate"><span class="pre">[]</span></code> syntax can only be used with variables. If the attribute is not surrounded by <code class="docutils literal notranslate"><span class="pre">[]</span></code> and the attribute value is surrounded by double quotes, that means the passed value is a string.</strong></p>
+</section>
+<section id="the-changes-required-for">
+<h5>The changes required for <code class="docutils literal notranslate"><span class="pre">'&amp;'</span></code>:<a class="headerlink" href="#the-changes-required-for" title="Permalink to this headline"></a></h5>
+<p>You will find <code class="docutils literal notranslate"><span class="pre">'&amp;'</span></code> with a syntax that looks like <code class="docutils literal notranslate"><span class="pre">getSkillIds:</span> <span class="pre">'&amp;skillIds',</span></code>. This requires some significant changes so please follow the next steps very carefully:</p>
+<p>First, change the</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">getSkillIds</span><span class="p">:</span> <span class="s1">&#39;&amp;skillIds&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Input</span><span class="p">()</span> <span class="n">skillIds</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Note: If the syntax looks like <code class="docutils literal notranslate"><span class="pre">skillIds:</span> <span class="pre">'&amp;'</span></code>, then just change it to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Input</span><span class="p">()</span> <span class="n">skillIds</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>(Array<string> is an example. please be aware of the type used in your case).
+Then change all cases of <code class="docutils literal notranslate"><span class="pre">ctrl.getSkillIds()</span></code> to <code class="docutils literal notranslate"><span class="pre">this.skillIds</span></code>. (Notice the parenthesis were also removed).</p>
+<p>Take a look at the directive name (in this case it is conceptCard). Now do a global search for <code class="docutils literal notranslate"><span class="pre">&lt;concept-card</span></code>. (Note the change to kebab-case and the extra ‘&lt;’ at the beginning).
+When you get the results, in each and every case you will find something like <code class="docutils literal notranslate"><span class="pre">skill-ids=skillIds</span></code>.</p>
+<p><strong>If the occurence is in an angularjs template</strong> (i.e. the corresponding .ts file for the html has not been migrated), change that to <code class="docutils literal notranslate"><span class="pre">[skill-ids]=skillIds</span></code>.
+(Notice in the component it was <code class="docutils literal notranslate"><span class="pre">skillIds</span></code> but in HTML it is [skill-ids]. The camelCase to kebab-case change is required when the template is a template of an angularjs component/directive).</p>
+<p><strong>Otherwise, change it to <code class="docutils literal notranslate"><span class="pre">[skillIds]=skillIds</span></code>.</strong></p>
+<p><strong>Note: If you find something like <code class="docutils literal notranslate"><span class="pre">skill-type=&quot;supersonic&quot;</span></code>, leave it as it is, do not change it. The <code class="docutils literal notranslate"><span class="pre">[]</span></code> syntax can only be used with variables. If the attribute is not surrounded by <code class="docutils literal notranslate"><span class="pre">[]</span></code> and the attribute value is surrounded by double quotes, that means the passed value is a string.</strong></p>
+<p>Understanding binding interpolation:</p>
+<ol class="simple">
+<li><p>Binding is a way to share information between different directives using variables that pass values. Variables are passed via selectors of other directives present in the HTML file of the directive we are working on</p></li>
+<li><p>Interpolation is simply a way to make sure we pass variables and not values in our HTML. Eg. How do we know if in <code class="docutils literal notranslate"><span class="pre">&lt;dir-name</span> <span class="pre">abc=”xyz”&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">xyz</span></code> is a string or a variable? So for variables, we use interpolation -&gt; {{ }}. Hence, for variables, we use two methods:
+a. <code class="docutils literal notranslate"><span class="pre">&lt;dir-name</span> <span class="pre">[abc]=&quot;xyz&quot;&gt;</span></code> The <code class="docutils literal notranslate"><span class="pre">[]</span></code> assumes that the string is a variable.
+b. <code class="docutils literal notranslate"><span class="pre">&lt;dir-name</span> <span class="pre">abc=&quot;{{</span> <span class="pre">xyz</span> <span class="pre">}}&quot;&gt;</span></code>.
+We use method <code class="docutils literal notranslate"><span class="pre">a</span></code> in all cases except if the variable is interspersed with other text. eg. <code class="docutils literal notranslate"><span class="pre">&lt;dir-name</span> <span class="pre">abc=&quot;The</span> <span class="pre">boy</span> <span class="pre">has</span> <span class="pre">{{</span> <span class="pre">count</span> <span class="pre">}}</span> <span class="pre">apples&quot;&gt;</span></code></p></li>
+<li><p>Do not use interpolation with properties marked with [prop], or events. These automatically assume that a variable is passed</p></li>
+</ol>
+</section>
+<section id="id1">
+<h5>The syntax for <code class="docutils literal notranslate"><span class="pre">=</span></code>:<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h5>
+<p>In most cases, the <code class="docutils literal notranslate"><span class="pre">=</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> when looked at from an angular2+ perspective. So just follow the steps given for <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> migration.</p>
+</section>
+</section>
+<section id="start-separating-the-other-functions">
+<h4>5. Start separating the other functions:<a class="headerlink" href="#start-separating-the-other-functions" title="Permalink to this headline"></a></h4>
+<p>Take a look at the directive code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>          var ctrl = this;
+          ctrl.isLastWorkedExample = function() {
+            return ctrl.numberOfWorkedExamplesShown ===
+              ctrl.currentConceptCard.getWorkedExamples().length;
+          };
+
+          ctrl.showMoreWorkedExamples = function() {
+            ctrl.explanationIsShown = false;
+            ctrl.numberOfWorkedExamplesShown++;
+          };
+
+          ctrl.$onInit = function() {
+            ctrl.conceptCards = [];
+            ctrl.currentConceptCard = null;
+            ctrl.numberOfWorkedExamplesShown = 0;
+            ctrl.loadingMessage = &#39;Loading&#39;;
+            ConceptCardBackendApiService.loadConceptCards(
+              ctrl.getSkillIds()
+            ).then(function(conceptCardObjects) {
+              conceptCardObjects.forEach(function(conceptCardObject) {
+                ctrl.conceptCards.push(conceptCardObject);
+              });
+              ctrl.loadingMessage = &#39;&#39;;
+              ctrl.currentConceptCard = ctrl.conceptCards[ctrl.index];
+              ctrl.numberOfWorkedExamplesShown = 0;
+              if (ctrl.currentConceptCard.getWorkedExamples().length &gt; 0) {
+                ctrl.numberOfWorkedExamplesShown = 1;
+              }
+              // TODO(#8521): Remove when this directive is migrated to Angular.
+              $rootScope.$applyAsync();
+            });
+          };
+</pre></div>
+</div>
+<p>Look at all lines matching the pattern <code class="docutils literal notranslate"><span class="pre">ctrl.someVariable</span> <span class="pre">=</span> <span class="pre">function(...)</span> <span class="pre">{...</span></code>.</p>
+<p>In the component you made in step one, just create those functions without the <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">function</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="k">class</span> <span class="nc">ConceptCardComponent</span> <span class="n">implements</span> <span class="n">OnInit</span> <span class="p">{</span>
+
+<span class="n">constructor</span><span class="p">(</span>
+  <span class="n">private</span> <span class="n">conceptCardBackendApiService</span><span class="p">:</span> <span class="n">ConceptCardBackendApiService</span><span class="p">,</span>
+  <span class="n">private</span> <span class="n">conceptCardObjectFactory</span><span class="p">:</span> <span class="n">ConceptCardObjectFactory</span>
+<span class="p">)</span> <span class="p">{}</span>
+
+  <span class="n">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="n">isLastWorkedExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="n">showMoreWorkedExamples</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="create-class-members-variables">
+<h4>6. Create class members (variables):<a class="headerlink" href="#create-class-members-variables" title="Permalink to this headline"></a></h4>
+<p>Till now we only looked at <code class="docutils literal notranslate"><span class="pre">ctrl.someVariable</span> <span class="pre">=</span> <span class="pre">function()</span></code>. Now we will look at all the other cases.
+Looking at the directive code again:
+Take a look at the directive code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>          var ctrl = this;
+          ctrl.isLastWorkedExample = function() {
+            return ctrl.numberOfWorkedExamplesShown ===
+              ctrl.currentConceptCard.getWorkedExamples().length;
+          };
+
+          ctrl.showMoreWorkedExamples = function() {
+            ctrl.explanationIsShown = false;
+            ctrl.numberOfWorkedExamplesShown++;
+          };
+
+          ctrl.$onInit = function() {
+            ctrl.conceptCards = [];
+            ctrl.currentConceptCard = null;
+            ctrl.numberOfWorkedExamplesShown = 0;
+            ctrl.loadingMessage = &#39;Loading&#39;;
+            ConceptCardBackendApiService.loadConceptCards(
+              ctrl.getSkillIds()
+            ).then(function(conceptCardObjects) {
+              conceptCardObjects.forEach(function(conceptCardObject) {
+                ctrl.conceptCards.push(conceptCardObject);
+              });
+              ctrl.loadingMessage = &#39;&#39;;
+              ctrl.currentConceptCard = ctrl.conceptCards[ctrl.index];
+              ctrl.numberOfWorkedExamplesShown = 0;
+              if (ctrl.currentConceptCard.getWorkedExamples().length &gt; 0) {
+                ctrl.numberOfWorkedExamplesShown = 1;
+              }
+              // TODO(#8521): Remove when this directive is migrated to Angular.
+              $rootScope.$applyAsync();
+            });
+          };
+</pre></div>
+</div>
+<p>So looking at all the other <code class="docutils literal notranslate"><span class="pre">ctrl.</span></code> declaration we find:
+<code class="docutils literal notranslate"><span class="pre">ctrl.numberOfWorkedExamplesShown,</span> <span class="pre">ctrl.currentConceptCard,</span> <span class="pre">ctrl.explanationIsShown,</span> <span class="pre">ctrl.numberOfWorkedExamplesShown++,</span> <span class="pre">ctrl.conceptCards,</span> <span class="pre">ctrl.loadingMessage</span></code>, etc.</p>
+<p>Now we have to define them as class members. In order to do so just remove <code class="docutils literal notranslate"><span class="pre">ctrl.</span></code> in front of the variable and add them to the class above the constructor.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="k">class</span> <span class="nc">ConceptCardComponent</span> <span class="n">implements</span> <span class="n">OnInit</span> <span class="p">{</span>
+<span class="n">numberOfWorkedExamplesShown</span><span class="p">:</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">currentConceptCard</span><span class="p">:</span> <span class="n">ConceptCard</span><span class="p">;</span>
+<span class="n">explanationIsShown</span><span class="p">:</span> <span class="n">boolean</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+<span class="n">conceptCards</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">ConceptCard</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">loadingMessage</span><span class="p">:</span> <span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+<span class="n">constructor</span><span class="p">(</span>
+  <span class="n">private</span> <span class="n">conceptCardBackendApiService</span><span class="p">:</span> <span class="n">ConceptCardBackendApiService</span><span class="p">,</span>
+  <span class="n">private</span> <span class="n">conceptCardObjectFactory</span><span class="p">:</span> <span class="n">ConceptCardObjectFactory</span>
+<span class="p">)</span> <span class="p">{}</span>
+
+  <span class="n">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="n">isLastWorkedExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="n">showMoreWorkedExamples</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="now-we-copy-the-contents-of-the-functions">
+<h4>7. Now we copy the contents of the functions:<a class="headerlink" href="#now-we-copy-the-contents-of-the-functions" title="Permalink to this headline"></a></h4>
+<p>It very simple, anything with <code class="docutils literal notranslate"><span class="pre">ctrl.</span></code> becomes <code class="docutils literal notranslate"><span class="pre">this.</span></code>.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ctrl</span><span class="o">.</span><span class="n">isLastWorkedExample</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">ctrl</span><span class="o">.</span><span class="n">numberOfWorkedExamplesShown</span> <span class="o">===</span>  
+    <span class="n">ctrl</span><span class="o">.</span><span class="n">currentConceptCard</span><span class="o">.</span><span class="n">getWorkedExamples</span><span class="p">()</span><span class="o">.</span><span class="n">length</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>becomes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">isLastWorkedExample</span><span class="p">():</span> <span class="n">boolean</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">numberOfWorkedExamplesShown</span> <span class="o">===</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">currentConceptCard</span><span class="o">.</span><span class="n">getWorkedExamples</span><span class="p">()</span><span class="o">.</span><span class="n">length</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Note the dependency injections also get the <code class="docutils literal notranslate"><span class="pre">this.</span></code> prefix</strong>
+in the controller.$OnInit function we have</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ConceptCardBackendApiService</span><span class="o">.</span><span class="n">loadConceptCards</span><span class="p">(</span>
+              <span class="n">ctrl</span><span class="o">.</span><span class="n">getSkillIds</span><span class="p">()</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+<p>This will become:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">this</span><span class="o">.</span><span class="n">conceptCardBackendApiService</span><span class="o">.</span><span class="n">loadConceptCards</span><span class="p">(</span>
+              <span class="n">this</span><span class="o">.</span><span class="n">skillIds</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="add-downgrade-statement-at-the-end-of-the-file-and-import-downgradecomponent-from-angular-upgrade-static">
+<h4>8. Add downgrade statement at the end of the file and import downgradeComponent from ‘&#64;angular/upgrade/static’<a class="headerlink" href="#add-downgrade-statement-at-the-end-of-the-file-and-import-downgradecomponent-from-angular-upgrade-static" title="Permalink to this headline"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">angular</span><span class="o">.</span><span class="n">module</span><span class="p">(</span><span class="s1">&#39;oppia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">directive</span><span class="p">(</span>
+  <span class="s1">&#39;conceptCard&#39;</span><span class="p">,</span> <span class="n">downgradeComponent</span><span class="p">(</span>
+    <span class="p">{</span><span class="n">component</span><span class="p">:</span> <span class="n">ConceptCardComponent</span><span class="p">}));</span>
+</pre></div>
+</div>
+</section>
+<section id="change-the-name-of-the-file-from-directive-controller-ts-to-component-ts-import-this-component-into-the-corresponding-module-page-and-add-it-in-the-declarations-and-entrycomponents">
+<h4>9. Change the name of the file from <code class="docutils literal notranslate"><span class="pre">*directive|controller.ts</span></code> to <code class="docutils literal notranslate"><span class="pre">*component.ts</span></code>. Import this component into the corresponding module page and add it in the <code class="docutils literal notranslate"><span class="pre">declarations</span></code> and <code class="docutils literal notranslate"><span class="pre">entryComponents</span></code>.<a class="headerlink" href="#change-the-name-of-the-file-from-directive-controller-ts-to-component-ts-import-this-component-into-the-corresponding-module-page-and-add-it-in-the-declarations-and-entrycomponents" title="Permalink to this headline"></a></h4>
+<p>You can find the corresponding module page as follows:
+For directives in the pages folder, they will be in the same subfolder as <code class="docutils literal notranslate"><span class="pre">*.module.ts</span></code>
+For directives in the components folder, the module page is <code class="docutils literal notranslate"><span class="pre">shared-component.module.ts</span></code></p>
+</section>
+</section>
+<section id="migrating-the-html-file">
+<h3>Migrating the HTML file:<a class="headerlink" href="#migrating-the-html-file" title="Permalink to this headline"></a></h3>
+<p>This is the easier part of migration but still should be migrated carefully:
+Here are the migration patterns:</p>
+<section id="changing-to">
+<h4>Changing <code class="docutils literal notranslate"><span class="pre">&lt;[</span> <span class="pre">...</span> <span class="pre">]&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></code><a class="headerlink" href="#changing-to" title="Permalink to this headline"></a></h4>
+<p>The interpolation in angular uses <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">}}</span></code> to interpolate. So change <code class="docutils literal notranslate"><span class="pre">&lt;[</span> <span class="pre">]&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">}}</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&lt;[credit]&gt;&lt;/li&gt;</span></code> becomes <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;{{</span> <span class="pre">credit</span> <span class="pre">}}</span> <span class="pre">&lt;/li&gt;</span></code></p>
+</section>
+<section id="removing-ctrl-ctrl">
+<h4>Removing <span class="math notranslate nohighlight">\(ctrl (\)</span>ctrl -&gt; )<a class="headerlink" href="#removing-ctrl-ctrl" title="Permalink to this headline"></a></h4>
+<p>By default, all the variables of the class you migrated are available in HTML in angular (unlike angularjs where it was prefixed by <span class="math notranslate nohighlight">\(ctrl or had to attached to the \)</span>scope). Remove all <code class="docutils literal notranslate"><span class="pre">$ctrl.</span></code> from html.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;li</span> <span class="pre">ng-if=&quot;$ctrl.credits</span> <span class="pre">===</span> <span class="pre">0&quot;&gt;&lt;[$ctrl.credits]&gt;&lt;/li&gt;</span></code> becomes <code class="docutils literal notranslate"><span class="pre">&lt;li</span> <span class="pre">*ngIf=&quot;credits</span> <span class="pre">===</span> <span class="pre">0&quot;&gt;</span> <span class="pre">{{</span> <span class="pre">credit</span> <span class="pre">}}</span> <span class="pre">&lt;/li&gt;</span></code></p>
+</section>
+<section id="change-ng-if-ngif">
+<h4>Change ng-if -&gt; *ngIf<a class="headerlink" href="#change-ng-if-ngif" title="Permalink to this headline"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;li</span> <span class="pre">ng-if=&quot;$ctrl.credits</span> <span class="pre">===</span> <span class="pre">0&quot;&gt;&lt;[$ctrl.credits]&gt;&lt;/li&gt;</span></code> becomes <code class="docutils literal notranslate"><span class="pre">&lt;li</span> <span class="pre">*ngIf=&quot;credits</span> <span class="pre">===</span> <span class="pre">0&quot;&gt;</span> <span class="pre">{{</span> <span class="pre">credit</span> <span class="pre">}}</span> <span class="pre">&lt;/li&gt;</span></code></p>
+</section>
+<section id="change-ng-repeat-to-ngfor">
+<h4>Change ng-repeat to *ngFor<a class="headerlink" href="#change-ng-repeat-to-ngfor" title="Permalink to this headline"></a></h4>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>AJS</p></th>
+<th class="head"><p>ng2+</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;oppia-about-credits-letter-groups</span> <span class="pre">three-col&quot;&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;oppia-about-credits-letter-groups</span> <span class="pre">three-col&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">ng-repeat-start=&quot;item</span> <span class="pre">in</span> <span class="pre">$ctrl.allCredits&quot;&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">*ngFor=&quot;let</span> <span class="pre">credit</span> <span class="pre">of</span> <span class="pre">allCredits&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;[item.letter]&gt;&lt;/span&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;span&gt;{{</span> <span class="pre">credit.letter</span> <span class="pre">}}&lt;/span&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;ul</span> <span class="pre">ng-repeat-end&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;li</span> <span class="pre">ng-repeat=&quot;credit</span> <span class="pre">in</span> <span class="pre">item.credits&quot;&gt;&lt;[credit]&gt;&lt;/li&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;li</span> <span class="pre">*ngFor=&quot;let</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">credit.names&quot;&gt;{{</span> <span class="pre">name</span> <span class="pre">}}&lt;/li&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;/ul&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;/ul&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;/div&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;/div&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="other-tags">
+<h3>Other tags<a class="headerlink" href="#other-tags" title="Permalink to this headline"></a></h3>
+<p>ng-cloak -&gt; Remove</p>
+<p>ng-class -&gt; ngClass</p>
+<p>ng-show/ng-hide -&gt; <a class="reference external" href="https://www.geeksforgeeks.org/what-is-the-equivalent-of-ngshow-and-nghide-in-angular-2/">GeeksForGeeks</a></p>
+<section id="html-tag-attributes">
+<h4>HTML tag attributes<a class="headerlink" href="#html-tag-attributes" title="Permalink to this headline"></a></h4>
+<p>If you see any HTML attribute which looks like this:
+<code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">editable=&lt;[$ctrl.edit]&gt;</span></code>, then just change it to <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">[editable]=&quot;edit&quot;&gt;</span></code></p>
+<p>If you ng-src/ng-srcset, change it to [src]/[srcset] .</p>
+</section>
+<section id="html-events">
+<h4>HTML events:<a class="headerlink" href="#html-events" title="Permalink to this headline"></a></h4>
+<p>All the events in HTML are available in angular. Example onClick -&gt; (click), ng-click -&gt; (click), ng-submit -&gt; (ngSubmit)</p>
+</section>
+<section id="translations">
+<h4>Translations:<a class="headerlink" href="#translations" title="Permalink to this headline"></a></h4>
+<p>You may come across the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">some</span><span class="o">-</span><span class="n">tag</span> <span class="n">translate</span><span class="o">=</span><span class="s2">&quot;I18N_VARIABLE_NAME&quot;</span>
+	<span class="n">translate</span><span class="o">-</span><span class="n">values</span><span class="o">=</span><span class="s2">&quot;{abc: xyz}&quot;</span><span class="o">&gt;&lt;/</span><span class="n">some</span><span class="o">-</span><span class="n">tag</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Convert it like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">some</span><span class="o">-</span><span class="n">tag</span> <span class="p">[</span><span class="n">innerHTML</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;&#39;I18N_VARIABLE_NAME&#39; | translate:{abc: xyz}&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">some</span><span class="o">-</span><span class="n">tag</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>If there are no translate-values, simply use <code class="docutils literal notranslate"><span class="pre">&quot;'I18N_VARIABLE_NAME'</span> <span class="pre">|</span> <span class="pre">translate&quot;</span></code></p>
+<p>Please note the single-quote marks around <code class="docutils literal notranslate"><span class="pre">I18N_VARIABLE_NAME</span></code></p>
+</section>
+<section id="css-updates">
+<h4>CSS updates<a class="headerlink" href="#css-updates" title="Permalink to this headline"></a></h4>
+<p>There may be some style updates required to make sure that the pages look exactly like before.</p>
+<p>You can find the following changes here: https://github.com/oppia/oppia/pull/9980/files#diff-1d203da36aa74eef4c39b05a27eafbaeR40-R46</p>
+<p>Besides this, styles that contain the directive name now need to be enclosed in a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag.</p>
+<p>eg: Original: https://github.com/oppia/oppia/pull/9957/files#diff-25860f544f47c16a020aff8bb0c389fdL1-L3</p>
+<p>Modified: https://github.com/oppia/oppia/pull/9957/files#diff-45cbfaec92adcc709712a85df070f455R1-R4</p>
+</section>
+</section>
+</section>
+<section id="testing-your-pull-request">
+<h2>Testing your Pull Request<a class="headerlink" href="#testing-your-pull-request" title="Permalink to this headline"></a></h2>
+<ol>
+<li><p>Ensure your frontend tests pass</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">run_frontend_tests</span>
+</pre></div>
+</div>
+<p>Note: If your migrated service involves HTTP calls and when you run the frontend test your frontend test fail for some other service (One error that might pop is <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">No</span> <span class="pre">pending</span> <span class="pre">request</span> <span class="pre">to</span> <span class="pre">flush</span> <span class="pre">!</span></code>) then go ahead and migrate the failing tests for the other service too. You might have
+guessed that in such case we have migrated a service which is now making HTTP calls in Angular using HttpClient
+but some other service that is issuing HTTP requests to this service is still testing by making calls via
+AngularJS HTTP module (using $httpBackend). Go through this <a class="reference external" href="https://github.com/oppia/oppia/pull/9029/files">PR #9029</a>,
+wherein <code class="docutils literal notranslate"><span class="pre">question-creation.service</span></code> and <code class="docutils literal notranslate"><span class="pre">question-backend-api.service</span></code> are migrated to Angular and we went
+ahead to change relevant tests in <code class="docutils literal notranslate"><span class="pre">questions-list.service.spec</span></code>.</p>
+</li>
+<li><p>Ensure there are no typescript error</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">scripts</span><span class="o">.</span><span class="n">typescript_checks</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ensure there are no linting errors</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>python -m scripts.linters.pre_commit_linter
+``
+</pre></div>
+</div>
+</li>
+<li><p>Manual testing
+See where the directive you have migrated is being used. You can do this by seeing where it’s corresponding <code class="docutils literal notranslate"><span class="pre">selector</span></code> is being used. Then check whether functionality that you have implemented works as expected (like on the develop branch). Add a screen recording of the places where the directive is used when you open your PR!</p></li>
+</ol>
+</section>
+<section id="implementation-details-to-refactor-object-factories">
+<h2>Implementation details to refactor Object Factories:<a class="headerlink" href="#implementation-details-to-refactor-object-factories" title="Permalink to this headline"></a></h2>
+<section id="remove-the-following-imports">
+<h3>1. Remove the following imports:<a class="headerlink" href="#remove-the-following-imports" title="Permalink to this headline"></a></h3>
+<p>The following imports will no longer be required.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">downgradeInjectable</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;@angular/upgrade/static&#39;</span><span class="p">;</span>	
+<span class="kn">import</span> <span class="p">{</span> <span class="n">Injectable</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="change-the-file-overview">
+<h3>2. Change the file overview<a class="headerlink" href="#change-the-file-overview" title="Permalink to this headline"></a></h3>
+<p>Change the file overview to not include the term Object Factory. Instead, replace it with the word “model”.</p>
+<p>eg:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Before</p></th>
+<th class="head"><p>After</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Factory</span> <span class="pre">for</span> <span class="pre">creating</span> <span class="pre">new</span> <span class="pre">frontend</span> <span class="pre">instances</span> <span class="pre">of</span> <span class="pre">ParamMetadata</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">class</span> <span class="pre">for</span> <span class="pre">creating</span> <span class="pre">new</span> <span class="pre">frontend</span> <span class="pre">instances</span> <span class="pre">of</span> <span class="pre">ParamMetadata</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="move-functions-from-objectfactory-class">
+<h3>3. Move functions from ObjectFactory class.<a class="headerlink" href="#move-functions-from-objectfactory-class" title="Permalink to this headline"></a></h3>
+<p>Locate a class in the whose name is suffixed by ObjectFactory. Move all the functions from that ObjectFactory class (except the constructor) and add them to the other class in the file. Add static in front of all the functions you moved.</p>
+<p>Before:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="k">class</span> <span class="nc">ParamMetadata</span> <span class="p">{</span>
+  <span class="n">action</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+  <span class="n">paramName</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+  <span class="n">source</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+  <span class="n">sourceInd</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+  <span class="n">constructor</span><span class="p">(</span>
+      <span class="n">action</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">paramName</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">sourceInd</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">action</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">paramName</span> <span class="o">=</span> <span class="n">paramName</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">sourceInd</span> <span class="o">=</span> <span class="n">sourceInd</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Injectable</span><span class="p">({</span>
+  <span class="n">providedIn</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span>
+<span class="p">})</span>
+<span class="n">export</span> <span class="k">class</span> <span class="nc">ParamMetadataObjectFactory</span> <span class="p">{</span>
+  <span class="n">createWithSetAction</span><span class="p">(</span>
+      <span class="n">paramName</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">sourceInd</span><span class="p">:</span> <span class="n">string</span><span class="p">):</span> <span class="n">ParamMetadata</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">ParamMetadata</span><span class="p">(</span>
+      <span class="n">ExplorationEditorPageConstants</span><span class="o">.</span><span class="n">PARAM_ACTION_SET</span><span class="p">,</span> <span class="n">paramName</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
+      <span class="n">sourceInd</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">createWithGetAction</span><span class="p">(</span>
+      <span class="n">paramName</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">sourceInd</span><span class="p">:</span> <span class="n">string</span><span class="p">):</span> <span class="n">ParamMetadata</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">ParamMetadata</span><span class="p">(</span>
+      <span class="n">ExplorationEditorPageConstants</span><span class="o">.</span><span class="n">PARAM_ACTION_GET</span><span class="p">,</span> <span class="n">paramName</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
+      <span class="n">sourceInd</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="k">class</span> <span class="nc">ParamMetadata</span> <span class="p">{</span>
+  <span class="n">action</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+  <span class="n">paramName</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+  <span class="n">source</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+  <span class="n">sourceInd</span><span class="p">:</span> <span class="n">string</span><span class="p">;</span>
+  <span class="n">constructor</span><span class="p">(</span>
+      <span class="n">action</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">paramName</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">sourceInd</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">action</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">paramName</span> <span class="o">=</span> <span class="n">paramName</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">sourceInd</span> <span class="o">=</span> <span class="n">sourceInd</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">static</span> <span class="n">createWithSetAction</span><span class="p">(</span>
+      <span class="n">paramName</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">sourceInd</span><span class="p">:</span> <span class="n">string</span><span class="p">):</span> <span class="n">ParamMetadata</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">ParamMetadata</span><span class="p">(</span>
+      <span class="n">ExplorationEditorPageConstants</span><span class="o">.</span><span class="n">PARAM_ACTION_SET</span><span class="p">,</span> <span class="n">paramName</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
+      <span class="n">sourceInd</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">static</span> <span class="n">createWithGetAction</span><span class="p">(</span>
+      <span class="n">paramName</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">sourceInd</span><span class="p">:</span> <span class="n">string</span><span class="p">):</span> <span class="n">ParamMetadata</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">ParamMetadata</span><span class="p">(</span>
+      <span class="n">ExplorationEditorPageConstants</span><span class="o">.</span><span class="n">PARAM_ACTION_GET</span><span class="p">,</span> <span class="n">paramName</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
+      <span class="n">sourceInd</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Injectable</span><span class="p">({</span>
+  <span class="n">providedIn</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span>
+<span class="p">})</span>
+<span class="n">export</span> <span class="k">class</span> <span class="nc">ParamMetadataObjectFactory</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Remove the &#64;Injectable and the object factory class after this.
+Remove these:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Injectable</span><span class="p">({</span>
+  <span class="n">providedIn</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span>
+<span class="p">})</span>
+<span class="n">export</span> <span class="k">class</span> <span class="nc">ParamMetadataObjectFactory</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">angular</span><span class="o">.</span><span class="n">module</span><span class="p">(</span><span class="s1">&#39;oppia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span>
+  <span class="s1">&#39;ParamMetadataObjectFactory&#39;</span><span class="p">,</span>
+  <span class="n">downgradeInjectable</span><span class="p">(</span><span class="n">ParamMetadataObjectFactory</span><span class="p">));</span>
+
+</pre></div>
+</div>
+</section>
+<section id="remove-the-imports-and-class-listings-instantiation-from-the-following-files">
+<h3>4. Remove the imports and class listings/ instantiation from the following files:<a class="headerlink" href="#remove-the-imports-and-class-listings-instantiation-from-the-following-files" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>angular-service.index.ts</p></li>
+<li><p>oppia-angular-root.component.ts</p></li>
+<li><p>UgradedServices.ts</p></li>
+</ul>
+</section>
+<section id="rename-the-file">
+<h3>5. Rename the file.<a class="headerlink" href="#rename-the-file" title="Permalink to this headline"></a></h3>
+<p>The file you would be working on will be named either <code class="docutils literal notranslate"><span class="pre">*-object.factory.ts</span></code> or <code class="docutils literal notranslate"><span class="pre">*ObjectFactory.ts</span></code>. You need to remove the object factory part and add .model.ts instead. For example, <code class="docutils literal notranslate"><span class="pre">PlaythroughObjectFactory.ts</span></code> should be renamed to <code class="docutils literal notranslate"><span class="pre">playthrough-object.model.ts</span> <span class="pre">and</span> </code>skill-summary-object.factory.ts<code class="docutils literal notranslate"><span class="pre">should</span> <span class="pre">be</span> <span class="pre">renamed</span> <span class="pre">to</span></code>skill-summary.model.ts`.</p>
+</section>
+<section id="change-the-import-as-you-have-changed-the-name-of-the-file-and-its-usage-around-the-codebase">
+<h3>6. Change the import (as you have changed the name of the file) and its usage around the codebase.<a class="headerlink" href="#change-the-import-as-you-have-changed-the-name-of-the-file-and-its-usage-around-the-codebase" title="Permalink to this headline"></a></h3>
+<p>Patterns that will change:
+** Make sure to search with the function name**
+For example, let one of the functions that you moved before (in step 3) be <code class="docutils literal notranslate"><span class="pre">createWithGetAction</span></code>.</p>
+<section id="pattern-1-parammetadataobjectfactory-createwithgetaction">
+<h4>Pattern 1. ParamMetadataObjectFactory.createWithGetAction(…);<a class="headerlink" href="#pattern-1-parammetadataobjectfactory-createwithgetaction" title="Permalink to this headline"></a></h4>
+<p>import ParamMetadata from param-metadata.model.ts</p>
+<p>Change <code class="docutils literal notranslate"><span class="pre">ParamMetadataObjectFactory.createWithGetAction()</span></code> to <code class="docutils literal notranslate"><span class="pre">ParamMetadata.createWithGetAction(...)</span></code>;</p>
+<p>Do this for all functions.</p>
+<p>Remove any other ParamMetadataObjectFactory left in the file.</p>
+</section>
+<section id="pattern-2-this-parammetadataobjectfactory-createwithgetaction">
+<h4>Pattern 2. this.paramMetadataObjectFactory.createWithGetAction(…);<a class="headerlink" href="#pattern-2-this-parammetadataobjectfactory-createwithgetaction" title="Permalink to this headline"></a></h4>
+<p>Make sure that ParamMetadata has been imported.</p>
+<p>Change <code class="docutils literal notranslate"><span class="pre">this.paramMetadataObjectFactory.createWithGetAction(...)</span></code> to <code class="docutils literal notranslate"><span class="pre">ParamMetadata.createWithGetAction(...)</span></code>;</p>
+<p>Do this for all functions.</p>
+<p>Remove paramMetadataObjectFactory from constructor.</p>
+</section>
+</section>
+<section id="changing-the-spec-file">
+<h3>7. Changing the spec file:<a class="headerlink" href="#changing-the-spec-file" title="Permalink to this headline"></a></h3>
+<p>Each *-object.factory.ts will have its corresponding spec file name *-object.factory.spec.ts. You will need to follow the procedure mentioned in step 6,i.e. the previous step, to refactor the spec as well. Note that in spec file ParamMetadataObjectFactory could be shortened as <code class="docutils literal notranslate"><span class="pre">pmof</span></code>. So searching by function name in the spec file will be more accurate.</p>
+<p><strong>PR’s for reference: <a class="reference external" href="https://github.com/oppia/oppia/pull/10701/">#10701</a>, <a class="reference external" href="https://github.com/oppia/oppia/pull/10713/">#10713</a></strong></p>
+</section>
+</section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline"></a></h2>
+<p><strong>Common Issues with Migrating Services</strong></p>
+<ol class="simple">
+<li><p>Front-end tests fail
+This can for various reasons, but the most common one is return types. You will get errors like: ‘a’ is not defined on an object of type ‘X’. Try console logging the object you are receiving actually has the property you’re calling and adjust accordingly. This will mostly happen with HttpResponse objects.</p></li>
+</ol>
+<p><strong>Common Issues with Migrating Directives</strong></p>
+<ol class="simple">
+<li><p>Error like this:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;some-selector&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">known</span> <span class="n">element</span><span class="p">:</span> 
+<span class="mf">1.</span> <span class="n">If</span> <span class="s1">&#39;some-selector&#39;</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">Angular</span> <span class="n">component</span><span class="p">,</span> <span class="n">then</span> <span class="n">verify</span> <span class="n">that</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">module</span><span class="o">.</span> 
+<span class="mf">2.</span> <span class="mf">2.</span> <span class="n">If</span> <span class="s1">&#39;some-selector&#39;</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">Web</span> <span class="n">Component</span> <span class="n">then</span> <span class="n">add</span> <span class="s1">&#39;CUSTOM_ELEMENTS_SCHEMA&#39;</span> <span class="n">to</span> <span class="n">the</span> <span class="s1">&#39;@NgModule.schemas&#39;</span> <span class="n">of</span> <span class="n">this</span> <span class="n">component</span> <span class="n">to</span> <span class="n">suppress</span> <span class="n">this</span> <span class="n">message</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This can occur for a couple of reasons:
+a. The corresponding external Angular module is not yet integrated into the code-base eg. For <code class="docutils literal notranslate"><span class="pre">ngModel</span></code>, you need the <code class="docutils literal notranslate"><span class="pre">FormsModule</span></code>
+b. It is another unmigrated directive. You need to wrap it in an Angular wrapper and import it into your current module. Do it via the shared component module. Use <a class="reference external" href="https://github.com/oppia/oppia/pull/9237/files">#9237</a> for reference
+c. The Angular module has a different selector i.e <code class="docutils literal notranslate"><span class="pre">md-card</span></code> becomes <code class="docutils literal notranslate"><span class="pre">mat-card</span></code></p>
+<p><strong>Why do we need &#64;Injectable decorator?</strong></p>
+<p>The first line is needed since our app is in hybrid state i.e half angular and half AngularJS and we need to downgrade each of our services to AngularJS so that our application runs smoothly. The second line is needed as a decorator in every service. To define a class as a service, Angular uses the &#64;Injectable() decorator to provide the metadata that allows Angular to inject it into a component as a dependency.
+For any class that is to be used as service, we need to add the following decorator for the above reason.
+When we provide the service at the root level, Angular creates a single, shared instance of the service and injects it into any class that asks for it. Registering the provider in the &#64;Injectable() metadata also allows Angular to optimize an app by removing the service from the compiled app if it isn’t used. There are two other methods for registering a service but we’ll go with the one described above.</p>
+<p><strong>Why do we need <code class="docutils literal notranslate"><span class="pre">$rootScope.$applyAsync</span></code> with HTTP requests?</strong></p>
+<p>As you can see in the link here, the directive updates the value when the promise is resolved.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>TopicViewerBackendApiService.fetchTopicData(ctrl.topicName).then(
+  function(topicDataDict) {
+    ctrl.topicId = topicDataDict.topic_id;
+    ctrl.canonicalStoriesList = topicDataDict.canonical_story_dicts;
+    ctrl.degreesOfMastery = topicDataDict.degrees_of_mastery;
+    ctrl.skillDescriptions = topicDataDict.skill_descriptions;
+    ctrl.subtopics = topicDataDict.subtopics;
+    $rootScope.loadingMessage = &#39;&#39;;
+    ctrl.topicId = topicDataDict.id;
+</pre></div>
+</div>
+<p>Everything was working fine before the migration, but after migration, we noticed that all the values in the above-mentioned function were updated but not propagated to the corresponding HTML file. Searched online gave <a class="reference external" href="https://stackoverflow.com/a/21659051">stackoverflow</a> link which mentions four points of which one is</p>
+<p><em>Yes, AngularJS’s bindings are “turn-based”, they only fire on certain DOM events and on calls to <code class="docutils literal notranslate"><span class="pre">$applyAsync/$digest</span></code>. There are some useful services like <code class="docutils literal notranslate"><span class="pre">$http</span></code> and <code class="docutils literal notranslate"><span class="pre">$timeout</span></code> that do the wrapping for you, but anything outside of that requires calls to either <code class="docutils literal notranslate"><span class="pre">$applyAsync</span></code> or <code class="docutils literal notranslate"><span class="pre">$digest</span></code>.</em>
+<code class="docutils literal notranslate"><span class="pre">$digest</span></code> cycle is not running after we’ve upgraded <code class="docutils literal notranslate"><span class="pre">$http</span></code> to <code class="docutils literal notranslate"><span class="pre">HttpClient</span></code> and adding <code class="docutils literal notranslate"><span class="pre">$rootScope.$applyAsync</span></code> to explicitly ask Angular to propagate the changes to Html is the solution that works perfectly.</p>
+<p><strong>What is TestBed?</strong></p>
+<p>When a service has a dependent service, DI (dependency injector) finds or creates that dependent service. And if that dependent service has its own dependencies, DI finds-or-creates them as well. From Angular docs “As a service tester, you must at least think about the first level of service dependencies but you can let Angular DI do the service creation and deal with constructor argument order when you use the TestBed testing utility to provide and create services” i.e DI will deal with a constructor argument</p>
+<p><strong>Some Common Migration Queries</strong></p>
+<ol>
+<li><p>What are Promises? - Promises are exactly what they sound like. In the simplest words, they are a promise to the developer that things will work, what to do when they work, and also when they don’t work.</p>
+<p>They can have three states:</p>
+<ol class="simple">
+<li><p>Resolved: The caller of the promise has executed as expected.</p></li>
+<li><p>Rejected: The caller of the promise didn’t execute as expected</p></li>
+<li><p>Pending: The caller is yet to be executed</p></li>
+</ol>
+<p>So,  then what exactly are the resolve and reject that we pass? They are simply the function calls that we pass. Eg. successCallback(abcd) will give parameter abcd to the resolve function when the promise caller is called.</p>
+<p>How is it structured? A promise is called using a .then() statement after the function. Note that you cannot put this after any function, only one that returns a promise. Then functions follow. If there is only one function, it is the resolve function. If there are two functions, they are called resolve and reject respectively. The reject function is used mostly for error handling and unexpected behaviour</p>
+<p>For more reading check out the <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN Guide</a>!</p>
+</li>
+<li><p>What is <code class="docutils literal notranslate"><span class="pre">rootScope</span></code>? - Angular has scopes. <code class="docutils literal notranslate"><span class="pre">$scope</span></code> is a local scope, which is bound to exactly one controller. It can local properties and functions of the controller. <code class="docutils literal notranslate"><span class="pre">$rootScope</span></code> on the other hand, is the global scope and can be accessed from everywhere.</p>
+<p>What is <code class="docutils literal notranslate"><span class="pre">$rootScope.$applyAsync()</span></code> and why do we use it? <code class="docutils literal notranslate"><span class="pre">$rootScope.$applyAsync</span></code> is used to update the global properties and variables so that the new state can be used by the function where it is called. As to why it is not updated automatically, the reason is that the Angular DOM basically runs in cycles, and apply causes the changes to be saved. Mostly this is done explicitly, but in some cases, we have to do it explicitly. This is mentioned in the Angular migration guide. Remember that this function will go in the resolve of the promise! This is because we want the variables to get to their new state in case of expected behaviour.</p>
+<p>For more reference: <a class="reference external" href="https://docs.angularjs.org/guide/scope">Scopes</a></p>
+</li>
+<li><p>How to assign types in the Angular file?</p>
+<p>Follow a trail. Some are really simple. But they all follow the same pattern. Keep following the variable through different references to see what type to assign. You can even use other references of that variable. Eg. If you wanted to assign a type to a function that returned WindowRef.nativeWindow! I went to window-ref.service file saw that nativeWindow returned the _window object which had a type Window. Just follow trails.</p>
+<p>Other times it might be obvious from the name. Eg SkillList is obviously an array of Skills. However, double-check these!</p>
+<p>The final way is to use a console log statement. This is good for complicated data types. Run the python development server and log the value where you get the return. You’ll see something of type Object with certain properties. Global search these properties in the codebase and find out what type it is!</p>
+</li>
+<li><p>What is fakeAsync() and flushMicrotasks() and why do we use it? For this we need to understand why being synchronous is a problem for tests. Compilers don’t compile code line by line and instead push processes into a queue as they come and the resulting processes are pushed once these end. What this means is that a process whose parent was called earlier may be executed after another whose parent was called later due to how much time the parent processes took. To make an asynchronous function synchronous we use fakeAsync combined with flushMicrotasks. FakeAsync creates a fake asynchronous zone wherein you can control process flow. When flushMicrotasks is called, it flushes the task queues, i.e it waits for the processes to leave the queue before proceeding further. So, the tests are consistent!</p></li>
+<li><p>What are MockServices/FakeServices that are in the codebase? MockServices are basically just used to imitate real services and provide functionality for tests via inorganically made function copies of the service. These are faster but don’t test services so be wary of using them. The reason we use them is that we want to want to test the current service, not the other service, so we just use a small shell to use the functionality we want.</p></li>
+</ol>
+<p><em>For any queries related to angular migration, please don’t hesitate to reach out to <strong>Srijan Reddy (&#64;srijanreddy98)</strong>.</em></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="frontend-reference.html" class="btn btn-neutral float-left" title="Frontend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Oppia-UX-guidelines-%26-rationales.html" class="btn btn-neutral float-right" title="Oppia UX guidelines &amp; rationales" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

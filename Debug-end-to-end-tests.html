@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debug end to end tests &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Debug backend tests" href="Debug-backend-tests.html" />
+    <link rel="prev" title="Debugging docs" href="Debugging-Docs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coding-style-guide.html">Coding style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="The-File-Naming-Convention-and-Directory-Structure.html">Guidelines for creating new files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-page.html">How to add a new page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide-on-defining-types.html">How to write type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-design-docs.html">Writing design docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Revert-and-Regression-Policy.html">Revert and regression policy</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="debugging.html">Debugging</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="If-your-build-fails.html">If your build fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="If-your-presubmit-check-fails.html">If your presubmit check fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Interpreting-CircleCI-Results.html">Interpreting CircleCI Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging-Docs.html">Debugging docs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Debug end to end tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-debugger">Using the debugger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-screenshots">Downloading screenshots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-screen-recordings">Downloading screen recordings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-backend-tests.html">Debug backend tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debug-frontend-tests.html">Debug frontend tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging-Stories.html">Debugging stories</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Launching-new-features.html">Launching new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-new-features-with-feature-gating.html">Feature Gating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lint.html">Lint Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html">Oppia’s code owners and checks to be carried out by developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia%27s-code-owners-and-checks-to-be-carried-out-by-developers.html#temporary-codeowner-transfer-process">Temporary codeowner transfer process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html">Privacy aware programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#design-stage">Design stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Privacy-aware-programming.html#implementation-stage">Implementation stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-Type-Annotations.html">Backend type annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bytes-and-string-handling-in-Python-3.html#rules-for-handling-strings-and-bytes">Rules for handling strings and bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guidelines-for-Developers-with-Write-Access-to-oppia-oppia.html">Guidelines for developers with write access to Oppia Oppia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="coding-guidelines.html">Coding guidelines</a> &raquo;</li>
+          <li><a href="debugging.html">Debugging</a> &raquo;</li>
+      <li>Debug end to end tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Debug-end-to-end-tests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="debug-end-to-end-tests">
+<h1>Debug end to end tests<a class="headerlink" href="#debug-end-to-end-tests" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#using-the-debugger">Using the debugger</a></p></li>
+<li><p><a class="reference external" href="#downloading-screenshots">Downloading screenshots</a></p></li>
+<li><p><a class="reference external" href="#downloading-screen-recordings">Downloading screen recordings</a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Whenever you’re debugging tests, you should create a debugging doc to document your work. This helps future contributors if they run into a similar bug in the future. If other people come in later to help you, they can also use the debugging doc to get up to speed on what you’ve already figured out. You can make a copy of <a class="reference external" href="https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit?usp=sharing">this template debugging doc</a> to get started. Also check out the <a class="reference internal" href="Debugging-Docs.html"><span class="doc std std-doc">debugging docs wiki page</span></a>.</p>
+<p>There are many ways to go about debugging an E2E test, but here’s one approach:</p>
+<ol class="simple">
+<li><p>Create a <a class="reference internal" href="Debugging-Docs.html"><span class="doc std std-doc">debugging doc</span></a>.</p></li>
+<li><p>Look through the logs from the failed test to try and understand what went wrong. In particular:</p>
+<ul class="simple">
+<li><p>Look for a line that says just <code class="docutils literal notranslate"><span class="pre">Killed</span></code>. This line indicates that some process was killed by the operating system for consuming too much memory. It’s fairly safe to assume that the test failure was because of that process being killed.</p></li>
+<li><p>Look for the stack trace and error message of the <em>first</em> error. The trace might point you to where the error was thrown in the test code, and the message may help explain what went wrong.</p></li>
+</ul>
+</li>
+<li><p>If you don’t understand what the error message means, search for it online. Also look through the test code and <code class="docutils literal notranslate"><span class="pre">core/test/protractor_utils/action.js</span></code> to see if the error message (or something like it) is in our test code.</p></li>
+<li><p>Enable <a class="reference external" href="#downloading-screen-recordings">video recordings</a> and rerun the test until you reproduce the error. Then watch the video recordings and follow along in the test code. Try and understand why the error was thrown.</p></li>
+<li><p>Try and reproduce the error locally. If you succeed, you can use your <a class="reference external" href="#using-the-debugger">local debugger</a> to investigate.</p></li>
+</ol>
+</section>
+<section id="using-the-debugger">
+<h2>Using the debugger<a class="headerlink" href="#using-the-debugger" title="Permalink to this headline"></a></h2>
+<ol>
+<li><p>Add a break-point in the code you want the control to stop at by adding the line <code class="docutils literal notranslate"><span class="pre">debugger;</span></code>. For example:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="k">await</span> <span class="nx">adminPage</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="k">await</span> <span class="nx">adminPage</span><span class="p">.</span><span class="nx">updateRole</span><span class="p">(</span><span class="s1">&#39;moderator1&#39;</span><span class="p">,</span> <span class="s1">&#39;moderator&#39;</span><span class="p">);</span>
+<span class="k">debugger</span><span class="p">;</span>
+<span class="k">await</span> <span class="nx">adminPage</span><span class="p">.</span><span class="nx">viewRolesbyUsername</span><span class="p">(</span><span class="s1">&#39;moderator1&#39;</span><span class="p">);</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the e2e script with the flag <code class="docutils literal notranslate"><span class="pre">--debug_mode</span></code>. For example,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_e2e_tests --debug_mode --suite=&quot;topicAndStoryEditor&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Wait for the script to show the following log:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Debugger listening on ws://127.0.0.1:9229/e4779cc6-72e9-4d8d-889e-1fb3b2628781
+For help, see: https://nodejs.org/en/docs/inspector
+</pre></div>
+</div>
+</li>
+<li><p>At this point, go to <code class="docutils literal notranslate"><span class="pre">chrome://inspect/#devices</span></code> on your Chrome browser.</p></li>
+<li><p>Click on “inspect” under Remote Target (see screenshot below).</p>
+<p><img alt="Inspect Page" src="https://user-images.githubusercontent.com/11008603/88563290-714bac80-d04f-11ea-8b36-fc43c66d6e3d.png" /></p>
+</li>
+<li><p>A Chrome dev tools instance will open up and the e2e test should start executing in a new window.</p></li>
+<li><p>The control will stop at the point where the debugger statement was added. You can now choose to inspect elements, log variables in the test, or add more break-points.</p></li>
+</ol>
+</section>
+<section id="downloading-screenshots">
+<h2>Downloading screenshots<a class="headerlink" href="#downloading-screenshots" title="Permalink to this headline"></a></h2>
+<p>We capture screenshots of failing tests. On GitHub Actions, look for an <code class="docutils literal notranslate"><span class="pre">Artifacts</span></code> link in the upper right where you can download a zip file of the screenshots:</p>
+<p><img alt="Screenshot of E2E test run on GitHub Actions with artifacts link in upper right" src="_images/githubActionsArtifacts.png" /></p>
+<p>There are two kinds of artifacts:</p>
+<ul class="simple">
+<li><p>Reports, which have the filename <code class="docutils literal notranslate"><span class="pre">report.html</span></code></p></li>
+<li><p>Screenshots, which have a filename that follows the name of the test from which the screenshot was captured. For example, <code class="docutils literal notranslate"><span class="pre">Topic</span> <span class="pre">editor</span> <span class="pre">functionality</span> <span class="pre">should</span> <span class="pre">publish</span> <span class="pre">and</span> <span class="pre">unpublish</span> <span class="pre">a</span> <span class="pre">story</span> <span class="pre">correctly.png</span></code>.</p></li>
+</ul>
+<p>Artifacts are grouped into folders based on attempt number. For example, the report at <code class="docutils literal notranslate"><span class="pre">protractor-screenshots/6b0d444200b12988799019647e6ed7a9/report.html</span></code> is in the folder <code class="docutils literal notranslate"><span class="pre">6b0d444200b12988799019647e6ed7a9</span></code>, which holds all the artifacts from one attempt (we attempt the tests multiple times to handle flakiness). You can use the reports to figure out which attempt goes with which folder. For example, if attempt number 2 has an error message</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Failed: Story could not be saved.
+Wait timed out after 10003ms
+</pre></div>
+</div>
+<p>then you can look for the report that includes this message. Times like <code class="docutils literal notranslate"><span class="pre">10003ms</span></code> will be particularly useful for this since they’re usually unique. Say you find this error message in <code class="docutils literal notranslate"><span class="pre">protractor-screenshots/6b0d444200b12988799019647e6ed7a9/report.html</span></code>. Now you know that the screenshots from the attempt are all under <code class="docutils literal notranslate"><span class="pre">protractor-screenshots/6b0d444200b12988799019647e6ed7a9</span></code>!</p>
+<p>Sometimes you’ll get screenshots that just aren’t very helpful. For example, a lot of screenshots show the login page for some reason. You can check other examples of a flake though. One of the others might have a useful screenshot.</p>
+</section>
+<section id="downloading-screen-recordings">
+<h2>Downloading screen recordings<a class="headerlink" href="#downloading-screen-recordings" title="Permalink to this headline"></a></h2>
+<p>When screen recordings are enabled, we capture video of the test running on GitHub Actions. This helps developers solve problems in E2E tests that only occur on CI or are difficult to replicate locally.</p>
+<p>To enable screen recordings, you need to set the <code class="docutils literal notranslate"><span class="pre">VIDEO_RECORDING_IS_ENABLED</span></code> environment variable to <code class="docutils literal notranslate"><span class="pre">1</span></code> in your GitHub Actions workflow file. Note that screen recordings are still not saved under the following circumstances:</p>
+<ul class="simple">
+<li><p>The test is running on CircleCI. CircleCI runners have too little memory to support video recording.</p></li>
+<li><p>The test passed. Videos of tests that pass are deleted before being made available for download. You can change this behavior by setting <code class="docutils literal notranslate"><span class="pre">ALL_VIDEOS</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">protractor.conf.js</span></code>.</p></li>
+</ul>
+<p>Each individual test within each suite gets its own video. The video of each test gets a randomly assigned name, and this gets printed out above the suite, like this:</p>
+<p><img alt="Name of video for test gets printed out above test" src="https://user-images.githubusercontent.com/52176783/118647333-486cf180-b7f2-11eb-999b-9edbbb89b5a7.png" /></p>
+<p>To download a zip file of the videos, look for the <code class="docutils literal notranslate"><span class="pre">Artifacts</span></code> link in the top-right of your test run.</p>
+<p><img alt="Artifacts Tab at the top-right" src="https://user-images.githubusercontent.com/52176783/118647397-5a4e9480-b7f2-11eb-868a-ea5b0058f378.png" /></p>
+<p>If you don’t see the <code class="docutils literal notranslate"><span class="pre">Artifacts</span></code> link, go to the summary of the failing workflow, you will see the artifacts at the bottom of that page too.</p>
+<p><img alt="Artifacts section in summary of e2e run" src="https://user-images.githubusercontent.com/52176783/118647358-502c9600-b7f2-11eb-9e41-a6f5f962ddfb.png" /></p>
+<p>Note for macOS: Quicktime doesn’t seem to like the videos we generate, so you might need to use VLC media player to view the videos.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Debugging-Docs.html" class="btn btn-neutral float-left" title="Debugging docs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Debug-backend-tests.html" class="btn btn-neutral float-right" title="Debug backend tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

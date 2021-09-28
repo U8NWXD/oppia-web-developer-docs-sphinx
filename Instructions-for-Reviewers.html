@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instructions for reviewers &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Instructions to qa coordinators" href="Instructions-to-QA-coordinators.html" />
+    <link rel="prev" title="Instructions for making PR passes" href="Instructions-for-making-PR-passes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="playbooks.html">Playbooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Instructions-for-making-PR-passes.html">Instructions for making PR passes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instructions for reviewers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#figuring-out-which-prs-need-your-attention">Figuring out which PRs need your attention</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-you-first-receive-a-review-request">When you first receive a review request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#doing-the-review">Doing the review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merging-into-develop">Merging into develop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#squash-merging">Squash-Merging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#who-should-merge">Who Should Merge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-merging">Standard Merging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#resolving-merge-conflicts-as-a-reviewer">Resolving merge conflicts as a reviewer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#errors-loading-the-github-review-conversation-page">Errors loading the GitHub review conversation page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-notes">Other notes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#view-only-diffs-since-last-review">View Only Diffs since last review</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Instructions-to-QA-coordinators.html">Instructions to qa coordinators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leading-Oppia-Teams.html">Leading Oppia teams</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="playbooks.html">Playbooks</a> &raquo;</li>
+      <li>Instructions for reviewers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Instructions-for-Reviewers.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="instructions-for-reviewers">
+<h1>Instructions for reviewers<a class="headerlink" href="#instructions-for-reviewers" title="Permalink to this headline"></a></h1>
+<p>Code review is an important part of the Oppia development cycle. Having a second pair of eyes look at your code can help to catch silly mistakes and serve as a check for whether your code is readable/understandable by other team members (which is important for maintainability).</p>
+<p>When you receive a code review request, please try to do the review as soon as possible! Otherwise, the submitter will be blocked.</p>
+<section id="figuring-out-which-prs-need-your-attention">
+<h2>Figuring out which PRs need your attention<a class="headerlink" href="#figuring-out-which-prs-need-your-attention" title="Permalink to this headline"></a></h2>
+<p>Simply visit this URL: https://github.com/pulls/assigned. It takes you to a list of PRs that are assigned to you, across all repositories.</p>
+<p><strong>Note:</strong> If you just want to restrict to the oppia/oppia repository, use https://github.com/oppia/oppia/pulls/assigned/{{USERNAME}} instead (replacing <code class="docutils literal notranslate"><span class="pre">{{USERNAME}}</span></code> with your GitHub username at the end. However, the resulting list will not include your assigned PRs from other Oppia repositories.</p>
+</section>
+<section id="when-you-first-receive-a-review-request">
+<h2>When you first receive a review request<a class="headerlink" href="#when-you-first-receive-a-review-request" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>When you get an email saying a pull request has been assigned to you for review, click on the link to open it in GitHub.</p></li>
+<li><p>Ensure that the correct target branch (usually “develop”) has been selected to merge the branch into.</p></li>
+<li><p>Ensure that a “changelog” label is applied on the PR. If not, select an appropriate changelog category label for the PR.</p></li>
+<li><p>If you want to CC additional reviewers, you can do so using “/cc &#64;username”. Say why you’re adding them.</p></li>
+</ol>
+</section>
+<section id="doing-the-review">
+<h2>Doing the review<a class="headerlink" href="#doing-the-review" title="Permalink to this headline"></a></h2>
+<p><strong>Pro-tip</strong>: You can change the review pane on the “Files Changed” tab of a PR to show the old and new versions side-by-side! This makes it easier to review the diffs. See this <a class="reference external" href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests#diff-view-options">GitHub help page</a> for more information.</p>
+<ol>
+<li><p>Look out for the following things:</p>
+<ul class="simple">
+<li><p>Do you understand exactly what the code is doing, without needing to dig in too much? If not, it’s probably the writer’s fault, and you should tell them so. The logic needs to be very clear.</p>
+<ul>
+<li><p>Don’t be afraid, as a reviewer, about asking for the logic to be broken up or simplified. It’s also totally fine (and preferable!) to ask for code to be simplified if it is hard to read (even though it may be technically correct in its current form). Code is typically written once and read many times, so we try to optimize for readability.</p></li>
+</ul>
+</li>
+<li><p>Is the code doing the right thing? (Make sure to further expand the parts above and below the code you’re looking at, to ensure that you have the full context of what is going on. This is <em>especially</em> important for complex logic – e.g. can you find the critical bug that was introduced <a class="reference external" href="https://github.com/oppia/oppia/pull/9141/files#diff-3d7e1efacf316f35426e24bedbd89564R128">here</a>?)</p></li>
+<li><p>Does the design look sensible?</p></li>
+<li><p>User-facing bugs should be incorporated into unit/e2e tests.</p></li>
+<li><p>User-facing confusions should be incorporated into manual tests / critical user journeys for functional capabilities. (Ping one of the QA team members on the PR thread).</p></li>
+<li><p>Are there tests/docs which should be present, but aren’t?</p></li>
+<li><p>If the change affects the UI, check out the branch and look at it in a browser. Does the UI look good and intuitive to the user?</p></li>
+<li><p>Are there any files or folders which are renamed? If yes, make sure that all the documentation and instructions where the names of the file/folder is mentioned is changed too.</p></li>
+<li><p>Are there changes to or additions of new models? If yes, verify that all the steps mentioned in <a class="reference external" href="https://github.com/oppia/oppia/wiki/">Creating and modifying storage models</a> are included.</p></li>
+<li><p>Does the PR include changes to user data or changes that relate to privacy? If yes, check that all the measures mentioned in <a class="reference external" href="https://github.com/oppia/oppia/wiki/Privacy-aware-programming#implementation-stage">Privacy aware programming</a> were addressed.</p></li>
+<li><p>If the PR includes changes to how we handle Wipeout or Takeout, verify that even with these changes all the user data still get deleted (Wipeout) and that all the user data are exported (Takeout).</p></li>
+<li><p><strong>Important:</strong> Please also ensure that, if a PR author files a TODO for future work, they assign themselves to it (or arrange for it to be assigned responsibly to someone else) and don’t just abandon it. It should typically be the next thing they work on, unless there is a principled reason to agree otherwise. (In other words, PR authors shouldn’t just file TODOs for future work and then abandon them.)</p></li>
+</ul>
+<p><strong>Note</strong>: To checkout branch BRANCH_NAME from committer COMMITTER_USERNAME to your local machine, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="p">{{</span><span class="n">COMMITTER_NAME</span><span class="p">}}</span><span class="o">-</span><span class="p">{{</span><span class="n">BRANCH_NAME</span><span class="p">}}</span> <span class="n">develop</span>
+  <span class="n">git</span> <span class="n">pull</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="p">{{</span><span class="n">COMMITTER_NAME</span><span class="p">}}</span><span class="o">/</span><span class="n">oppia</span><span class="o">.</span><span class="n">git</span> <span class="p">{{</span><span class="n">BRANCH_NAME</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>See also <a class="reference external" href="https://help.github.com/articles/checking-out-pull-requests-locally/">Checking out pull requests locally</a>.</p>
+</li>
+<li><p>After submitting the review, set the Assignee field to the developer’s GitHub username, so that they know it’s their turn.</p></li>
+<li><p>If the developer pushes subsequent commits to the pull request, you’ll automatically be notified by email. When you review these, make sure that all previous review comments have been addressed (both in the code and by the developer’s replies.)</p></li>
+<li><p>If all review comments have been addressed, and the code looks good and is ready to be merged into develop, write a comment saying “LGTM”.</p></li>
+</ol>
+</section>
+<section id="merging-into-develop">
+<h2>Merging into develop<a class="headerlink" href="#merging-into-develop" title="Permalink to this headline"></a></h2>
+<section id="squash-merging">
+<h3>Squash-Merging<a class="headerlink" href="#squash-merging" title="Permalink to this headline"></a></h3>
+<p><em>Note that only maintainers and project leads can merge PRs into develop.</em></p>
+<p>If all commits in a PR are done by a single committer, we recommend using GitHub’s ‘Squash-Merge’ functionality, which you can select as an option after clicking the green “Merge pull request” button. This allows the history of both the author and maintainer who merged it to be retained, while doing a standard squash of all the changes in the PR to a single commit.</p>
+<p>The commit message of the squash should be a clear one-line summary of the changes introduced in the PR. It should begin with a present-tense, transitive verb. Here are some examples of good commit messages:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Fix</span> <span class="pre">#bugnum:</span> <span class="pre">introduce</span> <span class="pre">the</span> <span class="pre">first</span> <span class="pre">version</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">collection</span> <span class="pre">editor.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Update</span> <span class="pre">the</span> <span class="pre">exploration</span> <span class="pre">editor</span> <span class="pre">to</span> <span class="pre">do</span> <span class="pre">X</span> <span class="pre">better.</span></code></p></li>
+</ul>
+<p>Getting this message correct is important, since it will be used to compile the CHANGELOG during the next release. If you like, feel free to also add optional follow-up sentences after the one-line summary.</p>
+</section>
+<section id="who-should-merge">
+<h3>Who Should Merge<a class="headerlink" href="#who-should-merge" title="Permalink to this headline"></a></h3>
+<p>In general, the last reviewer to give LGTM should merge the PR if the CI tests are passing. Otherwise, they should assign the PR to the author, who should merge it once the CI tests have passed.</p>
+</section>
+<section id="standard-merging">
+<h3>Standard Merging<a class="headerlink" href="#standard-merging" title="Permalink to this headline"></a></h3>
+<p>There are special circumstances when standard merging should be done instead of a squash-merge. Generally speaking, commits which have already been squash-merged should not be squash-merged again. Also, if there are multiple contributors who have contributed to a PR, please don’t squash-merge – we want to preserve their history.</p>
+</section>
+</section>
+<section id="resolving-merge-conflicts-as-a-reviewer">
+<h2>Resolving merge conflicts as a reviewer<a class="headerlink" href="#resolving-merge-conflicts-as-a-reviewer" title="Permalink to this headline"></a></h2>
+<p>In some cases, the reviewer (contributors with write access) might want to fix the merge conflicts for a PR. This is allowed in the cases when the PR being merged to:</p>
+<ul class="simple">
+<li><p>is urgent or is a bugfix</p></li>
+<li><p>is already fully approved (everything is done except for merge) but the contributor has become inactive</p></li>
+</ul>
+<section id="instructions">
+<h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline"></a></h3>
+<ol class="simple">
+<li><p>Add PR author fork as a new remote, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">{{AUTHOR_NAME}}</span> <span class="pre">git&#64;github.com:{{AUTHOR_NAME}}/oppia.git</span></code>.</p></li>
+<li><p>Locally fetch author branches, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">{{AUTHOR_NAME}}</span></code>.</p></li>
+<li><p>Checkout to the fetched branch, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">{{AUTHOR_NAME}}-{{BRANCH_NAME}}</span> <span class="pre">{{AUTHOR_NAME}}/{{BRANCH_NAME}}</span></code>.</p></li>
+<li><p>Update that branch from develop, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">upstream</span> <span class="pre">develop</span></code> and fix the merge conflicts as usual.</p></li>
+<li><p>Push back to the branch, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">{{AUTHOR_NAME}}</span> <span class="pre">HEAD:{{BRANCH_NAME}}</span></code>.</p></li>
+<li><p>Notify the PR author by adding a comment to the PR saying something similar to the following: “Hi <strong>&#64;{{AUTHOR_NAME}}</strong>, I’ve updated your PR from develop. If you want to add any more commits, you will first need to pull the branch locally by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">{{BRANCH_NAME}}</span></code>. Thanks!”.</p></li>
+</ol>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline"></a></h2>
+<section id="errors-loading-the-github-review-conversation-page">
+<h3>Errors loading the GitHub review conversation page<a class="headerlink" href="#errors-loading-the-github-review-conversation-page" title="Permalink to this headline"></a></h3>
+<p>Sometimes, GitHub shows a “Unicorn!” error page when the PR is too large or there are several hundred comments on a review thread:</p>
+<p><img alt="Screenshot from 2020-05-18 16-17-02" src="https://user-images.githubusercontent.com/10575562/82268191-43e1d480-9923-11ea-8b48-fabd6c8ad9a9.png" /></p>
+<p>As a workaround, we have been advised by GitHub Support that, until the issue gets fixed, we can use an additional timeline_per_page query parameter when viewing such pages. For example, instead of accessing https://github.com/oppia/oppia/pull/8720, you can access https://github.com/oppia/oppia/pull/8720?timeline_per_page=20 instead. (Note that “20” should be a low number.)</p>
+</section>
+<section id="other-notes">
+<h3>Other notes<a class="headerlink" href="#other-notes" title="Permalink to this headline"></a></h3>
+<section id="adblock-disable">
+<h4>Adblock Disable<a class="headerlink" href="#adblock-disable" title="Permalink to this headline"></a></h4>
+<p>You might want to disable adblockers temporarily when doing the review. We once had a regression caused by the “share” buttons on the dashboard tiles not showing up correctly on the reviewer’s machine, which caused a screenshot that ought to have looked like</p>
+<p><img alt="Screenshot showing non-ad-blocked view" src="_images/withoutAdBlocker.png" /></p>
+<p>(where the error would have more easily been caught) to look like the following instead:</p>
+<p><img alt="Screenshot showing ad-blocked view" src="_images/withAdBlocker.png" /></p>
+</section>
+<section id="reducing-email-noise">
+<h4>Reducing Email Noise<a class="headerlink" href="#reducing-email-noise" title="Permalink to this headline"></a></h4>
+<p>If you would like to reduce email noise following a review, click on the “Unsubscribe” button on the right side of the page. However, if your username is tagged (using the “<strong>&#64;username</strong>” syntax), you will still get emails.</p>
+<p><img alt="Screenshot showing subscribe button" src="_images/unsubscribeButton.png" /></p>
+</section>
+</section>
+<section id="view-only-diffs-since-last-review">
+<h3>View Only Diffs since last review<a class="headerlink" href="#view-only-diffs-since-last-review" title="Permalink to this headline"></a></h3>
+<p>It is not possible to do this directly using the GitHub interface. However, one way to review the files that have changed is to mark the respective files as viewed by clicking on the button as shown below.</p>
+<p><img alt="Screenshot showing view button" src="_images/viewedButton.png" /></p>
+<p>Clicking on that button will automatically collapse the file. Any subsequent changes to that file will then change the status to unviewed, allowing you to review only the files that have changed.</p>
+<p>Viewing the changes across multiple commits is possible. To do this, use the “Changes from all commits” dropdown in the “Files Changed” tab. (For a readonly version of this, you can also change the commit hashes in the URL <code class="docutils literal notranslate"><span class="pre">https://github.com/oppia/oppia/compare/commit_1...commit_2</span></code> – <a class="reference external" href="https://github.com/oppia/oppia/compare/be4b661...b46838c">here</a> is an example.)</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Instructions-for-making-PR-passes.html" class="btn btn-neutral float-left" title="Instructions for making PR passes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Instructions-to-QA-coordinators.html" class="btn btn-neutral float-right" title="Instructions to qa coordinators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

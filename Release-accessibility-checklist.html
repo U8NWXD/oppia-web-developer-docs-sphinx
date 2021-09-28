@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Manual Tests &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release process" href="release.html" />
+    <link rel="prev" title="General Good Practices" href="Testing-for-Accessibility.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="testing.html">Testing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Running-Tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backend-tests.html">Backend tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Frontend-unit-tests-guide.html">Frontend unit tests guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="End-to-End-Tests.html">End to end tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html">Lighthouse CI Automated Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#how-to-add-new-pages-to-lighthouse-tests">How to add new pages to lighthouse tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#debugging-lighthouse-tests">Debugging Lighthouse Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html">General Good Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#visual-disabilities">Visual Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#physical-disabilities">Physical Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#hearing-disabilities">Hearing Disabilities</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Accessibility Manual Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#software-required">Software Required</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#screen-readers">Screen Readers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessibility-checklist">Accessibility Checklist</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#check-that-the-page-has-a-logical-tab-order">1. Check that the page has a logical tab order</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-that-interactive-elements-indicate-their-purpose-and-state">2. Check that interactive elements indicate their purpose and state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-that-focus-does-not-get-trapped">3. Check that focus does not get trapped</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-that-every-image-has-an-alt-attribute-even-if-its-empty">4. Check that every image has an alt attribute, even if it’s empty:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-accessibility-features">Additional Accessibility Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="testing.html">Testing</a> &raquo;</li>
+      <li>Accessibility Manual Tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Release-accessibility-checklist.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="accessibility-manual-tests">
+<h1>Accessibility Manual Tests<a class="headerlink" href="#accessibility-manual-tests" title="Permalink to this headline"></a></h1>
+<section id="software-required">
+<h2>Software Required<a class="headerlink" href="#software-required" title="Permalink to this headline"></a></h2>
+<section id="screen-readers">
+<h3>Screen Readers<a class="headerlink" href="#screen-readers" title="Permalink to this headline"></a></h3>
+<p>If you’re on a Mac check out this <a class="reference external" href="https://www.youtube.com/watch?v=5R-6WvAihms&amp;list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g&amp;index=6">this video on using VoiceOver</a> the screen reader that comes with Mac OS. If you’re on a PC <a class="reference external" href="https://www.youtube.com/watch?v=Jao3s_CwdRU&amp;list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g&amp;index=4">this video on using NVDA</a>, a donation-supported, open-source screen reader for Windows. If you’re on Linux, you can use <a class="reference external" href="https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en">ChromeVox</a>, a Chrome extension, or <a class="reference external" href="https://help.gnome.org/users/orca/stable/introduction.html.en">ORCA</a>.</p>
+</section>
+</section>
+<section id="accessibility-checklist">
+<h2>Accessibility Checklist<a class="headerlink" href="#accessibility-checklist" title="Permalink to this headline"></a></h2>
+<p>These are general guidelines you should follow as you manually audit each page.</p>
+<section id="check-that-the-page-has-a-logical-tab-order">
+<h3>1. Check that the page has a logical tab order<a class="headerlink" href="#check-that-the-page-has-a-logical-tab-order" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Tab through the page, the order in which elements are focused should aim to follow the DOM Order</p>
+<ul>
+<li><p>If focus order seems wrong, rearrange DOM order or change their tabindex to make tab order more natural</p></li>
+<li><p>Focus should generally be left to right, top to bottom on the page</p></li>
+</ul>
+</li>
+<li><p>Check if all interactive controls are keyboard focusable</p>
+<ul>
+<li><p>any control that a user can interact with should be focusable</p></li>
+<li><p>If not reachable, a common fix is to replace custom controls with built-in HTML elements or add the attribute <code class="docutils literal notranslate"><span class="pre">tabindex=0</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="check-that-interactive-elements-indicate-their-purpose-and-state">
+<h3>2. Check that interactive elements indicate their purpose and state<a class="headerlink" href="#check-that-interactive-elements-indicate-their-purpose-and-state" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Interactive elements should indicate their state and be distinguishable from non-interactive elements.</p>
+<ul>
+<li><p>Interactive HTML elements indicate controls in the user interface.</p>
+<ul>
+<li><p>Examples of Interactive elements include <code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href&gt;,</span> <span class="pre">&lt;button&gt;,</span> <span class="pre">&lt;input&gt;,</span> <span class="pre">&lt;select&gt;,</span> <span class="pre">&lt;textarea&gt;.</span></code></p></li>
+</ul>
+</li>
+<li><p>Non-interactive HTML elements and non-interactive ARIA roles indicate content and containers in the user interface.</p>
+<ul>
+<li><p>Non-interactive elements include <code class="docutils literal notranslate"><span class="pre">&lt;main&gt;,</span> <span class="pre">&lt;area&gt;,</span> <span class="pre">&lt;h1&gt;</span> <span class="pre">(&lt;h2&gt;,</span> <span class="pre">etc),</span> <span class="pre">&lt;img&gt;,</span> <span class="pre">&lt;li&gt;,</span> <span class="pre">&lt;ul&gt;,</span> <span class="pre">&lt;ol&gt;.</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>A visual and screen reader test should be conducted</p></li>
+<li><p>Visual Test:</p>
+<ul>
+<li><p>Tab through the page and make sure each interactive element</p>
+<ul>
+<li><p>is reachable</p></li>
+<li><p>has a visual cue that shows it is interactable</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Screen Reader Test:</p>
+<ul>
+<li><p>Navigate to the page and check that screen reader is able to</p>
+<ul>
+<li><p>announce the name of each interactive control</p></li>
+<li><p>announce the role of that control</p></li>
+<li><p>announce the current interactive role</p></li>
+<li><p>If it can’t do these things, appropriate ARIA roles need to be added</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="check-that-focus-does-not-get-trapped">
+<h3>3. Check that focus does not get trapped<a class="headerlink" href="#check-that-focus-does-not-get-trapped" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>If a keyboard user gets trapped on a particular element, they have no way of interacting with the page</p></li>
+<li><p>Test it by attempting to navigate through the page with only the keyboard. If you can’t tab through all of the features you fail the test</p></li>
+<li><p>Common focus traps are pages that have modals, autocomplete widgets, or other widgets.</p>
+<ul>
+<li><p>For modals these users should not be able to escape it by design, however having a way to escape a modal without refreshing the page should be made.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="check-that-every-image-has-an-alt-attribute-even-if-its-empty">
+<h3>4. Check that every image has an alt attribute, even if it’s empty:<a class="headerlink" href="#check-that-every-image-has-an-alt-attribute-even-if-its-empty" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>When you add an image (that is, an img tag) you should consider whether or not an alt description is appropriate.</p></li>
+<li><p>Alt descriptions are useful when the image has important content that isn’t described in surrounding text.</p></li>
+<li><p>If an alt description is not appropriate, note that all images must still have an alt attribute. Learn more about determining when an alt description is appropriate through <a class="reference external" href="http://webaim.org/techniques/alttext/#context">WebAIM: http://webaim.org/techniques/alttext/#context</a></p></li>
+</ul>
+</section>
+</section>
+<section id="additional-accessibility-features">
+<h2>Additional Accessibility Features<a class="headerlink" href="#additional-accessibility-features" title="Permalink to this headline"></a></h2>
+<p>The four points above are the most critical accessibility features we want to ensure Oppia has. Without them, people who rely on screen readers may not be able to fully navigate the Oppia website. For more information on accessibility practices checkout this <a class="reference external" href="http://accessibility.voxmedia.com/">article on accessibility testing</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Testing-for-Accessibility.html" class="btn btn-neutral float-left" title="General Good Practices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="release.html" class="btn btn-neutral float-right" title="Release process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firebase authentication &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Firebase authentication</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Firebase-authentication.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="firebase-authentication">
+<h1>Firebase authentication<a class="headerlink" href="#firebase-authentication" title="Permalink to this headline"></a></h1>
+<p>As of April 2021, Oppia uses <a class="reference external" href="https://firebase.google.com/docs/auth">Firebase</a> to handle user authentication. User sessions are managed with HTTP session cookies. The name of the session cookie is defined in <code class="docutils literal notranslate"><span class="pre">feconf.py</span></code>: <code class="docutils literal notranslate"><span class="pre">FIREBASE_SESSION_COOKIE_NAME</span> <span class="pre">=</span> <span class="pre">'session'</span></code>.</p>
+<p>For developers’ convenience, only an email address is necessary to create an account. The account’s password is generated automatically. Specifically, the password is the email’s md5 hash. <strong>This does not happen in production!</strong></p>
+<p>Production redirects users to the Google sign in page, hence, <em>real</em> Oppia accounts require a Google account.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="creating-an-administrator-account">
+<h1>Creating an Administrator account<a class="headerlink" href="#creating-an-administrator-account" title="Permalink to this headline"></a></h1>
+<section id="sign-in-with-testadmin-example-com">
+<h2>1. Sign in with <code class="docutils literal notranslate"><span class="pre">testadmin&#64;example.com</span></code><a class="headerlink" href="#sign-in-with-testadmin-example-com" title="Permalink to this headline"></a></h2>
+<p><img alt="Signing in as testadmin&#64;example.com" src="https://user-images.githubusercontent.com/5094060/112763949-8741b080-8fd4-11eb-9828-044d18b926b7.png" /></p>
+</section>
+<section id="add-custom-claims-to-a-firebase-account">
+<h2>2. Add custom claims to a Firebase account<a class="headerlink" href="#add-custom-claims-to-a-firebase-account" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Sign in with any email address.
+<img alt="Signing in as a&#64;a.com" src="https://user-images.githubusercontent.com/5094060/112763966-a04a6180-8fd4-11eb-9c21-58b6ba9f9b2f.png" /></p></li>
+<li><p>Go to the Firebase Emulator UI: http://localhost:4000/auth.
+<img alt="Firebase emulator UI" src="https://user-images.githubusercontent.com/5094060/112764105-29619880-8fd5-11eb-915d-786ab229c563.png" /></p></li>
+<li><p>Find the corresponding Firebase account, click on the <strong>“3 dots”</strong> button, then click on <strong>Edit user</strong>.
+<img alt="Finding the Edit user button" src="https://user-images.githubusercontent.com/5094060/112764057-f3bcaf80-8fd4-11eb-9561-8b4412cf9b23.png" /></p></li>
+<li><p>Set the Custom Claims value to <code class="docutils literal notranslate"><span class="pre">{&quot;role&quot;:&quot;super_admin&quot;}</span></code>, then click on the <strong>Save</strong> button.
+<img alt="Setting custom claims" src="https://user-images.githubusercontent.com/5094060/112764082-13ec6e80-8fd5-11eb-8508-a9bc24683e9f.png" /></p></li>
+<li><p>Logout and sign back in to refresh the session cookie.</p></li>
+<li><p><strong>Done!</strong> The account now has access to the Admin Page.
+<img alt="Admin Page is visitable" src="https://user-images.githubusercontent.com/5094060/112764033-dc7dc200-8fd4-11eb-9256-3957584d4eee.png" /></p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

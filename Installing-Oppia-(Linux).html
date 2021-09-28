@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installing Oppia (linux) &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Installing Oppia (linux)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Installing-Oppia-(Linux).md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="installing-oppia-linux">
+<h1>Installing Oppia (linux)<a class="headerlink" href="#installing-oppia-linux" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#install-prerequisites">Install prerequisites</a></p></li>
+<li><p><a class="reference external" href="#clone-oppia">Clone Oppia</a></p></li>
+<li><p><a class="reference external" href="#create-a-virtual-environment">Create a virtual environment</a></p></li>
+<li><p><a class="reference external" href="#running-oppia-on-a-development-server">Running Oppia on a development server</a></p></li>
+<li><p><a class="reference external" href="#tips-and-tricks">Tips and tricks</a></p></li>
+<li><p><a class="reference external" href="#notes-on-installation-on-arch-linux-systems">Notes on installation on Arch Linux systems</a></p>
+<ul>
+<li><p><a class="reference external" href="#installation-prerequisites">Installation prerequisites</a></p></li>
+<li><p><a class="reference external" href="#install-3rd-party-libraries">Install 3rd party libraries</a></p></li>
+<li><p><a class="reference external" href="#fixing-python">Fixing Python</a></p></li>
+<li><p><a class="reference external" href="#fix-google-app-engine">Fix Google App Engine</a></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> If you just want to create and share explorations, you may be able to use the hosted server at https://www.oppia.org (in which case you don’t need to install anything).</p>
+<p><em>These installation instructions were last tested on 15 Aug 2021. For more information on issues that may occasionally arise with the installation process, please see the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Troubleshooting">Troubleshooting</a> page.</em></p>
+</section>
+<section id="install-prerequisites">
+<h2>Install prerequisites<a class="headerlink" href="#install-prerequisites" title="Permalink to this headline"></a></h2>
+<p>Oppia relies on a number of programs and third-party libraries. Many of these libraries are downloaded automatically for you when you first run the <code class="docutils literal notranslate"><span class="pre">start.py</span></code> script provided with Oppia (see step 1 in the next section). However, there are some things that you will need to do beforehand:</p>
+<ol>
+<li><p>Ensure that you have <a class="reference external" href="http://www.python.org/download/releases/2.7/">Python 2.7</a> installed (Note: you can check this by running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>). If Python 2.7 is not installed, you can probably install it through your package manager. If not, download and run the latest Python 2.7 installer from https://www.python.org/downloads/. Make sure you download an installer for Python 2 and not Python 3!</p></li>
+<li><p>Make sure you have curl (used to download third-party libraries), setuptools (needed for installing coverage, which checks test coverage for the Python code), git (which allows you to store the source in version control), python-dev (which is used for the numpy installation), python-pip (which is also used for the numpy installation) and pyyaml (which is used to parse YAML files):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install curl python-setuptools git python-dev python-pip python-yaml</span>
+</pre></div>
+</div>
+<p>Alternatively, if you are on Debian/Ubuntu, you can use the <code class="docutils literal notranslate"><span class="pre">install_prerequisites.sh</span></code> script to install these. From the oppia directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">scripts</span><span class="o">/</span><span class="n">install_prerequisites</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Since Python 2 was deprecated, support for it has been dropping across Linux distributions. You may therefore find that some of these python dependencies are not available in your package manager. If that is the case, you can use pyenv instead. First, make sure you install the Python build dependencies for your operating system. These are specified <a class="reference external" href="https://github.com/pyenv/pyenv/wiki#suggested-build-environment">here</a>. Next, install pyenv:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl pyenv.run <span class="p">|</span> bash
+<span class="gp">  % </span>Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+<span class="go">                                 Dload  Upload   Total   Spent    Left  Speed</span>
+<span class="go">100   270  100   270    0     0    630      0 --:--:-- --:--:-- --:--:--   632</span>
+<span class="go">Cloning into &#39;/home/user/.pyenv&#39;...</span>
+<span class="go">...</span>
+<span class="go">WARNING: seems you still have not added &#39;pyenv&#39; to the load path.</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>If you see the warning at the end, add the following lines to your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYENV_ROOT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.pyenv&quot;</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PYENV_ROOT</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv init --path<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv virtualenv-init -<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Then reload your shell or open a new terminal window to load your updated <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>.</p>
+<p>Now you can install Python 2.7 and the associated pip like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pyenv install <span class="m">2</span>.7.18
+<span class="go">Downloading Python-2.7.18.tar.xz...</span>
+<span class="go">-&gt; https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz</span>
+<span class="go">Installing Python-2.7.18...</span>
+<span class="go">Installed Python-2.7.18 to /home/user/.pyenv/versions/2.7.18</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install Chrome from <a class="reference external" href="https://www.google.com/chrome">Google’s website</a>. You’ll need this to run tests.</p></li>
+</ol>
+</section>
+<section id="clone-oppia">
+<h2>Clone Oppia<a class="headerlink" href="#clone-oppia" title="Permalink to this headline"></a></h2>
+<ol>
+<li><p>Create a new, empty folder that will hold your Oppia work. Here, we call the folder <code class="docutils literal notranslate"><span class="pre">opensource</span></code>.</p></li>
+<li><p>Navigate to the folder (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">opensource/</span></code>).</p></li>
+<li><p>Navigate to https://github.com/oppia/oppia and click on the <code class="docutils literal notranslate"><span class="pre">fork</span></code> button. It is placed on the right corner opposite the repository name <code class="docutils literal notranslate"><span class="pre">oppia/oppia</span></code>.</p>
+<p><img alt="Screenshot with the fork button" src="_images/fork.png" /></p>
+<p>You should now see Oppia under your repositories. It will be marked as forked from <code class="docutils literal notranslate"><span class="pre">oppia/oppia</span></code>.</p>
+<p><img alt="Screenshot of repository list with Oppia" src="_images/repositoryList.png" /></p>
+<p>You can find more information on forking in <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">GitHub’s documentation</a>.</p>
+</li>
+<li><p>Clone the repository to your local computer (replacing the values in <code class="docutils literal notranslate"><span class="pre">{{}}</span></code>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/<span class="o">{{</span>GITHUB USERNAME<span class="o">}}</span>/oppia.git
+<span class="go">Cloning into &#39;oppia&#39;...</span>
+<span class="go">remote: Enumerating objects: 203313, done.</span>
+<span class="go">remote: Total 203313 (delta 0), reused 0 (delta 0), pack-reused 203313</span>
+<span class="go">Receiving objects: 100% (203313/203313), 179.26 MiB | 3.12 MiB/s, done.</span>
+<span class="go">Resolving deltas: 100% (155851/155851), done.</span>
+<span class="go">Updating files: 100% (4199/4199), done.</span>
+</pre></div>
+</div>
+<p>Note that you will see slightly different output because the numbers change as Oppia grows.</p>
+</li>
+<li><p>Now your <code class="docutils literal notranslate"><span class="pre">origin</span></code> remote is pointing to your fork (<code class="docutils literal notranslate"><span class="pre">{{GITHUB</span> <span class="pre">USERNAME}}/oppia</span></code>). To stay up to date with the main <code class="docutils literal notranslate"><span class="pre">oppia/oppia</span></code> repository, add it as a remote called <code class="docutils literal notranslate"><span class="pre">upstream</span></code>. You’ll first need to move into the <code class="docutils literal notranslate"><span class="pre">oppia</span></code> directory that was created by the clone operation.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> oppia
+<span class="gp">$ </span>git remote add upstream https://github.com/oppia/oppia.git
+<span class="gp">$ </span>git remote -v
+<span class="go">origin     https://github.com/{{GITHUB USERNAME}}/oppia.git (fetch)</span>
+<span class="go">origin     https://github.com/{{GITHUB USERNAME}}/oppia.git (push)</span>
+<span class="go">upstream   https://github.com/oppia/oppia.git (fetch)</span>
+<span class="go">upstream   https://github.com/oppia/oppia.git (push)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code> command at the end shows all your current remotes.</p>
+<p>Now you can pull in changes from <code class="docutils literal notranslate"><span class="pre">oppia/oppia</span></code> by running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">upstream</span> <span class="pre">{{branch}}</span></code> and push your changes to your fork by running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">{{branch}}</span></code>.</p>
+<p>We have established a clean setup now. We can make any changes we like and push it to this forked repository, and then make a pull request for getting the changes merged into the original repository. Here’s a nice picture explaining the process (<a class="reference external" href="https://github.com/Rafase282/My-FreeCodeCamp-Code/wiki/Lesson-Save-your-Code-Revisions-Forever-with-Git">image source</a>).</p>
+<p><img alt="Diagram of the fork-and-clone workflow" src="_images/forkCloneWorkflow.png" /></p>
+<p>For making any changes to original repository, we first sync our cloned repository with original repository. We merge develop with <code class="docutils literal notranslate"><span class="pre">upstream/develop</span></code> to do this. Now we make a new branch, do the changes on the branch, push the branch to forked repository, and make a PR from Github interface. We use a different branch to make changes so that we can work on multiple issues while still having a clean version in develop branch.</p>
+</li>
+</ol>
+</section>
+<section id="create-a-virtual-environment">
+<h2>Create a virtual environment<a class="headerlink" href="#create-a-virtual-environment" title="Permalink to this headline"></a></h2>
+<p>These instructions assume that you manage your virtual environments using <code class="docutils literal notranslate"><span class="pre">pyenv</span></code>, but you can use another tool if you wish:</p>
+<ol>
+<li><p>Create the virtual environment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pyenv virtualenv <span class="m">2</span>.7.18 oppia
+<span class="go">...</span>
+<span class="gp">$ </span>pyenv versions
+<span class="go">...</span>
+<span class="go">oppia</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Configure the virtual environment to be activated automatically whenever you enter the <code class="docutils literal notranslate"><span class="pre">oppi</span></code> folder by moving into the cloned <code class="docutils literal notranslate"><span class="pre">oppia</span></code> folder and running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pyenv local oppia</span>
+</pre></div>
+</div>
+<p>Now whenever you are within the <code class="docutils literal notranslate"><span class="pre">oppia</span></code> folder, the virtual environment will be active.</p>
+</li>
+<li><p>Install the Python dependencies:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install pyyaml setuptools
+<span class="go">Requirement already satisfied: setuptools in /home/user/.pyenv/versions/2.7.18/envs/oppia-tmp/lib/python2.7/site-packages (44.1.1)</span>
+<span class="go">Collecting pyyaml</span>
+<span class="go">  Downloading PyYAML-5.4.1-cp27-cp27mu-manylinux1_x86_64.whl (574 kB)</span>
+<span class="go">     |████████████████████████████████| 574 kB 2.3 MB/s</span>
+<span class="go">Installing collected packages: pyyaml</span>
+<span class="go">Successfully installed pyyaml-5.4.1</span>
+</pre></div>
+</div>
+<p>Note that you’ll probably see lots of warnings that Python 2 is deprecated. Those are expected. Also, you don’t need to install pyyaml here if you were able to install <code class="docutils literal notranslate"><span class="pre">python-yaml</span></code> above.</p>
+</li>
+<li><p>If you want to run backend tests and check coverage, please install these 2 pip libraries globally (or in your venv).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install coverage configparser</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="running-oppia-on-a-development-server">
+<h2>Running Oppia on a development server<a class="headerlink" href="#running-oppia-on-a-development-server" title="Permalink to this headline"></a></h2>
+<ol>
+<li><p>In a terminal, navigate to <code class="docutils literal notranslate"><span class="pre">oppia/</span></code> and run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.start</span>
+</pre></div>
+</div>
+<p>The first time you run this script, it will take a while – about 5 - 10 minutes when we last tested it in Sep 2020, though this depends on your Internet connection. (It might also hang after “Checking if pip is installed on the local machine” due to the grpcio build being slow – just give it some time, and it should finish.) Subsequent runs should be much faster. The <code class="docutils literal notranslate"><span class="pre">start.py</span></code> script downloads and installs the required dependencies (such as Google App Engine) if they are not already present, and sets up a development server for you to play with. The development server logs are then output to this terminal, so you will not be able to enter further commands in it until you disconnect the server.</p>
+<p><strong>Note</strong>: <strong>Please don’t use <code class="docutils literal notranslate"><span class="pre">sudo</span></code> while installing.</strong> It’s not required, and using it may cause problems later. If you face permissions issues, ensure that you have the necessary permissions for the directory in which you’re trying to set up Oppia. If you run into any other installation problems, please read <a class="reference internal" href="Issues-with-installation%3F.html"><span class="doc std std-doc">these notes</span></a>.</p>
+<p><strong>Note</strong>: The script will create some files and folders that are siblings of the <code class="docutils literal notranslate"><span class="pre">oppia/</span></code> root directory, for example <code class="docutils literal notranslate"><span class="pre">oppia_tools</span></code>. This is done so that these two folders will not be uploaded to App Engine when the application is deployed to the web.</p>
+<p><strong>Note</strong>: If you run into errors while installing Oppia, please try deleting the directories</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>../oppia_tools/
+node_modules/
+third_party/
+core/templates/prod/
+local_compiled_js/
+</pre></div>
+</div>
+<p>and running <code class="docutils literal notranslate"><span class="pre">start.py</span></code> again.</p>
+<p><strong>Note</strong>: Oppia uses the npm tool to install some packages. This tool accesses both ~/tmp and ~/.npm, and has been known to occasionally encounter permissions issues with those directories. You may need to either delete these directories and all their contents (if they do not contain anything else that needs to be preserved), or change their permissions so that they are owned by you, which you can do by running</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo chown -R {{YOUR_USERNAME}} ~/tmp</span>
+<span class="go">sudo chown -R {{YOUR_USERNAME}} ~/.npm</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">{{YOUR_USERNAME}}</span></code> should be replaced by your username.</p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">start.py</span></code> script will start a development server at http://localhost:8181. It should look something like this:</p>
+<p><img alt="Image showing the default splash page." src="https://res.cloudinary.com/dozmja9ir/image/upload/v1538254601/home_page.png" /></p>
+<p>You can also view the App Engine admin console at http://localhost:8000.</p>
+<p><strong>Note:</strong> There may be a few warnings that appear after running <code class="docutils literal notranslate"><span class="pre">start.py</span></code>. Don’t worry about these so long as you see the page above once you go to http://localhost:8181. The script should continue to run so long as the development server is on (you’ll see a lot of lines that start with “INFO”) and you’re able to navigate to the page.</p>
+</li>
+<li><p>When you’re done, you can shut down the development server by typing Ctrl+C into the terminal. <strong>Then wait for a command prompt to appear.</strong> Oppia has to shut down all the services it’s started, and if you abort the graceful shutdown steps (e.g. by typing Ctrl+C many times), you may have trouble re-starting the server.</p>
+<details>
+<summary>Example shutdown output</summary>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>^CINFO     2021-07-19 00:31:32,627 shutdown.py:50] Shutting down.
+INFO     2021-07-19 00:31:32,627 stub_util.py:377] Applying all pending transactions and saving the datastore
+INFO     2021-07-19 00:31:32,628 stub_util.py:380] Saving search indexes
+
+i  emulators: Received SIGINT (Ctrl-C) for the first time. Starting a clean shutdown.
+i  emulators: Please wait for a clean shutdown or send the SIGINT (Ctrl-C) signal again to stop right now.
+i  Automatically exporting data using --export-on-exit &quot;/opensource/oppia/../firebase_emulator_cache&quot; please wait for the export to finish...
+
+
+Servers are shutting down, please wait for them to end gracefully!
+
+
+i  Found running emulator hub for project dev-project-id at http://localhost:4400
+i  Creating export directory /opensource/firebase_emulator_cache
+i  Exporting data to: /opensource/firebase_emulator_cache
+i  emulators: Received export request. Exporting data to /opensource/firebase_emulator_cache.
+✔  emulators: Export complete.
+✔  Export complete
+i  emulators: Shutting down emulators.
+i  ui: Stopping Emulator UI
+⚠  Emulator UI has exited upon receiving signal: SIGINT
+i  auth: Stopping Authentication Emulator
+i  hub: Stopping emulator hub
+i  logging: Stopping Logging Emulator
+Stopping Web Browser(name=&quot;xdg-open&quot;, pid=14416)...
+Stopping GAE Development Server(name=&quot;sh&quot;, pid=14405)...
+Stopping Webpack Compiler(name=&quot;sh&quot;, pid=14338)...
+Stopping Firebase Emulator(name=&quot;sh&quot;, pid=14311)...
+Stopping ElasticSearch Server(name=&quot;sh&quot;, pid=14060)...
+Stopping Redis Server(name=&quot;sh&quot;, pid=14045)...
+
+
+Done! Thank you for waiting.
+
+
+Traceback (most recent call last):
+  File &quot;/home/user/.pyenv/versions/2.7.18/lib/python2.7/runpy.py&quot;, line 174, in _run_module_as_main
+    &quot;__main__&quot;, fname, loader, pkg_name)
+  File &quot;/home/user/.pyenv/versions/2.7.18/lib/python2.7/runpy.py&quot;, line 72, in _run_code
+    exec code in run_globals
+  File &quot;/opensource/oppia/scripts/start.py&quot;, line 202, in &lt;module&gt;
+    main()
+  File &quot;/opensource/oppia/scripts/start.py&quot;, line 198, in main
+    dev_appserver.wait()
+  File &quot;/opensource/oppia/../oppia_tools/psutil-5.7.3/psutil/__init__.py&quot;, line 1350, in wait
+    ret = super(Popen, self).wait(timeout)
+  File &quot;/opensource/oppia/../oppia_tools/psutil-5.7.3/psutil/__init__.py&quot;, line 1259, in wait
+    self._exitcode = self._proc.wait(timeout)
+  File &quot;/opensource/oppia/../oppia_tools/psutil-5.7.3/psutil/_pslinux.py&quot;, line 1517, in wrapper
+    return fun(self, *args, **kwargs)
+  File &quot;/opensource/oppia/../oppia_tools/psutil-5.7.3/psutil/_pslinux.py&quot;, line 1725, in wait
+    return _psposix.wait_pid(self.pid, timeout, self._name)
+  File &quot;/opensource/oppia/../oppia_tools/psutil-5.7.3/psutil/_psposix.py&quot;, line 115, in wait_pid
+    retpid, status = os.waitpid(pid, flags)
+KeyboardInterrupt
+</pre></div>
+</div>
+</details>
+</li>
+</ol>
+</section>
+<section id="tips-and-tricks">
+<h2>Tips and tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>To preserve the contents of the local datastore between consecutive runs, use the <code class="docutils literal notranslate"><span class="pre">--save_datastore</span></code> argument when starting up the dev server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.start --save_datastore</span>
+</pre></div>
+</div>
+</li>
+<li><p>The default Oppia installation comes with a set of <a class="reference external" href="https://github.com/oppia/oppia/tree/master/data/explorations">demo explorations</a>. On startup, none of these are loaded. To load them, log in to your server as an admin, then click your username in the top-right corner and choose ‘Admin Page’. This will open the admin page, from which you can load the demo explorations.</p></li>
+</ul>
+</section>
+<section id="notes-on-installation-on-arch-linux-systems">
+<h2>Notes on installation on Arch Linux systems<a class="headerlink" href="#notes-on-installation-on-arch-linux-systems" title="Permalink to this headline"></a></h2>
+<p><em>The following notes are thanks to Prasanna Patil (&#64;prasanna08). They come with no guarantees, and may change some settings on your local machine, so please make sure you fully understand their ramifications before following them!</em></p>
+<section id="installation-prerequisites">
+<h3>Installation prerequisites<a class="headerlink" href="#installation-prerequisites" title="Permalink to this headline"></a></h3>
+<p>Arch uses pacman as package manager, so the install_prerequisites.sh script is not going to work and all of the prerequisites have to be installed manually using pacman. Just type the following command in the shell (notation: # denotes sudo access while $ denotes normal user access):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="c1"># pacman -Sy python2 python2-pip python2-setuptools curl jre7-openjdk unzip git python2-yaml</span>
+</pre></div>
+</div>
+<p>Also, note that pacman doesn’t support google chrome in the default package manager (which is needed to run frontend and e2e tests). However, you can use the chromium package instead; this is an open-source fork of google chrome. Here’s how to do it – install the chromium browser, and then create a soft link from the google-chrome command to chromium:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="c1"># pacman -Sy chromium</span>
+   <span class="c1"># cd /usr/bin</span>
+   <span class="c1"># ln -sf chromium google-chrome</span>
+</pre></div>
+</div>
+<p>If you do want to use google chrome instead, you could also use the third-party repository AUR (with the help of yaourt).</p>
+</section>
+<section id="install-3rd-party-libraries">
+<h3>Install 3rd party libraries<a class="headerlink" href="#install-3rd-party-libraries" title="Permalink to this headline"></a></h3>
+<p>Arch uses the pip command for pip 3 (which installs libraries for python 3) and pip2 command for python 2, so we have to install all necessary (python’s) 3rd party libraries manually. For this go to the ‘oppia_tools’ directory and open a terminal and type following commands (note: make sure that you are in oppia_tools folder).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ pip2 install pylint==1.7.1 --target=&quot;./pylint-1.7.1&quot;
+  $ pip2 install numpy==1.6.1 --target=&quot;./numpy-1.6.1&quot;
+  $ pip2 install browsermob-proxy==0.7.1 --target=&quot;./browsermob-proxy-0.7.1&quot;
+  $ pip2 install selenium==2.53.2 --target=&quot;./selenium-2.53.2&quot;
+  $ curl -o webtest-download.zip -L https://github.com/Pylons/webtest/archive/1.4.2.zip
+  $ unzip webtest-download.zip -d .
+  $ rm webtest-download.zip
+  $ touch ./pylint-1.7.1/backports/__init__.py
+</pre></div>
+</div>
+<p>Once this step is done, run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code> to install other necessary files such as node modules and static js libraries and google app engine. Even after downloading everything server will fail to start and show errors. If you don’t see any errors then you have successfully setup Oppia in Arch and don’t have to execute following steps but it is highly likely that server won’t work.</p>
+</section>
+<section id="fixing-python">
+<h3>Fixing Python<a class="headerlink" href="#fixing-python" title="Permalink to this headline"></a></h3>
+<p>In Arch, the <code class="docutils literal notranslate"><span class="pre">python</span></code> command refers to python 3 (in contrast to Ubuntu, where <code class="docutils literal notranslate"><span class="pre">python</span></code> refers to python 2). This has to be fixed. There are two ways to do so. One is to modify the python files and other is to modify system links.</p>
+<ol class="simple">
+<li><p>Modify python (.py) files: two files have to be modified slightly here. First is dev_appserver.py file of the google app engine. Go to ‘oppia_tools/google_appengine_1.9.50/google_appengine’ and open ‘dev_appserver.py’ file. On the first line replace ‘python’ with ‘python2’. Secondly go to the ‘oppia/.git/hooks/prepush.py’ file and open it. On the very first line replace ‘python’ with ‘python2’.</p></li>
+<li><p>Modify system links: go to the /usr/bin and type following command.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="c1"># ln -sf python2 python</span>
+</pre></div>
+</div>
+</section>
+<section id="fix-google-app-engine">
+<h3>Fix Google App Engine<a class="headerlink" href="#fix-google-app-engine" title="Permalink to this headline"></a></h3>
+<p>Note: make sure you have already executed ‘python -m scripts.start’ before doing this step and all the necessary files were downloaded by the script. Basically at this point your Oppia server should start showing logs (error logs) in the terminal but you won’t be able to access Oppia in browser.</p>
+<p>One of the highlights of Arch is that it is always up to date from linux to all packages. That is also the case with python2. Arch uses latest version of the python 2 which is 2.7.14. This version is incompatible with Google App Engine v1.9.50, currently used by Oppia. To fix this go to ‘oppia_tools/google_appengine_1.9.50/google_appengine/google/appengine/dist27’ and open ‘socket.py’ file. In this file go to the line 73 (or, alternatively, search for ‘RAND_egd’) and remove import of ‘RAND_egd’ from that line.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

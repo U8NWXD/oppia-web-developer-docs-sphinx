@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing code to Oppia &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Teaching with Oppia" href="Teaching-with-Oppia.html" />
+    <link rel="prev" title="Get Involved" href="get-involved.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get-involved.html">Get Involved</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Coders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-things-up">Setting things up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#developing-your-skills">Developing your skills</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finding-something-to-do">Finding something to do</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#starter-projects-for-new-contributors">Starter projects for new contributors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contributor-roles">Contributor Roles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tasks-for-existing-contributors">Tasks for Existing Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tips-for-success">Tips for Success</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Teaching-with-Oppia.html">Instructional designers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lesson-Creation-Guide.html">Create a lession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conducting-research-with-students.html">UX researchers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Instructions-for-voice-artists.html">Voice artists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contributing-to-Oppia%27s-design.html">Designers and artists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Google-Summer-of-Code-2021.html">Google summer of code 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Google-Summer-of-Code-2021.html#students">Students</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Google-Summer-of-Code-2021.html#other-useful-information">Other useful information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html">Season of docs 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html#the-program-timeline">The program timeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html#faq">FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html#starter-projects">Starter projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html#season-of-docs-proposal">Season of Docs Proposal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html#how-to-apply">How to apply?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html#project-idea">Project Idea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Season-of-Docs-2021.html#other-useful-information">Other useful information</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="get-involved.html">Get Involved</a> &raquo;</li>
+      <li>Contributing code to Oppia</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Contributing-code-to-Oppia.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="contributing-code-to-oppia">
+<h1>Contributing code to Oppia<a class="headerlink" href="#contributing-code-to-oppia" title="Permalink to this headline"></a></h1>
+<p><em>These instructions are for developers who’d like to contribute code to improve the Oppia platform. If you’d prefer to help out with other things, please see our <a class="reference internal" href="index.html"><span class="doc std std-doc">general contribution guidelines</span></a>.</em></p>
+<p>Thanks for your interest in improving the Oppia platform! This page explains how you can get involved.</p>
+<p>If you run into any problems along the way, we’re here to help! Check out our <a class="reference internal" href="Get-help.html"><span class="doc std std-doc">wiki page on getting help</span></a> for the communication channels you can use. If you find any bugs, you can also file an issue on our <a class="reference external" href="https://github.com/oppia/oppia/issues">issue tracker</a>. There are also lots of helpful resources in the sidebar, check that out too! Also, if you’d like to get familiar with Oppia from a user’s point of view, you can take a look at the <a class="reference external" href="http://oppia.github.io/">user documentation</a>.</p>
+<p><strong>Important! Please read this page in its entirety before making any code changes.</strong> It contains lots of really important information. You should also read through our <a class="reference internal" href="Make-a-pull-request.html"><span class="doc std std-doc">guide to making pull requests</span></a></p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#setting-things-up">Setting things up</a></p></li>
+<li><p><a class="reference external" href="#developing-your-skills">Developing your skills</a></p></li>
+<li><p><a class="reference external" href="#finding-something-to-do">Finding something to do</a></p>
+<ul>
+<li><p><a class="reference external" href="#starter-projects-for-new-contributors">Starter projects for new contributors</a></p>
+<ul>
+<li><p><a class="reference external" href="#backend">Backend</a></p></li>
+<li><p><a class="reference external" href="#frontend">Frontend</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#contributor-roles">Contributor Roles</a></p></li>
+<li><p><a class="reference external" href="#tasks-for-existing-contributors">Tasks for Existing Contributors</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#tips-for-success">Tips for Success</a></p></li>
+<li><p><a class="reference external" href="#notes">Notes</a></p></li>
+</ul>
+</section>
+<section id="setting-things-up">
+<h2>Setting things up<a class="headerlink" href="#setting-things-up" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Please sign the CLA so that we can accept your contributions. If you’re contributing as an individual, use the <a class="reference external" href="https://goo.gl/forms/AttNH80OV0">individual CLA</a>. If your company owns the copyright to your contributions, a company representative should sign the <a class="reference external" href="https://goo.gl/forms/xDq9gK3Zcv">corporate CLA</a>.  <strong>If you do not sign the CLA, any PRs you open will be closed.</strong></p></li>
+<li><p>Fill in the <a class="reference external" href="https://goo.gl/forms/otv30JV3Ihv0dT3C3">Oppia contributor survey</a> to let us know what your interests are. (You can always change your responses later.) Filling out the survey will also get you assigned to a mentor at Oppia who will reach out to you over email to help you get started.</p></li>
+<li><p>Install Oppia following the <a class="reference internal" href="Installing-Oppia.html"><span class="doc std std-doc">installation instructions</span></a>.  If you run into any issues, please check out the <a class="reference internal" href="Troubleshooting.html"><span class="doc std std-doc">troubleshooting instructions</span></a>.</p></li>
+</ol>
+<!--
+TODO(#4): Add link to IDE tutorial.
+-->
+<ol>
+<li><p>Update your GitHub settings:</p>
+<ul>
+<li><p><a class="reference external" href="https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/">Set up 2FA</a> on your GitHub account. <strong>This is important to prevent people from impersonating you.</strong></p>
+<p>When using 2FA, you might need to create a <a class="reference external" href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/">personal access token</a> so that you can log in from the command line. Alternatively, you can <a class="reference external" href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">log in using SSH</a>.</p>
+</li>
+<li><p>Set your GitHub notification preferences <a class="reference external" href="https://github.com/oppia/oppia/subscription">here</a>. The important thing is to make sure you notice when someone replies to a conversation you’re part of – many people choose “Not watching” so that they do not get overwhelmed. Selecting “Watching” will notify you about everything that happens on the Oppia repository (which is a lot!), and notifications specifically addressed to you might end up getting lost in the noise.</p></li>
+<li><p>(Optional) Consider setting up <a class="reference external" href="https://help.github.com/articles/caching-your-github-password-in-git/">automatic auth</a> so you don’t have to type in a username and password each time you push a change. Note that this isn’t an issue if you use SSH.</p></li>
+</ul>
+</li>
+<li><p>On your browser, consider bookmarking both this wiki page (for easy reference later) and the <a class="reference external" href="https://gitter.im/oppia/oppia-chat">Gitter tab</a> (so that you can keep abreast of new activity).</p></li>
+<li><p>Familiarize yourself with the resources linked to from the sidebar of this page, especially the <a class="reference internal" href="Overview-of-the-Oppia-codebase.html"><span class="doc std std-doc">overview of the codebase</span></a> the <a class="reference internal" href="Coding-style-guide.html"><span class="doc std std-doc">coding style guide</span></a>, and the <a class="reference internal" href="Frequently-Asked-Questions.html"><span class="doc std std-doc">Frequently Asked Questions</span></a>. You don’t have to read all the other stuff right now, but it’s a good idea to be aware of what’s available, so that you can refer to it later if needed.</p></li>
+<li><p>Say hi on the <a class="reference external" href="https://gitter.im/oppia/oppia-chat">gitter</a> chat channel!</p></li>
+<li><p>Join <a class="reference external" href="https://discord.com/invite/dCJwEAgk3D">our discord</a> for fun activities!</p></li>
+<li><p>Take up your first starter project! You can find more details below. (Make sure to read and follow the <a class="reference internal" href="Make-a-pull-request.html"><span class="doc std std-doc">PR instructions</span></a> closely so that your PR review proceeds smoothly.)</p></li>
+</ol>
+</section>
+<section id="developing-your-skills">
+<h2>Developing your skills<a class="headerlink" href="#developing-your-skills" title="Permalink to this headline"></a></h2>
+<p>See our <a class="reference internal" href="Learning-Resources.html"><span class="doc std std-doc">page of learning resources</span></a> for suggestions on how you can improve your development skills. When you take up an issue that requires programming languages or tools you are unfamiliar with, check out that page for resources that other developers have found useful when learning.</p>
+</section>
+<section id="finding-something-to-do">
+<h2>Finding something to do<a class="headerlink" href="#finding-something-to-do" title="Permalink to this headline"></a></h2>
+<section id="starter-projects-for-new-contributors">
+<h3>Starter projects for new contributors<a class="headerlink" href="#starter-projects-for-new-contributors" title="Permalink to this headline"></a></h3>
+<p>Welcome! Please make sure to follow the instructions above if you haven’t already. After that, we’d <strong>strongly recommend</strong> tackling some part of one of the following starter issues:</p>
+<section id="backend">
+<h4>Backend<a class="headerlink" href="#backend" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/11496">#11496</a> (Write lint checks for the end-to-end tests)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/13162">#13162</a> (Write schemas for handler class arguments)</p></li>
+</ul>
+</section>
+<section id="frontend">
+<h4>Frontend<a class="headerlink" href="#frontend" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/10700">#10700</a> (Refactor all migrated object factories to model.ts files in angular)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/9749">#9749</a> (Migrate directives/controllers to Angular components)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/10798">#10798</a> (Fixing end-to-end tests, which are written with protractor)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/8668">#8668</a> (frontend; documenting the services)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/8015">#8015</a> (Refactoring frontend - Services should return domain objects instead of dicts)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/8016">#8016</a> (Refactoring frontend - The backend api calls in the frontend should only happen through services)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/8038">#8038</a> (Refactoring frontend services - The backend api calls in the frontend should only happen through services)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/10474">#10474</a> (Make typescript checks strict)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/10306">#10306</a> (Refactoring frontend - Add “async” keyword to asynchronous functions that return a promise)</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/issues/10616">#10616</a> (Introduce new &#64;typescript-eslint rules n the codebase)</p></li>
+</ul>
+<p>These issues are hand-picked to ensure that you don’t run into unexpected roadblocks while working on them. For other issues, you may need to be more independent because often times, we don’t know how to solve them either.</p>
+<p>If you decide to pick one of these, please go ahead and leave a comment saying which part of the issue you’re taking, and submit a follow-up PR by following the instructions to <a class="reference internal" href="Make-a-pull-request.html"><span class="doc std std-doc">make a PR</span></a>. You don’t need to wait for approval to get started!</p>
+<p>If you need some help from someone with a more prominent UI/UX or design perspective, tag <strong>&#64;mschanteltc</strong> and expect a response within 2-3 days, if not, ping in the Oppia Gitter channel.</p>
+<p><strong>Important Note</strong>: Please make sure to read and follow the <a class="reference internal" href="Make-a-pull-request.html"><span class="doc std std-doc">PR instructions</span></a> carefully, otherwise your PR review may be delayed or your PR may be closed.</p>
+</section>
+</section>
+<section id="contributor-roles">
+<h3>Contributor Roles<a class="headerlink" href="#contributor-roles" title="Permalink to this headline"></a></h3>
+<p>If you want to play a more integral role in sustaining Oppia, you can look forward to being able to take on more responsibilities as you continue to make quality contributions to the project. Here is a rough outline of the roles developers play at Oppia:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>        Everyone (read access)
+            |
+            |
+            v
+     New Contributors (read access)
+            |
+            | Get 2 PRs Merged
+            v
+      Collaborators (triage access)
+            |
+            | Make Sustained Quality Contributions
+            v
+         Members (write access)
+            |
+            |
+            v
+      Project Leads
+           and
+     Core Maintainers
+</pre></div>
+</div>
+<p>As a new contributor, you won’t have any permissions on the repository except to read the code, so you’ll need to ask other developers (or Oppiabot) to assign reviewers to your PR or add labels to your issue.</p>
+<p>After you’ve completed parts of at least two different non-trivial starter projects and successfully submitted PRs for them into develop, we’ll mail you a collaborator invite link for the Oppia repository. This is a manual process and may take up to 48 hours. Please visit <a class="reference external" href="https://github.com/oppia/oppia/invitations">this link</a> to accept the invitation to collaborate. We’ll also get in touch to suggest suitable longer-term projects based on your interests, but please feel free to email us at admin&#64;oppia.org if you don’t receive the email!</p>
+<p>Then you’ll be a collaborator with triage access, which lets you assign reviewers and labels. No more asking for reviewers to be assigned! If you continue to make quality contributions, you may be added as a member of the Oppia organization, which grants you write access. Then you’ll be able to restart tests, serve as a <a class="reference external" href="https://docs.github.com/en/articles/about-code-owners">code owner</a>, and review pull requests.</p>
+<p>Finally, after you’ve been contributing to the project for a while, you may become a project lead and/or core maintainer. In those roles, you’ll help plan and lead Oppia’s development.</p>
+<p>If you ever wonder why you don’t have permission to perform some action on the Oppia repository, it might be because of your role. GitHub details each role’s privileges in more detail in <a class="reference external" href="https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization">their documentation</a>.</p>
+</section>
+<section id="tasks-for-existing-contributors">
+<h3>Tasks for Existing Contributors<a class="headerlink" href="#tasks-for-existing-contributors" title="Permalink to this headline"></a></h3>
+<p>There are lots of options!</p>
+<ul class="simple">
+<li><p><strong>Want easy projects?</strong> Check out our <a class="reference external" href="https://github.com/oppia/oppia/labels/good%20first%20issue">list of “good first issues”</a>.</p></li>
+<li><p><strong>Want projects that matter?</strong> Check out our <a class="reference external" href="https://github.com/oppia/oppia/issues?q=is%3Aopen+is%3Aissue+label%3Aimportant">list of high-priority issues</a>.</p></li>
+<li><p><strong>Want to practice debugging?</strong> Check out our <a class="reference external" href="https://github.com/oppia/oppia/issues?utf8=%E2%9C%93&amp;q=is%3Aissue%20is%3Aopen%20label%3A%22needs%20debugging%22%20">list of issues needing debugging help</a>.</p></li>
+<li><p><strong>Want to practice writing a design doc?</strong> Check out the <a class="reference external" href="https://github.com/oppia/oppia/labels/needs%20design%20doc">list of issues requiring a design doc</a>. This is useful for learning how to write good “technical implementation” proposals.</p></li>
+<li><p><strong>Want to join a team working on a larger effort?</strong> See our <a class="reference external" href="https://github.com/oppia/oppia/projects">list of projects</a>.</p></li>
+<li><p><strong>Want to lead a project?</strong> Let us know by emailing admin&#64;oppia.org.  We may offer you the opportunity to do this once you’ve sent in several good PRs.</p></li>
+<li><p><strong>Want help figuring out what to do?</strong> Just ask us on <a class="reference external" href="https://gitter.im/oppia/oppia-chat">Gitter</a>, or send an email to admin&#64;oppia.org. We’ll try to help!</p></li>
+</ul>
+<p>If an issue hasn’t got someone assigned to it, and there’s no existing PR for the issue (you can check this by scanning the list of <a class="reference external" href="https://github.com/oppia/oppia/pulls">existing PRs</a>), feel free to take it up by assigning yourself to it. You don’t need to ask permission to do so. Also, if you need help or advice on an issue, you can contact the corresponding team lead, whose GitHub username you can find in the description of the project the issue is assigned to.  You can also find a list of all Oppia teams on the <a class="reference external" href="https://github.com/oppia/oppia/projects">Projects page</a>.</p>
+</section>
+</section>
+<section id="tips-for-success">
+<h2>Tips for Success<a class="headerlink" href="#tips-for-success" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Make dependent (“stacked”) PRs to ensure smaller time between reviews and subsequent PRs. A large PR results in difficulty to review for the reviewer as well as difficulty in making changes according to a review for an author. So, it is better to create smaller PRs which deliver a single small goal. If you have code changes dependent on a PR, it is better to create a separate PR for those changes.</p></li>
+<li><p>Try and follow test-driven development. This is the easiest way to make sure the code you wrote is working fine. The basic idea is to first write tests for the expected behaviour and then write code that will pass those tests. Refer to our guides for writing good tests:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Backend-tests.html"><span class="doc std std-doc">Backend Tests</span></a></p></li>
+<li><p><a class="reference internal" href="Frontend-unit-tests-guide.html"><span class="doc std std-doc">Frontend Tests</span></a></p></li>
+<li><p><a class="reference internal" href="End-to-End-Tests.html"><span class="doc std std-doc">End to end tests</span></a></p></li>
+</ul>
+</li>
+<li><p>If you’re stuck on something, ask for help instead of letting it block all your work. It can be difficult to know when to ask for help, so one rule of thumb is to ask whenever you’ve been unable to make progress for an hour.</p></li>
+<li><p>When asking questions, follow our guide to <a class="reference internal" href="Get-help.html"><span class="doc std std-doc">getting help</span></a> to make sure your question gets to the right people and has the information they need to help you.</p></li>
+<li><p>Remember that you’re working with volunteers, nearly all of whom spend most of their time at school or a job. Don’t be surprised if it takes a few hours for someone to get back to you (they might be in a different time zone!).</p></li>
+<li><p>Do a self-review to find your own mistakes. Reviews by other developers take time, so any mistakes you can catch by yourself will speed things up.</p></li>
+<li><p>Take the time to understand what the code you are changing is doing.  Sometimes we see PRs for changes that don’t do anything useful or that don’t make sense given the context of the code. These won’t get merged.</p></li>
+<li><p>If you are making a contribution which involves changing some user interface or introducing a new feature, it is good to start with a design doc to avoid wasting efforts later. Follow our <a class="reference internal" href="Writing-design-docs.html"><span class="doc std std-doc">guide for writing design docs</span></a>.</p></li>
+</ol>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>Our central development branch is <code class="docutils literal notranslate"><span class="pre">develop</span></code>, which should be clean and ready for release at any time. All changes should be done in feature branches based off of <code class="docutils literal notranslate"><span class="pre">develop</span></code>.</p></li>
+<li><p>Sometimes, GitHub comments in the main conversation thread don’t have a reply box. This seems to be a quirk with GitHub: apparently the reply box doesn’t show up on outdated threads if you’re currently in the middle of a review (or a reply to someone else’s review) that you haven’t submitted. After you submit the review, the reply field should show up again.</p></li>
+<li><p>If you want to do a codebase change that is large and somewhat repetitive, do a small trial PR first for a limited subset of the change, and check with reviewers whether the approach makes sense. Only after getting that trial PR merged (or at least approved by all reviewers) should you do the full change.</p>
+<p>This helps because, if you just did the full PR at the outset instead, then if a reviewer requests changes to the approach, you’d need to go back and modify all the files. On the other hand, with a trial PR, addressing an initial round of changes is less work, and by the time you get to the full PR, you’d already know what you need to do!</p>
+</li>
+<li><p>To find the author of a particular change in a file, run this command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git blame file-name</span>
+</pre></div>
+</div>
+<p>The output will show the latest commit SHA, author, date, and time of commit for each line.</p>
+<p>To confine the search of an author between particular lines in a file, you can use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git blame -L 40,60 file-name</span>
+</pre></div>
+</div>
+<p>The output will then show lines 40 to 60 of the particular file.</p>
+<p>For more <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">blame</span></code> options, you can visit the <a class="reference external" href="https://git-scm.com/docs/git-blame">git blame documentation</a>. You can also view this information on GitHub. Just navigate to the file you are interested and click the “Blame” button:</p>
+<p><img alt="Screenshot showing the blame button on GitHub" src="_images/githubBlame.png" /></p>
+</li>
+<li><p><strong>Important</strong> PRs marked with the “critical” label need to be tested in the backup server before being merged. For this, one of the release coordinators (with access to deploy) should checkout a new branch from develop, merge the branch from the PR into the new branch, and initiate deployment to the backup server from this branch. The PR author should give specific testing instructions for the changes (like which job to run, what the expected output is, etc) and the coordinator should verify the same. Once successfully tested, the PR should be merged into develop. This is to prevent cases like exploration migrations which can result in data corruption (as it will auto-migrate) if the migration isn’t safe. The “critical” label needs to be applied on PRs that change data validation checks, and other possibly critical changes which could affect production data.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="get-involved.html" class="btn btn-neutral float-left" title="Get Involved" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Teaching-with-Oppia.html" class="btn btn-neutral float-right" title="Teaching with Oppia" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

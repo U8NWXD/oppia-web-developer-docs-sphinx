@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing style guide &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Schemas" href="Schemas.html" />
+    <link rel="prev" title="Oppia UX guidelines &amp; rationales" href="Oppia-UX-guidelines-%26-rationales.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="frontend-reference.html">Frontend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Angular-Migration.html">Angular migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia-UX-guidelines-%26-rationales.html">Oppia UX guidelines &amp; rationales</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing style guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#voice-and-tone-cheat-sheet">Voice and Tone Cheat Sheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#style-best-practices">Style best practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#punctuation">Punctuation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#capitalization">Capitalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formatting">Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-resources">Writing resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Schemas.html">Schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor-pages.html">Editor pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="frontend-reference.html">Frontend</a> &raquo;</li>
+      <li>Writing style guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Writing-style-guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="writing-style-guide">
+<h1>Writing style guide<a class="headerlink" href="#writing-style-guide" title="Permalink to this headline"></a></h1>
+<p><em>(Compiled by &#64;whygee, Dec 2015)</em></p>
+<section id="voice-and-tone-cheat-sheet">
+<h2>Voice and Tone Cheat Sheet<a class="headerlink" href="#voice-and-tone-cheat-sheet" title="Permalink to this headline"></a></h2>
+<p><img alt="Schematic diagram explaining breakdown of core principle into voice and tone characteristics." src="_images/voiceCheatSheet.png" /></p>
+<p>This diagram shows how the voice and tone characteristics are derived from Oppia’s core principle (“bring adventure and curiosity…”). In order for that core principle to come across, we try to ensure that every interaction feels like a moment of discovery, that it’s open and collaborative, and that it happens in real time. For each of these experience principles, we then ask: how do we talk / what language do we use, and what is the brand personality if we had to assign characteristics to each? So, for example, each moment of discovery should use delightful language (e.g. for a correct response, we might use “Good call, you got it right” in favor of “Your answer is correct”).</p>
+<p><strong>General tip on tone:</strong> Avoid over-branding or using quirky language when the user expects a straightforward outcome. In other words, never let the quirkiness get in the way when the user is trying to take action. Examples include: navigation, forms and field labels, instructional text, selection text (drop-downs, radio buttons) and buttons. <em>Source: <a class="reference external" href="http://www.smashingmagazine.com/2013/06/17/five-ways-prevent-bad-microcopy/">Smashing Magazine</a></em></p>
+</section>
+<section id="style-best-practices">
+<h2>Style best practices<a class="headerlink" href="#style-best-practices" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p><strong>Keep it simple.</strong></p>
+<ul class="simple">
+<li><p>Use simple words and short phrases. Pretend you’re speaking to someone who’s smart and competent, but doesn’t know technical jargon and may not speak English very well.</p></li>
+<li><p>Use short words, active verbs, and common nouns.</p></li>
+<li><p>Put the most important thing first. “Front-load” the first 10 or so characters with the most salient information in the string.</p></li>
+<li><p>Don’t try to explain subtle differences. They are lost on most users.</p></li>
+</ul>
+</li>
+<li><p><strong>Use contractions.</strong> Use all conventional contractions wherever possible, i.e. it’s, can’t, wouldn’t, you’re, you’ve, haven’t, don’t. Mirror how we speak.</p></li>
+<li><p><strong>Use numerals.</strong> Don’t spell out numbers (even zero through nine) in UI text. Brevity is best. However, it is okay to spell out numbers in longer-form communications (i.e. email) or at the beginning of a sentence. You might also consider rewriting the sentence so it doesn’t start with a number.</p></li>
+<li><p><strong>Turn paragraphs into bullet points.</strong> To the user, a paragraph can feel like a lot to take in. Make important information in the UI more digestible by breaking it up into bullet points (even if it’s just 2 or 3 sentences). This will allow users to get the info they need quickly.</p></li>
+<li><p><strong>Avoid text based on physical direction.</strong> To ensure UI text is accessible to those who may not be able to see the screen or page, try to avoid words like “below”, “above”, “here”, etc. when instructing users. For example, instead of “Enter your account details below,” just use “Enter your account details”.</p></li>
+<li><p><strong>Error messages = explanation + solution, that’s it.</strong> Explain the problem in simple language, then tell the user how to fix it (or offer to fix it for them). A few tips: consider adding helpful links, don’t blame the user, avoid humor.</p></li>
+</ol>
+</section>
+<section id="punctuation">
+<h2>Punctuation<a class="headerlink" href="#punctuation" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><strong>Ampersand (&amp;).</strong> Use ampersand (&amp;) in headlines on the site when referencing two items (i.e. ‘ Snacks &amp; drinks’ ). In a list of three or more items, spell out ‘ and’  (i.e. ‘ Snacks, drinks, and more’ ).</p></li>
+<li><p><strong>Asterisks.</strong> Use before superscript numerals to disclaim a statement. Place asterisk at end of sentence or phrase unless legal deems otherwise. Place asterisks outside punctuation: Get free delivery on orders over $15.*</p></li>
+<li><p><strong>Colon.</strong> The word directly after a colon should always be lowercase (i.e. Weekly sale: household supplies). This applies in headlines, email subject lines, email body copy, etc.</p></li>
+<li><p><strong>Contractions.</strong> Use them to make your writing sound less robotic and stiff. Also, use more casual &amp; friendly terms for greetings, ‘thanks’ over ‘thank you,’ ‘hi there’ over ‘hello.’</p></li>
+<li><p><strong>Dash.</strong> Avoid if possible in running text. When used as a phrase marker – like this – use an en dash with a normal word space on either side, rather than an em dash. When used to indicate a range of numbers, use an en dash closed up on either side: pages 13–24.</p></li>
+<li><p><strong>Ellipsis.</strong> Use the ellipsis character (…) to indicate:</p>
+<ul>
+<li><p>Incompleteness, such as an action in progress (“Downloading…”) or truncated text.</p></li>
+<li><p>That a menu item (such as Print… or Share…) leads to further UI involving significant choices. Exception: Commands whose wording already implies further (but limited) UI, such as Find in page or Pick a date, do not require ellipsis.</p></li>
+</ul>
+</li>
+<li><p><strong>Exclamation points (!).</strong> Avoid (or use very sparingly). Too many can come off as disingenuous or overly excitable. Be real &amp; sincere in tone.</p></li>
+<li><p><strong>Hyphen.</strong> Use hyphens to link all words in a compound adjective (i.e. ‘ game-day snacks’ ). Do not use a hyphen if the construction includes an adverb ending in -ly (i.e. ‘ a globally inspired feast’ ).</p></li>
+<li><p><strong>Period.</strong> Don’t use a period after a single sentence or phrase used in isolation, such as in a toast, label, or notification. Wherever two or more sentences run together, use a period for each sentence.</p></li>
+<li><p><strong>Question mark.</strong> Use a question mark if the string is a question.</p></li>
+<li><p><strong>Quotation marks.</strong> Use single quotes to refer to in-product labels or buttons. Use double quotes when quoting something said by a person.</p></li>
+<li><p><strong>Serial comma.</strong> Always use the serial comma (i.e. ‘ word, word, and word’ ). Serial commas make text clearer, more consistent, and easier to read.</p></li>
+<li><p><strong>Spacing after periods.</strong> Include only one space after each period.</p></li>
+</ul>
+</section>
+<section id="capitalization">
+<h2>Capitalization<a class="headerlink" href="#capitalization" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>DO NOT use title-style caps (“Click Here”). Instead, use sentence-style caps (“Click here”).</p></li>
+<li><p>Capitalize product names only when referring to a product as a product.</p></li>
+<li><p>When in doubt, don’t capitalize any name of less significance than a formal product name.</p></li>
+<li><p>Retain the usual capitalization of proper nouns, acronyms, and code wherever they appear.</p></li>
+<li><p>Use sentence capitalization for most links, buttons, labels, controls, headings, and text in the Oppia interface.</p></li>
+<li><p>Use title capitalization for tab names (unless the tab names start with verbs) and references to other capitalized page titles.</p>
+<ul>
+<li><p>(Optional) If a page has a top-level title that doesn’t start with a verb (“Web History”), you may use title capitalization instead of sentence capitalization. Try to make this style consistent across a set of related pages.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="formatting">
+<h2>Formatting<a class="headerlink" href="#formatting" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><strong>Bold.</strong> Use bold sparingly. Too much bold lessens its impact. In general, reserve bold to distinguish essential information (such as important keywords) from supplemental info.</p></li>
+<li><p><strong>Italic.</strong> Use italic text sparingly, for example, for placeholder text or variables. Some users find italic text difficult to read.</p></li>
+<li><p><strong>Underline.</strong> Don’t use underlines.</p></li>
+<li><p><strong>Date.</strong> Spell out full names of months when used on their own (without specific date). Abbreviate months (Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec) with single or double-digit dates.</p></li>
+<li><p><strong>Numbers.</strong> In UI text, don’t spell out numbers (even zero through nine) Brevity is best. However, it is okay to spell out numbers in longer-form communications (i.e. email) or at the beginning of a sentence. You might also consider rewriting the sentence so it doesn’t start with a number.</p></li>
+<li><p><strong>Time.</strong> Use uppercase AM or PM without periods. When using AM or PM with time, separate from time with a space: 10 AM.</p></li>
+<li><p><strong>Units of measurement.</strong> Spell out all units of measurement. Use figures whenever a number precedes a unit of measurement, even if it is below 10. Use a hyphen when the measurement becomes a compound modifier (e.g. “the 5-inch screen”).</p></li>
+</ul>
+</section>
+<section id="writing-resources">
+<h2>Writing resources<a class="headerlink" href="#writing-resources" title="Permalink to this headline"></a></h2>
+<p>A few more resources on UI writing that you may find helpful:</p>
+<ul class="simple">
+<li><p>Official dictionary: <a class="reference external" href="http://www.merriam-webster.com/">Merriam-Webster</a></p></li>
+<li><p>A checklist of <a class="reference external" href="http://www.userfocus.co.uk/resources/contentchecklist.html">content usability guidelines</a></p></li>
+<li><p>UX writing checkist</p>
+<ul>
+<li><p>Too few words? Too many?</p></li>
+<li><p>Front loaded keywords?</p></li>
+<li><p>Present tense? (in most cases)</p></li>
+<li><p>Active voice? (in most cases)</p></li>
+<li><p>“You” is the only pronoun? (in most cases)</p></li>
+<li><p>4th grade vocabulary?</p></li>
+<li><p>Friendly, short, simple words?</p></li>
+<li><p>Part of product vocabulary?</p></li>
+<li><p>Meets established word patterns?</p></li>
+<li><p>Short? If not, cut in half, then cut in half again.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Oppia-UX-guidelines-%26-rationales.html" class="btn btn-neutral float-left" title="Oppia UX guidelines &amp; rationales" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Schemas.html" class="btn btn-neutral float-right" title="Schemas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

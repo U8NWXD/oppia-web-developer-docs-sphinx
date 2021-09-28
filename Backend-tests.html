@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backend tests &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frontend unit tests guide" href="Frontend-unit-tests-guide.html" />
+    <link rel="prev" title="Running tests" href="Running-Tests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="testing.html">Testing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Running-Tests.html">Running tests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Backend tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-philosophy">Testing philosophy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unit-tests">Unit tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integration-tests">Integration tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unit-versus-integration-tests-at-oppia">Unit versus integration tests at Oppia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-mock">When to mock</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run-backend-tests">Run backend tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#identifying-whether-the-tests-passed">Identifying whether the tests passed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coverage-reports">Coverage reports</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#write-backend-tests">Write backend tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#backend-test-structure">Backend test structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#guidelines-for-writing-good-tests">Guidelines for writing good tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-testing-scenarios">Common testing scenarios</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharding-backend-tests">Sharding backend tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Frontend-unit-tests-guide.html">Frontend unit tests guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="End-to-End-Tests.html">End to end tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html">Lighthouse CI Automated Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#how-to-add-new-pages-to-lighthouse-tests">How to add new pages to lighthouse tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lighthouse-Tests.html#debugging-lighthouse-tests">Debugging Lighthouse Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html">General Good Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#visual-disabilities">Visual Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#physical-disabilities">Physical Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-for-Accessibility.html#hearing-disabilities">Hearing Disabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-accessibility-checklist.html">Accessibility Manual Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="testing.html">Testing</a> &raquo;</li>
+      <li>Backend tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Backend-tests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="backend-tests">
+<h1>Backend tests<a class="headerlink" href="#backend-tests" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#testing-philosophy">Testing philosophy</a></p>
+<ul>
+<li><p><a class="reference external" href="#unit-tests">Unit tests</a></p>
+<ul>
+<li><p><a class="reference external" href="#writing-comprehensive-tests">Writing comprehensive tests</a></p></li>
+<li><p><a class="reference external" href="#mocking">Mocking</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#integration-tests">Integration tests</a></p></li>
+<li><p><a class="reference external" href="#unit-versus-integration-tests-at-oppia">Unit versus integration tests at Oppia</a></p></li>
+<li><p><a class="reference external" href="#when-to-mock">When to mock</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#run-backend-tests">Run backend tests</a></p>
+<ul>
+<li><p><a class="reference external" href="#identifying-whether-the-tests-passed">Identifying whether the tests passed</a></p></li>
+<li><p><a class="reference external" href="#coverage-reports">Coverage reports</a></p>
+<ul>
+<li><p><a class="reference external" href="#warning-full-coverage-does-not-mean-your-tests-are-comprehensive">Warning: full coverage does not mean your tests are comprehensive</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#write-backend-tests">Write backend tests</a></p>
+<ul>
+<li><p><a class="reference external" href="#backend-test-structure">Backend test structure</a></p></li>
+<li><p><a class="reference external" href="#guidelines-for-writing-good-tests">Guidelines for writing good tests</a></p></li>
+<li><p><a class="reference external" href="#sharding-backend-tests">Sharding backend tests</a></p>
+<ul>
+<li><p><a class="reference external" href="#how-sharding-works">How sharding works</a></p></li>
+<li><p><a class="reference external" href="#common-errors">Common errors</a></p></li>
+<li><p><a class="reference external" href="#adding-new-tests-to-shards">Adding new tests to shards</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#common-testing-scenarios">Common testing scenarios</a></p></li>
+<li><p><a class="reference external" href="#examples">Examples</a></p>
+<ul>
+<li><p><a class="reference external" href="#example-writing-unit-tests-for-domain-classes">Example: Writing unit tests for domain classes</a></p></li>
+<li><p><a class="reference external" href="#example-writing-integration-tests-for-handlers-controllers">Example: Writing integration tests for handlers (controllers)</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>All code in Oppia’s backend must be thoroughly tested because tests help catch bugs, help new contributors understand our backend code, and ensure that our code doesn’t get broken by other developers in the future.</p>
+<p>This guide covers Oppia’s backend tests. We also have separate pages for <a class="reference internal" href="Frontend-unit-tests-guide.html"><span class="doc std std-doc">frontend tests</span></a> and <a class="reference internal" href="End-to-End-Tests.html"><span class="doc std std-doc">end-to-end tests</span></a>.</p>
+</section>
+<section id="testing-philosophy">
+<h2>Testing philosophy<a class="headerlink" href="#testing-philosophy" title="Permalink to this headline"></a></h2>
+<p>Let’s begin by explaining some testing philosophy. This will help you design your tests; we’ll talk about how to actually write them later. There are two main kinds of tests that we use in the backend: unit tests and integration tests.</p>
+<section id="unit-tests">
+<h3>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline"></a></h3>
+<p>Unit tests check that a small unit of code, usually a function or a class, works correctly. By testing only a small piece of code at a time, we can write very thorough tests. For example, it would be a lot harder to write comprehensive test cases for all of Oppia than it would be to write comprehensive test cases for a small utility function that checks whether a username is valid.</p>
+<section id="writing-comprehensive-tests">
+<h4>Writing comprehensive tests<a class="headerlink" href="#writing-comprehensive-tests" title="Permalink to this headline"></a></h4>
+<p>Let’s consider what test cases we might write for such a utility. Suppose we only want to allow usernames that are between 1 and 7 characters (inclusive), and that include only English letters and Arabic numerals. These test cases would not be comprehensive:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'abc123'</span></code>: Valid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'aBc'</span></code>: Valid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'1'</span></code>: Valid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'abc_123'</span></code>: Invalid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'abc123de'</span></code>: Invalid</p></li>
+</ul>
+<p><strong>Exercise:</strong> Take a moment to think about what test cases are missing.</p>
+<p>Here’s an example implementation of our utility function that is incorrect but passes these test cases:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ALLOWED_USERNAME_CHARACTERS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">MAX_USERNAME_LENGTH</span><span class="o">=</span> <span class="mi">7</span>
+
+<span class="k">def</span> <span class="nf">check_is_username_valid</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">USERNAME_LENGTH_RANGE</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">username</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">character</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ALLOWED_USERNAME_CHARACTERS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Why is this code incorrect? Consider the case where <code class="docutils literal notranslate"><span class="pre">username</span> <span class="pre">=</span> <span class="pre">''</span></code>. The function will return True even though this username is fewer than 1 character long. Our tests would be more thorough if we added a test with an empty string:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">''</span></code>: Invalid</p></li>
+</ul>
+<p><strong>Tests should cover the full range of inputs that the code being tested might be given. Remember to test error cases where the function is used incorrectly.</strong></p>
+</section>
+<section id="mocking">
+<h4>Mocking<a class="headerlink" href="#mocking" title="Permalink to this headline"></a></h4>
+<p>Most functions are quite a bit more complicated than our <code class="docutils literal notranslate"><span class="pre">check_is_username_valid()</span></code> example above. Often, they make calls to other functions that perform complicated operations we don’t want to test. For example suppose we have a function <code class="docutils literal notranslate"><span class="pre">download(url)</span></code> that downloads the HTML code at <code class="docutils literal notranslate"><span class="pre">url</span></code> and returns it as a string. Now consider the following function that we want to test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_current_time_utc</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://worldtimeapi.org/api/timezone/Etc/UTC.txt&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;datetime: &#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;datetime: &#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Note that https://worldtimeapi.org/api/timezone/Etc/UTC.txt returns text like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>abbreviation: UTC
+client_ip: &lt;redacted&gt;
+datetime: 2021-08-26T00:38:19.941464+00:00
+...
+week_number: 34
+</pre></div>
+</div>
+<p>When testing <code class="docutils literal notranslate"><span class="pre">get_current_time_utc()</span></code>, we don’t want to actually query worldtimeapi.org because we don’t want our tests to fail just because we lose our network connection or the worldtimeapi.org servers go down. Instead, we want to replace <code class="docutils literal notranslate"><span class="pre">download()</span></code> with a fake function that we control. This function is called a <em>mock</em> or <em>stub</em>, and the process of introducing such a function is called <em>mocking</em> or <em>stubbing</em>.</p>
+<p>To return to our earlier example, we might replace <code class="docutils literal notranslate"><span class="pre">download()</span></code> with this mock function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mock_download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+        <span class="s1">&#39;abbreviation: UTC&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;client_ip: 127.0.0.1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;datetime: 2021-08-26T00:38:19.941464+00:00&#39;</span><span class="p">,</span>
+        <span class="o">...</span>
+        <span class="s1">&#39;week_number: 34&#39;</span><span class="p">,</span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+<p>That way our tests still check that we can handle responses from worldtimeapi.org, but we don’t have to worry about our test results depending on a network query to an external server.</p>
+</section>
+</section>
+<section id="integration-tests">
+<h3>Integration tests<a class="headerlink" href="#integration-tests" title="Permalink to this headline"></a></h3>
+<p>Unit tests have a major failing: even when each small unit of your code is correct, your program as a whole can be incorrect if you don’t put those units together correctly. For example, consider the two functions below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search_for_substring</span><span class="p">(</span><span class="n">string_to_search</span><span class="p">,</span> <span class="n">substring</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">substring</span> <span class="ow">in</span> <span class="n">string_to_search</span>
+
+<span class="k">def</span> <span class="nf">get_search_args_for_illegal_usernames</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="n">username</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">search_for_substring</span><span class="p">(</span><span class="o">*</span><span class="n">get_search_args_for_illegal_usernames</span><span class="p">(</span><span class="s1">&#39;i_am_an_admin&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>If you run this code, you’ll see <code class="docutils literal notranslate"><span class="pre">False</span></code> printed even though the username contains the substring <code class="docutils literal notranslate"><span class="pre">admin</span></code>. The problem is that <code class="docutils literal notranslate"><span class="pre">get_search_args_for_illegal_usernames()</span></code> returns the substring first and the string to search (the username) second, but <code class="docutils literal notranslate"><span class="pre">search_for_substring()</span></code> expects the arguments to be in the opposite order. In this case the code units are fine. The bug arises when we integrate those units together.</p>
+<p>We use integration tests to catch bugs like these. These tests are actually written just like our unit tests. The only difference is that we mock less in integration tests.</p>
+</section>
+<section id="unit-versus-integration-tests-at-oppia">
+<h3>Unit versus integration tests at Oppia<a class="headerlink" href="#unit-versus-integration-tests-at-oppia" title="Permalink to this headline"></a></h3>
+<p>At Oppia, we don’t distinguish clearly between unit and integration tests. Many of our backend unit tests end up being a lot like integration tests just because we don’t bother to mock everything. However, the distinction is important because we do sometimes write integration tests on purpose, so you’ll see some test code described that way.</p>
+</section>
+<section id="when-to-mock">
+<h3>When to mock<a class="headerlink" href="#when-to-mock" title="Permalink to this headline"></a></h3>
+<p>We just saw how the difference between unit and integration tests largely comes down to how much mocking we do, but that raises a question: “When should you mock?” There is no hard rule, but we generally encourage developers to mock only when doing so makes the tests easier to write. Don’t bother mocking every function call your unit of code makes.</p>
+<p>In fact, too many mocks can be a problem because when someone changes the code you’ve mocked, they have to remember to change your mock too. This introduces opportunities for errors that cause the mock code to diverge from the code being mocked, which can let bugs slip past the tests undetected.</p>
+</section>
+</section>
+<section id="run-backend-tests">
+<h2>Run backend tests<a class="headerlink" href="#run-backend-tests" title="Permalink to this headline"></a></h2>
+<p>You can run backend tests like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests</span>
+</pre></div>
+</div>
+<p>Alternatively, you can run just a single test module like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests --test_target=core.controllers.editor_test</span>
+</pre></div>
+</div>
+<p>The argument to <code class="docutils literal notranslate"><span class="pre">--test_target</span></code> can be as specific as you like. For example:</p>
+<ul class="simple">
+<li><p>Run a class of tests: <code class="docutils literal notranslate"><span class="pre">--test_target=core.controllers.editor_test.BaseEditorControllerTests</span></code></p></li>
+<li><p>Run a single test: <code class="docutils literal notranslate"><span class="pre">--test_target=core.controllers.editor_test.BaseEditorControllerTests.test_editor_page</span></code></p></li>
+</ul>
+<p>If you also want to see the output of <code class="docutils literal notranslate"><span class="pre">print</span></code> statements and error logs in the terminal, use <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests --test_target=core.controllers.editor_test --verbose</span>
+</pre></div>
+</div>
+<p>For more information about <code class="docutils literal notranslate"><span class="pre">--test_target</span></code> and other flags, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests --help</span>
+</pre></div>
+</div>
+<p>Note that while the tests are running, you may see the word <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> show up in the test logs. This does not necessarily mean that an error has occurred; it happens because some tests actually expect an error to be raised.</p>
+<section id="identifying-whether-the-tests-passed">
+<h3>Identifying whether the tests passed<a class="headerlink" href="#identifying-whether-the-tests-passed" title="Permalink to this headline"></a></h3>
+<p>The tests pass if, at the end of the test output, you see the message:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>All tests pass.
+</pre></div>
+</div>
+<p>Every line representing a test class will also start with <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.</p>
+<p>However, one or more tests failed if you get something like this instead:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Ran 326 tests in 47 test classes.
+(1 ERRORS, 0 FAILURES)
+</pre></div>
+</div>
+<p>You can find more information about the exact errors by scrolling up and looking through the error log for tests marked <code class="docutils literal notranslate"><span class="pre">FAILED</span></code> (indicating that an assertion in the test failed) and <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> (indicating that an exception was raised by the test).</p>
+</section>
+<section id="coverage-reports">
+<h3>Coverage reports<a class="headerlink" href="#coverage-reports" title="Permalink to this headline"></a></h3>
+<p>We use a simple tool, called <em>code coverage</em>, to check that all of Oppia’s backend code is fully covered by at least one test. Coverage reports specify which lines of each file have not been used in any test, and they report what percentage of each file is covered by the tests. Currently, Oppia has achieved <strong>100% backend coverage</strong>. We require that all changes maintain this full coverage.</p>
+<p>When writing a test for a function or class, you can generate a coverage report to verify that all the lines of the function/class have been included in the tests. To do this, simply add the <code class="docutils literal notranslate"><span class="pre">--generate_coverage_report</span></code> flag to the <code class="docutils literal notranslate"><span class="pre">run_backend_tests</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.run_backend_tests --generate_coverage_report</span>
+</pre></div>
+</div>
+<p>If there are <strong>any</strong> backend test errors, no coverage report will be produced. Please fix those errors and then re-run the above command. If the tests all pass, a coverage report will be printed that lists each backend file, along with the lines not covered by tests. Here is an example of a coverage report:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Name                                                                             Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------------------------------------
+appengine_config.py                                                                 23      0   100%
+constants.py                                                                        20      0   100%
+core/controllers/acl_decorators.py                                                 686      0   100%
+core/controllers/admin.py                                                          304      0   100%
+core/controllers/base.py                                                           258      0   100%
+core/controllers/classifier.py                                                      79      0   100%
+core/controllers/classroom.py                                                       99      1    99%   23
+</pre></div>
+</div>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">classroom.py</span></code> has only 99% code coverage because line 23 was not covered. This means that none of the tests executed line 23.</p>
+<section id="warning-full-coverage-does-not-mean-your-tests-are-comprehensive">
+<h4>Warning: full coverage does not mean your tests are comprehensive<a class="headerlink" href="#warning-full-coverage-does-not-mean-your-tests-are-comprehensive" title="Permalink to this headline"></a></h4>
+<p>To see how tests that produce 100% coverage can still not be comprehensive, consider the following pseudocode:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 # Compute the absolute value of a number
+2 function absoluteValue(number) {
+3   if number &lt;= 0 {
+4     return -number
+5   } else {
+6     return number
+7   }
+8 }
+</pre></div>
+</div>
+<p>Now consider the following sets of test cases:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">absoluteValue(1)</span></code> and <code class="docutils literal notranslate"><span class="pre">absoluteValue(5)</span></code>: These test cases are not comprehensive because they only test positive numbers. Code coverage is also not 100% because line 4 is never executed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">absoluteValue(0)</span></code> and <code class="docutils literal notranslate"><span class="pre">absoluteValue(1)</span></code>: These test cases are not comprehensive because they do not test negative numbers, and it’s important for an absolute value function to correctly handle negative inputs. However, the code coverage is 100% because both blocks of the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement are executed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">absoluteValue(-1)</span></code>, <code class="docutils literal notranslate"><span class="pre">absoluteValue(0)</span></code>, and <code class="docutils literal notranslate"><span class="pre">absoluteValue(1)</span></code>: These test cases are comprehensive, and code coverage is 100%. Note that even though line 1 doesn’t execute, coverage is 100% because line 1 is not executable.</p></li>
+</ul>
+<p>This example illustrates something very important about code coverage: <strong>Code coverage less than 100% implies that the tests are not comprehensive, but code coverage of 100% does NOT imply that tests are comprehensive.</strong> Therefore, while code coverage is a useful tool, you should primarily think about whether your tests cover all the possible behaviors of the code being tested. In other words, you should have a behavior-first perspective. Don’t just think about which lines are covered.</p>
+</section>
+</section>
+</section>
+<section id="write-backend-tests">
+<h2>Write backend tests<a class="headerlink" href="#write-backend-tests" title="Permalink to this headline"></a></h2>
+<section id="backend-test-structure">
+<h3>Backend test structure<a class="headerlink" href="#backend-test-structure" title="Permalink to this headline"></a></h3>
+<p>We write our backend tests with Python’s <a class="reference external" href="https://docs.python.org/3/library/unittest.html">unittest framework</a>. You should familiarize yourself with that framework by reading through the <a class="reference external" href="https://docs.python.org/3/library/unittest.html#basic-example">“basic example” in its documentation</a>. You should also take a look at what <a class="reference external" href="https://docs.python.org/3/library/unittest.html#unittest.TestCase">assertion functions</a> are available.</p>
+<p>Backend test files live alongside the backend code files they test. For example, alongside <code class="docutils literal notranslate"><span class="pre">core/controllers/base.py</span></code> you’ll find <code class="docutils literal notranslate"><span class="pre">core/controllers/base_test.py</span></code>. That <code class="docutils literal notranslate"><span class="pre">_test.py</span></code> suffix is important. It’s how we identify which files have tests to run. Note that each file is entirely code or entirely tests. No file mixes code and tests.</p>
+<p>Inside test files, tests are organized into classes whose names end in <code class="docutils literal notranslate"><span class="pre">Tests</span></code>. Test cases are methods of these classes, and the method names begin with <code class="docutils literal notranslate"><span class="pre">test_</span></code>. Note that only methods beginning with <code class="docutils literal notranslate"><span class="pre">test_</span></code> and inside classes that inherit from <code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code> are executed as tests. Here is an example of a test from <code class="docutils literal notranslate"><span class="pre">base_test.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelperFunctionTests</span><span class="p">(</span><span class="n">test_utils</span><span class="o">.</span><span class="n">GenericTestBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_load_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">oppia_root_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="s1">&#39;core&#39;</span><span class="p">,</span> <span class="s1">&#39;templates&#39;</span><span class="p">,</span> <span class="s1">&#39;pages&#39;</span><span class="p">,</span> <span class="s1">&#39;oppia-root&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">feconf</span><span class="p">,</span> <span class="s1">&#39;FRONTEND_TEMPLATES_DIR&#39;</span><span class="p">,</span> <span class="n">oppia_root_path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span>
+                <span class="s1">&#39;&quot;Loading | Oppia&quot;&#39;</span><span class="p">,</span>
+                <span class="n">base</span><span class="o">.</span><span class="n">load_template</span><span class="p">(</span><span class="s1">&#39;oppia-root.mainpage.html&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Notice that the test class inherits from <code class="docutils literal notranslate"><span class="pre">test_utils.GenericTestBase</span></code>, which provides a few functions you may want to use:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">GenericTestBase</span></code> inherits from <code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code>, so all the normal unittest functions are available. In particular, we use the unittest assertion functions.</p></li>
+<li><p>The base class provides two swap functions for mocking:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">swap(object,</span> <span class="pre">attribute_to_mock,</span> <span class="pre">mock)</span></code>: <code class="docutils literal notranslate"><span class="pre">attribute_to_mock</span></code> is the name of the thing you want to mock (it can be a variable, a function, or even a class). <code class="docutils literal notranslate"><span class="pre">object</span></code> is the object that has <code class="docutils literal notranslate"><span class="pre">attribute_to_mock</span></code> as an attribute, and <code class="docutils literal notranslate"><span class="pre">mock</span></code> is the mock value you want to substitute in for <code class="docutils literal notranslate"><span class="pre">attribute_to_mock</span></code>. For example suppose you want to mock the constant <code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code> in the module <code class="docutils literal notranslate"><span class="pre">constants</span></code> with <code class="docutils literal notranslate"><span class="pre">True</span></code>. You would call <code class="docutils literal notranslate"><span class="pre">swap(constants,</span> <span class="pre">'DEV_MODE',</span> <span class="pre">True)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">swap_with_checks(object,</span> <span class="pre">attribute_to_mock,</span> <span class="pre">mock,</span> <span class="pre">expected_args=None,</span> <span class="pre">expected_kwargs=None,</span> <span class="pre">called=True)</span></code>: The first three arguments are the same as <code class="docutils literal notranslate"><span class="pre">swap()</span></code>. However, this function also lets you assert that your mock function is called in particular ways.</p>
+<p><code class="docutils literal notranslate"><span class="pre">expected_args</span></code> takes a list of tuples, where each tuple contains a group of expected positional arguments. The test will assert that the function is called once with each group of expected arguments, in the order in which you specify the groups. Note that the order of the arguments within each group must match the order in which the arguments are passed to the function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">expected_kwargs</span></code> accepts a list of dictionaries. Each dictionary specifies keyword arguments as key-value pairs, and the test will assert that your function is called once with each group of keyword arguments you specify, in the same order as the dictionaries appear in the list.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">expected_args</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, then no assertions are made about the positional arguments that the mock function receives. The same is true of <code class="docutils literal notranslate"><span class="pre">expected_kwargs</span></code>.</p>
+<p>Lastly, <code class="docutils literal notranslate"><span class="pre">called</span></code> specifies whether we expect the mock function to have been called. The test will fail if this assertion is not met.</p>
+<p>Consider this example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">swap_with_checks</span><span class="p">(</span>
+    <span class="n">subprocess</span><span class="p">,</span> <span class="s1">&#39;Popen&#39;</span><span class="p">,</span> <span class="n">mock_popen</span><span class="p">,</span>
+    <span class="n">expected_args</span><span class="o">=</span><span class="p">[([</span><span class="s1">&#39;python&#39;</span><span class="p">],),</span> <span class="p">([</span><span class="s1">&#39;python2&#39;</span><span class="p">],)],</span>
+    <span class="n">expected_kwargs</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;shell&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;shell&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}])</span>
+</pre></div>
+</div>
+<p>This code will assert that <code class="docutils literal notranslate"><span class="pre">mock_popen</span></code> receives the following calls in order:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mock_popen</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">mock_popen</span><span class="p">([</span><span class="s1">&#39;python2&#39;</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>These swap functions each return a context where the mocking has been performed. You’ll see this called a <code class="docutils literal notranslate"><span class="pre">swap</span></code> in the code. You can use the swap like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_func_swap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s1">&#39;my_func&#39;</span><span class="p">,</span> <span class="n">mock_my_func</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">my_func_swap</span><span class="p">:</span>
+    <span class="n">func_being_tested</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you have a lot of swaps, the <code class="docutils literal notranslate"><span class="pre">with</span></code> statements can get pretty burdensome. You can use <code class="docutils literal notranslate"><span class="pre">GenericTestBase.exit_stack.enter_context</span></code> instead like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_func_swap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s1">&#39;my_func&#39;</span><span class="p">,</span> <span class="n">mock_my_func</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">exit_stack</span><span class="o">.</span><span class="n">enter_context</span><span class="p">(</span><span class="n">my_func_swap</span><span class="p">)</span>
+
+<span class="n">func_being_tested</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>There are also other swap functions you can use. They are defined and documented in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/tests/test_utils.py"><code class="docutils literal notranslate"><span class="pre">core/tests/test_utils.py</span></code></a>.</p>
+</li>
+</ul>
+</section>
+<section id="guidelines-for-writing-good-tests">
+<h3>Guidelines for writing good tests<a class="headerlink" href="#guidelines-for-writing-good-tests" title="Permalink to this headline"></a></h3>
+<ol>
+<li><p><strong>Each test method should test only a single behaviour.</strong> This helps both with naming the test and with ensuring that the test doesn’t fail for unrelated code changes.</p>
+<ul>
+<li><p>When naming a test, start by writing a full sentence that clearly describes its behaviour. Try not to abbreviate if possible, but, if you need to do so in order to fit within the 80-character limit, make sure that the resulting test name is still meaningful and easy to understand.</p></li>
+<li><p>We recommend that test names follow the format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>test_{{action}}_with_{{with_condition}}_{{has_expected_outcome}}
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">{{action}}</span></code>, <code class="docutils literal notranslate"><span class="pre">{{with_condition}}</span></code>, and <code class="docutils literal notranslate"><span class="pre">{{has_expected_outcome}}</span></code> are replaced with appropriate descriptions. Put the outcome at the end, so that it’s easy to compare consecutive tests that have slightly different conditions and divergent outcomes. Here are some examples that follow this format:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_get_by_auth_id_with_invalid_auth_method_name_is_none</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_get_by_auth_id_for_unregistered_auth_id_is_empty_list</span></code></p></li>
+</ul>
+<p>These names are good because it’s easy to see the differences between the tests: one tests an invalid auth method, and the other tests an unregistered auth. Correspondingly, these conditions lead to different outcomes (`name_is_none’ vs. ‘id_is_empty_list’).</p>
+</li>
+</ul>
+</li>
+<li><p>Tests should use the following general structure:</p>
+<ul class="simple">
+<li><p><strong>Setup</strong> - this is where you prepare any inputs/environment needed for the test.</p></li>
+<li><p><strong>Baseline verification</strong> - check the values without performing any action. This step is only needed if your action is state-changing (i.e. if the same assert statement would lead to one result at the baseline and a different result at the endline). Check the same values here as you check at the endline.</p></li>
+<li><p><strong>Action</strong> - perform the action or function call that leads to the expected change.</p></li>
+<li><p><strong>Endline verification</strong> - check that the values from the baseline verification have changed accordingly.</p></li>
+</ul>
+</li>
+<li><p><strong>Test the interface, not the implementation.</strong> That is, treat the function as a black box and test its behavior. Don’t test that the function uses a particular implementation. This will help you design a better API from an external user’s perspective. For example, consider the following function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">absolute_value</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s forget for the moment that this function is pointless and just focus on thinking about how to test it. We should test the function by providing some values, some positive and some negative, and checking that their absolute values are returned. We should <em>not</em> test it by mocking <code class="docutils literal notranslate"><span class="pre">abs()</span></code> and making sure it was called correctly, as that would be testing the implementation instead of the interface. Remember that we want to test that the function behaves correctly, and we can demonstrate this most clearly by providing numbers to our function and checking that the function returns absolute values.</p>
+<p>You can check whether you’re following this principle by imagining what would happen if you changed the function. For example, say you implemented <code class="docutils literal notranslate"><span class="pre">absolute_value()</span></code> differently:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">absolute_value</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">number</span>
+    <span class="k">return</span> <span class="n">number</span>
+</pre></div>
+</div>
+<p>After changing the implementation, your tests should all still pass. In our example, our tests that provide various numbers would still pass. Our test that mocked <code class="docutils literal notranslate"><span class="pre">abs()</span></code> would not.</p>
+</li>
+<li><p>Keep tests <strong>simple</strong>. Don’t include any logic in the test. Write the test as a series of straightforward, descriptive and meaningful commands (also known in programming circles as “DAMP”). It’s fine if there’s some repetition, as long as the tests are easy to read.</p></li>
+<li><p><strong>Don’t use what you don’t need.</strong> By default, prefer to inherit from <code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code> when writing tests. Only use <code class="docutils literal notranslate"><span class="pre">test_utils.GenericTestBase</span></code> when you need to interact with models or the app itself, or when you need the mocking capabilities that <code class="docutils literal notranslate"><span class="pre">GenericTestBase</span></code> provides. This helps keep our tests lean and fast.</p>
+<p>As a general rule, if the only thing your test needs to do is run a function and assert something about its return value, then <code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code> is good enough. See https://github.com/oppia/oppia/pull/10869/files for an example of where both kinds of tests were necessary.</p>
+</li>
+<li><p>When building your suite of tests, try to include a range of possible behaviours, such as:</p>
+<ul class="simple">
+<li><p>“Happy path” cases where the tested code was used correctly.</p></li>
+<li><p>Failure cases where the tested code was used improperly.</p></li>
+<li><p>Ambiguous cases that are on the edge between happy path cases and failure cases.</p></li>
+<li><p>Boundary/edge cases that stress the function’s capabilities. Think of these as the test cases you’d use if you were trying to break the code. For example, checking how an absolute value function handles <code class="docutils literal notranslate"><span class="pre">math.nan</span></code> or a string.</p></li>
+</ul>
+<p>Also, try writing contrasting tests. For example, if you are checking that an exception is raised under a certain criterion, also add a test to ensure that the exception is not raised when the criterion is not satisfied.</p>
+</li>
+<li><p>For <strong>test outputs</strong>, follow these guidelines:</p>
+<ul class="simple">
+<li><p>Test each output as exactly and completely as possible. For example, it’s better to compare equality for an entire dict rather than just checking that a particular value has changed.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">assertTrue(value)</span></code> or <code class="docutils literal notranslate"><span class="pre">assertFalse(value)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">assertEqual(value,</span> <span class="pre">True)</span></code> or <code class="docutils literal notranslate"><span class="pre">assertEqual(value,</span> <span class="pre">False)</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">assertIsNone(value)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">assertEqual(value,</span> <span class="pre">None)</span></code>.</p></li>
+</ul>
+</li>
+<li><p>If you create a new test module (a <code class="docutils literal notranslate"><span class="pre">*_test.py</span></code> file), you will need to add it to a shard in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/backend_test_shards.json"><code class="docutils literal notranslate"><span class="pre">oppia/scripts/backend_test_shards.json</span></code></a>. See the <a class="reference external" href="#sharding-backend-tests">section on shards below</a>.</p></li>
+</ol>
+</section>
+<section id="common-testing-scenarios">
+<h3>Common testing scenarios<a class="headerlink" href="#common-testing-scenarios" title="Permalink to this headline"></a></h3>
+<ol>
+<li><p>If a function tests <strong>more than one behaviour</strong>, split the test into multiple parts. For example, if you have a single test that looks like this:</p>
+<ul class="simple">
+<li><p>Test:</p>
+<ul>
+<li><p>Setup</p></li>
+<li><p>Action 1</p></li>
+<li><p>Assertion 1</p></li>
+<li><p>Action 2</p></li>
+<li><p>Assertion 2</p></li>
+</ul>
+</li>
+</ul>
+<p>then split it into two tests as follows:</p>
+<ul class="simple">
+<li><p>Test 1:</p>
+<ul>
+<li><p>Setup</p></li>
+<li><p>Action 1</p></li>
+<li><p>Assertion 1</p></li>
+</ul>
+</li>
+<li><p>Test 2:</p>
+<ul>
+<li><p>Setup + Action 1</p></li>
+<li><p>Action 2</p></li>
+<li><p>Assertion 2</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>For assertions that <strong>check errors</strong> (e.g. self.assertRaises or self.assertRaisesRegexp), keep the part of the code enclosed in self.assertRaises as small as possible so that you can be sure that the error is actually being caused by that part of the code (and not, say, by the setup code).</p></li>
+<li><p><strong>Guidelines for testing private methods/functions</strong>: Tests should only be written to verify the behaviour of <strong>public</strong> methods/functions. Here are some suggestions for what to do in specific cases involving private functions (if this doesn’t help for your particular case and you’re not sure what to do, please talk to <strong>&#64;BenHenning</strong>):</p>
+<ul class="simple">
+<li><p>If you’re trying to access hidden information, consider getting that information from one level below instead (e.g. the datastore).</p></li>
+<li><p>If you want to test code within a private method/function, test it by instead calling a public function that makes use of that function, or move it to a utility (if it’s general-purpose) where it becomes public. Avoid testing private APIs since that may lead to brittle tests in unexpected situations (such as when the implementation of the API changes but the behaviour remains the same).</p></li>
+</ul>
+</li>
+<li><p><strong>For unit tests:</strong></p>
+<ul class="simple">
+<li><p>You should test each method of a class individually, with one or more test cases for each method.</p></li>
+<li><p>Define a <code class="docutils literal notranslate"><span class="pre">setUp()</span></code> method in the test if functionality or variables are going to be reused between tests.</p></li>
+</ul>
+</li>
+<li><p><strong>For integration tests:</strong></p>
+<p>Begin by defining the section of code you want to test and considering how it’s supposed to behave. Then design test cases to check that it behaves correctly. You should write one test for each test case you design.</p>
+</li>
+</ol>
+</section>
+<section id="sharding-backend-tests">
+<h3>Sharding backend tests<a class="headerlink" href="#sharding-backend-tests" title="Permalink to this headline"></a></h3>
+<section id="how-sharding-works">
+<h4>How sharding works<a class="headerlink" href="#how-sharding-works" title="Permalink to this headline"></a></h4>
+<p>We shard the backend tests into many smaller jobs that run in parallel on GitHub Actions. In your PRs, you’ll see something like this:</p>
+<p><img alt="Display of backend test jobs on a pull request" src="https://user-images.githubusercontent.com/19878639/109242853-ddd78700-77a9-11eb-9cae-da5cece9ab26.png" /></p>
+<p>The jobs named like <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">backend</span> <span class="pre">tests</span> <span class="pre">(ubuntu-18.04,</span> <span class="pre">i)</span></code> are running the sharded jobs, each with its own number <code class="docutils literal notranslate"><span class="pre">i</span></code>. The last job, <code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">combined</span> <span class="pre">backend</span> <span class="pre">test</span> <span class="pre">coverage</span></code>, checks that the code coverage is 100%. All these jobs are defined in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/workflows/backend_tests.yml"><code class="docutils literal notranslate"><span class="pre">.github/workflows/backend_tests.yml</span></code></a>.</p>
+<p>The shards are defined in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/backend_test_shards.json"><code class="docutils literal notranslate"><span class="pre">scripts/backend_test_shards.json</span></code></a>. Here’s what the top of that file looks like:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;core.controllers.base_test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;core.controllers.collection_editor_test&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Each shard is identified by a name, in this case <code class="docutils literal notranslate"><span class="pre">1</span></code>. You could run this shard with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.run_backend_tests</span> <span class="pre">--test_shard</span> <span class="pre">1</span></code>. The shards are then defined by a list of test modules. For example, the module name for <code class="docutils literal notranslate"><span class="pre">core/controllers/base_test.py</span></code> is <code class="docutils literal notranslate"><span class="pre">core.controllers.base_test</span></code>. Notice that there is no <code class="docutils literal notranslate"><span class="pre">.py</span></code> at the end!</p>
+</section>
+<section id="common-errors">
+<h4>Common errors<a class="headerlink" href="#common-errors" title="Permalink to this headline"></a></h4>
+<p>Whenever you run a shard of backend tests, the <code class="docutils literal notranslate"><span class="pre">run_backend_tests.py</span></code> script checks to make sure the test modules on the filesystem and the modules in the shards file are exactly the same. If a shard has a module that isn’t in the filesystem, you’ll get a <code class="docutils literal notranslate"><span class="pre">Modules</span> <span class="pre">...</span> <span class="pre">in</span> <span class="pre">shards</span> <span class="pre">not</span> <span class="pre">found</span></code> error. This often happens if the module name is incorrect. On the other hand, if there is a module on the filesystem that’s not in the shards, you’ll get a <code class="docutils literal notranslate"><span class="pre">Modules</span> <span class="pre">...</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">shards</span></code> error. This often happens because you forgot to add a new test to the shards.</p>
+</section>
+<section id="adding-new-tests-to-shards">
+<h4>Adding new tests to shards<a class="headerlink" href="#adding-new-tests-to-shards" title="Permalink to this headline"></a></h4>
+<p>The point of sharding the backend tests is to speed up test runs on PRs. When the backend tests run in parallel, we spread the tests out across the multiple machines available to us on GitHub Actions. This means it’s important for the tests to remain evenly distributed across the shards. To help with that, please <strong>add any new tests to the shard with the shortest runtime.</strong> Further, <strong>make sure that all shards run in under 30 minutes.</strong> If all the shards are taking close to 30 minutes, create a new shard in the JSON file. You can find a shard’s runtime from the test runs on your PR:</p>
+<p><img alt="Display of backend test jobs on a pull request" src="https://user-images.githubusercontent.com/19878639/109242853-ddd78700-77a9-11eb-9cae-da5cece9ab26.png" /></p>
+</section>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h3>
+<section id="example-writing-unit-tests-for-domain-classes">
+<h4>Example: Writing unit tests for domain classes<a class="headerlink" href="#example-writing-unit-tests-for-domain-classes" title="Permalink to this headline"></a></h4>
+<p>Suppose we have the following domain class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExplorationTheme</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Domain object representing a theme for an exploration.&quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp_id</span><span class="p">,</span> <span class="n">theme_str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Constructs an ExplorationTheme domain object.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      exp_id: str. ID of the exploration.</span>
+<span class="sd">      theme_str: str. Theme of the exploration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">exp_id</span> <span class="o">=</span> <span class="n">exp_id</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">theme_str</span> <span class="o">=</span> <span class="n">theme_str</span>
+
+  <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="s1">&#39;exp_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">exp_id</span><span class="p">,</span>
+      <span class="s1">&#39;theme_str&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme_str</span>
+    <span class="p">}</span>
+
+  <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">exp_theme_dict</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+      <span class="n">exp_theme_dict</span><span class="p">[</span><span class="s1">&#39;exp_id&#39;</span><span class="p">],</span> <span class="n">exp_theme_dict</span><span class="p">[</span><span class="s1">&#39;theme_str&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We can write unit tests for the class like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExplorationThemeDomainUnitTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Tests for exploration theme domain class.&quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Please remember to explicitly call the setUp method with the super class.</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">ExplorationThemeDomainUnitTests</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">exp_theme</span> <span class="o">=</span> <span class="n">exp_domain</span><span class="o">.</span><span class="n">ExplorationTheme</span><span class="p">(</span><span class="s1">&#39;exp_id1&#39;</span><span class="p">,</span> <span class="s1">&#39;theme1&#39;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">test_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">exp_theme</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
+      <span class="p">{</span>
+        <span class="s1">&#39;exp_id&#39;</span><span class="p">:</span> <span class="s1">&#39;exp_id1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;theme_str&#39;</span><span class="p">:</span> <span class="s1">&#39;theme1&#39;</span>
+      <span class="p">}</span>
+    <span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">test_from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">exp_theme_dict</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;exp_id&#39;</span><span class="p">:</span> <span class="s1">&#39;exp_id1&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;theme_str&#39;</span><span class="p">:</span> <span class="s1">&#39;theme1&#39;</span>
+    <span class="p">}</span>
+    <span class="n">new_exp_theme</span> <span class="o">=</span> <span class="n">exp_domain</span><span class="o">.</span><span class="n">ExplorationTheme</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">exp_theme_dict</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">new_exp_theme</span><span class="o">.</span><span class="n">exp_id</span><span class="p">,</span> <span class="s1">&#39;exp_id1&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">new_exp_theme</span><span class="o">.</span><span class="n">theme_str</span><span class="p">,</span> <span class="s1">&#39;theme1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-writing-integration-tests-for-handlers-controllers">
+<h4>Example: Writing integration tests for handlers (controllers)<a class="headerlink" href="#example-writing-integration-tests-for-handlers-controllers" title="Permalink to this headline"></a></h4>
+<p>Suppose we have the following controller:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UpdateExplorationVersionHandler</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">BaseHandler</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Handler that updates an exploration version.&quot;&quot;&quot;</span>
+
+  <span class="nd">@acl_decorators</span><span class="o">.</span><span class="n">can_edit_exploration</span>
+  <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp_id</span><span class="p">):</span>
+    <span class="n">exp_version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;exp_version&#39;</span><span class="p">)</span>
+    <span class="n">exploration_instance</span> <span class="o">=</span> <span class="n">exp_models</span><span class="o">.</span><span class="n">Exploration</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">exp_id</span><span class="p">)</span>
+    <span class="n">exploration_instance</span><span class="o">.</span><span class="n">exp_version</span> <span class="o">=</span> <span class="n">exp_version</span>
+    <span class="n">exploration_instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can write test cases like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UpdateExplorationVersionHandlerTest</span><span class="p">(</span><span class="n">test_utils</span><span class="o">.</span><span class="n">GenericTestBase</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Test for handler that updates the version of an exploration.</span>
+
+<span class="sd">  The URL for this handler is: &#39;/explorehandler/update_exp_version/&lt;exploration_id&gt;&#39;</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">UpdateExplorationVersionHandlerTest</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">exp_id</span> <span class="o">=</span> <span class="s1">&#39;15&#39;</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VIEWER_EMAIL</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">signup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VIEWER_EMAIL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">VIEWER_USERNAME</span><span class="p">)</span>
+    <span class="n">exp_services</span><span class="o">.</span><span class="n">load_demo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exp_id</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">test_version_gets_updated_correctly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">exploration</span> <span class="o">=</span> <span class="n">exp_services</span><span class="o">.</span><span class="n">get_exploration_by_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exp_id</span><span class="p">)</span>
+    <span class="c1"># The exploration is loaded at version 1.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">exploration</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">post_json</span><span class="p">(</span>
+      <span class="s1">&#39;/explorehandler/update_exp_version/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exp_id</span><span class="p">),</span>
+      <span class="p">{</span><span class="s1">&#39;exp_version&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">})</span>
+
+    <span class="n">exploration</span> <span class="o">=</span> <span class="n">exp_services</span><span class="o">.</span><span class="n">get_exploration_by_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exp_id</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">exploration</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Running-Tests.html" class="btn btn-neutral float-left" title="Running tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Frontend-unit-tests-guide.html" class="btn btn-neutral float-right" title="Frontend unit tests guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

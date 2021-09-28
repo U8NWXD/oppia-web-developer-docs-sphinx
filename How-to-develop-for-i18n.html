@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to develop for i18n &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Webpack" href="Webpack.html" />
+    <link rel="prev" title="Adding new translations for i18n" href="Adding-new-translations-for-i18n.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to develop for i18n</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-overview">Quick overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#good-practices-in-i18n">Good practices in i18n</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-name-new-keys">How to name new keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#giving-context-to-translators">Giving context to translators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flash-of-untranslated-content">Flash of Untranslated Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#titles">Titles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#placeholders-and-tooltips">Placeholders and tooltips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plurals-and-gender">Plurals and gender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>How to develop for i18n</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/How-to-develop-for-i18n.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-develop-for-i18n">
+<h1>How to develop for i18n<a class="headerlink" href="#how-to-develop-for-i18n" title="Permalink to this headline"></a></h1>
+<section id="quick-overview">
+<h2>Quick overview<a class="headerlink" href="#quick-overview" title="Permalink to this headline"></a></h2>
+<p>Internationalization (i18n) support for Oppia is based on the JavaScript library <a class="reference external" href="https://angular-translate.github.io/">angular-translate</a>. At the moment, only the learner view of Oppia is internationalized. The editor will remain in English until the design refactor takes place.</p>
+<p>The <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/assets/i18n">i18n directory</a> contains one translation file in JSON format for each supported language. Each of these files is a map from translation keys like <code class="docutils literal notranslate"><span class="pre">I18N_MODULE_STRING_NAME</span></code> to the translated strings. When a page is loaded, angular-translate traverses through the page’s html code and changes the translation key to the appropriate translated string.</p>
+</section>
+<section id="good-practices-in-i18n">
+<h2>Good practices in i18n<a class="headerlink" href="#good-practices-in-i18n" title="Permalink to this headline"></a></h2>
+<p>We encourage you to think about i18n while developing, and not defer it as something to handle later on. Not all languages are the same: words have different lengths, pluralization rules differ, sentences have different structures and the direction of writing can be from right to left. As a result, sometimes development practices that are generally good (like code reuse) turn out to be less than ideal for i18n. Here are some important points to take into account:</p>
+<ul class="simple">
+<li><p>Do not include raw strings, always use a translation key. Even if it is just an exclamation mark (!)</p></li>
+<li><p>When designing a page, plan for the case where strings are twice the length in other languages. Also, think about how the page would look like if the language is written from right to left.</p></li>
+<li><p>Avoid the concatenation of strings to form phrases like <code class="docutils literal notranslate"><span class="pre">&lt;[subject]&gt;&lt;[verb]&gt;&lt;[object]&gt;</span></code> to obtain the phrase “She plays the piano”. Different languages will use a different grammatical order.</p></li>
+<li><p>Try to include as much text as you can in a single key, so that the translator can provide a more coherent translation. Do not divide a paragraph into multiple keys unless you cannnot avoid it.</p></li>
+<li><p>If you need to include html in your string, such as <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;&lt;/a&gt;</span></code> tags, try and pass the code as an argument to the translation service.</p></li>
+<li><p>Take into account that other languages may have more plural forms or genres than English. For example, if you include a sentence that is always going to be plural in English, add pluralization support regardless in your translation.</p></li>
+</ul>
+</section>
+<section id="how-to-name-new-keys">
+<h2>How to name new keys<a class="headerlink" href="#how-to-name-new-keys" title="Permalink to this headline"></a></h2>
+<p>Translation key names are always written using uppercase and have some defined parts:</p>
+<ol class="simple">
+<li><p>Prefix: the key MUST start with <code class="docutils literal notranslate"><span class="pre">I18N_</span></code> (otherwise some tests will break).</p></li>
+<li><p>Module name: such as <code class="docutils literal notranslate"><span class="pre">SIGN_UP_</span></code>. Be consistent with existing names, and keep the keys grouped by the module name.</p></li>
+<li><p>String name: a meaningful name representing the function of the string in the page, like <code class="docutils literal notranslate"><span class="pre">PAGE_TITLE</span></code>.</p></li>
+</ol>
+<p>The final result would be <code class="docutils literal notranslate"><span class="pre">I18N_SIGNUP_PAGE_TITLE</span></code>. Long translation keys are fine – the key objective is that the role of the string is well described.</p>
+</section>
+<section id="giving-context-to-translators">
+<h2>Giving context to translators<a class="headerlink" href="#giving-context-to-translators" title="Permalink to this headline"></a></h2>
+<p>We have a file at <code class="docutils literal notranslate"><span class="pre">assets/i18n/qqq.json</span></code> for providing translators with context – if you add new strings to be translated, you should also add them to this file. Please see <a class="reference external" href="https://www.mediawiki.org/wiki/Localisation#Message_documentation">this page</a> for more information on what goes into these descriptions.</p>
+</section>
+<section id="flash-of-untranslated-content">
+<h2>Flash of Untranslated Content<a class="headerlink" href="#flash-of-untranslated-content" title="Permalink to this headline"></a></h2>
+<p>Sometimes, the page is rendered in the browser before the locale file with the translations is loaded. As a result, the user can see the translation keys briefly before they’re replaced with the corresponding translations, which is not a good user experience. This problem is known as the “Flash of Untranslated Content”, or FoUC.</p>
+<p>When adding a new string to Oppia’s HTML code, please take into account the following tips to prevent FoUC:</p>
+<ul class="simple">
+<li><p>The FoUC behaves differently in the preferred language (English) and all the other languages. Please manually check that there is no FoUC in both cases.</p></li>
+<li><p>Add the translation key inside the html tag as the value of the translate attribute. This will prevent the key from being shown briefly – instead, the location of the string will remain empty in the interim.</p></li>
+<li><p>If the string is in a very visible location and there is FoUC in the preferred language, add the key and the translation into the <code class="docutils literal notranslate"><span class="pre">DEFAULT_TRANSLATIONS</span></code> constant defined in the file <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/i18n.js">i18n.js</a>.</p></li>
+</ul>
+</section>
+<section id="titles">
+<h2>Titles<a class="headerlink" href="#titles" title="Permalink to this headline"></a></h2>
+<p>To add a title to the window, replace the block maintitle for a translation key:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{% block maintitle %}TRANSLATE_KEY{% endblock maintitle %}
+</pre></div>
+</div>
+<p>and add the translation into the corresponding json files. Titles should always be translated, but this is not mandatory. If you replace this block with a common string, it will be shown as the title instead.</p>
+</section>
+<section id="placeholders-and-tooltips">
+<h2>Placeholders and tooltips<a class="headerlink" href="#placeholders-and-tooltips" title="Permalink to this headline"></a></h2>
+<p>Remember to translate placeholders and tooltips! For tooltips, use the translate filter on the tooltip attribute value. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tooltip=&quot;&lt;[&#39;I18N_GALLERY_VIEWS_TOOLTIP&#39; | translate]&gt;&quot;
+</pre></div>
+</div>
+<p>For placeholders, use the attribute <code class="docutils literal notranslate"><span class="pre">ng-attr-placeholder</span></code> instead of <code class="docutils literal notranslate"><span class="pre">placeholder</span></code>. As a value for this attribute, apply a translate filter to the key. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ng-attr-placeholder=&quot;&lt;[&#39;I18N_FORMS_TYPE_NUMBER&#39; | translate]&gt;&quot;
+</pre></div>
+</div>
+</section>
+<section id="plurals-and-gender">
+<h2>Plurals and gender<a class="headerlink" href="#plurals-and-gender" title="Permalink to this headline"></a></h2>
+<p>Angular translate supports pluralization and representation of different genders using the <a class="reference external" href="https://github.com/SlexAxton/messageformat.js/">messageformat library</a>. For example, if you need to translate the html code</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;span ng-if=&quot;choices &gt; 1&quot;&gt;Select &lt;[choices]&gt; choices.&lt;/span&gt;
+&lt;span ng-if=&quot;choices == 1&quot;&gt;Select one choice.&lt;/span&gt;
+&lt;span ng-if=&quot;choices == 0&quot;&gt;Select no choice.&lt;/span&gt;
+</pre></div>
+</div>
+<p>you must replace this code with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;span translate=”TRANSLATION_KEY” translate-values=”{choicesValue:&lt;[choices]&gt;}” translate-interpolation=&quot;messageformat&quot;&gt;&lt;/span&gt;
+</pre></div>
+</div>
+<p>and add the translation into the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/assets/i18n/en.json">en.json file</a> with the following format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>“TRANSLATION_KEY”: “{choicesValue, plural, =0{Select no choice.} one{Select one choice.} other{Select # choices.}}”
+</pre></div>
+</div>
+<p>For a more complete tutorial, refer to the <a class="reference external" href="http://angular-translate.github.io/docs/#/guide/14_pluralization">angular translate guide</a> and the <a class="reference external" href="https://github.com/SlexAxton/messageformat.js/">messageformat documentation</a>.</p>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline"></a></h2>
+<p>In e2e tests, to check that a page has no untranslated keys: call the helper function  <code class="docutils literal notranslate"><span class="pre">ensurePageHasNoTranslationIds</span></code>, which is located in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/tests/protractor_utils/general.js">protractor_utils/general.js</a>.</p>
+<p>Also, Karma tests may generate 404 warnings, as the required locale files aren’t available in the Karma test environment. To overcome this, add the following line in the first part of your Karma test:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>beforeEach(module(&#39;oppia&#39;, GLOBALS.TRANSLATOR_PROVIDER_FOR_TESTS));
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Adding-new-translations-for-i18n.html" class="btn btn-neutral float-left" title="Adding new translations for i18n" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Webpack.html" class="btn btn-neutral float-right" title="Webpack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

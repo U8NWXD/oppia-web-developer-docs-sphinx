@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schemas &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Editor pages" href="Editor-pages.html" />
+    <link rel="prev" title="Writing style guide" href="Writing-style-guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="frontend-reference.html">Frontend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Angular-Migration.html">Angular migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Oppia-UX-guidelines-%26-rationales.html">Oppia UX guidelines &amp; rationales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-style-guide.html">Writing style guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Schemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#write-a-schema">Write a schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uses-for-schemas-in-oppia">Uses for schemas in Oppia</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-values">Configuration values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schema-based-forms">Schema-based forms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validating-controller-arguments">Validating controller arguments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Editor-pages.html">Editor pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="frontend-reference.html">Frontend</a> &raquo;</li>
+      <li>Schemas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Schemas.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="schemas">
+<h1>Schemas<a class="headerlink" href="#schemas" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#table-of-contents">Table of Contents</a></p></li>
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#write-a-schema">Write a schema</a></p></li>
+<li><p><a class="reference external" href="#uses-for-schemas-in-oppia">Uses for schemas in Oppia</a></p>
+<ul>
+<li><p><a class="reference external" href="#configuration-values">Configuration values</a></p></li>
+<li><p><a class="reference external" href="#schema-based-forms">Schema-based forms</a></p></li>
+<li><p><a class="reference external" href="#validating-controller-arguments">Validating controller arguments</a></p>
+<ul>
+<li><p><a class="reference external" href="#schema-validation-system-code">Schema validation system code</a></p></li>
+<li><p><a class="reference external" href="#how-to-write-validation-schemas-for-handlers">How to write validation schemas for handlers</a></p></li>
+<li><p><a class="reference external" href="#important-code-pointers">Important code pointers</a></p>
+<ul>
+<li><p><a class="reference external" href="#default-and-optional-arguments">Default and optional arguments</a></p></li>
+<li><p><a class="reference external" href="#domain-object-arguments-schemas-with-type-object_dict">Domain object arguments: Schemas with type <code class="docutils literal notranslate"><span class="pre">object_dict</span></code></a></p>
+<ul>
+<li><p><a class="reference external" href="#case-1-object_class-key">Case 1: <code class="docutils literal notranslate"><span class="pre">object_class</span></code> key</a></p></li>
+<li><p><a class="reference external" href="#case-2-validation_method-key">Case 2: <code class="docutils literal notranslate"><span class="pre">validation_method</span></code> key</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#extra-validators">Extra validators</a></p></li>
+<li><p><a class="reference external" href="#extra-arguments">Extra arguments</a></p></li>
+<li><p><a class="reference external" href="#handlers-with-no-arguments">Handlers with no arguments</a></p></li>
+<li><p><a class="reference external" href="#post-schema-operations">Post schema operations</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#common-errors-faced">Common errors faced</a></p></li>
+<li><p><a class="reference external" href="#examples-for-reference">Examples for reference</a></p></li>
+<li><p><a class="reference external" href="#debugging-tricks">Debugging tricks</a></p></li>
+<li><p><a class="reference external" href="#contact">Contact</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>At Oppia, we often want to describe the possible structure of some data. This data could be as simple as the boolean value of a checkbox in a user’s preferences, or it could be more complex like the valid arguments to one of our backend API controllers. We describe these data using <em>schemas</em>.</p>
+<p>A schema describes the structure of data in a machine-readable format so that generic utility functions can operate on arbitrary data so long as the data comes with a schema. For example, schemas let us:</p>
+<ul class="simple">
+<li><p>Validate provided data to make sure it conforms to the expected schema.</p></li>
+<li><p>Automatically generate forms that let a user provide data in a form specified by a schema.</p></li>
+</ul>
+</section>
+<section id="write-a-schema">
+<h2>Write a schema<a class="headerlink" href="#write-a-schema" title="Permalink to this headline"></a></h2>
+<p>A schema is just a dictionary that takes the form described below:</p>
+<ul>
+<li><p>Required keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The type of the data. Must be one of the following types. Unless otherwise stated, the type corresponds to the Python type of the same name.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basestring</span></code>: A type that includes both the <code class="docutils literal notranslate"><span class="pre">bytes</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code> types in Python 3. Normalization will <em>not</em> decode the data, even if a <code class="docutils literal notranslate"><span class="pre">bytes</span></code> object is provided.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unicode</span></code>: The <code class="docutils literal notranslate"><span class="pre">str</span></code> type in Python 3, which was the <code class="docutils literal notranslate"><span class="pre">unicode</span></code> type in Python 2. This type also accepts a <code class="docutils literal notranslate"><span class="pre">bytes</span></code> object, which will be automatically decoded according to UTF-8 during normalization.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html</span></code>: A string (<code class="docutils literal notranslate"><span class="pre">bytes</span></code> or <code class="docutils literal notranslate"><span class="pre">str</span></code> in Python 3) with HTML code. When normalized, the HTML code will be sanitized by <code class="docutils literal notranslate"><span class="pre">core.domain.html_cleaner.clean()</span></code>. A <code class="docutils literal notranslate"><span class="pre">bytes</span></code> object may also be provided, which will be automatically decoded acording to UTF-8 during normalization.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">custom</span></code>: A custom object type defined in <code class="docutils literal notranslate"><span class="pre">extensions/objects/models/objects.py</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">object_dict</span></code>: A dictionary that corresponds to a domain object (an object whose class is defined in the domain layer).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unicode_or_none</span></code>: Accepts data of type <code class="docutils literal notranslate"><span class="pre">unicode</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>. If the data is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, it is normalized as if it were of type <code class="docutils literal notranslate"><span class="pre">unicode</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Optional keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">choices</span></code>: A list of possible values. The data must exactly match one of the choices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validators</span></code>: A list of dictionaries, each of which has a sole key <code class="docutils literal notranslate"><span class="pre">id</span></code> that maps to the name of a validation function. The validation functions are defined as static methods of <code class="docutils literal notranslate"><span class="pre">schema_utils._Validators</span></code>. To conform to the schema, data must pass all validators provided in the schema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ui_config</span></code>: A dictionary of configuration parameters for how the data should be displayed. Note that this key only applies when the schema data is being displayed as a form. The dictionary may contain any of the following keys:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">rows</span></code>: Only allowed for type <code class="docutils literal notranslate"><span class="pre">unicode</span></code>. If specified, the value must be a positive integer. If this value is omitted, the unicode field is displayed as a regular <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> field. Otherwise, it is displayed as a textarea with the given number of rows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">placeholder</span></code>: Only allowed for type <code class="docutils literal notranslate"><span class="pre">unicode</span></code>. If specified, the value must be a string, which will be the placeholder for the input field.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coding_mode</span></code>: Only allowed for type <code class="docutils literal notranslate"><span class="pre">unicode</span></code>. If specified, the value must be a string equal to either <code class="docutils literal notranslate"><span class="pre">none</span></code> or <code class="docutils literal notranslate"><span class="pre">python</span></code>. If this value is specified, a CodeMirror instance with the appropriate syntax highlighting is used as the input area, and the <code class="docutils literal notranslate"><span class="pre">rows</span></code> and <code class="docutils literal notranslate"><span class="pre">placeholder</span></code> properties above are ignored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_element_text</span></code>: Only allowed for type <code class="docutils literal notranslate"><span class="pre">list</span></code>. If specified, the value must be a unicode string. If this value is omitted, no changes are made to the ‘Add element’ button; otherwise, the default ‘Add element’ text is replaced with the given value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: Only allowed for type <code class="docutils literal notranslate"><span class="pre">html</span></code>. If specified, the value must be a string equal to either <code class="docutils literal notranslate"><span class="pre">small</span></code> or <code class="docutils literal notranslate"><span class="pre">large</span></code>. If <code class="docutils literal notranslate"><span class="pre">small</span></code>, a 2-line RTE is shown; if <code class="docutils literal notranslate"><span class="pre">large</span></code>, a 10-line RTE is shown.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Keys for certain types:</p>
+<ul>
+<li><p>If the type is <code class="docutils literal notranslate"><span class="pre">object_dict</span></code>, the schema must also include exactly one of the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">object_class</span></code>: If this key is provided, the value should be the domain object class. During normalization, the data will be passed to the class’s <code class="docutils literal notranslate"><span class="pre">from_dict</span></code> method to construct the object, and then the object’s <code class="docutils literal notranslate"><span class="pre">validate()</span></code> method will be called.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validation_method</span></code>: If this key is provided, its value should be a function that can validate the provided dictionary. During normalization, the function will be called with the data as its sole argument, and then the data will be returned. Note that the validation function should not return anything and should raise an exception if it finds invalid data.</p></li>
+</ul>
+</li>
+<li><p>If the type is <code class="docutils literal notranslate"><span class="pre">list</span></code>, the following keys apply:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code> (optional): The required length of the list. Normalization will fail if the list length differs from the value of this key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">items</span></code> (required): A schema that describes each object in the list. Normalization will recursively normalize each of the list elements according to this schema.</p></li>
+</ul>
+</li>
+<li><p>If the type is <code class="docutils literal notranslate"><span class="pre">dict</span></code>, the following keys apply:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">properties</span></code> (required): A list of dictionaries. Each dictionary describes a key-value pair in the data and has exactly two keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: The key in the dictionary that the schema describes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">schema</span></code>: A schema describing the associated value.</p></li>
+</ul>
+<p>For example, suppose we want to describe a dictionary with a single key, <code class="docutils literal notranslate"><span class="pre">version</span></code>, whose value is an integer. We could do so with the following schema:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dict&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;version&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In an editor, the fields for the properties will appear in the same order as they appear in the list.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code> (optional): A human-readable description.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The code that handles schemas is in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/schema_utils.py"><code class="docutils literal notranslate"><span class="pre">schema_utils.py</span></code></a>.</p>
+</section>
+<section id="uses-for-schemas-in-oppia">
+<h2>Uses for schemas in Oppia<a class="headerlink" href="#uses-for-schemas-in-oppia" title="Permalink to this headline"></a></h2>
+<section id="configuration-values">
+<h3>Configuration values<a class="headerlink" href="#configuration-values" title="Permalink to this headline"></a></h3>
+<p>The admin page exposes many configuration options, and we define what kinds of values we expect using schemas. In <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/domain/config_domain.py"><code class="docutils literal notranslate"><span class="pre">core/domain/config_domain.py</span></code></a>, we define schemas for each configuration option. Then we can automatically generate the forms in the admin page for changing these values based on their schemas.</p>
+</section>
+<section id="schema-based-forms">
+<h3>Schema-based forms<a class="headerlink" href="#schema-based-forms" title="Permalink to this headline"></a></h3>
+<p>Oppia uses lots of forms, and it’s tiresome to have to write each one from scratch each time. To get around this, we have built a schema-based form framework that allows such forms to be built declaratively. From each schema, we know the type of the form field, what restrictions we want to impose on user input (from the validators), and how the form should be displayed (from the <code class="docutils literal notranslate"><span class="pre">ui_config</span></code> key).</p>
+<p>Note that this framework isn’t meant to be exhaustive; it is meant to simplify form creation for the more common cases. Custom forms can still be written using the methods referenced in <a class="reference internal" href="Creating-Objects.html"><span class="doc std std-doc">Creating Objects</span></a>.</p>
+<p>In the frontend, the <code class="docutils literal notranslate"><span class="pre">components/forms/schema-based-editors/</span></code> directory contains the <code class="docutils literal notranslate"><span class="pre">schema-based-editor</span></code> component which takes a schema and generates a form whose return value satisfies the schema. The schema can be annotated with UI configuration options to tell the form how to display itself. You can also use FormBuilder to create a custom form; the only requirement is that the return type matches that defined by the schema.</p>
+<p>For example, the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/pages/story-editor-page/editor-tab"><code class="docutils literal notranslate"><span class="pre">story-node-editor</span></code> component</a> includes a schema-based editor with the following HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">schema-based-editor</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;storyNodeOutline&quot;</span>
+                     <span class="na">schema</span><span class="o">=</span><span class="s">&quot;OUTLINE_SCHEMA&quot;</span>
+                     <span class="na">local-value</span><span class="o">=</span><span class="s">&quot;editableOutline&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">schema-based-editor</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">OUTLINE_SCHEMA</span></code> constant in the component’s TypeScript file like this:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="nx">$scope</span><span class="p">.</span><span class="nx">OUTLINE_SCHEMA</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;html&#39;</span><span class="p">,</span>
+  <span class="nx">ui_config</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">startupFocusEnabled</span>: <span class="kt">false</span><span class="p">,</span>
+    <span class="nx">rows</span>: <span class="kt">100</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The result is a form where a user can provide an outline with some basic HTML markup:</p>
+<p><img alt="Screenshot of a chapter outline editor" src="_images/schemaBasedEditor.png" /></p>
+</section>
+<section id="validating-controller-arguments">
+<h3>Validating controller arguments<a class="headerlink" href="#validating-controller-arguments" title="Permalink to this headline"></a></h3>
+<p>All arguments passed to the GET/POST/PUT/DELETE methods of the handler classes in the Oppia controller layer or in main.py need to be robustly validated before being passed to the domain layer in the backend. If we define schemas for the expected arguments, then we can use a generic schema validation system (SVS) to validate the arguments!</p>
+<section id="schema-validation-system-code">
+<h4>Schema validation system code<a class="headerlink" href="#schema-validation-system-code" title="Permalink to this headline"></a></h4>
+<p>The following key methods are used in the validation of handler args through the SVS:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">validate_and_normalize_args()</span></code> in <code class="docutils literal notranslate"><span class="pre">base.py</span></code>: This method is defined in the BaseHandler class of base.py. The <code class="docutils literal notranslate"><span class="pre">validate_and_normalize_args</span></code> method is responsible for validating and normalizing handler args. It also raises exceptions when those validation and normalization fail, for example <code class="docutils literal notranslate"><span class="pre">InvalidInputException</span></code> and <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code> errors. (See <a class="reference external" href="#common-errors-faced">this section</a> for a list of common errors that may arise.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate(handler_args,</span> <span class="pre">handler_args_schemas)</span></code> in <code class="docutils literal notranslate"><span class="pre">payload_validator.py</span></code>: This method is the core method of the SVS. It collects all the AssertionErrors raised from schema_utils.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">handler_args</span></code>: The arguments from the HTTP request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handler_args_schemas</span></code>: Schemas from the handler class as they are defined in the class’s <code class="docutils literal notranslate"><span class="pre">URL_PATH_ARGS_SCHEMAS</span></code> or <code class="docutils literal notranslate"><span class="pre">HANDLER_ARGS_SCHEMAS</span></code> class variables. See <a class="reference external" href="#how-to-write-validation-schema-for-handlers">this link</a> for more information on how to write a schema and how to define these class variables.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">normalize_against_schema(obj,</span> <span class="pre">schema)</span></code> in <code class="docutils literal notranslate"><span class="pre">schema_utils.py</span></code>: This method normalizes the given <code class="docutils literal notranslate"><span class="pre">obj</span></code> against its schema and raises <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> if any of the validation checks fail. This <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> is represented as <code class="docutils literal notranslate"><span class="pre">InvalidInputException</span></code> to users.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj</span></code>: The object which needs to be normalized.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">schema</span></code>: The schema for the object.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="how-to-write-validation-schemas-for-handlers">
+<h4>How to write validation schemas for handlers<a class="headerlink" href="#how-to-write-validation-schemas-for-handlers" title="Permalink to this headline"></a></h4>
+<p>If you’re writing a new handler method, you’ll need to add schema validation for the handler args. To do this, follow the steps below:</p>
+<ol>
+<li><p><strong>List all the arguments passed to each method in the handler</strong>
+Make a list of all the arguments passed to each method in the handler class. Arguments received by a handler class method can be categorized into 3 types:</p>
+<ul class="simple">
+<li><p><strong>URL path elements</strong> : The data included in the path of the URL are called URL path elements. Example: in <code class="docutils literal notranslate"><span class="pre">url/&lt;exploration_id&gt;/</span></code>, the exploration_id is a URL path element.</p></li>
+<li><p><strong>Payload arguments</strong>: The data which come from payloads are called payload arguments. These data are typically received by PUT and POST methods.</p></li>
+<li><p><strong>URL query parameters</strong>: Query parameters are included at the end of a URL. Example: in <code class="docutils literal notranslate"><span class="pre">url/&lt;exploration_id&gt;?username=nikhil</span></code>, there is a single URL query parameter with name “username” and value “nikhil”. URL query parameters are typically received by GET and DELETE methods.</p></li>
+</ul>
+<p>If you face any difficulty with this step, see the <a class="reference external" href="#debugging-tricks">debugging section</a> or reach out to anyone mentioned in the <a class="reference external" href="#contact">contact section</a>.</p>
+</li>
+<li><p><strong>Determine the schema for each argument</strong>
+First, you should be familiar with <a class="reference external" href="#write-a-schema">how to write a schema</a>. Then, you can write a schema for each argument, beginning with <a class="reference external" href="#handlers-with-no-arguments">some boilerplate code</a>. For more information, see the sections on <a class="reference external" href="#important-code-pointers">important code pointers</a> and <a class="reference external" href="#examples-for-reference">examples</a>.</p></li>
+<li><p><strong>Define schemas for URL path elements in URL_PATH_ARGS_SCHEMAS</strong></p>
+<ul class="simple">
+<li><p>The schemas for URL path elements should be written in the <code class="docutils literal notranslate"><span class="pre">URL_PATH_ARGS_SCHEMAS</span></code> class variable in the handler class.</p></li>
+<li><p>The keys of <code class="docutils literal notranslate"><span class="pre">URL_PATH_ARGS_SCHEMAS</span></code> should be the full set of URL path elements and the corresponding values should be the schemas for those args. If there are no URL path elements, then <code class="docutils literal notranslate"><span class="pre">URL_PATH_ARGS_SCHEMAS</span></code> should be set to {} (an empty dict).</p></li>
+</ul>
+<p>Example: Let <code class="docutils literal notranslate"><span class="pre">exploration_id</span></code> be a URL path element. Then, the schema for <code class="docutils literal notranslate"><span class="pre">exploration_id</span></code> should look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">URL_PATH_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;exploration_id&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;basestring&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Define schemas for payload arguments and URL query parameter in <code class="docutils literal notranslate"><span class="pre">HANDLER_ARGS_SCHEMAS</span></code></strong></p>
+<ul class="simple">
+<li><p>The schemas for payload arguments and URL query parameters are written in the <code class="docutils literal notranslate"><span class="pre">HANDLER_ARGS_SCHEMAS</span></code> class variable in the handler class.</p></li>
+<li><p>After writing <a class="reference external" href="#handlers-with-no-arguments">boilerplate code</a> for the <code class="docutils literal notranslate"><span class="pre">HANDLER_ARGS_SCHEMAS</span></code>, the value corresponding to each request method key (GET/PUT/POST/DELETE) should be a dictionary containing all the payload args and URL query parameters for the corresponding method. Each key of this dictionary should represent the name of an argument, and the corresponding value should be its schema. <strong>Note</strong>: While writing boilerplate code, make sure to remove the request keys which do not correspond to any request method in the handler class.</p></li>
+</ul>
+<p>Example:  Let <code class="docutils literal notranslate"><span class="pre">username</span></code> be an argument passed to the delete request method of a handler class. Then, the schema for the delete request method should look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HANDLER_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DELETE&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;basestring&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="important-code-pointers">
+<h4>Important code pointers<a class="headerlink" href="#important-code-pointers" title="Permalink to this headline"></a></h4>
+<p>The following points discuss the conventions adopted throughout the codebase for adding schemas to handler classes. <strong>Please read these conventions carefully</strong>.</p>
+<section id="default-and-optional-arguments">
+<h5>Default and optional arguments<a class="headerlink" href="#default-and-optional-arguments" title="Permalink to this headline"></a></h5>
+<p>If an argument is not present in a request, and the schema for that argument is defined in the handler, then that argument is treated as “missing”. For missing args, <code class="docutils literal notranslate"><span class="pre">schema_utils</span></code> will raise an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> which will be represented as an <code class="docutils literal notranslate"><span class="pre">InvalidInputException</span></code> by the <code class="docutils literal notranslate"><span class="pre">validate_and_normalize_args()</span></code> method.</p>
+<p>To provide a default value for an argument, include a key with the name <code class="docutils literal notranslate"><span class="pre">default_value</span></code> along with the schema. The value for this key is the default value, which will be used if the argument is not present. If an argument is optional and it is not supposed to be updated with any default value, then the <code class="docutils literal notranslate"><span class="pre">default_value</span></code> key should map to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p><strong>Example when a default value is provided</strong>: Let <code class="docutils literal notranslate"><span class="pre">apply_draft</span></code> be an optional argument which should take the default value <code class="docutils literal notranslate"><span class="pre">False</span></code> if no value for that argument is provided. In that case, the schema for <code class="docutils literal notranslate"><span class="pre">apply_draft</span></code> should look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;GET&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;apply_draft&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;bool&#39;</span>
+             <span class="p">},</span>
+            <span class="s1">&#39;default_value&#39;</span><span class="p">:</span> <span class="kc">False</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example when no default value is provided</strong>: Suppose <code class="docutils literal notranslate"><span class="pre">make_community_owned</span></code> is an optional argument which should not take any default value if no value for that argument is provided with the request. In that case, the schema for <code class="docutils literal notranslate"><span class="pre">make_community_owned</span></code> should look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;PUT&#39;</span><span class="p">:{</span>
+        <span class="s1">&#39;make_community_owned&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;bool&#39;</span>
+             <span class="p">},</span>
+            <span class="s1">&#39;default_value&#39;</span><span class="p">:</span> <span class="kc">None</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information <a class="reference external" href="#examples-for-reference">refer to our examples</a>.</p>
+</section>
+<section id="domain-object-arguments-schemas-with-type-object-dict">
+<h5>Domain object arguments: Schemas with type <code class="docutils literal notranslate"><span class="pre">object_dict</span></code><a class="headerlink" href="#domain-object-arguments-schemas-with-type-object-dict" title="Permalink to this headline"></a></h5>
+<p>Objects which are represented by classes written in the domain layer of the codebase are called domain objects. These classes typically include methods to validate their objects.</p>
+<p>For validating domain objects through the SVS, there are two preferred solutions:</p>
+<section id="case-1-object-class-key">
+<h6>Case 1: <code class="docutils literal notranslate"><span class="pre">object_class</span></code> key<a class="headerlink" href="#case-1-object-class-key" title="Permalink to this headline"></a></h6>
+<p>Many of the domain objects do not get initialized with dictionaries,so they must be initialized by using their <code class="docutils literal notranslate"><span class="pre">from_dict()</span></code> methods.  This case applies when the data coming from a request is a dict and the domain object the dict represents has a <code class="docutils literal notranslate"><span class="pre">from_dict()</span></code> method.</p>
+<p>In this case, schemas should have the following two keys:</p>
+<ol class="simple">
+<li><p><strong>type</strong>: ‘object_dict’</p></li>
+<li><p><strong>object_class</strong>: class written in the domain layer of the codebase for the corresponding argument.</p></li>
+</ol>
+<p><strong>Example</strong>: Let <code class="docutils literal notranslate"><span class="pre">new_rules</span></code> be the list of dicts where each dict item is a representation of the <code class="docutils literal notranslate"><span class="pre">PlatformParameterRule</span></code> domain object in the <code class="docutils literal notranslate"><span class="pre">platform_parameter_domain.py</span></code> file. The schema for <code class="docutils literal notranslate"><span class="pre">new_rules</span></code> should look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HANDLER_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;POST&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;new_rules&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;items&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;object_dict&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;object_class&#39;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="n">platform_parameter_domain</span><span class="o">.</span><span class="n">PlatformParameterRule</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="case-2-validation-method-key">
+<h6>Case 2: <code class="docutils literal notranslate"><span class="pre">validation_method</span></code> key<a class="headerlink" href="#case-2-validation-method-key" title="Permalink to this headline"></a></h6>
+<p>Sometimes, a domain object has a <code class="docutils literal notranslate"><span class="pre">validate_dict()</span></code> method that should be used for validation. These methods sometimes need extra arguments, for example to enforce strict validation. Since these cases cannot be handled generally, you’ll need to write a function that accepts the dictionary from the request and passes it to the domain object’s <code class="docutils literal notranslate"><span class="pre">validate_dict()</span></code> method, specifying other parameters as needed. Your function should be in the <code class="docutils literal notranslate"><span class="pre">domain_objects_validator.py</span></code> file.</p>
+<p>The newly written function of the <code class="docutils literal notranslate"><span class="pre">domain_objects_validator.py</span></code> file should be directly passed into the schema with a schema key named <code class="docutils literal notranslate"><span class="pre">validation_method</span></code>. Schemas for these cases should have the following two keys:</p>
+<ol class="simple">
+<li><p><strong>type</strong>: ‘object_dict’</p></li>
+<li><p><strong>validation_method</strong>: method written in domain_objects_validator for calling the <code class="docutils literal notranslate"><span class="pre">validate()</span></code> method from the domain class.</p></li>
+</ol>
+<p><strong>Example</strong>:  Let <code class="docutils literal notranslate"><span class="pre">change_list</span></code> be a list of dicts where each dict item is a representation of the <code class="docutils literal notranslate"><span class="pre">ExplorationChange</span></code> domain object in the <code class="docutils literal notranslate"><span class="pre">exp_domain.py</span></code> file. The schema for change_list should look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HANDLER_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;PUT&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;change_list&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;items&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;object_dict&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;validation_method&#39;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="n">domain_objects_validator</span><span class="o">.</span><span class="n">validate_exploration_change</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">validate_exploration_change</span></code> is the function you wrote.</p>
+<p>For more information <a class="reference external" href="#examples-for-reference">refer to our examples</a>.</p>
+</section>
+</section>
+<section id="extra-validators">
+<h5>Extra validators<a class="headerlink" href="#extra-validators" title="Permalink to this headline"></a></h5>
+<p>By providing validators, you can increase a schema’s functionality. The <code class="docutils literal notranslate"><span class="pre">validators</span></code> field in the schema contains a list of dicts, where each dict contains a key <code class="docutils literal notranslate"><span class="pre">id</span></code> whose value is the name of the validator. Existing validator methods can be found in the <code class="docutils literal notranslate"><span class="pre">_Validator</span></code> class of  <code class="docutils literal notranslate"><span class="pre">schema_utils.py</span></code>. You can use the existing validators or write new ones.</p>
+<p><strong>Example</strong>: Let us assume that <code class="docutils literal notranslate"><span class="pre">language_code</span></code> is a handler arg that needs to be validated in order to check whether it is a supported language code. The validator checking this is already written in <code class="docutils literal notranslate"><span class="pre">schema_utils.py</span></code>, so the schema for <code class="docutils literal notranslate"><span class="pre">language_code</span></code> would look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HANDLER_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;PUT&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;language_code&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;basestring&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;validators&#39;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;is_supported_language_code&#39;</span>
+                <span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="extra-arguments">
+<h5>Extra arguments<a class="headerlink" href="#extra-arguments" title="Permalink to this headline"></a></h5>
+<p>Any received arguments which do not correspond to a schema in the handler class are treated as extra arguments. By default, <code class="docutils literal notranslate"><span class="pre">schema_utils.py</span></code> will raise an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> for extra args. However, for HTML handlers, extra arguments are allowed. (This accommodates e.g. utm parameters which are not used by the backend but needed for analytics. See <a class="reference external" href="https://support.google.com/analytics/answer/1033863?hl=en#zippy=%2Cin-this-article">this link</a> for an explanation.) Note that the schema for HTML handlers can be written in the usual way. The functionality for allowing extra arguments in HTML handlers is already handled by the schema validation infrastructure.</p>
+</section>
+<section id="handlers-with-no-arguments">
+<h5>Handlers with no arguments<a class="headerlink" href="#handlers-with-no-arguments" title="Permalink to this headline"></a></h5>
+<p>Handlers with no request arguments still need a schema defined, otherwise you will face a <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code> error. In this case, the schema should look like the following (note that the keys for <code class="docutils literal notranslate"><span class="pre">HANDLER_ARGS_SCHEMAS</span></code> depend on which handler methods are present):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">URL_PATH_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">HANDLER_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;PUT&#39;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s1">&#39;GET&#39;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s1">&#39;PUT&#39;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s1">&#39;POST&#39;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="post-schema-operations">
+<h5>Post schema operations<a class="headerlink" href="#post-schema-operations" title="Permalink to this headline"></a></h5>
+<p>After writing schemas for a handler class, make sure to update the request methods to use the normalized value after schema validation and remove any now-redundant validation checks.</p>
+<p><strong>Example</strong>: Replace the <code class="docutils literal notranslate"><span class="pre">request</span></code> keyword in the backend with the <code class="docutils literal notranslate"><span class="pre">normalized_request</span></code> keyword and the <code class="docutils literal notranslate"><span class="pre">payload</span></code> keyword with the <code class="docutils literal notranslate"><span class="pre">normalized_paylaod</span></code> keyword so that the normalized value obtained after schema validation can be used in the backend.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>self.request.get(‘version’) ----&gt; self.normalized_request.get(‘version’)
+self.payload.get(‘username’) ----&gt; self.normalized_payload.get(‘username’)
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-errors-faced">
+<h4>Common errors faced<a class="headerlink" href="#common-errors-faced" title="Permalink to this headline"></a></h4>
+<p>When writing handler args, you may encounter <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code>s or <code class="docutils literal notranslate"><span class="pre">InvalidInputException</span></code>s. Here is how to handle these:</p>
+<ol class="simple">
+<li><p><strong>NotImplementedError</strong></p>
+<ul class="simple">
+<li><p><strong>Description</strong>: This error will be raised if any necessary schemas (i.e, <code class="docutils literal notranslate"><span class="pre">HANDLER_ARGS_SCHEMAS</span></code> or <code class="docutils literal notranslate"><span class="pre">URL_PATH_ARGS_SCHEMAS</span></code>) are not present in the corresponding handler class.</p></li>
+<li><p><strong>How to resolve</strong>: This error message is raised with the name of the handler which is missing a schema definition. Add schemas to the specified handler class.</p></li>
+</ul>
+</li>
+<li><p><strong>InvalidInputException</strong></p>
+<ul class="simple">
+<li><p><strong>Description</strong>: This error will be raised if schema validation failed for any argument. It may be due to extra arguments, missing arguments or any type mismatch.</p></li>
+<li><p><strong>How to resolve</strong>: This error message is raised by the <code class="docutils literal notranslate"><span class="pre">validate_and_normalize_args()</span></code> method with the name of the argument for which schema validation failed. By looking at error messages and stack traces, you can find which argument is failing the schema validation test and debug.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="examples-for-reference">
+<h4>Examples for reference<a class="headerlink" href="#examples-for-reference" title="Permalink to this headline"></a></h4>
+<p>Examples of PRs for different types is given below:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/pull/13223">Sample PR 1</a></p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/pull/13224">Sample PR 2</a></p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/pull/13225">Sample PR 3</a></p></li>
+</ul>
+</section>
+<section id="debugging-tricks">
+<h4>Debugging tricks<a class="headerlink" href="#debugging-tricks" title="Permalink to this headline"></a></h4>
+<p>When writing the schema for a handler class, you will often need to add a couple of print statements to gain information about the arguments coming from request. In this section we will add a schema step by step for <code class="docutils literal notranslate"><span class="pre">ExplorationRightsHandler</span></code>.</p>
+<ol>
+<li><p><strong>Find the handler class.</strong>
+<code class="docutils literal notranslate"><span class="pre">ExplorationRightsHandler</span></code> is present in the <code class="docutils literal notranslate"><span class="pre">editor.py</span></code> file.</p></li>
+<li><p><strong>Identify the request methods.</strong>
+<code class="docutils literal notranslate"><span class="pre">ExplorationRightsHandler</span></code> contains PUT and DELETE request methods.</p></li>
+<li><p><strong>Make a list of all arguments.</strong></p>
+<ul class="simple">
+<li><p>URL path elements: <code class="docutils literal notranslate"><span class="pre">exploration_id</span></code></p></li>
+<li><p>Payload arguments: <code class="docutils literal notranslate"><span class="pre">version</span></code>, <code class="docutils literal notranslate"><span class="pre">make_community_owned</span></code>, <code class="docutils literal notranslate"><span class="pre">new_member_username</span></code>, <code class="docutils literal notranslate"><span class="pre">new_member_role</span></code>, <code class="docutils literal notranslate"><span class="pre">viewable_if_private</span></code>.</p></li>
+<li><p>URL query parameters: <code class="docutils literal notranslate"><span class="pre">username</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Add print statements</strong>
+Add these print statements in the <code class="docutils literal notranslate"><span class="pre">validate_and_normalize_args()</span></code> function of <code class="docutils literal notranslate"><span class="pre">base.py</span></code>. Make sure to add these print statements after the printed variables have been declared.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------&#39;</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Request url = &#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Handler class name = &#39;</span><span class="p">,</span><span class="n">handler_class_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;handler_args = &#39;</span><span class="p">,</span><span class="n">handler_args</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arguments = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">arguments</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iterating over arguments...&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">arguments</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;URL path elements = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">route_kwargs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Request method = &#39;</span><span class="p">,</span><span class="n">request_method</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HANDLER_ARGS_SCHEMAS =  &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">HANDLER_ARGS_SCHEMAS</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;URL_PATH_ARGS_SCHEMAS = , &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URL_PATH_ARGS_SCHEMAS</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GET_HANDLER_ERROR_RETURN_TYPE&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">GET_HANDLER_ERROR_RETURN_TYPE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------&#39;</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Hit the handler through frontend</strong>
+Start the server and hit the handlers from the frontend. Then look for your print statements in the terminal. For <code class="docutils literal notranslate"><span class="pre">ExplorationRightsHandler</span></code>, the print logs should look like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>------------------------------------
+(u&#39;Request url = &#39;, &#39;http://localhost:8181/createhandler/rights/QuWbhgRTovXr&#39;)
+(u&#39;Handler class name = &#39;, &#39;ExplorationRightsHandler&#39;)
+(u&#39;Arguments = &#39;, [&#39;csrf_token&#39;, &#39;payload&#39;, &#39;source&#39;])
+Iterating over arguments...
+(&#39;csrf_token&#39;, u&#39;1622997677/wOV5q43bIZf1cvOhCB4vrQ==&#39;)
+(&#39;payload&#39;, u&#39;{&quot;version&quot;:1,&quot;new_member_role&quot;:&quot;owner&quot;,&quot;new_member_username&quot;:&quot;nikhil&quot;}&#39;)
+(&#39;source&#39;, u&#39;http://localhost:8181/create/QuWbhgRTovXr#/settings&#39;)
+(u&#39;URL path elements = &#39;, {u&#39;exploration_id&#39;: &#39;QuWbhgRTovXr&#39;})
+(u&#39;Request method = &#39;, &#39;PUT&#39;)
+(u&#39;HANDLER_ARGS_SCHEMAS =  &#39;, {u&#39;DELETE&#39;: {u&#39;username&#39;: {u&#39;type&#39;: u&#39;basestring&#39;}}, u&#39;PUT&#39;: {u&#39;make_community_owned&#39;: {u&#39;default_value&#39;: None, u&#39;type&#39;: u&#39;bool&#39;}, u&#39;new_member_role&#39;: {u&#39;default_value&#39;: None, u&#39;type&#39;: u&#39;basestring&#39;}, u&#39;new_member_username&#39;: {u&#39;default_value&#39;: None, u&#39;type&#39;: u&#39;basestring&#39;}, u&#39;viewable_if_private&#39;: {u&#39;default_value&#39;: None, u&#39;type&#39;: u&#39;bool&#39;}, u&#39;version&#39;: {u&#39;type&#39;: u&#39;int&#39;}}})
+(u&#39;URL_PATH_ARGS_SCHEMAS = , &#39;, {u&#39;exploration_id&#39;: {u&#39;type&#39;: u&#39;basestring&#39;}})
+------------------------------------
+</pre></div>
+</div>
+</li>
+<li><p><strong>Write the schema by following the boilerplate code</strong>
+Writing the schema is the most crucial part, and it is important to get this correct. The print logs from the previous step can help you get started, but please be sure to dig into the backend and frontend code, and follow calls to methods/functions to see how the incoming data is used. This will help you avoid making errors. In particular:</p>
+<ul class="simple">
+<li><p><strong>For the backend</strong>: Try to read code as well as docstrings of all the methods which use the arguments from the request.</p></li>
+<li><p><strong>For the frontend</strong>: Try to read the functions which are associated with the request URL.</p></li>
+</ul>
+<p>The eventual schema for ExplorationRightsHandler should look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExplorationRightsHandler</span><span class="p">(</span><span class="n">EditorHandler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Handles management of exploration editing rights.&quot;&quot;&quot;</span>
+
+    <span class="n">URL_PATH_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;exploration_id&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;basestring&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">HANDLER_ARGS_SCHEMAS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;DELETE&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;basestring&#39;</span>
+                 <span class="p">}</span>
+             <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;PUT&#39;</span><span class="p">:{</span>
+            <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;make_community_owned&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;bool&#39;</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;default_value&#39;</span><span class="p">:</span> <span class="kc">None</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;new_member_username&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;basestring&#39;</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;default_value&#39;</span><span class="p">:</span> <span class="kc">None</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;new_member_role&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;basestring&#39;</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;default_value&#39;</span><span class="p">:</span> <span class="kc">None</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;viewable_if_private&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;bool&#39;</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;default_value&#39;</span><span class="p">:</span> <span class="kc">None</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+</pre></div>
+</div>
+</li>
+<li><p>Remove print statements</p></li>
+</ol>
+<p>Remove all the print statements and verify schema validation by again hitting the handler from the frontend.</p>
+</section>
+<section id="contact">
+<h4>Contact<a class="headerlink" href="#contact" title="Permalink to this headline"></a></h4>
+<p>If you have any questions, please contact one of:</p>
+<ul class="simple">
+<li><p>Rohit (&#64;rohitkatlaa)</p></li>
+<li><p>Vojtech (&#64;vojtechjelinek)</p></li>
+<li><p>Nikhil (&#64;Nik-09)</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Writing-style-guide.html" class="btn btn-neutral float-left" title="Writing style guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Editor-pages.html" class="btn btn-neutral float-right" title="Editor pages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

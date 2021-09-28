@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adding static assets &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Wipeout implementation" href="Wipeout-Implementation.html" />
+    <link rel="prev" title="Coding for speed in GAE" href="Coding-for-speed-in-GAE.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="backend-reference.html">Backend</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Apache-Beam-Jobs.html">Apache Beam jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-state-migrations.html">Writing state migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-audit-jobs.html">Writing audit jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-new-one-off-jobs-using-map-reduce.html">Writing new one off jobs using map reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating-statistics.html">Calculating statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-and-modifying-storage-models.html">Creating and modifying storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing-Validators-for-storage-models.html">Writing validators for storage models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Coding-for-speed-in-GAE.html">Coding for speed in GAE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Adding static assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html">Wipeout implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wipeout-Implementation.html#wipeout-design">Wipeout design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notes-on-NDB-Datastore-Transactions.html">Notes on NDB datastore transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="backend-reference.html">Backend</a> &raquo;</li>
+      <li>Adding static assets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Adding-static-assets.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="adding-static-assets">
+<h1>Adding static assets<a class="headerlink" href="#adding-static-assets" title="Permalink to this headline"></a></h1>
+<p>Oppia uses cache slugs with static resources to cut down on bandwidth requirements for a user. This requires a developer to use appropriate methods (depending on the static resource required) defined in <code class="docutils literal notranslate"><span class="pre">/core/templates/domain/utilities/UrlInterpolationServiceSpec.js</span></code>.</p>
+<p><strong>Common steps to use these methods</strong>:</p>
+<ol class="simple">
+<li><p>Include/import <code class="docutils literal notranslate"><span class="pre">UrlInterpolationServiceSpec.js</span></code> in the corresponding html and controller files.</p></li>
+<li><p>Expose the method to the html using <code class="docutils literal notranslate"><span class="pre">$scope</span></code>,
+eg. <code class="docutils literal notranslate"><span class="pre">$scope.getStaticResourceUrl</span> <span class="pre">=</span> <span class="pre">(UrlInterpolationService.getStaticResourceUrl);</span></code></p></li>
+<li><p>Call the method using angular tags in the html,
+eg. <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">type=&quot;text/css&quot;</span> <span class="pre">ng-href=&quot;&lt;[getStaticResourceUrl('/path-to-resource')]&gt;&quot;&gt;</span></code></p></li>
+</ol>
+<p>Depending on the static resource type we have the following methods:</p>
+<ol class="simple">
+<li><p><strong>getStaticResourceUrl(resourcePath)</strong>:
+For css, js and extension resources.
+Usage:
+<code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">type=&quot;text/css&quot;</span> <span class="pre">ng-href=&quot;&lt;[getStaticResourceUrl('/path-to-resource')]&gt;&quot;&gt;</span></code>
+Example:
+<code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">type=&quot;text/css&quot;</span> <span class="pre">ng-href=&quot;&lt;[getStaticResourceUrl('/extensions/gadgets/AdviceBar/static/css/adviceBar.css')]&gt;&quot;&gt;</span></code></p></li>
+<li><p><strong>getStaticImageUrl(imagePath)</strong>:
+This method should be used to reference image files present in <code class="docutils literal notranslate"><span class="pre">/assets/images</span></code> and <code class="docutils literal notranslate"><span class="pre">imagePath</span></code> passed in the method should be relative to <code class="docutils literal notranslate"><span class="pre">/assets/images</span></code> and start with a forward slash.
+Example:
+<code class="docutils literal notranslate"><span class="pre">&lt;img</span> <span class="pre">ng-src=&quot;&lt;[getStaticImageUrl('/logo/288x128_logo_white.png')]&gt;&quot;&gt;</span></code></p></li>
+<li><p><strong>getGadgetImgUrl(gadgetType)</strong>:
+This method given a gadget type, returns the complete url path to that gadget type image.
+Example:
+<code class="docutils literal notranslate"><span class="pre">&lt;img</span> <span class="pre">ng-src=&quot;&lt;[getGadgetImgUrl(gadgetType)]&gt;&quot;&gt;</span></code></p></li>
+<li><p><strong>getInteractionThumbnailImageUrl(interactionId)</strong>:
+This method given an interaction id, returns the complete url path to the thumbnail image for the interaction.
+Example:
+<code class="docutils literal notranslate"><span class="pre">&lt;img</span> <span class="pre">ng-src=&quot;&lt;[getInteractionThumbnailImageUrl(interactionId)]&gt;&quot;&gt;</span></code></p></li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Coding-for-speed-in-GAE.html" class="btn btn-neutral float-left" title="Coding for speed in GAE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Wipeout-Implementation.html" class="btn btn-neutral float-right" title="Wipeout implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

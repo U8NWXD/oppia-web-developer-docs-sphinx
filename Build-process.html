@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build process &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Team structure" href="Team-Structure.html" />
+    <link rel="prev" title="Performance testing" href="Performance-Testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Build process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-script">Build script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-modes">Build modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-mode-constants">Build mode constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dev-mode">Dev mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minify-only-mode">Minify-only mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prod-mode">Prod mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#plain-prod-mode">Plain prod mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#maintenance-mode">Maintenance mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deploy-mode">Deploy mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#considering-build-modes-when-debugging">Considering build modes when debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-maps">Source maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-source-maps">Using source maps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Build process</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Build-process.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="build-process">
+<h1>Build process<a class="headerlink" href="#build-process" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#build-script">Build script</a></p></li>
+<li><p><a class="reference external" href="#build-modes">Build modes</a></p>
+<ul>
+<li><p><a class="reference external" href="#build-mode-constants">Build mode constants</a></p></li>
+<li><p><a class="reference external" href="#dev-mode">Dev mode</a></p></li>
+<li><p><a class="reference external" href="#minify-only-mode">Minify-only mode</a></p></li>
+<li><p><a class="reference external" href="#prod-mode">Prod mode</a></p>
+<ul>
+<li><p><a class="reference external" href="#plain-prod-mode">Plain prod mode</a></p></li>
+<li><p><a class="reference external" href="#maintenance-mode">Maintenance mode</a></p></li>
+<li><p><a class="reference external" href="#deploy-mode">Deploy mode</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#considering-build-modes-when-debugging">Considering build modes when debugging</a></p></li>
+<li><p><a class="reference external" href="#source-maps">Source maps</a></p>
+<ul>
+<li><p><a class="reference external" href="#using-source-maps">Using source maps</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Before we can run the Oppia server, we have to build it. This build process transforms the files defining our application (e.g. code, images, configuration files, etc.) from the developer-friendly format we store in GitHub into a form that can be executed to run the server. If you are running the local development server, this build process makes minimal changes, but when deploying to production, we do much more optimization.</p>
+<p>This page documents how the build process works in each of its modes. Most of the time, you won’t have to worry about the build process since it is handled automatically by our scripts like <code class="docutils literal notranslate"><span class="pre">start.py</span></code>. However, you might need to consider the build process if you have trouble reproducing a bug; the bug might only happen in certain build modes. We’ll discuss how to think about build modes when debugging below.</p>
+</section>
+<section id="build-script">
+<h2>Build script<a class="headerlink" href="#build-script" title="Permalink to this headline"></a></h2>
+<p>The build process is performed by <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/scripts/build.py"><code class="docutils literal notranslate"><span class="pre">scripts/build.py</span></code></a>. If you ever want to know exactly how a particular part of the build process works, you should check out the code there.</p>
+</section>
+<section id="build-modes">
+<h2>Build modes<a class="headerlink" href="#build-modes" title="Permalink to this headline"></a></h2>
+<p>There are two primary build modes: dev mode and prod mode. When running in prod mode, you can also enable maintenance mode or deploy mode, or you can choose to only minify third-party libraries. This means the build mode hierarchy looks like this:</p>
+<ul class="simple">
+<li><p>Dev mode</p></li>
+<li><p>Minify-only mode</p></li>
+<li><p>Prod mode</p>
+<ul>
+<li><p>Maintenance mode</p></li>
+<li><p>Deploy mode</p></li>
+</ul>
+</li>
+</ul>
+<p>Note that the maintenance and deploy modes can be enabled simultaneously, so you should really think of them as flags. For example, suppose you have decided to enable prod mode. You can further choose to enable maintenance mode, enable dev mode, enable both maintenance mode and dev mode, or leave both maintenance mode and dev mode disabled.</p>
+<p>Dev mode compiles the fastest, but it produces an application that’s least like what we run in production. On the other hand, prod mode takes longer to compile but produces an application that is the closest to what we run in production. Minify-only mode is in the middle.</p>
+<p>We use prod mode for most everything besides local development. For example, we use prod mode when deploying to production and testing servers, and we run most tests in prod mode. A notable exception is the lighthouse accessibility tests, which run in dev mode because they don’t depend on the minifications and optimizations applied in prod mode, and dev mode compilation is faster. Note that we also sometimes use prod mode locally when debugging to run a version of the app that’s closer to the deployed version.</p>
+<section id="build-mode-constants">
+<h3>Build mode constants<a class="headerlink" href="#build-mode-constants" title="Permalink to this headline"></a></h3>
+<p>The build mode affects the application during runtime through the following constants in <code class="docutils literal notranslate"><span class="pre">assets/constants.ts</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code>: Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> if and only if we are in dev mode. Otherwise, this is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMULATOR_MODE</span></code>: Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> if and only if we are not in deploy mode. Note that being in deploy mode implies being in prod mode. Otherwise, this is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENABLE_MAINTENANCE_MODE</span></code>: Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> if and only if we are in maintenance mode. Note that being in maintenance mode implies being in prod mode. Otherwise, this is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+</ul>
+</section>
+<section id="dev-mode">
+<h3>Dev mode<a class="headerlink" href="#dev-mode" title="Permalink to this headline"></a></h3>
+<p>We use dev mode for local development. For example, when you run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scripts.start</span></code>, you build the app in dev mode. This mode is designed to build as quickly as possible, so it doesn’t do much optimization.</p>
+<p>Here’s what happens during a dev mode build:</p>
+<ol>
+<li><p>Some third-party libraries are generated. If you recently ran the server, then there might not be much to change here. Otherwise, the third-party libraries from <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code> are downloaded. (Note that the libraries in <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code> are just some of our frontend libraries; we have other libraries that get installed to <code class="docutils literal notranslate"><span class="pre">node_modules</span></code>.) The downloaded CSS and JavaScript code files are combined into <code class="docutils literal notranslate"><span class="pre">third_party/generated/third_party.css</span></code> and <code class="docutils literal notranslate"><span class="pre">third_party/generated/third_party.js</span></code>, and the downloaded fonts are placed in <code class="docutils literal notranslate"><span class="pre">third_party/webfonts/</span></code>.</p></li>
+<li><p>The build script sets the constants in <code class="docutils literal notranslate"><span class="pre">assets/constants.ts</span></code> to enable dev mode. Specifically, <code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">EMULATOR_MODE</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, and the other constants are <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+<li><p><a class="reference external" href="https://webpack.js.org/">Webpack</a> bundles our frontend code files and runs with a <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/webpack.dev.config.ts">dev configuration</a> designed for minimal compilation time. Note that the dev mode configuration file inherits from the <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/webpack.common.config.ts">root webpack config file</a>. In dev mode, webpack runs in “watch” mode so that when files are changed, webpack re-builds the app automatically.</p>
+<p>Note that <strong>this step is not handled by <code class="docutils literal notranslate"><span class="pre">build.py</span></code></strong> for two reasons:</p>
+<ul class="simple">
+<li><p>When we run the frontend tests, webpack has to be handled by Karma, not <code class="docutils literal notranslate"><span class="pre">build.py</span></code>.</p></li>
+<li><p>When we run in dev mode, we need to keep webpack running so that it can watch for changes to the code. However, we don’t want to keep <code class="docutils literal notranslate"><span class="pre">build.py</span></code> running since <code class="docutils literal notranslate"><span class="pre">build.py</span></code> is supposed to build the application and then exit. Therefore, we leave webpack compilation to be handled by whatever script you actually executed, for example <code class="docutils literal notranslate"><span class="pre">start.py</span></code>.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">app_dev.yaml</span></code> configuration file for the app already exists, so it doesn’t need to be generated.</p></li>
+</ol>
+</section>
+<section id="minify-only-mode">
+<h3>Minify-only mode<a class="headerlink" href="#minify-only-mode" title="Permalink to this headline"></a></h3>
+<p>In this mode, the third-party libraries are installed and minified, but the build script doesn’t do anything else. This is only used by the frontend tests, where the <code class="docutils literal notranslate"><span class="pre">karma.conf.ts</span></code> configuration file triggers webpack as described above for <a class="reference external" href="#dev-mode">dev mode</a>.</p>
+</section>
+<section id="prod-mode">
+<h3>Prod mode<a class="headerlink" href="#prod-mode" title="Permalink to this headline"></a></h3>
+<p>In prod mode, we more aggressively optimize the app for performance, but the cost of this optimization is that the build process takes longer. Prod mode is also a little more complicated because it has two additional options: maintenance mode, and deploy mode.</p>
+<section id="plain-prod-mode">
+<h4>Plain prod mode<a class="headerlink" href="#plain-prod-mode" title="Permalink to this headline"></a></h4>
+<p>First, let’s consider what happens in plain prod mode where those two options are both disabled:</p>
+<ol class="simple">
+<li><p>The third-party libraries are generated like in <a class="reference external" href="#dev-mode">dev mode</a>, but they are also minified so they take up less space.</p></li>
+<li><p>Hashes are generated for asset files like images. These will be used later (see step 5 below).</p></li>
+<li><p><a class="reference external" href="https://webpack.js.org">Webpack</a> runs with watch mode disabled and a <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/webpack.prod.config.ts">prod configuration</a> optimized for application performance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app.yaml</span></code> is generated from <code class="docutils literal notranslate"><span class="pre">app_dev.yaml</span></code>. The two files are identical in plain prod mode, except for a comment in <code class="docutils literal notranslate"><span class="pre">app.yaml</span></code> noting that it is auto-generated.</p></li>
+<li><p>The third-party libraries, assets, files compiled by webpack, and some other files are all copied to a build folder <code class="docutils literal notranslate"><span class="pre">build/</span></code>. This mimics the build folder we generate and upload to production servers when deploying the app for real. During this process, asset files are renamed to include the hashes we generated earlier. This ensures that if the file content changes, the name changes, so any caches of the old file are invalidated.</p></li>
+</ol>
+<p>This is the mode our tests run in (except the lighthouse accessibility tests), and it’s what you’ll want to use if you want to locally run a version of the app that’s as close to the production version as possible. You can use this mode like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.start --prod_env</span>
+</pre></div>
+</div>
+</section>
+<section id="maintenance-mode">
+<h4>Maintenance mode<a class="headerlink" href="#maintenance-mode" title="Permalink to this headline"></a></h4>
+<p>As far as the build process is concerned, maintenance mode works just like <a class="reference external" href="#plain-prod-mode">plain prod mode</a> except that the <code class="docutils literal notranslate"><span class="pre">ENABLE_MAINTENANCE_MODE</span></code> constant gets set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Then when the app runs, only admins can log in. We use this when we are upgrading the production server and need to let jobs run while ensuring users don’t change any data.</p>
+<p>This mode is used by our deployment scripts. You can also enable it locally like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.start --prod_env --maintenance_mode</span>
+</pre></div>
+</div>
+</section>
+<section id="deploy-mode">
+<h4>Deploy mode<a class="headerlink" href="#deploy-mode" title="Permalink to this headline"></a></h4>
+<p>Deploy mode is also very similar to <a class="reference external" href="#plain-prod-mode">plain prod mode</a>, except that the <code class="docutils literal notranslate"><span class="pre">EMULATOR_MODE</span></code> constant is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Further, we make some changes to the <code class="docutils literal notranslate"><span class="pre">app.yaml</span></code> file:</p>
+<ul class="simple">
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">version:</span> <span class="pre">default</span></code> line</p></li>
+<li><p>Remove the environment variables specified in the <code class="docutils literal notranslate"><span class="pre">ENV_VARS_TO_REMOVE_FROM_DEPLOYED_APP_YAML</span></code> constant in <code class="docutils literal notranslate"><span class="pre">build.py</span></code>. We remove these since they are already present in the production environment.</p></li>
+</ul>
+<p>This mode is used by our deployment scripts.</p>
+</section>
+</section>
+</section>
+<section id="considering-build-modes-when-debugging">
+<h2>Considering build modes when debugging<a class="headerlink" href="#considering-build-modes-when-debugging" title="Permalink to this headline"></a></h2>
+<p>Most bugs appear in all build modes, so we recommend first trying to reproduce bugs locally in dev mode. Dev mode is optimized for fast compilation, so it’s usually faster to debug in <a class="reference external" href="#dev-mode">dev mode</a>. If you can’t reproduce the bug in dev mode, then you can try using <a class="reference external" href="#plain-prod-mode">plain prod mode</a>. Plain prod mode takes longer to compile, but since it more closely mimics how the application works in production, you may need it for bugs that don’t appear in dev mode.</p>
+<p>You should only need to use <a class="reference external" href="#maintenance-mode">maintenance mode</a> if you are debugging a problem with the mode or testing it. You can’t use <a class="reference external" href="#deploy-mode">deploy mode</a> locally, so bugs specific to deploy mode can only be debugged on a testing server. Finally, we only use the <a class="reference external" href="#minify-only-mode">minify-only mode</a> mode for the frontend tests, so you shouldn’t ever need to run a server this way for debugging. You should just <a class="reference internal" href="Debug-frontend-tests.html"><span class="doc std std-doc">debug the frontend tests</span></a> directly.</p>
+</section>
+<section id="source-maps">
+<h2>Source maps<a class="headerlink" href="#source-maps" title="Permalink to this headline"></a></h2>
+<p>Even when running in dev mode, the code your browser runs does not look much like the code on your file system. Files have been combined, and in prod mode, they’ve been minified. To make debugging easier, you can generate source maps that map from the code your browser is running back to the code on your file system.</p>
+<p>Generating source maps is expensive, so by default we don’t make them. However, you can enable source map generation in both dev and prod modes, usually by passing a <code class="docutils literal notranslate"><span class="pre">--source_maps</span></code>, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m scripts.start --source_maps</span>
+<span class="go">python -m scripts.run_e2e_tests --prod_env --source_maps</span>
+</pre></div>
+</div>
+<p>With these flags, the <code class="docutils literal notranslate"><span class="pre">webpack.*.sourcemap.config.ts</span></code> configuration files are used to enable source mapping.</p>
+<section id="using-source-maps">
+<h3>Using source maps<a class="headerlink" href="#using-source-maps" title="Permalink to this headline"></a></h3>
+<p>When generated, source maps will automatically be available through the Chrome debugger. You can view the Oppia code under <code class="docutils literal notranslate"><span class="pre">webpack://</span></code> in the sidebar of the sources tab. Without source maps the code looks like this:</p>
+<p><img alt="Chrome debugger sources without source maps" src="_images/withoutSourceMaps.png" /></p>
+<p>With source maps enabled, the code is easier to read:</p>
+<p><img alt="Chrome debugger sources with source maps" src="_images/withSourceMaps.png" /></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Performance-Testing.html" class="btn btn-neutral float-left" title="Performance testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Team-Structure.html" class="btn btn-neutral float-right" title="Team structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

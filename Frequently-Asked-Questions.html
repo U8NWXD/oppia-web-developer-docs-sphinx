@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently asked questions &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installing Oppia" href="Installing-Oppia.html" />
+    <link rel="prev" title="Season of docs 2021" href="Season-of-Docs-2021.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently asked questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-ask-for-help">How do I ask for help?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-have-not-yet-received-any-response-review-on-an-issue-pull-request-what-should-i-do">I have not yet received any response/review on an issue/pull request. What should I do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-install-oppia">How do I install Oppia?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-start-contributing-to-oppia">How do I start contributing to Oppia?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-do-i-find-some-good-issues-to-begin-with">Where do I find some good issues to begin with?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-am-facing-difficulty-in-finding-the-code-related-to-the-issue-what-do-i-do">I am facing difficulty in finding the code related to the issue, what do I do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-run-only-the-linting-test-on-a-file">How to run only the linting test on a file?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-run-only-the-linting-test-on-a-specific-file-type">How to run only the linting test on a specific file type?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-test-email-functionality">How to test email functionality?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-am-not-very-familiar-with-git-what-should-i-do">I am not very familiar with Git, what should I do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-run-tests">How do I run tests?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-issues">Setup issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ive-made-a-pr-its-been-reviewed-and-ive-got-some-changes-to-make-do-i-do-this-in-a-new-pr-or-add-it-to-the-existing-one">I’ve made a PR, it’s been reviewed, and I’ve got some changes to make. Do I do this in a new PR or add it to the existing one?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-have-merge-conflicts-on-my-pr-what-should-i-do">I have merge conflicts on my PR, what should I do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-need-more-help-where-do-i-go">I need more help, where do I go?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-enable-maintenance-mode-in-the-local-server">How to enable maintenance mode in the local server?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension-reference.html">Extension frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Frequently asked questions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Frequently-Asked-Questions.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="frequently-asked-questions">
+<h1>Frequently asked questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline"></a></h1>
+<section id="how-do-i-ask-for-help">
+<h2>How do I ask for help?<a class="headerlink" href="#how-do-i-ask-for-help" title="Permalink to this headline"></a></h2>
+<p>We would like to help you out but please ensure that you propose solutions instead of saying “solve this for me” or “debug this for me”.
+For example, make sure that your comment on any issue/pull request includes a very clear question at the end that is easy to answer, otherwise people don’t know what you’re looking for. This often involves showing your work (e.g. what happened when you searched for the error message? what analysis have you done to figure out the root of the issue?). Examples of good questions include: “here is my proposed solution, and here’s the analysis I’ve done to support it, do you agree?” or “here are two ways I could proceed, and the rationale I chose for each; which one would you suggest I go with?”. If you can’t formulate your question in this way, that might be a sign that you have not yet done enough debugging/analysis on your own. We also have a <a class="reference internal" href="Get-help.html"><span class="doc std std-doc">guide on how to get help</span></a>, which you should refer to while asking for help.</p>
+</section>
+<section id="i-have-not-yet-received-any-response-review-on-an-issue-pull-request-what-should-i-do">
+<h2>I have not yet received any response/review on an issue/pull request. What should I do?<a class="headerlink" href="#i-have-not-yet-received-any-response-review-on-an-issue-pull-request-what-should-i-do" title="Permalink to this headline"></a></h2>
+<p>If you are running into a lack of response and this is blocking work, please feel free to ping again after a couple of days, and if you still get no response please escalate to the core maintainer team. We’d be happy to look into the situation.</p>
+</section>
+<section id="how-do-i-install-oppia">
+<h2>How do I install Oppia?<a class="headerlink" href="#how-do-i-install-oppia" title="Permalink to this headline"></a></h2>
+<p>Oppia can be installed on your machine running Linux, Mac OS, or Windows. Instructions for all systems are on <a class="reference external" href="https://github.com/oppia/oppia/wiki/Installing-Oppia">Installing Oppia</a> page.</p>
+<p>If you just want to create and share explorations, you may be able to use the hosted server at https://www.oppia.org (in which case you don’t need to install anything).</p>
+</section>
+<section id="how-do-i-start-contributing-to-oppia">
+<h2>How do I start contributing to Oppia?<a class="headerlink" href="#how-do-i-start-contributing-to-oppia" title="Permalink to this headline"></a></h2>
+<p>Please refer to <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia">Contributing code to Oppia</a> for details. Basically, start off by forking the Oppia project on <a class="reference external" href="https://github.com/oppia/oppia">GitHub</a>, then creating your changes against our <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch, and finally send us a pull request.</p>
+<p>Also, don’t be discouraged if you’re new to “open source”, or if you’re still a student – many of our contributors are, too. The main thing is that you care about helping more people around the world to learn things better. We’d also be happy to provide mentorship and support if this is your first time contributing to an open source project.</p>
+</section>
+<section id="where-do-i-find-some-good-issues-to-begin-with">
+<h2>Where do I find some good issues to begin with?<a class="headerlink" href="#where-do-i-find-some-good-issues-to-begin-with" title="Permalink to this headline"></a></h2>
+<p>Here are some <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#finding-something-to-do">issues</a> you can begin with.</p>
+</section>
+<section id="i-am-facing-difficulty-in-finding-the-code-related-to-the-issue-what-do-i-do">
+<h2>I am facing difficulty in finding the code related to the issue, what do I do?<a class="headerlink" href="#i-am-facing-difficulty-in-finding-the-code-related-to-the-issue-what-do-i-do" title="Permalink to this headline"></a></h2>
+<p>The basic pattern is to inspect an element and search for an unique class/keyword (<code class="docutils literal notranslate"><span class="pre">oppia-signin-google</span></code>) and the try git grep <code class="docutils literal notranslate"><span class="pre">oppia-signin-google</span></code> you’ll find a file related to this. It will also show the line where the unique word is used in that file.</p>
+</section>
+<section id="how-to-run-only-the-linting-test-on-a-file">
+<h2>How to run only the linting test on a file?<a class="headerlink" href="#how-to-run-only-the-linting-test-on-a-file" title="Permalink to this headline"></a></h2>
+<p>There is a <code class="docutils literal notranslate"><span class="pre">pre_commit_linter.py</span></code> for linting the files. Let’s say you want to run the linting tests on the file. In the oppia directory, run the following command.</p>
+<p>python -m scripts.linters.pre_commit_linter –path=path/to/the/file</p>
+</section>
+<section id="how-to-run-only-the-linting-test-on-a-specific-file-type">
+<h2>How to run only the linting test on a specific file type?<a class="headerlink" href="#how-to-run-only-the-linting-test-on-a-specific-file-type" title="Permalink to this headline"></a></h2>
+<p>Let’s say you want to run the linting tests on a specific file type. In the oppia directory, run the following command.</p>
+<p>python -m scripts.linters.pre_commit_linter –only-check-file-extensions file_extension_type</p>
+</section>
+<section id="how-to-test-email-functionality">
+<h2>How to test email functionality?<a class="headerlink" href="#how-to-test-email-functionality" title="Permalink to this headline"></a></h2>
+<p>You can test email functionality by deploying your own oppia in appengine, this works perfectly, you’ll just have to enable the flags from <code class="docutils literal notranslate"><span class="pre">feconf.py</span></code>. Other workaround would be a hacky way to test this using logs:</p>
+<ul class="simple">
+<li><p>Simple and hacky way:</p>
+<ul>
+<li><p>Enable the email functionality, i.e, make <code class="docutils literal notranslate"><span class="pre">feconf.CAN_SEND_EMAILS</span></code> equals true and other email related flags true.</p></li>
+<li><p>Change the <code class="docutils literal notranslate"><span class="pre">send_mail</span></code> function of <code class="docutils literal notranslate"><span class="pre">core/platform/email/gae_email_service.py</span></code> to <code class="docutils literal notranslate"><span class="pre">print</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">mail.EmailMessage</span></code>.</p></li>
+<li><p>Do the mannual testing which will kisck the email functionality.</p></li>
+<li><p>Check the logs in terminal.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="i-am-not-very-familiar-with-git-what-should-i-do">
+<h2>I am not very familiar with Git, what should I do?<a class="headerlink" href="#i-am-not-very-familiar-with-git-what-should-i-do" title="Permalink to this headline"></a></h2>
+<p>Here are some materials which will help you get familiarised with Git:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/wiki/Learning-Resources">Learning Resources</a>: For some basic and advanced Git features.</p></li>
+<li><p><a class="reference external" href="https://github.com/oppia/oppia/wiki/Git-cheat-sheet">Git Cheat Sheet</a>: For some commonly used Git commands.</p></li>
+</ul>
+</section>
+<section id="how-do-i-run-tests">
+<h2>How do I run tests?<a class="headerlink" href="#how-do-i-run-tests" title="Permalink to this headline"></a></h2>
+<p>For information on running tests, please refer to the <a class="reference external" href="https://github.com/oppia/oppia/wiki/Running-Tests">Running Tests</a> wiki page. Note that there are 3 types of tests: server-side (Python), client-side (Karma) and end-to-end (Protractor). These tests help to ensure that the code is in a working state. Before checking in any commits to the Oppia repository, please ensure that every single test passes.</p>
+</section>
+<section id="setup-issues">
+<h2>Setup issues<a class="headerlink" href="#setup-issues" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>When setting up, I get a <code class="docutils literal notranslate"><span class="pre">[gulp-gae]</span> <span class="pre">stopping</span> <span class="pre">script</span></code> message, the server doesn’t start, and localhost:8181 is unreachable.</p>
+<ul>
+<li><p>Try checking that the folders in <code class="docutils literal notranslate"><span class="pre">../oppia_tools</span></code> actually have files in them; if not, re-run the installation. (See the discussion on <a class="reference external" href="https://github.com/oppia/oppia/issues/1796#issuecomment-217783598">issue #1796</a> for more details.)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="ive-made-a-pr-its-been-reviewed-and-ive-got-some-changes-to-make-do-i-do-this-in-a-new-pr-or-add-it-to-the-existing-one">
+<h2>I’ve made a PR, it’s been reviewed, and I’ve got some changes to make. Do I do this in a new PR or add it to the existing one?<a class="headerlink" href="#ive-made-a-pr-its-been-reviewed-and-ive-got-some-changes-to-make-do-i-do-this-in-a-new-pr-or-add-it-to-the-existing-one" title="Permalink to this headline"></a></h2>
+<p>Add the new changes to the same PR. For instructions on how to do this, see <a class="reference external" href="https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#address-review-comments-until-all-reviewers-give-lgtm-looks-good-to-me">here</a>.</p>
+</section>
+<section id="i-have-merge-conflicts-on-my-pr-what-should-i-do">
+<h2>I have merge conflicts on my PR, what should I do?<a class="headerlink" href="#i-have-merge-conflicts-on-my-pr-what-should-i-do" title="Permalink to this headline"></a></h2>
+<p>In this case, you should resolve these merge conflicts on your local machine and then push the updated version to your branch corresponding to your PR. This is done as follows:</p>
+<ul class="simple">
+<li><p>First merge your branch with develop locally after fetching from the upstream repository (the master one at oppia/oppia) by doing:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+  <span class="n">git</span> <span class="n">checkout</span> <span class="o">&lt;</span><span class="n">your_branch_name_corresponding_to_PR</span><span class="o">&gt;</span>
+  <span class="n">git</span> <span class="n">merge</span> <span class="n">upstream</span><span class="o">/</span><span class="n">develop</span>
+</pre></div>
+</div>
+<p>(if you get <code class="docutils literal notranslate"><span class="pre">fatal:</span> <span class="pre">'upstream'</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">appear</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">a</span> <span class="pre">git</span> <span class="pre">repository</span></code> or a similar error, do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">upstream</span>&#160; <span class="pre">https://github.com/oppia/oppia.git</span></code> to add the upstream remote to your local fork of the repository and then do the above
+3 steps)</p>
+<ul class="simple">
+<li><p>Now, in the terminal, the files which have merge conflicts will be listed, so in your local editor, go to those files and look for merge conflict markers that look like this:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span><span class="p">:</span><span class="o">&lt;</span><span class="n">file_name</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">code_1</span><span class="o">&gt;</span>
+<span class="o">=======</span>
+<span class="o">&lt;</span><span class="n">code_2</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="o">&lt;</span><span class="n">commit_id</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">file_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here &lt;code_1&gt; is the change you did locally, while &lt;code_2&gt; is the corresponding code that is there on develop that is causing the conflict, so here you can choose whether to keep your change, keep the existing one or maybe combine the two.</p>
+<ul class="simple">
+<li><p>After resolving the conflict, the markers (lines starting with <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">===</span></code>) should be removed.</p></li>
+<li><p>Do this for all the files with merge conflicts and push the code to your branch corresponding to your PR and the merge conflicts error on your PR would be gone!</p></li>
+</ul>
+</section>
+<section id="i-need-more-help-where-do-i-go">
+<h2>I need more help, where do I go?<a class="headerlink" href="#i-need-more-help-where-do-i-go" title="Permalink to this headline"></a></h2>
+<p>If you run into any problems, please read our <a class="reference external" href="https://github.com/oppia/oppia/wiki">Developer Wiki</a>, or file an issue on our <span class="xref myst">issue tracker</span>, or post to our <a class="reference external" href="https://groups.google.com/forum/?fromgroups#%21forum/oppia-dev">developer mailing list</a>.
+Or you could probably ask your questions on our official <a class="reference external" href="http://gitter.im/oppia/oppia-chat">Gitter</a> channel.</p>
+</section>
+<section id="how-to-enable-maintenance-mode-in-the-local-server">
+<h2>How to enable maintenance mode in the local server?<a class="headerlink" href="#how-to-enable-maintenance-mode-in-the-local-server" title="Permalink to this headline"></a></h2>
+<p>The maintenance mode can be enabled by setting the <a class="reference external" href="https://github.com/oppia/oppia/blob/release-2.5.0/feconf.py#L264">ENABLE_MAINTENANCE_MODE</a> flag to True in feconf.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Season-of-Docs-2021.html" class="btn btn-neutral float-left" title="Season of docs 2021" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Installing-Oppia.html" class="btn btn-neutral float-right" title="Installing Oppia" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

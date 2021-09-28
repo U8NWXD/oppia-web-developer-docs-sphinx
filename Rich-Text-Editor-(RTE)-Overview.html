@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rich text editor (RTE) overview &mdash; Oppia Web Contributor Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating interactions" href="Creating-Interactions.html" />
+    <link rel="prev" title="Extensions overview" href="Extensions-Overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oppia Web Contributor Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html">Oppia’s Mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia%27s-Mission.html#vision">Vision</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/oppia/oppia/blob/develop/.github/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing Oppia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Frequently-Asked-Questions.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-Oppia.html">Installing Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tips-for-common-IDEs.html">Tips for common IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Make-a-pull-request.html">Make a pull request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pull-requests-at-Oppia.html">Pull requests at Oppia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get-help.html">Get help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning-Resources.html">Learning resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git-cheat-sheet.html">Git cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">Get started with the code base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events-Team.html">Oppia Events team</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Oppiabot.html">Oppiabot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend-reference.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend-reference.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-new-translations-for-i18n.html">Adding new translations for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-develop-for-i18n.html">How to develop for i18n</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Webpack.html">Webpack</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="extension-reference.html">Extension frameworks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Extensions-Overview.html">Extensions overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Rich text editor (RTE) overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-rich-text-editor">Using the rich text editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-rich-text-components">Adding rich text components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#component-code">Component code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-registration-in-rich-text-components-definitions-ts">Component registration in <code class="docutils literal notranslate"><span class="pre">rich_text_components_definitions.ts</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-libraries">Third-Party Libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rte-implementation">RTE implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Interactions.html">Creating interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Rules.html">Creating rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Objects.html">Creating objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Dependencies.html">Creating dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating-Value-Generators.html">Creating value generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actions-and-issues.html">Actions and issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Advice-on-creating-explorations.html">Advice on creating explorations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Oppia-ml-Extension.html">Oppia-ml Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-development.html">Mobile development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mobile-device-testing.html">Mobile device testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-Testing.html">Performance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-process.html">Build process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Team-Structure.html">Team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">Playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past-events.html">Past Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oppia Web Contributor Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="extension-reference.html">Extension frameworks</a> &raquo;</li>
+      <li>Rich text editor (RTE) overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Rich-Text-Editor-(RTE)-Overview.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="rich-text-editor-rte-overview">
+<h1>Rich text editor (RTE) overview<a class="headerlink" href="#rich-text-editor-rte-overview" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#using-the-rich-text-editor">Using the rich text editor</a></p></li>
+<li><p><a class="reference external" href="#adding-rich-text-components">Adding rich text components</a></p>
+<ul>
+<li><p><a class="reference external" href="#component-code">Component code</a></p></li>
+<li><p><a class="reference external" href="#component-registration-in-rich_text_components_definitionsts">Component registration in <code class="docutils literal notranslate"><span class="pre">rich_text_components_definitions.ts</span></code></a></p>
+<ul>
+<li><p><a class="reference external" href="#customization_arg_specs"><code class="docutils literal notranslate"><span class="pre">customization_arg_specs</span></code></a></p></li>
+<li><p><a class="reference external" href="#example-registration">Example registration</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#implementation">Implementation</a></p>
+<ul>
+<li><p><a class="reference external" href="#third-party-libraries">Third-Party Libraries</a></p>
+<ul>
+<li><p><a class="reference external" href="#upgrading-ckeditor">Upgrading CKEditor</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#rte-implementation">RTE implementation</a></p>
+<ul>
+<li><p><a class="reference external" href="#adding-a-new-plugin">Adding a new plugin</a></p></li>
+<li><p><a class="reference external" href="#adding-rich-text-components-to-ckeditor">Adding rich text components to CKEditor</a></p></li>
+<li><p><a class="reference external" href="#hidden-components">Hidden components</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Oppia has a rich text editor (RTE), used by exploration creators to create or edit the content of their explorations. This document is an overview of its usage and implementation. The code portion of the document will largely focus on how the rich text components are integrated into the RTE, since that is the most complicated part of Oppia’s RTE setup.</p>
+</section>
+<section id="using-the-rich-text-editor">
+<h2>Using the rich text editor<a class="headerlink" href="#using-the-rich-text-editor" title="Permalink to this headline"></a></h2>
+<p>The directive is called <code class="docutils literal notranslate"><span class="pre">ck-editor-4-rte</span></code>, and can be used as simply as this example from <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/pages/creator-dashboard-page/suggestion-modal-for-creator-view/suggestion-modal-for-creator-view.directive.html"><code class="docutils literal notranslate"><span class="pre">suggestion-modal-for-creator-view.directive.html</span></code></a>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>&lt;ck-editor-4-rte [value]=&quot;suggestionData.newSuggestionHtml&quot;
+                 (value-change)=&quot;updateValue($event)&quot;&gt;
+&lt;/ck-editor-4-rte&gt;
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/components/forms/schema-based-editors/schema-based-html-editor.directive.html"><code class="docutils literal notranslate"><span class="pre">schema-based-html-editor.directive.html</span></code></a> for a more complicated usage example.</p>
+<p>The directive exposes the following attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[value]</span></code>: Bind to the variable storing the content the RTE is editing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(value-change)</span></code>: Function call that handles the user’s changes to the RTE.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[ui-config]</span></code> (optional): Used to configure the RTE. For example, you can set the placeholder text or whether to hide complex extensions.</p></li>
+</ul>
+</section>
+<section id="adding-rich-text-components">
+<h2>Adding rich text components<a class="headerlink" href="#adding-rich-text-components" title="Permalink to this headline"></a></h2>
+<p>Oppia explorations can have rich text components, which are custom widgets that creators can insert into their content. Note that we have two kinds of components at play here: rich text components and <a class="reference external" href="https://github.com/oppia/oppia/wiki/Overview-of-the-Oppia-codebase#component-layer">Angular components</a>. Each rich text component is an Angular component of the form <code class="docutils literal notranslate"><span class="pre">&lt;oppia-noninteractive-*&gt;&lt;/oppia-noninteractive-*&gt;</span></code>, with different attributes depending on the component. Examples include the Math (for inserting Latex) component, the Image component, and the Video component. This section describes how the components are defined in case you want to add your own component, or need to modify an existing one.</p>
+<section id="component-code">
+<h3>Component code<a class="headerlink" href="#component-code" title="Permalink to this headline"></a></h3>
+<p>The code for defining each rich text component is housed in <a class="reference external" href="https://github.com/oppia/oppia/tree/develop/extensions/rich_text_components"><code class="docutils literal notranslate"><span class="pre">extensions/rich_text_components</span></code></a>. In this folder, each component has its own folder, with the following files and subfolders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">/directives</span></code> contains the TypeScript and HTML files that define the rich text component’s Angular component.</p>
+<p>Each rich text component has one main Angular component defined by the following files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{{rich</span> <span class="pre">text</span> <span class="pre">component</span> <span class="pre">name}}.component.html</span></code>: Contains the HTML of the Angular component. This HTML will be inserted in place of the <code class="docutils literal notranslate"><span class="pre">&lt;oppia-noninteractive-*&gt;</span></code> tag.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oppia-noninteractive-{{rich</span> <span class="pre">text</span> <span class="pre">component</span> <span class="pre">name}}.component.ts</span></code>: Defines the component logic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oppia-noninteractive-{{rich</span> <span class="pre">text</span> <span class="pre">component</span> <span class="pre">name}}.component.spec.ts</span></code>: Tests for the component logic.</p></li>
+</ul>
+<p>Some rich text components have additional Angular components like modals. These will have additional triplets of files.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{{rich</span> <span class="pre">text</span> <span class="pre">component</span> <span class="pre">name}}.png</span></code> is an icon representing the component, used in the RTE toolbar button.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protractor.js</span></code> exports two functions that are used by the end-to-end tests: <code class="docutils literal notranslate"><span class="pre">customizeComponent</span></code> configures a new instance of the component (e.g. sets the destination of a newly added Link component), and <code class="docutils literal notranslate"><span class="pre">expectComponentDetailsToMatch</span></code> checks that a component has the expected properties.</p></li>
+</ul>
+<p>To add a new rich text component, create a new folder under <code class="docutils literal notranslate"><span class="pre">extensions/rich_text_components</span></code>. The folder name should match the name of your new component, and the folder should contain each of the files described above.</p>
+</section>
+<section id="component-registration-in-rich-text-components-definitions-ts">
+<h3>Component registration in <code class="docutils literal notranslate"><span class="pre">rich_text_components_definitions.ts</span></code><a class="headerlink" href="#component-registration-in-rich-text-components-definitions-ts" title="Permalink to this headline"></a></h3>
+<p>You also need to register your component in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/assets/rich_text_components_definitions.ts"><code class="docutils literal notranslate"><span class="pre">assets/rich_text_components_definitions.js</span></code></a>. Each component is described there by a dictionary with the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">backend_id</span></code>: A string used to identify this rich text component in the backend.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">category</span></code>: The category the rich text component falls under in the repository.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: A description of the rich text component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frontend_id</span></code>: The HTML tag name for the component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tooltip</span></code>: The tooltip for the icon in the rich text editor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon_data_url</span></code>: URL of the component icon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_complex</span></code>: Whether the component is large enough to discourage its use when the rich text editor is intended to be lightweight.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requires_fs</span></code>: Whether the component requires the filesystem in some way that prevents it from being used by unauthorized users.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_block_element</span></code>: Whether the component should be displayed as a block element.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">customization_arg_specs</span></code>: Each dictionary defines a customizable option of that component. For example, the Math component has the sole customizable option <code class="docutils literal notranslate"><span class="pre">raw_latex</span></code> for the latex to be rendered. Each dictionary in the list has the form:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the option.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: a string describing the option, which will be displayed when the component is being edited/inserted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">schema</span></code>: a <a class="reference internal" href="Schemas.html"><span class="doc std std-doc">schema</span></a> specifies type, and optionally validation rules or UI configurations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_value</span></code>: initial value for the option.</p></li>
+</ul>
+</li>
+</ul>
+<p>Each rich text component must also be registered in <code class="docutils literal notranslate"><span class="pre">feconf.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">ALLOWED_RTE_EXTENSIONS</span></code> variable.</p>
+<section id="customization-arg-specs">
+<h4><code class="docutils literal notranslate"><span class="pre">customization_arg_specs</span></code><a class="headerlink" href="#customization-arg-specs" title="Permalink to this headline"></a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">customization_arg_specs</span></code> property of the component definition in <code class="docutils literal notranslate"><span class="pre">rich_text_components_definitions.ts</span></code> needs a bit more explanation. Its value is a list of dictionaries, where each dictionary has the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: The name of the customization argument. This argument will be available to the component TypeScript file as <code class="docutils literal notranslate"><span class="pre">{{name}}WithValue</span></code>. For example, the Math component has a customization argument with name <code class="docutils literal notranslate"><span class="pre">math_content</span></code>. The Math component includes the line <code class="docutils literal notranslate"><span class="pre">&#64;Input()</span> <span class="pre">mathContentWithValue:</span> <span class="pre">string;</span></code> at the top of its class definition, and the code in the class can access the argument as <code class="docutils literal notranslate"><span class="pre">this.mathContentWithValue</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: A human-readable description of the argument.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">schema</span></code>: The argument’s <a class="reference internal" href="Schemas.html"><span class="doc std std-doc">schema</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_value</span></code>: The default value for the argument. This value must match the schema.</p></li>
+</ul>
+</section>
+<section id="example-registration">
+<h4>Example registration<a class="headerlink" href="#example-registration" title="Permalink to this headline"></a></h4>
+<p>Here’s an example of the Math component’s registration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>  <span class="nt">&quot;Math&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;backend_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Math&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Basic Input&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A math formula.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;frontend_id&quot;</span><span class="p">:</span> <span class="s2">&quot;math&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;tooltip&quot;</span><span class="p">:</span> <span class="s2">&quot;Insert mathematical formula&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;icon_data_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/rich_text_components/Math/Math.png&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;is_complex&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;requires_internet&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;requires_fs&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;is_block_element&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;customization_arg_specs&quot;</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;math_content&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The Math Expression to be displayed.&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;custom&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;obj_type&quot;</span><span class="p">:</span> <span class="s2">&quot;MathExpressionContent&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;default_value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;raw_latex&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;svg_filename&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}]</span>
+  <span class="p">},</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline"></a></h2>
+<p>This section describes how Oppia’s rich text editor and rich text component system are implemented. This information may be helpful if you need to modify how Oppia uses rich text components, but you don’t need this section if you just want to use RTEs or add new rich text components.</p>
+<section id="third-party-libraries">
+<h3>Third-Party Libraries<a class="headerlink" href="#third-party-libraries" title="Permalink to this headline"></a></h3>
+<p>The RTE depends on the following third-party libraries, all specified in our <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ckeditor/ckeditor4">CKEditor 4</a>: CKEditor is a what-you-see-is-what-you-get (WYSIWYG) rich text editor. The RTE is largely just a wrapper around CKEditor. We currently use version 4.</p></li>
+<li><p><a class="reference external" href="https://ckeditor.com/cke4/addon/sharedspace">SharedSpace</a>: ensures that the toolbar will always remain in one place on the page.</p></li>
+<li><p><a class="reference external" href="https://ckeditor.com/cke4/addon/bootstrapck">Bootstrap</a>: provides the skin of CKEditor’s toolbar.</p></li>
+</ul>
+<section id="upgrading-ckeditor">
+<h4>Upgrading CKEditor<a class="headerlink" href="#upgrading-ckeditor" title="Permalink to this headline"></a></h4>
+<p>If you upgrade the CKEditor version that we using, it is important to check that the new CKEditor version does not cause any regressions in the RTE. After upgrading the CKEditor version, use the RTE in the exploration editor to perform the following checks in both the Chrome and Firefox browsers:</p>
+<ul class="simple">
+<li><p>Input some plain text and save. Ensure that the content doesn’t disappear upon saving.</p></li>
+<li><p>Input a single rich text component (such as the Math component) and then save. Make sure it is saved properly.</p></li>
+<li><p>Try using backspace to delete the rich text component. Make sure it is actually deleted.</p></li>
+<li><p>Try copying-and-pasting a rich text component. Hit save and make sure that the component is copied properly.</p></li>
+<li><p>Try editing the rich text component and make sure your changes are shown correctly.</p></li>
+<li><p>Try editing the rich text component and then cancel your changes.  Check that the original component is preserved.</p></li>
+<li><p>Try dragging-and-dropping a rich text component from one place in the content to another, then saving. Make sure the component is moved properly.</p></li>
+<li><p>Input text with multiple paragraphs. Make sure the paragraphs are correctly spaced apart.</p></li>
+<li><p>Insert an Image component with a large image, and save. Make sure the image does not overflow the content boundaries.</p></li>
+<li><p>Insert an Image component with a small image, and save. Make sure the image is not stretched out.</p></li>
+</ul>
+</section>
+</section>
+<section id="rte-implementation">
+<h3>RTE implementation<a class="headerlink" href="#rte-implementation" title="Permalink to this headline"></a></h3>
+<p>This section is a code overview of how the RTE is actually implemented. This is mostly useful if you plan to modify the RTE to fix a bug or add a new feature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">CkEditor4RteComponent</span></code> is defined in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/components/ck-editor-helpers/ck-editor-4-rte.component.ts"><code class="docutils literal notranslate"><span class="pre">ck-editor-4-rte.component.ts</span></code></a>and is the Angular component behind the RTE. There we define a <code class="docutils literal notranslate"><span class="pre">ckConfig</span></code> object that configures the editor. This configuration includes the <code class="docutils literal notranslate"><span class="pre">toolbar</span></code> attribute, which specifies the order in which rich text components appear in the editor toolbar.</p>
+<p>Near the end of the <code class="docutils literal notranslate"><span class="pre">ngAfterViewInit()</span></code> function, we use <code class="docutils literal notranslate"><span class="pre">ck.on</span></code> to specify the following callback functions:</p>
+<ul class="simple">
+<li><p>The callback passed to <code class="docutils literal notranslate"><span class="pre">ck.on('instanceReady',</span> <span class="pre">...)</span></code> is executed when any new instance of CKEditor is ready. For example it will be executed when we click on the content of a card in the exploration editor. In the callback, we add CSS and icons to the buttons in the toolbar.</p></li>
+<li><p>The callback passed to <code class="docutils literal notranslate"><span class="pre">ck.on('change',</span> <span class="pre">...)</span></code> is executed whenever the content of CKEditor changes. It handles user updates to the rich text.</p></li>
+</ul>
+<section id="adding-a-new-plugin">
+<h4>Adding a new plugin<a class="headerlink" href="#adding-a-new-plugin" title="Permalink to this headline"></a></h4>
+<p>To add a new plugin, follow these steps:</p>
+<ol>
+<li><p>Add the plugin to the <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code> to add it as a dependency. Take a look at how we added <code class="docutils literal notranslate"><span class="pre">SharedSpace</span></code> for an example. Alternatively, define your own custom plugin like we did with <code class="docutils literal notranslate"><span class="pre">pre</span></code>.</p></li>
+<li><p>Add a call to <code class="docutils literal notranslate"><span class="pre">CKEditor.plugins.addExternal</span></code> in the component’s <code class="docutils literal notranslate"><span class="pre">ngAfterViewInit()</span></code> method. For example, here’s how we added the <code class="docutils literal notranslate"><span class="pre">pre</span></code> plugin:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">plugins</span><span class="p">.</span><span class="nx">addExternal</span><span class="p">(</span>
+  <span class="s1">&#39;pre&#39;</span><span class="p">,</span> <span class="s1">&#39;/extensions/ckeditor_plugins/pre/&#39;</span><span class="p">,</span> <span class="s1">&#39;plugin.js&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add this plugin to the value of <code class="docutils literal notranslate"><span class="pre">extraPlugins</span></code> in <code class="docutils literal notranslate"><span class="pre">ckConfig</span></code>. <code class="docutils literal notranslate"><span class="pre">extraPlugins</span></code> is a string of comma-separated plugin names.</p></li>
+</ol>
+</section>
+<section id="adding-rich-text-components-to-ckeditor">
+<h4>Adding rich text components to CKEditor<a class="headerlink" href="#adding-rich-text-components-to-ckeditor" title="Permalink to this headline"></a></h4>
+<p>Rich text components are dynamically added to CKEditor in <a class="reference external" href="https://github.com/oppia/oppia/blob/develop/core/templates/components/ck-editor-helpers/ck-editor-4-widgets.initializer.ts"><code class="docutils literal notranslate"><span class="pre">ck-editor-4-widgets.initializer.ts</span></code></a> as <a class="reference external" href="https://docs.ckeditor.com/ckeditor4/latest/guide/widget_sdk_intro.html">widgets</a>. We use the <code class="docutils literal notranslate"><span class="pre">getRichTextComponents()</span></code> function to obtain each rich text component and construct their respective widgets. We also have a function <code class="docutils literal notranslate"><span class="pre">isInlineComponent()</span></code> to check whether a rich text component is an inline or block component.</p>
+<p><code class="docutils literal notranslate"><span class="pre">componentTemplate</span></code> defines a template to wrap the rich text components. Inline components are wrapped in a span, and block components are wrapped in a div.</p>
+<p>The plugins are added to CKEditor in the line <code class="docutils literal notranslate"><span class="pre">CKEDITOR.plugins.add(ckName,</span> <span class="pre">{</span></code>. The <code class="docutils literal notranslate"><span class="pre">init</span></code> function passed to <code class="docutils literal notranslate"><span class="pre">add()</span></code> is executed when the plugin is initialised and it adds a widget for each component using the line <code class="docutils literal notranslate"><span class="pre">editor.widgets.add(ckName,</span> <span class="pre">{</span></code>. <code class="docutils literal notranslate"><span class="pre">editor.widgets.add</span></code> is passed an object with the following attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">button</span></code>: The button label for the widget.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inline</span></code>: Whether the widget is an inline component or a block component. The link and the math component are inline, and the rest are block components.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template</span></code>: The wrapper template for the widget.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edit</span></code>: A function that will be executed when a widget is being edited. In this function, the default action is canceled since we have used our own edit modal. <code class="docutils literal notranslate"><span class="pre">RteHelperService._openCustomizationModal()</span></code> is a helper function for opening the modal which is used to insert new components or edit existing ones. It uses the <a class="reference external" href="#customization_arg_specs">customizationArgSpecs from the component definition</a> to know what the editable fields are for each component. The function can then render the modal properly for any component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">downcast()</span></code>: A function that downcasts the widget instance by clearing the Angular rendering content and returning the rich text component without any wrapper. Downcasting a widget means removing any property which is not needed in the output’s source.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">upcast()</span></code>: A function that upcasts an element to this widget. It returns whether an element is an instance of the widget. The element will be upcasted if it is an instance of the widget. Upcasting an element means changing that element into a widget.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data()</span></code>: A function that will be executed every time the widget data changes. It will set the attributes of rich text components according to the change in data values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">init()</span></code>: A function that will be executed when initialising a widget (i.e. after a widget instance is created but before it is ready to be used). It is executed before the data function is executed. It reads and saves values from the component attributes.</p></li>
+</ul>
+</section>
+<section id="hidden-components">
+<h4>Hidden components<a class="headerlink" href="#hidden-components" title="Permalink to this headline"></a></h4>
+<p>Sometimes, we want to disable or hide components in the RTE. There are 2 cases where this happens right now:</p>
+<ul class="simple">
+<li><p>“Complex” components like tabs contain rich text content, but we don’t want the possibility of recursion where people use the RTE to insert tabs inside tabs inside tabs…etc. To prevent this, the <code class="docutils literal notranslate"><span class="pre">ckEditorRte</span></code> directive <a class="reference external" href="http://websystique.com/angularjs/angularjs-custom-directives-link-function-guide/">link function</a> checks the <code class="docutils literal notranslate"><span class="pre">uiConfig.hide_complex_extensions</span></code> flag. When <code class="docutils literal notranslate"><span class="pre">hide_complex_extensions</span></code> is set, complex extensions will be hidden from the user.</p></li>
+<li><p>There are cases, such as when a learner uses the RTE to submit a suggestion, where the user is not an editor and doesn’t have filesystem-related permissions. For example, the learner can’t upload a picture, so it makes sense to hide the functionality for inserting a new image. The check <code class="docutils literal notranslate"><span class="pre">canUseFs</span> <span class="pre">&amp;&amp;</span> <span class="pre">componentDefn.requiresFs</span></code> in the link function ensures that the image plugin is hidden.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Extensions-Overview.html" class="btn btn-neutral float-left" title="Extensions overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Creating-Interactions.html" class="btn btn-neutral float-right" title="Creating interactions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The Oppia Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
