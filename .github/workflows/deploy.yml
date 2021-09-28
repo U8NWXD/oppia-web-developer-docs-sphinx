@@ -20,7 +20,7 @@ jobs:
       - name: Build documentation
         run: |
           cd docs
-          make build
+          make html
       - name: Deploy documentation to GitHub pages
         run: |
           cd _build
